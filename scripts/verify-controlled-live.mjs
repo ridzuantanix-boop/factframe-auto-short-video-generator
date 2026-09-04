@@ -36,7 +36,8 @@ try{
   await nav.getByRole("button",{name:"Saya",exact:true}).click();await page.getByRole("heading",{name:"Saya",exact:true}).waitFor();await capture("profile");
   const manifest=await(await context.request.get(base+"/manifest.webmanifest")).json();assert.equal(manifest.display,"standalone");
   await page.evaluate(()=>navigator.serviceWorker.ready.then(()=>true));
-  await context.setOffline(true);await page.reload();await page.getByRole("button",{name:"Cuba sambung semula",exact:true}).waitFor();await capture("offline");await context.setOffline(false);
+  await page.waitForFunction(()=>!!navigator.serviceWorker.controller);
+  await context.setOffline(true);await page.goto(base+"/offline-check");await page.getByRole("button",{name:"Cuba sambung semula",exact:true}).waitFor();await capture("offline");await context.setOffline(false);
   await page.goto(base+"/owner-test");await page.getByRole("heading",{name:"Akses Ujian Pemilik"}).waitFor();
   const login=await context.request.post(base+"/api/test/session",{headers:{origin:base},form:{token:access.token},maxRedirects:0});assert.equal(login.status(),303);
   await page.goto(base+"/#home");await page.getByText("TEST MODE",{exact:true}).waitFor();await capture("owner-test");

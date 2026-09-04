@@ -4,9 +4,10 @@ import { readFile } from 'node:fs/promises';
 import vm from 'node:vm';
 
 const source = await readFile(new URL('../public/sw.js', import.meta.url), 'utf8');
-function harness(offline = false) {
+function harness(offline = false, redirected = false) {
   const events = {}; const cached = []; const removed = []; let skipped = 0;
   const offlinePage = new Response('offline');
+  Object.defineProperty(offlinePage, 'redirected', { value: redirected });
   vm.runInNewContext(source, {
     URL, Response,
     self: { location: { origin: 'https://pawarna.test' }, addEventListener: (name, fn) => { events[name] = fn; }, clients: { claim: async () => {} }, skipWaiting: () => skipped++ },
@@ -39,4 +40,11 @@ test('navigation uses network online and a static fallback offline', async () =>
     h.events.fetch({ request: { method: 'GET', url: 'https://pawarna.test/', mode: 'navigate' }, respondWith: p => { response = p; } });
     assert.equal(await (await response).text(), offline ? 'offline' : 'network');
   }
+});
+test('redirected Cloudflare offline assets become non-redirected navigation responses', async () => {
+  const h = harness(true, true); let response;
+  h.events.fetch({ request: { method: 'GET', url: 'https://pawarna.test/', mode: 'navigate' }, respondWith: p => { response = p; } });
+  const result = await response;
+  assert.equal(result.redirected, false);
+  assert.equal(await result.text(), 'offline');
 });

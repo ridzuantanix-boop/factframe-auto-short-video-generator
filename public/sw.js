@@ -1,5 +1,5 @@
 /* Pawarna: only public offline assets are cached. No API, customer images, videos or paid POST replay. */
-const CACHE = "pawarna-offline-v2";
+const CACHE = "pawarna-offline-v3";
 const PUBLIC_ASSETS = ["/offline.html", "/icons/icon-192.png", "/icons/icon-512.png", "/icons/maskable-512.png", "/icons/apple-touch-icon.png"];
 self.addEventListener("install", event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(PUBLIC_ASSETS)));
@@ -19,7 +19,12 @@ self.addEventListener("fetch", event => {
   const url = new URL(request.url);
   if (request.method !== "GET" || url.origin !== self.location.origin || url.pathname.startsWith("/api/")) return;
   if (request.mode === "navigate") {
-    event.respondWith(fetch(request).catch(async () => (await caches.match("/offline.html")) || Response.error()));
+    event.respondWith(fetch(request).catch(async () => {
+      const cached = await caches.match("/offline.html");
+      // Cloudflare may redirect .html to an extensionless asset. Strip that
+      // response's redirect flag before using it for a manual-mode navigation.
+      return cached ? new Response(cached.body, { status: cached.status, headers: cached.headers }) : Response.error();
+    }));
     return;
   }
   if (PUBLIC_ASSETS.includes(url.pathname)) event.respondWith(caches.match(request).then(cached => cached || fetch(request)));
