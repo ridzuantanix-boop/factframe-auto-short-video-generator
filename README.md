@@ -1,52 +1,86 @@
-# FactFrame V1.2 — Sourced Mystery Short Video Generator
+# FactFrame V2
 
-FactFrame ialah aplikasi Next.js local-first yang menghasilkan video dokumentari misteri 9:16 dalam Bahasa Melayu. V1.2 melanjutkan—bukan menggantikan—aliran Fakta Ringkas V1.
+FactFrame V2 ialah aplikasi Next.js untuk menghasilkan video cerita pendek Bahasa Melayu yang bersumber. Ia mempunyai dua aliran: **Stories & Explainers** untuk entiti Wikidata/Wikipedia dan **Mystery & Legends** untuk cerita yang membezakan fakta, laporan, teori, pertikaian dan cerita rakyat.
+
+## Keupayaan semasa
+
+- discovery cerita secara live melalui indeks Wikidata/Wikipedia;
+- katalog seed misteri yang sudah melalui readiness gate;
+- penjanaan beberapa sudut cerita untuk entiti;
+- penyelidikan bersumber, klasifikasi dakwaan dan susunan retention storytelling;
+- tanda `currentAware` dan tarikh semakan untuk topik yang boleh berubah;
+- perancangan visual setiap segmen, carian imej/video Wikimedia Commons dan babak programatik;
+- Gemini 3.1 Flash TTS Preview dengan empat preset, retry, cache dan fallback suara neural tempatan;
+- sari kata, tera air tersuai dan eksport MP4 menegak 9:16 pada 720 × 1280.
+
+Dokumentasi audit terperinci berada dalam [`docs/`](docs/). Angka “1,000+” dalam UI ialah anggaran ruang calon discovery live, **bukan** 1,000 cerita READY yang disimpan. Katalog READY tersimpan semasa ialah 10 cerita.
 
 ## Jalankan secara tempatan
 
+Prasyarat: Node.js 24 dan npm.
+
 ```bash
+git clone https://github.com/ridzuantanix-boop/factframe-auto-short-video-generator.git
+cd factframe-auto-short-video-generator
 npm install
-npm run dev
+copy .env.example .env.local
+npm run dev -- --port 3100
 ```
 
-Buka `http://127.0.0.1:3000` atau port yang dipaparkan oleh Next.js.
+Pada macOS/Linux, gunakan `cp .env.example .env.local`. Buka `http://localhost:3100`.
 
-## Dua mod kandungan
+Tiada key diperlukan untuk katalog, penyelidikan awam, visual planning dan render menggunakan suara fallback tempatan. Muat turun pertama model suara tempatan kira-kira 114 MB.
 
-- **Misteri & Teori:** katalog sedia dijana, pilihan rawak berkualiti, penapis Malaysia/Malaya, tempoh 30/60/90 saat, nada dokumentari atau suspens, model dakwaan, liputan sumber dan quality gate.
-- **Fakta Ringkas:** carian Wikidata/Wikipedia dan aliran render asal dikekalkan.
+## Environment variables
 
-## Aliran Mystery Mode
+| Variable | Keperluan | Skop | Kegunaan |
+|---|---|---|---|
+| `GEMINI_API_KEY` | Opsyenal | Server sahaja | Skrip Gemini dan Gemini TTS. Jangan gunakan awalan `NEXT_PUBLIC_`. |
+| `GEMINI_TEXT_MODEL` | Opsyenal | Server sahaja | Override model teks; default `gemini-3.7-flash`. |
+| `GEMINI_TTS_MODEL` | Opsyenal | Server sahaja | Override model suara; default `gemini-3.1-flash-tts-preview`. |
+| `DEMO_MODE` | Opsyenal | Server sahaja | `true` mematikan Gemini dengan jelas dan menggunakan aliran sumber awam serta suara tempatan. Default `false`. |
 
-1. Pilih cerita katalog atau jana cerita rawak yang mempunyai skor sumber dan visual tinggi.
-2. Susun dakwaan bersumber kepada hook, open loop, konteks, eskalasi, teori/counterpoint dan payoff.
-3. Tolak render jika liputan sumber bukan 100%, skor penceritaan di bawah 10/14 atau terdapat dakwaan tanpa sumber.
-4. Cari visual berlesen melalui integrasi Wikimedia Commons sedia ada.
-5. Jana suara neural Bahasa Melayu secara tempatan menggunakan MMS-VITS.
-6. Render babak foto, peta, garis masa, dokumen, bukti, kad teori dan nota sumber menggunakan renderer Canvas sedia ada.
-7. Rakam dan sediakan MP4 720 × 1280 melalui MediaRecorder serta FFmpeg/WASM apabila diperlukan.
+Semua panggilan Gemini dibuat melalui route server `/api/gemini/*`. Tiada secret dihantar ke bundle browser.
 
-## Privasi dan lesen
-
-Video dirender pada peranti dan hanya disimpan sebagai object URL dalam sesi pelayar. Model suara pertama kali memuat turun kira-kira 114 MB dan kemudian menggunakan cache pelayar. Model MMS-TTS mewarisi lesen CC BY-NC 4.0; gantikan penyedia TTS sebelum penggunaan komersial.
-
-## Gemini: skrip dan suara lebih natural
-
-Salin `.env.example` kepada `.env.local`, kemudian isi API key:
+## Demo / safe review mode
 
 ```bash
-GEMINI_API_KEY=masukkan_api_key_anda
+set DEMO_MODE=true
+npm run dev -- --port 3100
 ```
 
-Apabila key tersedia, Mystery Mode menggunakan Gemini untuk menulis skrip berstruktur daripada dakwaan sedia ada dan Gemini TTS untuk suara Bahasa Melayu yang lebih ekspresif. Pemilih narator menyediakan empat gaya mesra pengguna—Lelaki Dokumentari, Lelaki Misteri, Wanita Dokumentari dan Wanita Tenang—berserta pratonton, cache serta pilihan yang kekal selepas halaman dimuat semula. Nama teknikal suara Gemini tidak dipaparkan dalam UI.
+PowerShell: `$env:DEMO_MODE='true'`. Demo mode menggunakan katalog/discovery/visual sebenar, bukan data palsu, tetapi mematikan Gemini. Pemilihan cerita, sudut cerita, fakta, claims, narasi deterministik, visual, sumber, watermark dan render masih boleh diperiksa. TTS menggunakan model neural tempatan dan dilabel sebagai mod tempatan. Fixtures di `fixtures/audit/` hanya untuk ujian/export audit.
 
-API tidak dibenarkan mencipta source ID baharu, setiap ayat fakta mesti mempunyai sumber, dan output tetap melalui quality gate. Tanpa key atau selepas key dibuang, aplikasi kembali kepada enjin lokal secara automatik.
-
-## Pengesahan
+## Pemeriksaan dan audit
 
 ```bash
 npm run lint
+npm run typecheck
+npm run test
 npm run build
+npm run audit:project
+npm run export:catalog
+npm run export:audit-samples
+npm run audit:discovery
+npm run audit:visuals
 ```
 
-Ujian regresi utama merangkumi Mystery Mode 30/60/90 saat, penapis Malaysia/Malaya, quality gate 100% sumber, render MP4 Dyatlov Pass, dan carian Fakta Ringkas sedia ada.
+Export dihasilkan dalam `audit/` dan tidak mengandungi secret atau media berhak cipta. `audit:visuals` merekodkan keputusan programatik dan query sebenar; fail media konkrit kekal runtime-dependent kerana Commons dicari secara live.
+
+## Production
+
+- URL: https://factframe-v2.vercel.app
+- Vercel project: `factframe-auto-short-video-generator`
+- Production/default branch: `main`
+- Expected domain: `factframe-v2.vercel.app` (alias awam)
+
+## Status data semasa
+
+- katalog misteri tersimpan: 10;
+- READY: 10; PARTIAL: 0; HIDDEN: 0 berdasarkan threshold yang didokumenkan;
+- Malaysia/Malaya tersimpan: 4; global: 6;
+- discovery live: tidak disimpan, berubah mengikut respons upstream dan tidak sama dengan READY.
+
+## Had penggunaan
+
+MMS-TTS fallback tempatan menggunakan model berlesen CC BY-NC 4.0 dan tidak sesuai dianggap sebagai lesen komersial automatik. Gemini tertakluk pada kuota akaun. Media Commons perlu mematuhi lesen setiap aset. Lihat [`docs/KNOWN_ISSUES.md`](docs/KNOWN_ISSUES.md) sebelum audit atau penggunaan production.

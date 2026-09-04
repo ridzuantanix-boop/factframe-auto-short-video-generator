@@ -1,0 +1,21 @@
+# Known issues and limitations
+
+- Katalog render-ready tersimpan hanya 10 cerita; Malaysia/Malaya hanya 4. “1,000+” ialah calon live, bukan READY.
+- Discovery live tidak disimpan, tidak dicrawl berjadual, tidak mempunyai semantic dedupe atau status promotion. Upstream timeout/rate limit boleh menghasilkan feed kosong.
+- Mystery berkualiti tinggi kebanyakannya seed manual. Auto-mystery daripada entity live ialah struktur generik dan semua fakta diklasifikasi `VERIFIED` daripada reference data.
+- Story angles ialah template mengikut entity type, bukan angle research dinamik; bukti khusus angle tidak dinilai.
+- Current-aware ialah flag dan timestamp request sahaja. Tiada news/official-current provider atau stale-claim invalidation.
+- Source ranking live lemah: Wikidata/Wikipedia dilabel `REFERENCE`; research/visual score seed adalah manual.
+- Evidence bridge 60/90 saat boleh berbunyi berulang/filler. Tiada repetition atau filler detector semantik.
+- Gemini text/TTS tertakluk kuota/rate limit dan latency. Full narration boleh jatuh kepada TTS lokal walaupun preview berjaya.
+- Local TTS download pertama kira-kira 114 MB, perlahan pada peranti mudah alih, dan lesen CC BY-NC 4.0 mengehadkan penggunaan komersial.
+- Commons ialah satu-satunya media provider. Query boleh menghasilkan visual tidak relevan atau terlalu sedikit; tiada stock/archive/news connector.
+- Wikimedia video/WebM disokong pada prinsipnya, tetapi availability, CORS dan codec browser berubah. Source audio dimute.
+- Peta, newspaper, document, evidence dan timeline ialah grafik generik, bukan artefak geografi/arkib sebenar.
+- Penalti ID/URL tidak mengesan near-duplicate crops; satu subject photo masih boleh berulang sebagai backdrop.
+- Render browser hampir real-time, menggunakan CPU/RAM tinggi; background tab dan mobile browser boleh menghentikan proses.
+- FFmpeg core bergantung pada jsDelivr ketika direct MP4 tidak tersedia. Offline penuh belum disokong.
+- Tiada automated end-to-end browser test dalam `npm test`; suite semasa menguji catalog, quality gate dan query diversity sahaja.
+- Seed `accessedAt` statik dan memerlukan commit untuk refresh. Link rot/source content drift tidak dipantau.
+- Deployment Vercel pernah mempunyai SSO protection; project semasa telah dibuka awam, tetapi setting deployment bukan dikawal oleh source code.
+- Beberapa teks lama dalam source mungkin mempunyai mojibake (`Â·`, `â€¦`) pada caption/ellipsis dan perlu normalisasi berasingan.

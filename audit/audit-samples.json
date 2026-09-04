@@ -1,0 +1,2411 @@
+{
+  "generatedAt": "2026-09-04T05:05:39.681Z",
+  "fixtureNotice": "Testing fixtures; not a replacement for live discovery/research/media selection.",
+  "samples": [
+    {
+      "story": {
+        "id": "Q1058",
+        "name": "Anwar Ibrahim",
+        "description": "Perdana Menteri Malaysia dan ahli politik Malaysia",
+        "entityType": "person",
+        "facts": [
+          {
+            "label": "Gambaran ringkas",
+            "sentence": "Anwar Ibrahim ialah Perdana Menteri Malaysia dan ahli politik Malaysia.",
+            "sourceUrl": "https://www.wikidata.org/wiki/Q1058"
+          },
+          {
+            "label": "Dilahirkan pada 1947",
+            "sentence": "Anwar Ibrahim dilahirkan pada tahun 1947 di Bukit Mertajam.",
+            "sourceUrl": "https://www.wikidata.org/wiki/Q1058"
+          },
+          {
+            "label": "Krisis 1998",
+            "sentence": "Pada 1998, beliau disingkirkan daripada kerajaan dan gerakan Reformasi muncul selepas itu.",
+            "sourceUrl": "https://ms.wikipedia.org/wiki/Anwar_Ibrahim"
+          },
+          {
+            "label": "Pengampunan 2018",
+            "sentence": "Beliau menerima pengampunan diraja dan dibebaskan pada 2018.",
+            "sourceUrl": "https://ms.wikipedia.org/wiki/Anwar_Ibrahim"
+          },
+          {
+            "label": "Perdana Menteri 2022",
+            "sentence": "Pada 2022, beliau dilantik sebagai Perdana Menteri Malaysia.",
+            "sourceUrl": "https://ms.wikipedia.org/wiki/Anwar_Ibrahim"
+          }
+        ],
+        "narration": "Fixture audit; aplikasi sebenar membina narasi daripada respons sumber semasa.",
+        "wikipediaUrl": "https://ms.wikipedia.org/wiki/Anwar_Ibrahim",
+        "lastVerifiedAt": "2026-09-03",
+        "currentAware": true,
+        "contentMode": "STORY"
+      },
+      "storyAngles": [
+        {
+          "id": "Q1058-biographical_journey-1",
+          "title": "Perjalanan panjang Anwar Ibrahim",
+          "type": "BIOGRAPHICAL_JOURNEY",
+          "summary": "Daripada permulaan hingga detik yang membentuk namanya."
+        },
+        {
+          "id": "Q1058-turning_point-2",
+          "title": "Detik yang mengubah kisah Anwar Ibrahim",
+          "type": "TURNING_POINT",
+          "summary": "Titik perubahan terpenting dalam perjalanan tokoh ini."
+        },
+        {
+          "id": "Q1058-major_moments-3",
+          "title": "Momen terbesar Anwar Ibrahim",
+          "type": "MAJOR_MOMENTS",
+          "summary": "Beberapa detik utama yang menjelaskan keseluruhan perjalanannya."
+        }
+      ],
+      "sources": [
+        {
+          "id": "story-source-1",
+          "title": "Rekod entiti Wikidata",
+          "publisher": "Wikidata",
+          "type": "REFERENCE",
+          "url": "https://www.wikidata.org/wiki/Q1058",
+          "accessedAt": "2026-09-04",
+          "reliabilityLevel": "REFERENCE"
+        },
+        {
+          "id": "story-source-2",
+          "title": "Rencana latar Wikipedia",
+          "publisher": "Wikipedia",
+          "type": "REFERENCE",
+          "url": "https://ms.wikipedia.org/wiki/Anwar_Ibrahim",
+          "accessedAt": "2026-09-04",
+          "reliabilityLevel": "REFERENCE"
+        }
+      ],
+      "claims": [
+        {
+          "label": "Gambaran ringkas",
+          "sentence": "Anwar Ibrahim ialah Perdana Menteri Malaysia dan ahli politik Malaysia.",
+          "sourceUrl": "https://www.wikidata.org/wiki/Q1058"
+        },
+        {
+          "label": "Dilahirkan pada 1947",
+          "sentence": "Anwar Ibrahim dilahirkan pada tahun 1947 di Bukit Mertajam.",
+          "sourceUrl": "https://www.wikidata.org/wiki/Q1058"
+        },
+        {
+          "label": "Krisis 1998",
+          "sentence": "Pada 1998, beliau disingkirkan daripada kerajaan dan gerakan Reformasi muncul selepas itu.",
+          "sourceUrl": "https://ms.wikipedia.org/wiki/Anwar_Ibrahim"
+        },
+        {
+          "label": "Pengampunan 2018",
+          "sentence": "Beliau menerima pengampunan diraja dan dibebaskan pada 2018.",
+          "sourceUrl": "https://ms.wikipedia.org/wiki/Anwar_Ibrahim"
+        },
+        {
+          "label": "Perdana Menteri 2022",
+          "sentence": "Pada 2022, beliau dilantik sebagai Perdana Menteri Malaysia.",
+          "sourceUrl": "https://ms.wikipedia.org/wiki/Anwar_Ibrahim"
+        }
+      ],
+      "claimTypes": [
+        "VERIFIED"
+      ],
+      "storyArc": [
+        "HOOK",
+        "OPEN_LOOP",
+        "CONTEXT",
+        "CONTEXT",
+        "ESCALATION",
+        "TWIST",
+        "PAYOFF"
+      ],
+      "narration": "Perjalanan Anwar Ibrahim akhirnya sampai ke satu kedudukan yang pernah kelihatan jauh. Anwar Ibrahim ialah Perdana Menteri Malaysia dan ahli politik Malaysia. Apa yang berlaku sebelum titik perubahan itu? Anwar Ibrahim dilahirkan pada tahun 1947 di Bukit Mertajam. Pada 1998, beliau disingkirkan daripada kerajaan dan gerakan Reformasi muncul selepas itu. Beliau menerima pengampunan diraja dan dibebaskan pada 2018. Pada 2022, beliau dilantik sebagai Perdana Menteri Malaysia. Selepas semua perubahan itu, rekod terkini meletakkan Anwar Ibrahim sebagai Perdana Menteri Malaysia dan ahli politik Malaysia.",
+      "segments": [
+        {
+          "role": "HOOK",
+          "text": "Perjalanan Anwar Ibrahim akhirnya sampai ke satu kedudukan yang pernah kelihatan jauh. Anwar Ibrahim ialah Perdana Menteri Malaysia dan ahli politik Malaysia.",
+          "sourceIds": [
+            "story-source-1"
+          ],
+          "claimType": "VERIFIED",
+          "visualIntent": "PORTRAIT"
+        },
+        {
+          "role": "OPEN_LOOP",
+          "text": "Apa yang berlaku sebelum titik perubahan itu?",
+          "sourceIds": [],
+          "claimType": "UNRESOLVED",
+          "visualIntent": "FACT_CARD"
+        },
+        {
+          "role": "CONTEXT",
+          "text": "Anwar Ibrahim dilahirkan pada tahun 1947 di Bukit Mertajam.",
+          "sourceIds": [
+            "story-source-1"
+          ],
+          "claimType": "VERIFIED",
+          "visualIntent": "TIMELINE"
+        },
+        {
+          "role": "CONTEXT",
+          "text": "Pada 1998, beliau disingkirkan daripada kerajaan dan gerakan Reformasi muncul selepas itu.",
+          "sourceIds": [
+            "story-source-2"
+          ],
+          "claimType": "VERIFIED",
+          "visualIntent": "LOCATION"
+        },
+        {
+          "role": "ESCALATION",
+          "text": "Beliau menerima pengampunan diraja dan dibebaskan pada 2018.",
+          "sourceIds": [
+            "story-source-2"
+          ],
+          "claimType": "VERIFIED",
+          "visualIntent": "DOCUMENT"
+        },
+        {
+          "role": "TWIST",
+          "text": "Pada 2022, beliau dilantik sebagai Perdana Menteri Malaysia.",
+          "sourceIds": [
+            "story-source-2"
+          ],
+          "claimType": "VERIFIED",
+          "visualIntent": "EVIDENCE"
+        },
+        {
+          "role": "PAYOFF",
+          "text": "Selepas semua perubahan itu, rekod terkini meletakkan Anwar Ibrahim sebagai Perdana Menteri Malaysia dan ahli politik Malaysia.",
+          "sourceIds": [
+            "story-source-1"
+          ],
+          "claimType": "VERIFIED",
+          "visualIntent": "ENDING"
+        }
+      ],
+      "sourceIdsPerSegment": [
+        [
+          "story-source-1"
+        ],
+        [],
+        [
+          "story-source-1"
+        ],
+        [
+          "story-source-2"
+        ],
+        [
+          "story-source-2"
+        ],
+        [
+          "story-source-2"
+        ],
+        [
+          "story-source-1"
+        ]
+      ],
+      "visualPlan": [
+        {
+          "segmentIndex": 0,
+          "visualIntent": "PORTRAIT"
+        },
+        {
+          "segmentIndex": 1,
+          "visualIntent": "FACT_CARD"
+        },
+        {
+          "segmentIndex": 2,
+          "visualIntent": "TIMELINE"
+        },
+        {
+          "segmentIndex": 3,
+          "visualIntent": "LOCATION"
+        },
+        {
+          "segmentIndex": 4,
+          "visualIntent": "DOCUMENT"
+        },
+        {
+          "segmentIndex": 5,
+          "visualIntent": "EVIDENCE"
+        },
+        {
+          "segmentIndex": 6,
+          "visualIntent": "ENDING"
+        }
+      ],
+      "visualSearchQueries": [],
+      "selectedMediaMetadata": {
+        "state": "runtime-dependent",
+        "provider": "Wikimedia Commons",
+        "rawMediaIncluded": false
+      },
+      "ttsPreset": {
+        "id": "male-documentary",
+        "label": "Lelaki — Dokumentari",
+        "description": "Matang • Meyakinkan • Investigatif",
+        "geminiVoice": "Gacrux",
+        "language": "ms-MY",
+        "stylePrompt": "Sound like a calm investigative documentary narrator. Use a confident but restrained tone and steady, engaging pacing. Do not sound like an advertisement. Do not exaggerate emotion. Give slightly more emphasis to important discoveries and reveals."
+      },
+      "ttsStyle": "Sound like a calm investigative documentary narrator. Use a confident but restrained tone and steady, engaging pacing. Do not sound like an advertisement. Do not exaggerate emotion. Give slightly more emphasis to important discoveries and reveals.",
+      "watermarkConfig": {
+        "enabled": false,
+        "text": "",
+        "position": "BOTTOM_RIGHT",
+        "opacity": 0.75,
+        "size": "SMALL"
+      }
+    },
+    {
+      "story": {
+        "id": "Q9036",
+        "name": "Nikola Tesla",
+        "description": "pencipta dan jurutera elektrik Serbia-Amerika",
+        "entityType": "person",
+        "facts": [
+          {
+            "label": "Gambaran ringkas",
+            "sentence": "Nikola Tesla ialah pencipta dan jurutera elektrik Serbia-Amerika.",
+            "sourceUrl": "https://www.wikidata.org/wiki/Q9036"
+          },
+          {
+            "label": "Dilahirkan pada 1856",
+            "sentence": "Nikola Tesla dilahirkan pada tahun 1856 di Smiljan.",
+            "sourceUrl": "https://www.wikidata.org/wiki/Q9036"
+          },
+          {
+            "label": "Arus ulang-alik",
+            "sentence": "Kerjanya membantu membangunkan sistem bekalan elektrik arus ulang-alik moden.",
+            "sourceUrl": "https://en.wikipedia.org/wiki/Nikola_Tesla"
+          },
+          {
+            "label": "Meninggal dunia pada 1943",
+            "sentence": "Tesla meninggal dunia di New York pada tahun 1943.",
+            "sourceUrl": "https://www.wikidata.org/wiki/Q9036"
+          }
+        ],
+        "narration": "Fixture audit; aplikasi sebenar membina narasi daripada respons sumber.",
+        "wikipediaUrl": "https://en.wikipedia.org/wiki/Nikola_Tesla",
+        "lastVerifiedAt": "2026-09-03",
+        "currentAware": false,
+        "contentMode": "STORY"
+      },
+      "storyAngles": [
+        {
+          "id": "Q9036-biographical_journey-1",
+          "title": "Perjalanan panjang Nikola Tesla",
+          "type": "BIOGRAPHICAL_JOURNEY",
+          "summary": "Daripada permulaan hingga detik yang membentuk namanya."
+        },
+        {
+          "id": "Q9036-turning_point-2",
+          "title": "Detik yang mengubah kisah Nikola Tesla",
+          "type": "TURNING_POINT",
+          "summary": "Titik perubahan terpenting dalam perjalanan tokoh ini."
+        },
+        {
+          "id": "Q9036-major_moments-3",
+          "title": "Momen terbesar Nikola Tesla",
+          "type": "MAJOR_MOMENTS",
+          "summary": "Beberapa detik utama yang menjelaskan keseluruhan perjalanannya."
+        }
+      ],
+      "sources": [
+        {
+          "id": "story-source-1",
+          "title": "Rekod entiti Wikidata",
+          "publisher": "Wikidata",
+          "type": "REFERENCE",
+          "url": "https://www.wikidata.org/wiki/Q9036",
+          "accessedAt": "2026-09-04",
+          "reliabilityLevel": "REFERENCE"
+        },
+        {
+          "id": "story-source-2",
+          "title": "Rencana latar Wikipedia",
+          "publisher": "Wikipedia",
+          "type": "REFERENCE",
+          "url": "https://en.wikipedia.org/wiki/Nikola_Tesla",
+          "accessedAt": "2026-09-04",
+          "reliabilityLevel": "REFERENCE"
+        }
+      ],
+      "claims": [
+        {
+          "label": "Gambaran ringkas",
+          "sentence": "Nikola Tesla ialah pencipta dan jurutera elektrik Serbia-Amerika.",
+          "sourceUrl": "https://www.wikidata.org/wiki/Q9036"
+        },
+        {
+          "label": "Dilahirkan pada 1856",
+          "sentence": "Nikola Tesla dilahirkan pada tahun 1856 di Smiljan.",
+          "sourceUrl": "https://www.wikidata.org/wiki/Q9036"
+        },
+        {
+          "label": "Arus ulang-alik",
+          "sentence": "Kerjanya membantu membangunkan sistem bekalan elektrik arus ulang-alik moden.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Nikola_Tesla"
+        },
+        {
+          "label": "Meninggal dunia pada 1943",
+          "sentence": "Tesla meninggal dunia di New York pada tahun 1943.",
+          "sourceUrl": "https://www.wikidata.org/wiki/Q9036"
+        }
+      ],
+      "claimTypes": [
+        "VERIFIED"
+      ],
+      "storyArc": [
+        "HOOK",
+        "OPEN_LOOP",
+        "CONTEXT",
+        "CONTEXT",
+        "TWIST",
+        "PAYOFF"
+      ],
+      "narration": "Perjalanan Nikola Tesla akhirnya sampai ke satu kedudukan yang pernah kelihatan jauh. Nikola Tesla ialah pencipta dan jurutera elektrik Serbia-Amerika. Apa yang berlaku sebelum titik perubahan itu? Nikola Tesla dilahirkan pada tahun 1856 di Smiljan. Kerjanya membantu membangunkan sistem bekalan elektrik arus ulang-alik moden. Tesla meninggal dunia di New York pada tahun 1943. Selepas semua perubahan itu, rekod terkini meletakkan Nikola Tesla sebagai pencipta dan jurutera elektrik Serbia-Amerika.",
+      "segments": [
+        {
+          "role": "HOOK",
+          "text": "Perjalanan Nikola Tesla akhirnya sampai ke satu kedudukan yang pernah kelihatan jauh. Nikola Tesla ialah pencipta dan jurutera elektrik Serbia-Amerika.",
+          "sourceIds": [
+            "story-source-1"
+          ],
+          "claimType": "VERIFIED",
+          "visualIntent": "PORTRAIT"
+        },
+        {
+          "role": "OPEN_LOOP",
+          "text": "Apa yang berlaku sebelum titik perubahan itu?",
+          "sourceIds": [],
+          "claimType": "UNRESOLVED",
+          "visualIntent": "FACT_CARD"
+        },
+        {
+          "role": "CONTEXT",
+          "text": "Nikola Tesla dilahirkan pada tahun 1856 di Smiljan.",
+          "sourceIds": [
+            "story-source-1"
+          ],
+          "claimType": "VERIFIED",
+          "visualIntent": "TIMELINE"
+        },
+        {
+          "role": "CONTEXT",
+          "text": "Kerjanya membantu membangunkan sistem bekalan elektrik arus ulang-alik moden.",
+          "sourceIds": [
+            "story-source-2"
+          ],
+          "claimType": "VERIFIED",
+          "visualIntent": "LOCATION"
+        },
+        {
+          "role": "TWIST",
+          "text": "Tesla meninggal dunia di New York pada tahun 1943.",
+          "sourceIds": [
+            "story-source-1"
+          ],
+          "claimType": "VERIFIED",
+          "visualIntent": "DOCUMENT"
+        },
+        {
+          "role": "PAYOFF",
+          "text": "Selepas semua perubahan itu, rekod terkini meletakkan Nikola Tesla sebagai pencipta dan jurutera elektrik Serbia-Amerika.",
+          "sourceIds": [
+            "story-source-1"
+          ],
+          "claimType": "VERIFIED",
+          "visualIntent": "ENDING"
+        }
+      ],
+      "sourceIdsPerSegment": [
+        [
+          "story-source-1"
+        ],
+        [],
+        [
+          "story-source-1"
+        ],
+        [
+          "story-source-2"
+        ],
+        [
+          "story-source-1"
+        ],
+        [
+          "story-source-1"
+        ]
+      ],
+      "visualPlan": [
+        {
+          "segmentIndex": 0,
+          "visualIntent": "PORTRAIT"
+        },
+        {
+          "segmentIndex": 1,
+          "visualIntent": "FACT_CARD"
+        },
+        {
+          "segmentIndex": 2,
+          "visualIntent": "TIMELINE"
+        },
+        {
+          "segmentIndex": 3,
+          "visualIntent": "LOCATION"
+        },
+        {
+          "segmentIndex": 4,
+          "visualIntent": "DOCUMENT"
+        },
+        {
+          "segmentIndex": 5,
+          "visualIntent": "ENDING"
+        }
+      ],
+      "visualSearchQueries": [],
+      "selectedMediaMetadata": {
+        "state": "runtime-dependent",
+        "provider": "Wikimedia Commons",
+        "rawMediaIncluded": false
+      },
+      "ttsPreset": {
+        "id": "male-documentary",
+        "label": "Lelaki — Dokumentari",
+        "description": "Matang • Meyakinkan • Investigatif",
+        "geminiVoice": "Gacrux",
+        "language": "ms-MY",
+        "stylePrompt": "Sound like a calm investigative documentary narrator. Use a confident but restrained tone and steady, engaging pacing. Do not sound like an advertisement. Do not exaggerate emotion. Give slightly more emphasis to important discoveries and reveals."
+      },
+      "ttsStyle": "Sound like a calm investigative documentary narrator. Use a confident but restrained tone and steady, engaging pacing. Do not sound like an advertisement. Do not exaggerate emotion. Give slightly more emphasis to important discoveries and reveals.",
+      "watermarkConfig": {
+        "enabled": false,
+        "text": "",
+        "position": "BOTTOM_RIGHT",
+        "opacity": 0.75,
+        "size": "SMALL"
+      }
+    },
+    {
+      "story": {
+        "id": "mh370",
+        "title": "Kehilangan MH370",
+        "country": "Malaysia",
+        "region": "Lautan Hindi",
+        "year": 2014,
+        "decade": "Moden",
+        "category": "DISAPPEARANCE",
+        "caseStatus": "UNSOLVED",
+        "summary": "Pesawat Malaysia Airlines hilang dan lokasi utamanya masih belum ditemukan.",
+        "entityIds": [
+          "Q15901655"
+        ],
+        "sourceHints": [
+          "MOT Malaysia",
+          "ATSB"
+        ],
+        "visualSearchTerms": [
+          "Malaysia Airlines Boeing 777",
+          "MH370 search map",
+          "MH370 debris"
+        ],
+        "researchScore": 0.99,
+        "visualScore": 0.94,
+        "sourceCoveragePotential": "good",
+        "sources": [
+          {
+            "id": "h1",
+            "title": "MH370 Safety Investigation Report",
+            "publisher": "Ministry of Transport Malaysia",
+            "type": "PRIMARY",
+            "url": "https://www.mot.gov.my/en/aviation/reports/mh370-safety-investigation-report",
+            "accessedAt": "2026-09-03",
+            "reliabilityLevel": "PRIMARY"
+          },
+          {
+            "id": "h2",
+            "title": "The Operational Search for MH370",
+            "publisher": "Australian Transport Safety Bureau",
+            "type": "PRIMARY",
+            "url": "https://www.atsb.gov.au/publications/investigation_reports/2014/aair/ae-2014-054",
+            "accessedAt": "2026-09-03",
+            "reliabilityLevel": "PRIMARY"
+          }
+        ],
+        "claims": [
+          {
+            "id": "h-c1",
+            "claim": "MH370 disappeared from civilian radar during a routine flight.",
+            "narration": "Sebuah pesawat dengan 239 orang hilang selepas lenyap daripada radar awam.",
+            "type": "VERIFIED",
+            "confidence": "HIGH",
+            "sourceIds": [
+              "h1",
+              "h2"
+            ],
+            "priority": "HOOK_WORTHY",
+            "visualIntent": "MAP"
+          },
+          {
+            "id": "h-c2",
+            "claim": "The Boeing 777 left Kuala Lumpur for Beijing on March 8, 2014.",
+            "narration": "MH370 berlepas dari Kuala Lumpur ke Beijing pada 8 Mac 2014.",
+            "type": "VERIFIED",
+            "confidence": "HIGH",
+            "sourceIds": [
+              "h1"
+            ],
+            "priority": "ESSENTIAL_CONTEXT",
+            "visualIntent": "TIMELINE"
+          },
+          {
+            "id": "h-c3",
+            "claim": "Military radar indicated the aircraft turned back across Peninsular Malaysia.",
+            "narration": "Radar tentera menunjukkan pesawat itu berpatah balik merentasi Semenanjung.",
+            "type": "VERIFIED",
+            "confidence": "HIGH",
+            "sourceIds": [
+              "h1"
+            ],
+            "priority": "TWIST",
+            "visualIntent": "MAP"
+          },
+          {
+            "id": "h-c4",
+            "claim": "Satellite data redirected the search toward the southern Indian Ocean.",
+            "narration": "Data satelit kemudian mengalihkan pencarian ke selatan Lautan Hindi.",
+            "type": "VERIFIED",
+            "confidence": "HIGH",
+            "sourceIds": [
+              "h1",
+              "h2"
+            ],
+            "priority": "ESCALATION_DETAIL",
+            "visualIntent": "EVIDENCE"
+          },
+          {
+            "id": "h-c5",
+            "claim": "Debris confirmed to be from MH370 was recovered far from the main search area.",
+            "narration": "Serpihan yang disahkan milik MH370 ditemui jauh dari kawasan carian utama.",
+            "type": "VERIFIED",
+            "confidence": "HIGH",
+            "sourceIds": [
+              "h1",
+              "h2"
+            ],
+            "priority": "TWIST",
+            "visualIntent": "ARCHIVAL_PHOTO"
+          },
+          {
+            "id": "h-c6",
+            "claim": "The main wreckage and exact cause have not been established.",
+            "narration": "Bangkai utama dan punca tepat kehilangan masih belum dikenal pasti.",
+            "type": "UNRESOLVED",
+            "confidence": "HIGH",
+            "sourceIds": [
+              "h1",
+              "h2"
+            ],
+            "priority": "PAYOFF",
+            "visualIntent": "ENDING"
+          }
+        ]
+      },
+      "storyAngles": [],
+      "sources": [
+        {
+          "id": "h1",
+          "title": "MH370 Safety Investigation Report",
+          "publisher": "Ministry of Transport Malaysia",
+          "type": "PRIMARY",
+          "url": "https://www.mot.gov.my/en/aviation/reports/mh370-safety-investigation-report",
+          "accessedAt": "2026-09-03",
+          "reliabilityLevel": "PRIMARY"
+        },
+        {
+          "id": "h2",
+          "title": "The Operational Search for MH370",
+          "publisher": "Australian Transport Safety Bureau",
+          "type": "PRIMARY",
+          "url": "https://www.atsb.gov.au/publications/investigation_reports/2014/aair/ae-2014-054",
+          "accessedAt": "2026-09-03",
+          "reliabilityLevel": "PRIMARY"
+        }
+      ],
+      "claims": [
+        {
+          "id": "h-c1",
+          "claim": "MH370 disappeared from civilian radar during a routine flight.",
+          "narration": "Sebuah pesawat dengan 239 orang hilang selepas lenyap daripada radar awam.",
+          "type": "VERIFIED",
+          "confidence": "HIGH",
+          "sourceIds": [
+            "h1",
+            "h2"
+          ],
+          "priority": "HOOK_WORTHY",
+          "visualIntent": "MAP"
+        },
+        {
+          "id": "h-c2",
+          "claim": "The Boeing 777 left Kuala Lumpur for Beijing on March 8, 2014.",
+          "narration": "MH370 berlepas dari Kuala Lumpur ke Beijing pada 8 Mac 2014.",
+          "type": "VERIFIED",
+          "confidence": "HIGH",
+          "sourceIds": [
+            "h1"
+          ],
+          "priority": "ESSENTIAL_CONTEXT",
+          "visualIntent": "TIMELINE"
+        },
+        {
+          "id": "h-c3",
+          "claim": "Military radar indicated the aircraft turned back across Peninsular Malaysia.",
+          "narration": "Radar tentera menunjukkan pesawat itu berpatah balik merentasi Semenanjung.",
+          "type": "VERIFIED",
+          "confidence": "HIGH",
+          "sourceIds": [
+            "h1"
+          ],
+          "priority": "TWIST",
+          "visualIntent": "MAP"
+        },
+        {
+          "id": "h-c4",
+          "claim": "Satellite data redirected the search toward the southern Indian Ocean.",
+          "narration": "Data satelit kemudian mengalihkan pencarian ke selatan Lautan Hindi.",
+          "type": "VERIFIED",
+          "confidence": "HIGH",
+          "sourceIds": [
+            "h1",
+            "h2"
+          ],
+          "priority": "ESCALATION_DETAIL",
+          "visualIntent": "EVIDENCE"
+        },
+        {
+          "id": "h-c5",
+          "claim": "Debris confirmed to be from MH370 was recovered far from the main search area.",
+          "narration": "Serpihan yang disahkan milik MH370 ditemui jauh dari kawasan carian utama.",
+          "type": "VERIFIED",
+          "confidence": "HIGH",
+          "sourceIds": [
+            "h1",
+            "h2"
+          ],
+          "priority": "TWIST",
+          "visualIntent": "ARCHIVAL_PHOTO"
+        },
+        {
+          "id": "h-c6",
+          "claim": "The main wreckage and exact cause have not been established.",
+          "narration": "Bangkai utama dan punca tepat kehilangan masih belum dikenal pasti.",
+          "type": "UNRESOLVED",
+          "confidence": "HIGH",
+          "sourceIds": [
+            "h1",
+            "h2"
+          ],
+          "priority": "PAYOFF",
+          "visualIntent": "ENDING"
+        }
+      ],
+      "claimTypes": [
+        "VERIFIED",
+        "UNRESOLVED"
+      ],
+      "storyArc": [
+        "HOOK",
+        "OPEN_LOOP",
+        "CONTEXT",
+        "TWIST",
+        "ESCALATION",
+        "TWIST",
+        "PAYOFF"
+      ],
+      "narration": "Sebuah pesawat dengan 239 orang hilang selepas lenyap daripada radar awam. Jadi, ke mana semua petunjuk ini sebenarnya membawa? MH370 berlepas dari Kuala Lumpur ke Beijing pada 8 Mac 2014. Radar tentera menunjukkan pesawat itu berpatah balik merentasi Semenanjung. Data satelit kemudian mengalihkan pencarian ke selatan Lautan Hindi. Serpihan yang disahkan milik MH370 ditemui jauh dari kawasan carian utama. Bangkai utama dan punca tepat kehilangan masih belum dikenal pasti.",
+      "segments": [
+        {
+          "role": "HOOK",
+          "text": "Sebuah pesawat dengan 239 orang hilang selepas lenyap daripada radar awam.",
+          "sourceIds": [
+            "h1",
+            "h2"
+          ],
+          "claimType": "VERIFIED",
+          "visualIntent": "MAP"
+        },
+        {
+          "role": "OPEN_LOOP",
+          "text": "Jadi, ke mana semua petunjuk ini sebenarnya membawa?",
+          "sourceIds": [],
+          "claimType": "UNRESOLVED",
+          "visualIntent": "FACT_CARD"
+        },
+        {
+          "role": "CONTEXT",
+          "text": "MH370 berlepas dari Kuala Lumpur ke Beijing pada 8 Mac 2014.",
+          "sourceIds": [
+            "h1"
+          ],
+          "claimType": "VERIFIED",
+          "visualIntent": "TIMELINE"
+        },
+        {
+          "role": "TWIST",
+          "text": "Radar tentera menunjukkan pesawat itu berpatah balik merentasi Semenanjung.",
+          "sourceIds": [
+            "h1"
+          ],
+          "claimType": "VERIFIED",
+          "visualIntent": "MAP"
+        },
+        {
+          "role": "ESCALATION",
+          "text": "Data satelit kemudian mengalihkan pencarian ke selatan Lautan Hindi.",
+          "sourceIds": [
+            "h1",
+            "h2"
+          ],
+          "claimType": "VERIFIED",
+          "visualIntent": "EVIDENCE"
+        },
+        {
+          "role": "TWIST",
+          "text": "Serpihan yang disahkan milik MH370 ditemui jauh dari kawasan carian utama.",
+          "sourceIds": [
+            "h1",
+            "h2"
+          ],
+          "claimType": "VERIFIED",
+          "visualIntent": "ARCHIVAL_PHOTO"
+        },
+        {
+          "role": "PAYOFF",
+          "text": "Bangkai utama dan punca tepat kehilangan masih belum dikenal pasti.",
+          "sourceIds": [
+            "h1",
+            "h2"
+          ],
+          "claimType": "UNRESOLVED",
+          "visualIntent": "ENDING"
+        }
+      ],
+      "sourceIdsPerSegment": [
+        [
+          "h1",
+          "h2"
+        ],
+        [],
+        [
+          "h1"
+        ],
+        [
+          "h1"
+        ],
+        [
+          "h1",
+          "h2"
+        ],
+        [
+          "h1",
+          "h2"
+        ],
+        [
+          "h1",
+          "h2"
+        ]
+      ],
+      "visualPlan": [
+        {
+          "segmentIndex": 0,
+          "role": "HOOK",
+          "visualIntent": "MAP",
+          "queries": [
+            "MH370 flight path Malaysia map",
+            "MH370 turn back route Malay Peninsula",
+            "Malaysia Airlines Boeing 777",
+            "MH370 search map"
+          ],
+          "selectedMedia": "resolved live by /api/media"
+        },
+        {
+          "segmentIndex": 1,
+          "role": "OPEN_LOOP",
+          "visualIntent": "FACT_CARD",
+          "queries": [
+            "MH370 search operation Indian Ocean",
+            "Malaysia Airlines search aircraft 2014",
+            "Malaysia Airlines Boeing 777",
+            "MH370 search map"
+          ],
+          "selectedMedia": "resolved live by /api/media"
+        },
+        {
+          "segmentIndex": 2,
+          "role": "CONTEXT",
+          "visualIntent": "TIMELINE",
+          "queries": [
+            "MH370 Kuala Lumpur departure Malaysia Airlines 2014",
+            "Malaysia Airlines Boeing 777 airport 2014",
+            "Malaysia Airlines Boeing 777",
+            "MH370 search map"
+          ],
+          "selectedMedia": "resolved live by /api/media"
+        },
+        {
+          "segmentIndex": 3,
+          "role": "TWIST",
+          "visualIntent": "MAP",
+          "queries": [
+            "MH370 flight path Malaysia map",
+            "MH370 turn back route Malay Peninsula",
+            "Malaysia Airlines Boeing 777",
+            "MH370 search map"
+          ],
+          "selectedMedia": "resolved live by /api/media"
+        },
+        {
+          "segmentIndex": 4,
+          "role": "ESCALATION",
+          "visualIntent": "EVIDENCE",
+          "queries": [
+            "MH370 satellite arc Indian Ocean map",
+            "Indian Ocean MH370 search area",
+            "Malaysia Airlines Boeing 777",
+            "MH370 search map"
+          ],
+          "selectedMedia": "resolved live by /api/media"
+        },
+        {
+          "segmentIndex": 5,
+          "role": "TWIST",
+          "visualIntent": "ARCHIVAL_PHOTO",
+          "queries": [
+            "MH370 debris Réunion flaperon",
+            "MH370 aircraft debris investigation",
+            "Malaysia Airlines Boeing 777",
+            "MH370 search map"
+          ],
+          "selectedMedia": "resolved live by /api/media"
+        },
+        {
+          "segmentIndex": 6,
+          "role": "PAYOFF",
+          "visualIntent": "ENDING",
+          "queries": [
+            "Indian Ocean aircraft search",
+            "MH370 search area map Indian Ocean",
+            "Malaysia Airlines Boeing 777",
+            "MH370 search map"
+          ],
+          "selectedMedia": "resolved live by /api/media"
+        }
+      ],
+      "visualSearchQueries": [
+        [
+          "MH370 flight path Malaysia map",
+          "MH370 turn back route Malay Peninsula",
+          "Malaysia Airlines Boeing 777",
+          "MH370 search map"
+        ],
+        [
+          "MH370 search operation Indian Ocean",
+          "Malaysia Airlines search aircraft 2014",
+          "Malaysia Airlines Boeing 777",
+          "MH370 search map"
+        ],
+        [
+          "MH370 Kuala Lumpur departure Malaysia Airlines 2014",
+          "Malaysia Airlines Boeing 777 airport 2014",
+          "Malaysia Airlines Boeing 777",
+          "MH370 search map"
+        ],
+        [
+          "MH370 flight path Malaysia map",
+          "MH370 turn back route Malay Peninsula",
+          "Malaysia Airlines Boeing 777",
+          "MH370 search map"
+        ],
+        [
+          "MH370 satellite arc Indian Ocean map",
+          "Indian Ocean MH370 search area",
+          "Malaysia Airlines Boeing 777",
+          "MH370 search map"
+        ],
+        [
+          "MH370 debris Réunion flaperon",
+          "MH370 aircraft debris investigation",
+          "Malaysia Airlines Boeing 777",
+          "MH370 search map"
+        ],
+        [
+          "Indian Ocean aircraft search",
+          "MH370 search area map Indian Ocean",
+          "Malaysia Airlines Boeing 777",
+          "MH370 search map"
+        ]
+      ],
+      "selectedMediaMetadata": {
+        "state": "runtime-dependent",
+        "provider": "Wikimedia Commons",
+        "rawMediaIncluded": false
+      },
+      "ttsPreset": {
+        "id": "male-documentary",
+        "label": "Lelaki — Dokumentari",
+        "description": "Matang • Meyakinkan • Investigatif",
+        "geminiVoice": "Gacrux",
+        "language": "ms-MY",
+        "stylePrompt": "Sound like a calm investigative documentary narrator. Use a confident but restrained tone and steady, engaging pacing. Do not sound like an advertisement. Do not exaggerate emotion. Give slightly more emphasis to important discoveries and reveals."
+      },
+      "ttsStyle": "Sound like a calm investigative documentary narrator. Use a confident but restrained tone and steady, engaging pacing. Do not sound like an advertisement. Do not exaggerate emotion. Give slightly more emphasis to important discoveries and reveals.",
+      "watermarkConfig": {
+        "enabled": false,
+        "text": "",
+        "position": "BOTTOM_RIGHT",
+        "opacity": 0.75,
+        "size": "SMALL"
+      }
+    },
+    {
+      "story": {
+        "id": "highland-towers",
+        "title": "Apa Punca Highland Towers Runtuh?",
+        "country": "Malaysia",
+        "region": "Ulu Klang, Selangor",
+        "year": 1993,
+        "decade": "1990-an",
+        "category": "HISTORICAL_MYSTERY",
+        "caseStatus": "PARTIALLY_EXPLAINED",
+        "summary": "Siasatan teknikal menelusuri bagaimana hujan, saliran dan tanah runtuh membawa kepada keruntuhan Blok 1.",
+        "entityIds": [],
+        "sourceHints": [
+          "IKRAM",
+          "Geological Society of Malaysia",
+          "NADMA"
+        ],
+        "visualSearchTerms": [
+          "Highland Towers collapse Malaysia",
+          "Highland Towers Ulu Klang",
+          "landslide drainage diagram",
+          "Highland Towers rescue 1993"
+        ],
+        "researchScore": 0.98,
+        "visualScore": 0.86,
+        "sourceCoveragePotential": "good",
+        "sources": [
+          {
+            "id": "ht1",
+            "title": "Geotechnical engineering investigations of the Highland Tower Condominium collapse",
+            "publisher": "Geological Society of Malaysia / IKRAM",
+            "type": "ACADEMIC",
+            "url": "https://gsm.org.my/wp-content/uploads/gsm_file_2/702001-101465-PDF.pdf",
+            "accessedAt": "2026-09-03",
+            "reliabilityLevel": "ACADEMIC"
+          },
+          {
+            "id": "ht2",
+            "title": "Tragedi Highland Towers: Noktah musibah tiga dekad",
+            "publisher": "Agensi Pengurusan Bencana Negara",
+            "type": "INSTITUTIONAL",
+            "url": "https://www.nadma.gov.my/bm/media-2/berita/6622-tragedi-highland-towers-noktah-musibah-tiga-dekad",
+            "accessedAt": "2026-09-03",
+            "reliabilityLevel": "INSTITUTIONAL"
+          }
+        ],
+        "claims": [
+          {
+            "id": "ht-c1",
+            "claim": "Block 1 collapsed on 11 December 1993 and 48 people died.",
+            "narration": "Pada 11 Disember 1993, Blok 1 Highland Towers runtuh dan mengorbankan 48 nyawa.",
+            "type": "VERIFIED",
+            "confidence": "HIGH",
+            "sourceIds": [
+              "ht1",
+              "ht2"
+            ],
+            "priority": "HOOK_WORTHY",
+            "visualIntent": "ARCHIVAL_PHOTO"
+          },
+          {
+            "id": "ht-c2",
+            "claim": "The technical investigation identified retrogressive landslides behind Block 1 as the most probable cause.",
+            "narration": "Siasatan teknikal mengenal pasti siri tanah runtuh di belakang Blok 1 sebagai punca paling berkemungkinan.",
+            "type": "VERIFIED",
+            "confidence": "HIGH",
+            "sourceIds": [
+              "ht1"
+            ],
+            "priority": "ESSENTIAL_CONTEXT",
+            "visualIntent": "MAP"
+          },
+          {
+            "id": "ht-c3",
+            "claim": "The landslides destabilised a rail-pile foundation not designed for lateral loading.",
+            "narration": "Pergerakan tanah itu menggugat asas cerucuk yang tidak direka untuk menahan beban sisi.",
+            "type": "VERIFIED",
+            "confidence": "HIGH",
+            "sourceIds": [
+              "ht1"
+            ],
+            "priority": "ESCALATION_DETAIL",
+            "visualIntent": "EVIDENCE"
+          },
+          {
+            "id": "ht-c4",
+            "claim": "Inadequate drainage and poor drain maintenance increased runoff and infiltration.",
+            "narration": "Saliran yang tidak mencukupi serta penyelenggaraan lemah meningkatkan aliran dan resapan air ke cerun.",
+            "type": "VERIFIED",
+            "confidence": "HIGH",
+            "sourceIds": [
+              "ht1"
+            ],
+            "priority": "TWIST",
+            "visualIntent": "DOCUMENT"
+          },
+          {
+            "id": "ht-c5",
+            "claim": "Three victims were rescued alive on the first day.",
+            "narration": "Di tengah tragedi itu, tiga mangsa berjaya diselamatkan hidup-hidup pada hari pertama.",
+            "type": "VERIFIED",
+            "confidence": "HIGH",
+            "sourceIds": [
+              "ht1"
+            ],
+            "priority": "COUNTERPOINT",
+            "visualIntent": "TIMELINE"
+          },
+          {
+            "id": "ht-c6",
+            "claim": "The disaster became a lasting national lesson in slope safety and disaster preparedness.",
+            "narration": "Highland Towers bukan misteri ghaib—ia amaran tentang bagaimana beberapa kegagalan boleh bergabung menjadi bencana.",
+            "type": "EXPLAINED_LATER",
+            "confidence": "HIGH",
+            "sourceIds": [
+              "ht1",
+              "ht2"
+            ],
+            "priority": "PAYOFF",
+            "visualIntent": "ENDING"
+          }
+        ]
+      },
+      "storyAngles": [],
+      "sources": [
+        {
+          "id": "ht1",
+          "title": "Geotechnical engineering investigations of the Highland Tower Condominium collapse",
+          "publisher": "Geological Society of Malaysia / IKRAM",
+          "type": "ACADEMIC",
+          "url": "https://gsm.org.my/wp-content/uploads/gsm_file_2/702001-101465-PDF.pdf",
+          "accessedAt": "2026-09-03",
+          "reliabilityLevel": "ACADEMIC"
+        },
+        {
+          "id": "ht2",
+          "title": "Tragedi Highland Towers: Noktah musibah tiga dekad",
+          "publisher": "Agensi Pengurusan Bencana Negara",
+          "type": "INSTITUTIONAL",
+          "url": "https://www.nadma.gov.my/bm/media-2/berita/6622-tragedi-highland-towers-noktah-musibah-tiga-dekad",
+          "accessedAt": "2026-09-03",
+          "reliabilityLevel": "INSTITUTIONAL"
+        }
+      ],
+      "claims": [
+        {
+          "id": "ht-c1",
+          "claim": "Block 1 collapsed on 11 December 1993 and 48 people died.",
+          "narration": "Pada 11 Disember 1993, Blok 1 Highland Towers runtuh dan mengorbankan 48 nyawa.",
+          "type": "VERIFIED",
+          "confidence": "HIGH",
+          "sourceIds": [
+            "ht1",
+            "ht2"
+          ],
+          "priority": "HOOK_WORTHY",
+          "visualIntent": "ARCHIVAL_PHOTO"
+        },
+        {
+          "id": "ht-c2",
+          "claim": "The technical investigation identified retrogressive landslides behind Block 1 as the most probable cause.",
+          "narration": "Siasatan teknikal mengenal pasti siri tanah runtuh di belakang Blok 1 sebagai punca paling berkemungkinan.",
+          "type": "VERIFIED",
+          "confidence": "HIGH",
+          "sourceIds": [
+            "ht1"
+          ],
+          "priority": "ESSENTIAL_CONTEXT",
+          "visualIntent": "MAP"
+        },
+        {
+          "id": "ht-c3",
+          "claim": "The landslides destabilised a rail-pile foundation not designed for lateral loading.",
+          "narration": "Pergerakan tanah itu menggugat asas cerucuk yang tidak direka untuk menahan beban sisi.",
+          "type": "VERIFIED",
+          "confidence": "HIGH",
+          "sourceIds": [
+            "ht1"
+          ],
+          "priority": "ESCALATION_DETAIL",
+          "visualIntent": "EVIDENCE"
+        },
+        {
+          "id": "ht-c4",
+          "claim": "Inadequate drainage and poor drain maintenance increased runoff and infiltration.",
+          "narration": "Saliran yang tidak mencukupi serta penyelenggaraan lemah meningkatkan aliran dan resapan air ke cerun.",
+          "type": "VERIFIED",
+          "confidence": "HIGH",
+          "sourceIds": [
+            "ht1"
+          ],
+          "priority": "TWIST",
+          "visualIntent": "DOCUMENT"
+        },
+        {
+          "id": "ht-c5",
+          "claim": "Three victims were rescued alive on the first day.",
+          "narration": "Di tengah tragedi itu, tiga mangsa berjaya diselamatkan hidup-hidup pada hari pertama.",
+          "type": "VERIFIED",
+          "confidence": "HIGH",
+          "sourceIds": [
+            "ht1"
+          ],
+          "priority": "COUNTERPOINT",
+          "visualIntent": "TIMELINE"
+        },
+        {
+          "id": "ht-c6",
+          "claim": "The disaster became a lasting national lesson in slope safety and disaster preparedness.",
+          "narration": "Highland Towers bukan misteri ghaib—ia amaran tentang bagaimana beberapa kegagalan boleh bergabung menjadi bencana.",
+          "type": "EXPLAINED_LATER",
+          "confidence": "HIGH",
+          "sourceIds": [
+            "ht1",
+            "ht2"
+          ],
+          "priority": "PAYOFF",
+          "visualIntent": "ENDING"
+        }
+      ],
+      "claimTypes": [
+        "VERIFIED",
+        "EXPLAINED_LATER"
+      ],
+      "storyArc": [
+        "HOOK",
+        "OPEN_LOOP",
+        "CONTEXT",
+        "ESCALATION",
+        "TWIST",
+        "COUNTERPOINT",
+        "PAYOFF"
+      ],
+      "narration": "Pada 11 Disember 1993, Blok 1 Highland Towers runtuh dan mengorbankan 48 nyawa. Jadi, apa yang benar-benar berlaku—dan apa yang cuma legenda? Siasatan teknikal mengenal pasti siri tanah runtuh di belakang Blok 1 sebagai punca paling berkemungkinan. Pergerakan tanah itu menggugat asas cerucuk yang tidak direka untuk menahan beban sisi. Saliran yang tidak mencukupi serta penyelenggaraan lemah meningkatkan aliran dan resapan air ke cerun. Di tengah tragedi itu, tiga mangsa berjaya diselamatkan hidup-hidup pada hari pertama. Penyelidikan kemudian menunjukkan: highland Towers bukan misteri ghaib—ia amaran tentang bagaimana beberapa kegagalan boleh bergabung menjadi bencana.",
+      "segments": [
+        {
+          "role": "HOOK",
+          "text": "Pada 11 Disember 1993, Blok 1 Highland Towers runtuh dan mengorbankan 48 nyawa.",
+          "sourceIds": [
+            "ht1",
+            "ht2"
+          ],
+          "claimType": "VERIFIED",
+          "visualIntent": "ARCHIVAL_PHOTO"
+        },
+        {
+          "role": "OPEN_LOOP",
+          "text": "Jadi, apa yang benar-benar berlaku—dan apa yang cuma legenda?",
+          "sourceIds": [],
+          "claimType": "UNRESOLVED",
+          "visualIntent": "FACT_CARD"
+        },
+        {
+          "role": "CONTEXT",
+          "text": "Siasatan teknikal mengenal pasti siri tanah runtuh di belakang Blok 1 sebagai punca paling berkemungkinan.",
+          "sourceIds": [
+            "ht1"
+          ],
+          "claimType": "VERIFIED",
+          "visualIntent": "MAP"
+        },
+        {
+          "role": "ESCALATION",
+          "text": "Pergerakan tanah itu menggugat asas cerucuk yang tidak direka untuk menahan beban sisi.",
+          "sourceIds": [
+            "ht1"
+          ],
+          "claimType": "VERIFIED",
+          "visualIntent": "EVIDENCE"
+        },
+        {
+          "role": "TWIST",
+          "text": "Saliran yang tidak mencukupi serta penyelenggaraan lemah meningkatkan aliran dan resapan air ke cerun.",
+          "sourceIds": [
+            "ht1"
+          ],
+          "claimType": "VERIFIED",
+          "visualIntent": "DOCUMENT"
+        },
+        {
+          "role": "COUNTERPOINT",
+          "text": "Di tengah tragedi itu, tiga mangsa berjaya diselamatkan hidup-hidup pada hari pertama.",
+          "sourceIds": [
+            "ht1"
+          ],
+          "claimType": "VERIFIED",
+          "visualIntent": "TIMELINE"
+        },
+        {
+          "role": "PAYOFF",
+          "text": "Penyelidikan kemudian menunjukkan: highland Towers bukan misteri ghaib—ia amaran tentang bagaimana beberapa kegagalan boleh bergabung menjadi bencana.",
+          "sourceIds": [
+            "ht1",
+            "ht2"
+          ],
+          "claimType": "EXPLAINED_LATER",
+          "visualIntent": "ENDING"
+        }
+      ],
+      "sourceIdsPerSegment": [
+        [
+          "ht1",
+          "ht2"
+        ],
+        [],
+        [
+          "ht1"
+        ],
+        [
+          "ht1"
+        ],
+        [
+          "ht1"
+        ],
+        [
+          "ht1"
+        ],
+        [
+          "ht1",
+          "ht2"
+        ]
+      ],
+      "visualPlan": [
+        {
+          "segmentIndex": 0,
+          "role": "HOOK",
+          "visualIntent": "ARCHIVAL_PHOTO",
+          "queries": [
+            "Highland Towers collapse Malaysia",
+            "Highland Towers Ulu Klang",
+            "Apa Punca Highland Towers Runtuh? disember 1993 blok highland towers",
+            "Apa Punca Highland Towers Runtuh? historical archive"
+          ],
+          "selectedMedia": "resolved live by /api/media"
+        },
+        {
+          "segmentIndex": 1,
+          "role": "OPEN_LOOP",
+          "visualIntent": "FACT_CARD",
+          "queries": [
+            "Highland Towers collapse Malaysia",
+            "Highland Towers Ulu Klang",
+            "Apa Punca Highland Towers Runtuh? jadi benar-benar berlaku cuma legenda",
+            "Apa Punca Highland Towers Runtuh? documentary"
+          ],
+          "selectedMedia": "resolved live by /api/media"
+        },
+        {
+          "segmentIndex": 2,
+          "role": "CONTEXT",
+          "visualIntent": "MAP",
+          "queries": [
+            "Highland Towers collapse Malaysia",
+            "Highland Towers Ulu Klang",
+            "Apa Punca Highland Towers Runtuh? siasatan teknikal mengenal pasti siri",
+            "Apa Punca Highland Towers Runtuh? Ulu Klang, Selangor route map"
+          ],
+          "selectedMedia": "resolved live by /api/media"
+        },
+        {
+          "segmentIndex": 3,
+          "role": "ESCALATION",
+          "visualIntent": "EVIDENCE",
+          "queries": [
+            "Highland Towers collapse Malaysia",
+            "Highland Towers Ulu Klang",
+            "Apa Punca Highland Towers Runtuh? pergerakan tanah menggugat asas cerucuk",
+            "Apa Punca Highland Towers Runtuh? search operation evidence"
+          ],
+          "selectedMedia": "resolved live by /api/media"
+        },
+        {
+          "segmentIndex": 4,
+          "role": "TWIST",
+          "visualIntent": "DOCUMENT",
+          "queries": [
+            "Highland Towers collapse Malaysia",
+            "Highland Towers Ulu Klang",
+            "Apa Punca Highland Towers Runtuh? saliran mencukupi serta penyelenggaraan lemah",
+            "Apa Punca Highland Towers Runtuh? official document archive"
+          ],
+          "selectedMedia": "resolved live by /api/media"
+        },
+        {
+          "segmentIndex": 5,
+          "role": "COUNTERPOINT",
+          "visualIntent": "TIMELINE",
+          "queries": [
+            "Highland Towers collapse Malaysia",
+            "Highland Towers Ulu Klang",
+            "Apa Punca Highland Towers Runtuh? tengah tragedi tiga mangsa berjaya",
+            "Apa Punca Highland Towers Runtuh? 1993 historical event"
+          ],
+          "selectedMedia": "resolved live by /api/media"
+        },
+        {
+          "segmentIndex": 6,
+          "role": "PAYOFF",
+          "visualIntent": "ENDING",
+          "queries": [
+            "Highland Towers collapse Malaysia",
+            "Highland Towers Ulu Klang",
+            "Apa Punca Highland Towers Runtuh? penyelidikan kemudian menunjukkan highland towers",
+            "Apa Punca Highland Towers Runtuh? Ulu Klang, Selangor wide view"
+          ],
+          "selectedMedia": "resolved live by /api/media"
+        }
+      ],
+      "visualSearchQueries": [
+        [
+          "Highland Towers collapse Malaysia",
+          "Highland Towers Ulu Klang",
+          "Apa Punca Highland Towers Runtuh? disember 1993 blok highland towers",
+          "Apa Punca Highland Towers Runtuh? historical archive"
+        ],
+        [
+          "Highland Towers collapse Malaysia",
+          "Highland Towers Ulu Klang",
+          "Apa Punca Highland Towers Runtuh? jadi benar-benar berlaku cuma legenda",
+          "Apa Punca Highland Towers Runtuh? documentary"
+        ],
+        [
+          "Highland Towers collapse Malaysia",
+          "Highland Towers Ulu Klang",
+          "Apa Punca Highland Towers Runtuh? siasatan teknikal mengenal pasti siri",
+          "Apa Punca Highland Towers Runtuh? Ulu Klang, Selangor route map"
+        ],
+        [
+          "Highland Towers collapse Malaysia",
+          "Highland Towers Ulu Klang",
+          "Apa Punca Highland Towers Runtuh? pergerakan tanah menggugat asas cerucuk",
+          "Apa Punca Highland Towers Runtuh? search operation evidence"
+        ],
+        [
+          "Highland Towers collapse Malaysia",
+          "Highland Towers Ulu Klang",
+          "Apa Punca Highland Towers Runtuh? saliran mencukupi serta penyelenggaraan lemah",
+          "Apa Punca Highland Towers Runtuh? official document archive"
+        ],
+        [
+          "Highland Towers collapse Malaysia",
+          "Highland Towers Ulu Klang",
+          "Apa Punca Highland Towers Runtuh? tengah tragedi tiga mangsa berjaya",
+          "Apa Punca Highland Towers Runtuh? 1993 historical event"
+        ],
+        [
+          "Highland Towers collapse Malaysia",
+          "Highland Towers Ulu Klang",
+          "Apa Punca Highland Towers Runtuh? penyelidikan kemudian menunjukkan highland towers",
+          "Apa Punca Highland Towers Runtuh? Ulu Klang, Selangor wide view"
+        ]
+      ],
+      "selectedMediaMetadata": {
+        "state": "runtime-dependent",
+        "provider": "Wikimedia Commons",
+        "rawMediaIncluded": false
+      },
+      "ttsPreset": {
+        "id": "male-documentary",
+        "label": "Lelaki — Dokumentari",
+        "description": "Matang • Meyakinkan • Investigatif",
+        "geminiVoice": "Gacrux",
+        "language": "ms-MY",
+        "stylePrompt": "Sound like a calm investigative documentary narrator. Use a confident but restrained tone and steady, engaging pacing. Do not sound like an advertisement. Do not exaggerate emotion. Give slightly more emphasis to important discoveries and reveals."
+      },
+      "ttsStyle": "Sound like a calm investigative documentary narrator. Use a confident but restrained tone and steady, engaging pacing. Do not sound like an advertisement. Do not exaggerate emotion. Give slightly more emphasis to important discoveries and reveals.",
+      "watermarkConfig": {
+        "enabled": false,
+        "text": "",
+        "position": "BOTTOM_RIGHT",
+        "opacity": 0.75,
+        "size": "SMALL"
+      }
+    },
+    {
+      "story": {
+        "id": "villa-nabila",
+        "title": "Legenda Villa Nabila",
+        "country": "Malaysia",
+        "region": "Johor Bahru, Johor",
+        "year": 2013,
+        "decade": "Moden",
+        "category": "URBAN_LEGEND",
+        "caseStatus": "LEGEND",
+        "summary": "Sebuah banglo terbiar di Johor Bahru menjadi legenda bandar selepas khabar kehilangan beramai-ramai tersebar di media sosial.",
+        "entityIds": [],
+        "sourceHints": [
+          "Astro Awani",
+          "Kosmo!"
+        ],
+        "visualSearchTerms": [
+          "Danga Bay Johor Bahru",
+          "Johor Bahru night skyline",
+          "abandoned house Malaysia"
+        ],
+        "researchScore": 0.94,
+        "visualScore": 0.84,
+        "sourceCoveragePotential": "good",
+        "sources": [
+          {
+            "id": "vn1",
+            "title": "Polis Johor nafi kehilangan sekumpulan remaja di Villa Nabila",
+            "publisher": "Astro Awani",
+            "type": "SECONDARY",
+            "url": "https://www.astroawani.com/berita-malaysia/polis-johor-nafi-kehilangan-sekumpulan-remaja-di-villa-nabila-25630",
+            "date": "2013-11-18",
+            "accessedAt": "2026-09-03",
+            "reliabilityLevel": "SECONDARY"
+          },
+          {
+            "id": "vn2",
+            "title": "Detik cemas dikacau penunggu Villa Nabila",
+            "publisher": "Kosmo!",
+            "type": "SECONDARY",
+            "url": "https://www.kosmo.com.my/2020/12/13/detik-cemas-dikacau-penunggu-villa-nabila/",
+            "date": "2020-12-13",
+            "accessedAt": "2026-09-03",
+            "reliabilityLevel": "SECONDARY"
+          }
+        ],
+        "claims": [
+          {
+            "id": "vn-c1",
+            "claim": "Villa Nabila is an abandoned bungalow near Danga Bay in Johor Bahru.",
+            "narration": "Di sebuah bukit berhampiran Danga Bay berdiri banglo terbiar yang dikenali sebagai Villa Nabila.",
+            "type": "VERIFIED",
+            "confidence": "HIGH",
+            "sourceIds": [
+              "vn1",
+              "vn2"
+            ],
+            "priority": "HOOK_WORTHY",
+            "visualIntent": "LOCATION"
+          },
+          {
+            "id": "vn-c2",
+            "claim": "Stories about deaths and paranormal activity at the villa circulated as urban legends.",
+            "narration": "Pelbagai cerita tentang kematian dan gangguan paranormal tersebar dari mulut ke mulut, tetapi asal-usulnya tidak dapat disahkan.",
+            "type": "FOLKLORE",
+            "confidence": "LOW",
+            "sourceIds": [
+              "vn2"
+            ],
+            "priority": "ESSENTIAL_CONTEXT",
+            "visualIntent": "THEORY_CARD"
+          },
+          {
+            "id": "vn-c3",
+            "claim": "A viral claim said a large group of teenagers had disappeared at the villa in 2013.",
+            "narration": "Pada 2013, media sosial mendakwa sekumpulan besar remaja hilang selepas memasuki vila itu.",
+            "type": "REPORTED",
+            "confidence": "HIGH",
+            "sourceIds": [
+              "vn1"
+            ],
+            "priority": "ESCALATION_DETAIL",
+            "visualIntent": "NEWSPAPER"
+          },
+          {
+            "id": "vn-c4",
+            "claim": "Johor police said they had received only one missing-person report, not reports for the viral number.",
+            "narration": "Polis Johor menafikan kehilangan beramai-ramai dan berkata hanya satu laporan orang hilang diterima.",
+            "type": "VERIFIED",
+            "confidence": "HIGH",
+            "sourceIds": [
+              "vn1"
+            ],
+            "priority": "TWIST",
+            "visualIntent": "DOCUMENT"
+          },
+          {
+            "id": "vn-c5",
+            "claim": "The missing 16-year-old was later found at a friend's home.",
+            "narration": "Remaja berusia 16 tahun itu kemudian ditemui di rumah rakannya, bukan hilang di dalam Villa Nabila.",
+            "type": "EXPLAINED_LATER",
+            "confidence": "HIGH",
+            "sourceIds": [
+              "vn2"
+            ],
+            "priority": "COUNTERPOINT",
+            "visualIntent": "TIMELINE"
+          },
+          {
+            "id": "vn-c6",
+            "claim": "The paranormal stories remain unverified folklore.",
+            "narration": "Apa yang kekal misteri ialah asal sebenar legenda itu—bukan bukti bahawa dakwaan paranormal tersebut benar.",
+            "type": "UNRESOLVED",
+            "confidence": "MEDIUM",
+            "sourceIds": [
+              "vn1",
+              "vn2"
+            ],
+            "priority": "PAYOFF",
+            "visualIntent": "ENDING"
+          }
+        ]
+      },
+      "storyAngles": [],
+      "sources": [
+        {
+          "id": "vn1",
+          "title": "Polis Johor nafi kehilangan sekumpulan remaja di Villa Nabila",
+          "publisher": "Astro Awani",
+          "type": "SECONDARY",
+          "url": "https://www.astroawani.com/berita-malaysia/polis-johor-nafi-kehilangan-sekumpulan-remaja-di-villa-nabila-25630",
+          "date": "2013-11-18",
+          "accessedAt": "2026-09-03",
+          "reliabilityLevel": "SECONDARY"
+        },
+        {
+          "id": "vn2",
+          "title": "Detik cemas dikacau penunggu Villa Nabila",
+          "publisher": "Kosmo!",
+          "type": "SECONDARY",
+          "url": "https://www.kosmo.com.my/2020/12/13/detik-cemas-dikacau-penunggu-villa-nabila/",
+          "date": "2020-12-13",
+          "accessedAt": "2026-09-03",
+          "reliabilityLevel": "SECONDARY"
+        }
+      ],
+      "claims": [
+        {
+          "id": "vn-c1",
+          "claim": "Villa Nabila is an abandoned bungalow near Danga Bay in Johor Bahru.",
+          "narration": "Di sebuah bukit berhampiran Danga Bay berdiri banglo terbiar yang dikenali sebagai Villa Nabila.",
+          "type": "VERIFIED",
+          "confidence": "HIGH",
+          "sourceIds": [
+            "vn1",
+            "vn2"
+          ],
+          "priority": "HOOK_WORTHY",
+          "visualIntent": "LOCATION"
+        },
+        {
+          "id": "vn-c2",
+          "claim": "Stories about deaths and paranormal activity at the villa circulated as urban legends.",
+          "narration": "Pelbagai cerita tentang kematian dan gangguan paranormal tersebar dari mulut ke mulut, tetapi asal-usulnya tidak dapat disahkan.",
+          "type": "FOLKLORE",
+          "confidence": "LOW",
+          "sourceIds": [
+            "vn2"
+          ],
+          "priority": "ESSENTIAL_CONTEXT",
+          "visualIntent": "THEORY_CARD"
+        },
+        {
+          "id": "vn-c3",
+          "claim": "A viral claim said a large group of teenagers had disappeared at the villa in 2013.",
+          "narration": "Pada 2013, media sosial mendakwa sekumpulan besar remaja hilang selepas memasuki vila itu.",
+          "type": "REPORTED",
+          "confidence": "HIGH",
+          "sourceIds": [
+            "vn1"
+          ],
+          "priority": "ESCALATION_DETAIL",
+          "visualIntent": "NEWSPAPER"
+        },
+        {
+          "id": "vn-c4",
+          "claim": "Johor police said they had received only one missing-person report, not reports for the viral number.",
+          "narration": "Polis Johor menafikan kehilangan beramai-ramai dan berkata hanya satu laporan orang hilang diterima.",
+          "type": "VERIFIED",
+          "confidence": "HIGH",
+          "sourceIds": [
+            "vn1"
+          ],
+          "priority": "TWIST",
+          "visualIntent": "DOCUMENT"
+        },
+        {
+          "id": "vn-c5",
+          "claim": "The missing 16-year-old was later found at a friend's home.",
+          "narration": "Remaja berusia 16 tahun itu kemudian ditemui di rumah rakannya, bukan hilang di dalam Villa Nabila.",
+          "type": "EXPLAINED_LATER",
+          "confidence": "HIGH",
+          "sourceIds": [
+            "vn2"
+          ],
+          "priority": "COUNTERPOINT",
+          "visualIntent": "TIMELINE"
+        },
+        {
+          "id": "vn-c6",
+          "claim": "The paranormal stories remain unverified folklore.",
+          "narration": "Apa yang kekal misteri ialah asal sebenar legenda itu—bukan bukti bahawa dakwaan paranormal tersebut benar.",
+          "type": "UNRESOLVED",
+          "confidence": "MEDIUM",
+          "sourceIds": [
+            "vn1",
+            "vn2"
+          ],
+          "priority": "PAYOFF",
+          "visualIntent": "ENDING"
+        }
+      ],
+      "claimTypes": [
+        "VERIFIED",
+        "FOLKLORE",
+        "REPORTED",
+        "EXPLAINED_LATER",
+        "UNRESOLVED"
+      ],
+      "storyArc": [
+        "HOOK",
+        "OPEN_LOOP",
+        "CONTEXT",
+        "ESCALATION",
+        "TWIST",
+        "COUNTERPOINT",
+        "PAYOFF"
+      ],
+      "narration": "Di sebuah bukit berhampiran Danga Bay berdiri banglo terbiar yang dikenali sebagai Villa Nabila. Jadi, ke mana semua petunjuk ini sebenarnya membawa? Menurut cerita rakyat, pelbagai cerita tentang kematian dan gangguan paranormal tersebar dari mulut ke mulut, tetapi asal-usulnya tidak dapat disahkan. Menurut laporan ketika itu, pada 2013, media sosial mendakwa sekumpulan besar remaja hilang selepas memasuki vila itu. Polis Johor menafikan kehilangan beramai-ramai dan berkata hanya satu laporan orang hilang diterima. Penyelidikan kemudian menunjukkan: remaja berusia 16 tahun itu kemudian ditemui di rumah rakannya, bukan hilang di dalam Villa Nabila. Apa yang kekal misteri ialah asal sebenar legenda itu—bukan bukti bahawa dakwaan paranormal tersebut benar.",
+      "segments": [
+        {
+          "role": "HOOK",
+          "text": "Di sebuah bukit berhampiran Danga Bay berdiri banglo terbiar yang dikenali sebagai Villa Nabila.",
+          "sourceIds": [
+            "vn1",
+            "vn2"
+          ],
+          "claimType": "VERIFIED",
+          "visualIntent": "LOCATION"
+        },
+        {
+          "role": "OPEN_LOOP",
+          "text": "Jadi, ke mana semua petunjuk ini sebenarnya membawa?",
+          "sourceIds": [],
+          "claimType": "UNRESOLVED",
+          "visualIntent": "FACT_CARD"
+        },
+        {
+          "role": "CONTEXT",
+          "text": "Menurut cerita rakyat, pelbagai cerita tentang kematian dan gangguan paranormal tersebar dari mulut ke mulut, tetapi asal-usulnya tidak dapat disahkan.",
+          "sourceIds": [
+            "vn2"
+          ],
+          "claimType": "FOLKLORE",
+          "visualIntent": "THEORY_CARD"
+        },
+        {
+          "role": "ESCALATION",
+          "text": "Menurut laporan ketika itu, pada 2013, media sosial mendakwa sekumpulan besar remaja hilang selepas memasuki vila itu.",
+          "sourceIds": [
+            "vn1"
+          ],
+          "claimType": "REPORTED",
+          "visualIntent": "NEWSPAPER"
+        },
+        {
+          "role": "TWIST",
+          "text": "Polis Johor menafikan kehilangan beramai-ramai dan berkata hanya satu laporan orang hilang diterima.",
+          "sourceIds": [
+            "vn1"
+          ],
+          "claimType": "VERIFIED",
+          "visualIntent": "DOCUMENT"
+        },
+        {
+          "role": "COUNTERPOINT",
+          "text": "Penyelidikan kemudian menunjukkan: remaja berusia 16 tahun itu kemudian ditemui di rumah rakannya, bukan hilang di dalam Villa Nabila.",
+          "sourceIds": [
+            "vn2"
+          ],
+          "claimType": "EXPLAINED_LATER",
+          "visualIntent": "TIMELINE"
+        },
+        {
+          "role": "PAYOFF",
+          "text": "Apa yang kekal misteri ialah asal sebenar legenda itu—bukan bukti bahawa dakwaan paranormal tersebut benar.",
+          "sourceIds": [
+            "vn1",
+            "vn2"
+          ],
+          "claimType": "UNRESOLVED",
+          "visualIntent": "ENDING"
+        }
+      ],
+      "sourceIdsPerSegment": [
+        [
+          "vn1",
+          "vn2"
+        ],
+        [],
+        [
+          "vn2"
+        ],
+        [
+          "vn1"
+        ],
+        [
+          "vn1"
+        ],
+        [
+          "vn2"
+        ],
+        [
+          "vn1",
+          "vn2"
+        ]
+      ],
+      "visualPlan": [
+        {
+          "segmentIndex": 0,
+          "role": "HOOK",
+          "visualIntent": "LOCATION",
+          "queries": [
+            "Danga Bay Johor Bahru",
+            "Johor Bahru night skyline",
+            "Legenda Villa Nabila bukit berhampiran danga berdiri banglo",
+            "Legenda Villa Nabila Johor Bahru, Johor location"
+          ],
+          "selectedMedia": "resolved live by /api/media"
+        },
+        {
+          "segmentIndex": 1,
+          "role": "OPEN_LOOP",
+          "visualIntent": "FACT_CARD",
+          "queries": [
+            "Danga Bay Johor Bahru",
+            "Johor Bahru night skyline",
+            "Legenda Villa Nabila jadi mana semua petunjuk sebenarnya",
+            "Legenda Villa Nabila documentary"
+          ],
+          "selectedMedia": "resolved live by /api/media"
+        },
+        {
+          "segmentIndex": 2,
+          "role": "CONTEXT",
+          "visualIntent": "THEORY_CARD",
+          "queries": [
+            "Danga Bay Johor Bahru",
+            "Johor Bahru night skyline",
+            "Legenda Villa Nabila menurut cerita rakyat pelbagai cerita",
+            "Legenda Villa Nabila evidence"
+          ],
+          "selectedMedia": "resolved live by /api/media"
+        },
+        {
+          "segmentIndex": 3,
+          "role": "ESCALATION",
+          "visualIntent": "NEWSPAPER",
+          "queries": [
+            "Danga Bay Johor Bahru",
+            "Johor Bahru night skyline",
+            "Legenda Villa Nabila menurut laporan ketika 2013 media",
+            "Legenda Villa Nabila newspaper archive"
+          ],
+          "selectedMedia": "resolved live by /api/media"
+        },
+        {
+          "segmentIndex": 4,
+          "role": "TWIST",
+          "visualIntent": "DOCUMENT",
+          "queries": [
+            "Danga Bay Johor Bahru",
+            "Johor Bahru night skyline",
+            "Legenda Villa Nabila polis johor menafikan kehilangan beramai-ramai",
+            "Legenda Villa Nabila official document archive"
+          ],
+          "selectedMedia": "resolved live by /api/media"
+        },
+        {
+          "segmentIndex": 5,
+          "role": "COUNTERPOINT",
+          "visualIntent": "TIMELINE",
+          "queries": [
+            "Danga Bay Johor Bahru",
+            "Johor Bahru night skyline",
+            "Legenda Villa Nabila penyelidikan kemudian menunjukkan remaja berusia",
+            "Legenda Villa Nabila 2013 historical event"
+          ],
+          "selectedMedia": "resolved live by /api/media"
+        },
+        {
+          "segmentIndex": 6,
+          "role": "PAYOFF",
+          "visualIntent": "ENDING",
+          "queries": [
+            "Danga Bay Johor Bahru",
+            "Johor Bahru night skyline",
+            "Legenda Villa Nabila kekal misteri ialah asal sebenar",
+            "Legenda Villa Nabila Johor Bahru, Johor wide view"
+          ],
+          "selectedMedia": "resolved live by /api/media"
+        }
+      ],
+      "visualSearchQueries": [
+        [
+          "Danga Bay Johor Bahru",
+          "Johor Bahru night skyline",
+          "Legenda Villa Nabila bukit berhampiran danga berdiri banglo",
+          "Legenda Villa Nabila Johor Bahru, Johor location"
+        ],
+        [
+          "Danga Bay Johor Bahru",
+          "Johor Bahru night skyline",
+          "Legenda Villa Nabila jadi mana semua petunjuk sebenarnya",
+          "Legenda Villa Nabila documentary"
+        ],
+        [
+          "Danga Bay Johor Bahru",
+          "Johor Bahru night skyline",
+          "Legenda Villa Nabila menurut cerita rakyat pelbagai cerita",
+          "Legenda Villa Nabila evidence"
+        ],
+        [
+          "Danga Bay Johor Bahru",
+          "Johor Bahru night skyline",
+          "Legenda Villa Nabila menurut laporan ketika 2013 media",
+          "Legenda Villa Nabila newspaper archive"
+        ],
+        [
+          "Danga Bay Johor Bahru",
+          "Johor Bahru night skyline",
+          "Legenda Villa Nabila polis johor menafikan kehilangan beramai-ramai",
+          "Legenda Villa Nabila official document archive"
+        ],
+        [
+          "Danga Bay Johor Bahru",
+          "Johor Bahru night skyline",
+          "Legenda Villa Nabila penyelidikan kemudian menunjukkan remaja berusia",
+          "Legenda Villa Nabila 2013 historical event"
+        ],
+        [
+          "Danga Bay Johor Bahru",
+          "Johor Bahru night skyline",
+          "Legenda Villa Nabila kekal misteri ialah asal sebenar",
+          "Legenda Villa Nabila Johor Bahru, Johor wide view"
+        ]
+      ],
+      "selectedMediaMetadata": {
+        "state": "runtime-dependent",
+        "provider": "Wikimedia Commons",
+        "rawMediaIncluded": false
+      },
+      "ttsPreset": {
+        "id": "male-documentary",
+        "label": "Lelaki — Dokumentari",
+        "description": "Matang • Meyakinkan • Investigatif",
+        "geminiVoice": "Gacrux",
+        "language": "ms-MY",
+        "stylePrompt": "Sound like a calm investigative documentary narrator. Use a confident but restrained tone and steady, engaging pacing. Do not sound like an advertisement. Do not exaggerate emotion. Give slightly more emphasis to important discoveries and reveals."
+      },
+      "ttsStyle": "Sound like a calm investigative documentary narrator. Use a confident but restrained tone and steady, engaging pacing. Do not sound like an advertisement. Do not exaggerate emotion. Give slightly more emphasis to important discoveries and reveals.",
+      "watermarkConfig": {
+        "enabled": false,
+        "text": "",
+        "position": "BOTTOM_RIGHT",
+        "opacity": 0.75,
+        "size": "SMALL"
+      }
+    },
+    {
+      "story": {
+        "id": "dyatlov-pass",
+        "title": "Insiden Dyatlov Pass",
+        "country": "Rusia",
+        "region": "Pergunungan Ural",
+        "year": 1959,
+        "decade": "1950-an",
+        "category": "HISTORICAL_MYSTERY",
+        "caseStatus": "PARTIALLY_EXPLAINED",
+        "summary": "Sembilan pendaki maut selepas meninggalkan khemah mereka dalam cuaca ekstrem.",
+        "entityIds": [
+          "Q207006"
+        ],
+        "sourceHints": [
+          "Nature Communications",
+          "Britannica"
+        ],
+        "visualSearchTerms": [
+          "Dyatlov Pass group",
+          "Dyatlov Pass tent",
+          "Ural Mountains winter"
+        ],
+        "researchScore": 0.96,
+        "visualScore": 0.91,
+        "sourceCoveragePotential": "good",
+        "sources": [
+          {
+            "id": "d1",
+            "title": "Mechanisms of slab avalanche release and impact in the Dyatlov Pass incident",
+            "publisher": "Communications Earth & Environment",
+            "type": "ACADEMIC",
+            "url": "https://www.nature.com/articles/s43247-020-00081-8",
+            "date": "2021",
+            "accessedAt": "2026-09-03",
+            "reliabilityLevel": "ACADEMIC"
+          },
+          {
+            "id": "d2",
+            "title": "Dyatlov Pass incident",
+            "publisher": "Encyclopaedia Britannica",
+            "type": "REFERENCE",
+            "url": "https://www.britannica.com/event/Dyatlov-Pass-incident",
+            "accessedAt": "2026-09-03",
+            "reliabilityLevel": "REFERENCE"
+          }
+        ],
+        "claims": [
+          {
+            "id": "d-c1",
+            "claim": "The tent was cut open from the inside.",
+            "narration": "Khemah mereka ditemui terkoyak dari bahagian dalam.",
+            "type": "VERIFIED",
+            "confidence": "HIGH",
+            "sourceIds": [
+              "d1",
+              "d2"
+            ],
+            "priority": "HOOK_WORTHY",
+            "visualIntent": "EVIDENCE"
+          },
+          {
+            "id": "d-c2",
+            "claim": "Nine experienced hikers died in the northern Urals in February 1959.",
+            "narration": "Sembilan pendaki berpengalaman maut di Ural pada Februari 1959.",
+            "type": "VERIFIED",
+            "confidence": "HIGH",
+            "sourceIds": [
+              "d1",
+              "d2"
+            ],
+            "priority": "ESSENTIAL_CONTEXT",
+            "visualIntent": "MAP"
+          },
+          {
+            "id": "d-c3",
+            "claim": "Some victims left without adequate clothing or footwear.",
+            "narration": "Ada yang keluar tanpa pakaian dan kasut yang cukup.",
+            "type": "VERIFIED",
+            "confidence": "HIGH",
+            "sourceIds": [
+              "d1",
+              "d2"
+            ],
+            "priority": "ESCALATION_DETAIL",
+            "visualIntent": "ARCHIVAL_PHOTO"
+          },
+          {
+            "id": "d-c4",
+            "claim": "Several bodies had severe traumatic injuries.",
+            "narration": "Beberapa mayat pula mengalami kecederaan dalaman yang serius.",
+            "type": "VERIFIED",
+            "confidence": "HIGH",
+            "sourceIds": [
+              "d1",
+              "d2"
+            ],
+            "priority": "TWIST",
+            "visualIntent": "FACT_CARD"
+          },
+          {
+            "id": "d-c5",
+            "claim": "A 2021 study showed a delayed slab avalanche was physically plausible.",
+            "narration": "Kajian pada 2021 menunjukkan runtuhan salji kepingan memang boleh berlaku.",
+            "type": "EXPLAINED_LATER",
+            "confidence": "HIGH",
+            "sourceIds": [
+              "d1"
+            ],
+            "priority": "THEORY",
+            "visualIntent": "THEORY_CARD"
+          },
+          {
+            "id": "d-c6",
+            "claim": "The avalanche model does not reconstruct every individual action that night.",
+            "narration": "Tapi model itu tidak menjelaskan setiap tindakan mereka malam itu.",
+            "type": "UNRESOLVED",
+            "confidence": "HIGH",
+            "sourceIds": [
+              "d1"
+            ],
+            "priority": "COUNTERPOINT",
+            "visualIntent": "ENDING"
+          }
+        ]
+      },
+      "storyAngles": [],
+      "sources": [
+        {
+          "id": "d1",
+          "title": "Mechanisms of slab avalanche release and impact in the Dyatlov Pass incident",
+          "publisher": "Communications Earth & Environment",
+          "type": "ACADEMIC",
+          "url": "https://www.nature.com/articles/s43247-020-00081-8",
+          "date": "2021",
+          "accessedAt": "2026-09-03",
+          "reliabilityLevel": "ACADEMIC"
+        },
+        {
+          "id": "d2",
+          "title": "Dyatlov Pass incident",
+          "publisher": "Encyclopaedia Britannica",
+          "type": "REFERENCE",
+          "url": "https://www.britannica.com/event/Dyatlov-Pass-incident",
+          "accessedAt": "2026-09-03",
+          "reliabilityLevel": "REFERENCE"
+        }
+      ],
+      "claims": [
+        {
+          "id": "d-c1",
+          "claim": "The tent was cut open from the inside.",
+          "narration": "Khemah mereka ditemui terkoyak dari bahagian dalam.",
+          "type": "VERIFIED",
+          "confidence": "HIGH",
+          "sourceIds": [
+            "d1",
+            "d2"
+          ],
+          "priority": "HOOK_WORTHY",
+          "visualIntent": "EVIDENCE"
+        },
+        {
+          "id": "d-c2",
+          "claim": "Nine experienced hikers died in the northern Urals in February 1959.",
+          "narration": "Sembilan pendaki berpengalaman maut di Ural pada Februari 1959.",
+          "type": "VERIFIED",
+          "confidence": "HIGH",
+          "sourceIds": [
+            "d1",
+            "d2"
+          ],
+          "priority": "ESSENTIAL_CONTEXT",
+          "visualIntent": "MAP"
+        },
+        {
+          "id": "d-c3",
+          "claim": "Some victims left without adequate clothing or footwear.",
+          "narration": "Ada yang keluar tanpa pakaian dan kasut yang cukup.",
+          "type": "VERIFIED",
+          "confidence": "HIGH",
+          "sourceIds": [
+            "d1",
+            "d2"
+          ],
+          "priority": "ESCALATION_DETAIL",
+          "visualIntent": "ARCHIVAL_PHOTO"
+        },
+        {
+          "id": "d-c4",
+          "claim": "Several bodies had severe traumatic injuries.",
+          "narration": "Beberapa mayat pula mengalami kecederaan dalaman yang serius.",
+          "type": "VERIFIED",
+          "confidence": "HIGH",
+          "sourceIds": [
+            "d1",
+            "d2"
+          ],
+          "priority": "TWIST",
+          "visualIntent": "FACT_CARD"
+        },
+        {
+          "id": "d-c5",
+          "claim": "A 2021 study showed a delayed slab avalanche was physically plausible.",
+          "narration": "Kajian pada 2021 menunjukkan runtuhan salji kepingan memang boleh berlaku.",
+          "type": "EXPLAINED_LATER",
+          "confidence": "HIGH",
+          "sourceIds": [
+            "d1"
+          ],
+          "priority": "THEORY",
+          "visualIntent": "THEORY_CARD"
+        },
+        {
+          "id": "d-c6",
+          "claim": "The avalanche model does not reconstruct every individual action that night.",
+          "narration": "Tapi model itu tidak menjelaskan setiap tindakan mereka malam itu.",
+          "type": "UNRESOLVED",
+          "confidence": "HIGH",
+          "sourceIds": [
+            "d1"
+          ],
+          "priority": "COUNTERPOINT",
+          "visualIntent": "ENDING"
+        }
+      ],
+      "claimTypes": [
+        "VERIFIED",
+        "EXPLAINED_LATER",
+        "UNRESOLVED"
+      ],
+      "storyArc": [
+        "HOOK",
+        "OPEN_LOOP",
+        "CONTEXT",
+        "ESCALATION",
+        "TWIST",
+        "THEORY",
+        "COUNTERPOINT"
+      ],
+      "narration": "Khemah mereka ditemui terkoyak dari bahagian dalam. Jadi, apa yang benar-benar berlaku—dan apa yang cuma legenda? Sembilan pendaki berpengalaman maut di Ural pada Februari 1959. Ada yang keluar tanpa pakaian dan kasut yang cukup. Beberapa mayat pula mengalami kecederaan dalaman yang serius. Penyelidikan kemudian menunjukkan: kajian pada 2021 menunjukkan runtuhan salji kepingan memang boleh berlaku. Tapi model itu tidak menjelaskan setiap tindakan mereka malam itu.",
+      "segments": [
+        {
+          "role": "HOOK",
+          "text": "Khemah mereka ditemui terkoyak dari bahagian dalam.",
+          "sourceIds": [
+            "d1",
+            "d2"
+          ],
+          "claimType": "VERIFIED",
+          "visualIntent": "EVIDENCE"
+        },
+        {
+          "role": "OPEN_LOOP",
+          "text": "Jadi, apa yang benar-benar berlaku—dan apa yang cuma legenda?",
+          "sourceIds": [],
+          "claimType": "UNRESOLVED",
+          "visualIntent": "FACT_CARD"
+        },
+        {
+          "role": "CONTEXT",
+          "text": "Sembilan pendaki berpengalaman maut di Ural pada Februari 1959.",
+          "sourceIds": [
+            "d1",
+            "d2"
+          ],
+          "claimType": "VERIFIED",
+          "visualIntent": "MAP"
+        },
+        {
+          "role": "ESCALATION",
+          "text": "Ada yang keluar tanpa pakaian dan kasut yang cukup.",
+          "sourceIds": [
+            "d1",
+            "d2"
+          ],
+          "claimType": "VERIFIED",
+          "visualIntent": "ARCHIVAL_PHOTO"
+        },
+        {
+          "role": "TWIST",
+          "text": "Beberapa mayat pula mengalami kecederaan dalaman yang serius.",
+          "sourceIds": [
+            "d1",
+            "d2"
+          ],
+          "claimType": "VERIFIED",
+          "visualIntent": "FACT_CARD"
+        },
+        {
+          "role": "THEORY",
+          "text": "Penyelidikan kemudian menunjukkan: kajian pada 2021 menunjukkan runtuhan salji kepingan memang boleh berlaku.",
+          "sourceIds": [
+            "d1"
+          ],
+          "claimType": "EXPLAINED_LATER",
+          "visualIntent": "THEORY_CARD"
+        },
+        {
+          "role": "COUNTERPOINT",
+          "text": "Tapi model itu tidak menjelaskan setiap tindakan mereka malam itu.",
+          "sourceIds": [
+            "d1"
+          ],
+          "claimType": "UNRESOLVED",
+          "visualIntent": "ENDING"
+        }
+      ],
+      "sourceIdsPerSegment": [
+        [
+          "d1",
+          "d2"
+        ],
+        [],
+        [
+          "d1",
+          "d2"
+        ],
+        [
+          "d1",
+          "d2"
+        ],
+        [
+          "d1",
+          "d2"
+        ],
+        [
+          "d1"
+        ],
+        [
+          "d1"
+        ]
+      ],
+      "visualPlan": [
+        {
+          "segmentIndex": 0,
+          "role": "HOOK",
+          "visualIntent": "EVIDENCE",
+          "queries": [
+            "Dyatlov Pass group",
+            "Dyatlov Pass tent",
+            "Insiden Dyatlov Pass khemah mereka ditemui terkoyak bahagian",
+            "Insiden Dyatlov Pass search operation evidence"
+          ],
+          "selectedMedia": "resolved live by /api/media"
+        },
+        {
+          "segmentIndex": 1,
+          "role": "OPEN_LOOP",
+          "visualIntent": "FACT_CARD",
+          "queries": [
+            "Dyatlov Pass group",
+            "Dyatlov Pass tent",
+            "Insiden Dyatlov Pass jadi benar-benar berlaku cuma legenda",
+            "Insiden Dyatlov Pass documentary"
+          ],
+          "selectedMedia": "resolved live by /api/media"
+        },
+        {
+          "segmentIndex": 2,
+          "role": "CONTEXT",
+          "visualIntent": "MAP",
+          "queries": [
+            "Dyatlov Pass group",
+            "Dyatlov Pass tent",
+            "Insiden Dyatlov Pass sembilan pendaki berpengalaman maut ural",
+            "Insiden Dyatlov Pass Pergunungan Ural route map"
+          ],
+          "selectedMedia": "resolved live by /api/media"
+        },
+        {
+          "segmentIndex": 3,
+          "role": "ESCALATION",
+          "visualIntent": "ARCHIVAL_PHOTO",
+          "queries": [
+            "Dyatlov Pass group",
+            "Dyatlov Pass tent",
+            "Insiden Dyatlov Pass keluar tanpa pakaian kasut cukup",
+            "Insiden Dyatlov Pass historical archive"
+          ],
+          "selectedMedia": "resolved live by /api/media"
+        },
+        {
+          "segmentIndex": 4,
+          "role": "TWIST",
+          "visualIntent": "FACT_CARD",
+          "queries": [
+            "Dyatlov Pass group",
+            "Dyatlov Pass tent",
+            "Insiden Dyatlov Pass beberapa mayat pula mengalami kecederaan",
+            "Insiden Dyatlov Pass documentary"
+          ],
+          "selectedMedia": "resolved live by /api/media"
+        },
+        {
+          "segmentIndex": 5,
+          "role": "THEORY",
+          "visualIntent": "THEORY_CARD",
+          "queries": [
+            "Dyatlov Pass group",
+            "Dyatlov Pass tent",
+            "Insiden Dyatlov Pass penyelidikan kemudian menunjukkan kajian 2021",
+            "Insiden Dyatlov Pass evidence"
+          ],
+          "selectedMedia": "resolved live by /api/media"
+        },
+        {
+          "segmentIndex": 6,
+          "role": "COUNTERPOINT",
+          "visualIntent": "ENDING",
+          "queries": [
+            "Dyatlov Pass group",
+            "Dyatlov Pass tent",
+            "Insiden Dyatlov Pass tapi model menjelaskan setiap tindakan",
+            "Insiden Dyatlov Pass Pergunungan Ural wide view"
+          ],
+          "selectedMedia": "resolved live by /api/media"
+        }
+      ],
+      "visualSearchQueries": [
+        [
+          "Dyatlov Pass group",
+          "Dyatlov Pass tent",
+          "Insiden Dyatlov Pass khemah mereka ditemui terkoyak bahagian",
+          "Insiden Dyatlov Pass search operation evidence"
+        ],
+        [
+          "Dyatlov Pass group",
+          "Dyatlov Pass tent",
+          "Insiden Dyatlov Pass jadi benar-benar berlaku cuma legenda",
+          "Insiden Dyatlov Pass documentary"
+        ],
+        [
+          "Dyatlov Pass group",
+          "Dyatlov Pass tent",
+          "Insiden Dyatlov Pass sembilan pendaki berpengalaman maut ural",
+          "Insiden Dyatlov Pass Pergunungan Ural route map"
+        ],
+        [
+          "Dyatlov Pass group",
+          "Dyatlov Pass tent",
+          "Insiden Dyatlov Pass keluar tanpa pakaian kasut cukup",
+          "Insiden Dyatlov Pass historical archive"
+        ],
+        [
+          "Dyatlov Pass group",
+          "Dyatlov Pass tent",
+          "Insiden Dyatlov Pass beberapa mayat pula mengalami kecederaan",
+          "Insiden Dyatlov Pass documentary"
+        ],
+        [
+          "Dyatlov Pass group",
+          "Dyatlov Pass tent",
+          "Insiden Dyatlov Pass penyelidikan kemudian menunjukkan kajian 2021",
+          "Insiden Dyatlov Pass evidence"
+        ],
+        [
+          "Dyatlov Pass group",
+          "Dyatlov Pass tent",
+          "Insiden Dyatlov Pass tapi model menjelaskan setiap tindakan",
+          "Insiden Dyatlov Pass Pergunungan Ural wide view"
+        ]
+      ],
+      "selectedMediaMetadata": {
+        "state": "runtime-dependent",
+        "provider": "Wikimedia Commons",
+        "rawMediaIncluded": false
+      },
+      "ttsPreset": {
+        "id": "male-documentary",
+        "label": "Lelaki — Dokumentari",
+        "description": "Matang • Meyakinkan • Investigatif",
+        "geminiVoice": "Gacrux",
+        "language": "ms-MY",
+        "stylePrompt": "Sound like a calm investigative documentary narrator. Use a confident but restrained tone and steady, engaging pacing. Do not sound like an advertisement. Do not exaggerate emotion. Give slightly more emphasis to important discoveries and reveals."
+      },
+      "ttsStyle": "Sound like a calm investigative documentary narrator. Use a confident but restrained tone and steady, engaging pacing. Do not sound like an advertisement. Do not exaggerate emotion. Give slightly more emphasis to important discoveries and reveals.",
+      "watermarkConfig": {
+        "enabled": false,
+        "text": "",
+        "position": "BOTTOM_RIGHT",
+        "opacity": 0.75,
+        "size": "SMALL"
+      }
+    }
+  ]
+}

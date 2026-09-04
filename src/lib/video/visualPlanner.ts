@@ -1,4 +1,5 @@
 import { searchVideos, searchVisuals } from "@/lib/data/wikimedia";
+import { buildVisualQueries, visualKeywords } from "@/lib/video/visualQueries";
 import type { MysteryScript, StoryRecord, Topic, Visual, VisualIntent, VisualKind, VisualQualityReport } from "@/lib/types";
 
 const programmaticIntents: Partial<Record<VisualIntent, VisualKind>> = {
@@ -11,48 +12,9 @@ const programmaticIntents: Partial<Record<VisualIntent, VisualKind>> = {
   THEORY_CARD: "THEORY_CARD",
 };
 
-const fillerWords = new Set(["yang", "dan", "dengan", "daripada", "selepas", "sebuah", "masih", "untuk", "telah", "tidak", "boleh", "pada", "dari", "itu"]);
-
 const verifiedFallbackVisuals: Record<string, Visual> = {
   "villa-nabila": { id: "commons-danga-world", title: "Danga World, Johor Bahru", url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/Danga_World%2C_Johor_Bahru%2C_Malaysia.jpg/1280px-Danga_World%2C_Johor_Bahru%2C_Malaysia.jpg", thumbUrl: "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/Danga_World%2C_Johor_Bahru%2C_Malaysia.jpg/1280px-Danga_World%2C_Johor_Bahru%2C_Malaysia.jpg", width: 1280, height: 960, creator: "Martin Lewison", license: "CC BY-SA 2.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0/", sourceUrl: "https://commons.wikimedia.org/wiki/File:Danga_World,_Johor_Bahru,_Malaysia.jpg", description: "Pemandangan kawasan Danga Bay, Johor Bahru", source: "Wikimedia Commons", mediaType: "image", visualKind: "PHOTO", relevanceScore: .5 },
 };
-
-function keywords(value: string) {
-  return value.toLowerCase().replace(/[^\p{L}\p{N}\s-]/gu, " ").split(/\s+/).filter((word) => word.length > 3 && !fillerWords.has(word));
-}
-
-function visualQueries(story: StoryRecord, text: string, intent: VisualIntent) {
-  const detail = keywords(text).slice(0, 5).join(" ");
-  const intentTerms: Record<VisualIntent, string> = {
-    ARCHIVAL_PHOTO: "historical archive",
-    PORTRAIT: "portrait",
-    LOCATION: `${story.region} location`,
-    MAP: `${story.region} route map`,
-    NEWSPAPER: "newspaper archive",
-    DOCUMENT: "official document archive",
-    TIMELINE: `${story.year} historical event`,
-    THEORY_CARD: "evidence",
-    FACT_CARD: "documentary",
-    EVIDENCE: "search operation evidence",
-    ENDING: `${story.region} wide view`,
-  };
-  const specific = story.id === "mh370" ? mh370Queries(text, intent) : [];
-  const seeded = story.visualSearchTerms.slice(0, 2);
-  return [...specific, ...seeded, `${story.title} ${detail}`, `${story.title} ${intentTerms[intent]}`, `${story.region} ${story.year} ${detail}`]
-    .map((query) => query.replace(/\s+/g, " ").trim())
-    .filter((query, index, all) => Boolean(query) && all.indexOf(query) === index)
-    .slice(0, 4);
-}
-
-function mh370Queries(text: string, intent: VisualIntent) {
-  const lower = text.toLowerCase();
-  if (/berlepas|kuala lumpur|beijing/.test(lower)) return ["MH370 Kuala Lumpur departure Malaysia Airlines 2014", "Malaysia Airlines Boeing 777 airport 2014"];
-  if (/radar|berpatah balik/.test(lower)) return ["MH370 flight path Malaysia map", "MH370 turn back route Malay Peninsula"];
-  if (/satelit|lautan hindi/.test(lower)) return ["MH370 satellite arc Indian Ocean map", "Indian Ocean MH370 search area"];
-  if (/serpihan/.test(lower)) return ["MH370 debris Réunion flaperon", "MH370 aircraft debris investigation"];
-  if (intent === "ENDING") return ["Indian Ocean aircraft search", "MH370 search area map Indian Ocean"];
-  return ["MH370 search operation Indian Ocean", "Malaysia Airlines search aircraft 2014"];
-}
 
 function makeProgrammatic(story: StoryRecord, segmentIndex: number, intent: VisualIntent, query: string, backdrop?: Visual): Visual {
   const kind = programmaticIntents[intent] ?? "FACT_CARD";
@@ -80,8 +42,8 @@ function makeProgrammatic(story: StoryRecord, segmentIndex: number, intent: Visu
 
 function scoreCandidate(candidate: Visual, query: string, story: StoryRecord, used: Set<string>) {
   const haystack = `${candidate.title} ${candidate.description}`.toLowerCase();
-  const queryTerms = keywords(query);
-  const topicTerms = keywords(`${story.title} ${story.region}`);
+  const queryTerms = visualKeywords(query);
+  const topicTerms = visualKeywords(`${story.title} ${story.region}`);
   const queryMatch = queryTerms.length ? queryTerms.filter((word) => haystack.includes(word)).length / queryTerms.length : 0;
   const topicMatch = topicTerms.length ? topicTerms.filter((word) => haystack.includes(word)).length / topicTerms.length : 0;
   const resolution = Math.min(1, Math.sqrt(candidate.width * candidate.height) / 1600);
@@ -108,7 +70,7 @@ export async function planStoryVisuals(story: StoryRecord, script: MysteryScript
   let lastPhoto: Visual | undefined;
 
   for (const [segmentIndex, segment] of script.segments.entries()) {
-    const queries = visualQueries(story, segment.text, segment.visualIntent);
+    const queries = buildVisualQueries(story, segment.text, segment.visualIntent);
     segment.visualSearchQueries = queries;
     const query = queries[0];
     if (programmaticIntents[segment.visualIntent]) {

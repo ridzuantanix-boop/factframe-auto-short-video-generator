@@ -1,0 +1,37 @@
+[
+  {
+    "id": "Q1058",
+    "name": "Anwar Ibrahim",
+    "description": "Perdana Menteri Malaysia dan ahli politik Malaysia",
+    "entityType": "person",
+    "facts": [
+      { "label": "Gambaran ringkas", "sentence": "Anwar Ibrahim ialah Perdana Menteri Malaysia dan ahli politik Malaysia.", "sourceUrl": "https://www.wikidata.org/wiki/Q1058" },
+      { "label": "Dilahirkan pada 1947", "sentence": "Anwar Ibrahim dilahirkan pada tahun 1947 di Bukit Mertajam.", "sourceUrl": "https://www.wikidata.org/wiki/Q1058" },
+      { "label": "Krisis 1998", "sentence": "Pada 1998, beliau disingkirkan daripada kerajaan dan gerakan Reformasi muncul selepas itu.", "sourceUrl": "https://ms.wikipedia.org/wiki/Anwar_Ibrahim" },
+      { "label": "Pengampunan 2018", "sentence": "Beliau menerima pengampunan diraja dan dibebaskan pada 2018.", "sourceUrl": "https://ms.wikipedia.org/wiki/Anwar_Ibrahim" },
+      { "label": "Perdana Menteri 2022", "sentence": "Pada 2022, beliau dilantik sebagai Perdana Menteri Malaysia.", "sourceUrl": "https://ms.wikipedia.org/wiki/Anwar_Ibrahim" }
+    ],
+    "narration": "Fixture audit; aplikasi sebenar membina narasi daripada respons sumber semasa.",
+    "wikipediaUrl": "https://ms.wikipedia.org/wiki/Anwar_Ibrahim",
+    "lastVerifiedAt": "2026-09-03",
+    "currentAware": true,
+    "contentMode": "STORY"
+  },
+  {
+    "id": "Q9036",
+    "name": "Nikola Tesla",
+    "description": "pencipta dan jurutera elektrik Serbia-Amerika",
+    "entityType": "person",
+    "facts": [
+      { "label": "Gambaran ringkas", "sentence": "Nikola Tesla ialah pencipta dan jurutera elektrik Serbia-Amerika.", "sourceUrl": "https://www.wikidata.org/wiki/Q9036" },
+      { "label": "Dilahirkan pada 1856", "sentence": "Nikola Tesla dilahirkan pada tahun 1856 di Smiljan.", "sourceUrl": "https://www.wikidata.org/wiki/Q9036" },
+      { "label": "Arus ulang-alik", "sentence": "Kerjanya membantu membangunkan sistem bekalan elektrik arus ulang-alik moden.", "sourceUrl": "https://en.wikipedia.org/wiki/Nikola_Tesla" },
+      { "label": "Meninggal dunia pada 1943", "sentence": "Tesla meninggal dunia di New York pada tahun 1943.", "sourceUrl": "https://www.wikidata.org/wiki/Q9036" }
+    ],
+    "narration": "Fixture audit; aplikasi sebenar membina narasi daripada respons sumber.",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Nikola_Tesla",
+    "lastVerifiedAt": "2026-09-03",
+    "currentAware": false,
+    "contentMode": "STORY"
+  }
+]

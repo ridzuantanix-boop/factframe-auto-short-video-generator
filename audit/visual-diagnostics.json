@@ -1,0 +1,534 @@
+{
+  "generatedAt": "2026-09-04T05:05:40.487Z",
+  "limitation": "Candidate counts and concrete Commons files depend on the live API and are deliberately not frozen. This export exposes the exact segment queries and deterministic programmatic decisions.",
+  "samples": [
+    {
+      "storyId": "mh370",
+      "title": "Kehilangan MH370",
+      "segments": [
+        {
+          "segmentIndex": 0,
+          "narration": "Sebuah pesawat dengan 239 orang hilang selepas lenyap daripada radar awam.",
+          "visualIntent": "MAP",
+          "searchQueries": [
+            "MH370 flight path Malaysia map",
+            "MH370 turn back route Malay Peninsula",
+            "Malaysia Airlines Boeing 777",
+            "MH370 search map"
+          ],
+          "candidateMediaCount": null,
+          "selectedMedia": "FactFrame MAP scene",
+          "mediaType": "programmatic",
+          "source": "FactFrame",
+          "license": "generated on device",
+          "duplicateRejectionReason": "same source URL or media ID receives a 0.65 score penalty",
+          "fallbackUsed": true
+        },
+        {
+          "segmentIndex": 1,
+          "narration": "Jadi, ke mana semua petunjuk ini sebenarnya membawa?",
+          "visualIntent": "FACT_CARD",
+          "searchQueries": [
+            "MH370 search operation Indian Ocean",
+            "Malaysia Airlines search aircraft 2014",
+            "Malaysia Airlines Boeing 777",
+            "MH370 search map"
+          ],
+          "candidateMediaCount": null,
+          "selectedMedia": "FactFrame FACT_CARD scene",
+          "mediaType": "programmatic",
+          "source": "FactFrame",
+          "license": "generated on device",
+          "duplicateRejectionReason": "same source URL or media ID receives a 0.65 score penalty",
+          "fallbackUsed": true
+        },
+        {
+          "segmentIndex": 2,
+          "narration": "MH370 berlepas dari Kuala Lumpur ke Beijing pada 8 Mac 2014.",
+          "visualIntent": "TIMELINE",
+          "searchQueries": [
+            "MH370 Kuala Lumpur departure Malaysia Airlines 2014",
+            "Malaysia Airlines Boeing 777 airport 2014",
+            "Malaysia Airlines Boeing 777",
+            "MH370 search map"
+          ],
+          "candidateMediaCount": null,
+          "selectedMedia": "FactFrame TIMELINE scene",
+          "mediaType": "programmatic",
+          "source": "FactFrame",
+          "license": "generated on device",
+          "duplicateRejectionReason": "same source URL or media ID receives a 0.65 score penalty",
+          "fallbackUsed": true
+        },
+        {
+          "segmentIndex": 3,
+          "narration": "Radar tentera menunjukkan pesawat itu berpatah balik merentasi Semenanjung.",
+          "visualIntent": "MAP",
+          "searchQueries": [
+            "MH370 flight path Malaysia map",
+            "MH370 turn back route Malay Peninsula",
+            "Malaysia Airlines Boeing 777",
+            "MH370 search map"
+          ],
+          "candidateMediaCount": null,
+          "selectedMedia": "FactFrame MAP scene",
+          "mediaType": "programmatic",
+          "source": "FactFrame",
+          "license": "generated on device",
+          "duplicateRejectionReason": "same source URL or media ID receives a 0.65 score penalty",
+          "fallbackUsed": true
+        },
+        {
+          "segmentIndex": 4,
+          "narration": "Data satelit kemudian mengalihkan pencarian ke selatan Lautan Hindi.",
+          "visualIntent": "EVIDENCE",
+          "searchQueries": [
+            "MH370 satellite arc Indian Ocean map",
+            "Indian Ocean MH370 search area",
+            "Malaysia Airlines Boeing 777",
+            "MH370 search map"
+          ],
+          "candidateMediaCount": null,
+          "selectedMedia": "FactFrame EVIDENCE scene",
+          "mediaType": "programmatic",
+          "source": "FactFrame",
+          "license": "generated on device",
+          "duplicateRejectionReason": "same source URL or media ID receives a 0.65 score penalty",
+          "fallbackUsed": true
+        },
+        {
+          "segmentIndex": 5,
+          "narration": "Serpihan yang disahkan milik MH370 ditemui jauh dari kawasan carian utama.",
+          "visualIntent": "ARCHIVAL_PHOTO",
+          "searchQueries": [
+            "MH370 debris Réunion flaperon",
+            "MH370 aircraft debris investigation",
+            "Malaysia Airlines Boeing 777",
+            "MH370 search map"
+          ],
+          "candidateMediaCount": null,
+          "selectedMedia": "selected live by /api/media",
+          "mediaType": "image/video",
+          "source": "Wikimedia Commons",
+          "license": "retained from Commons metadata",
+          "duplicateRejectionReason": "same source URL or media ID receives a 0.65 score penalty",
+          "fallbackUsed": false
+        },
+        {
+          "segmentIndex": 6,
+          "narration": "Bangkai utama dan punca tepat kehilangan masih belum dikenal pasti.",
+          "visualIntent": "ENDING",
+          "searchQueries": [
+            "Indian Ocean aircraft search",
+            "MH370 search area map Indian Ocean",
+            "Malaysia Airlines Boeing 777",
+            "MH370 search map"
+          ],
+          "candidateMediaCount": null,
+          "selectedMedia": "selected live by /api/media",
+          "mediaType": "image/video",
+          "source": "Wikimedia Commons",
+          "license": "retained from Commons metadata",
+          "duplicateRejectionReason": "same source URL or media ID receives a 0.65 score penalty",
+          "fallbackUsed": false
+        }
+      ]
+    },
+    {
+      "storyId": "highland-towers",
+      "title": "Apa Punca Highland Towers Runtuh?",
+      "segments": [
+        {
+          "segmentIndex": 0,
+          "narration": "Pada 11 Disember 1993, Blok 1 Highland Towers runtuh dan mengorbankan 48 nyawa.",
+          "visualIntent": "ARCHIVAL_PHOTO",
+          "searchQueries": [
+            "Highland Towers collapse Malaysia",
+            "Highland Towers Ulu Klang",
+            "Apa Punca Highland Towers Runtuh? disember 1993 blok highland towers",
+            "Apa Punca Highland Towers Runtuh? historical archive"
+          ],
+          "candidateMediaCount": null,
+          "selectedMedia": "selected live by /api/media",
+          "mediaType": "image/video",
+          "source": "Wikimedia Commons",
+          "license": "retained from Commons metadata",
+          "duplicateRejectionReason": "same source URL or media ID receives a 0.65 score penalty",
+          "fallbackUsed": false
+        },
+        {
+          "segmentIndex": 1,
+          "narration": "Jadi, apa yang benar-benar berlaku—dan apa yang cuma legenda?",
+          "visualIntent": "FACT_CARD",
+          "searchQueries": [
+            "Highland Towers collapse Malaysia",
+            "Highland Towers Ulu Klang",
+            "Apa Punca Highland Towers Runtuh? jadi benar-benar berlaku cuma legenda",
+            "Apa Punca Highland Towers Runtuh? documentary"
+          ],
+          "candidateMediaCount": null,
+          "selectedMedia": "FactFrame FACT_CARD scene",
+          "mediaType": "programmatic",
+          "source": "FactFrame",
+          "license": "generated on device",
+          "duplicateRejectionReason": "same source URL or media ID receives a 0.65 score penalty",
+          "fallbackUsed": true
+        },
+        {
+          "segmentIndex": 2,
+          "narration": "Siasatan teknikal mengenal pasti siri tanah runtuh di belakang Blok 1 sebagai punca paling berkemungkinan.",
+          "visualIntent": "MAP",
+          "searchQueries": [
+            "Highland Towers collapse Malaysia",
+            "Highland Towers Ulu Klang",
+            "Apa Punca Highland Towers Runtuh? siasatan teknikal mengenal pasti siri",
+            "Apa Punca Highland Towers Runtuh? Ulu Klang, Selangor route map"
+          ],
+          "candidateMediaCount": null,
+          "selectedMedia": "FactFrame MAP scene",
+          "mediaType": "programmatic",
+          "source": "FactFrame",
+          "license": "generated on device",
+          "duplicateRejectionReason": "same source URL or media ID receives a 0.65 score penalty",
+          "fallbackUsed": true
+        },
+        {
+          "segmentIndex": 3,
+          "narration": "Pergerakan tanah itu menggugat asas cerucuk yang tidak direka untuk menahan beban sisi.",
+          "visualIntent": "EVIDENCE",
+          "searchQueries": [
+            "Highland Towers collapse Malaysia",
+            "Highland Towers Ulu Klang",
+            "Apa Punca Highland Towers Runtuh? pergerakan tanah menggugat asas cerucuk",
+            "Apa Punca Highland Towers Runtuh? search operation evidence"
+          ],
+          "candidateMediaCount": null,
+          "selectedMedia": "FactFrame EVIDENCE scene",
+          "mediaType": "programmatic",
+          "source": "FactFrame",
+          "license": "generated on device",
+          "duplicateRejectionReason": "same source URL or media ID receives a 0.65 score penalty",
+          "fallbackUsed": true
+        },
+        {
+          "segmentIndex": 4,
+          "narration": "Saliran yang tidak mencukupi serta penyelenggaraan lemah meningkatkan aliran dan resapan air ke cerun.",
+          "visualIntent": "DOCUMENT",
+          "searchQueries": [
+            "Highland Towers collapse Malaysia",
+            "Highland Towers Ulu Klang",
+            "Apa Punca Highland Towers Runtuh? saliran mencukupi serta penyelenggaraan lemah",
+            "Apa Punca Highland Towers Runtuh? official document archive"
+          ],
+          "candidateMediaCount": null,
+          "selectedMedia": "FactFrame DOCUMENT scene",
+          "mediaType": "programmatic",
+          "source": "FactFrame",
+          "license": "generated on device",
+          "duplicateRejectionReason": "same source URL or media ID receives a 0.65 score penalty",
+          "fallbackUsed": true
+        },
+        {
+          "segmentIndex": 5,
+          "narration": "Di tengah tragedi itu, tiga mangsa berjaya diselamatkan hidup-hidup pada hari pertama.",
+          "visualIntent": "TIMELINE",
+          "searchQueries": [
+            "Highland Towers collapse Malaysia",
+            "Highland Towers Ulu Klang",
+            "Apa Punca Highland Towers Runtuh? tengah tragedi tiga mangsa berjaya",
+            "Apa Punca Highland Towers Runtuh? 1993 historical event"
+          ],
+          "candidateMediaCount": null,
+          "selectedMedia": "FactFrame TIMELINE scene",
+          "mediaType": "programmatic",
+          "source": "FactFrame",
+          "license": "generated on device",
+          "duplicateRejectionReason": "same source URL or media ID receives a 0.65 score penalty",
+          "fallbackUsed": true
+        },
+        {
+          "segmentIndex": 6,
+          "narration": "Penyelidikan kemudian menunjukkan: highland Towers bukan misteri ghaib—ia amaran tentang bagaimana beberapa kegagalan boleh bergabung menjadi bencana.",
+          "visualIntent": "ENDING",
+          "searchQueries": [
+            "Highland Towers collapse Malaysia",
+            "Highland Towers Ulu Klang",
+            "Apa Punca Highland Towers Runtuh? penyelidikan kemudian menunjukkan highland towers",
+            "Apa Punca Highland Towers Runtuh? Ulu Klang, Selangor wide view"
+          ],
+          "candidateMediaCount": null,
+          "selectedMedia": "selected live by /api/media",
+          "mediaType": "image/video",
+          "source": "Wikimedia Commons",
+          "license": "retained from Commons metadata",
+          "duplicateRejectionReason": "same source URL or media ID receives a 0.65 score penalty",
+          "fallbackUsed": false
+        }
+      ]
+    },
+    {
+      "storyId": "villa-nabila",
+      "title": "Legenda Villa Nabila",
+      "segments": [
+        {
+          "segmentIndex": 0,
+          "narration": "Di sebuah bukit berhampiran Danga Bay berdiri banglo terbiar yang dikenali sebagai Villa Nabila.",
+          "visualIntent": "LOCATION",
+          "searchQueries": [
+            "Danga Bay Johor Bahru",
+            "Johor Bahru night skyline",
+            "Legenda Villa Nabila bukit berhampiran danga berdiri banglo",
+            "Legenda Villa Nabila Johor Bahru, Johor location"
+          ],
+          "candidateMediaCount": null,
+          "selectedMedia": "selected live by /api/media",
+          "mediaType": "image/video",
+          "source": "Wikimedia Commons",
+          "license": "retained from Commons metadata",
+          "duplicateRejectionReason": "same source URL or media ID receives a 0.65 score penalty",
+          "fallbackUsed": false
+        },
+        {
+          "segmentIndex": 1,
+          "narration": "Jadi, ke mana semua petunjuk ini sebenarnya membawa?",
+          "visualIntent": "FACT_CARD",
+          "searchQueries": [
+            "Danga Bay Johor Bahru",
+            "Johor Bahru night skyline",
+            "Legenda Villa Nabila jadi mana semua petunjuk sebenarnya",
+            "Legenda Villa Nabila documentary"
+          ],
+          "candidateMediaCount": null,
+          "selectedMedia": "FactFrame FACT_CARD scene",
+          "mediaType": "programmatic",
+          "source": "FactFrame",
+          "license": "generated on device",
+          "duplicateRejectionReason": "same source URL or media ID receives a 0.65 score penalty",
+          "fallbackUsed": true
+        },
+        {
+          "segmentIndex": 2,
+          "narration": "Menurut cerita rakyat, pelbagai cerita tentang kematian dan gangguan paranormal tersebar dari mulut ke mulut, tetapi asal-usulnya tidak dapat disahkan.",
+          "visualIntent": "THEORY_CARD",
+          "searchQueries": [
+            "Danga Bay Johor Bahru",
+            "Johor Bahru night skyline",
+            "Legenda Villa Nabila menurut cerita rakyat pelbagai cerita",
+            "Legenda Villa Nabila evidence"
+          ],
+          "candidateMediaCount": null,
+          "selectedMedia": "FactFrame THEORY_CARD scene",
+          "mediaType": "programmatic",
+          "source": "FactFrame",
+          "license": "generated on device",
+          "duplicateRejectionReason": "same source URL or media ID receives a 0.65 score penalty",
+          "fallbackUsed": true
+        },
+        {
+          "segmentIndex": 3,
+          "narration": "Menurut laporan ketika itu, pada 2013, media sosial mendakwa sekumpulan besar remaja hilang selepas memasuki vila itu.",
+          "visualIntent": "NEWSPAPER",
+          "searchQueries": [
+            "Danga Bay Johor Bahru",
+            "Johor Bahru night skyline",
+            "Legenda Villa Nabila menurut laporan ketika 2013 media",
+            "Legenda Villa Nabila newspaper archive"
+          ],
+          "candidateMediaCount": null,
+          "selectedMedia": "FactFrame NEWSPAPER scene",
+          "mediaType": "programmatic",
+          "source": "FactFrame",
+          "license": "generated on device",
+          "duplicateRejectionReason": "same source URL or media ID receives a 0.65 score penalty",
+          "fallbackUsed": true
+        },
+        {
+          "segmentIndex": 4,
+          "narration": "Polis Johor menafikan kehilangan beramai-ramai dan berkata hanya satu laporan orang hilang diterima.",
+          "visualIntent": "DOCUMENT",
+          "searchQueries": [
+            "Danga Bay Johor Bahru",
+            "Johor Bahru night skyline",
+            "Legenda Villa Nabila polis johor menafikan kehilangan beramai-ramai",
+            "Legenda Villa Nabila official document archive"
+          ],
+          "candidateMediaCount": null,
+          "selectedMedia": "FactFrame DOCUMENT scene",
+          "mediaType": "programmatic",
+          "source": "FactFrame",
+          "license": "generated on device",
+          "duplicateRejectionReason": "same source URL or media ID receives a 0.65 score penalty",
+          "fallbackUsed": true
+        },
+        {
+          "segmentIndex": 5,
+          "narration": "Penyelidikan kemudian menunjukkan: remaja berusia 16 tahun itu kemudian ditemui di rumah rakannya, bukan hilang di dalam Villa Nabila.",
+          "visualIntent": "TIMELINE",
+          "searchQueries": [
+            "Danga Bay Johor Bahru",
+            "Johor Bahru night skyline",
+            "Legenda Villa Nabila penyelidikan kemudian menunjukkan remaja berusia",
+            "Legenda Villa Nabila 2013 historical event"
+          ],
+          "candidateMediaCount": null,
+          "selectedMedia": "FactFrame TIMELINE scene",
+          "mediaType": "programmatic",
+          "source": "FactFrame",
+          "license": "generated on device",
+          "duplicateRejectionReason": "same source URL or media ID receives a 0.65 score penalty",
+          "fallbackUsed": true
+        },
+        {
+          "segmentIndex": 6,
+          "narration": "Apa yang kekal misteri ialah asal sebenar legenda itu—bukan bukti bahawa dakwaan paranormal tersebut benar.",
+          "visualIntent": "ENDING",
+          "searchQueries": [
+            "Danga Bay Johor Bahru",
+            "Johor Bahru night skyline",
+            "Legenda Villa Nabila kekal misteri ialah asal sebenar",
+            "Legenda Villa Nabila Johor Bahru, Johor wide view"
+          ],
+          "candidateMediaCount": null,
+          "selectedMedia": "selected live by /api/media",
+          "mediaType": "image/video",
+          "source": "Wikimedia Commons",
+          "license": "retained from Commons metadata",
+          "duplicateRejectionReason": "same source URL or media ID receives a 0.65 score penalty",
+          "fallbackUsed": false
+        }
+      ]
+    },
+    {
+      "storyId": "dyatlov-pass",
+      "title": "Insiden Dyatlov Pass",
+      "segments": [
+        {
+          "segmentIndex": 0,
+          "narration": "Khemah mereka ditemui terkoyak dari bahagian dalam.",
+          "visualIntent": "EVIDENCE",
+          "searchQueries": [
+            "Dyatlov Pass group",
+            "Dyatlov Pass tent",
+            "Insiden Dyatlov Pass khemah mereka ditemui terkoyak bahagian",
+            "Insiden Dyatlov Pass search operation evidence"
+          ],
+          "candidateMediaCount": null,
+          "selectedMedia": "FactFrame EVIDENCE scene",
+          "mediaType": "programmatic",
+          "source": "FactFrame",
+          "license": "generated on device",
+          "duplicateRejectionReason": "same source URL or media ID receives a 0.65 score penalty",
+          "fallbackUsed": true
+        },
+        {
+          "segmentIndex": 1,
+          "narration": "Jadi, apa yang benar-benar berlaku—dan apa yang cuma legenda?",
+          "visualIntent": "FACT_CARD",
+          "searchQueries": [
+            "Dyatlov Pass group",
+            "Dyatlov Pass tent",
+            "Insiden Dyatlov Pass jadi benar-benar berlaku cuma legenda",
+            "Insiden Dyatlov Pass documentary"
+          ],
+          "candidateMediaCount": null,
+          "selectedMedia": "FactFrame FACT_CARD scene",
+          "mediaType": "programmatic",
+          "source": "FactFrame",
+          "license": "generated on device",
+          "duplicateRejectionReason": "same source URL or media ID receives a 0.65 score penalty",
+          "fallbackUsed": true
+        },
+        {
+          "segmentIndex": 2,
+          "narration": "Sembilan pendaki berpengalaman maut di Ural pada Februari 1959.",
+          "visualIntent": "MAP",
+          "searchQueries": [
+            "Dyatlov Pass group",
+            "Dyatlov Pass tent",
+            "Insiden Dyatlov Pass sembilan pendaki berpengalaman maut ural",
+            "Insiden Dyatlov Pass Pergunungan Ural route map"
+          ],
+          "candidateMediaCount": null,
+          "selectedMedia": "FactFrame MAP scene",
+          "mediaType": "programmatic",
+          "source": "FactFrame",
+          "license": "generated on device",
+          "duplicateRejectionReason": "same source URL or media ID receives a 0.65 score penalty",
+          "fallbackUsed": true
+        },
+        {
+          "segmentIndex": 3,
+          "narration": "Ada yang keluar tanpa pakaian dan kasut yang cukup.",
+          "visualIntent": "ARCHIVAL_PHOTO",
+          "searchQueries": [
+            "Dyatlov Pass group",
+            "Dyatlov Pass tent",
+            "Insiden Dyatlov Pass keluar tanpa pakaian kasut cukup",
+            "Insiden Dyatlov Pass historical archive"
+          ],
+          "candidateMediaCount": null,
+          "selectedMedia": "selected live by /api/media",
+          "mediaType": "image/video",
+          "source": "Wikimedia Commons",
+          "license": "retained from Commons metadata",
+          "duplicateRejectionReason": "same source URL or media ID receives a 0.65 score penalty",
+          "fallbackUsed": false
+        },
+        {
+          "segmentIndex": 4,
+          "narration": "Beberapa mayat pula mengalami kecederaan dalaman yang serius.",
+          "visualIntent": "FACT_CARD",
+          "searchQueries": [
+            "Dyatlov Pass group",
+            "Dyatlov Pass tent",
+            "Insiden Dyatlov Pass beberapa mayat pula mengalami kecederaan",
+            "Insiden Dyatlov Pass documentary"
+          ],
+          "candidateMediaCount": null,
+          "selectedMedia": "FactFrame FACT_CARD scene",
+          "mediaType": "programmatic",
+          "source": "FactFrame",
+          "license": "generated on device",
+          "duplicateRejectionReason": "same source URL or media ID receives a 0.65 score penalty",
+          "fallbackUsed": true
+        },
+        {
+          "segmentIndex": 5,
+          "narration": "Penyelidikan kemudian menunjukkan: kajian pada 2021 menunjukkan runtuhan salji kepingan memang boleh berlaku.",
+          "visualIntent": "THEORY_CARD",
+          "searchQueries": [
+            "Dyatlov Pass group",
+            "Dyatlov Pass tent",
+            "Insiden Dyatlov Pass penyelidikan kemudian menunjukkan kajian 2021",
+            "Insiden Dyatlov Pass evidence"
+          ],
+          "candidateMediaCount": null,
+          "selectedMedia": "FactFrame THEORY_CARD scene",
+          "mediaType": "programmatic",
+          "source": "FactFrame",
+          "license": "generated on device",
+          "duplicateRejectionReason": "same source URL or media ID receives a 0.65 score penalty",
+          "fallbackUsed": true
+        },
+        {
+          "segmentIndex": 6,
+          "narration": "Tapi model itu tidak menjelaskan setiap tindakan mereka malam itu.",
+          "visualIntent": "ENDING",
+          "searchQueries": [
+            "Dyatlov Pass group",
+            "Dyatlov Pass tent",
+            "Insiden Dyatlov Pass tapi model menjelaskan setiap tindakan",
+            "Insiden Dyatlov Pass Pergunungan Ural wide view"
+          ],
+          "candidateMediaCount": null,
+          "selectedMedia": "selected live by /api/media",
+          "mediaType": "image/video",
+          "source": "Wikimedia Commons",
+          "license": "retained from Commons metadata",
+          "duplicateRejectionReason": "same source URL or media ID receives a 0.65 score penalty",
+          "fallbackUsed": false
+        }
+      ]
+    }
+  ]
+}

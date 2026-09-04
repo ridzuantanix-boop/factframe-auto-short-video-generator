@@ -1,3 +1,4 @@
 export async function GET() {
-  return Response.json({ configured: Boolean(process.env.GEMINI_API_KEY) });
+  const demoMode = process.env.DEMO_MODE === "true";
+  return Response.json({ configured: Boolean(process.env.GEMINI_API_KEY) && !demoMode, demoMode, mode: demoMode ? "demo-local" : process.env.GEMINI_API_KEY ? "gemini" : "local" });
 }

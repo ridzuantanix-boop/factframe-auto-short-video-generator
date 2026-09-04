@@ -1,0 +1,289 @@
+{
+  "generatedAt": "2026-09-04T05:05:40.069Z",
+  "mode": "static and seeded diagnostics; live candidates are request-time and not persisted",
+  "discoveryProviders": [
+    "Wikidata",
+    "Wikipedia"
+  ],
+  "queryCount": 64,
+  "queries": [
+    {
+      "category": "interesting",
+      "query": "notable historical event"
+    },
+    {
+      "category": "interesting",
+      "query": "famous invention"
+    },
+    {
+      "category": "interesting",
+      "query": "remarkable person"
+    },
+    {
+      "category": "interesting",
+      "query": "world heritage"
+    },
+    {
+      "category": "people",
+      "query": "Malaysian politician"
+    },
+    {
+      "category": "people",
+      "query": "scientist"
+    },
+    {
+      "category": "people",
+      "query": "artist"
+    },
+    {
+      "category": "people",
+      "query": "entrepreneur"
+    },
+    {
+      "category": "history",
+      "query": "historical event"
+    },
+    {
+      "category": "history",
+      "query": "ancient civilization"
+    },
+    {
+      "category": "history",
+      "query": "battle"
+    },
+    {
+      "category": "history",
+      "query": "independence"
+    },
+    {
+      "category": "malaysia",
+      "query": "Malaysia"
+    },
+    {
+      "category": "malaysia",
+      "query": "Malaysian history"
+    },
+    {
+      "category": "malaysia",
+      "query": "Malaysian culture"
+    },
+    {
+      "category": "malaysia",
+      "query": "Malaysian people"
+    },
+    {
+      "category": "world",
+      "query": "world history"
+    },
+    {
+      "category": "world",
+      "query": "international organization"
+    },
+    {
+      "category": "world",
+      "query": "country"
+    },
+    {
+      "category": "world",
+      "query": "global event"
+    },
+    {
+      "category": "business",
+      "query": "technology company"
+    },
+    {
+      "category": "business",
+      "query": "consumer brand"
+    },
+    {
+      "category": "business",
+      "query": "automobile company"
+    },
+    {
+      "category": "business",
+      "query": "entrepreneur"
+    },
+    {
+      "category": "science",
+      "query": "scientific discovery"
+    },
+    {
+      "category": "science",
+      "query": "technology"
+    },
+    {
+      "category": "science",
+      "query": "space exploration"
+    },
+    {
+      "category": "science",
+      "query": "inventor"
+    },
+    {
+      "category": "entertainment",
+      "query": "film actor"
+    },
+    {
+      "category": "entertainment",
+      "query": "musician"
+    },
+    {
+      "category": "entertainment",
+      "query": "film director"
+    },
+    {
+      "category": "entertainment",
+      "query": "television series"
+    },
+    {
+      "category": "sports",
+      "query": "athlete"
+    },
+    {
+      "category": "sports",
+      "query": "football club"
+    },
+    {
+      "category": "sports",
+      "query": "Olympic Games"
+    },
+    {
+      "category": "sports",
+      "query": "sport competition"
+    },
+    {
+      "category": "places",
+      "query": "city"
+    },
+    {
+      "category": "places",
+      "query": "landmark"
+    },
+    {
+      "category": "places",
+      "query": "world heritage site"
+    },
+    {
+      "category": "places",
+      "query": "island"
+    },
+    {
+      "category": "current",
+      "query": "current head of government"
+    },
+    {
+      "category": "current",
+      "query": "technology company"
+    },
+    {
+      "category": "current",
+      "query": "international organization"
+    },
+    {
+      "category": "current",
+      "query": "living person"
+    },
+    {
+      "category": "events",
+      "query": "aviation accident"
+    },
+    {
+      "category": "events",
+      "query": "natural disaster"
+    },
+    {
+      "category": "events",
+      "query": "political event"
+    },
+    {
+      "category": "events",
+      "query": "expedition"
+    },
+    {
+      "category": "mysteries",
+      "query": "unsolved mystery"
+    },
+    {
+      "category": "mysteries",
+      "query": "disappearance"
+    },
+    {
+      "category": "mysteries",
+      "query": "historical disaster"
+    },
+    {
+      "category": "mysteries",
+      "query": "urban legend"
+    },
+    {
+      "category": "malaysia_mysteries",
+      "query": "Highland Towers collapse"
+    },
+    {
+      "category": "malaysia_mysteries",
+      "query": "Malaysia disaster"
+    },
+    {
+      "category": "malaysia_mysteries",
+      "query": "Malaysia disappearance"
+    },
+    {
+      "category": "malaysia_mysteries",
+      "query": "Malayan legend"
+    },
+    {
+      "category": "malaysia_mysteries",
+      "query": "Mona Fandey"
+    },
+    {
+      "category": "malaysia_mysteries",
+      "query": "Kellie's Castle"
+    },
+    {
+      "category": "malaysia_mysteries",
+      "query": "Mimaland"
+    },
+    {
+      "category": "malaysia_mysteries",
+      "query": "Karak Highway"
+    },
+    {
+      "category": "malaysia_mysteries",
+      "query": "Malaysia unsolved murder"
+    },
+    {
+      "category": "malaysia_mysteries",
+      "query": "Malaysia aviation mystery"
+    },
+    {
+      "category": "malaysia_mysteries",
+      "query": "Malay ghost legend"
+    },
+    {
+      "category": "malaysia_mysteries",
+      "query": "Johor urban legend"
+    }
+  ],
+  "storedCandidateCount": 10,
+  "liveCandidateCount": null,
+  "rejectedCount": null,
+  "rejectionReasons": [
+    "list/category/disambiguation pages",
+    "fiction/film/album/book/game matches in mystery mode",
+    "missing usable facts",
+    "visual readiness gate below thresholds"
+  ],
+  "duplicateClusters": [],
+  "malaysiaMalayaStoredCount": 4,
+  "readyCount": 10,
+  "partialCount": 0,
+  "hiddenCount": 0,
+  "topRejectionCauses": "not measurable because rejected live candidates are not stored",
+  "sourceScoreDistribution": {
+    "0.9-1.0": 10
+  },
+  "visualScoreDistribution": {
+    "0.9-1.0": 6,
+    "0.8-0.9": 4
+  }
+}
