@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-04T14:13:55.466Z",
+  "generatedAt": "2026-09-04T15:20:31.698Z",
   "mode": "persistent PostgreSQL story index",
   "discoveryProviders": [
     "Wikidata",
@@ -378,12 +378,15 @@
     "visual readiness gate below thresholds"
   ],
   "duplicateClusters": [],
-  "malaysiaMalayaStoredCount": 630,
+  "malaysiaMalayaStoredCount": 542,
+  "confirmedMalaysiaCount": 431,
+  "probableMalaysiaCount": 111,
+  "unknownGeographyCount": 220,
   "discoveredCount": 987,
   "readyCount": 0,
   "partialCount": 0,
   "hiddenCount": 0,
-  "globalCount": 357,
+  "globalCount": 225,
   "countsByCategory": {
     "business": 7,
     "current": 18,

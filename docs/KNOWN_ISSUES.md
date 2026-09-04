@@ -1,6 +1,7 @@
 # Known issues and limitations
 
-- Indeks PostgreSQL telah dibina dan diuji secara lokal dengan 987 calon provider (630 Malaysia/Malaya), tetapi production belum mempunyai `DATABASE_URL`; deployment semasa masih menggunakan live fallback dan 10 seed. Migration dan ingestion production mesti selesai sebelum deploy.
+- Indeks PostgreSQL telah dibina dan diuji secara lokal dengan 987 calon provider; selepas reclassification, 431 Malaysia/Malaya disahkan, 111 probable dan 220 geografi masih UNKNOWN. Production belum mempunyai `DATABASE_URL`; deployment semasa masih menggunakan live fallback dan 10 seed.
+- Text-only geography remains LOW confidence until entity reclassification runs. 200 referenced graph entities failed to load during the controlled pass because of upstream limits; affected candidates fall back to explicit text or UNKNOWN instead of inheriting their query geography.
 - Dedupe durable hanya menggunakan Q-ID, canonical URL dan normalized title; advanced semantic clustering belum ada. Upstream timeout/rate limit masih mengehadkan sesetengah kategori, terutama mystery global.
 - Endpoint ingestion berjadual tersedia tetapi Vercel Cron belum diaktifkan sehingga DB production dan `CRON_SECRET` disediakan dengan selamat.
 - Mystery berkualiti tinggi kebanyakannya seed manual. Auto-mystery daripada entity live ialah struktur generik dan semua fakta diklasifikasi `VERIFIED` daripada reference data.

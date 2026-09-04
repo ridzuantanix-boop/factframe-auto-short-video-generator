@@ -1,11 +1,11 @@
-import postgres, { type Sql } from "postgres";
+import postgres, { type Sql, type TransactionSql } from "postgres";
 import type { StoryCandidate, StoryCandidateInput, StoryIndexStatus } from "../types";
 import { dedupeKey, mergeCandidates } from "./dedupe.ts";
 import { STORY_INDEX_SCHEMA } from "./schema.ts";
 
 type Row = Record<string, unknown>;
 export type CatalogQuery = { category?: string; country?: string; status?: StoryIndexStatus; search?: string; page?: number; limit?: number; sort?: "newest" | "oldest" | "title" | "research" };
-export type CatalogStats = { total: number; discovered: number; partial: number; ready: number; hidden: number; malaysiaMalaya: number; global: number; categories: Record<string, number> };
+export type CatalogStats = { total: number; discovered: number; partial: number; ready: number; hidden: number; malaysiaMalaya: number; confirmedMalaysia: number; probableMalaysia: number; unknownGeography: number; global: number; categories: Record<string, number> };
 
 function date(value: unknown) { return value instanceof Date ? value.toISOString() : String(value); }
 function nullableDate(value: unknown) { return value ? date(value) : null; }
@@ -43,7 +43,7 @@ export class StoryStore {
   async migrate() { await this.sql.unsafe(STORY_INDEX_SCHEMA); }
   async close() { await this.sql.end({ timeout: 5 }); }
 
-  async findByIdentity(candidate: Pick<StoryCandidateInput, "canonicalEntityId" | "canonicalUrl" | "normalizedTitle">, sql: Sql = this.sql) {
+  async findByIdentity(candidate: Pick<StoryCandidateInput, "canonicalEntityId" | "canonicalUrl" | "normalizedTitle">, sql: Sql | TransactionSql = this.sql) {
     const rows = await sql<Row[]>`
       SELECT * FROM story_candidates
       WHERE (${candidate.canonicalEntityId}::text IS NOT NULL AND canonical_entity_id = ${candidate.canonicalEntityId})
@@ -103,11 +103,28 @@ export class StoryStore {
     const [row] = await this.sql<Row[]>`SELECT count(*)::int AS total,
       count(*) FILTER (WHERE status='DISCOVERED')::int AS discovered, count(*) FILTER (WHERE status='PARTIAL')::int AS partial,
       count(*) FILTER (WHERE status='READY')::int AS ready, count(*) FILTER (WHERE status='HIDDEN')::int AS hidden,
-      count(*) FILTER (WHERE country='Malaysia' OR region ILIKE '%Malaya%')::int AS malaysia_malaya,
-      count(*) FILTER (WHERE NOT (country='Malaysia' OR region ILIKE '%Malaya%'))::int AS global FROM story_candidates`;
+      count(*) FILTER (WHERE country='Malaysia')::int AS malaysia_malaya,
+      count(*) FILTER (WHERE country='Malaysia' AND metadata->>'geographyConfidence' IN ('HIGH','MEDIUM'))::int AS confirmed_malaysia,
+      count(*) FILTER (WHERE country='Malaysia' AND metadata->>'geographyConfidence'='LOW')::int AS probable_malaysia,
+      count(*) FILTER (WHERE metadata->>'geographyConfidence'='UNKNOWN' OR country='Unknown')::int AS unknown_geography,
+      count(*) FILTER (WHERE country!='Malaysia' AND country!='Unknown' AND coalesce(metadata->>'geographyConfidence','UNKNOWN')!='UNKNOWN')::int AS global FROM story_candidates`;
     const categories = await this.sql<{ category: string; count: number }[]>`SELECT category, count(*)::int AS count FROM story_candidates GROUP BY category ORDER BY category`;
     return { total: Number(row.total), discovered: Number(row.discovered), partial: Number(row.partial), ready: Number(row.ready), hidden: Number(row.hidden),
-      malaysiaMalaya: Number(row.malaysia_malaya), global: Number(row.global), categories: Object.fromEntries(categories.map((item) => [item.category, Number(item.count)])) };
+      malaysiaMalaya: Number(row.malaysia_malaya), confirmedMalaysia: Number(row.confirmed_malaysia), probableMalaysia: Number(row.probable_malaysia),
+      unknownGeography: Number(row.unknown_geography), global: Number(row.global), categories: Object.fromEntries(categories.map((item) => [item.category, Number(item.count)])) };
+  }
+
+  async listAll() {
+    const rows = await this.sql<Row[]>`SELECT * FROM story_candidates ORDER BY id`;
+    return rows.map(fromRow);
+  }
+
+  async updateClassification(id: string, value: Pick<StoryCandidate, "country" | "region" | "storyType" | "metadata">) {
+    const rows = await this.sql<Row[]>`UPDATE story_candidates SET country=${value.country}, region=${value.region},
+      story_type=${value.storyType}, metadata=${this.sql.json(JSON.parse(JSON.stringify(value.metadata)))}, updated_at=now()
+      WHERE id=${id} RETURNING *`;
+    if (!rows[0]) throw new Error(`Story candidate not found: ${id}`);
+    return fromRow(rows[0]);
   }
 }
 

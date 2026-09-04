@@ -1,0 +1,95 @@
+{
+  "generatedAt": "2026-09-04T15:20:40.740Z",
+  "assertion": "A Malaysia discovery query is provenance only and cannot change entity geography.",
+  "passed": true,
+  "results": [
+    {
+      "id": "Q19837",
+      "name": "Steve Jobs",
+      "provenanceQuery": "Malaysia history",
+      "country": "United States",
+      "region": "United States",
+      "geographyConfidence": "HIGH",
+      "geographyEvidence": [
+        {
+          "type": "WIKIDATA_COUNTRY",
+          "value": "United States",
+          "entityId": "Q30",
+          "property": "P27"
+        }
+      ],
+      "storyType": "BIOGRAPHY",
+      "storyTypeEvidence": [
+        "WIKIDATA_INSTANCE_OF",
+        "ENTITY_TEXT"
+      ],
+      "mysteryPotential": "UNKNOWN"
+    },
+    {
+      "id": "Q243",
+      "name": "Eiffel Tower",
+      "provenanceQuery": "Malaysia history",
+      "country": "France",
+      "region": "France",
+      "geographyConfidence": "HIGH",
+      "geographyEvidence": [
+        {
+          "type": "WIKIDATA_COUNTRY",
+          "value": "France",
+          "entityId": "Q142",
+          "property": "P17"
+        }
+      ],
+      "storyType": "PLACE",
+      "storyTypeEvidence": [
+        "WIKIDATA_INSTANCE_OF",
+        "ENTITY_TEXT"
+      ],
+      "mysteryPotential": "UNKNOWN"
+    },
+    {
+      "id": "Q4349969",
+      "name": "Dyatlov Pass",
+      "provenanceQuery": "Malaysia history",
+      "country": "Russia",
+      "region": "Russia",
+      "geographyConfidence": "HIGH",
+      "geographyEvidence": [
+        {
+          "type": "WIKIDATA_COUNTRY",
+          "value": "Russia",
+          "entityId": "Q159",
+          "property": "P17"
+        }
+      ],
+      "storyType": "PLACE",
+      "storyTypeEvidence": [
+        "WIKIDATA_INSTANCE_OF",
+        "ENTITY_TEXT"
+      ],
+      "mysteryPotential": "UNKNOWN"
+    },
+    {
+      "id": "Q3355",
+      "name": "Amelia Earhart",
+      "provenanceQuery": "Malaysia history",
+      "country": "United States",
+      "region": "United States",
+      "geographyConfidence": "HIGH",
+      "geographyEvidence": [
+        {
+          "type": "WIKIDATA_COUNTRY",
+          "value": "United States",
+          "entityId": "Q30",
+          "property": "P27"
+        }
+      ],
+      "storyType": "BIOGRAPHY",
+      "storyTypeEvidence": [
+        "WIKIDATA_INSTANCE_OF",
+        "ENTITY_TEXT"
+      ],
+      "mysteryPotential": "UNKNOWN"
+    }
+  ]
+}

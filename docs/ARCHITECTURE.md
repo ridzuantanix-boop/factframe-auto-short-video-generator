@@ -48,4 +48,6 @@ Migration `migrations/001_story_index.sql` creates `story_candidates`, constrain
 
 `DISCOVERED` rows keep research/visual/narrative scores null. Topic hydration promotes using actual distinct source URLs and extracted fact counts: one source plus one claim is `PARTIAL`; at least two sources plus five claims is `READY`. `HIDDEN` is sticky and reserved for invalid/noisy/manual suppression.
 
+Discovery provenance and entity classification are separate. `originQuery`, `originProvider`, `metadata.categories` and `discoveredViaCategory` explain how a candidate was found; they never prove geography or story type. Geography classification prioritizes Wikidata P17/P27/P495, location hierarchy, coordinates, historical relationships, then explicit entity text. Evidence and `HIGH|MEDIUM|LOW|UNKNOWN` confidence are stored in metadata. `mysteryPotential` is preliminary and does not imply `storyType=MYSTERY` or readiness.
+
 The authenticated `/api/index` endpoint provides bounded scheduled ingestion, but no Vercel Cron declaration is enabled until production `DATABASE_URL`, migration, and `CRON_SECRET` are safely configured.

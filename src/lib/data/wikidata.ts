@@ -26,6 +26,16 @@ type Entity = {
   claims?: Record<string, Claim[]>;
 };
 
+export async function getEntities(ids: string[]): Promise<Record<string, Entity>> {
+  const unique = [...new Set(ids.filter((id) => /^Q\d+$/.test(id)))].slice(0, 50);
+  if (!unique.length) return {};
+  const params = new URLSearchParams({ action: "wbgetentities", ids: unique.join("|"), props: "labels|descriptions|claims|sitelinks", languages: "ms|en", languagefallback: "1", format: "json", origin: "*" });
+  const response = await wikidataFetch(`https://www.wikidata.org/w/api.php?${params}`, 86400);
+  if (!response.ok) throw new Error(`Wikidata entity batch failed (${response.status})`);
+  const data = await response.json();
+  return data.entities ?? {};
+}
+
 export async function searchEntities(query: string): Promise<SearchResult[]> {
   const params = new URLSearchParams({ q: query, language: "ms", limit: "8" });
   let response = await wikidataFetch(`${REST}/search/items?${params}`, 3600);

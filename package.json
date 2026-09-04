@@ -12,8 +12,10 @@
     "test": "node --test tests/*.test.mjs",
     "db:migrate": "node --env-file-if-exists=.env.local scripts/migrate-story-index.mjs",
     "index:stories": "node --env-file-if-exists=.env.local scripts/index-stories.mjs",
+    "reclassify:stories": "node --env-file-if-exists=.env.local scripts/reclassify-stories.mjs",
     "audit:project": "node --env-file-if-exists=.env.local scripts/audit-project.mjs",
     "audit:discovery": "node --env-file-if-exists=.env.local scripts/audit-discovery.mjs",
+    "audit:classification": "node --env-file-if-exists=.env.local scripts/audit-classification-controls.mjs",
     "audit:visuals": "node scripts/audit-visuals.mjs",
     "export:catalog": "node --env-file-if-exists=.env.local scripts/export-catalog.mjs",
     "export:audit-samples": "node scripts/export-audit-samples.mjs"
