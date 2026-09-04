@@ -8,6 +8,8 @@ The controlled Phase 2.1 reclassification snapshot on 2026-09-04 contains **987 
 
 The controlled Phase 3 archive run inspected 2,191 raw results and normalized 2,150 documents. Deterministic extraction produced 634 event records and 519 conservative clusters. After hiding 12 deterministic sport/low-information false positives, the durable local catalog contains 503 active archive-connected Malaysia/Malaya candidates, of which 502 are active additions relative to the 987-row Phase 2.1 baseline and one enriched an existing candidate. There are 76 candidates with at least two sources and 13 with at least three; the 20-candidate three-source target was not reached and is not padded.
 
+Phase 3.1 reprocessed all 515 archive-derived rows and 644 linked sources with date/location/text historical context and scored story-type evidence. It corrected 255 of 397 legacy `MODERN_MALAYSIA` classifications and changed 224 story types relative to the Phase 3 regex-first baseline. Confidence across the full archive set is 145 HIGH, 152 MEDIUM, and 218 LOW. A manual deterministic sample of 100 records measured 100% precision (65/65) among HIGH/MEDIUM results; all uncertain and incorrect LOW results are retained in the audit artifact.
+
 All 14 configured categories have persisted rows in the validation snapshot: interesting, people, history, malaysia, world, business, science, entertainment, sports, places, current, events, mysteries, and malaysia_mysteries. Upstream rate limits reduced some categories, but the index-first/live-fallback smoke test grew `mysteries` to 61 primary-category rows. `malaysia_mysteries` has 53, including the provider-backed Highland Towers collapse entity.
 
 ## Schema and dedupe
@@ -27,7 +29,9 @@ npm run db:migrate
 npm run index:stories -- --pages=1 --limit=15 --concurrency=2 --delay=350
 npm run reclassify:stories -- --delay=300
 npm run index:archives -- --pages=1 --limit=15 --delay=250
+npm run reclassify:archives
 npm run audit:archives
+npm run audit:archive-classification
 ```
 
 Archive flags are `--provider`, `--region`, `--query-group`, `--pages`, `--limit`, `--delay` and optional `--concurrency`. Provider results are normalized, deterministically inspected for dates/places/people/event verbs, then conservatively clustered by date proximity, normalized location/name and headline overlap. Query words are provenance only. No Gemini call occurs during mass discovery.
@@ -38,4 +42,4 @@ Archive flags are `--provider`, `--region`, `--query-group`, `--pages`, `--limit
 
 ## Auditing and scheduling
 
-`npm run audit:project`, `npm run audit:discovery`, `npm run audit:classification`, `npm run audit:archives`, and `npm run export:catalog` read actual database/evidence counts when `DATABASE_URL` is set. Provider failures are counted per provider and do not abort partial success. `/api/index` remains the Wikipedia/Wikidata scheduled endpoint; archive scheduling is intentionally not activated until production DB migration and secrets are confirmed.
+`npm run audit:project`, `npm run audit:discovery`, `npm run audit:classification`, `npm run audit:archives`, `npm run audit:archive-classification`, and `npm run export:catalog` read actual database/evidence counts when `DATABASE_URL` is set. Provider failures are counted per provider and do not abort partial success. `/api/index` remains the Wikipedia/Wikidata scheduled endpoint; archive scheduling is intentionally not activated until production DB migration and secrets are confirmed.

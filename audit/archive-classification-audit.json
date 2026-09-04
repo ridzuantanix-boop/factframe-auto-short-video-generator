@@ -1,0 +1,30 @@
+{
+  "generatedAt": "2026-09-04T16:35:25.949Z",
+  "archiveCandidatesProcessed": 515,
+  "archiveSourcesProcessed": 644,
+  "previouslyModernMalaysia": 397,
+  "historicalContextChanges": 255,
+  "historicalContextCounts": {
+    "SARAWAK": 9,
+    "PRE_MALAYSIA": 137,
+    "MALAYA": 63,
+    "FEDERATION_OF_MALAYA": 111,
+    "MODERN_MALAYSIA": 179,
+    "MALAYAN_UNION": 8,
+    "NORTH_BORNEO": 5,
+    "STRAITS_SETTLEMENTS": 3
+  },
+  "storyTypeChanges": 224,
+  "confidenceDistribution": {
+    "HIGH": 145,
+    "MEDIUM": 152,
+    "LOW": 218
+  },
+  "sampleSize": 100,
+  "reviewedRecords": 100,
+  "correct": 74,
+  "incorrect": 12,
+  "uncertain": 14,
+  "highMediumEvaluated": 65,
+  "highMediumPrecision": 1
+}

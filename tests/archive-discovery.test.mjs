@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { clusterArchiveEvents } from "../src/lib/archive/clustering.ts";
-import { extractArchiveEvent, normalizeHistoricalLocations } from "../src/lib/archive/extractor.ts";
+import { classifyArchiveStoryType, classifyHistoricalContext, extractArchiveEvent, normalizeHistoricalLocations } from "../src/lib/archive/extractor.ts";
 import { createNlbOneSearchProvider } from "../src/lib/archive/providers/nlbOneSearch.ts";
 
 const newspaper = createNlbOneSearchProvider("newspaper");
@@ -23,6 +23,25 @@ test("historical spelling variants normalize to modern Malaysia labels", () => {
   const values = normalizeHistoricalLocations("Kwala Lumpur, Johore, Trengganu, Negri Sembilan, Malacca and North Borneo");
   assert.deepEqual(values.map((item) => item.display), ["Kuala Lumpur", "Johor", "Terengganu", "Negeri Sembilan", "Melaka", "Sabah"]);
   assert.equal(values[0].original, "Kwala Lumpur");
+});
+
+test("historical context uses date and region instead of defaulting pre-1963 records to modern Malaysia", () => {
+  assert.notEqual(classifyHistoricalContext("Kuala Lumpur incident", ["Kuala Lumpur"], "1930-05-01T00:00:00.000Z").historicalContext, "MODERN_MALAYSIA");
+  assert.notEqual(classifyHistoricalContext("Perak incident", ["Perak"], "1940-05-01T00:00:00.000Z").historicalContext, "MODERN_MALAYSIA");
+  assert.equal(classifyHistoricalContext("Kuala Lumpur incident", ["Kuala Lumpur"], "1970-05-01T00:00:00.000Z").historicalContext, "MODERN_MALAYSIA");
+  assert.equal(classifyHistoricalContext("Sabah incident", ["Sabah"], "1960-05-01T00:00:00.000Z").historicalContext, "NORTH_BORNEO");
+  assert.equal(classifyHistoricalContext("Sarawak incident", ["Sarawak"], "1960-05-01T00:00:00.000Z").historicalContext, "SARAWAK");
+});
+
+test("headline-weighted story classification handles required integrity cases", () => {
+  assert.equal(classifyArchiveStoryType("Girl, 10 Missing", "Police began a search in Kuala Lumpur.").storyType, "DISAPPEARANCE");
+  assert.equal(classifyArchiveStoryType("Body Found in Perak River", "Police opened an inquest.").storyType, "MYSTERIOUS_DEATH");
+  assert.notEqual(classifyArchiveStoryType("Municipal commissioners adopt new crest", "The design briefly mentions a local legend.").storyType, "FOLKLORE");
+  assert.notEqual(classifyArchiveStoryType("Annual rifle shooting", "The Selangor club won the team match.").storyType, "CRIME_MYSTERY");
+  assert.notEqual(classifyArchiveStoryType("Money And Jewellery Missing", "The estate manager opened the safe in Kuala Lumpur.").storyType, "DISAPPEARANCE");
+  assert.notEqual(classifyArchiveStoryType("Newcomer in Dial M for Murder", "An actress takes the heroine role on the Ipoh stage.").storyType, "CRIME_MYSTERY");
+  assert.equal(classifyArchiveStoryType("Police find body in Perak River", "Police recovered an unidentified body.").storyType, "MYSTERIOUS_DEATH");
+  assert.equal(classifyArchiveStoryType("Bandits ambush river party", "Two officers were killed in Terengganu.").storyType, "CRIME_MYSTERY");
 });
 
 test("archive extraction uses document evidence, never its discovery query", () => {

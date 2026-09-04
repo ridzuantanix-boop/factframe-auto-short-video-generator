@@ -1,11 +1,17 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import postgres from "postgres";
 import { runArchiveIngestion } from "../src/lib/archive/indexer.ts";
 import { createStoryStore } from "../src/lib/discovery/store.ts";
 import { normalizeCandidate } from "../src/lib/discovery/normalizer.ts";
 
 const databaseUrl = process.env.TEST_DATABASE_URL;
 const integration = (name, fn) => test(name, { skip: databaseUrl ? false : "TEST_DATABASE_URL is not configured" }, fn);
+async function cleanupTestCandidate(provider, suffix) {
+  if (!databaseUrl) return; const sql = postgres(databaseUrl, { max: 1, prepare: false });
+  try { await sql`DELETE FROM story_candidates WHERE origin_provider=${provider} AND canonical_url LIKE ${`https://example.test/%/${suffix}`}`; }
+  finally { await sql.end({ timeout: 5 }); }
+}
 
 integration("story sources persist and duplicate provider URLs remain unique", async () => {
   const store = createStoryStore(databaseUrl); await store.migrate(); const suffix = `${Date.now()}-${Math.random()}`;
@@ -17,7 +23,7 @@ integration("story sources persist and duplicate provider URLs remain unique", a
       snippet: "A missing person was reported in Johor.", metadata: {}, reliabilityLevel: "ARCHIVAL_NEWSPAPER" };
     assert.equal((await store.upsertSource(source)).inserted, true); assert.equal((await store.upsertSource(source)).inserted, false);
     const refreshed = await store.refreshSourceMetrics(candidate.id); assert.equal(refreshed.sourceCount, 1); assert.equal(refreshed.status, "PARTIAL");
-  } finally { await store.close(); }
+  } finally { await store.close(); await cleanupTestCandidate("TEST_ARCHIVE", suffix); }
 });
 
 integration("one archive provider failure does not abort successful providers", async () => {
@@ -33,5 +39,5 @@ integration("one archive provider failure does not abort successful providers", 
     assert.equal(report.newCandidates, 1); assert.equal(report.providerFailures.TEST_FAILURE, 1); assert.equal(report.errors.length, 1);
     const rerun = await runArchiveIngestion({ store, providerRegistry: { success }, pages: 1, limit: 1, delayMs: 0, concurrency: 1 });
     assert.equal(rerun.newCandidates, 0); assert.equal(rerun.updatedCandidates, 1); assert.equal(rerun.sourcesDeduped, 1);
-  } finally { await store.close(); }
+  } finally { await store.close(); await cleanupTestCandidate("TEST_SUCCESS", suffix); }
 });

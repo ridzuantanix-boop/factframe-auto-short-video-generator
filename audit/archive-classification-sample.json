@@ -1,0 +1,1937 @@
+{
+  "generatedAt": "2026-09-04T16:34:14.013Z",
+  "sampleSize": 100,
+  "records": [
+    {
+      "id": "fe7bece8-8743-4983-9cd9-450d7c65a427",
+      "title": "THE IPOH MURDER.",
+      "snippet": "THE IPOH MURDER. SENTENCE OF DEATH PASSED. A Kling named Pakiri who was tried before the Judical Commissioner in Ipoh on the 24th and 25th ultimo on a charge of...",
+      "sourceTitle": "THE IPOH MURDER.",
+      "publishedAt": "1904-07-08T00:00:00.000Z",
+      "previousStoryType": "CRIME_MYSTERY",
+      "storyType": "CRIME_MYSTERY",
+      "storyTypeConfidence": "MEDIUM",
+      "storyTypeEvidence": [
+        "HEADLINE:VIOLENT_CRIME"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "PRE_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1904-07-08",
+        "ERA:PRE_1946"
+      ]
+    },
+    {
+      "id": "18a446c1-76af-429b-9430-55ebd15f92d4",
+      "title": "Seven die in boat tragedy",
+      "snippet": "Seven die in boat tragedy KUALA LUMPUR, Monday J7IGHT people died and three are missing in the monsoon which is now hitting KelanI tan, Perak, Trengganu and Pahang. Seven of...",
+      "sourceTitle": "Seven die in boat tragedy",
+      "publishedAt": "1970-12-29T00:00:00.000Z",
+      "previousStoryType": "DISAPPEARANCE",
+      "storyType": "DISASTER",
+      "storyTypeConfidence": "MEDIUM",
+      "storyTypeEvidence": [
+        "HEADLINE:TRAGEDY",
+        "CONTEXT:HARM_OR_RESPONSE"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "MODERN_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1970-12-29",
+        "ERA:POST_1963_09_16"
+      ]
+    },
+    {
+      "id": "d7b6a53c-513f-47bb-ab5d-43bc3b8802a1",
+      "title": "Mountain search for lost Sarawak student",
+      "snippet": "Mountain search for lost Sarawak student A UCKLAND. Tue s. A Searchers are later today to try and climb the snow and wind lashed slopes of 9.000-foot volcano Ruapehu in...",
+      "sourceTitle": "Mountain search for lost Sarawak student",
+      "publishedAt": "1965-12-29T00:00:00.000Z",
+      "previousStoryType": "DISAPPEARANCE",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "LOW",
+      "storyTypeEvidence": [
+        "FALLBACK:HISTORICAL_INCIDENT"
+      ],
+      "previousHistoricalContext": "SARAWAK",
+      "historicalContext": "MODERN_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1965-12-29",
+        "ERA:POST_1963_09_16"
+      ]
+    },
+    {
+      "id": "a6f8b18b-15c3-4770-9684-478723dbc129",
+      "title": "RAJAH OF SARAWAK'S MISSING SPECTACLES",
+      "snippet": "RAJAH OF SARAWAK'S MISSING SPECTACLES A STORY of how the Rajah of Sarawak's spectacles were found missing from the counter ol MB optical company in Singapore recently til told in...",
+      "sourceTitle": "RAJAH OF SARAWAK'S MISSING SPECTACLES",
+      "publishedAt": "1940-10-25T00:00:00.000Z",
+      "previousStoryType": "DISAPPEARANCE",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "LOW",
+      "storyTypeEvidence": [
+        "FALLBACK:HISTORICAL_INCIDENT"
+      ],
+      "previousHistoricalContext": "SARAWAK",
+      "historicalContext": "SARAWAK",
+      "historicalContextEvidence": [
+        "TEXT:HISTORICAL_SARAWAK"
+      ]
+    },
+    {
+      "id": "35de0a4a-a432-4187-905b-12c23580aafb",
+      "title": "Lost at sea",
+      "snippet": "Lost at sea PENANG. Tups. A fisherman disappeared when he jumped into the sea to check a colleague's fishing net*. His body has not be*n recovered.",
+      "sourceTitle": "Lost at sea",
+      "publishedAt": "1966-07-20T00:00:00.000Z",
+      "previousStoryType": "DISAPPEARANCE",
+      "storyType": "DISAPPEARANCE",
+      "storyTypeConfidence": "HIGH",
+      "storyTypeEvidence": [
+        "HEADLINE:MISSING_PERSON",
+        "CONTEXT:PERSON_OR_SEARCH"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "MODERN_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1966-07-20",
+        "ERA:POST_1963_09_16"
+      ]
+    },
+    {
+      "id": "3a4b87b3-b8eb-44d8-9fbd-c867dd4ff8cb",
+      "title": "Two kids die after mum tries home cure",
+      "snippet": "Two kids die after mum tries home cure BIZARRE TRAGEDY KEMAMAN (Terengganu) Two siblings, including a one-year-old girl, died when the elder brother underwent a bizarre traditional treatment by their...",
+      "sourceTitle": "Two kids die after mum tries home cure",
+      "publishedAt": "1999-09-12T00:00:00.000Z",
+      "previousStoryType": "DISASTER",
+      "storyType": "DISASTER",
+      "storyTypeConfidence": "LOW",
+      "storyTypeEvidence": [
+        "SNIPPET:TRAGEDY",
+        "CONTEXT:HARM_OR_RESPONSE"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "MODERN_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1999-09-12",
+        "ERA:POST_1963_09_16"
+      ]
+    },
+    {
+      "id": "164ee6b9-c5af-4a86-8ef6-689feef06b97",
+      "title": "Stones fall from roofs —they blame a ghost",
+      "snippet": "Stones fall from roofs they blame a ghost MALACCA, Fri. STONES have been falling from the roofs of four houses in a row in Banda Hllir Road for the past...",
+      "sourceTitle": "Stones fall from roofs —they blame a ghost",
+      "publishedAt": "1952-11-15T00:00:00.000Z",
+      "previousStoryType": "PARANORMAL_REPORT",
+      "storyType": "PARANORMAL_REPORT",
+      "storyTypeConfidence": "MEDIUM",
+      "storyTypeEvidence": [
+        "HEADLINE:PARANORMAL_CLAIM"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "FEDERATION_OF_MALAYA",
+      "historicalContextEvidence": [
+        "DATE:1952-11-15",
+        "ERA:1948_TO_1963"
+      ]
+    },
+    {
+      "id": "b891ddf8-4d0e-43bf-8414-1a5d66eb4e05",
+      "title": "Airmen explore lake of the lost city'",
+      "snippet": "Airmen explore lake of the lost city' KUANTAN, Fri. A 15 man R.A.F. team from Changi today started its exploration of Tasek Chini, Pahang's mystery lake, under which legend places...",
+      "sourceTitle": "Airmen explore lake of the lost city'",
+      "publishedAt": "1962-06-09T00:00:00.000Z",
+      "previousStoryType": "FOLKLORE",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "LOW",
+      "storyTypeEvidence": [
+        "FALLBACK:HISTORICAL_INCIDENT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "FEDERATION_OF_MALAYA",
+      "historicalContextEvidence": [
+        "DATE:1962-06-09",
+        "ERA:1948_TO_1963"
+      ]
+    },
+    {
+      "id": "a939d85e-fbf8-4101-ac4d-dd64e1fc5b9d",
+      "title": "Money And Jewellery Missing",
+      "snippet": "Money And Jewellery Missing (From Our Own Correspondent) Kuala Lumpur, July 36. QPENING the safe m the office of Bungsar Estate, Kuala Lumpur, this morning Mr. L. C Maria Sube,...",
+      "sourceTitle": "Money And Jewellery Missing",
+      "publishedAt": "1938-07-27T00:00:00.000Z",
+      "previousStoryType": "DISAPPEARANCE",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "LOW",
+      "storyTypeEvidence": [
+        "FALLBACK:HISTORICAL_INCIDENT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "PRE_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1938-07-27",
+        "ERA:PRE_1946"
+      ]
+    },
+    {
+      "id": "f8579246-183a-40c4-aee4-fe5475dcfc44",
+      "title": "YOUNG BANJARESE GETS FOUR YEARS",
+      "snippet": "YOUNG BANJARESE GETS FOUR YEARS Guilty Of Attempted Murder LENIENCY TAKEN IN VIEW OF YOUTH (By Our Perak Representative) Ipoh, Today. At the conclusion of the trial yesterday of Nawi...",
+      "sourceTitle": "YOUNG BANJARESE GETS FOUR YEARS",
+      "publishedAt": "1935-09-06T00:00:00.000Z",
+      "previousStoryType": "CRIME_MYSTERY",
+      "storyType": "CRIME_MYSTERY",
+      "storyTypeConfidence": "MEDIUM",
+      "storyTypeEvidence": [
+        "SNIPPET:VIOLENT_CRIME",
+        "CONTEXT:POLICE_OR_COURT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "PRE_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1935-09-06",
+        "ERA:PRE_1946"
+      ]
+    },
+    {
+      "id": "ef84f8e4-fac9-4b81-ab64-e71ab46f176d",
+      "title": "Judgment reserved",
+      "snippet": "Judgment reserved KUALA LUMPUTt. Thurs. The Federal Court reserved Judgment today on an appeal by a Johore businessman against conviction and the death sentence for the murder of his girlfriend...",
+      "sourceTitle": "Judgment reserved",
+      "publishedAt": "1971-07-09T00:00:00.000Z",
+      "previousStoryType": "CRIME_MYSTERY",
+      "storyType": "CRIME_MYSTERY",
+      "storyTypeConfidence": "MEDIUM",
+      "storyTypeEvidence": [
+        "SNIPPET:VIOLENT_CRIME",
+        "CONTEXT:POLICE_OR_COURT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "MODERN_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1971-07-09",
+        "ERA:POST_1963_09_16"
+      ]
+    },
+    {
+      "id": "c531e375-8058-4976-b05e-f28bef0ea547",
+      "title": "He's back from the dead",
+      "snippet": "He's back from the dead SUNGAI PETANI (Kedah) Bereaved family members held a funeral and cremated a body they thought was their missing father and then learned he was still...",
+      "sourceTitle": "He's back from the dead",
+      "publishedAt": "1989-01-27T00:00:00.000Z",
+      "previousStoryType": "DISAPPEARANCE",
+      "storyType": "DISAPPEARANCE",
+      "storyTypeConfidence": "MEDIUM",
+      "storyTypeEvidence": [
+        "SNIPPET:MISSING_PERSON",
+        "CONTEXT:PERSON_OR_SEARCH"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "MODERN_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1989-01-27",
+        "ERA:POST_1963_09_16"
+      ]
+    },
+    {
+      "id": "ddf248bc-ed3b-4827-94d7-f58bff746498",
+      "title": "NEGRI CRIME",
+      "snippet": "NEGRI CRIME KUALA LUMPUR. Wed. Duiing August there we c two mutdcrs with firearmand one attempted murde. with firearms as compared with one murder the previous month, stctcd a iepO't...",
+      "sourceTitle": "NEGRI CRIME",
+      "publishedAt": "1949-09-15T00:00:00.000Z",
+      "previousStoryType": "CRIME_MYSTERY",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "LOW",
+      "storyTypeEvidence": [
+        "FALLBACK:HISTORICAL_INCIDENT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "FEDERATION_OF_MALAYA",
+      "historicalContextEvidence": [
+        "DATE:1949-09-15",
+        "ERA:1948_TO_1963"
+      ]
+    },
+    {
+      "id": "6ae8e4a0-b700-446a-a79e-b9238fa8d198",
+      "title": "The Johore Marder",
+      "snippet": "The Johore Marder The three Malay®, Ali, Mat, and Yusuf, who were arrested in Singapore on Friday last in connection with the recent murder of Mr T H Darbvshire, F...",
+      "sourceTitle": "The Johore Marder",
+      "publishedAt": "1921-06-16T00:00:00.000Z",
+      "previousStoryType": "CRIME_MYSTERY",
+      "storyType": "CRIME_MYSTERY",
+      "storyTypeConfidence": "MEDIUM",
+      "storyTypeEvidence": [
+        "SNIPPET:VIOLENT_CRIME",
+        "CONTEXT:POLICE_OR_COURT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "PRE_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1921-06-16",
+        "ERA:PRE_1946"
+      ]
+    },
+    {
+      "id": "e7640844-12d6-4273-89d6-ce36406f8300",
+      "title": "A spirit princess in polls campaign",
+      "snippet": "A spirit princess in polls campaign KUALA LUMPUR, Tues. A ROYAL \"ghost\" has joined the Federal elections fight The \"ghost\" is Putn Gunong Ledang (Princess of Mount Ophir on the...",
+      "sourceTitle": "A spirit princess in polls campaign",
+      "publishedAt": "1955-07-20T00:00:00.000Z",
+      "previousStoryType": "PARANORMAL_REPORT",
+      "storyType": "PARANORMAL_REPORT",
+      "storyTypeConfidence": "MEDIUM",
+      "storyTypeEvidence": [
+        "HEADLINE:PARANORMAL_CLAIM"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "FEDERATION_OF_MALAYA",
+      "historicalContextEvidence": [
+        "DATE:1955-07-20",
+        "ERA:1948_TO_1963"
+      ]
+    },
+    {
+      "id": "c8d37072-03db-4414-b3f4-49f6be615975",
+      "title": "SPECIAL TELEGRAMS.",
+      "snippet": "SPECIAL TELEGRAMS. [From our Correspondents. l TAIPING. 30th November. The Railway department’s first clerk, a Chinaman, disappeared yesterday with 2,000 dollars, intend, ed for paying salaries. 171 pikuls of tin...",
+      "sourceTitle": "SPECIAL TELEGRAMS.",
+      "publishedAt": "1895-11-30T00:00:00.000Z",
+      "previousStoryType": "DISAPPEARANCE",
+      "storyType": "DISAPPEARANCE",
+      "storyTypeConfidence": "MEDIUM",
+      "storyTypeEvidence": [
+        "SNIPPET:MISSING_PERSON",
+        "CONTEXT:PERSON_OR_SEARCH"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "PRE_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1895-11-30",
+        "ERA:PRE_1946"
+      ]
+    },
+    {
+      "id": "68bdf529-230d-4976-b555-7a457c9e04d3",
+      "title": "Missing pair's bodies found in sacks",
+      "snippet": "Missing pair's bodies found in sacks IPOH, Tues. 'pHK bodies of Wong Ah Seng alias Ah Wai, 22, and his sister Yoke Lin alias Ah Moi, 20, who were reported...",
+      "sourceTitle": "Missing pair's bodies found in sacks",
+      "publishedAt": "1978-08-30T00:00:00.000Z",
+      "previousStoryType": "DISAPPEARANCE",
+      "storyType": "DISAPPEARANCE",
+      "storyTypeConfidence": "HIGH",
+      "storyTypeEvidence": [
+        "HEADLINE:MISSING_PERSON",
+        "CONTEXT:PERSON_OR_SEARCH"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "MODERN_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1978-08-30",
+        "ERA:POST_1963_09_16"
+      ]
+    },
+    {
+      "id": "8c2a3846-f571-4c75-bda8-908e220ac95a",
+      "title": "NEWCOMER IN DIAL M FOR MURDER'",
+      "snippet": "NEWCOMER IN DIAL M FOR MURDER' Beryl Yates (below), a newcomer to the Ipoh stage who has had acting experience in England, will take the part of the heroine. Sheila...",
+      "sourceTitle": "NEWCOMER IN DIAL M FOR MURDER'",
+      "publishedAt": "1957-11-24T00:00:00.000Z",
+      "previousStoryType": "CRIME_MYSTERY",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "LOW",
+      "storyTypeEvidence": [
+        "FALLBACK:HISTORICAL_INCIDENT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "FEDERATION_OF_MALAYA",
+      "historicalContextEvidence": [
+        "DATE:1957-11-24",
+        "ERA:1948_TO_1963"
+      ]
+    },
+    {
+      "id": "cb48be15-5acb-4b8b-8c49-185c8d88f663",
+      "title": "Paratroops At Port Swettenham",
+      "snippet": "Paratroops At Port Swet ten ham The first landings of Biilith occupation forces on the west coast of Malaya took p^^cf- on Monday and continued ycsidJay aithout incident. British and...",
+      "sourceTitle": "Paratroops At Port Swettenham",
+      "publishedAt": "1945-09-12T00:00:00.000Z",
+      "previousStoryType": "HISTORICAL_INCIDENT",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "LOW",
+      "storyTypeEvidence": [
+        "SNIPPET:HISTORICAL_EVENT"
+      ],
+      "previousHistoricalContext": "MALAYA",
+      "historicalContext": "MALAYA",
+      "historicalContextEvidence": [
+        "TEXT:MALAYA"
+      ]
+    },
+    {
+      "id": "8352a27b-ee72-4399-91c8-75eda803e61c",
+      "title": "Y.M.C.A. LITERARY SOCIETY.",
+      "snippet": "Y.M.C.A. LITERARY SOCIETY. v.. A. Literary Society oa Dr. R. O. Winstedt read Malayan Folklore and Litercrowdod audience. The that much of the Malayan nginatad from sources ontthat the Persians,...",
+      "sourceTitle": "Y.M.C.A. LITERARY SOCIETY.",
+      "publishedAt": "1921-11-25T00:00:00.000Z",
+      "previousStoryType": "FOLKLORE",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "LOW",
+      "storyTypeEvidence": [
+        "FALLBACK:HISTORICAL_INCIDENT"
+      ],
+      "previousHistoricalContext": "MALAYA",
+      "historicalContext": "MALAYA",
+      "historicalContextEvidence": [
+        "TEXT:MALAYA"
+      ]
+    },
+    {
+      "id": "e6d217dd-646f-4a8a-b742-214c10016e22",
+      "title": "Collapse of Ward at Kedah Gaol.",
+      "snippet": "Collapse of Ward at Kedah Gaol. Two Men Killed. One of the new wards at the Gaol at Alor Star, Kedah, collapsed at 11 a.m on Thursday, during a fearful...",
+      "sourceTitle": "Collapse of Ward at Kedah Gaol.",
+      "publishedAt": "1907-08-24T00:00:00.000Z",
+      "previousStoryType": "DISASTER",
+      "storyType": "DISASTER",
+      "storyTypeConfidence": "HIGH",
+      "storyTypeEvidence": [
+        "HEADLINE:PHYSICAL_INCIDENT",
+        "CONTEXT:HARM_OR_RESPONSE"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "PRE_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1907-08-24",
+        "ERA:PRE_1946"
+      ]
+    },
+    {
+      "id": "fd8af5a9-081b-4d34-b6ed-de11478cb9ee",
+      "title": "Woman's body found off Changi beach",
+      "snippet": "Woman's body found off Changi beach SINGAPORE. Sat. The body of a woman from Perak. Sow Ho Won. 54. wa&gt; found floating in the sea off Chang! Point at 7.15...",
+      "sourceTitle": "Woman's body found off Changi beach",
+      "publishedAt": "1971-04-04T00:00:00.000Z",
+      "previousStoryType": "MYSTERIOUS_DEATH",
+      "storyType": "MYSTERIOUS_DEATH",
+      "storyTypeConfidence": "HIGH",
+      "storyTypeEvidence": [
+        "HEADLINE:DEATH_DISCOVERY",
+        "CONTEXT:DEATH_INQUIRY"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "MODERN_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1971-04-04",
+        "ERA:POST_1963_09_16"
+      ]
+    },
+    {
+      "id": "5a550b65-203c-4cd4-a772-73c6bd1f6f98",
+      "title": "Police Party Attacked, Three Killed",
+      "snippet": "Police Party Attacked, Three Killed Standard Staff Correspondent KUALA LUMPUR, tues. Three members of a police party a European Lieutenant, a Special Constabulary Sergeant and a Special Constal le driver—...",
+      "sourceTitle": "Police Party Attacked, Three Killed",
+      "publishedAt": "1950-12-06T00:00:00.000Z",
+      "previousStoryType": "HISTORICAL_INCIDENT",
+      "storyType": "CRIME_MYSTERY",
+      "storyTypeConfidence": "HIGH",
+      "storyTypeEvidence": [
+        "HEADLINE:VIOLENT_CRIME",
+        "CONTEXT:POLICE_OR_COURT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "FEDERATION_OF_MALAYA",
+      "historicalContextEvidence": [
+        "DATE:1950-12-06",
+        "ERA:1948_TO_1963"
+      ]
+    },
+    {
+      "id": "96553d7b-ddd9-4726-8d6d-400f0fafd67e",
+      "title": "Deflated",
+      "snippet": "Deflated OLD LEGEND ABOUT MALAYA MANUFACTURING RUBBER, TOO KUALA LUMPUR, Fn. Mr. Tan Siew Sin, the Minister for Commerce and Industry today punctured the old legend that Malaya could easily...",
+      "sourceTitle": "Deflated",
+      "publishedAt": "1957-11-09T00:00:00.000Z",
+      "previousStoryType": "FOLKLORE",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "LOW",
+      "storyTypeEvidence": [
+        "FALLBACK:HISTORICAL_INCIDENT"
+      ],
+      "previousHistoricalContext": "MALAYA",
+      "historicalContext": "MALAYA",
+      "historicalContextEvidence": [
+        "TEXT:MALAYA"
+      ]
+    },
+    {
+      "id": "65d4ac17-a225-4a87-918b-35a70bb79a4f",
+      "title": "Suspect brought back",
+      "snippet": "Suspect brought back A 20 YEAR OLD Malaysian was brought back from Perak last night in connection with the murder of another Malassi.in at the Hoon I_ay Shopping Centre last...",
+      "sourceTitle": "Suspect brought back",
+      "publishedAt": "1989-05-17T00:00:00.000Z",
+      "previousStoryType": "CRIME_MYSTERY",
+      "storyType": "CRIME_MYSTERY",
+      "storyTypeConfidence": "MEDIUM",
+      "storyTypeEvidence": [
+        "SNIPPET:VIOLENT_CRIME",
+        "CONTEXT:POLICE_OR_COURT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "MODERN_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1989-05-17",
+        "ERA:POST_1963_09_16"
+      ]
+    },
+    {
+      "id": "1c0f566a-3190-4359-b74f-ce61365c049f",
+      "title": "Police to clamp down on teen crime and drug abuse",
+      "snippet": "Police to clamp down on teen crime and drug abuse Umno Youth plan to tackle social ills KUALA LUMPUR— The Umno Youth movement plans to launch a programme to tackle...",
+      "sourceTitle": "Police to clamp down on teen crime and drug abuse",
+      "publishedAt": "1997-02-22T00:00:00.000Z",
+      "previousStoryType": "HISTORICAL_INCIDENT",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "MEDIUM",
+      "storyTypeEvidence": [
+        "HEADLINE:HISTORICAL_EVENT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "MODERN_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1997-02-22",
+        "ERA:POST_1963_09_16"
+      ]
+    },
+    {
+      "id": "c8cb9a28-fdd0-4d82-abdd-f76919ae999b",
+      "title": "MAN SUSPECTED OF KILLING FATHER",
+      "snippet": "MAN SUSPECTED OF KILLING FATHER A 22-YEAR-OLD unemployed man has been detained m connection with the murder of his father m Negri Sembilan. The Star Asia News Network",
+      "sourceTitle": "MAN SUSPECTED OF KILLING FATHER",
+      "publishedAt": "1999-04-19T00:00:00.000Z",
+      "previousStoryType": "CRIME_MYSTERY",
+      "storyType": "CRIME_MYSTERY",
+      "storyTypeConfidence": "HIGH",
+      "storyTypeEvidence": [
+        "HEADLINE:VIOLENT_CRIME",
+        "CONTEXT:POLICE_OR_COURT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "MODERN_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1999-04-19",
+        "ERA:POST_1963_09_16"
+      ]
+    },
+    {
+      "id": "73491d5f-8c87-4339-bd37-ffa921226cdf",
+      "title": "DEATH OF CAPT. TALBOT.",
+      "snippet": "DEATH OF CAPT. TALBOT. LOSS TO THE F.M.S. POLICE. SKETCH OF HIS CAREER. From Our Own Correspondent] Kuala Lumpur, Ist Sept. A cable has been received from Home announcing the...",
+      "sourceTitle": "DEATH OF CAPT. TALBOT.",
+      "publishedAt": "1909-09-02T00:00:00.000Z",
+      "previousStoryType": "HISTORICAL_INCIDENT",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "LOW",
+      "storyTypeEvidence": [
+        "SNIPPET:HISTORICAL_EVENT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "PRE_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1909-09-02",
+        "ERA:PRE_1946"
+      ]
+    },
+    {
+      "id": "3d5227f9-0d60-4c4c-8a8f-c9e75b850719",
+      "title": "Home Department No. 1 of 1855 - Narrative of the proceedings of the Government of the Straits of Malacca for the first quarter of 1855, prepared by E A Blundell, Governor of the Straits Settlements. Issues covered for the quarter include: 1) decision on duties on wild and cultivated nutmegs; 2) inquiry into the death of a Prussian supposedly killed during the May Riot in Singapore; 3) private memorial to the Government seeking redress from Siamese authorities; 4) personnel matters concerning appointments, salaries, pensions, leave applications and duties of various civil servants; 5) returns of sugar and rum manufactured in Penang and Province Wellesley; 6) discussion on the Law of Inheritance, the Draft Act for preservation of the Public Peace, and Excise Act 14 of 1851; 7) education matters concerning the Malacca Free School, Singapore Institution Free School, and state of education in the Straits; 8) raising of the patriotic fund in Singapore; 9) various convict matters, including classification, pensions, entitlements and treatment; 10) discussion on marketability of pineapple hemp and plumbags; 11) resignation of Col. Butterworth as Governor and new appointments made thereafter; 12) supply of coal to Penang depot; 13) table of fees for the Admiralty Court; 14) legal cases concerning recovery of fines and payment; and 15) complaints regarding the new postal arrangements in Singapore.",
+      "snippet": "",
+      "sourceTitle": "Home Department No. 1 of 1855 - Narrative of the proceedings of the Government of the Straits of Malacca for the first quarter of 1855, prepared by E A Blundell, Governor of the Straits Settlements. Issues covered for the quarter include: 1) decision on duties on wild and cultivated nutmegs; 2) inquiry into the death of a Prussian supposedly killed during the May Riot in Singapore; 3) private memorial to the Government seeking redress from Siamese authorities; 4) personnel matters concerning appointments, salaries, pensions, leave applications and duties of various civil servants; 5) returns of sugar and rum manufactured in Penang and Province Wellesley; 6) discussion on the Law of Inheritance, the Draft Act for preservation of the Public Peace, and Excise Act 14 of 1851; 7) education matters concerning the Malacca Free School, Singapore Institution Free School, and state of education in the Straits; 8) raising of the patriotic fund in Singapore; 9) various convict matters, including classification, pensions, entitlements and treatment; 10) discussion on marketability of pineapple hemp and plumbags; 11) resignation of Col. Butterworth as Governor and new appointments made thereafter; 12) supply of coal to Penang depot; 13) table of fees for the Admiralty Court; 14) legal cases concerning recovery of fines and payment; and 15) complaints regarding the new postal arrangements in Singapore.",
+      "publishedAt": null,
+      "previousStoryType": "HISTORICAL_INCIDENT",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "LOW",
+      "storyTypeEvidence": [
+        "FALLBACK:HISTORICAL_INCIDENT"
+      ],
+      "previousHistoricalContext": "STRAITS_SETTLEMENTS",
+      "historicalContext": "STRAITS_SETTLEMENTS",
+      "historicalContextEvidence": [
+        "TEXT:STRAITS_SETTLEMENTS"
+      ]
+    },
+    {
+      "id": "2f2446e6-ee81-4a49-a2c9-edcd8c452267",
+      "title": "'GHOST GIVES SHOW FOR GUESTS",
+      "snippet": "'GHOST GIVES SHOW FOR GUESTS MALACCA. Fri —The \"playful ghost\" of Malacca continues to \"haunt\"' the quarters of Mr. M. Bruno Airport Traffic Clerk here. Last night it gave a...",
+      "sourceTitle": "'GHOST GIVES SHOW FOR GUESTS",
+      "publishedAt": "1953-06-20T00:00:00.000Z",
+      "previousStoryType": "PARANORMAL_REPORT",
+      "storyType": "PARANORMAL_REPORT",
+      "storyTypeConfidence": "MEDIUM",
+      "storyTypeEvidence": [
+        "HEADLINE:PARANORMAL_CLAIM"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "FEDERATION_OF_MALAYA",
+      "historicalContextEvidence": [
+        "DATE:1953-06-20",
+        "ERA:1948_TO_1963"
+      ]
+    },
+    {
+      "id": "9f33edcc-913d-4049-b699-d80ef61fca60",
+      "title": "31 bandits spies arrested",
+      "snippet": "31 bandits spies arrested KUALA LUMPUR, Feb. 26. ■J\"HIRTY-ONE bandit spies and a number of persons on the “wanted list.” including five women, were arrested yesterday during a police operation...",
+      "sourceTitle": "31 bandits spies arrested",
+      "publishedAt": "1949-03-03T00:00:00.000Z",
+      "previousStoryType": "HISTORICAL_INCIDENT",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "MEDIUM",
+      "storyTypeEvidence": [
+        "HEADLINE:HISTORICAL_EVENT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "FEDERATION_OF_MALAYA",
+      "historicalContextEvidence": [
+        "DATE:1949-03-03",
+        "ERA:1948_TO_1963"
+      ]
+    },
+    {
+      "id": "0e844636-c6bd-4bc1-9031-0b9d17e04546",
+      "title": "TONIGHT'S SHOW IN AID OF MALAYA PATRIOTIC FUND",
+      "snippet": "TONIGHT'S SHOW IN AID OF MALAYA PATRIOTIC FUND The Georgetown Abbey Players are presenting two one-act plays, “Legend by Phillip Johnson, and “Romance Incorporated” by Glen Hughes in aid of...",
+      "sourceTitle": "TONIGHT'S SHOW IN AID OF MALAYA PATRIOTIC FUND",
+      "publishedAt": "1940-07-26T00:00:00.000Z",
+      "previousStoryType": "FOLKLORE",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "LOW",
+      "storyTypeEvidence": [
+        "FALLBACK:HISTORICAL_INCIDENT"
+      ],
+      "previousHistoricalContext": "MALAYA",
+      "historicalContext": "MALAYA",
+      "historicalContextEvidence": [
+        "TEXT:MALAYA"
+      ]
+    },
+    {
+      "id": "960ec4e8-b25d-4c01-b3f3-28948f7cca39",
+      "title": "Osborne Shield Shooting.",
+      "snippet": "Osborne Shield Shooting. [Echo Special IVrsk and Selangor Scores. Kuala Lumpur, «tli November.—At tli,. rifle shooting competition for the Osborne Shield between the inter-State teams, Selangor scored oOQ points and...",
+      "sourceTitle": "Osborne Shield Shooting.",
+      "publishedAt": "1909-11-10T00:00:00.000Z",
+      "previousStoryType": "CRIME_MYSTERY",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "LOW",
+      "storyTypeEvidence": [
+        "FALLBACK:HISTORICAL_INCIDENT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "PRE_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1909-11-10",
+        "ERA:PRE_1946"
+      ]
+    },
+    {
+      "id": "08c59877-ee44-40bf-ba77-d627caa7c367",
+      "title": "Ashamed off the plotters",
+      "snippet": "Ashamed off the plotters U[E have had enough bru- ial murder and kidnapping ending with shocking death committed by Chin Peru' and his thugs. Thank God, Malacca UMNO's well-organised \"lot...",
+      "sourceTitle": "Ashamed off the plotters",
+      "publishedAt": "1956-02-25T00:00:00.000Z",
+      "previousStoryType": "CRIME_MYSTERY",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "LOW",
+      "storyTypeEvidence": [
+        "FALLBACK:HISTORICAL_INCIDENT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "FEDERATION_OF_MALAYA",
+      "historicalContextEvidence": [
+        "DATE:1956-02-25",
+        "ERA:1948_TO_1963"
+      ]
+    },
+    {
+      "id": "412763cb-2587-40cf-8082-d32f0c10c39a",
+      "title": "WOMAN WHO GAVE FALSE INFORMATION.",
+      "snippet": "WOMAN WHO GAVE FALSE INFORMATION. SENT TO PRISON AT PENANG. For giving false information to the police a Malay woman was sentenced to three weeks’ imprisonment and in adition was...",
+      "sourceTitle": "WOMAN WHO GAVE FALSE INFORMATION.",
+      "publishedAt": "1929-01-30T00:00:00.000Z",
+      "previousStoryType": "HISTORICAL_INCIDENT",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "LOW",
+      "storyTypeEvidence": [
+        "SNIPPET:HISTORICAL_EVENT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "PRE_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1929-01-30",
+        "ERA:PRE_1946"
+      ]
+    },
+    {
+      "id": "4dc7f757-56df-4ee3-80b0-a6196f50346b",
+      "title": "3 Bandits Killed, Station Burnt",
+      "snippet": "3 Bandits Killed, Station Burnt From Our Staff Correspondent KUALA LUMPUR, Wednesday. TMIREE bandits were shot dead in Perak yesterday and a shotgun, a pistol and some ammunition were recovered....",
+      "sourceTitle": "3 Bandits Killed, Station Burnt",
+      "publishedAt": "1950-08-10T00:00:00.000Z",
+      "previousStoryType": "CRIME_MYSTERY",
+      "storyType": "CRIME_MYSTERY",
+      "storyTypeConfidence": "MEDIUM",
+      "storyTypeEvidence": [
+        "HEADLINE:VIOLENT_CRIME"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "FEDERATION_OF_MALAYA",
+      "historicalContextEvidence": [
+        "DATE:1950-08-10",
+        "ERA:1948_TO_1963"
+      ]
+    },
+    {
+      "id": "983b2a25-ffd1-4988-8fc7-26534c00f2dc",
+      "title": "Refugees' bodies found on Trengganu beach",
+      "snippet": "Refugees' bodies found on Trengganu beach Reuter Kuala Trengganu, Wednesday, Two bodies of Vietnamese refugees were recovered on Monday from a Trengganu beach, but a third man was still missing,...",
+      "sourceTitle": "Refugees' bodies found on Trengganu beach",
+      "publishedAt": "1979-02-21T00:00:00.000Z",
+      "previousStoryType": "DISAPPEARANCE",
+      "storyType": "MYSTERIOUS_DEATH",
+      "storyTypeConfidence": "MEDIUM",
+      "storyTypeEvidence": [
+        "HEADLINE:DEATH_DISCOVERY"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "MODERN_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1979-02-21",
+        "ERA:POST_1963_09_16"
+      ]
+    },
+    {
+      "id": "384a4c18-bd08-477e-ab95-4b84dc83dbbd",
+      "title": "No panic, but urgency still needed — Moore",
+      "snippet": "No panic, but urgency still needed Moore Peter Khoo previews tonight's Malaysian Premier League soccer clash between Singapore and Kelantan JOE'S PICK Joe Dorai on likely winners m other matches...",
+      "sourceTitle": "No panic, but urgency still needed — Moore",
+      "publishedAt": "1994-06-25T00:00:00.000Z",
+      "previousStoryType": "STRANGE_EVENT",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "LOW",
+      "storyTypeEvidence": [
+        "FALLBACK:HISTORICAL_INCIDENT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "MODERN_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1994-06-25",
+        "ERA:POST_1963_09_16"
+      ]
+    },
+    {
+      "id": "57b78a29-b684-42ee-a0f6-24bb7998869b",
+      "title": "Two girls missing from home",
+      "snippet": "Two girls missing from home KUALA LUMPUR, Thurs. KUALA LUMPUR police said today that two Tamil girls had been reported missing from their homes. Parents of a girl living In...",
+      "sourceTitle": "Two girls missing from home",
+      "publishedAt": "1953-01-30T00:00:00.000Z",
+      "previousStoryType": "DISAPPEARANCE",
+      "storyType": "DISAPPEARANCE",
+      "storyTypeConfidence": "HIGH",
+      "storyTypeEvidence": [
+        "HEADLINE:MISSING_PERSON",
+        "CONTEXT:PERSON_OR_SEARCH"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "FEDERATION_OF_MALAYA",
+      "historicalContextEvidence": [
+        "DATE:1953-01-30",
+        "ERA:1948_TO_1963"
+      ]
+    },
+    {
+      "id": "00684f88-9192-4188-aa7e-535c27396354",
+      "title": "A JOHORE MURDERER'S LEAP FROM THE DOCK.",
+      "snippet": "A JOHORE MURDERER’S LEAP FROM THE DOCK. To the Editor of the Straits Times. Sir.—For the sake of historical accuracy I send you my recollection of the occasion, referred to...",
+      "sourceTitle": "A JOHORE MURDERER’S LEAP FROM THE DOCK.",
+      "publishedAt": "1937-04-01T00:00:00.000Z",
+      "previousStoryType": "CRIME_MYSTERY",
+      "storyType": "CRIME_MYSTERY",
+      "storyTypeConfidence": "MEDIUM",
+      "storyTypeEvidence": [
+        "HEADLINE:VIOLENT_CRIME"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "PRE_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1937-04-01",
+        "ERA:PRE_1946"
+      ]
+    },
+    {
+      "id": "849a9208-61fc-4d38-b8c9-2212f3b5cf5a",
+      "title": "SMALL “INVASION” OF TAME ELEPHANTS FROM THAILAND INTO MALAYAN TERRITORY",
+      "snippet": "SMALL “INVASION” OF TAME ELEPHANTS FROM THAILAND INTO MALAYAN TERRITORY Unusual Event On Border What is regarded as a very unusual event has occurred twice recently on the Thai-Malayan border...",
+      "sourceTitle": "SMALL “INVASION” OF TAME ELEPHANTS FROM THAILAND INTO MALAYAN TERRITORY",
+      "publishedAt": "1941-02-18T00:00:00.000Z",
+      "previousStoryType": "STRANGE_EVENT",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "LOW",
+      "storyTypeEvidence": [
+        "FALLBACK:HISTORICAL_INCIDENT"
+      ],
+      "previousHistoricalContext": "MALAYA",
+      "historicalContext": "MALAYA",
+      "historicalContextEvidence": [
+        "TEXT:MALAYA"
+      ]
+    },
+    {
+      "id": "338c621d-f758-45db-9277-ed77af759e04",
+      "title": "BANDITS AMBUSH RIVER PARTY",
+      "snippet": "BANDITS AMBUSH RIVER PARTY Two Die, One Missing In Trengganu From Our Staff Correspondent KUALA LUMPUR, Monday. A EUROPEAN police officer and a Chinese mining kepala were killed and a...",
+      "sourceTitle": "BANDITS AMBUSH RIVER PARTY",
+      "publishedAt": "1949-07-26T00:00:00.000Z",
+      "previousStoryType": "DISAPPEARANCE",
+      "storyType": "CRIME_MYSTERY",
+      "storyTypeConfidence": "HIGH",
+      "storyTypeEvidence": [
+        "HEADLINE:VIOLENT_CRIME",
+        "CONTEXT:POLICE_OR_COURT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "FEDERATION_OF_MALAYA",
+      "historicalContextEvidence": [
+        "DATE:1949-07-26",
+        "ERA:1948_TO_1963"
+      ]
+    },
+    {
+      "id": "0b1ef879-b43d-4db1-ba34-571f2cdc4095",
+      "title": "7 S’poreans injured in highway accident in Malaysia",
+      "snippet": "7 S’poreans injured in highway accident in Malaysia By REMEAHMAD ASSISTANT FOREIGN EDITOR IN KUALA LUMPUR cy reme@sph.com.sg SEVEN Singaporeans were injured in an accident involving four vehicles on a...",
+      "sourceTitle": "7 S’poreans injured in highway accident in Malaysia",
+      "publishedAt": "2013-09-12T00:00:00.000Z",
+      "previousStoryType": "DISASTER",
+      "storyType": "DISASTER",
+      "storyTypeConfidence": "HIGH",
+      "storyTypeEvidence": [
+        "HEADLINE:PHYSICAL_INCIDENT",
+        "CONTEXT:HARM_OR_RESPONSE"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "MODERN_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:2013-09-12",
+        "ERA:POST_1963_09_16"
+      ]
+    },
+    {
+      "id": "5d9f94c2-a559-4dc6-890b-a7bc45b7497d",
+      "title": "Girl, woman reported missing",
+      "snippet": "Girl, woman reported missing KUALA LUMPUR, Mon. 7FWO persons were reported ■1 missing one In Klang and the other in Kuala Lumpur—over the weekend. They were a 13-year-old Tamil girl...",
+      "sourceTitle": "Girl, woman reported missing",
+      "publishedAt": "1952-06-03T00:00:00.000Z",
+      "previousStoryType": "DISAPPEARANCE",
+      "storyType": "DISAPPEARANCE",
+      "storyTypeConfidence": "HIGH",
+      "storyTypeEvidence": [
+        "HEADLINE:MISSING_PERSON",
+        "CONTEXT:PERSON_OR_SEARCH"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "FEDERATION_OF_MALAYA",
+      "historicalContextEvidence": [
+        "DATE:1952-06-03",
+        "ERA:1948_TO_1963"
+      ]
+    },
+    {
+      "id": "5f426aba-4787-4178-a95d-c1e8e3362101",
+      "title": "Municipal Inquiry. PENANG ADVOCATES SUSPENSION OF EXISTING BOARDS. Personnel of the Commission.",
+      "snippet": "Municipal Inquiry. PENANG ADVOCATES SUSPENSION OF EXISTING BOARDS. Personnel of the Commission. (Fbom Our Own Corrkspokdknt.) Penang. August 81. The Pioang Gazette publishes a vigorous leader dealing with the high...",
+      "sourceTitle": "Municipal Inquiry. PENANG ADVOCATES SUSPENSION OF EXISTING BOARDS. Personnel of the Commission.",
+      "publishedAt": "1909-09-02T00:00:00.000Z",
+      "previousStoryType": "HISTORICAL_INCIDENT",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "MEDIUM",
+      "storyTypeEvidence": [
+        "HEADLINE:HISTORICAL_EVENT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "PRE_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1909-09-02",
+        "ERA:PRE_1946"
+      ]
+    },
+    {
+      "id": "686e3e29-0aa7-4df3-8ba5-6197bfcaecd2",
+      "title": "Beware of last-gasp Turtles",
+      "snippet": "Beware of last-gasp Turtles Terengganu maybe missing their key attackers, but they have won 10 of their last 13 games TEAM: Terengganu COACH: E Elavarasan SYSTEM: 4-4-2 LAST RESULT: Beat...",
+      "sourceTitle": "Beware of last-gasp Turtles",
+      "publishedAt": "2013-05-07T00:00:00.000Z",
+      "previousStoryType": "DISAPPEARANCE",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "LOW",
+      "storyTypeEvidence": [
+        "FALLBACK:HISTORICAL_INCIDENT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "MODERN_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:2013-05-07",
+        "ERA:POST_1963_09_16"
+      ]
+    },
+    {
+      "id": "85c479bc-41ee-455a-8db2-b77cfcbb5b35",
+      "title": "Big Malaya send-off for retiring police chief",
+      "snippet": "Big Malaya send-off for retiring police chief J/-UALA LUMPUR, 1V Mon.— Mr. W. L. R. Carbonell, the retiring Commissioner of Police, left here by air today with his wife en...",
+      "sourceTitle": "Big Malaya send-off for retiring police chief",
+      "publishedAt": "1958-09-16T00:00:00.000Z",
+      "previousStoryType": "HISTORICAL_INCIDENT",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "MEDIUM",
+      "storyTypeEvidence": [
+        "HEADLINE:HISTORICAL_EVENT"
+      ],
+      "previousHistoricalContext": "MALAYA",
+      "historicalContext": "MALAYA",
+      "historicalContextEvidence": [
+        "TEXT:MALAYA"
+      ]
+    },
+    {
+      "id": "08a92fe3-7083-4dfb-bf15-1a6340ce1b27",
+      "title": "Seremban.",
+      "snippet": "Seremban. An Indian named Kandasamy has been committed for trial at the Negri Sembilan assizes on ihe charge that he on June 16 at Rassak did commit murder by causing...",
+      "sourceTitle": "Seremban.",
+      "publishedAt": "1933-07-27T00:00:00.000Z",
+      "previousStoryType": "CRIME_MYSTERY",
+      "storyType": "CRIME_MYSTERY",
+      "storyTypeConfidence": "MEDIUM",
+      "storyTypeEvidence": [
+        "SNIPPET:VIOLENT_CRIME",
+        "CONTEXT:POLICE_OR_COURT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "PRE_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1933-07-27",
+        "ERA:PRE_1946"
+      ]
+    },
+    {
+      "id": "2220b6d4-5b1e-4621-9514-7f6e3390b918",
+      "title": "THE MISSING CHETTIAR.",
+      "snippet": "THE MISSING CHETTIAR. No Clue to Disappearance Since May. In spite of vigorous inquiries made by the Singapore police there hr.s been no trace of the young Johore chettiar who...",
+      "sourceTitle": "THE MISSING CHETTIAR.",
+      "publishedAt": "1931-08-22T00:00:00.000Z",
+      "previousStoryType": "DISAPPEARANCE",
+      "storyType": "DISAPPEARANCE",
+      "storyTypeConfidence": "HIGH",
+      "storyTypeEvidence": [
+        "HEADLINE:MISSING_PERSON",
+        "CONTEXT:PERSON_OR_SEARCH"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "PRE_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1931-08-22",
+        "ERA:PRE_1946"
+      ]
+    },
+    {
+      "id": "a37cc5cc-08d4-42fc-a6e3-b6e53d6c040d",
+      "title": "SCHOOLBOY MISSING",
+      "snippet": "SCHOOLBOY MISSING (Frora Our Own Reporter) Kuala Lumpur, June G. jyiASTER Gwnagnanmsa, a 16-year- old Methodise Boys' School pupil, has been reported missing by his father Mr. Kathiravellu, Chief Clerk...",
+      "sourceTitle": "SCHOOLBOY MISSING",
+      "publishedAt": "1939-06-08T00:00:00.000Z",
+      "previousStoryType": "DISAPPEARANCE",
+      "storyType": "DISAPPEARANCE",
+      "storyTypeConfidence": "HIGH",
+      "storyTypeEvidence": [
+        "HEADLINE:MISSING_PERSON",
+        "CONTEXT:PERSON_OR_SEARCH"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "PRE_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1939-06-08",
+        "ERA:PRE_1946"
+      ]
+    },
+    {
+      "id": "3b459833-74c0-424a-bd04-afef473ea0ea",
+      "title": "WOMAN FOUND SUFFOCATED.",
+      "snippet": "WOMAN FOUND SUFFOCATED. ALLEGED MURDER AND ROBBERY IN PENANG. Th« murder of a Jivanese woman is alleged to have been committed at 154, Dindings-road, a coolie b mp, on Friday....",
+      "sourceTitle": "WOMAN FOUND SUFFOCATED.",
+      "publishedAt": "1928-03-05T00:00:00.000Z",
+      "previousStoryType": "CRIME_MYSTERY",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "LOW",
+      "storyTypeEvidence": [
+        "FALLBACK:HISTORICAL_INCIDENT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "PRE_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1928-03-05",
+        "ERA:PRE_1946"
+      ]
+    },
+    {
+      "id": "cbfb21bf-70fc-4a70-b33d-eef1c69a4030",
+      "title": "MALAYA CUP SOCCER TRIALS.",
+      "snippet": "MALAYA CUP SOCCER TRIALS. (To the Editor of the Pinang Gazette.) Sir,— I was a spectator at the two soc cer practices for the Malaya Cup and I agree with...",
+      "sourceTitle": "MALAYA CUP SOCCER TRIALS.",
+      "publishedAt": "1929-06-26T00:00:00.000Z",
+      "previousStoryType": "HISTORICAL_INCIDENT",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "LOW",
+      "storyTypeEvidence": [
+        "HEADLINE:HISTORICAL_EVENT"
+      ],
+      "previousHistoricalContext": "MALAYA",
+      "historicalContext": "MALAYA",
+      "historicalContextEvidence": [
+        "TEXT:MALAYA"
+      ]
+    },
+    {
+      "id": "d4520db9-1c9f-4883-88b4-a7009c66096a",
+      "title": "DEATHS",
+      "snippet": "DEATHS WILKINSON at Kuala Lumpur on Bth January. H. Stic Wilkinson, aged 26. of H. and C. Latex Limited, Petaling as a result of a motor accident. COVENTRY at Kuala...",
+      "sourceTitle": "DEATHS",
+      "publishedAt": "1953-01-06T00:00:00.000Z",
+      "previousStoryType": "DISASTER",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "LOW",
+      "storyTypeEvidence": [
+        "FALLBACK:HISTORICAL_INCIDENT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "FEDERATION_OF_MALAYA",
+      "historicalContextEvidence": [
+        "DATE:1953-01-06",
+        "ERA:1948_TO_1963"
+      ]
+    },
+    {
+      "id": "a72c1c68-4162-4ffb-9eae-e9665bc19b82",
+      "title": "R.A.F. END SPITFIRE SEARCH",
+      "snippet": "R.A.F. END SPITFIRE SEARCH After four days of frntU pi search, during which a Dakota also crashed, the Royal Air Force in Malaya yesterday abandoned the hunt for the wreckage...",
+      "sourceTitle": "R.A.F. END SPITFIRE SEARCH",
+      "publishedAt": "1949-09-09T00:00:00.000Z",
+      "previousStoryType": "DISASTER",
+      "storyType": "DISASTER",
+      "storyTypeConfidence": "MEDIUM",
+      "storyTypeEvidence": [
+        "HEADLINE:PHYSICAL_INCIDENT"
+      ],
+      "previousHistoricalContext": "MALAYA",
+      "historicalContext": "MALAYA",
+      "historicalContextEvidence": [
+        "TEXT:MALAYA"
+      ]
+    },
+    {
+      "id": "18740a53-ddd8-4d52-9664-41e5256d556b",
+      "title": "Pekan Nanas murder: Hunt on for thug",
+      "snippet": "Pekan Nanas murder: Hunt on for thug JOHORE BAHRU. Mon. —The Johore Police today flashed to all States, particulars of a notorious gangster who is wanted in connection with the...",
+      "sourceTitle": "Pekan Nanas murder: Hunt on for thug",
+      "publishedAt": "1968-06-04T00:00:00.000Z",
+      "previousStoryType": "CRIME_MYSTERY",
+      "storyType": "CRIME_MYSTERY",
+      "storyTypeConfidence": "HIGH",
+      "storyTypeEvidence": [
+        "HEADLINE:VIOLENT_CRIME",
+        "CONTEXT:POLICE_OR_COURT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "MODERN_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1968-06-04",
+        "ERA:POST_1963_09_16"
+      ]
+    },
+    {
+      "id": "a075e97b-ca7c-4b9f-8676-aa87ecac0d4b",
+      "title": "FORGOTTEN IN A RIKISHA.",
+      "snippet": "FORGOTTEN IN A RIKISHA. At Penang on the lllh instant, a gentleman left over S3u« in his private rikisha; later he founu both money and puller had disappeared",
+      "sourceTitle": "FORGOTTEN IN A RIKISHA.",
+      "publishedAt": "1899-07-19T00:00:00.000Z",
+      "previousStoryType": "DISAPPEARANCE",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "LOW",
+      "storyTypeEvidence": [
+        "FALLBACK:HISTORICAL_INCIDENT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "PRE_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1899-07-19",
+        "ERA:PRE_1946"
+      ]
+    },
+    {
+      "id": "65a9e4a4-aed3-4dee-b0c3-13d1b5d27429",
+      "title": "Murder trial put off",
+      "snippet": "Murder trial put off THE murder trial of Culture, Youth and Sports Minister, Datuk Mokhtar Hashim and four others for the alleged killing of former Negri Sembilan State Legislative Assembly...",
+      "sourceTitle": "Murder trial put off",
+      "publishedAt": "1982-09-25T00:00:00.000Z",
+      "previousStoryType": "CRIME_MYSTERY",
+      "storyType": "CRIME_MYSTERY",
+      "storyTypeConfidence": "HIGH",
+      "storyTypeEvidence": [
+        "HEADLINE:VIOLENT_CRIME",
+        "CONTEXT:POLICE_OR_COURT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "MODERN_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1982-09-25",
+        "ERA:POST_1963_09_16"
+      ]
+    },
+    {
+      "id": "7da3de72-6e81-4ef0-90ac-9021fb0038ff",
+      "title": "Sibu Incident",
+      "snippet": "Sibu Incident The wrangle over the venue of last Thursday's meeting of Sibu Urban District Council, reported from Sarawak yesterday, was incidental to the intention of some single-minded Chinese to...",
+      "sourceTitle": "Sibu Incident",
+      "publishedAt": "1961-03-07T00:00:00.000Z",
+      "previousStoryType": "HISTORICAL_INCIDENT",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "MEDIUM",
+      "storyTypeEvidence": [
+        "HEADLINE:HISTORICAL_EVENT"
+      ],
+      "previousHistoricalContext": "SARAWAK",
+      "historicalContext": "SARAWAK",
+      "historicalContextEvidence": [
+        "DATE:1961-03-07",
+        "LOCATION:SARAWAK"
+      ]
+    },
+    {
+      "id": "6cb5d71b-0425-4268-800e-ef15fc5c6d27",
+      "title": "NEGRI ASSIZES.",
+      "snippet": "NEGRI ASSIZES. Murder Charge Reduced To Culpable Homicide. (From Our Own Correspondent.) Sercmban, May 11. The Hon. Mr. Justice Burton presided at the Negri Sembilan Assizes which commenced today in...",
+      "sourceTitle": "NEGRI ASSIZES.",
+      "publishedAt": "1931-05-14T00:00:00.000Z",
+      "previousStoryType": "CRIME_MYSTERY",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "LOW",
+      "storyTypeEvidence": [
+        "FALLBACK:HISTORICAL_INCIDENT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "PRE_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1931-05-14",
+        "ERA:PRE_1946"
+      ]
+    },
+    {
+      "id": "4563d50e-7a6c-4ee0-b9c1-e559cda273cc",
+      "title": "SOEK's BLUFF",
+      "snippet": "SOEK's BLUFF That skydrop a bid to fool Malayans into panic belief that saboteurs are operating in the Telok Anson area KUALA LUMPUR, Mon CPECIAL Branch officers investigating the airdrop...",
+      "sourceTitle": "SOEK's BLUFF",
+      "publishedAt": "1964-03-31T00:00:00.000Z",
+      "previousStoryType": "STRANGE_EVENT",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "LOW",
+      "storyTypeEvidence": [
+        "FALLBACK:HISTORICAL_INCIDENT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "MODERN_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1964-03-31",
+        "ERA:POST_1963_09_16"
+      ]
+    },
+    {
+      "id": "ca116894-4172-4c83-9c0f-df895ff9b662",
+      "title": "Tan warns: Disaster ahead unless...",
+      "snippet": "Tan warns: Disaster ahead unless... KUALA LUMPUR, Saturday. THE Minister of Commerce and Industry, Mr. Tan Siew Sin, v arned today that Malaya's basic econo- 1 mic problems alone could...",
+      "sourceTitle": "Tan warns: Disaster ahead unless...",
+      "publishedAt": "1958-12-21T00:00:00.000Z",
+      "previousStoryType": "DISASTER",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "LOW",
+      "storyTypeEvidence": [
+        "FALLBACK:HISTORICAL_INCIDENT"
+      ],
+      "previousHistoricalContext": "MALAYA",
+      "historicalContext": "MALAYA",
+      "historicalContextEvidence": [
+        "TEXT:MALAYA"
+      ]
+    },
+    {
+      "id": "3bae03fe-279e-4a80-9b62-4297221647a9",
+      "title": "S'pore-based gang involved in ship's disappearance'",
+      "snippet": "S'pore-based gang involved in ship's disappearance' Vessel was carrying $4m worth of plywood KUALA LUMPUR The International Maritime Bureau \\IMB) believes that an international syndicate based m Singapore is behind...",
+      "sourceTitle": "S'pore-based gang involved in ship's disappearance'",
+      "publishedAt": "1993-09-07T00:00:00.000Z",
+      "previousStoryType": "DISAPPEARANCE",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "LOW",
+      "storyTypeEvidence": [
+        "FALLBACK:HISTORICAL_INCIDENT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "MODERN_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1993-09-07",
+        "ERA:POST_1963_09_16"
+      ]
+    },
+    {
+      "id": "8faecd23-29b5-4521-a135-cc0056cb2c72",
+      "title": "MYSTERIOUS DEATH.",
+      "snippet": "MYSTERIOUS DEATH. European's Identity Established (From Our Own Correspondent) Kuala Lumpur, Oct. 28. The identity of the European who was ound dead in a motor car at Kuala Kubu m...",
+      "sourceTitle": "MYSTERIOUS DEATH.",
+      "publishedAt": "1928-10-29T00:00:00.000Z",
+      "previousStoryType": "MYSTERIOUS_DEATH",
+      "storyType": "MYSTERIOUS_DEATH",
+      "storyTypeConfidence": "MEDIUM",
+      "storyTypeEvidence": [
+        "HEADLINE:DEATH_DISCOVERY"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "PRE_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1928-10-29",
+        "ERA:PRE_1946"
+      ]
+    },
+    {
+      "id": "4c39c2c8-1456-46dc-85ca-f15f9fd21605",
+      "title": "Body found on pavement",
+      "snippet": "Body found on pavement BINGAPORE. Tues. The unidentified body of a 55-ycai-o:d Indian was found today by police on the flve-foot-way of a house in Perak Road. The man was...",
+      "sourceTitle": "Body found on pavement",
+      "publishedAt": "1963-09-11T00:00:00.000Z",
+      "previousStoryType": "MYSTERIOUS_DEATH",
+      "storyType": "MYSTERIOUS_DEATH",
+      "storyTypeConfidence": "HIGH",
+      "storyTypeEvidence": [
+        "HEADLINE:DEATH_DISCOVERY",
+        "CONTEXT:DEATH_INQUIRY"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "FEDERATION_OF_MALAYA",
+      "historicalContextEvidence": [
+        "DATE:1963-09-11",
+        "ERA:1948_TO_1963"
+      ]
+    },
+    {
+      "id": "8674cbc4-dbab-4d4a-b179-466b31c63b78",
+      "title": "ECHO OF PENANG HILL MURDER",
+      "snippet": "ECHO OF PENANG HILL MURDER Sikhs Appeal Against Death Sentence j_jEARING of the appeal of Letchman Singh and Hazara Singh, who were convicted by the Hon. Mr. Justice Howes for...",
+      "sourceTitle": "ECHO OF PENANG HILL MURDER",
+      "publishedAt": "1939-05-19T00:00:00.000Z",
+      "previousStoryType": "CRIME_MYSTERY",
+      "storyType": "CRIME_MYSTERY",
+      "storyTypeConfidence": "MEDIUM",
+      "storyTypeEvidence": [
+        "HEADLINE:VIOLENT_CRIME"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "PRE_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1939-05-19",
+        "ERA:PRE_1946"
+      ]
+    },
+    {
+      "id": "7d629d67-5f68-49ff-ad4a-9f4b6ca2f716",
+      "title": "Missing Peace Corps volunteer is Beckner of Bellevue",
+      "snippet": "Missing Peace Corps volunteer is Beckner of Bellevue KUALA LUMPUR, Sat. The Peace Corps volunteer reported missing while swimming off Datu Burok. Kuala Trengganu yesterday is Mr. John S. Beckner,...",
+      "sourceTitle": "Missing Peace Corps volunteer is Beckner of Bellevue",
+      "publishedAt": "1968-11-24T00:00:00.000Z",
+      "previousStoryType": "DISAPPEARANCE",
+      "storyType": "DISAPPEARANCE",
+      "storyTypeConfidence": "HIGH",
+      "storyTypeEvidence": [
+        "HEADLINE:MISSING_PERSON",
+        "CONTEXT:PERSON_OR_SEARCH"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "MODERN_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1968-11-24",
+        "ERA:POST_1963_09_16"
+      ]
+    },
+    {
+      "id": "552f3ad3-f407-405b-8ee7-943e56cfaf20",
+      "title": "Woman hawker missing",
+      "snippet": "Woman hawker missing PENANG, Thurs. A hawker. Lee Sook On, has reported to Police the disappearance ot his wife's aunt, also a hawker. The missing woman, Wong Ah Lan. 49,...",
+      "sourceTitle": "Woman hawker missing",
+      "publishedAt": "1959-04-10T00:00:00.000Z",
+      "previousStoryType": "DISAPPEARANCE",
+      "storyType": "DISAPPEARANCE",
+      "storyTypeConfidence": "HIGH",
+      "storyTypeEvidence": [
+        "HEADLINE:MISSING_PERSON",
+        "CONTEXT:PERSON_OR_SEARCH"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "FEDERATION_OF_MALAYA",
+      "historicalContextEvidence": [
+        "DATE:1959-04-10",
+        "ERA:1948_TO_1963"
+      ]
+    },
+    {
+      "id": "a0467b5e-7d51-4f57-9787-2c5ea87ceec8",
+      "title": "Bandit Agents Held In Perak",
+      "snippet": "Bandit Agents Held In Perak From Our Staff Correspondent KUALA LUMPUR, Tuesday. A SUBSCRIPTION collector and a bandit supporter were arrested by police on Gedong Estate in the Tapab area...",
+      "sourceTitle": "Bandit Agents Held In Perak",
+      "publishedAt": "1949-03-30T00:00:00.000Z",
+      "previousStoryType": "HISTORICAL_INCIDENT",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "LOW",
+      "storyTypeEvidence": [
+        "SNIPPET:HISTORICAL_EVENT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "FEDERATION_OF_MALAYA",
+      "historicalContextEvidence": [
+        "DATE:1949-03-30",
+        "ERA:1948_TO_1963"
+      ]
+    },
+    {
+      "id": "b8913d04-4dfb-419d-8b7b-8a9a47a55cf6",
+      "title": "KLANG MURDER SUSPECT CAPTURED",
+      "snippet": "KLANG MURDER SUSPECT CAPTURED A KLANG gangster was arrested m Lumut, Perak, on Friday m connection with a murder. The 28-year-old fugitive and some of his fellow gangsters have been...",
+      "sourceTitle": "KLANG MURDER SUSPECT CAPTURED",
+      "publishedAt": "2002-10-13T00:00:00.000Z",
+      "previousStoryType": "CRIME_MYSTERY",
+      "storyType": "CRIME_MYSTERY",
+      "storyTypeConfidence": "HIGH",
+      "storyTypeEvidence": [
+        "HEADLINE:VIOLENT_CRIME",
+        "CONTEXT:POLICE_OR_COURT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "MODERN_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:2002-10-13",
+        "ERA:POST_1963_09_16"
+      ]
+    },
+    {
+      "id": "5a1168e1-2756-4942-8ae8-cd74f48b324b",
+      "title": "PERAK KAMPONG TRAGEDY",
+      "snippet": "PERAK KAMPONG TRAGEDY padi Planter’s Body Found In River i THE ETERNAL TRIANGLE (From Our Own Correspondent) Ipoh, To-day. The story of a kampong tragedy was narrated at the Assizes...",
+      "sourceTitle": "PERAK KAMPONG TRAGEDY",
+      "publishedAt": "1932-09-08T00:00:00.000Z",
+      "previousStoryType": "MYSTERIOUS_DEATH",
+      "storyType": "MYSTERIOUS_DEATH",
+      "storyTypeConfidence": "MEDIUM",
+      "storyTypeEvidence": [
+        "SNIPPET:DEATH_DISCOVERY",
+        "CONTEXT:DEATH_INQUIRY"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "PRE_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1932-09-08",
+        "ERA:PRE_1946"
+      ]
+    },
+    {
+      "id": "19f218aa-161d-4cb5-92bf-4d17dc7a74d8",
+      "title": "Arrest After Jungle Find",
+      "snippet": "Arrest After Jungle Find CINGAPORE detectives travelling to Segamat, Johore, yesterday, arrested a Chinese lorry-driver, in connection with the death of M. Sinagovinda Mudaiiar, aged 60, a well-to-do Labis shopkeeper,...",
+      "sourceTitle": "Arrest After Jungle Find",
+      "publishedAt": "1940-11-09T00:00:00.000Z",
+      "previousStoryType": "HISTORICAL_INCIDENT",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "MEDIUM",
+      "storyTypeEvidence": [
+        "HEADLINE:HISTORICAL_EVENT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "PRE_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1940-11-09",
+        "ERA:PRE_1946"
+      ]
+    },
+    {
+      "id": "66b141f5-e53b-4ecc-8f44-daa55c574f1a",
+      "title": "Welder beheaded in 'cult ritual' Head, limbs cut off",
+      "snippet": "Welder beheaded in 'cult ritual' Head, limbs cut off By CLTan Reporting from KUALA LUMPUR FOR almost two months, the neighbours heard strange noises and chants. They would be coming...",
+      "sourceTitle": "Welder beheaded in 'cult ritual' Head, limbs cut off",
+      "publishedAt": "2001-06-05T00:00:00.000Z",
+      "previousStoryType": "STRANGE_EVENT",
+      "storyType": "CRIME_MYSTERY",
+      "storyTypeConfidence": "MEDIUM",
+      "storyTypeEvidence": [
+        "HEADLINE:VIOLENT_CRIME"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "MODERN_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:2001-06-05",
+        "ERA:POST_1963_09_16"
+      ]
+    },
+    {
+      "id": "98ec5c74-1e3f-43d6-a214-fd6410e06b9e",
+      "title": "Police find body in Perak River",
+      "snippet": "Police find body in Perak River I TELUK ANSON. Mon.— Polios recovered the body of an unidenti- lied male from the Perak Riwr off the town jetty here over the...",
+      "sourceTitle": "Police find body in Perak River",
+      "publishedAt": "1965-05-18T00:00:00.000Z",
+      "previousStoryType": "HISTORICAL_INCIDENT",
+      "storyType": "MYSTERIOUS_DEATH",
+      "storyTypeConfidence": "HIGH",
+      "storyTypeEvidence": [
+        "HEADLINE:DEATH_DISCOVERY",
+        "CONTEXT:DEATH_INQUIRY"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "MODERN_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1965-05-18",
+        "ERA:POST_1963_09_16"
+      ]
+    },
+    {
+      "id": "b6390005-a105-4d82-aff5-7b8b0b0453e0",
+      "title": "IG-year-old girl missing from home for a week",
+      "snippet": "IG-year-old girl missing from home for a week JOHORE. BAHRU. Wed. Johore police are looking for a 16-year-old girl, Lily De Cruz (above), who has been missing from her home...",
+      "sourceTitle": "IG-year-old girl missing from home for a week",
+      "publishedAt": "1964-08-20T00:00:00.000Z",
+      "previousStoryType": "DISAPPEARANCE",
+      "storyType": "DISAPPEARANCE",
+      "storyTypeConfidence": "HIGH",
+      "storyTypeEvidence": [
+        "HEADLINE:MISSING_PERSON",
+        "CONTEXT:PERSON_OR_SEARCH"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "MODERN_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1964-08-20",
+        "ERA:POST_1963_09_16"
+      ]
+    },
+    {
+      "id": "949ad49b-a790-4e03-8e59-bc314b79f843",
+      "title": "Youth held in estate murder investigation",
+      "snippet": "Youth held in estate murder investigation JOHORE BAHRU. Wed. Police have detained a youth In connection with the murder of Llm Inn Joat, an estate supervisor at Kluang who was...",
+      "sourceTitle": "Youth held in estate murder investigation",
+      "publishedAt": "1972-03-30T00:00:00.000Z",
+      "previousStoryType": "CRIME_MYSTERY",
+      "storyType": "CRIME_MYSTERY",
+      "storyTypeConfidence": "HIGH",
+      "storyTypeEvidence": [
+        "HEADLINE:VIOLENT_CRIME",
+        "CONTEXT:POLICE_OR_COURT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "MODERN_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1972-03-30",
+        "ERA:POST_1963_09_16"
+      ]
+    },
+    {
+      "id": "028b3ba6-8012-493c-bef0-a776760c4a06",
+      "title": "Police in shoot-out with escaped",
+      "snippet": "Police in shoot-out with escaped convict PASIR MAS (Kelantan), Thurs. An escaped convict shot it out with the police here yesterday afternoon before giving himself up. Deputy OCPD, ASP Megat...",
+      "sourceTitle": "Police in shoot-out with escaped",
+      "publishedAt": "1982-05-21T00:00:00.000Z",
+      "previousStoryType": "HISTORICAL_INCIDENT",
+      "storyType": "CRIME_MYSTERY",
+      "storyTypeConfidence": "HIGH",
+      "storyTypeEvidence": [
+        "HEADLINE:VIOLENT_CRIME",
+        "CONTEXT:POLICE_OR_COURT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "MODERN_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1982-05-21",
+        "ERA:POST_1963_09_16"
+      ]
+    },
+    {
+      "id": "29b4f3c9-540b-4a86-8db0-fc0cf65cc459",
+      "title": "Share scrips reported lost on flight to KL",
+      "snippet": "Share scrips reported lost on flight to KL ANOTHER case of missing share certificates has been reported this year, this time on a flight between Singapore and Kuala Lumpur. Securities...",
+      "sourceTitle": "Share scrips reported lost on flight to KL",
+      "publishedAt": "1981-06-17T00:00:00.000Z",
+      "previousStoryType": "DISAPPEARANCE",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "LOW",
+      "storyTypeEvidence": [
+        "FALLBACK:HISTORICAL_INCIDENT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "MODERN_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1981-06-17",
+        "ERA:POST_1963_09_16"
+      ]
+    },
+    {
+      "id": "6104b205-f677-45d2-a7dd-7d3f09ad505a",
+      "title": "JOHORE MURDER TRIAL.",
+      "snippet": "JOHORE MURDER TRIAL. The trial of tho '•&gt;'■) .Javanese tappers who stand charged with the murder of .Mr. J. P. Mackay on the Tuinaug Estate, .Johore Rubber Lands, m July...",
+      "sourceTitle": "JOHORE MURDER TRIAL.",
+      "publishedAt": "1912-08-19T00:00:00.000Z",
+      "previousStoryType": "CRIME_MYSTERY",
+      "storyType": "CRIME_MYSTERY",
+      "storyTypeConfidence": "HIGH",
+      "storyTypeEvidence": [
+        "HEADLINE:VIOLENT_CRIME",
+        "CONTEXT:POLICE_OR_COURT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "PRE_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1912-08-19",
+        "ERA:PRE_1946"
+      ]
+    },
+    {
+      "id": "8c912655-a0dc-4e34-a446-19ae518bf44c",
+      "title": "TO CALL MALAYA LANKASUKA IS ROT, THEY ALL SAY",
+      "snippet": "TO CALL MALAYA LANKASUKA IS ROT, THEY ALL SAY LINKED TO LEGEND OF CANNIBAL KING M *h T P° ll,,cal educational and cultural leaders, and the Malay public in Singapore...",
+      "sourceTitle": "TO CALL MALAYA LANKASUKA IS ROT, THEY ALL SAY",
+      "publishedAt": "1956-08-24T00:00:00.000Z",
+      "previousStoryType": "FOLKLORE",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "LOW",
+      "storyTypeEvidence": [
+        "FALLBACK:HISTORICAL_INCIDENT"
+      ],
+      "previousHistoricalContext": "MALAYA",
+      "historicalContext": "MALAYA",
+      "historicalContextEvidence": [
+        "TEXT:MALAYA"
+      ]
+    },
+    {
+      "id": "3a0b5fa7-dd08-444a-93a1-54269cb01891",
+      "title": "Jailed—a police supervisee",
+      "snippet": "Jailed a police supervisee PENANG, Mon A police supervisee. Ahmad bin Van 22. was today jailed for six weeks when he pleaded guilty to l ailing to report to police...",
+      "sourceTitle": "Jailed—a police supervisee",
+      "publishedAt": "1962-09-11T00:00:00.000Z",
+      "previousStoryType": "HISTORICAL_INCIDENT",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "MEDIUM",
+      "storyTypeEvidence": [
+        "HEADLINE:HISTORICAL_EVENT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "FEDERATION_OF_MALAYA",
+      "historicalContextEvidence": [
+        "DATE:1962-09-11",
+        "ERA:1948_TO_1963"
+      ]
+    },
+    {
+      "id": "d6778990-bc6a-4f76-8f83-b26ca35c99f2",
+      "title": "Lost city in Pahang lake?",
+      "snippet": "Lost city in Pahang lake? LOCAL \"Indiana Joneses\" have been invited to help search for a legendary lost city at the bottom of Tasik Chini, a lake in Pahang, following...",
+      "sourceTitle": "Lost city in Pahang lake?",
+      "publishedAt": "1994-10-23T00:00:00.000Z",
+      "previousStoryType": "DISAPPEARANCE",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "LOW",
+      "storyTypeEvidence": [
+        "FALLBACK:HISTORICAL_INCIDENT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "MODERN_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1994-10-23",
+        "ERA:POST_1963_09_16"
+      ]
+    },
+    {
+      "id": "d566c902-6eb1-4432-883e-878f580cf279",
+      "title": "Search stepped up for missing yacht",
+      "snippet": "Search stepped up for missing yacht PENANG, Sat. An air and sea search for a missing yacht with a five-member crew m the sea off Penang Island has been intensified....",
+      "sourceTitle": "Search stepped up for missing yacht",
+      "publishedAt": "1979-03-04T00:00:00.000Z",
+      "previousStoryType": "DISAPPEARANCE",
+      "storyType": "DISAPPEARANCE",
+      "storyTypeConfidence": "HIGH",
+      "storyTypeEvidence": [
+        "HEADLINE:MISSING_PERSON",
+        "CONTEXT:PERSON_OR_SEARCH"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "MODERN_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1979-03-04",
+        "ERA:POST_1963_09_16"
+      ]
+    },
+    {
+      "id": "37091793-8908-47ad-9c4d-d7b0b68546aa",
+      "title": "UNENDING HUNT FOR LOST WIFE AND BABY",
+      "snippet": "UNENDING HUNT FOR LOST WIFE AND BABY KUALA LUMPUR. Thurg. A weary shipping clerk has travelled hundreds of miles through Malaya looking for his wife and baby who disappeared from...",
+      "sourceTitle": "UNENDING HUNT FOR LOST WIFE AND BABY",
+      "publishedAt": "1959-01-09T00:00:00.000Z",
+      "previousStoryType": "DISAPPEARANCE",
+      "storyType": "DISAPPEARANCE",
+      "storyTypeConfidence": "HIGH",
+      "storyTypeEvidence": [
+        "HEADLINE:MISSING_PERSON",
+        "CONTEXT:PERSON_OR_SEARCH"
+      ],
+      "previousHistoricalContext": "MALAYA",
+      "historicalContext": "MALAYA",
+      "historicalContextEvidence": [
+        "TEXT:MALAYA"
+      ]
+    },
+    {
+      "id": "11cedc7a-47cb-40c6-9712-f5c95bb6c0ff",
+      "title": "Floods toll rises to 11 as Johor is hit too",
+      "snippet": "Floods toll rises to 1 1 as Johor is hit too JOHOR BARU, Friday Two roads m state under 0.3 m of water JOHOR was today also hit by floods...",
+      "sourceTitle": "Floods toll rises to 11 as Johor is hit too",
+      "publishedAt": "1983-12-10T00:00:00.000Z",
+      "previousStoryType": "DISASTER",
+      "storyType": "DISASTER",
+      "storyTypeConfidence": "MEDIUM",
+      "storyTypeEvidence": [
+        "HEADLINE:PHYSICAL_INCIDENT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "MODERN_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1983-12-10",
+        "ERA:POST_1963_09_16"
+      ]
+    },
+    {
+      "id": "2347f14b-70a7-4b5f-81fd-cdb756743a5f",
+      "title": "Police probe 2 mystery Brunei fires",
+      "snippet": "Police probe 2 mystery Brunei fires ORUNEI TOWN, Mon. 13 —Police are investigating two mysterious tires in Brunei district. A week ago the Sarawak Government hydrogra- j phic survey launch...",
+      "sourceTitle": "Police probe 2 mystery Brunei fires",
+      "publishedAt": "1965-05-04T00:00:00.000Z",
+      "previousStoryType": "UNEXPLAINED_EVENT",
+      "storyType": "UNEXPLAINED_EVENT",
+      "storyTypeConfidence": "MEDIUM",
+      "storyTypeEvidence": [
+        "HEADLINE:UNEXPLAINED_PHENOMENON",
+        "CONTEXT:UNRESOLVED_REPORT"
+      ],
+      "previousHistoricalContext": "SARAWAK",
+      "historicalContext": "MODERN_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1965-05-04",
+        "ERA:POST_1963_09_16"
+      ]
+    },
+    {
+      "id": "84a548ab-a017-42a1-93f3-c3e27d892841",
+      "title": "Cop charged with killing pop singer",
+      "snippet": "Cop charged with killing pop singer KUALA KLAWANG (Negeri Sembilan) A police lance corporal was charged here yesterday with the murder of singer of the pop group Spoon, Sabi'ul Malik...",
+      "sourceTitle": "Cop charged with killing pop singer",
+      "publishedAt": "2000-01-19T00:00:00.000Z",
+      "previousStoryType": "CRIME_MYSTERY",
+      "storyType": "CRIME_MYSTERY",
+      "storyTypeConfidence": "HIGH",
+      "storyTypeEvidence": [
+        "HEADLINE:VIOLENT_CRIME",
+        "CONTEXT:POLICE_OR_COURT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "MODERN_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:2000-01-19",
+        "ERA:POST_1963_09_16"
+      ]
+    },
+    {
+      "id": "fdfafd12-2a31-419e-82c2-64a1b4b58d81",
+      "title": "JOHORE MURDER CHARGE WITHDRAWN",
+      "snippet": "JOHORE MURDER CHARGE WITHDRAWN {From Our Own Correspondent» Johore Bahru, Mar. 11. THAVASI, a Tamil, who stood charged with the murder of a Chinese. Leong Man. at Bukit Siput Estate,...",
+      "sourceTitle": "JOHORE MURDER CHARGE WITHDRAWN",
+      "publishedAt": "1940-03-21T00:00:00.000Z",
+      "previousStoryType": "CRIME_MYSTERY",
+      "storyType": "CRIME_MYSTERY",
+      "storyTypeConfidence": "HIGH",
+      "storyTypeEvidence": [
+        "HEADLINE:VIOLENT_CRIME",
+        "CONTEXT:POLICE_OR_COURT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "PRE_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1940-03-21",
+        "ERA:PRE_1946"
+      ]
+    },
+    {
+      "id": "46e5b2d6-082f-4c1e-b484-378c54d672b4",
+      "title": "\"Blood Flowers\" Being Sold In Malaya Tomorrow",
+      "snippet": "\"Blood Flowers\" Being Sold In Malaya Tomorrow Mukden Incident ■Anniversary FREE PRESS CHINA WAR SUPPLEMENT CHINESE m Malaya and throughout the world will MnlTn? o^ C f eb l^ the...",
+      "sourceTitle": "\"Blood Flowers\" Being Sold In Malaya Tomorrow",
+      "publishedAt": "1938-09-17T00:00:00.000Z",
+      "previousStoryType": "HISTORICAL_INCIDENT",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "LOW",
+      "storyTypeEvidence": [
+        "SNIPPET:HISTORICAL_EVENT"
+      ],
+      "previousHistoricalContext": "MALAYA",
+      "historicalContext": "MALAYA",
+      "historicalContextEvidence": [
+        "TEXT:MALAYA"
+      ]
+    },
+    {
+      "id": "6b07aed6-ec47-4519-bc61-ed6d3e6fe505",
+      "title": "Case of the missing 14,000 names...",
+      "snippet": "Case of the missing 14,000 names... Kuala Lumpur. Friday. —About 14,000 Kuala Lumpur voters will not be allowed to vote m Malaysia's fifth general election tomorrow because of a mistake....",
+      "sourceTitle": "Case of the missing 14,000 names...",
+      "publishedAt": "1974-08-23T00:00:00.000Z",
+      "previousStoryType": "DISAPPEARANCE",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "LOW",
+      "storyTypeEvidence": [
+        "FALLBACK:HISTORICAL_INCIDENT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "MODERN_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1974-08-23",
+        "ERA:POST_1963_09_16"
+      ]
+    },
+    {
+      "id": "5664677b-b664-427b-8868-5fe4f880989f",
+      "title": "SEVEN MURDER CASES ON LIST",
+      "snippet": "SEVEN MURDER CASES ON LIST TO LAST NEARLY TWO MONTHS hat is likely to be the longest session of the Perak Criminal Assizes in recent years begins on Monday, July...",
+      "sourceTitle": "SEVEN MURDER CASES ON LIST",
+      "publishedAt": "1935-07-03T00:00:00.000Z",
+      "previousStoryType": "CRIME_MYSTERY",
+      "storyType": "CRIME_MYSTERY",
+      "storyTypeConfidence": "MEDIUM",
+      "storyTypeEvidence": [
+        "HEADLINE:VIOLENT_CRIME"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "PRE_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1935-07-03",
+        "ERA:PRE_1946"
+      ]
+    },
+    {
+      "id": "679e299b-09c2-4119-b230-a7e7ecd40bf2",
+      "title": "MISSING BOY'S BODY DISCOVERED",
+      "snippet": "MISSING BOY'S BODY DISCOVERED SEARCH parties recovero die body &lt;&gt;t one of two pupils who wont missing after thoi boat c apsi/fd on the Katibas River m Sarawak. Tbe body...",
+      "sourceTitle": "MISSING BOY'S BODY DISCOVERED",
+      "publishedAt": "2000-04-10T00:00:00.000Z",
+      "previousStoryType": "DISAPPEARANCE",
+      "storyType": "DISAPPEARANCE",
+      "storyTypeConfidence": "HIGH",
+      "storyTypeEvidence": [
+        "HEADLINE:MISSING_PERSON",
+        "CONTEXT:PERSON_OR_SEARCH"
+      ],
+      "previousHistoricalContext": "SARAWAK",
+      "historicalContext": "MODERN_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:2000-04-10",
+        "ERA:POST_1963_09_16"
+      ]
+    },
+    {
+      "id": "ab058008-ecd0-43cb-a15e-57050a37344d",
+      "title": "SUSPECTED KILLERS ARRESTED IN PERAK",
+      "snippet": "SUSPECTED KILLERS ARRESTED IN PERAK TWO Indonesian men who have been on the run for three years have been arrested in Perak over the murder of an Indonesian couple in...",
+      "sourceTitle": "SUSPECTED KILLERS ARRESTED IN PERAK",
+      "publishedAt": "2002-01-02T00:00:00.000Z",
+      "previousStoryType": "CRIME_MYSTERY",
+      "storyType": "CRIME_MYSTERY",
+      "storyTypeConfidence": "HIGH",
+      "storyTypeEvidence": [
+        "HEADLINE:VIOLENT_CRIME",
+        "CONTEXT:POLICE_OR_COURT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "MODERN_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:2002-01-02",
+        "ERA:POST_1963_09_16"
+      ]
+    },
+    {
+      "id": "bf846284-93ed-48a3-a931-31ef40c191e3",
+      "title": "Man lost on way home from Malaya",
+      "snippet": "Man lost on way home from Malaya From HALL ROMNEY LONDON, Tues. MR. HENRY WORDEN, shift boss employed by the Pahang Consolidated Company, vanished from the Carthage on the voyage...",
+      "sourceTitle": "Man lost on way home from Malaya",
+      "publishedAt": "1956-02-15T00:00:00.000Z",
+      "previousStoryType": "DISAPPEARANCE",
+      "storyType": "DISAPPEARANCE",
+      "storyTypeConfidence": "MEDIUM",
+      "storyTypeEvidence": [
+        "SNIPPET:MISSING_PERSON",
+        "CONTEXT:PERSON_OR_SEARCH"
+      ],
+      "previousHistoricalContext": "MALAYA",
+      "historicalContext": "MALAYA",
+      "historicalContextEvidence": [
+        "TEXT:MALAYA"
+      ]
+    },
+    {
+      "id": "043221f9-6073-4e63-a6c8-f0cb57e1b3f6",
+      "title": "JEWELLERY LOST",
+      "snippet": "JEWELLERY LOST (From Our Own Correspondent.) Penang, August 3. On the last day of the races a Chinese woman *°*t a valuable krosang set with bailhants. Search for the missing...",
+      "sourceTitle": "JEWELLERY LOST",
+      "publishedAt": "1926-08-04T00:00:00.000Z",
+      "previousStoryType": "DISAPPEARANCE",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "LOW",
+      "storyTypeEvidence": [
+        "FALLBACK:HISTORICAL_INCIDENT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "PRE_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1926-08-04",
+        "ERA:PRE_1946"
+      ]
+    },
+    {
+      "id": "169fea6e-ab70-469a-8d9d-66d39e5a35eb",
+      "title": "DEATH SENTENCE.",
+      "snippet": "DEATH SENTENCE. Chinese Who Murdered Employer. (From Our Own Correspondent.) Seremban, Aug. 13. At the fourth session of the Negri Sembilan Assizes Mr. Justice Burton was engaged in hearing a...",
+      "sourceTitle": "DEATH SENTENCE.",
+      "publishedAt": "1931-08-14T00:00:00.000Z",
+      "previousStoryType": "CRIME_MYSTERY",
+      "storyType": "HISTORICAL_INCIDENT",
+      "storyTypeConfidence": "LOW",
+      "storyTypeEvidence": [
+        "FALLBACK:HISTORICAL_INCIDENT"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "PRE_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1931-08-14",
+        "ERA:PRE_1946"
+      ]
+    },
+    {
+      "id": "bb96228b-11eb-4c94-ab2a-98087fbbd065",
+      "title": "Harbour Fatality.",
+      "snippet": "Harbour Fatality. A drowning accident occurred at Penang on Friday evening resulting in the death of a Naval man. The launch from Penang was returning to Prye River Dock late...",
+      "sourceTitle": "Harbour Fatality.",
+      "publishedAt": "1915-11-02T00:00:00.000Z",
+      "previousStoryType": "DISASTER",
+      "storyType": "DISASTER",
+      "storyTypeConfidence": "MEDIUM",
+      "storyTypeEvidence": [
+        "SNIPPET:PHYSICAL_INCIDENT",
+        "CONTEXT:HARM_OR_RESPONSE"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "PRE_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1915-11-02",
+        "ERA:PRE_1946"
+      ]
+    },
+    {
+      "id": "e88b2a43-c550-4fff-b215-0a409aa4bd75",
+      "title": "Two found drowned",
+      "snippet": "Two found drowned KUALA TRENGGANU. Frl. A woman and a girl who had been missing while bathing in rivers here were found drowned this week. The body of the woman,...",
+      "sourceTitle": "Two found drowned",
+      "publishedAt": "1957-02-23T00:00:00.000Z",
+      "previousStoryType": "DISAPPEARANCE",
+      "storyType": "MYSTERIOUS_DEATH",
+      "storyTypeConfidence": "HIGH",
+      "storyTypeEvidence": [
+        "HEADLINE:DEATH_DISCOVERY",
+        "CONTEXT:DEATH_INQUIRY"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "FEDERATION_OF_MALAYA",
+      "historicalContextEvidence": [
+        "DATE:1957-02-23",
+        "ERA:1948_TO_1963"
+      ]
+    },
+    {
+      "id": "1ed8e7d6-27c7-41b4-be95-53ea05930b53",
+      "title": "6 S’poreans in KL bus accident discharged",
+      "snippet": "6 S’poreans in KL bus accident discharged Nadirah H. Rodzi KUALA LUMPUR Six out of 11 Singaporeans who were involved in a bus crash that killed one person near Kuala...",
+      "sourceTitle": "6 S’poreans in KL bus accident discharged",
+      "publishedAt": "2018-04-09T00:00:00.000Z",
+      "previousStoryType": "DISASTER",
+      "storyType": "DISASTER",
+      "storyTypeConfidence": "HIGH",
+      "storyTypeEvidence": [
+        "HEADLINE:PHYSICAL_INCIDENT",
+        "CONTEXT:HARM_OR_RESPONSE"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "MODERN_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:2018-04-09",
+        "ERA:POST_1963_09_16"
+      ]
+    },
+    {
+      "id": "b1c4742d-b858-4966-a478-0944ecb1e8a3",
+      "title": "Massive air-sea hunt for missing fishermen",
+      "snippet": "Massive air-sea hunt for missing fishermen PENANG, Wednesday. BIG air and sea search was mounted today in the sea off Penang for four fishermen missing since Nov. 18. An RAAF...",
+      "sourceTitle": "Massive air-sea hunt for missing fishermen",
+      "publishedAt": "1965-12-30T00:00:00.000Z",
+      "previousStoryType": "DISAPPEARANCE",
+      "storyType": "DISAPPEARANCE",
+      "storyTypeConfidence": "HIGH",
+      "storyTypeEvidence": [
+        "HEADLINE:MISSING_PERSON",
+        "CONTEXT:PERSON_OR_SEARCH"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "MODERN_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1965-12-30",
+        "ERA:POST_1963_09_16"
+      ]
+    },
+    {
+      "id": "835e169d-817d-42f7-b6e9-aebc10152ce1",
+      "title": "ACCIDENT AT KEDAH GAOL.",
+      "snippet": "A CCIDENT AT KEDAH GAOL. TWO PRISONERS KILLED BY COLLAPSE OF NEW WARD. One of the new wards at the Gaol at Alor Star, Kedah, collapsed at 1 1 a.m....",
+      "sourceTitle": "ACCIDENT AT KEDAH GAOL.",
+      "publishedAt": "1907-09-16T00:00:00.000Z",
+      "previousStoryType": "DISASTER",
+      "storyType": "DISASTER",
+      "storyTypeConfidence": "HIGH",
+      "storyTypeEvidence": [
+        "HEADLINE:PHYSICAL_INCIDENT",
+        "CONTEXT:HARM_OR_RESPONSE"
+      ],
+      "previousHistoricalContext": "MODERN_MALAYSIA",
+      "historicalContext": "PRE_MALAYSIA",
+      "historicalContextEvidence": [
+        "DATE:1907-09-16",
+        "ERA:PRE_1946"
+      ]
+    }
+  ]
+}

@@ -13,11 +13,13 @@
     "db:migrate": "node --env-file-if-exists=.env.local scripts/migrate-story-index.mjs",
     "index:stories": "node --env-file-if-exists=.env.local scripts/index-stories.mjs",
     "index:archives": "node --env-file-if-exists=.env.local scripts/index-archives.mjs",
+    "reclassify:archives": "node --env-file-if-exists=.env.local scripts/reclassify-archives.mjs",
     "reclassify:stories": "node --env-file-if-exists=.env.local scripts/reclassify-stories.mjs",
     "audit:project": "node --env-file-if-exists=.env.local scripts/audit-project.mjs",
     "audit:discovery": "node --env-file-if-exists=.env.local scripts/audit-discovery.mjs",
     "audit:classification": "node --env-file-if-exists=.env.local scripts/audit-classification-controls.mjs",
     "audit:archives": "node --env-file-if-exists=.env.local scripts/audit-archives.mjs",
+    "audit:archive-classification": "node scripts/audit-archive-classification.mjs",
     "audit:visuals": "node scripts/audit-visuals.mjs",
     "export:catalog": "node --env-file-if-exists=.env.local scripts/export-catalog.mjs",
     "export:audit-samples": "node scripts/export-audit-samples.mjs"

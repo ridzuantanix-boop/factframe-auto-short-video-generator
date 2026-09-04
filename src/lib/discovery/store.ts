@@ -1,6 +1,6 @@
 import postgres, { type Sql, type TransactionSql } from "postgres";
 import type { StoryCandidate, StoryCandidateInput, StoryIndexStatus } from "../types";
-import type { StorySourceInput } from "../archive/types.ts";
+import type { StoredStorySource, StorySourceInput } from "../archive/types.ts";
 import { dedupeKey, mergeCandidates } from "./dedupe.ts";
 import { STORY_INDEX_SCHEMA } from "./schema.ts";
 
@@ -11,6 +11,12 @@ export type CatalogStats = { total: number; discovered: number; partial: number;
 function date(value: unknown) { return value instanceof Date ? value.toISOString() : String(value); }
 function nullableDate(value: unknown) { return value ? date(value) : null; }
 function strings(value: unknown) { return Array.isArray(value) ? value.map(String) : []; }
+function sourceFromRow(row: Row): StoredStorySource {
+  return { id: String(row.id), storyCandidateId: String(row.story_candidate_id), provider: String(row.provider), sourceType: row.source_type as StoredStorySource["sourceType"],
+    title: String(row.title), publisher: String(row.publisher), url: String(row.url), publishedAt: nullableDate(row.published_at), accessedAt: date(row.accessed_at),
+    snippet: String(row.snippet), metadata: (row.metadata && typeof row.metadata === "object" ? row.metadata : {}) as Record<string, unknown>,
+    reliabilityLevel: row.reliability_level as StoredStorySource["reliabilityLevel"] };
+}
 
 function fromRow(row: Row): StoryCandidate {
   return {
@@ -183,6 +189,27 @@ export class StoryStore {
     ) SELECT * FROM ranked WHERE archive_rank <= 2 ORDER BY archive_rank, source_count DESC, updated_at DESC
       LIMIT ${Math.min(50, Math.max(1, limit))}`;
     return rows.map(fromRow);
+  }
+
+  async listArchiveCandidatesForClassification() {
+    const rows = await this.sql<Row[]>`SELECT * FROM story_candidates WHERE metadata->>'archiveDerived'='true' ORDER BY id`;
+    return rows.map(fromRow);
+  }
+
+  async listArchiveSourcesForClassification() {
+    const rows = await this.sql<Row[]>`SELECT source.* FROM story_sources source JOIN story_candidates candidate ON candidate.id=source.story_candidate_id
+      WHERE candidate.metadata->>'archiveDerived'='true' ORDER BY source.story_candidate_id, source.published_at NULLS LAST, source.id`;
+    return rows.map(sourceFromRow);
+  }
+
+  async updateArchiveClassification(id: string, storyType: string, metadata: Record<string, unknown>) {
+    const rows = await this.sql<Row[]>`UPDATE story_candidates SET story_type=${storyType}, metadata=${this.sql.json(JSON.parse(JSON.stringify(metadata)))}, updated_at=now()
+      WHERE id=${id} RETURNING *`;
+    if (!rows[0]) throw new Error(`Archive candidate not found: ${id}`); return fromRow(rows[0]);
+  }
+
+  async updateArchiveSourceMetadata(id: string, metadata: Record<string, unknown>) {
+    await this.sql`UPDATE story_sources SET metadata=${this.sql.json(JSON.parse(JSON.stringify(metadata)))} WHERE id=${id}`;
   }
 }
 
