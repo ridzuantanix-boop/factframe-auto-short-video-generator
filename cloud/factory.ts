@@ -1,3 +1,4 @@
+import { TestAccess, testEnabled, testLimit, LIMIT_MESSAGE } from "./test-access";
 import { Products } from "./products";
 import { validateSettings } from "../src/lib/pawarna/settings";
 import { projectInput, type ProductProject } from "../src/lib/pawarna/projects";
@@ -15,9 +16,11 @@ const terminal = (job: CloudJob) => ["completed", "failed"].includes(job.stage);
 type Row = { id: string; data: string; request_hash: string };
 export class PawarnaFactory extends DurableObject<Env> {
   private products: Products;
+  private tests: TestAccess;
   constructor(ctx: DurableObjectState, env: Env) {
     super(ctx, env);
     this.products = new Products(ctx, env);
+    this.tests = new TestAccess(ctx, env);
     ctx.storage.sql.exec(`CREATE TABLE IF NOT EXISTS jobs(id TEXT PRIMARY KEY, owner TEXT NOT NULL, request_key TEXT NOT NULL, request_hash TEXT NOT NULL, stage TEXT NOT NULL, created_at INTEGER NOT NULL, updated_at INTEGER NOT NULL, data TEXT NOT NULL, UNIQUE(owner,request_key));
       CREATE INDEX IF NOT EXISTS jobs_owner ON jobs(owner,created_at);
       CREATE INDEX IF NOT EXISTS jobs_stage ON jobs(stage,updated_at);
@@ -29,6 +32,7 @@ export class PawarnaFactory extends DurableObject<Env> {
   }
   private save(job: CloudJob, stage: Stage = job.stage) {
     job.stage = stage; job.updated_at = Date.now();
+    if(job.controlled_test && terminal(job)) job.controlled_test.finished_at ??= job.updated_at;
     this.ctx.storage.sql.exec("UPDATE jobs SET stage=?,updated_at=?,data=? WHERE id=?", job.stage, job.updated_at, JSON.stringify(job), job.id);
   }
   private consume(key: string, maximum: number, expires: number) {
@@ -49,18 +53,22 @@ export class PawarnaFactory extends DurableObject<Env> {
     }
     const url = new URL(request.url); const owner = request.headers.get("x-pawarna-owner");
     if (!owner || !/^[a-f0-9]{64}$/.test(owner)) return json({ error: "Sesi tidak sah." }, 401);
+    const testAuthorized = await this.tests.authorized(owner,undefined,request.headers.get("x-pawarna-test-proof") || "");
+    const testAllowed = testAuthorized && testEnabled(this.env);
+    const generationAllowed = this.env.GENERATION_ENABLED === "true" || testAllowed;
+    if (url.pathname.startsWith("/api/test/")) return this.tests.route(request,owner,job=>this.save(job));
     if (url.pathname === "/api/factory" && request.method === "GET") {
       const rows = this.ctx.storage.sql.exec<Row>("SELECT id,data,request_hash FROM jobs WHERE owner=? ORDER BY created_at DESC LIMIT 30", owner).toArray();
       if (rows.some(row => !terminal(JSON.parse(row.data)))) await this.schedule(1000);
-      return json({ products: this.products.list(owner), jobs: rows.map(row => publicJob(JSON.parse(row.data))), paused: this.env.GENERATION_ENABLED !== "true", ready: { gemini: !!this.env.GEMINI_API_KEY, nexabot: !!this.env.NEXABOT_API_KEY, worker: this.env.GENERATION_ENABLED === "true" }, deployment: "cloudflare", model: this.env.GEMINI_TEXT_MODEL });
+      return json({ products: this.products.list(owner), jobs: rows.map(row => publicJob(JSON.parse(row.data))), testMode: testAuthorized ? { authorized:true,enabled:testEnabled(this.env),limit:testLimit(this.env),attempts:this.tests.count("attempts"),remaining:this.tests.available() } : undefined, paused: !generationAllowed || testAllowed && this.tests.available()<1, ready: { gemini: !!this.env.GEMINI_API_KEY, nexabot: !!this.env.NEXABOT_API_KEY, worker: generationAllowed }, deployment: "cloudflare", model: this.env.GEMINI_TEXT_MODEL });
     }
     if (url.pathname.startsWith("/api/products")) {
-      try { return await this.products.route(request, owner, id => this.get(id)); } catch (e) { return json({error:e instanceof Error && /^(Upload|Gaya|Arahan|Imej|Had|Jumlah|Fail|Setiap)/.test(e.message) ? e.message : "Permintaan produk tidak sah."},400); }
+      try { return await this.products.route(request, owner, id => this.get(id), generationAllowed); } catch (e) { return json({error:e instanceof Error && /^(Upload|Gaya|Arahan|Imej|Had|Jumlah|Fail|Setiap)/.test(e.message) ? e.message : "Permintaan produk tidak sah."},400); }
     }
     const media = /^\/api\/factory\/jobs\/([a-f0-9-]{36})\/media$/.exec(url.pathname);
     if (media && ["GET", "HEAD"].includes(request.method)) return this.media(request, owner, media[1]);
     if (url.pathname !== "/api/generate" || request.method !== "POST") return json({ error: "Tidak ditemui." }, 404);
-    if (this.env.GENERATION_ENABLED !== "true" || !this.env.GEMINI_API_KEY || !this.env.NEXABOT_API_KEY) return json({ error: "Generation dihentikan sementara untuk semakan sistem. Tiada job baru dihantar." }, 503);
+    if (!generationAllowed || !this.env.GEMINI_API_KEY || !this.env.NEXABOT_API_KEY) return json({ error: "Generation dihentikan sementara untuk semakan sistem. Tiada job baru dihantar." }, 503);
     const key = request.headers.get("idempotency-key");
     if (!key || !/^[a-zA-Z0-9-]{16,100}$/.test(key)) return json({ error: "Permintaan tidak sah. Refresh halaman." }, 400);
     const now = Date.now();
@@ -71,6 +79,7 @@ export class PawarnaFactory extends DurableObject<Env> {
       const fingerprint = await hash(JSON.stringify(body));
       const existing = this.ctx.storage.sql.exec<Row>("SELECT id,data,request_hash FROM jobs WHERE owner=? AND request_key=?", owner, key).toArray()[0];
       if (existing) return existing.request_hash === fingerprint ? json({ job: publicJob(JSON.parse(existing.data)) }, 202) : json({ error: "Permintaan berulang mempunyai input berbeza." }, 409);
+      if(testAllowed && this.tests.available()<1)return json({error:LIMIT_MESSAGE},429);
       let input: JobInput; let parent: CloudJob | undefined; let project: ProductProject | undefined;
       if (body.product_id) {
         project = this.products.get(String(body.product_id));
@@ -106,9 +115,11 @@ export class PawarnaFactory extends DurableObject<Env> {
         product: project?.product || parent?.product, research: project?.research || parent?.research, plan: undefined };
       job.input_key = `jobs/${job.id}/input.json`;
       // Reserve atomically before remote storage I/O. New sessions cannot bypass the global limits.
+      const awaitEpoch = testAllowed ? await this.tests.epoch() : "";
       const reserved = this.ctx.storage.transactionSync(() => {
         const duplicate = this.ctx.storage.sql.exec<Row>("SELECT id,data,request_hash FROM jobs WHERE owner=? AND request_key=?", owner, key).toArray()[0];
         if (duplicate) return duplicate;
+        if(testAllowed) job.controlled_test=this.tests.reserve(awaitEpoch);
         const active = this.ctx.storage.sql.exec<{ n: number }>("SELECT COUNT(*) AS n FROM jobs WHERE stage NOT IN ('completed','failed')").one().n;
         if (active >= Number(this.env.PAWARNA_MAX_ACTIVE || 3)) throw new Error("Tunggu video sedia ada siap dahulu (maksimum 3 job aktif).");
         const day = new Date(now).toISOString().slice(0, 10);
@@ -150,7 +161,7 @@ export class PawarnaFactory extends DurableObject<Env> {
     await this.ctx.storage.setAlarm(Date.now() + 300_000);
     const rows = this.ctx.storage.sql.exec<Row>("SELECT id,data,request_hash FROM jobs WHERE stage NOT IN ('completed','failed') ORDER BY updated_at LIMIT 3").toArray();
     if (!rows.length) {
-      if (await this.products.tick()) await this.ctx.storage.setAlarm(Date.now()+1000);
+      if (await this.products.tick(async owner=>this.env.GENERATION_ENABLED==="true" || testEnabled(this.env) && await this.tests.authorized(owner))) await this.ctx.storage.setAlarm(Date.now()+1000);
       else await this.ctx.storage.deleteAlarm();
       return;
     }
@@ -175,7 +186,7 @@ export class PawarnaFactory extends DurableObject<Env> {
   }
   private async advance(job: CloudJob) {
     if (job.stage === "submitting" && !job.external_job_id) throw new ProviderError("uncertain", "Interrupted submission");
-    if (!job.external_job_id && this.env.GENERATION_ENABLED !== "true") {
+    if (!job.external_job_id && (job.controlled_test ? !testEnabled(this.env) || !await this.tests.authorized(job.owner,job.controlled_test.epoch) : this.env.GENERATION_ENABLED !== "true")) {
       job.error = "Penghantaran dihentikan untuk semakan sistem. Job ini tidak dihantar semula.";
       this.save(job, "failed"); return;
     }
@@ -190,8 +201,12 @@ export class PawarnaFactory extends DurableObject<Env> {
       if (!this.consume(`submissions:${day}`, Number(this.env.PAWARNA_DAILY_LIMIT || 20), Date.now() + 172_800_000)) throw new ProviderError("rejected", "Daily limit");
       const selected = job.product.reference_indices.slice(0, input.avatar ? 2 : 3).map(index => input.images[index]);
       job.plan.video_prompt = buildVideoPrompt(job.product, job.plan, !!input.avatar, selected.length, input.instructions, input.settings);
-      job.provider_requests.push({ at: Date.now(), status: "submitting", cost: .5 });
-      this.save(job, "submitting");
+      const epoch=job.controlled_test ? await this.tests.epoch() : "";
+      this.ctx.storage.transactionSync(()=>{
+        if(job.controlled_test)this.tests.claim(job,epoch);
+        job.provider_requests.push({ at: Date.now(), status: "submitting", cost: .5 });
+        this.save(job, "submitting");
+      });
       await this.ctx.storage.sync();
       const result = await provider.createJob({ prompt: job.plan.video_prompt, media: input.avatar ? [...selected, input.avatar] : selected, duration_seconds: 10 });
       job.external_job_id = result.id;

@@ -41,6 +41,8 @@
     "cloud/factory.ts",
     "cloud/validation.ts",
     "cloud/utils.ts",
-    "cloud/products.ts"
+    "cloud/products.ts",
+    "cloud/test-access.ts",
+    "tests/test-access.test.ts"
   ]
 }

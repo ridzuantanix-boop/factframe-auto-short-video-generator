@@ -14,7 +14,7 @@ export class Products {
   list(owner: string) { return this.ctx.storage.sql.exec<{data:string}>("SELECT data FROM products WHERE owner=? ORDER BY rowid DESC LIMIT 50", owner).toArray().map(r => publicProduct(JSON.parse(r.data))); }
   save(p: ProductProject) { p.updated_at = Date.now(); this.ctx.storage.sql.exec("UPDATE products SET data=? WHERE id=?", JSON.stringify(p), p.id); }
   async input(p: ProductProject) { const object = await this.env.MEDIA.get(p.input_key); if (!object) throw new Error("Imej asal tidak ditemui."); return object.json<JobInput>(); }
-  async route(request: Request, owner: string, source: (id: string) => CloudJob | undefined): Promise<Response> {
+  async route(request: Request, owner: string, source: (id: string) => CloudJob | undefined, allowAnalysis: boolean): Promise<Response> {
     const url = new URL(request.url);
     const match = /^\/api\/products\/([a-f0-9-]{36})\/(media|corrections)$/.exec(url.pathname);
     if (match) {
@@ -41,6 +41,7 @@ export class Products {
       parent = source(String(body.source_job)); if (!parent || parent.owner !== owner) return json({error:"Video tidak ditemui."},404);
       const object = await this.env.MEDIA.get(parent.input_key); if (!object) return json({},404); input = await object.json<JobInput>();
     } else input = validateInput(body);
+    if (!allowAnalysis && !(parent?.product && parent.research)) return json({error:"Analisis AI hanya tersedia untuk sesi ujian pemilik buat masa ini."},503);
     if (!parent && !this.env.GEMINI_API_KEY) return json({error:"Analisis belum tersedia."},503);
     const now = Date.now();
     const p: ProductProject = {id:crypto.randomUUID(),owner,created_at:now,updated_at:now,stage:parent?.product && parent.research ? "ready" : "queued",input_key:"",image_count:input.images.length,product:parent?.product,research:parent?.research};
@@ -57,15 +58,17 @@ export class Products {
     await this.ctx.storage.setAlarm(Date.now()+1000);
     return json({product:publicProduct(p)},202);
   }
-  async tick(): Promise<boolean> {
+  async tick(allowAnalysis: (owner:string)=>Promise<boolean>): Promise<boolean> {
     const row = this.ctx.storage.sql.exec<{data:string}>("SELECT data FROM products WHERE json_extract(data,'$.stage') NOT IN ('ready','failed') ORDER BY rowid LIMIT 1").toArray()[0];
     if (!row) return false;
     const p: ProductProject = JSON.parse(row.data);
     try {
+      if(!await allowAnalysis(p.owner))throw new Error("Analysis authorization expired");
       // An interrupted AI request is not replayed automatically.
       if (p.stage === "analysing" || p.stage === "researching") throw new Error("Interrupted analysis");
       const input = await this.input(p); p.stage="analysing"; this.save(p); await this.ctx.storage.sync();
       p.product ||= await analyseProduct(input); p.stage=shouldResearchProduct(p.product,researchContext(input))?"researching":"analysing";this.save(p);
+      if(!await allowAnalysis(p.owner))throw new Error("Research authorization expired");
       p.research ||= await researchProduct(p.product,researchContext(input)); p.stage="ready";this.save(p);
     } catch { p.stage="failed";p.error="Analisis belum dapat disiapkan. Semak gambar atau akses analisis. Tiada video berbayar dihantar.";this.save(p); }
     return true;

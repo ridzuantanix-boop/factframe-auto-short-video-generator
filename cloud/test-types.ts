@@ -1,0 +1,1 @@
+export type Evaluation = Record<"product_fidelity" | "product_scale" | "first_frame" | "ugc_realism" | "brightness_sharpness" | "hands_anatomy" | "voice_naturalness" | "script_completion" | "cta_completion" | "shariah_aurat" | "style_accuracy" | "angle_accuracy" | "overall", number | null> & { notes:string };

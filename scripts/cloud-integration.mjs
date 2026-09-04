@@ -7,6 +7,8 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import assert from "node:assert/strict";
 import sharp from "sharp";
+const controlled=process.argv.includes("--controlled");
+const testToken="integration-owner-token-not-production-000000";
 const origin = "http://127.0.0.1:8897";
 let lastPrompt = ""; let submissions = 0; let analyses = 0; let searches = 0; let mode = "success";
 const product = { name: "Buku Biru", brand: "", category: "Buku", confidence: "high", visible_text: "Buku Biru", description: "Buku dengan cover biru", observed_features: ["Cover biru"], search_query: "Buku Biru", uncertainty: "", reference_indices: [0] };
@@ -40,7 +42,7 @@ await new Promise((resolve, reject) => { mock.once("error", reject); mock.listen
 const persist = mkdtempSync(path.join(tmpdir(), "pawarna-cloud-test-"));
 let output = "";
 const child = spawn(process.execPath, [fileURLToPath(new URL("../node_modules/wrangler/bin/wrangler.js", import.meta.url)), "dev", "--local", "--ip", "127.0.0.1", "--port", "8897", "--inspector-port", "9297", "--persist-to", persist,
-  "--var", "GEMINI_API_KEY:test-only", "--var", "NEXABOT_API_KEY:test-only", "--var", "GEMINI_API_BASE_URL:http://127.0.0.1:8898", "--var", "NEXABOT_BASE_URL:http://127.0.0.1:8898", "--var", "GENERATION_ENABLED:true"], { cwd: new URL("..", import.meta.url), env: { ...process.env, CLOUDFLARE_LOAD_DEV_VARS_FROM_DOT_ENV: "false" }, windowsHide: true, stdio: ["pipe", "pipe", "pipe"] });
+  "--var", "GEMINI_API_KEY:test-only", "--var", "NEXABOT_API_KEY:test-only", "--var", "GEMINI_API_BASE_URL:http://127.0.0.1:8898", "--var", "NEXABOT_BASE_URL:http://127.0.0.1:8898", "--var", `GENERATION_ENABLED:${controlled?"false":"true"}`, "--var", `PAWARNA_TEST_GENERATION_ENABLED:${controlled?"true":"false"}`, "--var", "PAWARNA_TEST_MAX_GENERATIONS:4", "--var", `PAWARNA_TEST_TOKEN:${testToken}`], { cwd: new URL("..", import.meta.url), env: { ...process.env, CLOUDFLARE_LOAD_DEV_VARS_FROM_DOT_ENV: "false" }, windowsHide: true, stdio: ["pipe", "pipe", "pipe"] });
 child.stdout.on("data", data => { output = (output + data).slice(-15000); }); child.stderr.on("data", data => { output = (output + data).slice(-15000); });
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 async function list(cookie) { const response = await fetch(`${origin}/api/factory`, { headers: { cookie } }); assert.equal(response.status, 200); return response.json(); }
@@ -58,8 +60,20 @@ try {
   let ready;
   for (let i = 0; i < 90; i++) { if (child.exitCode !== null) throw new Error(`Local runtime exited (${child.exitCode})`); try { ready = await fetch(`${origin}/api/factory`); if (ready.ok) break; } catch {} await delay(1000); }
   assert.ok(ready?.ok, "Local worker did not start");
-  const cookie = ready.headers.get("set-cookie").split(";")[0];
-  const state = await ready.json(); assert.deepEqual(state.ready, { gemini: true, nexabot: true, worker: true });
+  let cookie = ready.headers.get("set-cookie").split(";")[0];
+  const state = await ready.json(); assert.deepEqual(state.ready, { gemini: true, nexabot: true, worker: !controlled });
+  if(controlled){
+    assert.equal(state.paused,true);
+    const publicImage="data:image/png;base64,"+(await sharp({create:{width:20,height:20,channels:3,background:"blue"}}).png().toBuffer()).toString("base64");
+    const blockedAnalysis=await fetch(origin+"/api/products",{method:"POST",headers:{origin,cookie,"content-type":"application/json","idempotency-key":crypto.randomUUID()},body:JSON.stringify({images:[publicImage]})});assert.equal(blockedAnalysis.status,503);assert.equal(analyses,0);assert.equal(searches,0);
+    const rejected=await fetch(origin+"/api/generate?test=true",{method:"POST",headers:{origin,cookie,"content-type":"application/json","x-pawarna-test-login":"forged","x-pawarna-owner":"forged"},body:JSON.stringify({testMode:true})});assert.equal(rejected.status,503);assert.equal(submissions,0);
+    const login=(token,requestOrigin=origin)=>fetch(origin+"/api/test/session",{method:"POST",headers:{origin:requestOrigin,cookie,"content-type":"application/x-www-form-urlencoded"},body:new URLSearchParams({token}),redirect:"manual"});
+    const badLogin=await login("invalid");assert.equal(badLogin.status,403,await badLogin.text());assert.equal((await login(testToken,"https://evil.invalid")).status,403);assert.equal((await fetch(origin+"/api/test/jobs",{headers:{cookie}})).status,403);
+    const loggedIn=await login(testToken);assert.equal(loggedIn.status,303);
+    assert.equal((await list(cookie)).paused,true,"Public cookie alone cannot borrow the owner grant");
+    const testCookie=loggedIn.headers.get("set-cookie");assert.ok(testCookie.includes("HttpOnly")&&testCookie.includes("Secure")&&testCookie.includes("SameSite=Strict"));cookie+="; "+testCookie.split(";")[0];
+    assert.equal((await list(cookie)).paused,false);assert.equal((await list(cookie)).testMode.remaining,4);
+  }
   const bytes = await sharp({ create: { width: 20, height: 20, channels: 3, background: "blue" } }).png().toBuffer();
   const image = `data:image/png;base64,${bytes.toString("base64")}`;
   
@@ -88,7 +102,7 @@ try {
   assert.equal((await list(otherCookie)).jobs.length, 0);
   assert.equal((await list(otherCookie)).products.length,0);
   assert.equal((await fetch(origin+saved.image_urls[0],{headers:{cookie:otherCookie}})).status,404);
-  assert.equal((await fetch(origin+"/api/generate",{method:"POST",headers:{origin,cookie:otherCookie,"content-type":"application/json","idempotency-key":crypto.randomUUID()},body:JSON.stringify(input)})).status,404);
+  assert.equal((await fetch(origin+"/api/generate",{method:"POST",headers:{origin,cookie:otherCookie,"content-type":"application/json","idempotency-key":crypto.randomUUID()},body:JSON.stringify(input)})).status,controlled?503:404);
   assert.equal((await fetch(`${origin}${a.job.thumbnail_url}`, { headers: { cookie: otherCookie } })).status, 404);
   const completed = await waitJob(cookie, a.job.id);
   assert.equal(completed.stage, "completed", completed.error); assert.deepEqual(completed.settings,settings);assert.ok(completed.plan.scene_plan);assert.ok(lastPrompt.includes("SHARIAH_RULES:"));assert.ok(lastPrompt.includes("soft_sell")); assert.equal(submissions, 1); assert.equal(analyses, 1); assert.equal(searches, 0);
@@ -96,6 +110,11 @@ try {
   const range = await fetch(`${origin}${completed.video_url}`, { headers: { cookie, range: "bytes=4-7" } }); assert.equal(range.status, 206); assert.equal(await range.text(), "ftyp");
   assert.equal((await fetch(`${origin}${completed.video_url}`, { headers: { cookie, range: "bytes=999-" } })).status, 416);
   assert.equal((await fetch(`${origin}${completed.video_url}`, { headers: { cookie: otherCookie } })).status, 404);
+  if(controlled){
+    const report=await (await fetch(origin+"/api/test/jobs",{headers:{cookie}})).json();assert.equal(report.jobs[0].test_sequence,1);assert.equal(report.jobs[0].provider_attempt_count,1);assert.equal(report.jobs[0].settings.videoStyle,settings.videoStyle);assert.ok(report.jobs[0].compiled_prompt.includes("PAWARNA_VIDEO_EXECUTION_LOCK"));assert.equal(report.jobs[0].research,"observation_only");assert.ok(report.jobs[0].output_path);assert.ok(!JSON.stringify(report).includes(testToken));
+    const rating=await fetch(origin+`/api/test/jobs/${completed.id}/evaluation`,{method:"POST",headers:{origin,cookie,"content-type":"application/json"},body:JSON.stringify({overall:4,notes:"Mock only"})});assert.equal(rating.status,200);
+    assert.equal((await fetch(origin+"/api/test/jobs",{headers:{cookie:otherCookie}})).status,403);
+  }
   mode = "uncertain";
   const regen = await send({ source_job: completed.id, action: "regenerate" }, crypto.randomUUID()); assert.equal(regen.status, 202);
   const failed = await waitJob(cookie, (await regen.json()).job.id);
@@ -116,12 +135,21 @@ try {
   assert.ok(lastPrompt.includes("VOICEOVER: OFF"));assert.ok(lastPrompt.includes("No people, hands, faces"));
   assert.ok(!lastPrompt.includes("SPOKEN_SCRIPT:"));assert.ok(!lastPrompt.includes("SHARIAH_RULES:"));assert.ok(!lastPrompt.includes("AURAT_RULES:"));
   assert.equal(submissions,4);
-  const invalid=await send({product_id:saved.id,settings:{...silent,subjectType:"female_creator"}},crypto.randomUUID());assert.equal(invalid.status,400);
+  const invalid=await send({product_id:saved.id,settings:{...silent,subjectType:"female_creator"}},crypto.randomUUID());assert.equal(invalid.status,controlled?429:400);
+  if(controlled){
+    const capped=await send(input,crypto.randomUUID());assert.equal(capped.status,429);assert.ok((await capped.json()).error.includes("Had ujian"));assert.equal(submissions,4);const report=await (await fetch(origin+"/api/test/jobs",{headers:{cookie}})).json();assert.equal(report.attempts,4);assert.equal(report.jobs.length,4);assert.equal(report.jobs[0].evaluation.overall,4);assert.equal((await list(cookie)).paused,true);
+    assert.equal((await send(input,key)).status,202,"Original idempotent result remains retrievable at cap");assert.equal(submissions,4);
+    await fetch(origin+"/api/test/logout",{method:"POST",headers:{origin,cookie},redirect:"manual"});assert.equal((await fetch(origin+"/api/test/jobs",{headers:{cookie}})).status,403);assert.equal((await send(input,crypto.randomUUID())).status,503);
+    console.log("PASS: owner-only generation, forged/missing/invalid authorization, cap including failures, diagnostic logs, evaluation and logout; zero real provider calls.");
+  }
+  if(controlled){assert.equal((await productRequest({images:[image]},crypto.randomUUID())).status,503);assert.equal(searches,0);}
+  else {
   product.confidence="low";product.uncertainty="Exact model unclear";
   const uncertainProduct=await productRequest({images:[image]},crypto.randomUUID());assert.equal(uncertainProduct.status,202);const uncertainId=(await uncertainProduct.json()).product.id;
   for(let i=0;i<120;i++){const p=(await list(cookie)).products.find(p=>p.id===uncertainId);if(p.stage==="ready"){assert.equal(p.research.status,"grounded");break;}if(p.stage==="failed")throw Error(p.error);await delay(1000);}
   assert.equal(searches,1,"Uncertain identity must trigger one Search");assert.equal(submissions,4);
   console.log("PASS: conditional Search skips clear products, researches uncertain identity, and no customer usage ledger.");
+  }
   console.log("PASS: structured settings persisted, product projects before paid generation, reuse without research, voice OFF, Shariah OFF, subject validation.");
   if(process.argv.includes("--ui")){console.log("UI mock server ready at "+origin+"; test-only keys, no paid calls."); await new Promise(()=>{});}
   console.log("PASS: real local Durable Object alarms + R2; mock AI/search/MP4, avatar, duplicate protection, session isolation, ranges, uncertain POST no-replay. Zero paid calls.");

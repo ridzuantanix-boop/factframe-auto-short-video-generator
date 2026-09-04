@@ -1,6 +1,6 @@
 # Pawarna — current implementation audit
 
-> Baseline audit below describes commit `4dd939e7474c08558d2a9335de31e96672ab8a2f`. The branch now includes [P0 fixes](P0-FIXES.md), **not deployed**. Updated local mobile captures are in [audit/p0](audit/p0); original production captures remain unchanged.
+> Baseline audit below describes commit `4dd939e7474c08558d2a9335de31e96672ab8a2f`. Later [P0 fixes](P0-FIXES.md) and [Controlled Test Mode](CONTROLLED_TEST_PLAN.md) supersede its status notes. P0 captures are in [audit/p0](audit/p0); original production captures remain unchanged.
 
 ## Production snapshot
 

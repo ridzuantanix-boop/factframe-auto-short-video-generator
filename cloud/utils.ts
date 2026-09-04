@@ -1,6 +1,6 @@
 import type { Job, PublicJob } from "../src/lib/pawarna/types";
 import { customerError } from "../src/lib/pawarna/customer-status";
-export type CloudJob = Omit<Job, "input"> & { input_key: string; image_count: number; has_avatar: boolean; thumbnail_type: string };
+export type CloudJob = Omit<Job, "input"> & { input_key: string; image_count: number; has_avatar: boolean; thumbnail_type: string; controlled_test?: { sequence:number; epoch:string; finished_at?:number; evaluation:import("./test-types").Evaluation } };
 export function publicJob(job: CloudJob): PublicJob {
   const { id, stage, created_at, updated_at, external_job_id, product, research, plan, retry_count, error, duration_seconds, parent_generation_id, segment_number, has_avatar, image_count } = job;
   return { settings: job.settings, id, stage, created_at, updated_at, external_job_id, product, research, plan: plan ? { ...plan, video_prompt: "" } : undefined, retry_count, error: customerError(error), duration_seconds, parent_generation_id, segment_number, has_avatar, image_count,
