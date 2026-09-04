@@ -2,12 +2,16 @@ import type { EntityType, Fact, SearchResult } from "@/lib/types";
 
 const WD = "https://www.wikidata.org/wiki/";
 const REST = "https://www.wikidata.org/w/rest.php/wikibase/v1";
-const REQUEST_HEADERS = { "Api-User-Agent": "FactFrame/1.0 (local educational video generator)" };
+const REQUEST_HEADERS = {
+  "User-Agent": "FactFrame/2.0 (source-backed video generator; contact: factframe-app)",
+  "Api-User-Agent": "FactFrame/2.0 (source-backed video generator; contact: factframe-app)",
+  Accept: "application/json",
+};
 
 async function wikidataFetch(url: string, revalidate: number) {
   let response = await fetch(url, { headers: REQUEST_HEADERS, next: { revalidate } });
-  if (response.status === 429 || response.status >= 500) {
-    await new Promise((resolve) => setTimeout(resolve, 600));
+  for (let attempt = 0; attempt < 2 && (response.status === 429 || response.status >= 500); attempt += 1) {
+    await new Promise((resolve) => setTimeout(resolve, 600 * (attempt + 1)));
     response = await fetch(url, { headers: REQUEST_HEADERS, next: { revalidate } });
   }
   return response;
@@ -25,7 +29,10 @@ type Entity = {
 export async function searchEntities(query: string): Promise<SearchResult[]> {
   const params = new URLSearchParams({ q: query, language: "ms", limit: "8" });
   let response = await wikidataFetch(`${REST}/search/items?${params}`, 3600);
-  if (!response.ok) throw new Error("Wikidata search failed");
+  if (!response.ok) {
+    const fallback = await searchEntityPage(query, 0, 8);
+    return fallback.results;
+  }
   let data = await response.json();
   if (!(data.results ?? []).length) {
     params.set("language", "en");
