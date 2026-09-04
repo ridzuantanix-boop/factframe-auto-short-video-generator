@@ -1,13 +1,13 @@
 # Architecture
 
-FactFrame ialah satu aplikasi Next.js 16 App Router. Tiada database, queue, scheduled crawler atau indeks kekal pada masa ini.
+FactFrame ialah aplikasi Next.js 16 App Router dengan indeks calon cerita PostgreSQL. Adapter menggunakan `DATABASE_URL`, jadi pangkalan Postgres yang tahan lama dan serasi Vercel boleh digunakan tanpa mengikat domain kepada satu vendor. Deployment production belum menerima konfigurasi DB dalam Phase 2; migration mesti dijalankan sebelum deployment.
 
 | Stage | Pelaksanaan sebenar | Lokasi/runtime |
 |---|---|---|
 | User | Memilih mode, topik, sudut, tempoh, nada, suara dan watermark | Browser, `Generator.tsx` |
-| Discovery/catalog | 10 seed dalam kod + query Wikipedia/Wikidata secara live | Build bundle + server route `/api/discover` + external API |
+| Discovery/catalog | PostgreSQL index dahulu, Wikipedia/Wikidata live sebagai fallback; 10 seed kekal fixture/fallback | `/api/catalog`, `/api/discover`, `story_candidates` |
 | Story/entity selection | Seed dipilih terus; calon live dihidratkan melalui Wikidata/Wikipedia | Browser + `/api/topic` |
-| Story angle | Tiga template mengikut jenis entiti | Browser, `explainerEngine.ts` |
+| Story angle | Dynamic generic event clusters dengan supporting fact IDs | Browser, `explainerEngine.ts` |
 | Research | Entity JSON, label, intro Wikipedia; seed mempunyai sources/claims manual | Server + external API / build-time seed |
 | Current-aware check | Flag heuristik untuk person/organisation/place/event dan `lastVerifiedAt` tarikh request | Server; tiada semakan provider berita khusus |
 | Source ranking | Seed menyimpan reliability label; data live dianggap `REFERENCE` | Build-time/manual + browser |
@@ -23,7 +23,8 @@ FactFrame ialah satu aplikasi Next.js 16 App Router. Tiada database, queue, sche
 
 ```text
 USER
-  -> DISCOVERY / CATALOG
+  -> POSTGRES STORY INDEX
+  -> INDEX-FIRST DISCOVERY / LIVE FALLBACK
   -> STORY / ENTITY SELECTION
   -> STORY ANGLE
   -> RESEARCH
@@ -40,3 +41,11 @@ USER
 ```
 
 Major trust boundaries: browser input enters Next.js routes; Gemini key stays server-side; public sources and media are untrusted external dependencies; generated video never needs to be uploaded to the server.
+
+## Persistent story index
+
+Migration `migrations/001_story_index.sql` creates `story_candidates`, constraints for four statuses, JSONB metadata fields, browse/search indexes, and partial unique indexes for Q-ID and canonical URL. Normalized title is also unique. Upsert takes a PostgreSQL advisory lock per identity, then merges aliases, categories, search terms, and source hints without downgrading qualification.
+
+`DISCOVERED` rows keep research/visual/narrative scores null. Topic hydration promotes using actual distinct source URLs and extracted fact counts: one source plus one claim is `PARTIAL`; at least two sources plus five claims is `READY`. `HIDDEN` is sticky and reserved for invalid/noisy/manual suppression.
+
+The authenticated `/api/index` endpoint provides bounded scheduled ingestion, but no Vercel Cron declaration is enabled until production `DATABASE_URL`, migration, and `CRON_SECRET` are safely configured.

@@ -5,6 +5,44 @@ export type SearchResult = {
   url: string;
 };
 
+export type StoryIndexStatus = "DISCOVERED" | "PARTIAL" | "READY" | "HIDDEN";
+
+export type StoryCandidate = {
+  id: string;
+  canonicalEntityId: string | null;
+  canonicalUrl: string | null;
+  title: string;
+  normalizedTitle: string;
+  slug: string;
+  summary: string;
+  country: string;
+  region: string;
+  category: string;
+  storyType: string;
+  status: StoryIndexStatus;
+  sourceCount: number;
+  claimCount: number;
+  researchScore: number | null;
+  visualScore: number | null;
+  narrativePotentialScore: number | null;
+  sourceHints: string[];
+  searchTerms: string[];
+  aliases: string[];
+  metadata: Record<string, unknown>;
+  discoveredAt: string;
+  lastResearchedAt: string | null;
+  lastVerifiedAt: string | null;
+  updatedAt: string;
+  originProvider: string;
+  originQuery: string;
+};
+
+export type StoryCandidateInput = Omit<StoryCandidate, "id" | "discoveredAt" | "updatedAt"> & {
+  id?: string;
+  discoveredAt?: string;
+  updatedAt?: string;
+};
+
 export type EntityType = "person" | "place" | "event" | "object" | "organisation" | "animal" | "space" | "general";
 
 export type Fact = {

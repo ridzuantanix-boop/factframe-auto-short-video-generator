@@ -1,17 +1,17 @@
-import { catalogStatus, distribution, isMalaysia, loadModules, writeAudit } from "./audit-lib.mjs";
+import { loadModules, loadPersistedCatalog, writeAudit } from "./audit-lib.mjs";
 
 const modules = await loadModules();
 const queries = Object.entries(modules.DISCOVERY_CATEGORY_QUERIES).flatMap(([category, values]) => values.map((query) => ({ category, query })));
-const statuses = modules.mysteryCatalog.map(catalogStatus);
+const persisted = await loadPersistedCatalog();
 const output = {
-  generatedAt: new Date().toISOString(), mode: "static and seeded diagnostics; live candidates are request-time and not persisted",
+  generatedAt: new Date().toISOString(), mode: persisted.configured ? "persistent PostgreSQL story index" : "database not configured; live fallback only",
   discoveryProviders: [...modules.DISCOVERY_PROVIDERS], queryCount: queries.length, queries,
-  storedCandidateCount: modules.mysteryCatalog.length, liveCandidateCount: null, rejectedCount: null,
+  storedCandidateCount: persisted.stats?.total ?? null, liveCandidateCount: null, rejectedCount: null,
   rejectionReasons: ["list/category/disambiguation pages", "fiction/film/album/book/game matches in mystery mode", "missing usable facts", "visual readiness gate below thresholds"],
-  duplicateClusters: [], malaysiaMalayaStoredCount: modules.mysteryCatalog.filter(isMalaysia).length,
-  readyCount: statuses.filter((value) => value === "READY").length, partialCount: statuses.filter((value) => value === "PARTIAL").length,
-  hiddenCount: statuses.filter((value) => value === "HIDDEN").length, topRejectionCauses: "not measurable because rejected live candidates are not stored",
-  sourceScoreDistribution: distribution(modules.mysteryCatalog.map((story) => story.researchScore)),
-  visualScoreDistribution: distribution(modules.mysteryCatalog.map((story) => story.visualScore)),
+  duplicateClusters: [], malaysiaMalayaStoredCount: persisted.stats?.malaysiaMalaya ?? null,
+  discoveredCount: persisted.stats?.discovered ?? null, readyCount: persisted.stats?.ready ?? null,
+  partialCount: persisted.stats?.partial ?? null, hiddenCount: persisted.stats?.hidden ?? null,
+  globalCount: persisted.stats?.global ?? null, countsByCategory: persisted.stats?.categories ?? null,
+  topRejectionCauses: "per-run rejection counts are emitted by npm run index:stories",
 };
 console.log(`Wrote ${await writeAudit("discovery-diagnostics.json", output)}.`);

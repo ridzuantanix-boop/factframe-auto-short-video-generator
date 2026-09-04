@@ -1,0 +1,36 @@
+export const STORY_INDEX_SCHEMA = `
+CREATE TABLE IF NOT EXISTS story_candidates (
+  id text PRIMARY KEY,
+  canonical_entity_id text,
+  canonical_url text,
+  title text NOT NULL,
+  normalized_title text NOT NULL,
+  slug text NOT NULL,
+  summary text NOT NULL DEFAULT '',
+  country text NOT NULL DEFAULT 'Global',
+  region text NOT NULL DEFAULT 'Global',
+  category text NOT NULL,
+  story_type text NOT NULL,
+  status text NOT NULL DEFAULT 'DISCOVERED' CHECK (status IN ('DISCOVERED', 'PARTIAL', 'READY', 'HIDDEN')),
+  source_count integer NOT NULL DEFAULT 0 CHECK (source_count >= 0),
+  claim_count integer NOT NULL DEFAULT 0 CHECK (claim_count >= 0),
+  research_score double precision CHECK (research_score BETWEEN 0 AND 1),
+  visual_score double precision CHECK (visual_score BETWEEN 0 AND 1),
+  narrative_potential_score double precision CHECK (narrative_potential_score BETWEEN 0 AND 1),
+  source_hints jsonb NOT NULL DEFAULT '[]'::jsonb,
+  search_terms jsonb NOT NULL DEFAULT '[]'::jsonb,
+  aliases jsonb NOT NULL DEFAULT '[]'::jsonb,
+  metadata jsonb NOT NULL DEFAULT '{}'::jsonb,
+  discovered_at timestamptz NOT NULL DEFAULT now(),
+  last_researched_at timestamptz,
+  last_verified_at timestamptz,
+  updated_at timestamptz NOT NULL DEFAULT now(),
+  origin_provider text NOT NULL,
+  origin_query text NOT NULL
+);
+CREATE UNIQUE INDEX IF NOT EXISTS story_candidates_entity_uidx ON story_candidates (canonical_entity_id) WHERE canonical_entity_id IS NOT NULL;
+CREATE UNIQUE INDEX IF NOT EXISTS story_candidates_url_uidx ON story_candidates (canonical_url) WHERE canonical_url IS NOT NULL;
+CREATE UNIQUE INDEX IF NOT EXISTS story_candidates_title_uidx ON story_candidates (normalized_title);
+CREATE INDEX IF NOT EXISTS story_candidates_browse_idx ON story_candidates (status, category, country, updated_at DESC);
+CREATE INDEX IF NOT EXISTS story_candidates_search_idx ON story_candidates USING gin (to_tsvector('simple', title || ' ' || summary));
+`;

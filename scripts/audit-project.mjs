@@ -1,19 +1,22 @@
 import process from "node:process";
-import { loadModules, catalogStatus, isMalaysia, readJson } from "./audit-lib.mjs";
+import { loadModules, loadPersistedCatalog, readJson } from "./audit-lib.mjs";
 
 const packageJson = await readJson("package.json");
 const modules = await loadModules();
-const statuses = modules.mysteryCatalog.map(catalogStatus);
+const persisted = await loadPersistedCatalog();
 const diagnostics = {
   framework: `Next.js ${packageJson.dependencies.next}`,
   node: process.version,
   appVersion: packageJson.version,
-  storedStoryCount: modules.mysteryCatalog.length,
-  readyCount: statuses.filter((value) => value === "READY").length,
-  partialCount: statuses.filter((value) => value === "PARTIAL").length,
-  hiddenCount: statuses.filter((value) => value === "HIDDEN").length,
-  malaysiaMalayaCount: modules.mysteryCatalog.filter(isMalaysia).length,
-  globalCount: modules.mysteryCatalog.filter((story) => !isMalaysia(story)).length,
+  storyIndexConfigured: persisted.configured,
+  persistedCandidateCount: persisted.stats?.total ?? null,
+  discoveredCount: persisted.stats?.discovered ?? null,
+  readyCount: persisted.stats?.ready ?? null,
+  partialCount: persisted.stats?.partial ?? null,
+  hiddenCount: persisted.stats?.hidden ?? null,
+  malaysiaMalayaCount: persisted.stats?.malaysiaMalaya ?? null,
+  globalCount: persisted.stats?.global ?? null,
+  fallbackSeedCount: modules.mysteryCatalog.length,
   discoveryCategories: Object.keys(modules.DISCOVERY_CATEGORY_QUERIES).length,
   storyAngleTypes: ["BIOGRAPHICAL_JOURNEY", "TURNING_POINT", "ORIGIN_STORY", "TIMELINE", "HOW_IT_CHANGED", "WHY_IT_MATTERS", "MAJOR_MOMENTS", "HISTORICAL_OVERVIEW"],
   sourceProviders: ["Wikidata", "Wikipedia", "seeded institutional/primary/academic/reference URLs", "Gemini"],

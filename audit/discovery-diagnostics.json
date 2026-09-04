@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-09-04T05:05:40.069Z",
-  "mode": "static and seeded diagnostics; live candidates are request-time and not persisted",
+  "generatedAt": "2026-09-04T14:13:55.466Z",
+  "mode": "persistent PostgreSQL story index",
   "discoveryProviders": [
     "Wikidata",
     "Wikipedia"
   ],
-  "queryCount": 64,
+  "queryCount": 90,
   "queries": [
     {
       "category": "interesting",
@@ -70,6 +70,78 @@
     {
       "category": "malaysia",
       "query": "Malaysian people"
+    },
+    {
+      "category": "malaysia",
+      "query": "British Malaya history"
+    },
+    {
+      "category": "malaysia",
+      "query": "Kuala Lumpur history"
+    },
+    {
+      "category": "malaysia",
+      "query": "Selangor history"
+    },
+    {
+      "category": "malaysia",
+      "query": "Penang history"
+    },
+    {
+      "category": "malaysia",
+      "query": "Johor history"
+    },
+    {
+      "category": "malaysia",
+      "query": "Perak history"
+    },
+    {
+      "category": "malaysia",
+      "query": "Kedah history"
+    },
+    {
+      "category": "malaysia",
+      "query": "Kelantan history"
+    },
+    {
+      "category": "malaysia",
+      "query": "Terengganu history"
+    },
+    {
+      "category": "malaysia",
+      "query": "Pahang history"
+    },
+    {
+      "category": "malaysia",
+      "query": "Negeri Sembilan history"
+    },
+    {
+      "category": "malaysia",
+      "query": "Malacca history"
+    },
+    {
+      "category": "malaysia",
+      "query": "Sabah history"
+    },
+    {
+      "category": "malaysia",
+      "query": "Sarawak history"
+    },
+    {
+      "category": "malaysia",
+      "query": "Malaysian disaster"
+    },
+    {
+      "category": "malaysia",
+      "query": "Malaysian invention"
+    },
+    {
+      "category": "malaysia",
+      "query": "Malaysian athlete"
+    },
+    {
+      "category": "malaysia",
+      "query": "Malaysian artist"
     },
     {
       "category": "world",
@@ -262,9 +334,41 @@
     {
       "category": "malaysia_mysteries",
       "query": "Johor urban legend"
+    },
+    {
+      "category": "malaysia_mysteries",
+      "query": "Selangor disaster"
+    },
+    {
+      "category": "malaysia_mysteries",
+      "query": "Penang mystery"
+    },
+    {
+      "category": "malaysia_mysteries",
+      "query": "Perak legend"
+    },
+    {
+      "category": "malaysia_mysteries",
+      "query": "Sabah disappearance"
+    },
+    {
+      "category": "malaysia_mysteries",
+      "query": "Sarawak legend"
+    },
+    {
+      "category": "malaysia_mysteries",
+      "query": "Malacca folklore"
+    },
+    {
+      "category": "malaysia_mysteries",
+      "query": "Pahang unexplained"
+    },
+    {
+      "category": "malaysia_mysteries",
+      "query": "Kuala Lumpur urban legend"
     }
   ],
-  "storedCandidateCount": 10,
+  "storedCandidateCount": 987,
   "liveCandidateCount": null,
   "rejectedCount": null,
   "rejectionReasons": [
@@ -274,16 +378,27 @@
     "visual readiness gate below thresholds"
   ],
   "duplicateClusters": [],
-  "malaysiaMalayaStoredCount": 4,
-  "readyCount": 10,
+  "malaysiaMalayaStoredCount": 630,
+  "discoveredCount": 987,
+  "readyCount": 0,
   "partialCount": 0,
   "hiddenCount": 0,
-  "topRejectionCauses": "not measurable because rejected live candidates are not stored",
-  "sourceScoreDistribution": {
-    "0.9-1.0": 10
+  "globalCount": 357,
+  "countsByCategory": {
+    "business": 7,
+    "current": 18,
+    "entertainment": 31,
+    "events": 27,
+    "history": 26,
+    "interesting": 39,
+    "malaysia": 560,
+    "malaysia_mysteries": 53,
+    "mysteries": 61,
+    "people": 59,
+    "places": 28,
+    "science": 16,
+    "sports": 19,
+    "world": 43
   },
-  "visualScoreDistribution": {
-    "0.9-1.0": 6,
-    "0.8-0.9": 4
-  }
+  "topRejectionCauses": "per-run rejection counts are emitted by npm run index:stories"
 }

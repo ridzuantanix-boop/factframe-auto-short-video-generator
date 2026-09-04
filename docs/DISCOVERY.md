@@ -1,26 +1,34 @@
-# Discovery and catalog truth
+# Discovery and persistent catalog
 
-## Jawapan terus
+## Current truth
 
-- **Adakah katalog hardcoded/seeded?** Ya. `src/lib/mystery/catalog.ts` mempunyai 10 `StoryRecord` manual.
-- **Adakah discovery dinamik?** Ya, tetapi hanya calon entity/article. `/api/discover` menjalankan query Wikipedia secara live pada request.
-- **Adakah indeks cerita disimpan?** Tidak. Tiada database, fail indeks hasil crawl atau scheduled job.
-- **Di mana katalog?** Dalam TypeScript source tersebut dan dibundle semasa build.
-- **Berapa calon tersimpan?** 10.
-- **READY/PARTIAL/HIDDEN?** 10/0/0 berdasarkan status audit terbitan: READY memerlukan sources+claims, `sourceCoveragePotential=good`, research ≥0.90 dan visual ≥0.80; PARTIAL ialah kandungan sah yang belum mencapai semua threshold; HIDDEN jika tiada source/claim, research <0.60 atau visual <0.50. Status ini belum menjadi field persisten.
-- **Malaysia/Malaya/global?** 4/6 dalam katalog tersimpan.
-- **“1,000+”?** Anggaran keluasan ruang carian live, bukan kiraan READY atau indeks yang telah dinormalisasi.
+FactFrame now follows `DISCOVER -> NORMALIZE -> DEDUPE -> CLASSIFY -> UPSERT`. PostgreSQL is the production-compatible persistence layer; browser localStorage, process memory, and ephemeral SQLite are not used. The 10 manual mystery records remain regression fixtures and guaranteed fallback examples, not the production catalog.
 
-## Cara calon baharu ditemui
+The controlled Phase 2 ingestion snapshot on 2026-09-04 persisted **987 genuine provider results**: **630 Malaysia/Malaya** and **357 global**. All 987 have distinct Wikidata Q-IDs. This is a local durable validation database, not a claim about the currently deployed production app; production remains on live fallback until a production `DATABASE_URL` is configured and migrated.
 
-`DISCOVERY_CATEGORY_QUERIES` mempunyai 14 kategori. Setiap request mengambil empat query, meminta sehingga 25 halaman Wikipedia bagi setiap query, menapis list/category/disambiguation dan beberapa bentuk fiction/noise, kemudian dedupe menggunakan Wikidata Q-ID. Pagination mengubah kumpulan query dan offset. Mystery search manual cuba katalog seed dahulu; jika tiada, ia menghidrat calon Wikidata/Wikipedia dan membina auto-mystery generik.
+All 14 configured categories have persisted rows in the validation snapshot: interesting, people, history, malaysia, world, business, science, entertainment, sports, places, current, events, mysteries, and malaysia_mysteries. Upstream rate limits reduced some categories, but the index-first/live-fallback smoke test grew `mysteries` to 61 primary-category rows. `malaysia_mysteries` has 53, including the provider-backed Highland Towers collapse entity.
 
-Tiada crawler arkib. “Archive” pada source atau visual ialah label/query teks, bukan integrasi archive provider. Dedupe hanya dalam satu respons menggunakan Q-ID; tiada clustering semantik atau dedupe antara request. Category assignment untuk feed berasal daripada kategori/query yang dipilih, bukan classifier. Auto-hydrated entity type menggunakan regex pada label/description/property.
+## Schema and dedupe
 
-## Qualification dan rejection
+`story_candidates` stores canonical entity/URL, normalized title, slug, summary, geography, category/type/status, actual source/claim counts, nullable evaluated scores, JSON source/search/alias/metadata fields, timestamps, and origin provider/query. Unique constraints cover Wikidata Q-ID, canonical URL, and normalized title. Categories discovered by later queries are retained in JSON metadata even when the primary category remains stable.
 
-Seed dianggap render-ready apabila skrip mempunyai liputan sumber 100%, skor storytelling ≥10, hook/open-loop/payoff dan sifar claim tanpa sumber. `/api/media` seterusnya memerlukan satu visual bagi setiap segmen, repetition ≥0.8, relevance ≥0.35, sekurang-kurangnya dua jenis visual dan sekurang-kurangnya satu aset bukan programatik.
+Q-ID is the preferred identity. Canonical URL is second and normalized title third. Upsert merges alternate titles such as an MH370 alias into the same Q-ID record. It never manufactures semantic clones or filler rows.
 
-Calon live boleh ditolak kerana tiada fakta/extract, entity ID tidak sah, noise filter, upstream failure atau visual readiness gate. Source strength seed ialah skor manual `researchScore`; provider live tidak menjalankan ranking silang sumber. Visual availability seed juga skor manual `visualScore`; semasa runtime, asset diberi skor padanan query/topic, resolusi, tahun dan penalti duplikasi.
+## Ingestion and browsing
 
-Jalankan `npm run export:catalog` dan `npm run audit:discovery`. Export membezakan angka tersimpan daripada data live yang tidak kekal.
+Run migration and ingestion with:
+
+```bash
+npm run db:migrate
+npm run index:stories -- --pages=1 --limit=15 --concurrency=2 --delay=350
+```
+
+Optional flags are `--category`, `--pages`, `--limit`, `--concurrency`, and `--delay`. Wikipedia article search is primary; the existing Wikidata entity search is the fallback. Pacing and bounded concurrency reduce upstream load. No Gemini call occurs during mass discovery.
+
+`GET /api/catalog` supports `category`, `country`, `status`, `page` (1-based), `limit` (max 100), `search`, and `sort=newest|oldest|title|research`. It returns `items`, `total`, `page`, and `hasMore`. Hidden rows are excluded unless `status=HIDDEN` is explicit.
+
+`/api/discover` reads this index first and falls back to live provider search when a category is empty or DB is unavailable. Valid `/api/search` results are saved after the response. `/api/topic` updates source/claim counts, research score, timestamps, and status after real hydration.
+
+## Auditing and scheduling
+
+`npm run audit:project`, `npm run audit:discovery`, and `npm run export:catalog` read actual database counts when `DATABASE_URL` is set; an unconfigured database is reported as null, never as “1,000+”. `/api/index` is callable with `Authorization: Bearer $CRON_SECRET` and processes one bounded category. A production cron is intentionally not activated until production DB migration is confirmed.

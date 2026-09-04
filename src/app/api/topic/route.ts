@@ -1,7 +1,10 @@
-import { NextRequest, NextResponse } from "next/server";
+import { after, NextRequest, NextResponse } from "next/server";
 import { getEntity, extractFacts } from "@/lib/data/wikidata";
 import { getWikipediaContext } from "@/lib/data/wikipedia";
 import { buildNarration } from "@/lib/content/narrationBuilder";
+import { normalizeCandidate } from "@/lib/discovery/normalizer";
+import { calculateResearchScore, qualifyCandidate } from "@/lib/discovery/storyScorer";
+import { getStoryStore, isStoryIndexConfigured } from "@/lib/discovery/store";
 
 export async function GET(request: NextRequest) {
   const id = request.nextUrl.searchParams.get("id")?.trim();
@@ -33,6 +36,15 @@ export async function GET(request: NextRequest) {
       }
     }
     const currentAware = ["person", "organisation", "place", "event"].includes(details.entityType);
+    if (isStoryIndexConfigured()) {
+      const verifiedAt = new Date().toISOString();
+      const sourceHints = [...new Set(facts.map((fact) => fact.sourceUrl).filter(Boolean))];
+      const candidate = normalizeCandidate({ id, label: name, description, url: `https://www.wikidata.org/wiki/${id}` }, "interesting", name, "Wikidata/Wikipedia");
+      Object.assign(candidate, { sourceHints, sourceCount: sourceHints.length, claimCount: facts.length,
+        researchScore: calculateResearchScore(sourceHints.length, facts.length), status: qualifyCandidate(sourceHints.length, facts.length),
+        lastResearchedAt: verifiedAt, lastVerifiedAt: verifiedAt });
+      after(async () => { await getStoryStore().upsert(candidate); });
+    }
     return NextResponse.json({ topic: { id, name, description, entityType: details.entityType, facts, narration, wikipediaUrl: wikipedia?.url, wikipediaExtract: wikipedia?.extract, currentAware, lastVerifiedAt: new Date().toISOString().slice(0, 10) } }, { headers: { "Cache-Control": "public, s-maxage=86400" } });
   } catch (error) {
     console.error("[topic] Topic hydration failed", error instanceof Error ? error.message : "unknown error");

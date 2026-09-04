@@ -1,191 +1,3842 @@
 {
-  "generatedAt": "2026-09-04T05:05:39.217Z",
-  "scope": "stored seeded mystery catalog only; live discovery candidates are not persisted",
-  "totalCandidates": 10,
+  "generatedAt": "2026-09-04T14:13:56.105Z",
+  "scope": "persistent PostgreSQL story index",
+  "totalCandidates": 987,
   "countsByStatus": {
-    "READY": 10
+    "DISCOVERED": 987,
+    "PARTIAL": 0,
+    "READY": 0,
+    "HIDDEN": 0
   },
   "countsByCategory": {
-    "ARCHAEOLOGICAL_MYSTERY": 1,
-    "CONSPIRACY_THEORY": 1,
-    "CRIME_MYSTERY": 1,
-    "DISAPPEARANCE": 2,
-    "HISTORICAL_MYSTERY": 4,
-    "URBAN_LEGEND": 1
+    "business": 7,
+    "current": 18,
+    "entertainment": 31,
+    "events": 27,
+    "history": 26,
+    "interesting": 39,
+    "malaysia": 560,
+    "malaysia_mysteries": 53,
+    "mysteries": 61,
+    "people": 59,
+    "places": 28,
+    "science": 16,
+    "sports": 19,
+    "world": 43
   },
-  "countsByCountry": {
-    "Amerika Syarikat": 2,
-    "Atlantik": 1,
-    "Itali / Eropah": 1,
-    "Malaya": 1,
-    "Malaysia": 3,
-    "Pasifik": 1,
-    "Rusia": 1
-  },
-  "countsByRegion": {
-    "Johor Bahru, Johor": 1,
-    "Kepulauan Azores": 1,
-    "Lautan Hindi": 1,
-    "New Mexico": 1,
-    "Pacific Northwest": 1,
-    "Pergunungan Ural": 1,
-    "Pulau Howland": 1,
-    "Singapura": 1,
-    "Tidak diketahui": 1,
-    "Ulu Klang, Selangor": 1
-  },
-  "malaysiaMalayaCount": 4,
-  "globalCount": 6,
+  "malaysiaMalayaCount": 630,
+  "globalCount": 357,
+  "exportedItems": 100,
+  "exportNote": "Latest 100 rows are included as an audit sample; counts cover the full persisted index.",
   "stories": [
     {
-      "id": "dyatlov-pass",
-      "title": "Insiden Dyatlov Pass",
-      "storyType": "MYSTERY",
-      "status": "READY",
-      "category": "HISTORICAL_MYSTERY",
-      "country": "Rusia",
-      "region": "Pergunungan Ural",
-      "sourceCount": 2,
-      "researchScore": 0.96,
-      "visualScore": 0.91,
-      "currentAware": false,
-      "dateDiscovered": "2026-09-03",
-      "lastVerifiedDate": "2026-09-03"
-    },
-    {
-      "id": "mary-celeste",
-      "title": "Misteri Mary Celeste",
-      "storyType": "MYSTERY",
-      "status": "READY",
-      "category": "HISTORICAL_MYSTERY",
-      "country": "Atlantik",
-      "region": "Kepulauan Azores",
-      "sourceCount": 2,
-      "researchScore": 0.95,
-      "visualScore": 0.9,
-      "currentAware": false,
-      "dateDiscovered": "2026-09-03",
-      "lastVerifiedDate": "2026-09-03"
-    },
-    {
-      "id": "db-cooper",
-      "title": "Kehilangan D. B. Cooper",
-      "storyType": "MYSTERY",
-      "status": "READY",
-      "category": "CRIME_MYSTERY",
-      "country": "Amerika Syarikat",
-      "region": "Pacific Northwest",
-      "sourceCount": 1,
-      "researchScore": 0.98,
-      "visualScore": 0.88,
-      "currentAware": false,
-      "dateDiscovered": "2026-09-03",
-      "lastVerifiedDate": "2026-09-03"
-    },
-    {
-      "id": "roswell",
-      "title": "Apa Sebenarnya Jatuh di Roswell?",
-      "storyType": "MYSTERY",
-      "status": "READY",
-      "category": "CONSPIRACY_THEORY",
-      "country": "Amerika Syarikat",
-      "region": "New Mexico",
-      "sourceCount": 2,
-      "researchScore": 0.97,
-      "visualScore": 0.92,
-      "currentAware": false,
-      "dateDiscovered": "2026-09-03",
-      "lastVerifiedDate": "2026-09-03"
-    },
-    {
-      "id": "amelia-earhart",
-      "title": "Kehilangan Amelia Earhart",
-      "storyType": "MYSTERY",
-      "status": "READY",
-      "category": "DISAPPEARANCE",
-      "country": "Pasifik",
-      "region": "Pulau Howland",
-      "sourceCount": 2,
-      "researchScore": 0.96,
-      "visualScore": 0.96,
-      "currentAware": false,
-      "dateDiscovered": "2026-09-03",
-      "lastVerifiedDate": "2026-09-03"
-    },
-    {
-      "id": "voynich",
-      "title": "Manuskrip Voynich",
-      "storyType": "MYSTERY",
-      "status": "READY",
-      "category": "HISTORICAL_MYSTERY",
-      "country": "Itali / Eropah",
-      "region": "Tidak diketahui",
-      "sourceCount": 1,
-      "researchScore": 0.98,
-      "visualScore": 0.99,
-      "currentAware": false,
-      "dateDiscovered": "2026-09-03",
-      "lastVerifiedDate": "2026-09-03"
-    },
-    {
-      "id": "mh370",
-      "title": "Kehilangan MH370",
-      "storyType": "MYSTERY",
-      "status": "READY",
-      "category": "DISAPPEARANCE",
+      "id": "7ad0e609-5e25-4d38-a905-7b2c65b1ec2b",
+      "canonicalEntityId": "Q5759146",
+      "canonicalUrl": "https://www.wikidata.org/wiki/Q5759146",
+      "title": "Tragedi Highland Towers",
+      "normalizedTitle": "tragedi highland towers",
+      "slug": "tragedi-highland-towers",
+      "summary": "1993 apartment building collapse in Malaysia",
       "country": "Malaysia",
-      "region": "Lautan Hindi",
-      "sourceCount": 2,
-      "researchScore": 0.99,
-      "visualScore": 0.94,
-      "currentAware": false,
-      "dateDiscovered": "2026-09-03",
-      "lastVerifiedDate": "2026-09-03"
+      "region": "Malaysia / Malaya",
+      "category": "malaysia_mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://www.wikidata.org/wiki/Q5759146"
+      ],
+      "searchTerms": [
+        "Tragedi Highland Towers",
+        "Highland Towers Malaysia"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "malaysia_mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T14:13:24.802Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T14:13:24.802Z",
+      "originProvider": "Wikidata",
+      "originQuery": "Highland Towers Malaysia"
     },
     {
-      "id": "singapore-stone",
-      "title": "Tulisan Batu Singapura",
-      "storyType": "MYSTERY",
-      "status": "READY",
-      "category": "ARCHAEOLOGICAL_MYSTERY",
-      "country": "Malaya",
-      "region": "Singapura",
-      "sourceCount": 2,
-      "researchScore": 0.91,
-      "visualScore": 0.83,
-      "currentAware": false,
-      "dateDiscovered": "2026-09-03",
-      "lastVerifiedDate": "2026-09-03"
-    },
-    {
-      "id": "highland-towers",
-      "title": "Apa Punca Highland Towers Runtuh?",
-      "storyType": "MYSTERY",
-      "status": "READY",
-      "category": "HISTORICAL_MYSTERY",
+      "id": "156efcd9-e242-4575-820f-d77b61f52445",
+      "canonicalEntityId": "Q20465421",
+      "canonicalUrl": "https://www.wikidata.org/wiki/Q20465421",
+      "title": "Villa Nabila",
+      "normalizedTitle": "villa nabila",
+      "slug": "villa-nabila",
+      "summary": "Filem cereka dokumentari seram 2015 arahan Syafiq Yusof",
       "country": "Malaysia",
-      "region": "Ulu Klang, Selangor",
-      "sourceCount": 2,
-      "researchScore": 0.98,
-      "visualScore": 0.86,
-      "currentAware": false,
-      "dateDiscovered": "2026-09-03",
-      "lastVerifiedDate": "2026-09-03"
+      "region": "Malaysia / Malaya",
+      "category": "interesting",
+      "storyType": "EXPLAINER",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://www.wikidata.org/wiki/Q20465421"
+      ],
+      "searchTerms": [
+        "Villa Nabila",
+        "Villa Nabila Malaysia"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "interesting"
+        ]
+      },
+      "discoveredAt": "2026-09-04T14:13:24.352Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T14:13:24.352Z",
+      "originProvider": "Wikidata",
+      "originQuery": "Villa Nabila Malaysia"
     },
     {
-      "id": "villa-nabila",
-      "title": "Legenda Villa Nabila",
+      "id": "ac2c1256-2c23-48c0-ac40-768a212553c6",
+      "canonicalEntityId": "Q11667012",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Headless_Rider_urban_legend",
+      "title": "Headless Rider urban legend",
+      "normalizedTitle": "headless rider urban legend",
+      "slug": "headless-rider-urban-legend",
+      "summary": "Japanese Urban Legend",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
       "storyType": "MYSTERY",
-      "status": "READY",
-      "category": "URBAN_LEGEND",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Headless_Rider_urban_legend"
+      ],
+      "searchTerms": [
+        "Headless Rider urban legend",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:53.277Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:53.277Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "2d44a52f-cae4-4834-b4e2-50a7cca72c49",
+      "canonicalEntityId": "Q11265484",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Kunekune_(urban_legend)",
+      "title": "Kunekune (urban legend)",
+      "normalizedTitle": "kunekune urban legend",
+      "slug": "kunekune-urban-legend",
+      "summary": "Japanese Urban Legend of a white figure",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Kunekune_(urban_legend)"
+      ],
+      "searchTerms": [
+        "Kunekune (urban legend)",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:53.252Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:53.252Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "97a14101-7e0c-46b7-80e9-4808e0b9a53d",
+      "canonicalEntityId": "Q3303089",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Time_travel_claims_and_urban_legends",
+      "title": "Time travel claims and urban legends",
+      "normalizedTitle": "time travel claims and urban legends",
+      "slug": "time-travel-claims-and-urban-legends",
+      "summary": "Alleged reports of time traveling",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Time_travel_claims_and_urban_legends"
+      ],
+      "searchTerms": [
+        "Time travel claims and urban legends",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:53.207Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:53.207Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "deb384c6-206d-4e04-ae0e-b56f1775f713",
+      "canonicalEntityId": "Q2701294",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Japanese_urban_legends",
+      "title": "Japanese urban legends",
+      "normalizedTitle": "japanese urban legends",
+      "slug": "japanese-urban-legends",
+      "summary": "Story in Japanese folklore which is circulated as true",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Japanese_urban_legends"
+      ],
+      "searchTerms": [
+        "Japanese urban legends",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:53.145Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:53.145Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "b56e96f7-ad97-480a-b1a7-4f21c3a5f4fc",
+      "canonicalEntityId": "Q265245",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Lincoln%E2%80%93Kennedy_coincidences_urban_legend",
+      "title": "Lincoln–Kennedy coincidences urban legend",
+      "normalizedTitle": "lincoln kennedy coincidences urban legend",
+      "slug": "lincoln-kennedy-coincidences-urban-legend",
+      "summary": "Urban legend about two U.S. presidents",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Lincoln%E2%80%93Kennedy_coincidences_urban_legend"
+      ],
+      "searchTerms": [
+        "Lincoln–Kennedy coincidences urban legend",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:53.102Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:53.102Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "4b8043d8-38fa-4c64-81ee-48d81f08917d",
+      "canonicalEntityId": "Q6628837",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Urban_legends_about_drugs",
+      "title": "Urban legends about drugs",
+      "normalizedTitle": "urban legends about drugs",
+      "slug": "urban-legends-about-drugs",
+      "summary": "Contemporary folklore about drugs",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Urban_legends_about_drugs"
+      ],
+      "searchTerms": [
+        "Urban legends about drugs",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:53.062Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:53.062Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "879d0405-39cb-46ee-9a77-00307efc5517",
+      "canonicalEntityId": "Q6517943",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Legends_of_Catherine_the_Great",
+      "title": "Legends of Catherine the Great",
+      "normalizedTitle": "legends of catherine the great",
+      "slug": "legends-of-catherine-the-great",
+      "summary": "",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Legends_of_Catherine_the_Great"
+      ],
+      "searchTerms": [
+        "Legends of Catherine the Great",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:53.026Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:53.026Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "84d28b39-81b7-4a76-88dc-9f0d8b7c7602",
+      "canonicalEntityId": "Q1266820",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Polybius_(urban_legend)",
+      "title": "Polybius (urban legend)",
+      "normalizedTitle": "polybius urban legend",
+      "slug": "polybius-urban-legend",
+      "summary": "Fictitious 1981 arcade game",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Polybius_(urban_legend)"
+      ],
+      "searchTerms": [
+        "Polybius (urban legend)",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:53.001Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:53.001Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "6d2a86af-7586-4f32-ab53-80c3e298407d",
+      "canonicalEntityId": "Q241681",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Rebecca_Gayheart",
+      "title": "Rebecca Gayheart",
+      "normalizedTitle": "rebecca gayheart",
+      "slug": "rebecca-gayheart",
+      "summary": "American actress (born 1971)",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Rebecca_Gayheart"
+      ],
+      "searchTerms": [
+        "Rebecca Gayheart",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:52.975Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:52.975Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "35e55478-f17d-4459-bc83-ce24b2efd0b0",
+      "canonicalEntityId": "Q3657246",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Goatman_(urban_legend)",
+      "title": "Goatman (urban legend)",
+      "normalizedTitle": "goatman urban legend",
+      "slug": "goatman-urban-legend",
+      "summary": "Legendary creature",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Goatman_(urban_legend)"
+      ],
+      "searchTerms": [
+        "Goatman (urban legend)",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:52.947Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:52.947Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "6c06048c-e551-460c-93c3-4c3d02d15032",
+      "canonicalEntityId": "Q546425",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/In_the_Air_Tonight",
+      "title": "In the Air Tonight",
+      "normalizedTitle": "in the air tonight",
+      "slug": "in-the-air-tonight",
+      "summary": "1981 single by Phil Collins",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/In_the_Air_Tonight"
+      ],
+      "searchTerms": [
+        "In the Air Tonight",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:52.923Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:52.923Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "1371447a-3569-4a0a-ba47-c70adc56b9db",
+      "canonicalEntityId": "Q2287154",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Snopes",
+      "title": "Snopes",
+      "normalizedTitle": "snopes",
+      "slug": "snopes",
+      "summary": "Fact-checking website",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Snopes"
+      ],
+      "searchTerms": [
+        "Snopes",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:52.894Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:52.894Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "5f127942-433a-42f8-9bae-a916152d522f",
+      "canonicalEntityId": "Q558923",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/McDonald%27s_urban_legends",
+      "title": "McDonald's urban legends",
+      "normalizedTitle": "mcdonald s urban legends",
+      "slug": "mcdonald-s-urban-legends",
+      "summary": "",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/McDonald%27s_urban_legends"
+      ],
+      "searchTerms": [
+        "McDonald's urban legends",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:52.868Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:52.868Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "d206583a-522a-4a2f-8f45-519b9cf2def4",
+      "canonicalEntityId": "Q44342",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Legend",
+      "title": "Legend",
+      "normalizedTitle": "legend",
+      "slug": "legend",
+      "summary": "Genre of storytelling that involves heroic humans",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Legend"
+      ],
+      "searchTerms": [
+        "Legend",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:52.835Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:52.835Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "9b135fcc-da6c-4052-9380-9087d78cdb64",
+      "canonicalEntityId": "Q8704",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Walt_Disney",
+      "title": "Walt Disney",
+      "normalizedTitle": "walt disney",
+      "slug": "walt-disney",
+      "summary": "American animator, producer and entrepreneur (1901–1966)",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Walt_Disney"
+      ],
+      "searchTerms": [
+        "Walt Disney",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:52.806Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:52.806Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "1fc10c91-8f89-491d-8d72-092cc1ea7dbb",
+      "canonicalEntityId": "Q189349",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Urban_legend",
+      "title": "Urban legend",
+      "normalizedTitle": "urban legend",
+      "slug": "urban-legend",
+      "summary": "Form of modern folklore",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Urban_legend"
+      ],
+      "searchTerms": [
+        "Urban legend",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:52.777Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:52.777Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "8e46fa7f-b196-48c1-8d4f-326f3302406c",
+      "canonicalEntityId": "Q139854608",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/I_Survived_(children%27s_book_series)",
+      "title": "I Survived (children's book series)",
+      "normalizedTitle": "i survived children s book series",
+      "slug": "i-survived-children-s-book-series",
+      "summary": "Historical fiction series by Lauren Tarshis",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/I_Survived_(children%27s_book_series)"
+      ],
+      "searchTerms": [
+        "I Survived (children's book series)",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:52.744Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:52.744Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "76bbb83d-40ea-4430-bb31-3a7d2f82d6e8",
+      "canonicalEntityId": "Q130372732",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Natural_disasters_in_Ghana",
+      "title": "Natural disasters in Ghana",
+      "normalizedTitle": "natural disasters in ghana",
+      "slug": "natural-disasters-in-ghana",
+      "summary": "",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Natural_disasters_in_Ghana"
+      ],
+      "searchTerms": [
+        "Natural disasters in Ghana",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:52.711Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:52.711Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "fe86056d-bc2f-4fe5-b394-b0b0016abe82",
+      "canonicalEntityId": "Q6500385",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Lauren_Tarshis",
+      "title": "Lauren Tarshis",
+      "normalizedTitle": "lauren tarshis",
+      "slug": "lauren-tarshis",
+      "summary": "American children's book author",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Lauren_Tarshis"
+      ],
+      "searchTerms": [
+        "Lauren Tarshis",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:52.669Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:52.669Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "7b640c07-3641-4e92-9414-34d88913e393",
+      "canonicalEntityId": "Q3182723",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Hindenburg_disaster",
+      "title": "Hindenburg disaster",
+      "normalizedTitle": "hindenburg disaster",
+      "slug": "hindenburg-disaster",
+      "summary": "1937 airship fire in the US",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Hindenburg_disaster"
+      ],
+      "searchTerms": [
+        "Hindenburg disaster",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:52.634Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:52.634Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "ab6654a6-96b6-4647-966e-121761c0d288",
+      "canonicalEntityId": "Q486",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Chernobyl_disaster",
+      "title": "Chernobyl disaster",
+      "normalizedTitle": "chernobyl disaster",
+      "slug": "chernobyl-disaster",
+      "summary": "1986 nuclear accident in the Soviet Union",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Chernobyl_disaster"
+      ],
+      "searchTerms": [
+        "Chernobyl disaster",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:52.595Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:52.595Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "fb0fb0fd-3c1f-4753-9b81-ccf639234840",
+      "canonicalEntityId": "Q202949",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Transept",
+      "title": "Transept",
+      "normalizedTitle": "transept",
+      "slug": "transept",
+      "summary": "Architectural element",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Transept"
+      ],
+      "searchTerms": [
+        "Transept",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:52.561Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:52.561Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "56c4e959-e7f3-447c-a5b7-efc6bc84b708",
+      "canonicalEntityId": "Q384291",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Aberfan_disaster",
+      "title": "Aberfan disaster",
+      "normalizedTitle": "aberfan disaster",
+      "slug": "aberfan-disaster",
+      "summary": "1966 Welsh colliery disaster",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Aberfan_disaster"
+      ],
+      "searchTerms": [
+        "Aberfan disaster",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:52.530Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:52.530Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "db3a97db-9e54-43fc-be3d-91aff0527a2b",
+      "canonicalEntityId": "Q858145",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Space_Shuttle_Challenger_disaster",
+      "title": "Space Shuttle Challenger disaster",
+      "normalizedTitle": "space shuttle challenger disaster",
+      "slug": "space-shuttle-challenger-disaster",
+      "summary": "1986 breakup of American orbiter",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Space_Shuttle_Challenger_disaster"
+      ],
+      "searchTerms": [
+        "Space Shuttle Challenger disaster",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:52.502Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:52.502Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "1cb5ac67-2e8d-4b79-bee1-bcac82dca2ee",
+      "canonicalEntityId": "Q1434037",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Sknyliv_air_show_disaster",
+      "title": "Sknyliv air show disaster",
+      "normalizedTitle": "sknyliv air show disaster",
+      "slug": "sknyliv-air-show-disaster",
+      "summary": "2002 air show disaster in Ukraine",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Sknyliv_air_show_disaster"
+      ],
+      "searchTerms": [
+        "Sknyliv air show disaster",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:52.475Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:52.475Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "dd1ee80d-d162-4ef7-a65f-f5f8f57165ed",
+      "canonicalEntityId": "Q129029",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Bhopal_disaster",
+      "title": "Bhopal disaster",
+      "normalizedTitle": "bhopal disaster",
+      "slug": "bhopal-disaster",
+      "summary": "1984 gas-leak accident in Bhopal, India",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Bhopal_disaster"
+      ],
+      "searchTerms": [
+        "Bhopal disaster",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:52.440Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:52.440Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "641bb848-07a7-48d3-9dad-901ecd4ff345",
+      "canonicalEntityId": "Q223288",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Tenerife_airport_disaster",
+      "title": "Tenerife airport disaster",
+      "normalizedTitle": "tenerife airport disaster",
+      "slug": "tenerife-airport-disaster",
+      "summary": "1977 runway collision in the Canary Islands",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Tenerife_airport_disaster"
+      ],
+      "searchTerms": [
+        "Tenerife airport disaster",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:52.407Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:52.407Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "09645a22-1074-4954-a1cc-d5a326bde8dc",
+      "canonicalEntityId": "Q234132",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Hillsborough_disaster",
+      "title": "Hillsborough disaster",
+      "normalizedTitle": "hillsborough disaster",
+      "slug": "hillsborough-disaster",
+      "summary": "Fatal crowd crush during 1989 FA Cup semi-final",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Hillsborough_disaster"
+      ],
+      "searchTerms": [
+        "Hillsborough disaster",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:52.379Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:52.379Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "d03cbd0f-9aad-4adc-aec2-a5d9da6f7ab2",
+      "canonicalEntityId": "Q8065",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Natural_disaster",
+      "title": "Natural disaster",
+      "normalizedTitle": "natural disaster",
+      "slug": "natural-disaster",
+      "summary": "Type of adverse event",
+      "country": "Global",
+      "region": "Global",
+      "category": "events",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Natural_disaster"
+      ],
+      "searchTerms": [
+        "Natural disaster",
+        "natural disaster",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "events",
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:29:14.012Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:52.347Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "natural disaster"
+    },
+    {
+      "id": "92dd9678-049f-4bb4-be47-e2a4d56a8121",
+      "canonicalEntityId": "Q1278272",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/SS_Eastland",
+      "title": "SS Eastland",
+      "normalizedTitle": "ss eastland",
+      "slug": "ss-eastland",
+      "summary": "Passenger ship that rolled over in Chicago in 1915",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/SS_Eastland"
+      ],
+      "searchTerms": [
+        "SS Eastland",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:52.320Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:52.320Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "57e1ff26-b982-45d7-bf3b-6f1329643806",
+      "canonicalEntityId": "Q1129089",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Great_Molasses_Flood",
+      "title": "Great Molasses Flood",
+      "normalizedTitle": "great molasses flood",
+      "slug": "great-molasses-flood",
+      "summary": "1919 accident in Massachusetts, United States",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Great_Molasses_Flood"
+      ],
+      "searchTerms": [
+        "Great Molasses Flood",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:52.292Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:52.292Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "d7a4dbe4-d984-4900-8200-8119dd51cf69",
+      "canonicalEntityId": "Q3839081",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Disaster",
+      "title": "Disaster",
+      "normalizedTitle": "disaster",
+      "slug": "disaster",
+      "summary": "Event resulting in major damage, destruction or death",
+      "country": "Global",
+      "region": "Global",
+      "category": "events",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Disaster"
+      ],
+      "searchTerms": [
+        "Disaster",
+        "natural disaster",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "events",
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:29:13.986Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:52.263Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "natural disaster"
+    },
+    {
+      "id": "8880a190-c4e6-48f4-9012-c1d38495a5fe",
+      "canonicalEntityId": "Q137998543",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Disappearance_of_Nancy_Guthrie",
+      "title": "Disappearance of Nancy Guthrie",
+      "normalizedTitle": "disappearance of nancy guthrie",
+      "slug": "disappearance-of-nancy-guthrie",
+      "summary": "2026 missing person case in Arizona, US",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Disappearance_of_Nancy_Guthrie"
+      ],
+      "searchTerms": [
+        "Disappearance of Nancy Guthrie",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:52.238Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:52.238Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "4adf2564-95b4-432f-b411-e775ad67d4af",
+      "canonicalEntityId": "Q134740017",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Disappearance_of_Lilly_and_Jack_Sullivan",
+      "title": "Disappearance of Lilly and Jack Sullivan",
+      "normalizedTitle": "disappearance of lilly and jack sullivan",
+      "slug": "disappearance-of-lilly-and-jack-sullivan",
+      "summary": "2025 disappearance in Canada",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Disappearance_of_Lilly_and_Jack_Sullivan"
+      ],
+      "searchTerms": [
+        "Disappearance of Lilly and Jack Sullivan",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:52.197Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:52.197Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "d2fe57e6-f81e-4a98-a3bb-9238a4924f22",
+      "canonicalEntityId": "Q126193010",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Jack_family_disappearance",
+      "title": "Jack family disappearance",
+      "normalizedTitle": "jack family disappearance",
+      "slug": "jack-family-disappearance",
+      "summary": "1989 disappearance of a Canadian family",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Jack_family_disappearance"
+      ],
+      "searchTerms": [
+        "Jack family disappearance",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:52.168Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:52.168Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "78ef757a-98a6-4c29-822a-d4acabc012dd",
+      "canonicalEntityId": "Q124512797",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Disappearance_of_Samantha_Murphy",
+      "title": "Disappearance of Samantha Murphy",
+      "normalizedTitle": "disappearance of samantha murphy",
+      "slug": "disappearance-of-samantha-murphy",
+      "summary": "2024 disappearance of Australian woman",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Disappearance_of_Samantha_Murphy"
+      ],
+      "searchTerms": [
+        "Disappearance of Samantha Murphy",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:52.131Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:52.131Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "3c1691cb-2f6f-4f97-82ba-4dfe9aceef71",
+      "canonicalEntityId": "Q121307012",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Disappearance_of_Amy_Billig",
+      "title": "Disappearance of Amy Billig",
+      "normalizedTitle": "disappearance of amy billig",
+      "slug": "disappearance-of-amy-billig",
+      "summary": "Unsolved 1974 disappearance in Florida",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Disappearance_of_Amy_Billig"
+      ],
+      "searchTerms": [
+        "Disappearance of Amy Billig",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:52.106Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:52.106Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "a117e7f0-7b19-45bc-8987-e6b9fbb91b38",
+      "canonicalEntityId": "Q89206694",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Disappearance_of_Don_Lewis",
+      "title": "Disappearance of Don Lewis",
+      "normalizedTitle": "disappearance of don lewis",
+      "slug": "disappearance-of-don-lewis",
+      "summary": "American disappearance case",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Disappearance_of_Don_Lewis"
+      ],
+      "searchTerms": [
+        "Disappearance of Don Lewis",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:52.077Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:52.077Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "c82010cc-7972-47c0-9e86-48444c1c59bd",
+      "canonicalEntityId": "Q30636990",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Disappearance_of_Andrew_Gosden",
+      "title": "Disappearance of Andrew Gosden",
+      "normalizedTitle": "disappearance of andrew gosden",
+      "slug": "disappearance-of-andrew-gosden",
+      "summary": "2007 disappearance of 14-year-old in London",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Disappearance_of_Andrew_Gosden"
+      ],
+      "searchTerms": [
+        "Disappearance of Andrew Gosden",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:52.044Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:52.044Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "a7c788b9-eba5-42db-99dc-75821bcecc01",
+      "canonicalEntityId": "Q27922148",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Disappearance_of_Marvin_Clark",
+      "title": "Disappearance of Marvin Clark",
+      "normalizedTitle": "disappearance of marvin clark",
+      "slug": "disappearance-of-marvin-clark",
+      "summary": "Oldest active missing person case in the US",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Disappearance_of_Marvin_Clark"
+      ],
+      "searchTerms": [
+        "Disappearance of Marvin Clark",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:52.010Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:52.010Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "660ebcf4-ab4c-40cf-9eb7-fdc315434a7d",
+      "canonicalEntityId": "Q138845282",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Disappearance_of_Jason_Landry",
+      "title": "Disappearance of Jason Landry",
+      "normalizedTitle": "disappearance of jason landry",
+      "slug": "disappearance-of-jason-landry",
+      "summary": "2020 missing person case in Texas, United States",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Disappearance_of_Jason_Landry"
+      ],
+      "searchTerms": [
+        "Disappearance of Jason Landry",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:51.977Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:51.977Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "9a58e704-a03d-40ef-8624-14e1b1783fb4",
+      "canonicalEntityId": "Q23670112",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Disappearance_of_Brian_Shaffer",
+      "title": "Disappearance of Brian Shaffer",
+      "normalizedTitle": "disappearance of brian shaffer",
+      "slug": "disappearance-of-brian-shaffer",
+      "summary": "2006 disappearance of 27-year-old medical student",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Disappearance_of_Brian_Shaffer"
+      ],
+      "searchTerms": [
+        "Disappearance of Brian Shaffer",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:51.943Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:51.943Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "ecf8447e-a319-4ae4-aecf-003067e43676",
+      "canonicalEntityId": "Q15908324",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Malaysia_Airlines_Flight_370",
+      "title": "Malaysia Airlines Flight 370",
+      "normalizedTitle": "malaysia airlines flight 370",
+      "slug": "malaysia-airlines-flight-370",
+      "summary": "2014 aircraft disappearance",
       "country": "Malaysia",
-      "region": "Johor Bahru, Johor",
-      "sourceCount": 2,
-      "researchScore": 0.94,
-      "visualScore": 0.84,
-      "currentAware": false,
-      "dateDiscovered": "2026-09-03",
-      "lastVerifiedDate": "2026-09-03"
+      "region": "Malaysia / Malaya",
+      "category": "malaysia",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Malaysia_Airlines_Flight_370"
+      ],
+      "searchTerms": [
+        "Malaysia Airlines Flight 370",
+        "Malaysian disaster",
+        "Malaysia",
+        "Malaysian history",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "malaysia",
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:20:01.982Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:51.911Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "Malaysian disaster"
+    },
+    {
+      "id": "923be848-8304-42e0-a9fd-92ea14a3417c",
+      "canonicalEntityId": "Q16211094",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/McStay_family_murders",
+      "title": "McStay family murders",
+      "normalizedTitle": "mcstay family murders",
+      "slug": "mcstay-family-murders",
+      "summary": "2010 mass murder in Fallbrook, California",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/McStay_family_murders"
+      ],
+      "searchTerms": [
+        "McStay family murders",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:51.879Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:51.879Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "25ae2214-2ce1-4b6c-8059-77856fd20447",
+      "canonicalEntityId": "Q16199396",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Disappearance_of_Lauren_Spierer",
+      "title": "Disappearance of Lauren Spierer",
+      "normalizedTitle": "disappearance of lauren spierer",
+      "slug": "disappearance-of-lauren-spierer",
+      "summary": "American woman who went missing in 2011",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Disappearance_of_Lauren_Spierer"
+      ],
+      "searchTerms": [
+        "Disappearance of Lauren Spierer",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:51.829Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:51.829Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "820a4ad5-a6c5-45d6-8863-61fe386d11f5",
+      "canonicalEntityId": "Q5281278",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Disappearance_of_Susan_Powell",
+      "title": "Disappearance of Susan Powell",
+      "normalizedTitle": "disappearance of susan powell",
+      "slug": "disappearance-of-susan-powell",
+      "summary": "Missing American woman (born 1981)",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Disappearance_of_Susan_Powell"
+      ],
+      "searchTerms": [
+        "Disappearance of Susan Powell",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:51.782Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:51.782Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "483459cf-0b20-49d4-83f3-25e442b2939a",
+      "canonicalEntityId": "Q639251",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Disappearance_of_Madeleine_McCann",
+      "title": "Disappearance of Madeleine McCann",
+      "normalizedTitle": "disappearance of madeleine mccann",
+      "slug": "disappearance-of-madeleine-mccann",
+      "summary": "Unsolved 2007 missing-person case",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Disappearance_of_Madeleine_McCann"
+      ],
+      "searchTerms": [
+        "Disappearance of Madeleine McCann",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:51.752Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:51.752Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "cc5660e1-d7fb-4c45-830a-dd0d3bab918b",
+      "canonicalEntityId": "Q5281269",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Disappearance_of_Maura_Murray",
+      "title": "Disappearance of Maura Murray",
+      "normalizedTitle": "disappearance of maura murray",
+      "slug": "disappearance-of-maura-murray",
+      "summary": "2004 disappearance of American woman",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Disappearance_of_Maura_Murray"
+      ],
+      "searchTerms": [
+        "Disappearance of Maura Murray",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:51.721Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:51.721Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "750a4a9a-0f16-4f89-af81-b37bf6452765",
+      "canonicalEntityId": "Q51722302",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Disappearance_of_Natalee_Holloway",
+      "title": "Disappearance of Natalee Holloway",
+      "normalizedTitle": "disappearance of natalee holloway",
+      "slug": "disappearance-of-natalee-holloway",
+      "summary": "2005 disappearance of an American in Aruba",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Disappearance_of_Natalee_Holloway"
+      ],
+      "searchTerms": [
+        "Disappearance of Natalee Holloway",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:51.673Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:51.673Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "0f35d62e-a14c-4d05-aeaf-2f247a96e7f1",
+      "canonicalEntityId": "Q5281263",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Disappearance_of_Jennifer_Kesse",
+      "title": "Disappearance of Jennifer Kesse",
+      "normalizedTitle": "disappearance of jennifer kesse",
+      "slug": "disappearance-of-jennifer-kesse",
+      "summary": "Florida disappearance case",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Disappearance_of_Jennifer_Kesse"
+      ],
+      "searchTerms": [
+        "Disappearance of Jennifer Kesse",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:51.641Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:51.641Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "3adfad15-375a-4217-a1be-898c9c9b54a7",
+      "canonicalEntityId": "Q51725648",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Disappearance_of_Amy_Lynn_Bradley",
+      "title": "Disappearance of Amy Lynn Bradley",
+      "normalizedTitle": "disappearance of amy lynn bradley",
+      "slug": "disappearance-of-amy-lynn-bradley",
+      "summary": "Unsolved 1998 disappearance of a 23-year-old American woman",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Disappearance_of_Amy_Lynn_Bradley"
+      ],
+      "searchTerms": [
+        "Disappearance of Amy Lynn Bradley",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:51.577Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:51.577Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "20b1d98a-8b3b-4851-9419-8cf1160776f5",
+      "canonicalEntityId": "Q1288449",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Enforced_disappearance",
+      "title": "Enforced disappearance",
+      "normalizedTitle": "enforced disappearance",
+      "slug": "enforced-disappearance",
+      "summary": "Unlawful secret disappearance",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Enforced_disappearance"
+      ],
+      "searchTerms": [
+        "Enforced disappearance",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:51.539Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:51.539Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "a0f69e1d-3cfe-4d4d-8529-69527b33d01d",
+      "canonicalEntityId": "Q2630073",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Disappearance_of_Frederick_Valentich",
+      "title": "Disappearance of Frederick Valentich",
+      "normalizedTitle": "disappearance of frederick valentich",
+      "slug": "disappearance-of-frederick-valentich",
+      "summary": "1978 disappearance of a pilot over Bass Strait, Australia",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Disappearance_of_Frederick_Valentich"
+      ],
+      "searchTerms": [
+        "Disappearance of Frederick Valentich",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:51.510Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:51.510Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "b15c2c99-dea1-4875-afdb-56bb6b38047d",
+      "canonicalEntityId": "Q317638",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Jimmy_Hoffa",
+      "title": "Jimmy Hoffa",
+      "normalizedTitle": "jimmy hoffa",
+      "slug": "jimmy-hoffa",
+      "summary": "American labor union leader (born 1913, disappeared 1975)",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Jimmy_Hoffa"
+      ],
+      "searchTerms": [
+        "Jimmy Hoffa",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:51.474Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:51.474Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "057f80a0-6ab6-41ed-b58b-5407d0d17f98",
+      "canonicalEntityId": "Q3355",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Amelia_Earhart",
+      "title": "Amelia Earhart",
+      "normalizedTitle": "amelia earhart",
+      "slug": "amelia-earhart",
+      "summary": "American aviation pioneer (1897–1937)",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Amelia_Earhart"
+      ],
+      "searchTerms": [
+        "Amelia Earhart",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:51.442Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:51.442Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "9fd3b9fe-d9c2-454e-9e6a-53dbedacf2c9",
+      "canonicalEntityId": "Q114870009",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Lester_Eubanks",
+      "title": "Lester Eubanks",
+      "normalizedTitle": "lester eubanks",
+      "slug": "lester-eubanks",
+      "summary": "American fugitive (born 1943)",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Lester_Eubanks"
+      ],
+      "searchTerms": [
+        "Lester Eubanks",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:51.412Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:51.412Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "7142cbf7-c15b-4d80-8690-66b4adf08deb",
+      "canonicalEntityId": "Q109975682",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Murder_of_Marie_Lilienberg_and_Maria_Wahlen",
+      "title": "Murder of Marie Lilienberg and Maria Wahlen",
+      "normalizedTitle": "murder of marie lilienberg and maria wahlen",
+      "slug": "murder-of-marie-lilienberg-and-maria-wahlen",
+      "summary": "1983 murder of two Swedish tourists in California",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Murder_of_Marie_Lilienberg_and_Maria_Wahlen"
+      ],
+      "searchTerms": [
+        "Murder of Marie Lilienberg and Maria Wahlen",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:51.375Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:51.375Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "f0218086-0083-4789-a1b9-e82e20b9c2e9",
+      "canonicalEntityId": "Q97013658",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Death_of_Rey_Rivera",
+      "title": "Death of Rey Rivera",
+      "normalizedTitle": "death of rey rivera",
+      "slug": "death-of-rey-rivera",
+      "summary": "Death of a man whose body was found in Baltimore, Maryland, US in 2006",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Death_of_Rey_Rivera"
+      ],
+      "searchTerms": [
+        "Death of Rey Rivera",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:51.344Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:51.344Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "9a435a46-bdc3-40a1-86c5-99ea21bf2691",
+      "canonicalEntityId": "Q89489513",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Disappearance_of_Marjorie_West",
+      "title": "Disappearance of Marjorie West",
+      "normalizedTitle": "disappearance of marjorie west",
+      "slug": "disappearance-of-marjorie-west",
+      "summary": "American child who disappeared in 1938",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Disappearance_of_Marjorie_West"
+      ],
+      "searchTerms": [
+        "Disappearance of Marjorie West",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:51.310Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:51.310Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "44a6da09-1300-42ca-a2a4-5f49c1a11d06",
+      "canonicalEntityId": "Q4205186",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Disappearance_of_the_Beaumont_children",
+      "title": "Disappearance of the Beaumont children",
+      "normalizedTitle": "disappearance of the beaumont children",
+      "slug": "disappearance-of-the-beaumont-children",
+      "summary": "1966 disappearance in Australia",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Disappearance_of_the_Beaumont_children"
+      ],
+      "searchTerms": [
+        "Disappearance of the Beaumont children",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:51.277Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:51.277Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "2440dd56-a169-4bcf-83b4-de01b0d2a5fc",
+      "canonicalEntityId": "Q7995997",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Whitehall_Mystery",
+      "title": "Whitehall Mystery",
+      "normalizedTitle": "whitehall mystery",
+      "slug": "whitehall-mystery",
+      "summary": "1888 unsolved murder in London, England",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Whitehall_Mystery"
+      ],
+      "searchTerms": [
+        "Whitehall Mystery",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:51.239Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:51.239Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "9ff247fa-f718-4781-bdde-e3009ca54368",
+      "canonicalEntityId": "Q240496",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Lizzie_Borden",
+      "title": "Lizzie Borden",
+      "normalizedTitle": "lizzie borden",
+      "slug": "lizzie-borden",
+      "summary": "American acquitted murder suspect (1860–1927)",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Lizzie_Borden"
+      ],
+      "searchTerms": [
+        "Lizzie Borden",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:51.156Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:51.156Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "fcfc9f32-3f4d-4394-8a60-c58cddef0132",
+      "canonicalEntityId": "Q152036",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Lorem_ipsum",
+      "title": "Lorem ipsum",
+      "normalizedTitle": "lorem ipsum",
+      "slug": "lorem-ipsum",
+      "summary": "Placeholder text used in publishing and graphic design",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Lorem_ipsum"
+      ],
+      "searchTerms": [
+        "Lorem ipsum",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:36:51.073Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:51.073Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery | disappearance | historical disaster | urban legend"
+    },
+    {
+      "id": "e494a71a-c660-419f-a2f9-c87751592374",
+      "canonicalEntityId": "Q348970",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/D._B._Cooper",
+      "title": "D. B. Cooper",
+      "normalizedTitle": "d b cooper",
+      "slug": "d-b-cooper",
+      "summary": "Unidentified 1971 airplane hijacker",
+      "country": "Global",
+      "region": "Global",
+      "category": "mysteries",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/D._B._Cooper"
+      ],
+      "searchTerms": [
+        "D. B. Cooper",
+        "unsolved mystery",
+        "unsolved mystery | disappearance | historical disaster | urban legend"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "mysteries"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:29:20.537Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:36:50.938Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "unsolved mystery"
+    },
+    {
+      "id": "0b695612-b2f3-425b-8a03-cff83ce8aa84",
+      "canonicalEntityId": "Q126462072",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Clair_Obscur:_Expedition_33",
+      "title": "Clair Obscur: Expedition 33",
+      "normalizedTitle": "clair obscur expedition 33",
+      "slug": "clair-obscur-expedition-33",
+      "summary": "2025 video game",
+      "country": "Global",
+      "region": "Global",
+      "category": "events",
+      "storyType": "EVENT",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Clair_Obscur:_Expedition_33"
+      ],
+      "searchTerms": [
+        "Clair Obscur: Expedition 33",
+        "expedition"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "events"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:29:18.084Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:29:18.084Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "expedition"
+    },
+    {
+      "id": "97deadb1-5a19-4a03-ba94-ef5eff4ee72c",
+      "canonicalEntityId": "Q138988951",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Expedition_X",
+      "title": "Expedition X",
+      "normalizedTitle": "expedition x",
+      "slug": "expedition-x",
+      "summary": "2020 American TV series or program",
+      "country": "Global",
+      "region": "Global",
+      "category": "events",
+      "storyType": "EVENT",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Expedition_X"
+      ],
+      "searchTerms": [
+        "Expedition X",
+        "expedition"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "events"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:29:18.050Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:29:18.050Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "expedition"
+    },
+    {
+      "id": "1384a42e-46de-4236-b92f-b1b594828b93",
+      "canonicalEntityId": "Q2305",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Franklin%27s_lost_expedition",
+      "title": "Franklin's lost expedition",
+      "normalizedTitle": "franklin s lost expedition",
+      "slug": "franklin-s-lost-expedition",
+      "summary": "1845–48 British failed Arctic exploration",
+      "country": "Global",
+      "region": "Global",
+      "category": "events",
+      "storyType": "EVENT",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Franklin%27s_lost_expedition"
+      ],
+      "searchTerms": [
+        "Franklin's lost expedition",
+        "expedition"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "events"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:29:18.023Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:29:18.023Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "expedition"
+    },
+    {
+      "id": "37375823-19d9-4bc7-a2d1-cd725fe5ff8f",
+      "canonicalEntityId": "Q7169780",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Perry_Expedition",
+      "title": "Perry Expedition",
+      "normalizedTitle": "perry expedition",
+      "slug": "perry-expedition",
+      "summary": "1853–54 US expedition to Tokugawa Japan",
+      "country": "Global",
+      "region": "Global",
+      "category": "events",
+      "storyType": "EVENT",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Perry_Expedition"
+      ],
+      "searchTerms": [
+        "Perry Expedition",
+        "expedition"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "events"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:29:17.997Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:29:17.997Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "expedition"
+    },
+    {
+      "id": "105c8b05-df6d-4b3d-8d64-7711fcafdcf7",
+      "canonicalEntityId": "Q1227138",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Malaspina_Expedition",
+      "title": "Malaspina Expedition",
+      "normalizedTitle": "malaspina expedition",
+      "slug": "malaspina-expedition",
+      "summary": "Maritime scientific exploration (1789–1888)",
+      "country": "Global",
+      "region": "Global",
+      "category": "events",
+      "storyType": "EVENT",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Malaspina_Expedition"
+      ],
+      "searchTerms": [
+        "Malaspina Expedition",
+        "expedition"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "events"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:29:17.973Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:29:17.973Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "expedition"
+    },
+    {
+      "id": "14eac092-bff5-4918-8afb-6f2111b02990",
+      "canonicalEntityId": "Q1277677",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Narv%C3%A1ez_expedition",
+      "title": "Narváez expedition",
+      "normalizedTitle": "narvaez expedition",
+      "slug": "narvaez-expedition",
+      "summary": "16th-century Spanish exploration in North America",
+      "country": "Global",
+      "region": "Global",
+      "category": "events",
+      "storyType": "EVENT",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Narv%C3%A1ez_expedition"
+      ],
+      "searchTerms": [
+        "Narváez expedition",
+        "expedition"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "events"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:29:17.945Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:29:17.945Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "expedition"
+    },
+    {
+      "id": "ebf2894d-9a3e-44d5-8f17-9c8d0438e91f",
+      "canonicalEntityId": "Q1339764",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Ford_Expedition",
+      "title": "Ford Expedition",
+      "normalizedTitle": "ford expedition",
+      "slug": "ford-expedition",
+      "summary": "Series of full-size SUVs produced by Ford",
+      "country": "Global",
+      "region": "Global",
+      "category": "events",
+      "storyType": "EVENT",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Ford_Expedition"
+      ],
+      "searchTerms": [
+        "Ford Expedition",
+        "expedition"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "events"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:29:17.922Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:29:17.922Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "expedition"
+    },
+    {
+      "id": "a84234a5-00d0-4edf-a155-0389c047f133",
+      "canonicalEntityId": "Q7170203",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Persian_expedition",
+      "title": "Persian expedition",
+      "normalizedTitle": "persian expedition",
+      "slug": "persian-expedition",
+      "summary": "Topics referred to by the same term",
+      "country": "Global",
+      "region": "Global",
+      "category": "events",
+      "storyType": "EVENT",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Persian_expedition"
+      ],
+      "searchTerms": [
+        "Persian expedition",
+        "expedition"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "events"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:29:17.894Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:29:17.894Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "expedition"
+    },
+    {
+      "id": "31dc7f03-9440-49e4-8bad-5bc9c52d90a9",
+      "canonicalEntityId": "Q352897",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Expedition",
+      "title": "Expedition",
+      "normalizedTitle": "expedition",
+      "slug": "expedition",
+      "summary": "Topics referred to by the same term",
+      "country": "Global",
+      "region": "Global",
+      "category": "events",
+      "storyType": "EVENT",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Expedition"
+      ],
+      "searchTerms": [
+        "Expedition",
+        "expedition"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "events"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:29:17.870Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:29:17.870Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "expedition"
+    },
+    {
+      "id": "8362a587-9282-4dc4-9669-d70abc869ca0",
+      "canonicalEntityId": "Q210268",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Richard_E._Byrd",
+      "title": "Richard E. Byrd",
+      "normalizedTitle": "richard e byrd",
+      "slug": "richard-e-byrd",
+      "summary": "American naval officer (1888–1957)",
+      "country": "Global",
+      "region": "Global",
+      "category": "events",
+      "storyType": "EXPLAINER",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Richard_E._Byrd"
+      ],
+      "searchTerms": [
+        "Richard E. Byrd",
+        "expedition"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "events"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:29:17.826Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:29:17.826Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "expedition"
+    },
+    {
+      "id": "58a051b2-a159-48d0-ae92-8a88763fbf3c",
+      "canonicalEntityId": "Q137454163",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Patriot_Games_(event)",
+      "title": "Patriot Games (event)",
+      "normalizedTitle": "patriot games event",
+      "slug": "patriot-games-event",
+      "summary": "American sporting event",
+      "country": "Global",
+      "region": "Global",
+      "category": "events",
+      "storyType": "EVENT",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Patriot_Games_(event)"
+      ],
+      "searchTerms": [
+        "Patriot Games (event)",
+        "political event"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "events"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:29:16.293Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:29:16.293Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "political event"
+    },
+    {
+      "id": "c3e83c51-4f16-4fcd-9341-3abc84b5914f",
+      "canonicalEntityId": "Q85735386",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/2020_Democratic_Party_presidential_forums",
+      "title": "2020 Democratic Party presidential forums",
+      "normalizedTitle": "2020 democratic party presidential forums",
+      "slug": "2020-democratic-party-presidential-forums",
+      "summary": "",
+      "country": "Global",
+      "region": "Global",
+      "category": "events",
+      "storyType": "EXPLAINER",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/2020_Democratic_Party_presidential_forums"
+      ],
+      "searchTerms": [
+        "2020 Democratic Party presidential forums",
+        "political event"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "events"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:29:16.262Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:29:16.262Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "political event"
+    },
+    {
+      "id": "4b5b80d4-d77f-4685-8afa-bd65463b9046",
+      "canonicalEntityId": "Q61676097",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/2019_Virginia_political_crisis",
+      "title": "2019 Virginia political crisis",
+      "normalizedTitle": "2019 virginia political crisis",
+      "slug": "2019-virginia-political-crisis",
+      "summary": "Scandals of US state executive officials",
+      "country": "Global",
+      "region": "Global",
+      "category": "events",
+      "storyType": "PLACE",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/2019_Virginia_political_crisis"
+      ],
+      "searchTerms": [
+        "2019 Virginia political crisis",
+        "political event"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "events"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:29:16.223Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:29:16.223Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "political event"
+    },
+    {
+      "id": "159f7356-2b99-4ef1-b2d0-449bb7134d17",
+      "canonicalEntityId": "Q1038864",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Political_apathy",
+      "title": "Political apathy",
+      "normalizedTitle": "political apathy",
+      "slug": "political-apathy",
+      "summary": "Indifference towards politics",
+      "country": "Global",
+      "region": "Global",
+      "category": "events",
+      "storyType": "EXPLAINER",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Political_apathy"
+      ],
+      "searchTerms": [
+        "Political apathy",
+        "political event"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "events"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:29:16.185Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:29:16.185Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "political event"
+    },
+    {
+      "id": "b8b08c13-630c-4526-876a-2a31c99a2190",
+      "canonicalEntityId": "Q7885121",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Political_risk",
+      "title": "Political risk",
+      "normalizedTitle": "political risk",
+      "slug": "political-risk",
+      "summary": "Probability of adverse effects of political decisions",
+      "country": "Global",
+      "region": "Global",
+      "category": "events",
+      "storyType": "EXPLAINER",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Political_risk"
+      ],
+      "searchTerms": [
+        "Political risk",
+        "political event"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "events"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:29:16.155Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:29:16.155Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "political event"
+    },
+    {
+      "id": "d2e9e5f4-b322-42e1-9e5c-296b86655bcc",
+      "canonicalEntityId": "Q12071552",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Tiffany_Trump",
+      "title": "Tiffany Trump",
+      "normalizedTitle": "tiffany trump",
+      "slug": "tiffany-trump",
+      "summary": "Daughter of Donald Trump (born 1993)",
+      "country": "Global",
+      "region": "Global",
+      "category": "events",
+      "storyType": "BIOGRAPHY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Tiffany_Trump"
+      ],
+      "searchTerms": [
+        "Tiffany Trump",
+        "political event"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "events"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:29:16.120Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:29:16.120Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "political event"
+    },
+    {
+      "id": "9b7421e8-fd5a-4baa-ad5f-2b8e8d5434e3",
+      "canonicalEntityId": "Q122960575",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Political_drama",
+      "title": "Political drama",
+      "normalizedTitle": "political drama",
+      "slug": "political-drama",
+      "summary": "Play, film or TV program that has a political component",
+      "country": "Global",
+      "region": "Global",
+      "category": "events",
+      "storyType": "EXPLAINER",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Political_drama"
+      ],
+      "searchTerms": [
+        "Political drama",
+        "political event"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "events"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:29:16.062Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:29:16.062Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "political event"
+    },
+    {
+      "id": "aebe6491-fa54-4977-92e1-d61b37289a48",
+      "canonicalEntityId": "Q1153592",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Politics_of_Venezuela",
+      "title": "Politics of Venezuela",
+      "normalizedTitle": "politics of venezuela",
+      "slug": "politics-of-venezuela",
+      "summary": "",
+      "country": "Global",
+      "region": "Global",
+      "category": "events",
+      "storyType": "EXPLAINER",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Politics_of_Venezuela"
+      ],
+      "searchTerms": [
+        "Politics of Venezuela",
+        "political event"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "events"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:29:15.996Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:29:15.996Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "political event"
+    },
+    {
+      "id": "87557154-c0b9-4705-aef7-9ea077fb196c",
+      "canonicalEntityId": "Q7163",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Politics",
+      "title": "Politics",
+      "normalizedTitle": "politics",
+      "slug": "politics",
+      "summary": "Activities associated with group decisions",
+      "country": "Global",
+      "region": "Global",
+      "category": "events",
+      "storyType": "EXPLAINER",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Politics"
+      ],
+      "searchTerms": [
+        "Politics",
+        "political event"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "events"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:29:15.953Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:29:15.953Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "political event"
+    },
+    {
+      "id": "cbb24227-9f60-4ba9-aa1f-21d1266add45",
+      "canonicalEntityId": "Q60628524",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Natural_disaster_(disambiguation)",
+      "title": "Natural disaster (disambiguation)",
+      "normalizedTitle": "natural disaster disambiguation",
+      "slug": "natural-disaster-disambiguation",
+      "summary": "Topics referred to by the same term",
+      "country": "Global",
+      "region": "Global",
+      "category": "events",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Natural_disaster_(disambiguation)"
+      ],
+      "searchTerms": [
+        "Natural disaster (disambiguation)",
+        "natural disaster"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "events"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:29:14.126Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:29:14.126Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "natural disaster"
+    },
+    {
+      "id": "cd002452-c9b8-4721-abf0-0e700ed2c2f7",
+      "canonicalEntityId": "Q16147386",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Natural_disasters_in_Japan",
+      "title": "Natural disasters in Japan",
+      "normalizedTitle": "natural disasters in japan",
+      "slug": "natural-disasters-in-japan",
+      "summary": "",
+      "country": "Global",
+      "region": "Global",
+      "category": "events",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Natural_disasters_in_Japan"
+      ],
+      "searchTerms": [
+        "Natural disasters in Japan",
+        "natural disaster"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "events"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:29:14.097Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:29:14.097Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "natural disaster"
+    },
+    {
+      "id": "705a219e-596b-4c30-ad75-354dc7b36ac9",
+      "canonicalEntityId": "Q300494",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/A_Natural_Disaster",
+      "title": "A Natural Disaster",
+      "normalizedTitle": "a natural disaster",
+      "slug": "a-natural-disaster",
+      "summary": "2003 studio album by Anathema",
+      "country": "Global",
+      "region": "Global",
+      "category": "events",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/A_Natural_Disaster"
+      ],
+      "searchTerms": [
+        "A Natural Disaster",
+        "natural disaster"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "events"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:29:14.071Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:29:14.071Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "natural disaster"
+    },
+    {
+      "id": "77edd711-df9a-40ac-ad64-51aac1655f91",
+      "canonicalEntityId": "Q1995027",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/The_Natural_Disasters",
+      "title": "The Natural Disasters",
+      "normalizedTitle": "the natural disasters",
+      "slug": "the-natural-disasters",
+      "summary": "Professional wrestling tag team",
+      "country": "Global",
+      "region": "Global",
+      "category": "events",
+      "storyType": "MYSTERY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/The_Natural_Disasters"
+      ],
+      "searchTerms": [
+        "The Natural Disasters",
+        "natural disaster"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "events"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:29:14.043Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:29:14.043Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "natural disaster"
+    },
+    {
+      "id": "8067634f-a5f3-4ab3-83be-4d31e77a604e",
+      "canonicalEntityId": "Q4828690",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Aviation_and_Railway_Accident_Investigation_Board",
+      "title": "Aviation and Railway Accident Investigation Board",
+      "normalizedTitle": "aviation and railway accident investigation board",
+      "slug": "aviation-and-railway-accident-investigation-board",
+      "summary": "South Korean government agency",
+      "country": "Global",
+      "region": "Global",
+      "category": "events",
+      "storyType": "EVENT",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Aviation_and_Railway_Accident_Investigation_Board"
+      ],
+      "searchTerms": [
+        "Aviation and Railway Accident Investigation Board",
+        "aviation accident"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "events"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:29:12.434Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:29:12.434Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "aviation accident"
+    },
+    {
+      "id": "530ff38e-482c-4c65-bdad-1e2c7af40b19",
+      "canonicalEntityId": "Q108284447",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Aviation_accidents_and_incidents",
+      "title": "Aviation accidents and incidents",
+      "normalizedTitle": "aviation accidents and incidents",
+      "slug": "aviation-accidents-and-incidents",
+      "summary": "",
+      "country": "Global",
+      "region": "Global",
+      "category": "events",
+      "storyType": "EVENT",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Aviation_accidents_and_incidents"
+      ],
+      "searchTerms": [
+        "Aviation accidents and incidents",
+        "aviation accident"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "events"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:29:12.390Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:29:12.390Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "aviation accident"
+    },
+    {
+      "id": "5fa90f14-ce6a-404c-b8d9-093f6e660a3b",
+      "canonicalEntityId": "Q15416",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Television_show",
+      "title": "Television show",
+      "normalizedTitle": "television show",
+      "slug": "television-show",
+      "summary": "Audiovisual content intended for broadcast or digital distribution on television",
+      "country": "Global",
+      "region": "Global",
+      "category": "entertainment",
+      "storyType": "EXPLAINER",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Television_show"
+      ],
+      "searchTerms": [
+        "Television show",
+        "television series"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "entertainment"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:29:09.956Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:29:09.956Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "television series"
+    },
+    {
+      "id": "0b715016-f067-48ae-b1bd-214f7ac9f25b",
+      "canonicalEntityId": "Q4508516",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Spider-Man_in_television",
+      "title": "Spider-Man in television",
+      "normalizedTitle": "spider man in television",
+      "slug": "spider-man-in-television",
+      "summary": "Marvel Comics character Spider-Man in television",
+      "country": "Global",
+      "region": "Global",
+      "category": "entertainment",
+      "storyType": "EXPLAINER",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Spider-Man_in_television"
+      ],
+      "searchTerms": [
+        "Spider-Man in television",
+        "television series"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "entertainment"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:29:09.928Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:29:09.928Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "television series"
+    },
+    {
+      "id": "c160bdba-c069-4825-a979-586f39d125ef",
+      "canonicalEntityId": "Q1259395",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Golden_Globe_Award_for_Best_Supporting_Actress_%E2%80%93_Series,_Miniseries_or_Television_Film",
+      "title": "Golden Globe Award for Best Supporting Actress – Series, Miniseries or Television Film",
+      "normalizedTitle": "golden globe award for best supporting actress series miniseries or television film",
+      "slug": "golden-globe-award-for-best-supporting-actress-series-miniseries-or-television-film",
+      "summary": "American acting award",
+      "country": "Global",
+      "region": "Global",
+      "category": "entertainment",
+      "storyType": "BIOGRAPHY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Golden_Globe_Award_for_Best_Supporting_Actress_%E2%80%93_Series,_Miniseries_or_Television_Film"
+      ],
+      "searchTerms": [
+        "Golden Globe Award for Best Supporting Actress – Series, Miniseries or Television Film",
+        "television series"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "entertainment"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:29:09.904Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:29:09.904Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "television series"
+    },
+    {
+      "id": "abc3e3a0-47d7-4883-b09e-8fa8a995c21d",
+      "canonicalEntityId": "Q581714",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Animated_series",
+      "title": "Animated series",
+      "normalizedTitle": "animated series",
+      "slug": "animated-series",
+      "summary": "Set of animated works with a common series title",
+      "country": "Global",
+      "region": "Global",
+      "category": "entertainment",
+      "storyType": "EXPLAINER",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Animated_series"
+      ],
+      "searchTerms": [
+        "Animated series",
+        "television series"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "entertainment"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:29:09.871Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:29:09.871Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "television series"
+    },
+    {
+      "id": "97144ca5-c81f-4764-a6a6-4a47ac528374",
+      "canonicalEntityId": "Q1273568",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Children%27s_television_series",
+      "title": "Children's television series",
+      "normalizedTitle": "children s television series",
+      "slug": "children-s-television-series",
+      "summary": "Television programs designed for and marketed to children",
+      "country": "Global",
+      "region": "Global",
+      "category": "entertainment",
+      "storyType": "EXPLAINER",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Children%27s_television_series"
+      ],
+      "searchTerms": [
+        "Children's television series",
+        "television series"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "entertainment"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:29:09.839Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:29:09.839Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "television series"
+    },
+    {
+      "id": "d24b6ece-3e21-4de1-9fc6-d85ada018aab",
+      "canonicalEntityId": "Q126052190",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Elan_(director)",
+      "title": "Elan (director)",
+      "normalizedTitle": "elan director",
+      "slug": "elan-director",
+      "summary": "Indian film director and screenwriter",
+      "country": "Global",
+      "region": "Global",
+      "category": "entertainment",
+      "storyType": "EXPLAINER",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Elan_(director)"
+      ],
+      "searchTerms": [
+        "Elan (director)",
+        "film director"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "entertainment"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:29:08.089Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:29:08.089Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "film director"
+    },
+    {
+      "id": "2c0cfc57-0082-4ffe-b460-f291b2b19d7f",
+      "canonicalEntityId": "Q25209047",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Matt_Johnson_(director)",
+      "title": "Matt Johnson (director)",
+      "normalizedTitle": "matt johnson director",
+      "slug": "matt-johnson-director",
+      "summary": "Canadian actor and filmmaker (born 1985)",
+      "country": "Global",
+      "region": "Global",
+      "category": "entertainment",
+      "storyType": "BIOGRAPHY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Matt_Johnson_(director)"
+      ],
+      "searchTerms": [
+        "Matt Johnson (director)",
+        "film director"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "entertainment"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:29:08.058Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:29:08.058Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "film director"
+    },
+    {
+      "id": "eb062432-0d46-4c92-93ec-ec02838b845b",
+      "canonicalEntityId": "Q19281615",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Atlee_(director)",
+      "title": "Atlee (director)",
+      "normalizedTitle": "atlee director",
+      "slug": "atlee-director",
+      "summary": "Indian film director, screenwriter and film producer (born 1986)",
+      "country": "Global",
+      "region": "Global",
+      "category": "entertainment",
+      "storyType": "BIOGRAPHY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Atlee_(director)"
+      ],
+      "searchTerms": [
+        "Atlee (director)",
+        "film director"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "entertainment"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:29:08.028Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:29:08.028Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "film director"
+    },
+    {
+      "id": "d8b0359e-ccf2-4bf4-a050-d22cabd030be",
+      "canonicalEntityId": "Q16222541",
+      "canonicalUrl": "https://en.wikipedia.org/wiki/Max_Winkler_(director)",
+      "title": "Max Winkler (director)",
+      "normalizedTitle": "max winkler director",
+      "slug": "max-winkler-director",
+      "summary": "American director and screenwriter (born 1983)",
+      "country": "Global",
+      "region": "Global",
+      "category": "entertainment",
+      "storyType": "BIOGRAPHY",
+      "status": "DISCOVERED",
+      "sourceCount": 0,
+      "claimCount": 0,
+      "researchScore": null,
+      "visualScore": null,
+      "narrativePotentialScore": null,
+      "sourceHints": [
+        "https://en.wikipedia.org/wiki/Max_Winkler_(director)"
+      ],
+      "searchTerms": [
+        "Max Winkler (director)",
+        "film director"
+      ],
+      "aliases": [],
+      "metadata": {
+        "categories": [
+          "entertainment"
+        ]
+      },
+      "discoveredAt": "2026-09-04T10:29:07.998Z",
+      "lastResearchedAt": null,
+      "lastVerifiedAt": null,
+      "updatedAt": "2026-09-04T10:29:07.998Z",
+      "originProvider": "Wikipedia",
+      "originQuery": "film director"
     }
   ]
 }

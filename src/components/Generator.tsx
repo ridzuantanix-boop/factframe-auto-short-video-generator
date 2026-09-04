@@ -66,10 +66,12 @@ export function Generator() {
   const [discoveryPage, setDiscoveryPage] = useState(0);
   const [discoveryLoading, setDiscoveryLoading] = useState(false);
   const [discoveryHasMore, setDiscoveryHasMore] = useState(true);
+  const [discoveryTotal, setDiscoveryTotal] = useState<number | null>(null);
   const [mysteryCandidates, setMysteryCandidates] = useState<SearchResult[]>([]);
   const [mysteryPage, setMysteryPage] = useState(0);
   const [mysteryLoading, setMysteryLoading] = useState(false);
   const [mysteryHasMore, setMysteryHasMore] = useState(true);
+  const [mysteryTotal, setMysteryTotal] = useState<number | null>(null);
 
   useEffect(() => () => { if (videoUrl) URL.revokeObjectURL(videoUrl); }, [videoUrl]);
   useEffect(() => { void fetch("/api/gemini/status").then((response) => response.json()).then((data) => setGeminiConfigured(Boolean(data.configured))).catch(() => setGeminiConfigured(false)); }, []);
@@ -79,10 +81,10 @@ export function Generator() {
   useEffect(() => {
     let active = true;
     void Promise.all([
-      fetch("/api/discover?category=interesting&page=0").then((response) => readJson<{ results: SearchResult[]; hasMore: boolean }>(response)),
-      fetch("/api/discover?category=mysteries&page=0").then((response) => readJson<{ results: SearchResult[]; hasMore: boolean }>(response)),
+      fetch("/api/discover?category=interesting&page=0").then((response) => readJson<{ results: SearchResult[]; hasMore: boolean; total: number | null }>(response)),
+      fetch("/api/discover?category=mysteries&page=0").then((response) => readJson<{ results: SearchResult[]; hasMore: boolean; total: number | null }>(response)),
     ]).then(([stories, mysteries]) => {
-      if (active) { setDiscoveryItems(stories.results); setDiscoveryHasMore(stories.hasMore); setMysteryCandidates(mysteries.results); setMysteryHasMore(mysteries.hasMore); }
+      if (active) { setDiscoveryItems(stories.results); setDiscoveryHasMore(stories.hasMore); setDiscoveryTotal(stories.total); setMysteryCandidates(mysteries.results); setMysteryHasMore(mysteries.hasMore); setMysteryTotal(mysteries.total); }
     }).catch(() => { /* Carian manual masih tersedia jika feed discovery gagal. */ });
     return () => { active = false; };
   }, []);
@@ -154,9 +156,9 @@ export function Generator() {
   async function loadDiscovery(category: string, page = 0) {
     setDiscoveryLoading(true); setError("");
     try {
-      const data = await readJson<{ results: SearchResult[]; hasMore: boolean }>(await fetch(`/api/discover?category=${encodeURIComponent(category)}&page=${page}`));
+      const data = await readJson<{ results: SearchResult[]; hasMore: boolean; total: number | null }>(await fetch(`/api/discover?category=${encodeURIComponent(category)}&page=${page}`));
       setDiscoveryItems((current) => page === 0 ? data.results : [...new Map([...current, ...data.results].map((item) => [item.id, item])).values()]);
-      setDiscoveryCategory(category); setDiscoveryPage(page); setDiscoveryHasMore(data.hasMore);
+      setDiscoveryCategory(category); setDiscoveryPage(page); setDiscoveryHasMore(data.hasMore); setDiscoveryTotal(data.total);
     } catch (caught) { setError(caught instanceof Error ? caught.message : "Katalog gagal dimuatkan."); }
     finally { setDiscoveryLoading(false); }
   }
@@ -165,9 +167,9 @@ export function Generator() {
     setMysteryLoading(true); setError("");
     try {
       const category = malaysia ? "malaysia_mysteries" : "mysteries";
-      const data = await readJson<{ results: SearchResult[]; hasMore: boolean }>(await fetch(`/api/discover?category=${category}&page=${page}`));
+      const data = await readJson<{ results: SearchResult[]; hasMore: boolean; total: number | null }>(await fetch(`/api/discover?category=${category}&page=${page}`));
       setMysteryCandidates((current) => page === 0 ? data.results : [...new Map([...current, ...data.results].map((item) => [item.id, item])).values()]);
-      setMysteryPage(page); setMysteryHasMore(data.hasMore);
+      setMysteryPage(page); setMysteryHasMore(data.hasMore); setMysteryTotal(data.total);
     } catch (caught) { setError(caught instanceof Error ? caught.message : "Calon misteri gagal dimuatkan."); }
     finally { setMysteryLoading(false); }
   }
@@ -293,9 +295,9 @@ export function Generator() {
       </section>
 
       {mode === "STORY" && stage === "idle" && <section className="discovery shell reveal">
-        <div className="sectionHeading"><div><span className="step">TEROKAI</span><h2>Apa yang anda mahu hasilkan?</h2></div><p>Lebih 1,000 calon boleh diterokai terus daripada indeks Wikidata.</p></div>
+        <div className="sectionHeading"><div><span className="step">TEROKAI</span><h2>Apa yang anda mahu hasilkan?</h2></div><p>Calon persisten digunakan dahulu; carian sumber live mengisi ruang yang belum diindeks.</p></div>
         <div className="discoveryGrid">{DISCOVERY_CATEGORIES.map(([icon, label, category]) => <button className={discoveryCategory === category ? "active" : ""} key={label} onClick={() => void loadDiscovery(category)} disabled={discoveryLoading}><span>{icon}</span><strong>{label}</strong><ArrowRight size={15} /></button>)}</div>
-        <div className="discoveryCatalogHead"><div><strong>{DISCOVERY_CATEGORIES.find((item) => item[2] === discoveryCategory)?.[1]}</strong><span>{discoveryItems.length} calon dimuatkan · 1,000+ tersedia</span></div>{discoveryLoading && <LoaderCircle className="spin" size={20} />}</div>
+        <div className="discoveryCatalogHead"><div><strong>{DISCOVERY_CATEGORIES.find((item) => item[2] === discoveryCategory)?.[1]}</strong><span>{discoveryItems.length} dimuatkan{discoveryTotal === null ? " daripada carian live" : ` · ${discoveryTotal} calon persisten`}</span></div>{discoveryLoading && <LoaderCircle className="spin" size={20} />}</div>
         <div className="resultsGrid discoveryResults">{discoveryItems.map((result) => <button className="resultCard" key={result.id} onClick={() => void selectEntity(result)}><span className="resultId">{result.id}</span><strong>{result.label}</strong><p>{result.description}</p><span className="selectArrow"><ArrowRight size={18} /></span></button>)}</div>
         {discoveryHasMore && <button className="loadMore" onClick={() => void loadDiscovery(discoveryCategory, discoveryPage + 1)} disabled={discoveryLoading}>{discoveryLoading ? <LoaderCircle className="spin" size={18} /> : <ChevronDown size={18} />} Muatkan sehingga 100 lagi</button>}
       </section>}
@@ -309,7 +311,7 @@ export function Generator() {
           <div className="scoreLine"><span>Sumber {Math.round(story.researchScore * 100)}%</span><span>Visual {Math.round(story.visualScore * 100)}%</span></div>
           <button onClick={() => void selectMystery(story)}>Pilih cerita <ArrowRight size={16} /></button>
         </article>)}</div>
-        <div className="discoveryCatalogHead"><div><strong>Calon penyiasatan automatik</strong><span>{mysteryCandidates.length} ditemui · katalog terus berkembang daripada indeks sumber</span></div><button className="miniAction" onClick={() => void loadMysteryCandidates(0, true)}>Fokus Malaysia</button></div>
+        <div className="discoveryCatalogHead"><div><strong>Calon penyiasatan automatik</strong><span>{mysteryCandidates.length} dimuatkan{mysteryTotal === null ? " daripada carian live" : ` · ${mysteryTotal} calon persisten`}</span></div><button className="miniAction" onClick={() => void loadMysteryCandidates(0, true)}>Fokus Malaysia</button></div>
         <div className="resultsGrid discoveryResults">{mysteryCandidates.map((result) => <button className="resultCard" key={result.id} onClick={() => void selectEntity(result)}><span className="resultId">DITEMUI · {result.id}</span><strong>{result.label}</strong><p>{result.description}</p><span className="selectArrow"><ArrowRight size={18} /></span></button>)}</div>
         {mysteryHasMore && <button className="loadMore" onClick={() => void loadMysteryCandidates(mysteryPage + 1)} disabled={mysteryLoading}>{mysteryLoading ? <LoaderCircle className="spin" size={18} /> : <ChevronDown size={18} />} Muatkan sehingga 100 lagi</button>}
       </section>}

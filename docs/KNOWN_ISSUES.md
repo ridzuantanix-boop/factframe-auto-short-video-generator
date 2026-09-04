@@ -1,7 +1,8 @@
 # Known issues and limitations
 
-- Katalog render-ready tersimpan hanya 10 cerita; Malaysia/Malaya hanya 4. “1,000+” ialah calon live, bukan READY.
-- Discovery live tidak disimpan, tidak dicrawl berjadual, tidak mempunyai semantic dedupe atau status promotion. Upstream timeout/rate limit boleh menghasilkan feed kosong.
+- Indeks PostgreSQL telah dibina dan diuji secara lokal dengan 987 calon provider (630 Malaysia/Malaya), tetapi production belum mempunyai `DATABASE_URL`; deployment semasa masih menggunakan live fallback dan 10 seed. Migration dan ingestion production mesti selesai sebelum deploy.
+- Dedupe durable hanya menggunakan Q-ID, canonical URL dan normalized title; advanced semantic clustering belum ada. Upstream timeout/rate limit masih mengehadkan sesetengah kategori, terutama mystery global.
+- Endpoint ingestion berjadual tersedia tetapi Vercel Cron belum diaktifkan sehingga DB production dan `CRON_SECRET` disediakan dengan selamat.
 - Mystery berkualiti tinggi kebanyakannya seed manual. Auto-mystery daripada entity live ialah struktur generik dan semua fakta diklasifikasi `VERIFIED` daripada reference data.
 - Dynamic angles now use generic event-term and date heuristics with supporting fact IDs, but they do not yet use embeddings, causal extraction or multi-source cluster validation.
 - Current-aware ialah flag dan timestamp request sahaja. Tiada news/official-current provider atau stale-claim invalidation.

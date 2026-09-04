@@ -14,6 +14,16 @@ export async function loadModules() {
   return { mysteryCatalog, ...storyEngine, ...explainerEngine, ...qualityScoring, ...angleResearch, ...visualQueries, ...discovery, ...voices };
 }
 
+export async function loadPersistedCatalog() {
+  if (!process.env.DATABASE_URL) return { configured: false, stats: null, stories: [] };
+  const { createStoryStore } = await import("../src/lib/discovery/store.ts");
+  const store = createStoryStore();
+  try {
+    const [stats, catalog] = await Promise.all([store.stats(), store.list({ page: 1, limit: 100, sort: "newest" })]);
+    return { configured: true, stats, stories: catalog.items };
+  } finally { await store.close(); }
+}
+
 export function catalogStatus(story) {
   if (!story.sources.length || !story.claims.length || story.researchScore < 0.6 || story.visualScore < 0.5) return "HIDDEN";
   if (story.sourceCoveragePotential === "good" && story.researchScore >= 0.9 && story.visualScore >= 0.8) return "READY";

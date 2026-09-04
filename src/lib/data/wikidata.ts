@@ -42,7 +42,7 @@ export async function searchEntities(query: string): Promise<SearchResult[]> {
   return (data.results ?? []).map((item: { id: string; "display-label"?: { value?: string }; description?: { value?: string; language?: string }; match?: { text?: string } }) => ({
     id: item.id,
     label: item.match?.text ?? item["display-label"]?.value ?? item.id,
-    description: item.description?.language === "ms" ? item.description.value ?? "entiti dalam Wikidata" : "entiti berkaitan dalam Wikidata",
+    description: item.description?.value ?? "entiti berkaitan dalam Wikidata",
     url: `${WD}${item.id}`,
   }));
 }
