@@ -13,6 +13,10 @@ const programmaticIntents: Partial<Record<VisualIntent, VisualKind>> = {
 
 const fillerWords = new Set(["yang", "dan", "dengan", "daripada", "selepas", "sebuah", "masih", "untuk", "telah", "tidak", "boleh", "pada", "dari", "itu"]);
 
+const verifiedFallbackVisuals: Record<string, Visual> = {
+  "villa-nabila": { id: "commons-danga-world", title: "Danga World, Johor Bahru", url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/Danga_World%2C_Johor_Bahru%2C_Malaysia.jpg/1280px-Danga_World%2C_Johor_Bahru%2C_Malaysia.jpg", thumbUrl: "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/Danga_World%2C_Johor_Bahru%2C_Malaysia.jpg/1280px-Danga_World%2C_Johor_Bahru%2C_Malaysia.jpg", width: 1280, height: 960, creator: "Martin Lewison", license: "CC BY-SA 2.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0/", sourceUrl: "https://commons.wikimedia.org/wiki/File:Danga_World,_Johor_Bahru,_Malaysia.jpg", description: "Pemandangan kawasan Danga Bay, Johor Bahru", source: "Wikimedia Commons", mediaType: "image", visualKind: "PHOTO", relevanceScore: .5 },
+};
+
 function keywords(value: string) {
   return value.toLowerCase().replace(/[^\p{L}\p{N}\s-]/gu, " ").split(/\s+/).filter((word) => word.length > 3 && !fillerWords.has(word));
 }
@@ -132,7 +136,8 @@ export async function planStoryVisuals(story: StoryRecord, script: MysteryScript
     const fallbackQuery = story.visualSearchTerms[0] ?? story.title;
     const [videos, images] = await Promise.all([searchVideos(fallbackQuery).catch(() => []), searchVisuals(fallbackQuery).catch(() => [])]);
     const fallback = [...videos, ...images][0];
-    if (fallback) selected[0] = { ...fallback, segmentIndex: 0, visualIntent: script.segments[0]?.visualIntent ?? "ARCHIVAL_PHOTO", searchQuery: fallbackQuery, relevanceScore: .5 };
+    const verified = verifiedFallbackVisuals[story.id];
+    if (fallback || verified) selected[0] = { ...(fallback ?? verified), segmentIndex: 0, visualIntent: script.segments[0]?.visualIntent ?? "ARCHIVAL_PHOTO", searchQuery: fallbackQuery, relevanceScore: .5 };
   }
 
   return { visuals: selected, quality: qualityReport(selected) };
