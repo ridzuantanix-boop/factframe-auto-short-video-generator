@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "pawarna-video-factory",
+  "account_id": "6af56159f79621677bac8e4db85c4403",
+  "main": "cloud/worker.ts",
+  "compatibility_date": "2026-07-01",
+  "compatibility_flags": ["nodejs_compat", "nodejs_compat_populate_process_env"],
+  "workers_dev": true,
+  "preview_urls": false,
+  "assets": { "directory": "./dist-cloud", "binding": "ASSETS", "not_found_handling": "single-page-application", "run_worker_first": true },
+  "durable_objects": { "bindings": [{ "name": "FACTORY", "class_name": "PawarnaFactory" }] },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["PawarnaFactory"] }],
+  "r2_buckets": [{ "binding": "MEDIA", "bucket_name": "pawarna-video-factory-media" }],
+  "vars": { "GEMINI_TEXT_MODEL": "gemini-3.1-flash-lite", "PAWARNA_GEMINI_MODEL": "gemini-3.1-flash-lite", "NEXABOT_BASE_URL": "https://nexabot.id", "PAWARNA_MAX_ACTIVE": "3", "PAWARNA_DAILY_LIMIT": "20", "GENERATION_ENABLED": "false" },
+  "observability": { "enabled": true, "logs": { "invocation_logs": false } }
+}

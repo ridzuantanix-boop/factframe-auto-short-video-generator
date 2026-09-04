@@ -5,3 +5,9 @@ out/
 .env*
 !.env.example
 .codex/
+.pawarna/
+outputs/
+*.tsbuildinfo
+dist-cloud/
+.wrangler/
+.dev.vars*

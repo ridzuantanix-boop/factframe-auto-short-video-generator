@@ -1,5 +1,5 @@
-import { Generator } from "@/components/Generator";
+import { PawarnaGenerator } from "@/components/PawarnaGenerator";
 
 export default function Home() {
-  return <Generator />;
+  return <PawarnaGenerator />;
 }

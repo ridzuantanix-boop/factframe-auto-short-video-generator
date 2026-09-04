@@ -1,0 +1,438 @@
+{
+  "captured_at": "2026-09-04T15:29:11.975Z",
+  "live": "https://pawarna-video-factory.ridzuantanix.workers.dev",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "production_version": "f6a4747b-e16c-4460-b3c1-cf8b37e41a98",
+  "production_paused": true,
+  "production_assets_verified": [
+    {
+      "path": "/assets/index-CdnDytoD.js",
+      "sha256": "a1f7dc118c08caef4ce34026e4a7721be53671969332c45200a0ffa22bac6dfd"
+    },
+    {
+      "path": "/assets/index-CPhP5JX1.css",
+      "sha256": "8cd5b3cc2344a91fb7ac10cabac52f6e17006b0efcc8dad369fc1a5b82a5e6e9"
+    }
+  ],
+  "paid_api_requests": 0,
+  "fixture_notice": "Fixture images, analysis, scripts, jobs and video are synthetic UI audit data. No provider execution. No app source/copy/CSS changes.",
+  "captures": [
+    {
+      "file": "01-home-live.png",
+      "source": "live",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollY": 0,
+      "url": "https://pawarna-video-factory.ridzuantanix.workers.dev/#home"
+    },
+    {
+      "file": "01-home-live-full.png",
+      "source": "live",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fullPage": true,
+      "url": "https://pawarna-video-factory.ridzuantanix.workers.dev/#home"
+    },
+    {
+      "file": "02-create-upload-live.png",
+      "source": "live",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollY": 0,
+      "url": "https://pawarna-video-factory.ridzuantanix.workers.dev/#create"
+    },
+    {
+      "file": "02-create-upload-live-full.png",
+      "source": "live",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fullPage": true,
+      "url": "https://pawarna-video-factory.ridzuantanix.workers.dev/#create"
+    },
+    {
+      "file": "03-product-analysis-fixture.png",
+      "source": "fixture",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollY": 0,
+      "url": "http://127.0.0.1:51933/#create"
+    },
+    {
+      "file": "03-product-analysis-fixture-full.png",
+      "source": "fixture",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fullPage": true,
+      "url": "http://127.0.0.1:51933/#create"
+    },
+    {
+      "file": "04-video-style-fixture.png",
+      "source": "fixture",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollY": 0,
+      "url": "http://127.0.0.1:51933/#create"
+    },
+    {
+      "file": "04-video-style-fixture-full.png",
+      "source": "fixture",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fullPage": true,
+      "url": "http://127.0.0.1:51933/#create"
+    },
+    {
+      "file": "05-angle-fixture.png",
+      "source": "fixture",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollY": 0,
+      "url": "http://127.0.0.1:51933/#create"
+    },
+    {
+      "file": "05-angle-fixture-full.png",
+      "source": "fixture",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fullPage": true,
+      "url": "http://127.0.0.1:51933/#create"
+    },
+    {
+      "file": "06-creator-voice-fixture.png",
+      "source": "fixture",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollY": 0,
+      "url": "http://127.0.0.1:51933/#create"
+    },
+    {
+      "file": "06-creator-voice-fixture-full.png",
+      "source": "fixture",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fullPage": true,
+      "url": "http://127.0.0.1:51933/#create"
+    },
+    {
+      "file": "06b-subject-shariah-aurat-fixture.png",
+      "source": "fixture",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollY": 767,
+      "url": "http://127.0.0.1:51933/#create"
+    },
+    {
+      "file": "06c-aurat-fixture.png",
+      "source": "fixture",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollY": 890,
+      "url": "http://127.0.0.1:51933/#create"
+    },
+    {
+      "file": "07-review-fixture.png",
+      "source": "fixture",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollY": 0,
+      "url": "http://127.0.0.1:51933/#create"
+    },
+    {
+      "file": "07-review-fixture-full.png",
+      "source": "fixture",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fullPage": true,
+      "url": "http://127.0.0.1:51933/#create"
+    },
+    {
+      "file": "08-processing-fixture.png",
+      "source": "fixture",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollY": 0,
+      "url": "http://127.0.0.1:51933/#video-00000000-0000-4000-8000-000000000002"
+    },
+    {
+      "file": "08-processing-fixture-full.png",
+      "source": "fixture",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fullPage": true,
+      "url": "http://127.0.0.1:51933/#video-00000000-0000-4000-8000-000000000002"
+    },
+    {
+      "file": "08b-processing-stages-fixture.png",
+      "source": "fixture",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollY": 661,
+      "url": "http://127.0.0.1:51933/#video-00000000-0000-4000-8000-000000000002"
+    },
+    {
+      "file": "09-result-fixture.png",
+      "source": "fixture",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollY": 0,
+      "url": "http://127.0.0.1:51933/#video-00000000-0000-4000-8000-000000000002"
+    },
+    {
+      "file": "09-result-fixture-full.png",
+      "source": "fixture",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fullPage": true,
+      "url": "http://127.0.0.1:51933/#video-00000000-0000-4000-8000-000000000002"
+    },
+    {
+      "file": "09b-result-actions-fixture.png",
+      "source": "fixture",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollY": 705,
+      "url": "http://127.0.0.1:51933/#video-00000000-0000-4000-8000-000000000002"
+    },
+    {
+      "file": "09c-generate-again-fixture.png",
+      "source": "fixture",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollY": 705,
+      "url": "http://127.0.0.1:51933/#video-00000000-0000-4000-8000-000000000002"
+    },
+    {
+      "file": "10-projects-fixture.png",
+      "source": "fixture",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollY": 0,
+      "url": "http://127.0.0.1:51933/#projects"
+    },
+    {
+      "file": "10-projects-fixture-full.png",
+      "source": "fixture",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fullPage": true,
+      "url": "http://127.0.0.1:51933/#projects"
+    },
+    {
+      "file": "11-product-project-fixture.png",
+      "source": "fixture",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollY": 0,
+      "url": "http://127.0.0.1:51933/#projects"
+    },
+    {
+      "file": "11-product-project-fixture-full.png",
+      "source": "fixture",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fullPage": true,
+      "url": "http://127.0.0.1:51933/#projects"
+    },
+    {
+      "file": "01b-home-populated-fixture.png",
+      "source": "fixture",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollY": 0,
+      "url": "http://127.0.0.1:51933/#home"
+    },
+    {
+      "file": "01b-home-populated-fixture-full.png",
+      "source": "fixture",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fullPage": true,
+      "url": "http://127.0.0.1:51933/#home"
+    },
+    {
+      "file": "12-credits-fixture.png",
+      "source": "fixture",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollY": 0,
+      "url": "http://127.0.0.1:51933/#credits"
+    },
+    {
+      "file": "12-credits-fixture-full.png",
+      "source": "fixture",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fullPage": true,
+      "url": "http://127.0.0.1:51933/#credits"
+    },
+    {
+      "file": "13-profile-fixture.png",
+      "source": "fixture",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollY": 0,
+      "url": "http://127.0.0.1:51933/#profile"
+    },
+    {
+      "file": "13-profile-fixture-full.png",
+      "source": "fixture",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fullPage": true,
+      "url": "http://127.0.0.1:51933/#profile"
+    }
+  ],
+  "failures": [],
+  "blocked_requests": [],
+  "runtime_sha256": {
+    "src/app/api/factory/jobs/[id]/media/route.ts": "ec995e3e82a0f8c679c0303a5cd0b03ef7182b22de3ee8886538b43249f4df6d",
+    "src/app/api/factory/route.ts": "d46692de12f298e190e09061478e534f164f951853002b6e785e9af35603cf81",
+    "src/app/api/gemini/script/route.ts": "4875156051daa5e842fb51b8cbd611f852a6bbc939b17e31290cb4d6774fc92c",
+    "src/app/api/gemini/status/route.ts": "3b6ed0d9e3430f046d11dcba67ee55988008db4218a52129aa68b3f527b10005",
+    "src/app/api/gemini/tts/route.ts": "ea7afb8fbbde42f7f190e064a13ed735a539e18922fee72bdb8907ce387598f1",
+    "src/app/api/generate/route.ts": "43f8e42fbf8d8bf551776db777e741821367aca1097ba61316264fc4eb973759",
+    "src/app/api/media/route.ts": "2fd836db37876b6e1d0787d22cf25eb21eee615c4799387a92801fa8713e7aa6",
+    "src/app/api/products/route.ts": "2baf485b0a1eb966e157da1342a911f9f833beac9875ace760303e1a1cb3a967",
+    "src/app/api/products/[id]/corrections/route.ts": "814e3d8c43c816171fcb3c39fc69d7ac91c4ccd3bb19aad5028bfe254f2c78ca",
+    "src/app/api/products/[id]/media/route.ts": "2eba3f4fd2267ec033f9e0ff0efc3b8430bf91274a9fe823caee451fc1592ebf",
+    "src/app/api/search/route.ts": "eed03c0aaec82fb35007b3f2b6c1b3c1e38b92a4e93b99fb1f5d5a7bf6a0a224",
+    "src/app/api/topic/route.ts": "36e0737caf849fbb8f0e73781971dfecbc324c98f557291f8de3c04b7585ccc8",
+    "src/app/globals.css": "0306328dd6c89800b0f07f1aca3a35589dba505f7c5824d59ebf95cb8a87b0e9",
+    "src/app/layout.tsx": "681f635a2a6c8458fc18d75483474fe11c2ea7b189e96c390338f07a2c3a3215",
+    "src/app/manifest.ts": "c1f7e594dbadad772aa86e74d28caa86efc1e0a0919ad1badecaeaf07cbdbb06",
+    "src/app/page.tsx": "fc8b0a530304303b9b472439f161602c144c71c49d04db2e46e984b81204477f",
+    "src/components/Generator.tsx": "7dee0527a5eb1f0a63cd6b04a957fb6f8ea692b9fc2d372856b014e71991907a",
+    "src/components/JobDiagnostics.tsx": "7d1e67487a8b635ac80ac0c1d32994a91871e3a127989d765898723ac5f4f00d",
+    "src/components/pawarna-mobile.css": "eabe54b616ddd0e68fd16625b7dbf87187157affbd651c9934fe36969e9d27c0",
+    "src/components/pawarna-native.css": "cb20be952e60afd8c51752504aa3243111bdfff92b2695e7f673a54e6c2d200a",
+    "src/components/pawarna.css": "3e91efb9a277c1095faf6cefcf2e780cfc619e81083bf3b0e570e71f1877adba",
+    "src/components/PawarnaGenerator.tsx": "4ce5586cc432ffec0d3f294e55779398ad2c35fd77abbab79c167edbf428c5f3",
+    "src/components/ResearchSources.tsx": "ec0413b311d1f27674bc1b5c95ff5a73748d0568ce4d2a2a107cd137768d5486",
+    "src/components/usePwa.ts": "a03ddce91eaf1d084f35e3cc46af347e890b177d899adaed84846d978f524344",
+    "src/espeak-ng.d.ts": "68f013306e86c615fcc1bad318dc413045e8795b700296e432bb0ee3a37a0c11",
+    "src/lib/audio/tts.worker.ts": "643c0c3e7ab04bca454795f2451523d53dff15db70488ec634d85b21a84cb594",
+    "src/lib/audio/ttsProvider.ts": "8b32fd1d20121ab2d35aef04b96bb5b2395b9d401de31eec1b14c0afa19ad079",
+    "src/lib/audio/voicePresets.ts": "1319126f13e7697227404711dc6999d4a443170a139d54e46b5356a8d01142b9",
+    "src/lib/content/narrationBuilder.ts": "a9490237f114d2838bac022bd39b2eb143935a971256a06e3f3944362a09454c",
+    "src/lib/data/wikidata.ts": "0385657624ceaaa13a41b175edb87f457042a11c20023787c7f26e58c93a0c1e",
+    "src/lib/data/wikimedia.ts": "cc04d695fd6ad288635912c52eb5b5e5edaab440f06ce154105757950775a25f",
+    "src/lib/data/wikipedia.ts": "9cd8eab92d107af86c53561a544219f85774ff6bb9b9a53e0842e5a61bebd470",
+    "src/lib/gemini/client.ts": "a36b214c399ed464e6a570e995c5475bfb26906725598c33672308919def048f",
+    "src/lib/licensing/licenseFilter.ts": "95c874c90e5f8f2ab6b9d759fe3fd63e5bb35d1729cf2b791c8a5d3bdade7fb7",
+    "src/lib/mystery/catalog.ts": "62d1f6c4aaba33b5ef14b3b86fe606f1077f3abdce1b4f8edc0cf7f22a47ebe4",
+    "src/lib/mystery/storyEngine.ts": "11a399a7297b0f83a7b33892e40a39507598c2d334fd2b32661d1b606971522b",
+    "src/lib/pawarna/diagnostics.ts": "59610d5e563945c643b9b236d0cf8990101285aacd5ba677997afbcd73727d7d",
+    "src/lib/pawarna/director.ts": "66520bbb2f18db054c870f69f07621b780bcd14b1e536cba75d1de2edcbee675",
+    "src/lib/pawarna/image.ts": "214b25567886eafcb57cadad0ed81805b73fc49039417336f660481e1158a91d",
+    "src/lib/pawarna/projects.ts": "b4dcd5b09e617f42da359567d0b6319ee1956a96a03717593909aa57bc8ffc68",
+    "src/lib/pawarna/prompt.ts": "d2e93e03b3b494b6d10b94c205dae6360714d60aef6adb702be6365c5f3f828b",
+    "src/lib/pawarna/session.ts": "e4d8c81d5a4d4662a15afebfffeff1044fdc367ec9205300c8db3c079eaa20cb",
+    "src/lib/pawarna/settings.ts": "a31e67de942c6dd321dfb4fb9b3b48f0ba3b0b388887f372a0bbe5c8a29d254e",
+    "src/lib/pawarna/store.ts": "d669891b266bace7fd6de6258053056b3ec6f594e5e80f2db407ae2d27fd99ec",
+    "src/lib/pawarna/types.ts": "8071ec9ba21c272e39a6b8b1b3f5500df38c5bb1324f3f002ffa307763ac1e6f",
+    "src/lib/pawarna/validation.ts": "fb981a2dc07915c01a360951556194ea32142408538fce2f55ef9ad8a831ec82",
+    "src/lib/types.ts": "7e0eb52e4df22ebd74a51f80f772e558666b15bcebb6c4cf687fa3ea5b6e886f",
+    "src/lib/video/renderer.ts": "ff2a5201f1572e5fb12246e61ee84318961fde24a5f48371d8503a102a3e81a2",
+    "src/lib/video/sceneBuilder.ts": "5c67f0b5f8b6886d4c4014324531754f1092f7fc3233a33a433ba822792eed9c",
+    "src/services/nexabot/provider.ts": "27b36ab71860492fb7545def6c374e50ae8b96b16f4746a74abf3d4d9f20922c",
+    "src/services/pawarna/intelligence.ts": "08fb628b2ffaa76feee202aa63167323624ddc41fbb4148dc32e22f19fadb99b",
+    "cloud/base.css": "6500e5d40e03e38e9a0ae443d4ffabc137282fa8449abf4c06de24d9a8d8fd35",
+    "cloud/factory.ts": "a956f84baaa2b4f1d4bfd9cf2bcb0769dc0c8826c0401ffc67d6b33b59be3293",
+    "cloud/index.html": "5a67275124cf2684a323b5b70c7fa4edca79171233fdd9b4fba95a675357271c",
+    "cloud/main.tsx": "0b4967b6290328e9e94135b98b36c066e9df21a3cdab53a8bec33843ac837d70",
+    "cloud/products.ts": "38048940446a1825d01af57347979e1851379f9f25a8362cb998601130e28b87",
+    "cloud/tsconfig.json": "6d89f104fb78d6e95f4bf29dcc412a9b665c11cb37e618ea333e7fc4796395c5",
+    "cloud/utils.ts": "6bfd25033df11c88b23cbb7b21aa20559e1cbb6b4f235d26bd60cbef82f829c3",
+    "cloud/validation.ts": "ef50779431f0186ee29db2ab2539bc0f1428338c27978dbfeaa446cefc999fb4",
+    "cloud/vite.config.ts": "ba88bae68bb04853c3404116efefc76af37cd7f524ce4864e9c74c88163490d6",
+    "cloud/worker.ts": "c3fb5dadf56fd09ded377e920efa94a1baa8cbd631681fecc8575a1bec215675",
+    "public/icons/apple-touch-icon.png": "8080d74476e67051d823bb5fd2b394f8360de28406ddc240db8bdf26b3cd64d7",
+    "public/icons/icon-192.png": "7f16a8093a6178990cecddca0052dd2904c08d42b0ca06ceee2456520f10852d",
+    "public/icons/icon-512.png": "2491a3625c12864a971246d9523f9784e29b91890a6b0c3b4df06eca651430a2",
+    "public/icons/maskable-512.png": "2491a3625c12864a971246d9523f9784e29b91890a6b0c3b4df06eca651430a2",
+    "public/icons/pawarna.svg": "dd93f686d8fdf21970761cdfc59494055dc722764e28d5033ae98ae6b39e724c",
+    "public/offline.html": "33e4583e8f6cb7f04e9d9cd5ee658f97e04a41e7b02704ccf9a71ead88ffcd61",
+    "public/sw.js": "9221dfe993d2cc91c497cea52abc89af3e263e9dd2b0e4271d0f41f4b3caf0b1",
+    "public/vendor/espeak-ng-LICENSE.txt": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+    "public/vendor/espeak-ng.js": "406c6655a6cacf34d84fc69dc4478c81b71518809080ce2d05df1b706d76429d",
+    "public/vendor/espeak-ng.wasm": "10d24bb7e4124e983aa9cd8cd96c52c8ea4b607d81956ec70846684e2827d532",
+    "public/vendor/ort/ort-wasm-simd-threaded.jsep.mjs": "3d68fa7af88c48894d4b0c8629de12018ab73b77519bc0b05dc8d908ad82749f",
+    "public/vendor/ort/ort-wasm-simd-threaded.jsep.wasm": "db816fadbab47a755170c08f933961e231412ac17f5981f9a62e519708a44dea",
+    "public/vendor/ort/ort-wasm-simd-threaded.mjs": "5a15f1fd086b3f6c2baf1f35105b8f502653b567e165cef80028870b39748747",
+    "public/vendor/ort/ort-wasm-simd-threaded.wasm": "ec8580a9d7b9476ceee52e10a7f94124e4dc71a019d666ed6d4726697c109a4d",
+    "package.json": "5733684b55abaf91d5e9fe090c0bef5491a1e34a07f17f6cbef961b112a27a7a",
+    "package-lock.json": "5a2cd5a560a768cac8230357e9db4e40d051e195b1b26d92eac50c5fd2b9f8b9",
+    "wrangler.jsonc": "7279cf5b30d0be64886735372a0b24970a7c6caf7857f5734b944de09f852190",
+    "next.config.ts": "3c71d3bd1883d04b1325bab8ecf5b818c6ccc6b965e78a0428d701df2a981811",
+    "tsconfig.json": "a220487589241118f8348584ef7b90476d28190f175731c35753ecf47e506a24"
+  }
+}

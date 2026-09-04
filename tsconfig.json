@@ -36,6 +36,11 @@
     ".next/dev/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "cloud/worker.ts",
+    "cloud/factory.ts",
+    "cloud/validation.ts",
+    "cloud/utils.ts",
+    "cloud/products.ts"
   ]
 }

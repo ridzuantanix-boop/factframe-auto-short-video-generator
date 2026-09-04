@@ -1,0 +1,123 @@
+// Runs isolated, local-only Cloudflare storage + alarms against fake providers. No real API keys or credits.
+import { createServer } from "node:http";
+import { spawn } from "node:child_process";
+import { mkdtempSync } from "node:fs";
+import { tmpdir } from "node:os";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import assert from "node:assert/strict";
+import sharp from "sharp";
+const origin = "http://127.0.0.1:8897";
+let lastPrompt = ""; let submissions = 0; let analyses = 0; let searches = 0; let mode = "success";
+const product = { name: "Buku Biru", brand: "", category: "Buku", confidence: "high", visible_text: "Buku Biru", description: "Buku dengan cover biru", observed_features: ["Cover biru"], search_query: "Buku Biru", uncertainty: "", reference_indices: [0] };
+const plan = { scene_plan: {"0-2":"Move camera toward closed blue book","2-6":"Hands hold the closed book steadily","6-8":"Show cover title without opening","8-10":"Set book down, voiceover finishes"}, angle: "Cover biru", hook: "Suka tengok buku dengan cover biru macam ini?", script: "Suka tengok buku dengan cover biru macam ini? Reka bentuknya ringkas dan warna birunya jelas kelihatan pada gambar produk. Klik link kat bawah.", cta: "Klik link kat bawah.", mode: "Book Creator", visual_direction: "Hold the book", claim_evidence_ids: ["e0"] };
+const video = Buffer.from([0, 0, 0, 24, ...Buffer.from("ftypisom"), 0, 0, 0, 0, ...Buffer.from("isomiso2")]);
+const mock = createServer(async (req, res) => {
+  const chunks = []; for await (const chunk of req) chunks.push(chunk);
+  const body = chunks.length ? JSON.parse(Buffer.concat(chunks).toString()) : {};
+  res.setHeader("Content-Type", "application/json");
+  if (req.url.includes(":generateContent")) {
+    assert.equal(req.headers["x-goog-api-key"], "test-only");
+    const content = JSON.stringify(body); let value;
+    if (content.includes("Inspect these photographs")) { analyses++; value = product; }
+    else if (content.includes("Research the photographed product")) {
+      searches++;
+      res.end(JSON.stringify({ candidates: [{ content: { role: "model", parts: [{ text: "Cover buku berwarna biru." }] }, groundingMetadata: { groundingChunks: [{ web: { uri: "https://example.com/book", title: "Mock source" } }], groundingSupports: [{ segment: { text: "Cover biru" }, groundingChunkIndices: [0] }], webSearchQueries: ["Buku Biru"] } }] })); return;
+    } else if (content.includes("Audit this Malay script")) value = { approved: true, reason: "Supported" };
+    else value = content.includes("VOICE IS OFF:") ? {...plan, script:"", cta:"",hook:"Show closed blue cover"} : plan;
+    res.end(JSON.stringify({ candidates: [{ content: { role: "model", parts: [{ text: JSON.stringify(value) }] } }] })); return;
+  }
+  assert.equal(req.headers["x-api-key"], "test-only");
+  if (req.method === "POST" && req.url === "/api/v1/api") {
+    submissions++; assert.equal(body.mode, "i2v"); assert.equal(body.ratio, 2); assert.ok([1,2].includes(body.media.length)); lastPrompt=body.prompt;
+    if (mode === "uncertain") { res.statusCode = 503; res.end("{}"); return; }
+    res.statusCode = 202; res.end(JSON.stringify({ ok: true, job_id: `mock-${submissions}`, credit_cost: .5 })); return;
+  }
+  if (req.url.endsWith("/download")) { res.setHeader("Content-Type", "video/mp4"); res.setHeader("Content-Length", video.length); res.end(video); return; }
+  res.end(JSON.stringify({ ok: true, job: { status: mode === "failed" ? "failed" : "done" } }));
+});
+await new Promise((resolve, reject) => { mock.once("error", reject); mock.listen(8898, "127.0.0.1", resolve); });
+const persist = mkdtempSync(path.join(tmpdir(), "pawarna-cloud-test-"));
+let output = "";
+const child = spawn(process.execPath, [fileURLToPath(new URL("../node_modules/wrangler/bin/wrangler.js", import.meta.url)), "dev", "--local", "--ip", "127.0.0.1", "--port", "8897", "--inspector-port", "9297", "--persist-to", persist,
+  "--var", "GEMINI_API_KEY:test-only", "--var", "NEXABOT_API_KEY:test-only", "--var", "GEMINI_API_BASE_URL:http://127.0.0.1:8898", "--var", "NEXABOT_BASE_URL:http://127.0.0.1:8898", "--var", "GENERATION_ENABLED:true"], { cwd: new URL("..", import.meta.url), env: { ...process.env, CLOUDFLARE_LOAD_DEV_VARS_FROM_DOT_ENV: "false" }, windowsHide: true, stdio: ["pipe", "pipe", "pipe"] });
+child.stdout.on("data", data => { output = (output + data).slice(-15000); }); child.stderr.on("data", data => { output = (output + data).slice(-15000); });
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+async function list(cookie) { const response = await fetch(`${origin}/api/factory`, { headers: { cookie } }); assert.equal(response.status, 200); return response.json(); }
+async function waitJob(cookie, id) {
+  let last;
+  for (let i = 0; i < 120; i++) {
+    const data = await list(cookie); const job = data.jobs.find(j => j.id === id);
+    if (last !== job.stage) { console.log(`Mock pipeline: ${job.stage}`); last = job.stage; }
+    if (["completed", "failed"].includes(job.stage)) return job;
+    await delay(1000);
+  }
+  throw new Error("Mock pipeline timeout");
+}
+try {
+  let ready;
+  for (let i = 0; i < 90; i++) { if (child.exitCode !== null) throw new Error(`Local runtime exited (${child.exitCode})`); try { ready = await fetch(`${origin}/api/factory`); if (ready.ok) break; } catch {} await delay(1000); }
+  assert.ok(ready?.ok, "Local worker did not start");
+  const cookie = ready.headers.get("set-cookie").split(";")[0];
+  const state = await ready.json(); assert.deepEqual(state.ready, { gemini: true, nexabot: true, worker: true });
+  const bytes = await sharp({ create: { width: 20, height: 20, channels: 3, background: "blue" } }).png().toBuffer();
+  const image = `data:image/png;base64,${bytes.toString("base64")}`;
+  
+  const productKey=crypto.randomUUID();
+  const productRequest=(body,id=productKey,session=cookie)=>fetch(origin+"/api/products",{method:"POST",headers:{origin,cookie:session,"content-type":"application/json","idempotency-key":id},body:JSON.stringify(body)});
+  const productResults=await Promise.all([productRequest({images:[image]}),productRequest({images:[image]})]);
+  assert.equal(productResults[0].status,202);assert.equal(productResults[1].status,202);
+  const saved=(await productResults[0].json()).product;
+  assert.equal((await productResults[1].json()).product.id,saved.id);
+  assert.equal((await productRequest({images:[image],instructions:"changed"})).status,409);
+  for(let i=0;i<120;i++){const p=(await list(cookie)).products.find(p=>p.id===saved.id);if(p.stage==="ready")break;if(p.stage==="failed")throw Error(p.error);await delay(1000);}
+  assert.equal((await list(cookie)).products[0].stage,"ready");
+  assert.equal(submissions,0,"Product analysis must never submit a paid video");
+  const settings={productId:saved.id,videoStyle:"real_life",angle:"curiosity",voiceoverEnabled:true,voiceGender:"female",voiceStyle:"soft_sell",subjectType:"female_creator",shariahCompliance:true,auratLevel:"full",durationSeconds:10};
+  const input = {product_id:saved.id, avatar:image, settings};
+
+  const key = crypto.randomUUID();
+  const send = (body, id = key, reqOrigin = origin) => fetch(`${origin}/api/generate`, { method: "POST", headers: { origin: reqOrigin, cookie, "content-type": "application/json", "idempotency-key": id }, body: JSON.stringify(body) });
+  assert.equal((await send(input, crypto.randomUUID(), "https://evil.invalid")).status, 403);
+  const results = await Promise.all([send(input), send(input)]);
+  assert.equal(results[0].status, 202); assert.equal(results[1].status, 202);
+  const a = await results[0].json(); const b = await results[1].json(); assert.equal(a.job.id, b.job.id);
+  assert.equal((await send({ ...input, instructions: "different" })).status, 409);
+  const other = await fetch(`${origin}/api/factory`); const otherCookie = other.headers.get("set-cookie").split(";")[0];
+  assert.equal((await list(otherCookie)).jobs.length, 0);
+  assert.equal((await list(otherCookie)).products.length,0);
+  assert.equal((await fetch(origin+saved.image_urls[0],{headers:{cookie:otherCookie}})).status,404);
+  assert.equal((await fetch(origin+"/api/generate",{method:"POST",headers:{origin,cookie:otherCookie,"content-type":"application/json","idempotency-key":crypto.randomUUID()},body:JSON.stringify(input)})).status,404);
+  assert.equal((await fetch(`${origin}${a.job.thumbnail_url}`, { headers: { cookie: otherCookie } })).status, 404);
+  const completed = await waitJob(cookie, a.job.id);
+  assert.equal(completed.stage, "completed", completed.error); assert.deepEqual(completed.settings,settings);assert.ok(completed.plan.scene_plan);assert.ok(lastPrompt.includes("SHARIAH_RULES:"));assert.ok(lastPrompt.includes("soft_sell")); assert.equal(submissions, 1); assert.equal(analyses, 1); assert.equal(searches, 1);
+  const download = await fetch(`${origin}${completed.video_url}`, { headers: { cookie } }); assert.equal(download.status, 200); assert.deepEqual(Buffer.from(await download.arrayBuffer()), video);
+  const range = await fetch(`${origin}${completed.video_url}`, { headers: { cookie, range: "bytes=4-7" } }); assert.equal(range.status, 206); assert.equal(await range.text(), "ftyp");
+  assert.equal((await fetch(`${origin}${completed.video_url}`, { headers: { cookie, range: "bytes=999-" } })).status, 416);
+  assert.equal((await fetch(`${origin}${completed.video_url}`, { headers: { cookie: otherCookie } })).status, 404);
+  mode = "uncertain";
+  const regen = await send({ source_job: completed.id, action: "regenerate" }, crypto.randomUUID()); assert.equal(regen.status, 202);
+  const failed = await waitJob(cookie, (await regen.json()).job.id);
+  assert.equal(failed.stage, "failed"); assert.ok(failed.error.includes("caj berganda")); assert.equal(submissions, 2);
+  await delay(10_000); assert.equal(submissions, 2, "Uncertain paid POST was replayed");
+  mode = "failed";
+  const rejected = await send({ source_job: completed.id, action: "regenerate" }, crypto.randomUUID()); assert.equal(rejected.status, 202);
+  const rejectedJob = await waitJob(cookie, (await rejected.json()).job.id);
+  assert.equal(rejectedJob.stage, "failed"); assert.equal(rejectedJob.retry_count, 0); assert.ok(rejectedJob.error.includes("Retry automatik dimatikan"));
+  await delay(10_000); assert.equal(submissions, 3, "Explicit provider failure created an automatic paid retry");
+  
+  mode="success";
+  const silent={...settings,videoStyle:"product_motion",angle:"discovery",voiceoverEnabled:false,subjectType:"no_hands",shariahCompliance:false,auratLevel:null};
+  const silentResponse=await send({product_id:saved.id,settings:silent},crypto.randomUUID());assert.equal(silentResponse.status,202);
+  const silentJob=await waitJob(cookie,(await silentResponse.json()).job.id);
+  assert.equal(silentJob.stage,"completed",silentJob.error);assert.deepEqual(silentJob.settings,silent);
+  assert.equal(silentJob.plan.script,"");assert.equal(analyses,1);assert.equal(searches,1);
+  assert.ok(lastPrompt.includes("VOICEOVER: OFF"));assert.ok(lastPrompt.includes("No people, hands, faces"));
+  assert.ok(!lastPrompt.includes("SPOKEN_SCRIPT:"));assert.ok(!lastPrompt.includes("SHARIAH_RULES:"));assert.ok(!lastPrompt.includes("AURAT_RULES:"));
+  assert.equal(submissions,4);
+  const invalid=await send({product_id:saved.id,settings:{...silent,subjectType:"female_creator"}},crypto.randomUUID());assert.equal(invalid.status,400);
+  console.log("PASS: structured settings persisted, product projects before paid generation, reuse without research, voice OFF, Shariah OFF, subject validation.");
+  if(process.argv.includes("--ui")){console.log("UI mock server ready at "+origin+"; test-only keys, no paid calls."); await new Promise(()=>{});}
+  console.log("PASS: real local Durable Object alarms + R2; mock AI/search/MP4, avatar, duplicate protection, session isolation, ranges, uncertain POST no-replay. Zero paid calls.");
+} catch (error) { console.error(output); throw error; }
+finally { child.kill(); mock.closeAllConnections(); mock.close(); }
