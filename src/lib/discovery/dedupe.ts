@@ -7,6 +7,7 @@ export function dedupeKey(candidate: Pick<StoryCandidateInput, "canonicalEntityI
 
 export function mergeCandidates(existing: StoryCandidate, incoming: StoryCandidateInput): StoryCandidateInput {
   const categories = mergeStringValues(existing.metadata.categories as string[] | undefined, incoming.metadata.categories as string[] | undefined, [existing.category, incoming.category]);
+  const originProviders = mergeStringValues(existing.metadata.originProviders as string[] | undefined, incoming.metadata.originProviders as string[] | undefined, [existing.originProvider, incoming.originProvider]);
   const entityClassified = existing.metadata.classificationVersion === "2.1-entity-evidence";
   const preservedClassification = entityClassified ? {
     geographyConfidence: existing.metadata.geographyConfidence, geographyEvidence: existing.metadata.geographyEvidence,
@@ -33,7 +34,7 @@ export function mergeCandidates(existing: StoryCandidate, incoming: StoryCandida
     sourceHints: mergeStringValues(existing.sourceHints, incoming.sourceHints),
     searchTerms: mergeStringValues(existing.searchTerms, incoming.searchTerms),
     aliases: mergeStringValues(existing.aliases, incoming.aliases, existing.title !== incoming.title ? [incoming.title] : []),
-    metadata: { ...existing.metadata, ...incoming.metadata, categories, ...preservedClassification },
+    metadata: { ...existing.metadata, ...incoming.metadata, categories, originProviders, ...preservedClassification },
     discoveredAt: existing.discoveredAt, lastResearchedAt: incoming.lastResearchedAt ?? existing.lastResearchedAt,
     lastVerifiedAt: incoming.lastVerifiedAt ?? existing.lastVerifiedAt,
     originProvider: existing.originProvider, originQuery: existing.originQuery,

@@ -5,7 +5,7 @@ FactFrame ialah aplikasi Next.js 16 App Router dengan indeks calon cerita Postgr
 | Stage | Pelaksanaan sebenar | Lokasi/runtime |
 |---|---|---|
 | User | Memilih mode, topik, sudut, tempoh, nada, suara dan watermark | Browser, `Generator.tsx` |
-| Discovery/catalog | PostgreSQL index dahulu, Wikipedia/Wikidata live sebagai fallback; 10 seed kekal fixture/fallback | `/api/catalog`, `/api/discover`, `story_candidates` |
+| Discovery/catalog | PostgreSQL index dahulu; Wikipedia/Wikidata dan provider arkib berabstraksi; 10 seed kekal fixture/fallback | `/api/catalog`, `/api/discover`, `story_candidates`, `story_sources` |
 | Story/entity selection | Seed dipilih terus; calon live dihidratkan melalui Wikidata/Wikipedia | Browser + `/api/topic` |
 | Story angle | Dynamic generic event clusters dengan supporting fact IDs | Browser, `explainerEngine.ts` |
 | Research | Entity JSON, label, intro Wikipedia; seed mempunyai sources/claims manual | Server + external API / build-time seed |
@@ -15,7 +15,8 @@ FactFrame ialah aplikasi Next.js 16 App Router dengan indeks calon cerita Postgr
 | Story arc | Algoritma deterministik atau Gemini JSON berstruktur | Browser; Gemini melalui server |
 | Retention narration | Hook/open-loop/escalation/twist/payoff dan quality gate | Browser; Gemini opsyenal server |
 | Visual planner | Satu intent/query set bagi setiap segmen | Server `/api/media` |
-| Image/video/archive search | Wikimedia Commons sahaja; tiada archive API khusus | Server + external API |
+| Historical archive discovery | NLB OneSearch NewspaperSG, Records & Papers, audiovisual; LOC connector dengan failure reporting | Batch server-side + PostgreSQL |
+| Image/video search | Wikimedia Commons sahaja; source arkib belum menjadi media visual automatik | Server + external API |
 | Gemini TTS | Gemini API server-side, dua cubaan; fallback MMS-VITS dalam worker | Server + browser worker |
 | Renderer | Canvas 720×1280, media muted, audio graph dan MediaRecorder | Browser |
 | Captions/watermark | Dilukis ke Canvas pada setiap frame | Browser |
@@ -24,6 +25,8 @@ FactFrame ialah aplikasi Next.js 16 App Router dengan indeks calon cerita Postgr
 ```text
 USER
   -> POSTGRES STORY INDEX
+  -> ARCHIVE DOCUMENTS -> EVENT EXTRACTION -> CROSS-ARTICLE CLUSTERS
+  -> STORY SOURCES
   -> INDEX-FIRST DISCOVERY / LIVE FALLBACK
   -> STORY / ENTITY SELECTION
   -> STORY ANGLE
@@ -44,9 +47,9 @@ Major trust boundaries: browser input enters Next.js routes; Gemini key stays se
 
 ## Persistent story index
 
-Migration `migrations/001_story_index.sql` creates `story_candidates`, constraints for four statuses, JSONB metadata fields, browse/search indexes, and partial unique indexes for Q-ID and canonical URL. Normalized title is also unique. Upsert takes a PostgreSQL advisory lock per identity, then merges aliases, categories, search terms, and source hints without downgrading qualification.
+Migration `migrations/001_story_index.sql` creates `story_candidates`; `migrations/002_archive_sources.sql` adds durable `story_sources` with candidate foreign key and unique provider URL. Constraints cover four statuses, JSONB metadata, browse/search indexes, Q-ID, canonical URL and normalized title. Upsert takes a PostgreSQL advisory lock per identity, then merges aliases, categories, search terms, source hints and `originProviders` without downgrading qualification.
 
-`DISCOVERED` rows keep research/visual/narrative scores null. Topic hydration promotes using actual distinct source URLs and extracted fact counts: one source plus one claim is `PARTIAL`; at least two sources plus five claims is `READY`. `HIDDEN` is sticky and reserved for invalid/noisy/manual suppression.
+`DISCOVERED` rows keep research/visual/narrative scores null. Archive ingestion promotes to `PARTIAL` only after one usable persisted source and one extracted event/claim. It never auto-promotes archive results to `READY`. READY requires at least two valid linked sources, five factual claims, source coverage of at least 0.8 and enough non-repetitive material for the requested short; visual readiness remains evaluated separately. `HIDDEN` is sticky and reserved for invalid/noisy/manual suppression.
 
 Discovery provenance and entity classification are separate. `originQuery`, `originProvider`, `metadata.categories` and `discoveredViaCategory` explain how a candidate was found; they never prove geography or story type. Geography classification prioritizes Wikidata P17/P27/P495, location hierarchy, coordinates, historical relationships, then explicit entity text. Evidence and `HIGH|MEDIUM|LOW|UNKNOWN` confidence are stored in metadata. `mysteryPotential` is preliminary and does not imply `storyType=MYSTERY` or readiness.
 

@@ -1,5 +1,6 @@
 import postgres, { type Sql, type TransactionSql } from "postgres";
 import type { StoryCandidate, StoryCandidateInput, StoryIndexStatus } from "../types";
+import type { StorySourceInput } from "../archive/types.ts";
 import { dedupeKey, mergeCandidates } from "./dedupe.ts";
 import { STORY_INDEX_SCHEMA } from "./schema.ts";
 
@@ -43,14 +44,20 @@ export class StoryStore {
   async migrate() { await this.sql.unsafe(STORY_INDEX_SCHEMA); }
   async close() { await this.sql.end({ timeout: 5 }); }
 
-  async findByIdentity(candidate: Pick<StoryCandidateInput, "canonicalEntityId" | "canonicalUrl" | "normalizedTitle">, sql: Sql | TransactionSql = this.sql) {
+  async findByIdentity(candidate: Pick<StoryCandidateInput, "canonicalEntityId" | "canonicalUrl" | "normalizedTitle"> & { id?: string }, sql: Sql | TransactionSql = this.sql) {
     const rows = await sql<Row[]>`
       SELECT * FROM story_candidates
-      WHERE (${candidate.canonicalEntityId}::text IS NOT NULL AND canonical_entity_id = ${candidate.canonicalEntityId})
+      WHERE (${candidate.id ?? null}::text IS NOT NULL AND id = ${candidate.id ?? null})
+         OR (${candidate.canonicalEntityId}::text IS NOT NULL AND canonical_entity_id = ${candidate.canonicalEntityId})
          OR (${candidate.canonicalUrl}::text IS NOT NULL AND canonical_url = ${candidate.canonicalUrl})
          OR normalized_title = ${candidate.normalizedTitle}
-      ORDER BY CASE WHEN canonical_entity_id = ${candidate.canonicalEntityId} THEN 0 WHEN canonical_url = ${candidate.canonicalUrl} THEN 1 ELSE 2 END
+      ORDER BY CASE WHEN id = ${candidate.id ?? null} THEN 0 WHEN canonical_entity_id = ${candidate.canonicalEntityId} THEN 1 WHEN canonical_url = ${candidate.canonicalUrl} THEN 2 ELSE 3 END
       LIMIT 1`;
+    return rows[0] ? fromRow(rows[0]) : null;
+  }
+
+  async findByArchiveCluster(clusterKey: string) {
+    const rows = await this.sql<Row[]>`SELECT * FROM story_candidates WHERE metadata->>'archiveClusterKey'=${clusterKey} LIMIT 1`;
     return rows[0] ? fromRow(rows[0]) : null;
   }
 
@@ -125,6 +132,57 @@ export class StoryStore {
       WHERE id=${id} RETURNING *`;
     if (!rows[0]) throw new Error(`Story candidate not found: ${id}`);
     return fromRow(rows[0]);
+  }
+
+  async upsertSource(source: StorySourceInput) {
+    const id = source.id ?? crypto.randomUUID();
+    const rows = await this.sql<Row[]>`INSERT INTO story_sources
+      (id, story_candidate_id, provider, source_type, title, publisher, url, published_at, accessed_at, snippet, metadata, reliability_level)
+      VALUES (${id}, ${source.storyCandidateId}, ${source.provider}, ${source.sourceType}, ${source.title}, ${source.publisher}, ${source.url},
+        ${source.publishedAt}, ${source.accessedAt}, ${source.snippet}, ${this.sql.json(JSON.parse(JSON.stringify(source.metadata)))}, ${source.reliabilityLevel})
+      ON CONFLICT (provider, url) DO UPDATE SET title=EXCLUDED.title, publisher=EXCLUDED.publisher, published_at=EXCLUDED.published_at,
+        accessed_at=EXCLUDED.accessed_at, snippet=EXCLUDED.snippet, metadata=EXCLUDED.metadata, reliability_level=EXCLUDED.reliability_level
+      RETURNING *, (xmax=0) AS inserted`;
+    return { id: String(rows[0].id), storyCandidateId: String(rows[0].story_candidate_id), inserted: Boolean(rows[0].inserted) };
+  }
+
+  async refreshSourceMetrics(candidateId: string) {
+    const rows = await this.sql<Row[]>`UPDATE story_candidates candidate SET
+      source_count=(SELECT count(*)::int FROM story_sources source WHERE source.story_candidate_id=candidate.id),
+      status=CASE WHEN candidate.status='DISCOVERED' AND candidate.claim_count >= 1 AND EXISTS
+        (SELECT 1 FROM story_sources source WHERE source.story_candidate_id=candidate.id) THEN 'PARTIAL' ELSE candidate.status END,
+      updated_at=now() WHERE id=${candidateId} RETURNING *`;
+    return rows[0] ? fromRow(rows[0]) : null;
+  }
+
+  async archiveStats() {
+    const [row] = await this.sql<Row[]>`SELECT
+      count(*) FILTER (WHERE metadata->>'archiveDerived'='true' AND status!='HIDDEN')::int AS archive_candidates,
+      count(*) FILTER (WHERE metadata->>'archiveDerived'='true' AND status='HIDDEN')::int AS hidden_archive_candidates,
+      count(*) FILTER (WHERE metadata->>'archiveDerived'='true' AND status!='HIDDEN' AND country='Malaysia')::int AS malaysia_archive_candidates,
+      count(*) FILTER (WHERE metadata->>'archiveDerived'='true' AND status!='HIDDEN' AND source_count >= 2)::int AS two_plus_sources,
+      count(*) FILTER (WHERE metadata->>'archiveDerived'='true' AND status!='HIDDEN' AND source_count >= 3)::int AS three_plus_sources,
+      count(*) FILTER (WHERE metadata->>'archiveDerived'='true' AND status='DISCOVERED')::int AS discovered,
+      count(*) FILTER (WHERE metadata->>'archiveDerived'='true' AND status='PARTIAL')::int AS partial,
+      count(*) FILTER (WHERE metadata->>'archiveDerived'='true' AND status='READY')::int AS ready
+      FROM story_candidates`;
+    const sources = await this.sql<{ provider: string; count: number }[]>`SELECT provider, count(*)::int AS count FROM story_sources GROUP BY provider ORDER BY provider`;
+    const distribution = await this.sql<{ source_count: number; count: number }[]>`SELECT source_count, count(*)::int AS count FROM story_candidates WHERE metadata->>'archiveDerived'='true' AND status!='HIDDEN' GROUP BY source_count ORDER BY source_count`;
+    return { archiveCandidates: Number(row.archive_candidates), malaysiaArchiveCandidates: Number(row.malaysia_archive_candidates),
+      hiddenArchiveCandidates: Number(row.hidden_archive_candidates),
+      twoPlusSources: Number(row.two_plus_sources), threePlusSources: Number(row.three_plus_sources), discovered: Number(row.discovered),
+      partial: Number(row.partial), ready: Number(row.ready), providers: Object.fromEntries(sources.map((item) => [item.provider, Number(item.count)])),
+      sourceCountDistribution: Object.fromEntries(distribution.map((item) => [String(item.source_count), Number(item.count)])) };
+  }
+
+  async listArchiveExamples(limit = 10) {
+    const rows = await this.sql<Row[]>`WITH ranked AS (
+      SELECT *, row_number() OVER (PARTITION BY story_type ORDER BY source_count DESC, updated_at DESC) AS archive_rank
+      FROM story_candidates WHERE metadata->>'archiveDerived'='true' AND country='Malaysia' AND status!='HIDDEN'
+        AND length(title) BETWEEN 12 AND 180 AND title !~* '^(page\\s+[0-9]+|advert|classified|contents|.*rifle shooting|.*assizes)'
+    ) SELECT * FROM ranked WHERE archive_rank <= 2 ORDER BY archive_rank, source_count DESC, updated_at DESC
+      LIMIT ${Math.min(50, Math.max(1, limit))}`;
+    return rows.map(fromRow);
   }
 }
 

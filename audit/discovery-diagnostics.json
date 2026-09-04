@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-04T15:20:31.698Z",
+  "generatedAt": "2026-09-04T16:04:21.674Z",
   "mode": "persistent PostgreSQL story index",
   "discoveryProviders": [
     "Wikidata",
@@ -368,7 +368,7 @@
       "query": "Kuala Lumpur urban legend"
     }
   ],
-  "storedCandidateCount": 987,
+  "storedCandidateCount": 1501,
   "liveCandidateCount": null,
   "rejectedCount": null,
   "rejectionReasons": [
@@ -378,16 +378,17 @@
     "visual readiness gate below thresholds"
   ],
   "duplicateClusters": [],
-  "malaysiaMalayaStoredCount": 542,
-  "confirmedMalaysiaCount": 431,
-  "probableMalaysiaCount": 111,
+  "malaysiaMalayaStoredCount": 1056,
+  "confirmedMalaysiaCount": 894,
+  "probableMalaysiaCount": 162,
   "unknownGeographyCount": 220,
-  "discoveredCount": 987,
+  "discoveredCount": 986,
   "readyCount": 0,
-  "partialCount": 0,
-  "hiddenCount": 0,
+  "partialCount": 503,
+  "hiddenCount": 12,
   "globalCount": 225,
   "countsByCategory": {
+    "archive": 514,
     "business": 7,
     "current": 18,
     "entertainment": 31,

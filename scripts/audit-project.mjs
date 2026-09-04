@@ -22,7 +22,7 @@ const diagnostics = {
   fallbackSeedCount: modules.mysteryCatalog.length,
   discoveryCategories: Object.keys(modules.DISCOVERY_CATEGORY_QUERIES).length,
   storyAngleTypes: ["BIOGRAPHICAL_JOURNEY", "TURNING_POINT", "ORIGIN_STORY", "TIMELINE", "HOW_IT_CHANGED", "WHY_IT_MATTERS", "MAJOR_MOMENTS", "HISTORICAL_OVERVIEW"],
-  sourceProviders: ["Wikidata", "Wikipedia", "seeded institutional/primary/academic/reference URLs", "Gemini"],
+  sourceProviders: ["Wikidata", "Wikipedia", "NLB OneSearch / NewspaperSG", "NLB Records & Papers", "NLB audiovisual", "seeded institutional/primary/academic/reference URLs", "Gemini"],
   visualProviders: ["Wikimedia Commons", "FactFrame programmatic scenes"],
   videoRetrievalEnabled: true,
   geminiConfigured: Boolean(process.env.GEMINI_API_KEY) && process.env.DEMO_MODE !== "true",

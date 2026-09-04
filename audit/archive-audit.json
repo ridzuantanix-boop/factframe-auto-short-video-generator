@@ -1,0 +1,156 @@
+{
+  "generatedAt": "2026-09-04T16:04:20.073Z",
+  "providersAttempted": [
+    "NLB_NEWSPAPERSG",
+    "NLB_RECORD",
+    "NLB_AUDIOVISUAL",
+    "LIBRARY_OF_CONGRESS"
+  ],
+  "queriesRun": 198,
+  "rawDocuments": 2191,
+  "normalizedDocuments": 2150,
+  "clusters": 519,
+  "newCandidates": 126,
+  "updatedCandidates": 393,
+  "archiveCandidates": 503,
+  "hiddenArchiveCandidates": 12,
+  "baselineCatalogCount": 987,
+  "newArchiveCandidates": 502,
+  "malaysiaMalayaCandidates": 503,
+  "sourceCountDistribution": {
+    "1": 427,
+    "2": 63,
+    "3": 4,
+    "4": 6,
+    "6": 1,
+    "10": 1,
+    "17": 1
+  },
+  "candidatesWithTwoPlusSources": 76,
+  "candidatesWithThreePlusSources": 13,
+  "archiveStatuses": {
+    "discovered": 0,
+    "partial": 503,
+    "ready": 0
+  },
+  "catalogStatuses": {
+    "discovered": 986,
+    "partial": 503,
+    "ready": 0,
+    "hidden": 12
+  },
+  "providers": {
+    "NLB_AUDIOVISUAL": 2,
+    "NLB_NEWSPAPERSG": 627,
+    "NLB_RECORD": 15
+  },
+  "providerFailures": {
+    "NLB_RECORD": 30,
+    "NLB_AUDIOVISUAL": 8,
+    "LIBRARY_OF_CONGRESS": 3
+  },
+  "duplicateMerges": 115,
+  "examples": [
+    {
+      "title": "Malay's Body Found In Perak River",
+      "region": "Perak",
+      "storyType": "MYSTERIOUS_DEATH",
+      "sourceCount": 10,
+      "historicalContext": "MODERN_MALAYSIA",
+      "originProviders": [
+        "NLB_NEWSPAPERSG"
+      ]
+    },
+    {
+      "title": "FATAL ACCIDENT AT KUALA LUMPUR.",
+      "region": "Kuala Lumpur",
+      "storyType": "DISASTER",
+      "sourceCount": 6,
+      "historicalContext": "MODERN_MALAYSIA",
+      "originProviders": [
+        "NLB_NEWSPAPERSG"
+      ]
+    },
+    {
+      "title": "Two more confess to role in murder of Perak prince's wife",
+      "region": "Kuala Lumpur",
+      "storyType": "CRIME_MYSTERY",
+      "sourceCount": 4,
+      "historicalContext": "MODERN_MALAYSIA",
+      "originProviders": [
+        "NLB_NEWSPAPERSG"
+      ]
+    },
+    {
+      "title": "GIRL, 10 MISSING",
+      "region": "Kuala Lumpur",
+      "storyType": "DISAPPEARANCE",
+      "sourceCount": 4,
+      "historicalContext": "MODERN_MALAYSIA",
+      "originProviders": [
+        "NLB_NEWSPAPERSG"
+      ]
+    },
+    {
+      "title": "MALACCA COMMISSIONERS ADOPT NEW CREST.",
+      "region": "Melaka",
+      "storyType": "FOLKLORE",
+      "sourceCount": 2,
+      "historicalContext": "MODERN_MALAYSIA",
+      "originProviders": [
+        "NLB_NEWSPAPERSG"
+      ]
+    },
+    {
+      "title": "Municipal Inquiry. PENANG ADVOCATES SUSPENSION OF EXISTING BOARDS. Personnel of the Commission.",
+      "region": "Penang",
+      "storyType": "HISTORICAL_INCIDENT",
+      "sourceCount": 2,
+      "historicalContext": "MODERN_MALAYSIA",
+      "originProviders": [
+        "NLB_NEWSPAPERSG"
+      ]
+    },
+    {
+      "title": "SELANGOR PLANTER’S SUDDEN DEATH.",
+      "region": "Kuala Lumpur",
+      "storyType": "UNEXPLAINED_EVENT",
+      "sourceCount": 2,
+      "historicalContext": "MODERN_MALAYSIA",
+      "originProviders": [
+        "NLB_NEWSPAPERSG"
+      ]
+    },
+    {
+      "title": "A 'GHOST' WILL GUARD MUSEUM TEMPLER HELPED TO BUILD",
+      "region": "Melaka",
+      "storyType": "PARANORMAL_REPORT",
+      "sourceCount": 2,
+      "historicalContext": "MODERN_MALAYSIA",
+      "originProviders": [
+        "NLB_NEWSPAPERSG"
+      ]
+    },
+    {
+      "title": "A New Malayan Tribe.",
+      "region": "Terengganu",
+      "storyType": "STRANGE_EVENT",
+      "sourceCount": 2,
+      "historicalContext": "MALAYA",
+      "originProviders": [
+        "NLB_NEWSPAPERSG"
+      ]
+    },
+    {
+      "title": "JOHORE DETECTIVE'S SMART WORK.",
+      "region": "Johor",
+      "storyType": "CRIME_MYSTERY",
+      "sourceCount": 4,
+      "historicalContext": "MODERN_MALAYSIA",
+      "originProviders": [
+        "NLB_NEWSPAPERSG"
+      ]
+    }
+  ],
+  "totalCatalog": 1501
+}

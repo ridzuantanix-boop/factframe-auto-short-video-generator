@@ -6,11 +6,13 @@ FactFrame now follows `DISCOVER -> NORMALIZE -> DEDUPE -> CLASSIFY -> UPSERT`. P
 
 The controlled Phase 2.1 reclassification snapshot on 2026-09-04 contains **987 genuine provider results**. The old query-contaminated Malaysia count was 630. Entity-evidence reclassification corrected it to **542 Malaysia/Malaya**: 431 confirmed (`HIGH`/`MEDIUM`) and 111 probable text-only (`LOW`). Another 225 are evidenced global and 220 remain `UNKNOWN`; unknown is no longer forced into Global. Historical Malaya entities are included only when the entity graph or explicit entity text supports that relationship, while a modern non-Malaysia country takes precedence.
 
+The controlled Phase 3 archive run inspected 2,191 raw results and normalized 2,150 documents. Deterministic extraction produced 634 event records and 519 conservative clusters. After hiding 12 deterministic sport/low-information false positives, the durable local catalog contains 503 active archive-connected Malaysia/Malaya candidates, of which 502 are active additions relative to the 987-row Phase 2.1 baseline and one enriched an existing candidate. There are 76 candidates with at least two sources and 13 with at least three; the 20-candidate three-source target was not reached and is not padded.
+
 All 14 configured categories have persisted rows in the validation snapshot: interesting, people, history, malaysia, world, business, science, entertainment, sports, places, current, events, mysteries, and malaysia_mysteries. Upstream rate limits reduced some categories, but the index-first/live-fallback smoke test grew `mysteries` to 61 primary-category rows. `malaysia_mysteries` has 53, including the provider-backed Highland Towers collapse entity.
 
 ## Schema and dedupe
 
-`story_candidates` stores canonical entity/URL, normalized title, slug, summary, geography, category/type/status, actual source/claim counts, nullable evaluated scores, JSON source/search/alias/metadata fields, timestamps, and origin provider/query. Unique constraints cover Wikidata Q-ID, canonical URL, and normalized title. Categories discovered by later queries are retained in JSON metadata even when the primary category remains stable.
+`story_candidates` stores canonical entity/URL, normalized title, slug, summary, geography, category/type/status, actual source/claim counts, nullable evaluated scores, JSON source/search/alias/metadata fields, timestamps, and first origin provider/query. `metadata.originProviders` retains every contributing provider. `story_sources` stores provider, type, title, publisher, URL, publication/access dates, snippet, metadata and reliability level, with unique provider URL. Categories discovered by later queries are retained even when the primary category remains stable.
 
 `originQuery`, `originProvider`, `metadata.categories` and `discoveredViaCategory` are provenance only. Country, region and story type are derived from entity evidence, never query/category wording. Metadata stores `geographyEvidence`, `geographyConfidence`, `storyTypeEvidence`, `mysteryPotential` and `classificationVersion`. A later live rediscovery cannot overwrite an entity-evidence classification with text fallback.
 
@@ -24,9 +26,11 @@ Run migration and ingestion with:
 npm run db:migrate
 npm run index:stories -- --pages=1 --limit=15 --concurrency=2 --delay=350
 npm run reclassify:stories -- --delay=300
+npm run index:archives -- --pages=1 --limit=15 --delay=250
+npm run audit:archives
 ```
 
-Optional flags are `--category`, `--pages`, `--limit`, `--concurrency`, and `--delay`. Wikipedia article search is primary; the existing Wikidata entity search is the fallback. Pacing and bounded concurrency reduce upstream load. No Gemini call occurs during mass discovery.
+Archive flags are `--provider`, `--region`, `--query-group`, `--pages`, `--limit`, `--delay` and optional `--concurrency`. Provider results are normalized, deterministically inspected for dates/places/people/event verbs, then conservatively clustered by date proximity, normalized location/name and headline overlap. Query words are provenance only. No Gemini call occurs during mass discovery.
 
 `GET /api/catalog` supports `category`, `country`, `status`, `page` (1-based), `limit` (max 100), `search`, and `sort=newest|oldest|title|research`. It returns `items`, `total`, `page`, and `hasMore`. Hidden rows are excluded unless `status=HIDDEN` is explicit.
 
@@ -34,4 +38,4 @@ Optional flags are `--category`, `--pages`, `--limit`, `--concurrency`, and `--d
 
 ## Auditing and scheduling
 
-`npm run audit:project`, `npm run audit:discovery`, `npm run audit:classification`, and `npm run export:catalog` read actual database/evidence counts when `DATABASE_URL` is set; an unconfigured database is reported as null, never as “1,000+”. The corrected 50-record confirmed-Malaysia sample measured 100% precision; the same deterministic sample method measured the pre-fix pool at 82.22%. `/api/index` is callable with `Authorization: Bearer $CRON_SECRET` and processes one bounded category. A production cron is intentionally not activated until production DB migration is confirmed.
+`npm run audit:project`, `npm run audit:discovery`, `npm run audit:classification`, `npm run audit:archives`, and `npm run export:catalog` read actual database/evidence counts when `DATABASE_URL` is set. Provider failures are counted per provider and do not abort partial success. `/api/index` remains the Wikipedia/Wikidata scheduled endpoint; archive scheduling is intentionally not activated until production DB migration and secrets are confirmed.

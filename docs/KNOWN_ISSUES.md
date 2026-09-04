@@ -1,8 +1,10 @@
 # Known issues and limitations
 
-- Indeks PostgreSQL telah dibina dan diuji secara lokal dengan 987 calon provider; selepas reclassification, 431 Malaysia/Malaya disahkan, 111 probable dan 220 geografi masih UNKNOWN. Production belum mempunyai `DATABASE_URL`; deployment semasa masih menggunakan live fallback dan 10 seed.
+- Indeks lokal kini mempunyai baseline 987 calon Wikipedia/Wikidata serta 503 calon arkib Malaysia/Malaya aktif; 12 false positive sukan/low-information ditanda `HIDDEN`. Production belum mempunyai `DATABASE_URL`; migration `002_archive_sources.sql`, ingestion dan `CRON_SECRET` belum dipasang, jadi deployment semasa tidak berubah.
+- Controlled archive run mencapai 76 calon dengan 2+ sumber tetapi hanya 13 dengan 3+ sumber. Tiada rekod ditambah untuk memalsukan sasaran 20.
+- LOC JSON connector menerima HTTP 403 Cloudflare dari runtime audit. NLB Records/Audiovisual juga mengembalikan status `FAIL` untuk sebahagian query komposit; partial results dan failure counts dikekalkan.
 - Text-only geography remains LOW confidence until entity reclassification runs. 200 referenced graph entities failed to load during the controlled pass because of upstream limits; affected candidates fall back to explicit text or UNKNOWN instead of inheriting their query geography.
-- Dedupe durable hanya menggunakan Q-ID, canonical URL dan normalized title; advanced semantic clustering belum ada. Upstream timeout/rate limit masih mengehadkan sesetengah kategori, terutama mystery global.
+- Dedupe catalog menggunakan ID, Q-ID, canonical URL dan normalized title. Archive clustering V1 menggunakan location/name/date/headline/entity heuristics; embeddings dan cross-run semantic reconciliation belum ada, jadi ia sengaja memilih false negatives berbanding false merges.
 - Endpoint ingestion berjadual tersedia tetapi Vercel Cron belum diaktifkan sehingga DB production dan `CRON_SECRET` disediakan dengan selamat.
 - Mystery berkualiti tinggi kebanyakannya seed manual. Auto-mystery daripada entity live ialah struktur generik dan semua fakta diklasifikasi `VERIFIED` daripada reference data.
 - Dynamic angles now use generic event-term and date heuristics with supporting fact IDs, but they do not yet use embeddings, causal extraction or multi-source cluster validation.
@@ -11,7 +13,7 @@
 - Evidence bridge 60/90 saat boleh berbunyi filler. Basic token/date repetition detection now exists, but no embedding-based semantic or dedicated filler detector is implemented.
 - Gemini text/TTS tertakluk kuota/rate limit dan latency. Full narration boleh jatuh kepada TTS lokal walaupun preview berjaya.
 - Local TTS download pertama kira-kira 114 MB, perlahan pada peranti mudah alih, dan lesen CC BY-NC 4.0 mengehadkan penggunaan komersial.
-- Commons ialah satu-satunya media provider. Query boleh menghasilkan visual tidak relevan atau terlalu sedikit; tiada stock/archive/news connector.
+- Commons ialah satu-satunya media visual provider. Source archive kini boleh dijejaki tetapi belum digunakan sebagai visual secara automatik; hak penggunaan setiap imej/dokumen masih perlu diperiksa.
 - Wikimedia video/WebM disokong pada prinsipnya, tetapi availability, CORS dan codec browser berubah. Source audio dimute.
 - Peta, newspaper, document, evidence dan timeline ialah grafik generik, bukan artefak geografi/arkib sebenar.
 - Penalti ID/URL tidak mengesan near-duplicate crops; satu subject photo masih boleh berulang sebagai backdrop.
