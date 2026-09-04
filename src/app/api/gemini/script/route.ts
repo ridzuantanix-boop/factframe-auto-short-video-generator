@@ -1,6 +1,7 @@
 import { getGeminiClient, GEMINI_TEXT_MODEL } from "@/lib/gemini/client";
 import { getMysteryStory } from "@/lib/mystery/catalog";
 import { passesQualityGate } from "@/lib/mystery/storyEngine";
+import { calculateScriptQuality } from "@/lib/story/qualityScoring";
 import type { ClaimType, MysteryScript, SegmentRole, StoryDuration, StoryTone, VisualIntent } from "@/lib/types";
 
 const roles: SegmentRole[] = ["HOOK", "OPEN_LOOP", "CONTEXT", "ESCALATION", "TWIST", "THEORY", "COUNTERPOINT", "PAYOFF"];
@@ -39,7 +40,8 @@ export async function POST(request: Request) {
     const [min, max] = duration === 30 ? [65, 90] : duration === 60 ? [130, 170] : [190, 240];
     if (wordCount < min || wordCount > max) throw new Error("Panjang skrip AI tidak menepati sasaran.");
     const roleSet = new Set(parsed.segments.map((segment) => segment.role));
-    const script: MysteryScript = { storyId: story.id, title: story.title, durationTarget: duration, tone, hook: parsed.hook, openLoop: parsed.openLoop, caseStatus: story.caseStatus, segments: parsed.segments, payoff: parsed.payoff, storytellingScore: 14, sourceCoverage: 1, unsupportedClaims: 0, sources: story.sources, showSourceNote: body.showSourceNote !== false };
+    const quality = calculateScriptQuality(parsed.segments, story.sources);
+    const script: MysteryScript = { storyId: story.id, title: story.title, durationTarget: duration, tone, hook: parsed.hook, openLoop: parsed.openLoop, caseStatus: story.caseStatus, segments: parsed.segments, payoff: parsed.payoff, ...quality, sources: story.sources, showSourceNote: body.showSourceNote !== false };
     if (!roleSet.has("HOOK") || !roleSet.has("OPEN_LOOP") || !roleSet.has("PAYOFF") || !passesQualityGate(script)) throw new Error("Skrip AI tidak melepasi quality gate.");
     return Response.json({ script, provider: "gemini" });
   } catch (error) {

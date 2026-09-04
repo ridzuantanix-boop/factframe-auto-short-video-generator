@@ -1,9 +1,17 @@
 # Story angles
 
-`generateStoryAngles()` memilih tiga template berdasarkan `entityType`. Jenis disokong: `BIOGRAPHICAL_JOURNEY`, `TURNING_POINT`, `ORIGIN_STORY`, `TIMELINE`, `HOW_IT_CHANGED`, `WHY_IT_MATTERS`, `MAJOR_MOMENTS` dan `HISTORICAL_OVERVIEW`.
+Phase 1 replaces entity-type templates with evidence-driven angle research in `src/lib/story/angleResearch.ts` and `genericEvents.ts`.
 
-Sudut bukan hasil model generatif dan bukan rekod seed per entiti. Tajuknya dinamik daripada nama entity, tetapi struktur dan ringkasan ialah template. Sebagai contoh Anwar Ibrahim menerima “Perjalanan panjang Anwar Ibrahim”, “Detik yang mengubah kisah Anwar Ibrahim” dan “Momen terbesar Anwar Ibrahim”. Contoh lebih khusus seperti “The Rise of Reformasi” belum dihasilkan sebagai sudut berasingan.
+`generateDynamicStoryAngles(topic)` inspects every sourced fact, extracts a year when present, and classifies generic event signals: early period, appointment, leadership, achievement, breakthrough, discovery, award, conflict, crisis, setback, legal event, comeback, death, current status and legacy. No person name, organisation, country or fixed year participates in ranking.
 
-`buildExplainerScript()` menyusun fakta mengikut heuristik. Untuk tokoh, regex memberi keutamaan kepada tarikh lahir/permulaan, 1998/krisis, penjara, Reformasi, 2018 dan kedudukan semasa; `TURNING_POINT` menaikkan keutamaan fakta krisis. Setiap segmen mewarisi source ID.
+Each fact receives an importance score from its strongest event signal, source availability, date specificity and information specificity. The engine then builds only clusters supported by facts:
 
-Validasi source berlaku pada skrip, bukan semasa penciptaan tajuk angle. Angle yang lemah/clickbait tidak dinilai semantik; aplikasi hanya menggunakan template neutral dan tidak menyediakan input bebas untuk tajuk angle. Tiada scoring angle, clustering angle atau pemeriksaan sama ada setiap angle mempunyai bukti unik. Ini ialah batas semasa.
+- turning point from high-impact changes;
+- achievement/breakthrough when at least two related facts exist;
+- challenge and recovery from setback/conflict plus later change;
+- chronological journey when at least two dated facts exist;
+- legacy/current impact when relevant evidence exists.
+
+Every returned angle contains `supportingFactIds` and a calculated `narrativePotentialScore`. Empty clusters are not returned; duplicate titles are removed; results are ranked and capped at five. Titles use labels from the supporting facts, so different biographies produce different angles.
+
+Remaining limitation: classification uses multilingual term matching and year extraction, not semantic embeddings or an LLM. Fact quality is bounded by the material returned by Wikidata/Wikipedia, and related wording not present in the signal vocabulary may be classified only as a milestone.

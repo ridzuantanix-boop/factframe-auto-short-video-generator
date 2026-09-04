@@ -1,4 +1,5 @@
 import type { ClaimType, MysteryScript, MysterySegment, SegmentRole, StoryClaim, StoryDuration, StoryRecord, StoryTone, Topic } from "@/lib/types";
+import { calculateScriptQuality } from "../story/qualityScoring.ts";
 
 const roleByPriority: Record<StoryClaim["priority"], SegmentRole> = {
   HOOK_WORTHY: "HOOK", ESSENTIAL_CONTEXT: "CONTEXT", ESCALATION_DETAIL: "ESCALATION", TWIST: "TWIST", THEORY: "THEORY", COUNTERPOINT: "COUNTERPOINT", PAYOFF: "PAYOFF", LOW_PRIORITY: "ESCALATION"
@@ -48,12 +49,8 @@ export function buildMysteryScript(story: StoryRecord, duration: StoryDuration, 
     segments.splice(-1, 0, { role: "ESCALATION", text: template(linkedSource?.publisher ?? "sumber penyiasatan"), sourceIds: linkedClaim.sourceIds, claimType: linkedClaim.type, visualIntent: noteIndex % 2 ? "DOCUMENT" : "EVIDENCE" });
     noteIndex += 1;
   }
-  const factual = segments.filter((segment) => segment.sourceIds.length || segment.role === "OPEN_LOOP");
-  const supported = factual.filter((segment) => segment.sourceIds.length || segment.role === "OPEN_LOOP");
-  const sourceCoverage = factual.length ? supported.length / factual.length : 0;
-  const roles = new Set(segments.map((segment) => segment.role));
-  const storytellingScore = Math.min(14, (roles.has("HOOK") ? 2 : 0) + (roles.has("OPEN_LOOP") ? 2 : 0) + (roles.has("ESCALATION") ? 2 : 1) + (segments.length >= 6 ? 2 : 1) + (roles.has("TWIST") || roles.has("THEORY") ? 2 : 0) + (roles.has("PAYOFF") || roles.has("COUNTERPOINT") ? 2 : 1) + 2);
-  return { storyId: story.id, title: story.title, durationTarget: duration, tone, hook: segments[0].text, openLoop: loop.text, caseStatus: story.caseStatus, segments, payoff: segments.at(-1)?.text ?? "", storytellingScore, sourceCoverage, unsupportedClaims: 0, sources: story.sources, showSourceNote };
+  const quality = calculateScriptQuality(segments, story.sources);
+  return { storyId: story.id, title: story.title, durationTarget: duration, tone, hook: segments[0].text, openLoop: loop.text, caseStatus: story.caseStatus, segments, payoff: segments.at(-1)?.text ?? "", ...quality, sources: story.sources, showSourceNote };
 }
 
 export function mysteryScriptToTopic(story: StoryRecord, script: MysteryScript): Topic {
@@ -65,5 +62,5 @@ export function mysteryScriptToTopic(story: StoryRecord, script: MysteryScript):
 }
 
 export function passesQualityGate(script: MysteryScript) {
-  return script.sourceCoverage === 1 && script.storytellingScore >= 10 && Boolean(script.hook) && Boolean(script.openLoop) && Boolean(script.payoff) && script.unsupportedClaims === 0;
+  return script.sourceCoverage === 1 && script.storytellingScore >= 10 && script.repetitionScore >= .7 && Boolean(script.hook) && Boolean(script.openLoop) && Boolean(script.payoff) && script.unsupportedClaims === 0;
 }

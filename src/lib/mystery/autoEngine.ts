@@ -1,4 +1,5 @@
 import type { MysteryScript, ResearchSource, StoryDuration, StoryTone, Topic, VisualIntent } from "@/lib/types";
+import { calculateScriptQuality } from "../story/qualityScoring.ts";
 
 function sourceFor(url: string, index: number): ResearchSource {
   const wikipedia = /wikipedia\.org/.test(url);
@@ -25,7 +26,8 @@ export function buildAutoMysteryScript(topic: Topic, duration: StoryDuration, to
     ...facts.map((fact, index) => ({ role: index === facts.length - 1 ? "TWIST" as const : index < 2 ? "CONTEXT" as const : "ESCALATION" as const, text: shorten(fact.sentence), sourceIds: [sourceId(fact.sourceUrl)], claimType: "VERIFIED" as const, visualIntent: intents[index % intents.length] })),
     { role: "PAYOFF", text: `Berdasarkan sumber yang tersedia, inilah gambaran paling kukuh tentang ${topic.name}—tanpa menukar spekulasi menjadi fakta.`, sourceIds: facts[0] ? [sourceId(facts[0].sourceUrl)] : [], claimType: "EXPLAINED_LATER", visualIntent: "ENDING" },
   ];
-  return { storyId: topic.id, title: `Apa Sebenarnya Berlaku: ${topic.name}?`, durationTarget: duration, tone, hook, openLoop: segments[1].text, caseStatus: "PARTIALLY_EXPLAINED", segments, payoff: segments.at(-1)?.text ?? "", storytellingScore: 11, sourceCoverage: facts.length ? 1 : 0, unsupportedClaims: 0, sources, showSourceNote };
+  const quality = calculateScriptQuality(segments, sources);
+  return { storyId: topic.id, title: `Apa Sebenarnya Berlaku: ${topic.name}?`, durationTarget: duration, tone, hook, openLoop: segments[1].text, caseStatus: "PARTIALLY_EXPLAINED", segments, payoff: segments.at(-1)?.text ?? "", ...quality, sources, showSourceNote };
 }
 
 export function autoMysteryScriptToTopic(topic: Topic, script: MysteryScript): Topic {

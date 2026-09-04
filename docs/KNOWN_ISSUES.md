@@ -3,10 +3,10 @@
 - Katalog render-ready tersimpan hanya 10 cerita; Malaysia/Malaya hanya 4. “1,000+” ialah calon live, bukan READY.
 - Discovery live tidak disimpan, tidak dicrawl berjadual, tidak mempunyai semantic dedupe atau status promotion. Upstream timeout/rate limit boleh menghasilkan feed kosong.
 - Mystery berkualiti tinggi kebanyakannya seed manual. Auto-mystery daripada entity live ialah struktur generik dan semua fakta diklasifikasi `VERIFIED` daripada reference data.
-- Story angles ialah template mengikut entity type, bukan angle research dinamik; bukti khusus angle tidak dinilai.
+- Dynamic angles now use generic event-term and date heuristics with supporting fact IDs, but they do not yet use embeddings, causal extraction or multi-source cluster validation.
 - Current-aware ialah flag dan timestamp request sahaja. Tiada news/official-current provider atau stale-claim invalidation.
 - Source ranking live lemah: Wikidata/Wikipedia dilabel `REFERENCE`; research/visual score seed adalah manual.
-- Evidence bridge 60/90 saat boleh berbunyi berulang/filler. Tiada repetition atau filler detector semantik.
+- Evidence bridge 60/90 saat boleh berbunyi filler. Basic token/date repetition detection now exists, but no embedding-based semantic or dedicated filler detector is implemented.
 - Gemini text/TTS tertakluk kuota/rate limit dan latency. Full narration boleh jatuh kepada TTS lokal walaupun preview berjaya.
 - Local TTS download pertama kira-kira 114 MB, perlahan pada peranti mudah alih, dan lesen CC BY-NC 4.0 mengehadkan penggunaan komersial.
 - Commons ialah satu-satunya media provider. Query boleh menghasilkan visual tidak relevan atau terlalu sedikit; tiada stock/archive/news connector.

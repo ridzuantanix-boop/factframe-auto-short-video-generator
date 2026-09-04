@@ -6,11 +6,12 @@ export const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "
 export const auditDir = path.join(root, "audit");
 
 export async function loadModules() {
-  const [{ mysteryCatalog }, storyEngine, explainerEngine, visualQueries, discovery, voices] = await Promise.all([
+  const [{ mysteryCatalog }, storyEngine, explainerEngine, qualityScoring, angleResearch, visualQueries, discovery, voices] = await Promise.all([
     import("../src/lib/mystery/catalog.ts"), import("../src/lib/mystery/storyEngine.ts"), import("../src/lib/story/explainerEngine.ts"),
+    import("../src/lib/story/qualityScoring.ts"), import("../src/lib/story/angleResearch.ts"),
     import("../src/lib/video/visualQueries.ts"), import("../src/lib/discovery/config.ts"), import("../src/lib/audio/voicePresets.ts"),
   ]);
-  return { mysteryCatalog, ...storyEngine, ...explainerEngine, ...visualQueries, ...discovery, ...voices };
+  return { mysteryCatalog, ...storyEngine, ...explainerEngine, ...qualityScoring, ...angleResearch, ...visualQueries, ...discovery, ...voices };
 }
 
 export function catalogStatus(story) {

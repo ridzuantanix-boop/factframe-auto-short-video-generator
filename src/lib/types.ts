@@ -8,6 +8,7 @@ export type SearchResult = {
 export type EntityType = "person" | "place" | "event" | "object" | "organisation" | "animal" | "space" | "general";
 
 export type Fact = {
+  id?: string;
   label: string;
   sentence: string;
   sourceUrl: string;
@@ -40,7 +41,7 @@ export type MediaType = "image" | "video" | "programmatic";
 export type VisualKind = "VIDEO" | "PHOTO" | "MAP" | "TIMELINE" | "DOCUMENT" | "NEWSPAPER" | "EVIDENCE_GRAPHIC" | "FACT_CARD" | "THEORY_CARD" | "DATE_CARD";
 export type SegmentRole = "HOOK" | "OPEN_LOOP" | "CONTEXT" | "ESCALATION" | "TWIST" | "THEORY" | "COUNTERPOINT" | "PAYOFF";
 export type StoryAngleType = "BIOGRAPHICAL_JOURNEY" | "TURNING_POINT" | "ORIGIN_STORY" | "TIMELINE" | "HOW_IT_CHANGED" | "WHY_IT_MATTERS" | "MAJOR_MOMENTS" | "HISTORICAL_OVERVIEW";
-export type StoryAngle = { id: string; title: string; type: StoryAngleType; summary: string };
+export type StoryAngle = { id: string; title: string; type: StoryAngleType; summary: string; supportingFactIds: string[]; narrativePotentialScore: number };
 
 export type ResearchSource = {
   id: string;
@@ -104,6 +105,7 @@ export type MysteryScript = {
   segments: MysterySegment[];
   payoff: string;
   storytellingScore: number;
+  repetitionScore: number;
   sourceCoverage: number;
   unsupportedClaims: number;
   sources: ResearchSource[];

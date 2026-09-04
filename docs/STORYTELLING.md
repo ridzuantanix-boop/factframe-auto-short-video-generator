@@ -1,27 +1,24 @@
-# Storytelling
+# Storytelling and quality scoring
 
-## Enjin deterministik
+## Explainer flow
 
-Mystery seed memetakan priority claim kepada `HOOK`, `CONTEXT`, `ESCALATION`, `TWIST`, `THEORY`, `COUNTERPOINT` atau `PAYOFF`, kemudian menyisip `OPEN_LOOP`. Prefiks Bahasa Melayu membezakan `REPORTED`, `THEORY`, `DISPUTED`, `FOLKLORE` dan `EXPLAINED_LATER`. Nada suspens hanya menambah satu lead terkawal pada twist; ia tidak mengubah fakta.
+The explainer ranks sourced facts with generic event signals, preserves the selected angle’s supporting-fact order, and uses chronological context for the remaining progression. The strongest supported event becomes the hook. Curiosity text changes by event class: challenge, achievement, current/leadership, or general milestone. The open loop is a question derived from the same class and therefore may remain unsourced. The payoff uses a separate sourced current/legacy/death/achievement/comeback fact where available.
 
-Sasaran minimum deterministik ialah 65/130/190 patah perkataan untuk 30/60/90 saat. Jika kurang, enjin menambah evidence bridge bersumber sebelum payoff. Ini boleh menyebabkan filler atau pengulangan; detector semantik khusus belum ada. Untuk explainer, maksimum ialah 90/170/240 dan ayat panjang dipendekkan secara heuristik.
+There are no person names, organisations, countries or fixed years in ranking logic. The old fixed journey hook and fixed turning-point question were removed.
 
-Skor mystery maksimum 14: kewujudan hook, open-loop, escalation, bilangan segmen, twist/theory, payoff/counterpoint dan struktur asas. Quality gate: liputan sumber 100%, skor ≥10, hook/open-loop/payoff dan `unsupportedClaims=0`.
+## Calculated quality
 
-## Prompt Gemini sebenar
+`qualityScoring.ts` provides:
 
-Route `/api/gemini/script` menghantar arahan Bahasa Melayu berikut secara dinamik: penulis dokumentari misteri pendek; gunakan hanya claims dalam JSON; jangan cipta fakta/motif/saksi/teori; kekalkan source IDs; ayat 5–14 perkataan; buka persoalan dalam tiga saat; beri maklumat progresif; tamat dengan payoff; bezakan fakta/laporan/teori/pertikaian/unresolved; tiada CTA atau drama palsu. Target Gemini ialah 65–90, 130–170 atau 190–240 perkataan.
+- `calculateSourceCoverage`: validly sourced factual segments divided by factual segments;
+- `calculateUnsupportedClaims`: factual segments with no source or an unknown source ID;
+- `calculateRepetitionScore`: 0–1 score using normalized token containment plus matching-date overlap;
+- `calculateStorytellingScore`: 0–14 score from sourced/concise hook, question open loop, role progression, factual depth and coverage, turning-point language/role, distinct payoff, spoken sentence length variation and low repetition.
 
-Output mesti mengikut JSON schema role/claim type/visual intent. Source ID asing, segmen fakta tanpa source, panjang salah atau kegagalan quality gate ditolak. UI kembali kepada skrip deterministik jika Gemini gagal.
+An `OPEN_LOOP` is exempt from source coverage only when it is explicitly a question. Structure alone cannot earn the full score. Repeated paraphrases lower repetition and can prevent the ≥0.7 quality gate.
 
-## Mystery claim handling
+## Mystery flow
 
-- `VERIFIED`: disebut sebagai fakta direkodkan.
-- `REPORTED`: didahului “Menurut laporan ketika itu”.
-- `FOLKLORE`: didahului “Menurut cerita rakyat”.
-- `THEORY`: dilabel sebagai teori.
-- `DISPUTED`: dinyatakan masih dipertikaikan.
-- `EXPLAINED_LATER`: memperkenalkan pembetulan/penjelasan kemudian.
-- `UNRESOLVED`: tidak dinaikkan menjadi fakta dan biasanya mengakhiri persoalan.
+Seed mystery claims still map priority to hook/context/escalation/twist/theory/counterpoint/payoff, with labels distinguishing verified, reported, folklore, theory, disputed, explained-later and unresolved material. Gemini output remains constrained by JSON schema and known source IDs. Both deterministic and Gemini mystery scripts now use the same calculated quality functions rather than fixed score/coverage values.
 
-Nota sumber boleh ditambah sebagai scene akhir. Tiada disclaimer generik paranormal; ending setiap seed sepatutnya membawa classification sebenar. Bahasa disasarkan kepada Bahasa Melayu Malaysia yang pendek dan percakapan. Tiada model formal repetition/filler selain had ayat, dedupe fakta asas dan pilihan template.
+Duration handling remains 30/60/90 seconds. Mystery 60/90-second deterministic expansion still uses evidence bridges; semantic filler detection beyond repetition scoring is not part of Phase 1.

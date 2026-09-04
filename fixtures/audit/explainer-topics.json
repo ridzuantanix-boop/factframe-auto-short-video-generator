@@ -25,13 +25,52 @@
     "facts": [
       { "label": "Gambaran ringkas", "sentence": "Nikola Tesla ialah pencipta dan jurutera elektrik Serbia-Amerika.", "sourceUrl": "https://www.wikidata.org/wiki/Q9036" },
       { "label": "Dilahirkan pada 1856", "sentence": "Nikola Tesla dilahirkan pada tahun 1856 di Smiljan.", "sourceUrl": "https://www.wikidata.org/wiki/Q9036" },
-      { "label": "Arus ulang-alik", "sentence": "Kerjanya membantu membangunkan sistem bekalan elektrik arus ulang-alik moden.", "sourceUrl": "https://en.wikipedia.org/wiki/Nikola_Tesla" },
+      { "label": "Sistem arus ulang-alik", "sentence": "Kerjanya membantu membangunkan sistem bekalan elektrik arus ulang-alik moden.", "sourceUrl": "https://en.wikipedia.org/wiki/Nikola_Tesla" },
+      { "label": "Paten motor aruhan 1888", "sentence": "Pada 1888, Tesla mempatenkan reka bentuk motor aruhan arus ulang-alik.", "sourceUrl": "https://en.wikipedia.org/wiki/Nikola_Tesla" },
+      { "label": "Wardenclyffe tidak disiapkan", "sentence": "Projek Wardenclyffe gagal disiapkan selepas pembiayaan merosot.", "sourceUrl": "https://en.wikipedia.org/wiki/Nikola_Tesla" },
       { "label": "Meninggal dunia pada 1943", "sentence": "Tesla meninggal dunia di New York pada tahun 1943.", "sourceUrl": "https://www.wikidata.org/wiki/Q9036" }
     ],
     "narration": "Fixture audit; aplikasi sebenar membina narasi daripada respons sumber.",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nikola_Tesla",
     "lastVerifiedAt": "2026-09-03",
     "currentAware": false,
+    "contentMode": "STORY"
+  },
+  {
+    "id": "Q19837",
+    "name": "Steve Jobs",
+    "description": "usahawan dan pengasas bersama syarikat teknologi Amerika",
+    "entityType": "person",
+    "facts": [
+      { "label": "Dilahirkan pada 1955", "sentence": "Steve Jobs dilahirkan pada tahun 1955 di San Francisco.", "sourceUrl": "https://www.wikidata.org/wiki/Q19837" },
+      { "label": "Mengasaskan Apple pada 1976", "sentence": "Pada 1976, Jobs mengasaskan Apple bersama Steve Wozniak dan Ronald Wayne.", "sourceUrl": "https://en.wikipedia.org/wiki/Steve_Jobs" },
+      { "label": "Diberhentikan pada 1985", "sentence": "Jobs diberhentikan daripada peranan pengurusannya di Apple pada 1985.", "sourceUrl": "https://en.wikipedia.org/wiki/Steve_Jobs" },
+      { "label": "Kembali ke Apple pada 1997", "sentence": "Beliau kembali menerajui Apple pada 1997 selepas syarikat itu membeli NeXT.", "sourceUrl": "https://en.wikipedia.org/wiki/Steve_Jobs" },
+      { "label": "Memperkenalkan iPhone pada 2007", "sentence": "Jobs memperkenalkan iPhone pada 2007 sebagai produk baharu Apple.", "sourceUrl": "https://en.wikipedia.org/wiki/Steve_Jobs" },
+      { "label": "Meninggal dunia pada 2011", "sentence": "Steve Jobs meninggal dunia pada tahun 2011.", "sourceUrl": "https://www.wikidata.org/wiki/Q19837" }
+    ],
+    "narration": "Fixture audit untuk ujian engine generik.",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Steve_Jobs",
+    "lastVerifiedAt": "2026-09-04",
+    "currentAware": false,
+    "contentMode": "STORY"
+  },
+  {
+    "id": "Q184674",
+    "name": "Michelle Yeoh",
+    "description": "pelakon Malaysia yang bekerja dalam produksi Asia dan antarabangsa",
+    "entityType": "person",
+    "facts": [
+      { "label": "Dilahirkan pada 1962", "sentence": "Michelle Yeoh dilahirkan pada tahun 1962 di Ipoh.", "sourceUrl": "https://www.wikidata.org/wiki/Q184674" },
+      { "label": "Memulakan kerjaya filem pada 1984", "sentence": "Beliau memulakan kerjaya filem di Hong Kong pada 1984.", "sourceUrl": "https://en.wikipedia.org/wiki/Michelle_Yeoh" },
+      { "label": "Kejayaan antarabangsa 1997", "sentence": "Peranannya dalam Tomorrow Never Dies pada 1997 memperluas kerjaya antarabangsanya.", "sourceUrl": "https://en.wikipedia.org/wiki/Michelle_Yeoh" },
+      { "label": "Crouching Tiger pada 2000", "sentence": "Beliau menerima pengiktirafan luas melalui Crouching Tiger, Hidden Dragon pada 2000.", "sourceUrl": "https://en.wikipedia.org/wiki/Michelle_Yeoh" },
+      { "label": "Anugerah utama 2023", "sentence": "Pada 2023, Yeoh memenangi Academy Award untuk Pelakon Wanita Terbaik.", "sourceUrl": "https://www.oscars.org/oscars/ceremonies/2023" }
+    ],
+    "narration": "Fixture audit untuk ujian engine generik.",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Michelle_Yeoh",
+    "lastVerifiedAt": "2026-09-04",
+    "currentAware": true,
     "contentMode": "STORY"
   }
 ]

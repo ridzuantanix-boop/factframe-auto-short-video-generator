@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-04T05:05:39.681Z",
+  "generatedAt": "2026-09-04T09:39:50.701Z",
   "fixtureNotice": "Testing fixtures; not a replacement for live discovery/research/media selection.",
   "samples": [
     {
@@ -43,22 +43,41 @@
       },
       "storyAngles": [
         {
-          "id": "Q1058-biographical_journey-1",
-          "title": "Perjalanan panjang Anwar Ibrahim",
-          "type": "BIOGRAPHICAL_JOURNEY",
-          "summary": "Daripada permulaan hingga detik yang membentuk namanya."
+          "id": "Q1058-challenge",
+          "title": "Krisis 1998: Apa yang berlaku selepas itu?",
+          "type": "HOW_IT_CHANGED",
+          "summary": "Menyusun cabaran, akibat dan perubahan seterusnya tanpa menambah andaian.",
+          "supportingFactIds": [
+            "Q1058-fact-3",
+            "Q1058-fact-5",
+            "Q1058-fact-1"
+          ],
+          "narrativePotentialScore": 58
         },
         {
-          "id": "Q1058-turning_point-2",
-          "title": "Detik yang mengubah kisah Anwar Ibrahim",
+          "id": "Q1058-turning-Q1058-fact-5",
+          "title": "Anwar Ibrahim: Di sebalik Perdana Menteri 2022",
           "type": "TURNING_POINT",
-          "summary": "Titik perubahan terpenting dalam perjalanan tokoh ini."
+          "summary": "Menelusuri peristiwa bersumber yang menjadikan perdana menteri 2022 satu titik perubahan.",
+          "supportingFactIds": [
+            "Q1058-fact-5",
+            "Q1058-fact-3",
+            "Q1058-fact-1"
+          ],
+          "narrativePotentialScore": 57
         },
         {
-          "id": "Q1058-major_moments-3",
-          "title": "Momen terbesar Anwar Ibrahim",
-          "type": "MAJOR_MOMENTS",
-          "summary": "Beberapa detik utama yang menjelaskan keseluruhan perjalanannya."
+          "id": "Q1058-journey",
+          "title": "Anwar Ibrahim: Dari Dilahirkan pada 1947 ke Perdana Menteri 2022",
+          "type": "BIOGRAPHICAL_JOURNEY",
+          "summary": "Perjalanan berasaskan rekod dari 1947 hingga 2022.",
+          "supportingFactIds": [
+            "Q1058-fact-2",
+            "Q1058-fact-3",
+            "Q1058-fact-4",
+            "Q1058-fact-5"
+          ],
+          "narrativePotentialScore": 51
         }
       ],
       "sources": [
@@ -117,23 +136,22 @@
         "CONTEXT",
         "CONTEXT",
         "ESCALATION",
-        "TWIST",
         "PAYOFF"
       ],
-      "narration": "Perjalanan Anwar Ibrahim akhirnya sampai ke satu kedudukan yang pernah kelihatan jauh. Anwar Ibrahim ialah Perdana Menteri Malaysia dan ahli politik Malaysia. Apa yang berlaku sebelum titik perubahan itu? Anwar Ibrahim dilahirkan pada tahun 1947 di Bukit Mertajam. Pada 1998, beliau disingkirkan daripada kerajaan dan gerakan Reformasi muncul selepas itu. Beliau menerima pengampunan diraja dan dibebaskan pada 2018. Pada 2022, beliau dilantik sebagai Perdana Menteri Malaysia. Selepas semua perubahan itu, rekod terkini meletakkan Anwar Ibrahim sebagai Perdana Menteri Malaysia dan ahli politik Malaysia.",
+      "narration": "Pada 1998, beliau disingkirkan daripada kerajaan dan gerakan Reformasi muncul selepas itu. Detik ini mengubah arah cerita Anwar Ibrahim. Bagaimana Anwar Ibrahim bergerak selepas cabaran itu? Anwar Ibrahim dilahirkan pada tahun 1947 di Bukit Mertajam. Beliau menerima pengampunan diraja dan dibebaskan pada 2018. Anwar Ibrahim ialah Perdana Menteri Malaysia dan ahli politik Malaysia. Akhirnya, pada 2022, beliau dilantik sebagai Perdana Menteri Malaysia.",
       "segments": [
         {
           "role": "HOOK",
-          "text": "Perjalanan Anwar Ibrahim akhirnya sampai ke satu kedudukan yang pernah kelihatan jauh. Anwar Ibrahim ialah Perdana Menteri Malaysia dan ahli politik Malaysia.",
+          "text": "Pada 1998, beliau disingkirkan daripada kerajaan dan gerakan Reformasi muncul selepas itu. Detik ini mengubah arah cerita Anwar Ibrahim.",
           "sourceIds": [
-            "story-source-1"
+            "story-source-2"
           ],
           "claimType": "VERIFIED",
-          "visualIntent": "PORTRAIT"
+          "visualIntent": "ARCHIVAL_PHOTO"
         },
         {
           "role": "OPEN_LOOP",
-          "text": "Apa yang berlaku sebelum titik perubahan itu?",
+          "text": "Bagaimana Anwar Ibrahim bergerak selepas cabaran itu?",
           "sourceIds": [],
           "claimType": "UNRESOLVED",
           "visualIntent": "FACT_CARD"
@@ -149,15 +167,6 @@
         },
         {
           "role": "CONTEXT",
-          "text": "Pada 1998, beliau disingkirkan daripada kerajaan dan gerakan Reformasi muncul selepas itu.",
-          "sourceIds": [
-            "story-source-2"
-          ],
-          "claimType": "VERIFIED",
-          "visualIntent": "LOCATION"
-        },
-        {
-          "role": "ESCALATION",
           "text": "Beliau menerima pengampunan diraja dan dibebaskan pada 2018.",
           "sourceIds": [
             "story-source-2"
@@ -166,19 +175,19 @@
           "visualIntent": "DOCUMENT"
         },
         {
-          "role": "TWIST",
-          "text": "Pada 2022, beliau dilantik sebagai Perdana Menteri Malaysia.",
+          "role": "ESCALATION",
+          "text": "Anwar Ibrahim ialah Perdana Menteri Malaysia dan ahli politik Malaysia.",
           "sourceIds": [
-            "story-source-2"
+            "story-source-1"
           ],
           "claimType": "VERIFIED",
-          "visualIntent": "EVIDENCE"
+          "visualIntent": "LOCATION"
         },
         {
           "role": "PAYOFF",
-          "text": "Selepas semua perubahan itu, rekod terkini meletakkan Anwar Ibrahim sebagai Perdana Menteri Malaysia dan ahli politik Malaysia.",
+          "text": "Akhirnya, pada 2022, beliau dilantik sebagai Perdana Menteri Malaysia.",
           "sourceIds": [
-            "story-source-1"
+            "story-source-2"
           ],
           "claimType": "VERIFIED",
           "visualIntent": "ENDING"
@@ -186,7 +195,7 @@
       ],
       "sourceIdsPerSegment": [
         [
-          "story-source-1"
+          "story-source-2"
         ],
         [],
         [
@@ -196,19 +205,16 @@
           "story-source-2"
         ],
         [
-          "story-source-2"
-        ],
-        [
-          "story-source-2"
-        ],
-        [
           "story-source-1"
+        ],
+        [
+          "story-source-2"
         ]
       ],
       "visualPlan": [
         {
           "segmentIndex": 0,
-          "visualIntent": "PORTRAIT"
+          "visualIntent": "ARCHIVAL_PHOTO"
         },
         {
           "segmentIndex": 1,
@@ -220,18 +226,14 @@
         },
         {
           "segmentIndex": 3,
-          "visualIntent": "LOCATION"
-        },
-        {
-          "segmentIndex": 4,
           "visualIntent": "DOCUMENT"
         },
         {
-          "segmentIndex": 5,
-          "visualIntent": "EVIDENCE"
+          "segmentIndex": 4,
+          "visualIntent": "LOCATION"
         },
         {
-          "segmentIndex": 6,
+          "segmentIndex": 5,
           "visualIntent": "ENDING"
         }
       ],
@@ -276,8 +278,18 @@
             "sourceUrl": "https://www.wikidata.org/wiki/Q9036"
           },
           {
-            "label": "Arus ulang-alik",
+            "label": "Sistem arus ulang-alik",
             "sentence": "Kerjanya membantu membangunkan sistem bekalan elektrik arus ulang-alik moden.",
+            "sourceUrl": "https://en.wikipedia.org/wiki/Nikola_Tesla"
+          },
+          {
+            "label": "Paten motor aruhan 1888",
+            "sentence": "Pada 1888, Tesla mempatenkan reka bentuk motor aruhan arus ulang-alik.",
+            "sourceUrl": "https://en.wikipedia.org/wiki/Nikola_Tesla"
+          },
+          {
+            "label": "Wardenclyffe tidak disiapkan",
+            "sentence": "Projek Wardenclyffe gagal disiapkan selepas pembiayaan merosot.",
             "sourceUrl": "https://en.wikipedia.org/wiki/Nikola_Tesla"
           },
           {
@@ -294,22 +306,61 @@
       },
       "storyAngles": [
         {
-          "id": "Q9036-biographical_journey-1",
-          "title": "Perjalanan panjang Nikola Tesla",
-          "type": "BIOGRAPHICAL_JOURNEY",
-          "summary": "Daripada permulaan hingga detik yang membentuk namanya."
-        },
-        {
-          "id": "Q9036-turning_point-2",
-          "title": "Detik yang mengubah kisah Nikola Tesla",
+          "id": "Q9036-turning-Q9036-fact-4",
+          "title": "Nikola Tesla: Di sebalik Paten motor aruhan 1888",
           "type": "TURNING_POINT",
-          "summary": "Titik perubahan terpenting dalam perjalanan tokoh ini."
+          "summary": "Menelusuri peristiwa bersumber yang menjadikan paten motor aruhan 1888 satu titik perubahan.",
+          "supportingFactIds": [
+            "Q9036-fact-4",
+            "Q9036-fact-3",
+            "Q9036-fact-5"
+          ],
+          "narrativePotentialScore": 56
         },
         {
-          "id": "Q9036-major_moments-3",
-          "title": "Momen terbesar Nikola Tesla",
+          "id": "Q9036-achievement",
+          "title": "Bagaimana Paten motor aruhan 1888 mengubah kisah Nikola Tesla",
           "type": "MAJOR_MOMENTS",
-          "summary": "Beberapa detik utama yang menjelaskan keseluruhan perjalanannya."
+          "summary": "Menghubungkan pencapaian utama dengan peristiwa yang membawa kepadanya.",
+          "supportingFactIds": [
+            "Q9036-fact-4",
+            "Q9036-fact-3"
+          ],
+          "narrativePotentialScore": 54
+        },
+        {
+          "id": "Q9036-legacy",
+          "title": "Warisan Nikola Tesla selepas Meninggal dunia pada 1943",
+          "type": "WHY_IT_MATTERS",
+          "summary": "Menilai kesan dan kedudukan Nikola Tesla melalui fakta bersumber yang tersedia.",
+          "supportingFactIds": [
+            "Q9036-fact-6",
+            "Q9036-fact-4",
+            "Q9036-fact-3"
+          ],
+          "narrativePotentialScore": 53
+        },
+        {
+          "id": "Q9036-journey",
+          "title": "Nikola Tesla: Dari Dilahirkan pada 1856 ke Meninggal dunia pada 1943",
+          "type": "BIOGRAPHICAL_JOURNEY",
+          "summary": "Perjalanan berasaskan rekod dari 1856 hingga 1943.",
+          "supportingFactIds": [
+            "Q9036-fact-2",
+            "Q9036-fact-4",
+            "Q9036-fact-6"
+          ],
+          "narrativePotentialScore": 49
+        },
+        {
+          "id": "Q9036-challenge",
+          "title": "Wardenclyffe tidak disiapkan: Apa yang berlaku selepas itu?",
+          "type": "HOW_IT_CHANGED",
+          "summary": "Menyusun cabaran, akibat dan perubahan seterusnya tanpa menambah andaian.",
+          "supportingFactIds": [
+            "Q9036-fact-5"
+          ],
+          "narrativePotentialScore": 36
         }
       ],
       "sources": [
@@ -344,8 +395,18 @@
           "sourceUrl": "https://www.wikidata.org/wiki/Q9036"
         },
         {
-          "label": "Arus ulang-alik",
+          "label": "Sistem arus ulang-alik",
           "sentence": "Kerjanya membantu membangunkan sistem bekalan elektrik arus ulang-alik moden.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Nikola_Tesla"
+        },
+        {
+          "label": "Paten motor aruhan 1888",
+          "sentence": "Pada 1888, Tesla mempatenkan reka bentuk motor aruhan arus ulang-alik.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Nikola_Tesla"
+        },
+        {
+          "label": "Wardenclyffe tidak disiapkan",
+          "sentence": "Projek Wardenclyffe gagal disiapkan selepas pembiayaan merosot.",
           "sourceUrl": "https://en.wikipedia.org/wiki/Nikola_Tesla"
         },
         {
@@ -363,22 +424,23 @@
         "CONTEXT",
         "CONTEXT",
         "TWIST",
+        "ESCALATION",
         "PAYOFF"
       ],
-      "narration": "Perjalanan Nikola Tesla akhirnya sampai ke satu kedudukan yang pernah kelihatan jauh. Nikola Tesla ialah pencipta dan jurutera elektrik Serbia-Amerika. Apa yang berlaku sebelum titik perubahan itu? Nikola Tesla dilahirkan pada tahun 1856 di Smiljan. Kerjanya membantu membangunkan sistem bekalan elektrik arus ulang-alik moden. Tesla meninggal dunia di New York pada tahun 1943. Selepas semua perubahan itu, rekod terkini meletakkan Nikola Tesla sebagai pencipta dan jurutera elektrik Serbia-Amerika.",
+      "narration": "Pada 1888, Tesla mempatenkan reka bentuk motor aruhan arus ulang-alik. Pencapaian itu tidak muncul secara tiba-tiba. Peristiwa mana yang membuka jalan kepada pencapaian itu? Nikola Tesla dilahirkan pada tahun 1856 di Smiljan. Kerjanya membantu membangunkan sistem bekalan elektrik arus ulang-alik moden. Projek Wardenclyffe gagal disiapkan selepas pembiayaan merosot. Nikola Tesla ialah pencipta dan jurutera elektrik Serbia-Amerika. Akhirnya, tesla meninggal dunia di New York pada tahun 1943.",
       "segments": [
         {
           "role": "HOOK",
-          "text": "Perjalanan Nikola Tesla akhirnya sampai ke satu kedudukan yang pernah kelihatan jauh. Nikola Tesla ialah pencipta dan jurutera elektrik Serbia-Amerika.",
+          "text": "Pada 1888, Tesla mempatenkan reka bentuk motor aruhan arus ulang-alik. Pencapaian itu tidak muncul secara tiba-tiba.",
           "sourceIds": [
-            "story-source-1"
+            "story-source-2"
           ],
           "claimType": "VERIFIED",
-          "visualIntent": "PORTRAIT"
+          "visualIntent": "ARCHIVAL_PHOTO"
         },
         {
           "role": "OPEN_LOOP",
-          "text": "Apa yang berlaku sebelum titik perubahan itu?",
+          "text": "Peristiwa mana yang membuka jalan kepada pencapaian itu?",
           "sourceIds": [],
           "claimType": "UNRESOLVED",
           "visualIntent": "FACT_CARD"
@@ -399,20 +461,29 @@
             "story-source-2"
           ],
           "claimType": "VERIFIED",
-          "visualIntent": "LOCATION"
+          "visualIntent": "DOCUMENT"
         },
         {
           "role": "TWIST",
-          "text": "Tesla meninggal dunia di New York pada tahun 1943.",
+          "text": "Projek Wardenclyffe gagal disiapkan selepas pembiayaan merosot.",
+          "sourceIds": [
+            "story-source-2"
+          ],
+          "claimType": "VERIFIED",
+          "visualIntent": "LOCATION"
+        },
+        {
+          "role": "ESCALATION",
+          "text": "Nikola Tesla ialah pencipta dan jurutera elektrik Serbia-Amerika.",
           "sourceIds": [
             "story-source-1"
           ],
           "claimType": "VERIFIED",
-          "visualIntent": "DOCUMENT"
+          "visualIntent": "FACT_CARD"
         },
         {
           "role": "PAYOFF",
-          "text": "Selepas semua perubahan itu, rekod terkini meletakkan Nikola Tesla sebagai pencipta dan jurutera elektrik Serbia-Amerika.",
+          "text": "Akhirnya, tesla meninggal dunia di New York pada tahun 1943.",
           "sourceIds": [
             "story-source-1"
           ],
@@ -422,11 +493,14 @@
       ],
       "sourceIdsPerSegment": [
         [
-          "story-source-1"
+          "story-source-2"
         ],
         [],
         [
           "story-source-1"
+        ],
+        [
+          "story-source-2"
         ],
         [
           "story-source-2"
@@ -441,7 +515,7 @@
       "visualPlan": [
         {
           "segmentIndex": 0,
-          "visualIntent": "PORTRAIT"
+          "visualIntent": "ARCHIVAL_PHOTO"
         },
         {
           "segmentIndex": 1,
@@ -453,11 +527,589 @@
         },
         {
           "segmentIndex": 3,
-          "visualIntent": "LOCATION"
+          "visualIntent": "DOCUMENT"
         },
         {
           "segmentIndex": 4,
+          "visualIntent": "LOCATION"
+        },
+        {
+          "segmentIndex": 5,
+          "visualIntent": "FACT_CARD"
+        },
+        {
+          "segmentIndex": 6,
+          "visualIntent": "ENDING"
+        }
+      ],
+      "visualSearchQueries": [],
+      "selectedMediaMetadata": {
+        "state": "runtime-dependent",
+        "provider": "Wikimedia Commons",
+        "rawMediaIncluded": false
+      },
+      "ttsPreset": {
+        "id": "male-documentary",
+        "label": "Lelaki — Dokumentari",
+        "description": "Matang • Meyakinkan • Investigatif",
+        "geminiVoice": "Gacrux",
+        "language": "ms-MY",
+        "stylePrompt": "Sound like a calm investigative documentary narrator. Use a confident but restrained tone and steady, engaging pacing. Do not sound like an advertisement. Do not exaggerate emotion. Give slightly more emphasis to important discoveries and reveals."
+      },
+      "ttsStyle": "Sound like a calm investigative documentary narrator. Use a confident but restrained tone and steady, engaging pacing. Do not sound like an advertisement. Do not exaggerate emotion. Give slightly more emphasis to important discoveries and reveals.",
+      "watermarkConfig": {
+        "enabled": false,
+        "text": "",
+        "position": "BOTTOM_RIGHT",
+        "opacity": 0.75,
+        "size": "SMALL"
+      }
+    },
+    {
+      "story": {
+        "id": "Q19837",
+        "name": "Steve Jobs",
+        "description": "usahawan dan pengasas bersama syarikat teknologi Amerika",
+        "entityType": "person",
+        "facts": [
+          {
+            "label": "Dilahirkan pada 1955",
+            "sentence": "Steve Jobs dilahirkan pada tahun 1955 di San Francisco.",
+            "sourceUrl": "https://www.wikidata.org/wiki/Q19837"
+          },
+          {
+            "label": "Mengasaskan Apple pada 1976",
+            "sentence": "Pada 1976, Jobs mengasaskan Apple bersama Steve Wozniak dan Ronald Wayne.",
+            "sourceUrl": "https://en.wikipedia.org/wiki/Steve_Jobs"
+          },
+          {
+            "label": "Diberhentikan pada 1985",
+            "sentence": "Jobs diberhentikan daripada peranan pengurusannya di Apple pada 1985.",
+            "sourceUrl": "https://en.wikipedia.org/wiki/Steve_Jobs"
+          },
+          {
+            "label": "Kembali ke Apple pada 1997",
+            "sentence": "Beliau kembali menerajui Apple pada 1997 selepas syarikat itu membeli NeXT.",
+            "sourceUrl": "https://en.wikipedia.org/wiki/Steve_Jobs"
+          },
+          {
+            "label": "Memperkenalkan iPhone pada 2007",
+            "sentence": "Jobs memperkenalkan iPhone pada 2007 sebagai produk baharu Apple.",
+            "sourceUrl": "https://en.wikipedia.org/wiki/Steve_Jobs"
+          },
+          {
+            "label": "Meninggal dunia pada 2011",
+            "sentence": "Steve Jobs meninggal dunia pada tahun 2011.",
+            "sourceUrl": "https://www.wikidata.org/wiki/Q19837"
+          }
+        ],
+        "narration": "Fixture audit untuk ujian engine generik.",
+        "wikipediaUrl": "https://en.wikipedia.org/wiki/Steve_Jobs",
+        "lastVerifiedAt": "2026-09-04",
+        "currentAware": false,
+        "contentMode": "STORY"
+      },
+      "storyAngles": [
+        {
+          "id": "Q19837-turning-Q19837-fact-4",
+          "title": "Steve Jobs: Di sebalik Kembali ke Apple pada 1997",
+          "type": "TURNING_POINT",
+          "summary": "Menelusuri peristiwa bersumber yang menjadikan kembali ke apple pada 1997 satu titik perubahan.",
+          "supportingFactIds": [
+            "Q19837-fact-4",
+            "Q19837-fact-5",
+            "Q19837-fact-3"
+          ],
+          "narrativePotentialScore": 59
+        },
+        {
+          "id": "Q19837-journey",
+          "title": "Steve Jobs: Dari Dilahirkan pada 1955 ke Meninggal dunia pada 2011",
+          "type": "BIOGRAPHICAL_JOURNEY",
+          "summary": "Perjalanan berasaskan rekod dari 1955 hingga 2011.",
+          "supportingFactIds": [
+            "Q19837-fact-1",
+            "Q19837-fact-2",
+            "Q19837-fact-3",
+            "Q19837-fact-4",
+            "Q19837-fact-5"
+          ],
+          "narrativePotentialScore": 59
+        },
+        {
+          "id": "Q19837-challenge",
+          "title": "Diberhentikan pada 1985: Apa yang berlaku selepas itu?",
+          "type": "HOW_IT_CHANGED",
+          "summary": "Menyusun cabaran, akibat dan perubahan seterusnya tanpa menambah andaian.",
+          "supportingFactIds": [
+            "Q19837-fact-3",
+            "Q19837-fact-4"
+          ],
+          "narrativePotentialScore": 55
+        },
+        {
+          "id": "Q19837-achievement",
+          "title": "Bagaimana Memperkenalkan iPhone pada 2007 mengubah kisah Steve Jobs",
+          "type": "MAJOR_MOMENTS",
+          "summary": "Menghubungkan pencapaian utama dengan peristiwa yang membawa kepadanya.",
+          "supportingFactIds": [
+            "Q19837-fact-5",
+            "Q19837-fact-2"
+          ],
+          "narrativePotentialScore": 54
+        },
+        {
+          "id": "Q19837-legacy",
+          "title": "Warisan Steve Jobs selepas Meninggal dunia pada 2011",
+          "type": "WHY_IT_MATTERS",
+          "summary": "Menilai kesan dan kedudukan Steve Jobs melalui fakta bersumber yang tersedia.",
+          "supportingFactIds": [
+            "Q19837-fact-6",
+            "Q19837-fact-2"
+          ],
+          "narrativePotentialScore": 47
+        }
+      ],
+      "sources": [
+        {
+          "id": "story-source-1",
+          "title": "Rekod entiti Wikidata",
+          "publisher": "Wikidata",
+          "type": "REFERENCE",
+          "url": "https://www.wikidata.org/wiki/Q19837",
+          "accessedAt": "2026-09-04",
+          "reliabilityLevel": "REFERENCE"
+        },
+        {
+          "id": "story-source-2",
+          "title": "Rencana latar Wikipedia",
+          "publisher": "Wikipedia",
+          "type": "REFERENCE",
+          "url": "https://en.wikipedia.org/wiki/Steve_Jobs",
+          "accessedAt": "2026-09-04",
+          "reliabilityLevel": "REFERENCE"
+        }
+      ],
+      "claims": [
+        {
+          "label": "Dilahirkan pada 1955",
+          "sentence": "Steve Jobs dilahirkan pada tahun 1955 di San Francisco.",
+          "sourceUrl": "https://www.wikidata.org/wiki/Q19837"
+        },
+        {
+          "label": "Mengasaskan Apple pada 1976",
+          "sentence": "Pada 1976, Jobs mengasaskan Apple bersama Steve Wozniak dan Ronald Wayne.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Steve_Jobs"
+        },
+        {
+          "label": "Diberhentikan pada 1985",
+          "sentence": "Jobs diberhentikan daripada peranan pengurusannya di Apple pada 1985.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Steve_Jobs"
+        },
+        {
+          "label": "Kembali ke Apple pada 1997",
+          "sentence": "Beliau kembali menerajui Apple pada 1997 selepas syarikat itu membeli NeXT.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Steve_Jobs"
+        },
+        {
+          "label": "Memperkenalkan iPhone pada 2007",
+          "sentence": "Jobs memperkenalkan iPhone pada 2007 sebagai produk baharu Apple.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Steve_Jobs"
+        },
+        {
+          "label": "Meninggal dunia pada 2011",
+          "sentence": "Steve Jobs meninggal dunia pada tahun 2011.",
+          "sourceUrl": "https://www.wikidata.org/wiki/Q19837"
+        }
+      ],
+      "claimTypes": [
+        "VERIFIED"
+      ],
+      "storyArc": [
+        "HOOK",
+        "OPEN_LOOP",
+        "CONTEXT",
+        "TWIST",
+        "TWIST",
+        "ESCALATION",
+        "PAYOFF"
+      ],
+      "narration": "Beliau kembali menerajui Apple pada 1997 selepas syarikat itu membeli NeXT. Rekod sebelumnya menunjukkan jalan ke tahap itu. Apakah perubahan yang membawa Steve Jobs ke detik tersebut? Steve Jobs dilahirkan pada tahun 1955 di San Francisco. Jobs diberhentikan daripada peranan pengurusannya di Apple pada 1985. Jobs memperkenalkan iPhone pada 2007 sebagai produk baharu Apple. Steve Jobs meninggal dunia pada tahun 2011. Akhirnya, pada 1976, Jobs mengasaskan Apple bersama Steve Wozniak dan Ronald Wayne.",
+      "segments": [
+        {
+          "role": "HOOK",
+          "text": "Beliau kembali menerajui Apple pada 1997 selepas syarikat itu membeli NeXT. Rekod sebelumnya menunjukkan jalan ke tahap itu.",
+          "sourceIds": [
+            "story-source-2"
+          ],
+          "claimType": "VERIFIED",
+          "visualIntent": "ARCHIVAL_PHOTO"
+        },
+        {
+          "role": "OPEN_LOOP",
+          "text": "Apakah perubahan yang membawa Steve Jobs ke detik tersebut?",
+          "sourceIds": [],
+          "claimType": "UNRESOLVED",
+          "visualIntent": "FACT_CARD"
+        },
+        {
+          "role": "CONTEXT",
+          "text": "Steve Jobs dilahirkan pada tahun 1955 di San Francisco.",
+          "sourceIds": [
+            "story-source-1"
+          ],
+          "claimType": "VERIFIED",
+          "visualIntent": "TIMELINE"
+        },
+        {
+          "role": "TWIST",
+          "text": "Jobs diberhentikan daripada peranan pengurusannya di Apple pada 1985.",
+          "sourceIds": [
+            "story-source-2"
+          ],
+          "claimType": "VERIFIED",
           "visualIntent": "DOCUMENT"
+        },
+        {
+          "role": "TWIST",
+          "text": "Jobs memperkenalkan iPhone pada 2007 sebagai produk baharu Apple.",
+          "sourceIds": [
+            "story-source-2"
+          ],
+          "claimType": "VERIFIED",
+          "visualIntent": "LOCATION"
+        },
+        {
+          "role": "ESCALATION",
+          "text": "Steve Jobs meninggal dunia pada tahun 2011.",
+          "sourceIds": [
+            "story-source-1"
+          ],
+          "claimType": "VERIFIED",
+          "visualIntent": "FACT_CARD"
+        },
+        {
+          "role": "PAYOFF",
+          "text": "Akhirnya, pada 1976, Jobs mengasaskan Apple bersama Steve Wozniak dan Ronald Wayne.",
+          "sourceIds": [
+            "story-source-2"
+          ],
+          "claimType": "VERIFIED",
+          "visualIntent": "ENDING"
+        }
+      ],
+      "sourceIdsPerSegment": [
+        [
+          "story-source-2"
+        ],
+        [],
+        [
+          "story-source-1"
+        ],
+        [
+          "story-source-2"
+        ],
+        [
+          "story-source-2"
+        ],
+        [
+          "story-source-1"
+        ],
+        [
+          "story-source-2"
+        ]
+      ],
+      "visualPlan": [
+        {
+          "segmentIndex": 0,
+          "visualIntent": "ARCHIVAL_PHOTO"
+        },
+        {
+          "segmentIndex": 1,
+          "visualIntent": "FACT_CARD"
+        },
+        {
+          "segmentIndex": 2,
+          "visualIntent": "TIMELINE"
+        },
+        {
+          "segmentIndex": 3,
+          "visualIntent": "DOCUMENT"
+        },
+        {
+          "segmentIndex": 4,
+          "visualIntent": "LOCATION"
+        },
+        {
+          "segmentIndex": 5,
+          "visualIntent": "FACT_CARD"
+        },
+        {
+          "segmentIndex": 6,
+          "visualIntent": "ENDING"
+        }
+      ],
+      "visualSearchQueries": [],
+      "selectedMediaMetadata": {
+        "state": "runtime-dependent",
+        "provider": "Wikimedia Commons",
+        "rawMediaIncluded": false
+      },
+      "ttsPreset": {
+        "id": "male-documentary",
+        "label": "Lelaki — Dokumentari",
+        "description": "Matang • Meyakinkan • Investigatif",
+        "geminiVoice": "Gacrux",
+        "language": "ms-MY",
+        "stylePrompt": "Sound like a calm investigative documentary narrator. Use a confident but restrained tone and steady, engaging pacing. Do not sound like an advertisement. Do not exaggerate emotion. Give slightly more emphasis to important discoveries and reveals."
+      },
+      "ttsStyle": "Sound like a calm investigative documentary narrator. Use a confident but restrained tone and steady, engaging pacing. Do not sound like an advertisement. Do not exaggerate emotion. Give slightly more emphasis to important discoveries and reveals.",
+      "watermarkConfig": {
+        "enabled": false,
+        "text": "",
+        "position": "BOTTOM_RIGHT",
+        "opacity": 0.75,
+        "size": "SMALL"
+      }
+    },
+    {
+      "story": {
+        "id": "Q184674",
+        "name": "Michelle Yeoh",
+        "description": "pelakon Malaysia yang bekerja dalam produksi Asia dan antarabangsa",
+        "entityType": "person",
+        "facts": [
+          {
+            "label": "Dilahirkan pada 1962",
+            "sentence": "Michelle Yeoh dilahirkan pada tahun 1962 di Ipoh.",
+            "sourceUrl": "https://www.wikidata.org/wiki/Q184674"
+          },
+          {
+            "label": "Memulakan kerjaya filem pada 1984",
+            "sentence": "Beliau memulakan kerjaya filem di Hong Kong pada 1984.",
+            "sourceUrl": "https://en.wikipedia.org/wiki/Michelle_Yeoh"
+          },
+          {
+            "label": "Kejayaan antarabangsa 1997",
+            "sentence": "Peranannya dalam Tomorrow Never Dies pada 1997 memperluas kerjaya antarabangsanya.",
+            "sourceUrl": "https://en.wikipedia.org/wiki/Michelle_Yeoh"
+          },
+          {
+            "label": "Crouching Tiger pada 2000",
+            "sentence": "Beliau menerima pengiktirafan luas melalui Crouching Tiger, Hidden Dragon pada 2000.",
+            "sourceUrl": "https://en.wikipedia.org/wiki/Michelle_Yeoh"
+          },
+          {
+            "label": "Anugerah utama 2023",
+            "sentence": "Pada 2023, Yeoh memenangi Academy Award untuk Pelakon Wanita Terbaik.",
+            "sourceUrl": "https://www.oscars.org/oscars/ceremonies/2023"
+          }
+        ],
+        "narration": "Fixture audit untuk ujian engine generik.",
+        "wikipediaUrl": "https://en.wikipedia.org/wiki/Michelle_Yeoh",
+        "lastVerifiedAt": "2026-09-04",
+        "currentAware": true,
+        "contentMode": "STORY"
+      },
+      "storyAngles": [
+        {
+          "id": "Q184674-turning-Q184674-fact-3",
+          "title": "Michelle Yeoh: Di sebalik Kejayaan antarabangsa 1997",
+          "type": "TURNING_POINT",
+          "summary": "Menelusuri peristiwa bersumber yang menjadikan kejayaan antarabangsa 1997 satu titik perubahan.",
+          "supportingFactIds": [
+            "Q184674-fact-3",
+            "Q184674-fact-5"
+          ],
+          "narrativePotentialScore": 58
+        },
+        {
+          "id": "Q184674-achievement",
+          "title": "Bagaimana Kejayaan antarabangsa 1997 mengubah kisah Michelle Yeoh",
+          "type": "MAJOR_MOMENTS",
+          "summary": "Menghubungkan pencapaian utama dengan peristiwa yang membawa kepadanya.",
+          "supportingFactIds": [
+            "Q184674-fact-3",
+            "Q184674-fact-5",
+            "Q184674-fact-4"
+          ],
+          "narrativePotentialScore": 58
+        },
+        {
+          "id": "Q184674-journey",
+          "title": "Michelle Yeoh: Dari Dilahirkan pada 1962 ke Anugerah utama 2023",
+          "type": "BIOGRAPHICAL_JOURNEY",
+          "summary": "Perjalanan berasaskan rekod dari 1962 hingga 2023.",
+          "supportingFactIds": [
+            "Q184674-fact-1",
+            "Q184674-fact-2",
+            "Q184674-fact-3",
+            "Q184674-fact-4",
+            "Q184674-fact-5"
+          ],
+          "narrativePotentialScore": 57
+        }
+      ],
+      "sources": [
+        {
+          "id": "story-source-1",
+          "title": "Rekod entiti Wikidata",
+          "publisher": "Wikidata",
+          "type": "REFERENCE",
+          "url": "https://www.wikidata.org/wiki/Q184674",
+          "accessedAt": "2026-09-04",
+          "reliabilityLevel": "REFERENCE"
+        },
+        {
+          "id": "story-source-2",
+          "title": "Rencana latar Wikipedia",
+          "publisher": "Wikipedia",
+          "type": "REFERENCE",
+          "url": "https://en.wikipedia.org/wiki/Michelle_Yeoh",
+          "accessedAt": "2026-09-04",
+          "reliabilityLevel": "REFERENCE"
+        },
+        {
+          "id": "story-source-3",
+          "title": "Rekod entiti Wikidata",
+          "publisher": "Wikidata",
+          "type": "REFERENCE",
+          "url": "https://www.oscars.org/oscars/ceremonies/2023",
+          "accessedAt": "2026-09-04",
+          "reliabilityLevel": "REFERENCE"
+        }
+      ],
+      "claims": [
+        {
+          "label": "Dilahirkan pada 1962",
+          "sentence": "Michelle Yeoh dilahirkan pada tahun 1962 di Ipoh.",
+          "sourceUrl": "https://www.wikidata.org/wiki/Q184674"
+        },
+        {
+          "label": "Memulakan kerjaya filem pada 1984",
+          "sentence": "Beliau memulakan kerjaya filem di Hong Kong pada 1984.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Michelle_Yeoh"
+        },
+        {
+          "label": "Kejayaan antarabangsa 1997",
+          "sentence": "Peranannya dalam Tomorrow Never Dies pada 1997 memperluas kerjaya antarabangsanya.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Michelle_Yeoh"
+        },
+        {
+          "label": "Crouching Tiger pada 2000",
+          "sentence": "Beliau menerima pengiktirafan luas melalui Crouching Tiger, Hidden Dragon pada 2000.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Michelle_Yeoh"
+        },
+        {
+          "label": "Anugerah utama 2023",
+          "sentence": "Pada 2023, Yeoh memenangi Academy Award untuk Pelakon Wanita Terbaik.",
+          "sourceUrl": "https://www.oscars.org/oscars/ceremonies/2023"
+        }
+      ],
+      "claimTypes": [
+        "VERIFIED"
+      ],
+      "storyArc": [
+        "HOOK",
+        "OPEN_LOOP",
+        "CONTEXT",
+        "CONTEXT",
+        "ESCALATION",
+        "PAYOFF"
+      ],
+      "narration": "Peranannya dalam Tomorrow Never Dies pada 1997 memperluas kerjaya antarabangsanya. Pencapaian itu tidak muncul secara tiba-tiba. Peristiwa mana yang membuka jalan kepada pencapaian itu? Michelle Yeoh dilahirkan pada tahun 1962 di Ipoh. Beliau memulakan kerjaya filem di Hong Kong pada 1984. Beliau menerima pengiktirafan luas melalui Crouching Tiger, Hidden Dragon pada 2000. Akhirnya, pada 2023, Yeoh memenangi Academy Award untuk Pelakon Wanita Terbaik.",
+      "segments": [
+        {
+          "role": "HOOK",
+          "text": "Peranannya dalam Tomorrow Never Dies pada 1997 memperluas kerjaya antarabangsanya. Pencapaian itu tidak muncul secara tiba-tiba.",
+          "sourceIds": [
+            "story-source-2"
+          ],
+          "claimType": "VERIFIED",
+          "visualIntent": "ARCHIVAL_PHOTO"
+        },
+        {
+          "role": "OPEN_LOOP",
+          "text": "Peristiwa mana yang membuka jalan kepada pencapaian itu?",
+          "sourceIds": [],
+          "claimType": "UNRESOLVED",
+          "visualIntent": "FACT_CARD"
+        },
+        {
+          "role": "CONTEXT",
+          "text": "Michelle Yeoh dilahirkan pada tahun 1962 di Ipoh.",
+          "sourceIds": [
+            "story-source-1"
+          ],
+          "claimType": "VERIFIED",
+          "visualIntent": "TIMELINE"
+        },
+        {
+          "role": "CONTEXT",
+          "text": "Beliau memulakan kerjaya filem di Hong Kong pada 1984.",
+          "sourceIds": [
+            "story-source-2"
+          ],
+          "claimType": "VERIFIED",
+          "visualIntent": "DOCUMENT"
+        },
+        {
+          "role": "ESCALATION",
+          "text": "Beliau menerima pengiktirafan luas melalui Crouching Tiger, Hidden Dragon pada 2000.",
+          "sourceIds": [
+            "story-source-2"
+          ],
+          "claimType": "VERIFIED",
+          "visualIntent": "LOCATION"
+        },
+        {
+          "role": "PAYOFF",
+          "text": "Akhirnya, pada 2023, Yeoh memenangi Academy Award untuk Pelakon Wanita Terbaik.",
+          "sourceIds": [
+            "story-source-3"
+          ],
+          "claimType": "VERIFIED",
+          "visualIntent": "ENDING"
+        }
+      ],
+      "sourceIdsPerSegment": [
+        [
+          "story-source-2"
+        ],
+        [],
+        [
+          "story-source-1"
+        ],
+        [
+          "story-source-2"
+        ],
+        [
+          "story-source-2"
+        ],
+        [
+          "story-source-3"
+        ]
+      ],
+      "visualPlan": [
+        {
+          "segmentIndex": 0,
+          "visualIntent": "ARCHIVAL_PHOTO"
+        },
+        {
+          "segmentIndex": 1,
+          "visualIntent": "FACT_CARD"
+        },
+        {
+          "segmentIndex": 2,
+          "visualIntent": "TIMELINE"
+        },
+        {
+          "segmentIndex": 3,
+          "visualIntent": "DOCUMENT"
+        },
+        {
+          "segmentIndex": 4,
+          "visualIntent": "LOCATION"
         },
         {
           "segmentIndex": 5,
