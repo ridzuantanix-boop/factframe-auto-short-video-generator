@@ -26,7 +26,8 @@ export async function POST(request: NextRequest) {
     const complete = result.visuals.length === body.script.segments.length && result.quality.repetitionScore >= .8 && result.quality.relevanceScore >= .35 && result.quality.visualTypeDiversity >= 2 && result.visuals.some((visual) => visual.mediaType !== "programmatic");
     if (!complete) return NextResponse.json({ error: "Calon ini belum melepasi readiness gate visual." }, { status: 422 });
     return NextResponse.json(result, { headers: { "Cache-Control": "no-store" } });
-  } catch {
+  } catch (error) {
+    console.error("[media] Visual planning failed", error instanceof Error ? error.message : "unknown error");
     return NextResponse.json({ error: "Perancangan visual dokumentari gagal buat masa ini." }, { status: 502 });
   }
 }

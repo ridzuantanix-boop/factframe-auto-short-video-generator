@@ -41,6 +41,7 @@ export async function POST(request: Request) {
     if (body.preview) previewCache.set(cacheKey, { bytes, type: audio.mime_type });
     return new Response(new Uint8Array(bytes), { headers: { "Content-Type": audio.mime_type, "X-Voice-Provider": "gemini", "X-Preview-Cache": "miss" } });
   } catch (error) {
+    console.error("[tts] Gemini request failed", error instanceof Error ? error.message : "unknown error");
     return Response.json({ error: error instanceof Error ? error.message : "Gemini TTS gagal." }, { status: 502 });
   }
 }

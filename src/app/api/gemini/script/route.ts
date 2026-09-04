@@ -43,6 +43,7 @@ export async function POST(request: Request) {
     if (!roleSet.has("HOOK") || !roleSet.has("OPEN_LOOP") || !roleSet.has("PAYOFF") || !passesQualityGate(script)) throw new Error("Skrip AI tidak melepasi quality gate.");
     return Response.json({ script, provider: "gemini" });
   } catch (error) {
+    console.error("[script] Gemini generation failed", error instanceof Error ? error.message : "unknown error");
     return Response.json({ error: error instanceof Error ? error.message : "Gemini gagal menghasilkan skrip." }, { status: 502 });
   }
 }

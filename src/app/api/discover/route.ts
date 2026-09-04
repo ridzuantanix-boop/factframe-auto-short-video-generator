@@ -44,7 +44,8 @@ export async function GET(request: NextRequest) {
     const filtered = combined.filter(usefulCandidate).filter((item) => !mysteryCategory || usefulMysteryCandidate(item));
     const unique = [...new Map(filtered.map((item) => [item.id, item])).values()];
     return NextResponse.json({ results: unique, page, hasMore: groupIndex < groupCount - 1 || batches.some((batch) => batch.hasMore), estimatedAvailable: 1000 }, { headers: { "Cache-Control": "public, s-maxage=21600, stale-while-revalidate=86400" } });
-  } catch {
+  } catch (error) {
+    console.error("[discover] Source indexing failed", error instanceof Error ? error.message : "unknown error");
     return NextResponse.json({ error: "Katalog sumber tidak dapat dicapai buat masa ini." }, { status: 502 });
   }
 }

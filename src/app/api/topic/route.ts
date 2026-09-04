@@ -34,7 +34,8 @@ export async function GET(request: NextRequest) {
     }
     const currentAware = ["person", "organisation", "place", "event"].includes(details.entityType);
     return NextResponse.json({ topic: { id, name, description, entityType: details.entityType, facts, narration, wikipediaUrl: wikipedia?.url, wikipediaExtract: wikipedia?.extract, currentAware, lastVerifiedAt: new Date().toISOString().slice(0, 10) } }, { headers: { "Cache-Control": "public, s-maxage=86400" } });
-  } catch {
+  } catch (error) {
+    console.error("[topic] Topic hydration failed", error instanceof Error ? error.message : "unknown error");
     return NextResponse.json({ error: "Fakta sahih untuk topik ini tidak dapat disediakan." }, { status: 502 });
   }
 }
