@@ -33,7 +33,7 @@ class MalayNeuralBrowserTTS implements TTSProvider {
         if (event.data.type === "error") { worker.terminate(); reject(new Error(event.data.error ?? "Suara tempatan tidak dapat dihasilkan.")); }
       };
       worker.onerror = () => { worker.terminate(); reject(new Error("Enjin suara tempatan gagal berfungsi.")); };
-      worker.postMessage({ text });
+      worker.postMessage({ text, targetDurationSeconds: options.targetDurationSeconds });
     });
     const durationSeconds = await validateAudio(audioBlob);
     onProgress?.("Narasi siap", 100);
@@ -46,7 +46,7 @@ class GeminiHumanTTS implements TTSProvider {
     if (!language.startsWith("ms")) throw new Error("Narasi V1.2 kini menyokong Bahasa Melayu.");
     const voicePresetId = options.voicePresetId ?? DEFAULT_VOICE_PRESET_ID;
     const cache = options.preview ? previewAudioCache : finalAudioCache;
-    const cacheKey = `${text}|${voicePresetId}|${options.tone ?? "DOCUMENTARY"}`;
+    const cacheKey = `${text}|${voicePresetId}|${options.tone ?? "DOCUMENTARY"}|${options.targetDurationSeconds ?? "auto"}`;
     const existing = cache.get(cacheKey);
     if (existing) { onProgress?.("Menggunakan semula suara tersimpan", 100); return existing; }
     const job = (async () => {
@@ -55,7 +55,11 @@ class GeminiHumanTTS implements TTSProvider {
         try {
           onProgress?.(options.preview ? "Menyediakan pratonton suara" : `Gemini mempersembahkan narasi · cubaan ${attempt}/2`, 24);
           const response = await fetch("/api/gemini/tts", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text, tone: options.tone, voicePresetId, preview: options.preview }) });
-          if (!response.ok) { const data = await response.json().catch(() => ({})); throw new Error(data.error ?? "Penjanaan suara gagal."); }
+          if (!response.ok) {
+            const data = await response.json().catch(() => ({}));
+            if (response.status === 429) throw new Error("Had penggunaan Gemini sementara telah dicapai.");
+            throw new Error(data.error ?? "Penjanaan suara gagal.");
+          }
           const audioBlob = await response.blob();
           const durationSeconds = await validateAudio(audioBlob);
           const target = options.targetDurationSeconds;
@@ -79,7 +83,12 @@ class AdaptiveTTS implements TTSProvider {
   private readonly gemini = new GeminiHumanTTS();
   async generateSpeech(text: string, language: string, onProgress?: TTSProgress, options: TTSOptions = {}) {
     const status = await fetch("/api/gemini/status").then((response) => response.json()).catch(() => ({ configured: false }));
-    return status.configured ? this.gemini.generateSpeech(text, language, onProgress, options) : this.local.generateSpeech(text, language, onProgress, options);
+    if (!status.configured) return this.local.generateSpeech(text, language, onProgress, options);
+    try { return await this.gemini.generateSpeech(text, language, onProgress, options); }
+    catch {
+      onProgress?.("Gemini tidak tersedia. Beralih kepada suara tempatan", 4);
+      return this.local.generateSpeech(text, language, onProgress, options);
+    }
   }
 }
 

@@ -6,7 +6,7 @@ const geist = Geist({ variable: "--font-geist", subsets: ["latin"] });
 const mono = Geist_Mono({ variable: "--font-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "FactFrame V1.2 — Misteri Bersumber ke Video Pendek",
+  title: "FactFrame V2 — Penjana Video Cerita Bersumber",
   description: "Hasilkan dokumentari misteri pendek yang bersumber, bernarasi dan sedia dimuat naik.",
 };
 

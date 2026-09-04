@@ -22,16 +22,18 @@ export async function GET(request: NextRequest) {
     }
     const overview = description ? { label: "Gambaran ringkas", sentence: `${name} ialah ${description.replace(/\.$/, "")}.`, sourceUrl: `https://www.wikidata.org/wiki/${id}` } : undefined;
     const facts = overview ? [overview, ...details.facts].slice(0, 5) : [...details.facts];
-    if (facts.length < 3 && wikipedia?.extract && wikipedia.url) {
-      const extras = wikipedia.extract.split(/(?<=[.!?])\s+/).filter((sentence) => sentence.split(/\s+/).length >= 8 && sentence.split(/\s+/).length <= 30);
+    if (wikipedia?.extract && wikipedia.url) {
+      const extras = wikipedia.extract.split(/(?<=[.!?])\s+/).flatMap((sentence) => sentence.split(/;|,(?=\s+(?:kemudian|tetapi|dan|yang|apabila|selepas|sebelum|pada tahun))/i)).map((sentence) => sentence.trim()).filter((sentence) => { const count = sentence.split(/\s+/).length; return /^[A-ZÀ-ÖØ-Þ0-9]/.test(sentence) && count >= 8 && count <= 38; });
       for (const sentence of extras) {
-        if (facts.length >= 3) break;
-        if (facts.some((fact) => fact.sentence.toLowerCase().includes(sentence.slice(0, 24).toLowerCase()))) continue;
+        if (facts.length >= 14) break;
+        const normalized = sentence.toLowerCase().replace(/[^\p{L}\p{N}\s]/gu, " ").replace(/\s+/g, " ");
+        if (facts.some((fact) => { const existing = fact.sentence.toLowerCase().replace(/[^\p{L}\p{N}\s]/gu, " ").replace(/\s+/g, " "); return existing.includes(normalized.slice(0, 28)) || normalized.includes(existing.slice(0, 28)); })) continue;
         const words = sentence.replace(/[.!?]+$/, "").split(/\s+/);
         facts.push({ label: `${words.slice(0, 7).join(" ")}${words.length > 7 ? "…" : ""}`, sentence, sourceUrl: wikipedia.url });
       }
     }
-    return NextResponse.json({ topic: { id, name, description, entityType: details.entityType, facts, narration, wikipediaUrl: wikipedia?.url, wikipediaExtract: wikipedia?.extract } }, { headers: { "Cache-Control": "public, s-maxage=86400" } });
+    const currentAware = ["person", "organisation", "place", "event"].includes(details.entityType);
+    return NextResponse.json({ topic: { id, name, description, entityType: details.entityType, facts, narration, wikipediaUrl: wikipedia?.url, wikipediaExtract: wikipedia?.extract, currentAware, lastVerifiedAt: new Date().toISOString().slice(0, 10) } }, { headers: { "Cache-Control": "public, s-maxage=86400" } });
   } catch {
     return NextResponse.json({ error: "Fakta sahih untuk topik ini tidak dapat disediakan." }, { status: 502 });
   }

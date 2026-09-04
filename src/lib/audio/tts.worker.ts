@@ -109,7 +109,7 @@ async function fetchModel(): Promise<ArrayBuffer> {
   return bytes.buffer;
 }
 
-workerScope.onmessage = async (event: MessageEvent<{ text: string }>) => {
+workerScope.onmessage = async (event: MessageEvent<{ text: string; targetDurationSeconds?: number }>) => {
   try {
     ort.env.wasm.wasmPaths = "/vendor/ort/";
     ort.env.wasm.numThreads = 1;
@@ -117,6 +117,8 @@ workerScope.onmessage = async (event: MessageEvent<{ text: string }>) => {
     workerScope.postMessage({ type: "progress", message: "Menghidupkan suara neural Bahasa Melayu", percent: 44 });
     const session = await ort.InferenceSession.create(model, { executionProviders: ["wasm"] });
     const chunks = splitNarration(event.data.text);
+    const wordCount = event.data.text.trim().split(/\s+/).length;
+    const targetLengthScale = event.data.targetDurationSeconds ? Math.max(0.58, Math.min(1.05, event.data.targetDurationSeconds * 1.65 / Math.max(1, wordCount))) : 0.92;
     const audioParts: Float32Array[] = [];
     for (let index = 0; index < chunks.length; index += 1) {
       const ids = toTokenIds(chunks[index]);
@@ -124,7 +126,7 @@ workerScope.onmessage = async (event: MessageEvent<{ text: string }>) => {
         x: new ort.Tensor("int64", BigInt64Array.from(ids), [1, ids.length]),
         x_length: new ort.Tensor("int64", BigInt64Array.from([BigInt(ids.length)]), [1]),
         noise_scale: new ort.Tensor("float32", Float32Array.from([0.55]), [1]),
-        length_scale: new ort.Tensor("float32", Float32Array.from([0.92]), [1]),
+        length_scale: new ort.Tensor("float32", Float32Array.from([targetLengthScale]), [1]),
         noise_scale_w: new ort.Tensor("float32", Float32Array.from([0.7]), [1]),
       };
       const result = await session.run(feeds);

@@ -15,6 +15,7 @@ function plain(value?: string) {
 }
 
 type Page = {
+  pageid?: number;
   title: string;
   imageinfo?: Array<{
     url: string;
@@ -27,32 +28,34 @@ type Page = {
   }>;
 };
 
-export async function searchVisuals(query: string): Promise<Visual[]> {
+async function searchCommons(query: string, mediaType: "image" | "video", limit = 12): Promise<Visual[]> {
   const params = new URLSearchParams({
     action: "query",
     generator: "search",
-    gsrsearch: `${query} filetype:bitmap`,
+    gsrsearch: `${query} ${mediaType === "video" ? "filetype:video" : "filetype:bitmap"}`,
     gsrnamespace: "6",
-    gsrlimit: "24",
+    gsrlimit: String(limit),
     prop: "imageinfo",
     iiprop: "url|size|mime|extmetadata",
     iiurlwidth: "1280",
     format: "json",
     origin: "*",
   });
-  const response = await fetch(`${API}?${params}`, { headers: { "Api-User-Agent": "FactFrame/1.0 (local educational video generator)" }, next: { revalidate: 86400 } });
-  if (!response.ok) throw new Error("Wikimedia Commons search failed");
+  const response = await fetch(`${API}?${params}`, { headers: { "Api-User-Agent": "FactFrame/1.2 (local documentary video generator)" }, next: { revalidate: 86400 } });
+  if (!response.ok) throw new Error("Carian Wikimedia Commons gagal");
   const data = await response.json();
   const pages: Page[] = Object.values(data.query?.pages ?? {});
   return pages.flatMap((page): Visual[] => {
     const info = page.imageinfo?.[0];
     const meta = info?.extmetadata;
     const license = plain(meta?.LicenseShortName?.value ?? meta?.UsageTerms?.value);
-    if (!info || !info.mime?.startsWith("image/") || !isReusableLicense(license)) return [];
-    if (Math.max(info.width, info.height) < 700 || Math.min(info.width, info.height) < 350) return [];
+    const validMime = mediaType === "video" ? Boolean(info?.mime?.startsWith("video/")) : Boolean(info?.mime?.startsWith("image/"));
+    if (!info || !validMime || !isReusableLicense(license)) return [];
+    if (Math.max(info.width, info.height) < 640 || Math.min(info.width, info.height) < 320) return [];
     const lower = page.title.toLowerCase();
-    if (/logo|icon|signature|map icon|coat of arms|screenshot|scan/.test(lower)) return [];
+    if (mediaType === "image" && /logo|icon|signature|map icon|coat of arms|screenshot/.test(lower)) return [];
     return [{
+      id: String(page.pageid ?? info.url),
       title: plain(meta?.ObjectName?.value) || page.title.replace(/^File:/, ""),
       url: info.url,
       thumbUrl: info.thumburl ?? info.url,
@@ -63,6 +66,18 @@ export async function searchVisuals(query: string): Promise<Visual[]> {
       licenseUrl: plain(meta?.LicenseUrl?.value),
       sourceUrl: info.descriptionurl,
       description: plain(meta?.ImageDescription?.value),
+      source: "Wikimedia Commons",
+      mediaType,
+      mimeType: info.mime,
+      visualKind: mediaType === "video" ? "VIDEO" : "PHOTO",
     }];
-  }).sort((a, b) => licenseScore(b.license) - licenseScore(a.license) || (b.width * b.height) - (a.width * a.height)).slice(0, 6);
+  }).sort((a, b) => licenseScore(b.license) - licenseScore(a.license) || (b.width * b.height) - (a.width * a.height));
+}
+
+export async function searchVisuals(query: string): Promise<Visual[]> {
+  return (await searchCommons(query, "image", 24)).slice(0, 6);
+}
+
+export async function searchVideos(query: string): Promise<Visual[]> {
+  return (await searchCommons(query, "video", 12)).slice(0, 5);
 }

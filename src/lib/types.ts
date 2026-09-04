@@ -23,9 +23,12 @@ export type Topic = {
   wikipediaUrl?: string;
   wikipediaExtract?: string;
   mystery?: MysteryScript;
+  lastVerifiedAt?: string;
+  currentAware?: boolean;
+  contentMode?: ContentMode;
 };
 
-export type ContentMode = "QUICK_FACTS" | "MYSTERY";
+export type ContentMode = "STORY" | "MYSTERY";
 export type StoryDuration = 30 | 60 | 90;
 export type StoryTone = "DOCUMENTARY" | "SUSPENSEFUL";
 export type StoryCategory = "UNSOLVED_MYSTERY" | "HISTORICAL_MYSTERY" | "DISAPPEARANCE" | "STRANGE_EVENT" | "CRIME_MYSTERY" | "CONSPIRACY_THEORY" | "PARANORMAL_CLAIM" | "URBAN_LEGEND" | "ARCHAEOLOGICAL_MYSTERY" | "UNEXPLAINED_PHENOMENON";
@@ -33,7 +36,11 @@ export type CaseStatus = "UNSOLVED" | "PARTIALLY_EXPLAINED" | "SOLVED" | "DISPUT
 export type SourceReliability = "PRIMARY" | "INSTITUTIONAL" | "ACADEMIC" | "ARCHIVAL" | "REFERENCE" | "SECONDARY" | "LOW_CONFIDENCE";
 export type ClaimType = "VERIFIED" | "REPORTED" | "THEORY" | "DISPUTED" | "UNRESOLVED" | "FOLKLORE" | "EXPLAINED_LATER";
 export type VisualIntent = "ARCHIVAL_PHOTO" | "PORTRAIT" | "LOCATION" | "MAP" | "NEWSPAPER" | "DOCUMENT" | "TIMELINE" | "THEORY_CARD" | "FACT_CARD" | "EVIDENCE" | "ENDING";
+export type MediaType = "image" | "video" | "programmatic";
+export type VisualKind = "VIDEO" | "PHOTO" | "MAP" | "TIMELINE" | "DOCUMENT" | "NEWSPAPER" | "EVIDENCE_GRAPHIC" | "FACT_CARD" | "THEORY_CARD" | "DATE_CARD";
 export type SegmentRole = "HOOK" | "OPEN_LOOP" | "CONTEXT" | "ESCALATION" | "TWIST" | "THEORY" | "COUNTERPOINT" | "PAYOFF";
+export type StoryAngleType = "BIOGRAPHICAL_JOURNEY" | "TURNING_POINT" | "ORIGIN_STORY" | "TIMELINE" | "HOW_IT_CHANGED" | "WHY_IT_MATTERS" | "MAJOR_MOMENTS" | "HISTORICAL_OVERVIEW";
+export type StoryAngle = { id: string; title: string; type: StoryAngleType; summary: string };
 
 export type ResearchSource = {
   id: string;
@@ -83,6 +90,7 @@ export type MysterySegment = {
   sourceIds: string[];
   claimType: ClaimType;
   visualIntent: VisualIntent;
+  visualSearchQueries?: string[];
 };
 
 export type MysteryScript = {
@@ -103,6 +111,7 @@ export type MysteryScript = {
 };
 
 export type Visual = {
+  id?: string;
   title: string;
   url: string;
   thumbUrl: string;
@@ -113,6 +122,30 @@ export type Visual = {
   licenseUrl: string;
   sourceUrl: string;
   description: string;
+  source?: "Wikimedia Commons" | "FactFrame";
+  mediaType?: MediaType;
+  mimeType?: string;
+  visualKind?: VisualKind;
+  visualIntent?: VisualIntent;
+  segmentIndex?: number;
+  searchQuery?: string;
+  relevanceScore?: number;
+};
+
+export type VisualQualityReport = {
+  repetitionScore: number;
+  relevanceScore: number;
+  visualTypeDiversity: number;
+  visualKinds: VisualKind[];
+};
+
+export type WatermarkPosition = "TOP_LEFT" | "TOP_CENTER" | "TOP_RIGHT" | "MIDDLE_LEFT" | "CENTER" | "MIDDLE_RIGHT" | "BOTTOM_LEFT" | "BOTTOM_CENTER" | "BOTTOM_RIGHT";
+export type WatermarkConfig = {
+  enabled: boolean;
+  text: string;
+  position: WatermarkPosition;
+  opacity: number;
+  size: "SMALL" | "MEDIUM" | "LARGE";
 };
 
 export type Scene = {

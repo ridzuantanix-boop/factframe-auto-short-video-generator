@@ -40,6 +40,30 @@ export async function searchEntities(query: string): Promise<SearchResult[]> {
   }));
 }
 
+export async function searchEntityPage(query: string, offset = 0, limit = 25): Promise<{ results: SearchResult[]; hasMore: boolean }> {
+  const params = new URLSearchParams({ action: "wbsearchentities", search: query, language: "en", uselang: "ms", type: "item", limit: String(limit), continue: String(offset), format: "json" });
+  const response = await wikidataFetch(`https://www.wikidata.org/w/api.php?${params}`, 21600);
+  if (!response.ok) throw new Error("Wikidata discovery failed");
+  const data = await response.json();
+  const results = (data.search ?? []).map((item: { id: string; label?: string; description?: string; concepturi?: string }) => ({
+    id: item.id,
+    label: item.label ?? item.id,
+    description: item.description ?? "entiti bersumber dalam Wikidata",
+    url: item.concepturi ?? `${WD}${item.id}`,
+  }));
+  return { results, hasMore: typeof data["search-continue"] === "number" };
+}
+
+export async function searchWikipediaCandidates(query: string, offset = 0, limit = 25): Promise<{ results: SearchResult[]; hasMore: boolean }> {
+  const params = new URLSearchParams({ action: "query", generator: "search", gsrsearch: query, gsrnamespace: "0", gsrlimit: String(limit), gsroffset: String(offset), prop: "pageprops|description|info", inprop: "url", format: "json", origin: "*" });
+  const response = await wikidataFetch(`https://en.wikipedia.org/w/api.php?${params}`, 21600);
+  if (!response.ok) throw new Error("Wikipedia discovery failed");
+  const data = await response.json();
+  const pages = Object.values(data.query?.pages ?? {}) as Array<{ title: string; description?: string; fullurl?: string; pageprops?: { wikibase_item?: string } }>;
+  const results = pages.filter((page) => page.pageprops?.wikibase_item).map((page) => ({ id: page.pageprops!.wikibase_item!, label: page.title, description: page.description ?? `Rencana bersumber tentang ${page.title}`, url: page.fullurl ?? `${WD}${page.pageprops!.wikibase_item}` }));
+  return { results, hasMore: typeof data.continue?.gsroffset === "number" };
+}
+
 export async function getEntity(id: string): Promise<Entity> {
   const response = await wikidataFetch(`${WD}Special:EntityData/${id}.json`, 86400);
   if (!response.ok) throw new Error("Wikidata lookup failed");
