@@ -7,7 +7,7 @@ import { hash, json, parseRange, publicJob, readBody, type CloudJob } from "./ut
 import { validateInput } from "./validation";
 import { decodeImage } from "../src/lib/pawarna/image";
 import type { JobInput, Stage } from "../src/lib/pawarna/types";
-import { analyseProduct, researchProduct, createPlan } from "../src/services/pawarna/intelligence";
+import { analyseProduct, prepareResearch, createPlan } from "../src/services/pawarna/intelligence";
 import { buildVideoPrompt } from "../src/lib/pawarna/prompt";
 import { NexabotProvider, ProviderError } from "../src/services/nexabot/provider";
 
@@ -52,7 +52,7 @@ export class PawarnaFactory extends DurableObject<Env> {
     if (url.pathname === "/api/factory" && request.method === "GET") {
       const rows = this.ctx.storage.sql.exec<Row>("SELECT id,data,request_hash FROM jobs WHERE owner=? ORDER BY created_at DESC LIMIT 30", owner).toArray();
       if (rows.some(row => !terminal(JSON.parse(row.data)))) await this.schedule(1000);
-      return json({ products: this.products.list(owner), usage: rows.map(row => { const j: CloudJob = JSON.parse(row.data); return { id:j.id, name:j.product?.name || "Produk", attempts:j.provider_requests.length, recorded_cost:j.provider_requests.reduce((sum,r)=>sum+r.cost,0), stage:j.stage }; }), jobs: rows.map(row => publicJob(JSON.parse(row.data))), paused: this.env.GENERATION_ENABLED !== "true", ready: { gemini: !!this.env.GEMINI_API_KEY, nexabot: !!this.env.NEXABOT_API_KEY, worker: this.env.GENERATION_ENABLED === "true" }, deployment: "cloudflare", model: this.env.GEMINI_TEXT_MODEL });
+      return json({ products: this.products.list(owner), jobs: rows.map(row => publicJob(JSON.parse(row.data))), paused: this.env.GENERATION_ENABLED !== "true", ready: { gemini: !!this.env.GEMINI_API_KEY, nexabot: !!this.env.NEXABOT_API_KEY, worker: this.env.GENERATION_ENABLED === "true" }, deployment: "cloudflare", model: this.env.GEMINI_TEXT_MODEL });
     }
     if (url.pathname.startsWith("/api/products")) {
       try { return await this.products.route(request, owner, id => this.get(id)); } catch (e) { return json({error:e instanceof Error && /^(Upload|Gaya|Arahan|Imej|Had|Jumlah|Fail|Setiap)/.test(e.message) ? e.message : "Permintaan produk tidak sah."},400); }
@@ -60,7 +60,7 @@ export class PawarnaFactory extends DurableObject<Env> {
     const media = /^\/api\/factory\/jobs\/([a-f0-9-]{36})\/media$/.exec(url.pathname);
     if (media && ["GET", "HEAD"].includes(request.method)) return this.media(request, owner, media[1]);
     if (url.pathname !== "/api/generate" || request.method !== "POST") return json({ error: "Tidak ditemui." }, 404);
-    if (this.env.GENERATION_ENABLED !== "true" || !this.env.GEMINI_API_KEY || !this.env.NEXABOT_API_KEY) return json({ error: "Generation dihentikan sementara untuk semakan caj. Tiada job baru dihantar." }, 503);
+    if (this.env.GENERATION_ENABLED !== "true" || !this.env.GEMINI_API_KEY || !this.env.NEXABOT_API_KEY) return json({ error: "Generation dihentikan sementara untuk semakan sistem. Tiada job baru dihantar." }, 503);
     const key = request.headers.get("idempotency-key");
     if (!key || !/^[a-zA-Z0-9-]{16,100}$/.test(key)) return json({ error: "Permintaan tidak sah. Refresh halaman." }, 400);
     const now = Date.now();
@@ -163,11 +163,11 @@ export class PawarnaFactory extends DurableObject<Env> {
       if (error instanceof ProviderError && error.kind === "unavailable") { /* Retry only status/download, not paid submission. */ }
       else {
         const uncertain = error instanceof ProviderError && error.kind === "uncertain";
-        job.error = uncertain ? "Status penghantaran belum dapat disahkan. Semak job Nexabot sebelum menjana semula untuk elak caj berganda."
+        job.error = uncertain ? "Status penghantaran belum dapat disahkan. Hubungi sokongan sebelum mencuba semula."
           : job.stage === "analysing" ? "Gambar belum dapat dianalisis. Semak key/model Gemini dan cuba lagi."
           : job.stage === "researching" ? "Carian sumber tidak berjaya. Cuba lagi sebentar lagi."
           : job.stage === "planning" ? "Skrip belum lulus semakan fakta. Cuba gambar yang lebih jelas."
-          : "Generation tidak dapat diteruskan. Semak baki penyedia atau had harian studio.";
+          : "Generation tidak dapat diteruskan. Hubungi sokongan atau semak had harian studio.";
         this.save(job, "failed");
         console.error(JSON.stringify({ event: "job_failed", id: job.id, uncertain, status: error && typeof error === "object" && "status" in error ? error.status : undefined }));
       }
@@ -176,15 +176,14 @@ export class PawarnaFactory extends DurableObject<Env> {
   private async advance(job: CloudJob) {
     if (job.stage === "submitting" && !job.external_job_id) throw new ProviderError("uncertain", "Interrupted submission");
     if (!job.external_job_id && this.env.GENERATION_ENABLED !== "true") {
-      job.error = "Penghantaran dihentikan untuk semakan caj. Job ini tidak dihantar semula.";
+      job.error = "Penghantaran dihentikan untuk semakan sistem. Job ini tidak dihantar semula.";
       this.save(job, "failed"); return;
     }
     const object = await this.env.MEDIA.get(job.input_key);
     if (!object) throw new Error("Missing input");
     const input = await object.json<JobInput>();
     if (!job.product) { this.save(job, "analysing"); job.product = await analyseProduct(input); this.save(job, "researching"); return; }
-    if (!job.research) { this.save(job, "researching"); job.research = await researchProduct(job.product); this.save(job, "planning"); return; }
-    if (!job.plan) { this.save(job, "planning"); job.plan = await createPlan(input, job.product, job.research); this.save(job, "queued"); return; }
+    if (!job.plan) { job.research = await prepareResearch(job.product, input, job.research); this.save(job, "planning"); job.plan = await createPlan(input, job.product, job.research); this.save(job, "queued"); return; }
     const provider = new NexabotProvider();
     if (!job.external_job_id) {
       const day = new Date().toISOString().slice(0, 10);

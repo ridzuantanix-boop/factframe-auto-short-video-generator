@@ -1,7 +1,7 @@
 import { claimJob, getJob, heartbeat, saveJob, saveVideo } from "../src/lib/pawarna/store";
 import type { Job, Stage } from "../src/lib/pawarna/types";
 import { buildVideoPrompt } from "../src/lib/pawarna/prompt";
-import { analyseProduct, researchProduct, createPlan } from "../src/services/pawarna/intelligence";
+import { analyseProduct, prepareResearch, createPlan } from "../src/services/pawarna/intelligence";
 import { NexabotProvider, ProviderError } from "../src/services/nexabot/provider";
 
 const provider = new NexabotProvider();
@@ -11,7 +11,7 @@ async function runJob(job: Job) {
   try {
     // A crash during POST may have consumed credit. Never repeat an ambiguous submission.
     if (job.stage === "submitting" && !job.external_job_id) throw new ProviderError("uncertain", "Interrupted submission");
-    if (!job.external_job_id && process.env.GENERATION_ENABLED === "false") { job.error = "Penghantaran dihentikan untuk semakan caj. Job ini tidak dihantar semula."; stage(job, "failed"); return; }
+    if (!job.external_job_id && process.env.GENERATION_ENABLED === "false") { job.error = "Penghantaran dihentikan untuk semakan sistem. Job ini tidak dihantar semula."; stage(job, "failed"); return; }
     if (job.parent_generation_id && !job.product) {
       const previous = getJob(job.parent_generation_id);
       if (previous?.owner === job.owner) {
@@ -22,8 +22,7 @@ async function runJob(job: Job) {
       }
     }
     if (!job.product) { stage(job, "analysing"); job.product = await analyseProduct(job.input); saveJob(job); }
-    if (!job.research) { stage(job, "researching"); job.research = await researchProduct(job.product); saveJob(job); }
-    if (!job.plan) { stage(job, "planning"); job.plan = await createPlan(job.input, job.product, job.research); saveJob(job); }
+    if (!job.plan) { job.research = await prepareResearch(job.product, job.input, job.research); stage(job, "planning"); job.plan = await createPlan(job.input, job.product, job.research); saveJob(job); }
     if (!job.external_job_id) {
       const selected = job.product.reference_indices.slice(0, job.input.avatar ? 2 : 3).map(i => job.input.images[i]);
       job.plan.video_prompt = buildVideoPrompt(job.product, job.plan, !!job.input.avatar, selected.length, job.input.instructions, job.input.settings);
@@ -55,11 +54,11 @@ async function runJob(job: Job) {
       console.log(`[factory] ${job.id} provider temporarily unavailable`);
     } else {
       job.error = e instanceof ProviderError && e.kind === "uncertain"
-        ? "Status penghantaran belum dapat disahkan. Semak job Nexabot sebelum menjana semula untuk elak caj berganda."
+        ? "Status penghantaran belum dapat disahkan. Hubungi sokongan sebelum mencuba semula."
         : job.stage === "researching" ? "Carian sumber tidak berjaya. Cuba lagi sebentar lagi."
         : job.stage === "planning" ? "Skrip belum lulus semakan fakta. Cuba lagi atau gunakan gambar label lebih jelas."
         : job.stage === "analysing" ? "Gambar belum dapat dianalisis. Semak konfigurasi Gemini dan cuba lagi."
-        : "Generation tidak dapat diteruskan. Semak konfigurasi dan baki penyedia.";
+        : "Generation tidak dapat diteruskan. Hubungi sokongan untuk semakan sistem.";
       // Do not log provider bodies, secrets, uploaded photos or personal data.
       const code = e && typeof e === "object" && "status" in e && typeof e.status === "number" ? e.status : "n/a";
       console.error(`[factory] ${job.id} failed stage=${job.stage} type=${e instanceof Error ? e.name : "unknown"} status=${code}`);

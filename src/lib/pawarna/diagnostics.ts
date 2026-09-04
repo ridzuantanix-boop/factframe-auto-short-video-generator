@@ -7,7 +7,7 @@ export function jobDiagnostics(job: PublicJob, deployment: "local" | "cloud") {
     "PAWARNA — Info job",
     `Persekitaran: ${deployment}`,
     `Job ID: ${job.id}`,
-    `Nexabot ID: ${job.external_job_id || "Belum dihantar"}`,
+    `ID rujukan: ${job.external_job_id || "Belum dihantar"}`,
     `Status: ${job.stage} — ${STAGES[job.stage]}`,
     `Dicipta (UTC): ${time(job.created_at)}`,
     `Kemas kini terakhir (UTC): ${time(job.updated_at)}`,

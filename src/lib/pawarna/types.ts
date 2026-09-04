@@ -8,6 +8,7 @@ export const STAGES: Record<Stage, string> = {
   saving: "Menyimpan video anda…", completed: "Video dah siap.", failed: "Video belum berjaya disiapkan.",
 };
 export interface ProductAnalysis {
+  variant_verification_required?: boolean; missing_required_facts?: string[];
   primary_function?: string; target_audience?: string;
   name: string; brand: string; category: string; confidence: "high" | "medium" | "low";
   visible_text: string; description: string; observed_features: string[];
@@ -15,7 +16,8 @@ export interface ProductAnalysis {
 }
 export interface Source { id: string; title: string; url: string }
 export interface Research {
-  status: "grounded" | "unverified"; sources: Source[];
+  status: "grounded" | "observation_only" | "unverified"; sources: Source[];
+  context_key?: string;
   evidence: { id: string; text: string; source_ids: string[] }[];
   queries: string[]; search_html: string; note: string;
 }

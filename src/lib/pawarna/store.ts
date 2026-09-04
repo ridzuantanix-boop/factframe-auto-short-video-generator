@@ -57,11 +57,12 @@ export function claimJob(): Job | undefined {
     d.exec("COMMIT"); return job;
   } catch (e) { d.exec("ROLLBACK"); throw e; }
 }
+import { customerError } from "./customer-status";
 export function publicJob(job: Job): PublicJob {
   const { input } = job;
   const publicData = { settings: job.settings || input.settings, id: job.id, stage: job.stage, created_at: job.created_at, updated_at: job.updated_at,
     external_job_id: job.external_job_id, product: job.product, research: job.research, plan: job.plan,
-    retry_count: job.retry_count, error: job.error, duration_seconds: job.duration_seconds,
+    retry_count: job.retry_count, error: customerError(job.error), duration_seconds: job.duration_seconds,
     parent_generation_id: job.parent_generation_id, segment_number: job.segment_number };
   // Prompt remains server-side; the result presents script and sources, not machinery.
   if (publicData.plan) publicData.plan = { ...publicData.plan, video_prompt: "" };

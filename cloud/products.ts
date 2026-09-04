@@ -1,6 +1,7 @@
 import type { Env } from "./worker";
 import type { JobInput } from "../src/lib/pawarna/types";
 import { publicProduct, applyCorrections, type ProductProject } from "../src/lib/pawarna/projects";
+import { researchContext, shouldResearchProduct } from "../src/lib/pawarna/research";
 import { analyseProduct, researchProduct } from "../src/services/pawarna/intelligence";
 import { decodeImage } from "../src/lib/pawarna/image";
 import { validateInput } from "./validation";
@@ -64,8 +65,8 @@ export class Products {
       // An interrupted AI request is not replayed automatically.
       if (p.stage === "analysing" || p.stage === "researching") throw new Error("Interrupted analysis");
       const input = await this.input(p); p.stage="analysing"; this.save(p); await this.ctx.storage.sync();
-      p.product ||= await analyseProduct(input); p.stage="researching";this.save(p);
-      p.research ||= await researchProduct(p.product); p.stage="ready";this.save(p);
+      p.product ||= await analyseProduct(input); p.stage=shouldResearchProduct(p.product,researchContext(input))?"researching":"analysing";this.save(p);
+      p.research ||= await researchProduct(p.product,researchContext(input)); p.stage="ready";this.save(p);
     } catch { p.stage="failed";p.error="Analisis belum dapat disiapkan. Semak gambar atau akses analisis. Tiada video berbayar dihantar.";this.save(p); }
     return true;
   }

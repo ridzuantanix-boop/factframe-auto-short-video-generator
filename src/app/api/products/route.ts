@@ -4,6 +4,7 @@ import { ownerId,sameOrigin } from "@/lib/pawarna/session";
 import { getJob,reserveProduct,saveProduct } from "@/lib/pawarna/store";
 import { validateInput } from "@/lib/pawarna/validation";
 import { publicProduct } from "@/lib/pawarna/projects";
+import { researchContext, shouldResearchProduct } from "@/lib/pawarna/research";
 import { analyseProduct,researchProduct } from "@/services/pawarna/intelligence";
 export const runtime="nodejs";
 export async function POST(request:Request){
@@ -17,7 +18,7 @@ export async function POST(request:Request){
   if(!source&&!process.env.GEMINI_API_KEY)return Response.json({error:"Analisis belum tersedia."},{status:503});
   const input=source?source.input:await validateInput(body),fingerprint=createHash("sha256").update(JSON.stringify(body)).digest("hex");
   const result=reserveProduct(owner,key,fingerprint,input,source),p=result.project;
-  if(result.fresh&&p.stage!=="ready")after(async()=>{try{p.stage="analysing";saveProduct(p);p.product||=await analyseProduct(input);p.stage="researching";saveProduct(p);p.research||=await researchProduct(p.product);p.stage="ready";saveProduct(p);}catch{p.stage="failed";p.error="Analisis belum berjaya. Semak gambar atau akses analisis. Tiada video berbayar dihantar.";saveProduct(p);}});
+  if(result.fresh&&p.stage!=="ready")after(async()=>{try{p.stage="analysing";saveProduct(p);p.product||=await analyseProduct(input);p.stage=shouldResearchProduct(p.product,researchContext(input))?"researching":"analysing";saveProduct(p);p.research||=await researchProduct(p.product,researchContext(input));p.stage="ready";saveProduct(p);}catch{p.stage="failed";p.error="Analisis belum berjaya. Semak gambar atau akses analisis. Tiada video berbayar dihantar.";saveProduct(p);}});
   return Response.json({product:publicProduct(p)},{status:202,headers:{"Cache-Control":"no-store"}});
  }catch(e){return Response.json({error:e instanceof Error&&/^(Upload|Imej|Had|Arahan|Jumlah|Permintaan|Fail|Setiap)/.test(e.message)?e.message:"Permintaan produk tidak sah."},{status:400});}
 }
