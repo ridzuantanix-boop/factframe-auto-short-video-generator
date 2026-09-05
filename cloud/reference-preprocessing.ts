@@ -11,7 +11,8 @@ export async function providerReferences(input:JobInput,product:ProductAnalysis,
   const media:string[]=[],audit:ReferenceAudit[]=[];
   for(const index of indices){const original=input.images[index],assessment=product.reference_preprocessing?.find(a=>a.index===index);let provider=original,applied=false;
     if(safe(assessment,index)){try{provider=await crop(original,assessment.product_region!,index);applied=provider!==original;}catch{/* fail closed to the complete original */}}
-    const base:ReferenceAssessment=assessment||{index,reference_type:"UNCERTAIN",detected_ui:false,product_region:null,ui_overlap_product:false,sanitization_confidence:"low",reason:"No conservative assessment available."};
+    const raw:ReferenceAssessment=assessment||{index,reference_type:"UNCERTAIN",detected_ui:false,product_region:null,ui_overlap_product:false,sanitization_confidence:"low",reason:"No conservative assessment available."};
+    const base:ReferenceAssessment=raw.ui_overlap_product?{...raw,sanitization_confidence:"low",reason:`${raw.reason} UI overlaps the product region; V1 keeps the complete original.`}:raw;
     media.push(provider);audit.push({...base,original_reference_id:id(original),provider_reference_id:id(provider),sanitization_applied:applied,sanitization_method:applied?"original_pixel_crop":"none",crop_bounds:applied?base.product_region:null});
   }
   return {media,audit};
