@@ -4,6 +4,8 @@ import type { Evaluation } from "./test-types";
 import type { ProductProject } from "../src/lib/pawarna/projects";
 import type { JobInput } from "../src/lib/pawarna/types";
 import { decodeImage } from "../src/lib/pawarna/image";
+import { analyseProduct } from "../src/services/pawarna/intelligence";
+import { cloudflareCrop, providerReferences } from "./reference-preprocessing";
 
 export const SCORE_FIELDS = ["product_fidelity", "product_scale", "first_frame", "ugc_realism", "brightness_sharpness", "hands_anatomy", "voice_naturalness", "script_completion", "cta_completion", "shariah_aurat", "style_accuracy", "angle_accuracy", "overall"] as const;
 export function evaluation(value: Record<string, unknown>): Evaluation {
@@ -87,11 +89,16 @@ export class TestAccess {
       const jobs=this.ctx.storage.sql.exec<{data:string}>("SELECT data FROM jobs WHERE owner=? AND json_extract(data,'$.controlled_test') IS NOT NULL ORDER BY created_at",owner).toArray().map(row=>this.report(JSON.parse(row.data)));
       return json({limit:testLimit(this.env),attempts:this.count("attempts"),remaining:this.available(),jobs});
     }
-    if(path==="/api/test/reference-inspect"&&request.method==="GET"){
+    if(path==="/api/test/reference-inspect"&&["GET","POST"].includes(request.method)){
       const name=(new URL(request.url).searchParams.get("name")||"").trim().toLowerCase();if(!name||name.length>80)return json({},400);
       const projects=this.ctx.storage.sql.exec<{data:string}>("SELECT data FROM products ORDER BY rowid DESC LIMIT 100").toArray().map(row=>JSON.parse(row.data) as ProductProject);
       const project=projects.find(item=>item.stage==="ready"&&item.product?.name.toLowerCase().includes(name));if(!project)return json({},404);
       const input=await this.env.MEDIA.get(project.input_key).then(object=>object?.json<JobInput>());if(!input)return json({},404);
+      if(request.method==="POST"){
+        const assessment=await analyseProduct(input);project.product={...project.product!,reference_preprocessing:assessment.reference_preprocessing};
+        const indices=input.images.map((_,index)=>index),prepared=await providerReferences(input,project.product,indices,(source,bounds)=>cloudflareCrop(this.env.IMAGES,source,bounds));input.sanitized_video_references={};for(let i=0;i<indices.length;i++)if(prepared.audit[i].sanitization_applied)input.sanitized_video_references[String(indices[i])]=prepared.media[i];project.reference_audit=prepared.audit;project.updated_at=Date.now();
+        await this.env.MEDIA.put(project.input_key,JSON.stringify(input),{httpMetadata:{contentType:"application/json"}});this.ctx.storage.sql.exec("UPDATE products SET data=? WHERE id=?",JSON.stringify(project),project.id);
+      }
       return json({project_id:project.id,product_name:project.product?.name,created_at:project.created_at,reference_preprocessing:(project.reference_audit||[]).map(item=>({...item,original_preview_url:`/api/test/products/${project.id}/reference/${item.index}?kind=original`,sanitized_preview_url:item.sanitization_applied?`/api/test/products/${project.id}/reference/${item.index}?kind=sanitized`:null}))});
     }
     const productPreview=/^\/api\/test\/products\/([a-f0-9-]{36})\/reference\/(\d+)$/.exec(path);
