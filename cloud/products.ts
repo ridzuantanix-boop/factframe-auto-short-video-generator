@@ -2,7 +2,7 @@ import type { Env } from "./worker";
 import type { JobInput } from "../src/lib/pawarna/types";
 import { publicProduct, applyCorrections, type ProductProject } from "../src/lib/pawarna/projects";
 import { researchContext, shouldResearchProduct } from "../src/lib/pawarna/research";
-import { analyseProduct, researchProduct } from "../src/services/pawarna/intelligence";
+import { analyseProduct, researchProduct, validateSanitizedReference } from "../src/services/pawarna/intelligence";
 import { decodeImage } from "../src/lib/pawarna/image";
 import { validateInput } from "./validation";
 import { hash, json, readBody, type CloudJob } from "./utils";
@@ -69,7 +69,7 @@ export class Products {
       if (p.stage === "analysing" || p.stage === "researching") throw new Error("Interrupted analysis");
       const input = await this.input(p); p.stage="analysing"; this.save(p); await this.ctx.storage.sync();
       p.product ||= await analyseProduct(input);
-      if(!input.sanitized_video_references){const indices=input.images.map((_,index)=>index),prepared=await providerReferences(input,p.product,indices,(source,bounds)=>cloudflareCrop(this.env.IMAGES,source,bounds));input.sanitized_video_references={};for(let i=0;i<indices.length;i++)if(prepared.audit[i].sanitization_applied)input.sanitized_video_references[String(indices[i])]=prepared.media[i];p.reference_audit=prepared.audit;await this.env.MEDIA.put(p.input_key,JSON.stringify(input),{httpMetadata:{contentType:"application/json"}});this.save(p);}
+      if(!input.sanitized_video_references){const indices=input.images.map((_,index)=>index),prepared=await providerReferences(input,p.product,indices,(source,bounds)=>cloudflareCrop(this.env.IMAGES,source,bounds),validateSanitizedReference);input.sanitized_video_references={};for(let i=0,mediaIndex=0;i<indices.length;i++)if(prepared.audit[i].providerCallAllowed){if(prepared.audit[i].sanitization_applied)input.sanitized_video_references[String(indices[i])]=prepared.media[mediaIndex];mediaIndex++;}p.reference_audit=prepared.audit;await this.env.MEDIA.put(p.input_key,JSON.stringify(input),{httpMetadata:{contentType:"application/json"}});this.save(p);}
       p.stage=shouldResearchProduct(p.product,researchContext(input))?"researching":"analysing";this.save(p);
       if(!await allowAnalysis(p.owner))throw new Error("Research authorization expired");
       p.research ||= await researchProduct(p.product,researchContext(input)); p.stage="ready";this.save(p);

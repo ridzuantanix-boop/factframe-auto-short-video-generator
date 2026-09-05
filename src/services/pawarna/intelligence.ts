@@ -43,6 +43,12 @@ export async function analyseProduct(input: JobInput): Promise<ProductAnalysis> 
   if (/^(none|tiada|n\/a)$/i.test(product.uncertainty?.trim() || "")) product.uncertainty = "";
   return product;
 }
+export async function validateSanitizedReference(image:string){
+  const {mimeType,data}=decodeImage(image);
+  const result=await json<{postSanitizationClean:boolean;residualUiDetected:boolean;sanitizationConfidence:"high"|"medium"|"low";rectangularCropInsufficient:boolean;reason:string}>(`Inspect this non-generatively cropped product reference. Detect any residual app/screenshot/promotional UI: TikTok or Shopee UI, PayLater or installment banners, price badges, social controls, usernames, navigation, unrelated promotional graphics, screenshot framing, or surrounding overlay text. Genuine branding, logos, labels, titles, and text physically printed on the product or its packaging are PRODUCT pixels and must NOT be classified as UI. postSanitizationClean=true only when no residual UI remains and the complete meaningful product or set is not cut. sanitizationConfidence=high only when that conclusion is visually clear. rectangularCropInsufficient=true when a rectangular crop cannot isolate the complete product without retaining UI or cutting it.`,object({postSanitizationClean:{type:"boolean"},residualUiDetected:{type:"boolean"},sanitizationConfidence:{type:"string",enum:["high","medium","low"]},rectangularCropInsufficient:{type:"boolean"},reason:string}),[{inlineData:{mimeType,data}}]);
+  if(result.residualUiDetected||result.sanitizationConfidence!=="high")result.postSanitizationClean=false;
+  return result;
+}
 export async function researchProduct(product: ProductAnalysis, context: ResearchContext = {}): Promise<Research> {
   if (!shouldResearchProduct(product, context)) return observationOnly(context);
   const result = await searchProduct(product, context);

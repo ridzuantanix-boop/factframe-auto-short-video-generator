@@ -24,6 +24,9 @@ export interface ReferenceAssessment {
 export interface ReferenceAudit extends ReferenceAssessment {
   original_reference_id: string; provider_reference_id: string; sanitization_applied: boolean;
   sanitization_method: "original_pixel_crop" | "none"; crop_bounds: ReferenceAssessment["product_region"];
+  referencePathUsed?: "original_clean"|"sanitized_clean"|"blocked_unsafe";
+  postSanitizationClean?: boolean; residualUiDetected?: boolean;
+  rectangularCropInsufficient?: boolean; providerCallAllowed?: boolean;
 }
 export interface Source { id: string; title: string; url: string }
 export interface Research {

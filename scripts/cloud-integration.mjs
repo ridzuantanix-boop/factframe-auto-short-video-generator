@@ -10,8 +10,8 @@ import sharp from "sharp";
 const controlled=process.argv.includes("--controlled");
 const testToken="integration-owner-token-not-production-000000";
 const origin = "http://127.0.0.1:8897";
-let lastPrompt = ""; let submissions = 0; let analyses = 0; let searches = 0; let mode = "success";
-const product = { name: "Buku Biru", brand: "", category: "Buku", confidence: "high", visible_text: "Buku Biru", description: "Buku dengan cover biru", observed_features: ["Cover biru"], search_query: "Buku Biru", uncertainty: "", reference_indices: [0] };
+let lastPrompt = ""; let submissions = 0; let analyses = 0; let searches = 0; let mode = "success"; let dirtyReference=false;
+const product = { name: "Buku Biru", brand: "", category: "Buku", confidence: "high", visible_text: "Buku Biru", description: "Buku dengan cover biru", observed_features: ["Cover biru"], search_query: "Buku Biru", uncertainty: "", reference_indices: [0], productStructure:{type:"single",visiblePieceCount:1,majorComponents:["buku"],accessories:[]}, reference_preprocessing:[{index:0,reference_type:"CLEAN_PRODUCT_IMAGE",detected_ui:false,product_region:null,ui_overlap_product:false,sanitization_confidence:"high",reason:"Clean fixture"}] };
 const plan = { scene_plan: {"0-2":"Move camera toward closed blue book","2-6":"Hands hold the closed book steadily","6-8":"Show cover title without opening","8-10":"Set book down, voiceover finishes"}, angle: "Cover biru", hook: "Suka tengok buku dengan cover biru macam ini?", script: "Suka tengok buku dengan cover biru macam ini? Warna birunya jelas dan tajuknya ada pada bahagian depan. Klik link kat bawah.", cta: "Klik link kat bawah.", mode: "Book Creator", visual_direction: "Hold the book", claim_evidence_ids: [] };
 const video = Buffer.from([0, 0, 0, 24, ...Buffer.from("ftypisom"), 0, 0, 0, 0, ...Buffer.from("isomiso2")]);
 const mock = createServer(async (req, res) => {
@@ -21,7 +21,8 @@ const mock = createServer(async (req, res) => {
   if (req.url.includes(":generateContent")) {
     assert.equal(req.headers["x-goog-api-key"], "test-only");
     const content = JSON.stringify(body); let value;
-    if (content.includes("Inspect these photographs")) { analyses++; value = product; }
+    if (content.includes("Inspect these photographs")) { analyses++; value = dirtyReference?{...product,name:"Dessini cookware set",reference_preprocessing:[{index:0,reference_type:"SCREENSHOT_OR_UI_IMAGE",detected_ui:true,product_region:{left:.05,top:.28,right:.95,bottom:.65},ui_overlap_product:false,sanitization_confidence:"high",reason:"Product region"}]}:product; }
+    else if(content.includes("Inspect this non-generatively cropped product reference"))value={postSanitizationClean:false,residualUiDetected:true,sanitizationConfidence:"low",rectangularCropInsufficient:true,reason:"PayLater and installment banner remain"};
     else if (content.includes("Research the photographed product")) {
       searches++;
       res.end(JSON.stringify({ candidates: [{ content: { role: "model", parts: [{ text: "Cover buku berwarna biru." }] }, groundingMetadata: { groundingChunks: [{ web: { uri: "https://example.com/book", title: "Mock source" } }], groundingSupports: [{ segment: { text: "Cover biru" }, groundingChunkIndices: [0] }], webSearchQueries: ["Buku Biru"] } }] })); return;
@@ -144,6 +145,10 @@ try {
   }
   if(controlled){assert.equal((await productRequest({images:[image]},crypto.randomUUID())).status,503);assert.equal(searches,0);}
   else {
+  dirtyReference=true;const beforeBlocked=submissions;
+  const dirtyProductResponse=await productRequest({images:[image]},crypto.randomUUID());assert.equal(dirtyProductResponse.status,202);const dirtyId=(await dirtyProductResponse.json()).product.id;
+  for(let i=0;i<120;i++){const p=(await list(cookie)).products.find(p=>p.id===dirtyId);if(p.stage==="ready")break;if(p.stage==="failed")throw Error(p.error);await delay(1000);}
+  const dirtySettings={...settings,productId:dirtyId,videoStyle:"pov_demo",subjectType:"female_hands"};const blockedResponse=await send({product_id:dirtyId,settings:dirtySettings},crypto.randomUUID());assert.equal(blockedResponse.status,202);const blockedJob=await waitJob(cookie,(await blockedResponse.json()).job.id);assert.equal(blockedJob.stage,"failed");assert.ok(blockedJob.error.includes("terlalu banyak elemen skrin"));assert.equal(submissions,beforeBlocked,"Unsafe screenshot reached Nexabot mock");dirtyReference=false;
   product.confidence="low";product.uncertainty="Exact model unclear";
   const uncertainProduct=await productRequest({images:[image]},crypto.randomUUID());assert.equal(uncertainProduct.status,202);const uncertainId=(await uncertainProduct.json()).product.id;
   for(let i=0;i<120;i++){const p=(await list(cookie)).products.find(p=>p.id===uncertainId);if(p.stage==="ready"){assert.equal(p.research.status,"grounded");break;}if(p.stage==="failed")throw Error(p.error);await delay(1000);}
