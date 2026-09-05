@@ -3,6 +3,7 @@ import type { Job, Stage } from "../src/lib/pawarna/types";
 import { buildVideoPrompt } from "../src/lib/pawarna/prompt";
 import { analyseProduct, prepareResearch, createPlan } from "../src/services/pawarna/intelligence";
 import { NexabotProvider, ProviderError } from "../src/services/nexabot/provider";
+import { directReferenceMedia } from "../src/lib/pawarna/direct-reference";
 
 const provider = new NexabotProvider();
 function stage(job: Job, next: Stage) { job.stage = next; saveJob(job); console.log(`[factory] ${job.id} ${next}`); }
@@ -24,7 +25,7 @@ async function runJob(job: Job) {
     if (!job.product) { stage(job, "analysing"); job.product = await analyseProduct(job.input); saveJob(job); }
     if (!job.plan) { job.research = await prepareResearch(job.product, job.input, job.research); stage(job, "planning"); job.plan = await createPlan(job.input, job.product, job.research); saveJob(job); }
     if (!job.external_job_id) {
-      const selected = job.product.reference_indices.slice(0, job.input.avatar ? 2 : 3).map(i => job.input.images[i]);
+      const selected = directReferenceMedia(job.input,job.product).media;
       job.plan.video_prompt = buildVideoPrompt(job.product, job.plan, !!job.input.avatar, selected.length, job.input.instructions, job.input.settings);
       const media = job.input.avatar ? [...selected, job.input.avatar] : selected;
       job.provider_requests.push({ at: Date.now(), status: "submitting", cost: Number(process.env.NEXABOT_CREDIT_COST_PER_GENERATION || .5) });

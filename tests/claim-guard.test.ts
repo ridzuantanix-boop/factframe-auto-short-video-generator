@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { claimGuardReasons, semanticFallbackPlan } from "../src/lib/pawarna/claim-guard";
+import { claimGuardReasons, scriptQualityProblems, semanticFallbackPlan } from "../src/lib/pawarna/claim-guard";
 import { DEFAULT_SETTINGS } from "../src/lib/pawarna/settings";
 import type { ContentPlan, JobInput, ProductAnalysis } from "../src/lib/pawarna/types";
 
@@ -8,6 +8,9 @@ const product:ProductAnalysis={name:"Mommy Hana Vitamin C Gummies",brand:"Mommy 
 const plan:ContentPlan={angle:"Problem → Solution",hook:"",script:"",cta:"",mode:"Product Demo",visual_direction:"",claim_evidence_ids:[],video_prompt:"",scene_plan:{"0-2":"a","2-6":"b","6-8":"c","8-10":"d"}};
 const problemInput:JobInput={images:["x"],mode:"Auto",instructions:"",angle_seed:"default",settings:{...DEFAULT_SETTINGS,productId:"p",videoStyle:"problem_solution",angle:"problem"}};
 
-test("claim guard rejects invented experience, reviews, social proof, promotions and scarcity",()=>{for(const text of ["Saya dah guna sendiri","Saya dah cuba","Anak saya suka","Saya repeat","Ramai ibu guna","viral","best seller","review bagus","ramai puas hati","harga promo","tengah sale","murah sekarang","stok tinggal sikit","cepat sebelum habis"])assert.ok(claimGuardReasons(text).length,text);});
+test("claim guard rejects invented experience, reviews, social proof, promotions, scarcity and efficacy",()=>{for(const text of ["Saya dah guna sendiri","Saya dah cuba","Anak saya suka","Saya repeat","Ramai ibu guna","viral","best seller","review bagus","ramai puas hati","harga promo","tengah sale","murah sekarang","stok tinggal sikit","cepat sebelum habis","confirm berkesan"])assert.ok(claimGuardReasons(text).length,text);});
 test("sales count cannot be converted into satisfaction",()=>assert.ok(claimGuardReasons("10K satisfied customers").length));
 test("safe fallback preserves Problem → Solution and uses semantic facts, not container description",()=>{const result=semanticFallbackPlan(plan,product,problemInput,true);assert.equal(result.angle,"Problem → Solution");assert.match(result.script,/Mommy Hana Vitamin C Gummies/);assert.match(result.script,/suplemen dalam bentuk gummy/);assert.doesNotMatch(result.script,/bekas silinder|berwarna gelap/i);});
+test("sales director rejects Dr. Lan generic catalogue copy",()=>{const weak={...plan,hook:"Tengah cari produk penjagaan rambut?",script:"Tengah cari produk penjagaan rambut? Ini Dr. Lan Black Sesame, Black Rice dan Rosemary Water Spray. Klik link kat bawah."};assert.ok(scriptQualityProblems(weak,{...problemInput,settings:{...problemInput.settings!,videoStyle:"problem_solution",angle:"problem"}}).length);});
+test("Problem → Solution requires friction while a specific thinning-hair hook passes",()=>{const input={...problemInput,settings:{...problemInput.settings!,videoStyle:"problem_solution",angle:"problem"} as typeof problemInput.settings};const generic={...plan,hook:"Kenalkan Dr. Lan",script:"Kenalkan Dr. Lan. Water spray untuk rambut. Klik link kat bawah."},strong={...plan,hook:"Rambut makin nipis sampai belah tengah makin nampak?",script:"Rambut makin nipis sampai belah tengah makin nampak? Dr. Lan water spray diposisikan untuk penjagaan rambut menipis. Klik link kat bawah."};assert.match(scriptQualityProblems(generic,input).join(" "),/friction/);assert.deepEqual(scriptQualityProblems(strong,input),[]);});
+test("regenerate rejects an identical hook",()=>assert.match(scriptQualityProblems({...plan,hook:"Hook lama",script:"Hook lama? Produk ini untuk rutin rambut. Klik link kat bawah."},{...problemInput,previous_hook:"Hook lama",settings:{...problemInput.settings!,videoStyle:"real_life",angle:"auto"}}).join(" "),/repeated/));

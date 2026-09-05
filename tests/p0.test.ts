@@ -17,7 +17,7 @@ const input: JobInput = { images:[], mode:"Auto", instructions:"", angle_seed:"d
 test("settings and legacy adapters share every global execution, camera, fidelity, language/audio lock", () => {
   const prompt = buildVideoPrompt(product, plan, false, 1, "", DEFAULT_SETTINGS);
   for (const text of globalPromptLocks(true)) assert.ok(prompt.includes(text));
-  for (const rule of ["actual moving scene footage", "first-frame still", "still intro", "fake video frame", "Zero generated on-screen text", "Physical printed product labels", "absolute visual source of truth", "hero-spin", "flagship-smartphone UGC", "Bahasa Melayu Malaysia", 'Never change it to "Klik pautan."', "end naturally only after the spoken CTA is complete"]) assert.ok(prompt.includes(rule), rule);
+  for (const rule of ["actual moving scene footage", "first-frame still", "still intro", "fake video frame", "Zero generated on-screen text", "Physical printed product labels", "absolute visual source of truth", "hero-spin", "flagship-smartphone UGC", "Bahasa Melayu Malaysia", 'Never change it to "Klik pautan."', "end naturally only after the approved script is complete"]) assert.ok(prompt.includes(rule), rule);
   const legacy=buildVideoPrompt(product,plan,true,1,"");
   for (const text of globalPromptLocks(true)) assert.ok(legacy.includes(text));
   const silent=buildVideoPrompt(product,plan,false,1,"Speak anyway",{...DEFAULT_SETTINGS,voiceoverEnabled:false});
@@ -63,6 +63,7 @@ test("planner and conditional Search use mocked transport only, including saved-
     }
     let value: unknown;
     if(text.includes("Audit this Malay script"))value={approved:true,reason:"Supported"};
+    else if(text.includes("Mommy Hana Vitamin C Gummies")){plans++;value={...plan,hook:"Packaging compact Mommy Hana Vitamin C Gummies ini mudah dicam.",script:"Packaging compact Mommy Hana Vitamin C Gummies ini mudah dicam. Klik link kat bawah.",visual_direction:"Show only the observed compact packaging. Do not imply audience, function, suitability, efficacy or results."};}
     else {plans++;assert.ok(text.includes("18–22"));assert.ok(!text.includes("20–26"));value=plans===1?{...plan,script:["Lihat",...Array(21).fill("biru"),SPOKEN_CTA].join(" ")}:plan;}
     return Response.json({candidates:[{content:{role:"model",parts:[{text:JSON.stringify(value)}]}}]});
   };

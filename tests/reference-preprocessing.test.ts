@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { providerReferences } from "../cloud/reference-preprocessing";
+import { directReferenceMedia } from "../src/lib/pawarna/direct-reference";
 import type { JobInput, ProductAnalysis, ReferenceAssessment } from "../src/lib/pawarna/types";
 
 const input:JobInput={images:["data:image/png;base64,ORIGINAL"],mode:"Auto",instructions:"",angle_seed:"x"};
@@ -17,3 +18,5 @@ test("uncertain, overlapping, or low-confidence references block provider",async
 test("genuine physical product branding does not trigger UI validation on a clean photo",async()=>{let validations=0;const result=await providerReferences(input,{...base,visible_text:"Dessini logo printed on cookware",reference_preprocessing:[assessment({reference_type:"CLEAN_PRODUCT_IMAGE",detected_ui:false,product_region:null})]},[0],async()=>"bad",async()=>{validations++;return dirty()});assert.equal(validations,0);assert.equal(result.providerCallAllowed,true);});
 test("Dessini crop retaining PayLater and installment UI fails regression gate",async()=>{const result=await providerReferences(input,{...base,name:"Dessini red cookware set",reference_preprocessing:[assessment({product_region:{left:.05,top:.28,right:.95,bottom:.65}})]},[0],async()=>"data:image/jpeg;base64,DESSINI_WITH_PAYLATER_AND_INSTALLMENTS",dirty);assert.equal(result.audit[0].postSanitizationClean,false);assert.equal(result.audit[0].providerCallAllowed,false);assert.deepEqual(result.media,[]);});
 test("production routing contains no Dessini project special case",()=>{const factory=readFileSync(new URL("../cloud/factory.ts",import.meta.url),"utf8"),config=readFileSync(new URL("../wrangler.jsonc",import.meta.url),"utf8");assert.doesNotMatch(factory+config,/70feb4d4-979b-41f5-add3-f369ac114551|PAWARNA_OMNI_REFERENCE_ONLY_PRODUCT_ID/);});
+test("active direct-reference path allows original clean and marketplace screenshots without crop or blocking",()=>{for(const reason of ["clean product","TikTok UI","Shopee UI","PayLater banner","residual UI detected"]){const original=`data:image/png;base64,ORIGINAL_${reason}`,result=directReferenceMedia({...input,images:[original]},{...base,reference_preprocessing:[assessment({reason,ui_overlap_product:true,sanitization_confidence:"low"})]});assert.deepEqual(result.media,[original]);assert.equal(result.providerCallAllowed,true);}});
+test("active cloud provider path no longer invokes hybrid sanitizer or blocked_unsafe",()=>{const factory=readFileSync(new URL("../cloud/factory.ts",import.meta.url),"utf8");assert.match(factory,/directReferenceMedia/);assert.doesNotMatch(factory,/providerReferences|blocked_unsafe|residualUiDetected|sanitization_applied/);});

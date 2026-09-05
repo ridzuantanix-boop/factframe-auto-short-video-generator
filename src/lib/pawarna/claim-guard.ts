@@ -5,12 +5,24 @@ const rules:[string,RegExp][]=[
   ["unsupported testimonial or social proof",/\b(?:review (?:kata )?(?:bagus|best|positif)|ramai (?:ibu|parents?|orang|yang)?\s*(?:dah )?(?:guna|beli|repeat|puas hati|suka)|semua suka|feedback (?:memang )?best|customer suka|viral|trending|best\s?seller|popular|famous|recommended by many|\d+[km]?\s+(?:satisfied|puas hati))\b/i],
   ["unsupported price or promotion",/\b(?:harga (?:tengah )?(?:promo|jatuh|berbaloi|murah|special)|sekarang murah|murah sekarang|diskaun besar|tengah sale|special price|offer hari ini|offer hari ni|promo)\b/i],
   ["unsupported scarcity or urgency",/\b(?:stok tinggal sikit|tinggal beberapa unit|cepat sebelum habis|ramai tengah grab|promo nak habis|last chance|harga akan naik)\b/i],
-  ["unsupported medical efficacy",/\b(?:kuatkan|tingkatkan|boosts?)\s+(?:imuniti|immune)|mencegah penyakit|merawat|treats?|improves? appetite|lebih sihat\b/i],
+  ["unsupported medical efficacy",/\b(?:confirm|terbukti|dijamin|guaranteed?)\s+(?:sangat\s+)?(?:berkesan|hentikan|tumbuhkan|merawat)|(?:kuatkan|tingkatkan|boosts?)\s+(?:imuniti|immune)|mencegah penyakit|merawat|treats?|improves? appetite|lebih sihat\b/i],
 ];
 
 export function claimGuardReasons(text:string){return rules.filter(([,pattern])=>pattern.test(text)).map(([reason])=>reason);}
 export function planClaimGuard(plan:ContentPlan){
   return [...new Set(claimGuardReasons([plan.hook,plan.script,plan.visual_direction,...Object.values(plan.scene_plan||{})].join(" ")))];
+}
+
+const genericHook=/^(?:tengah cari produk|tengah cari .+ yang sesuai|nak cari produk|ini produk|produk ni|kalau korang tengah cari|jom tengok produk|nak tahu produk apa)/i;
+export function scriptQualityProblems(plan:ContentPlan,input:JobInput){
+  if(input.settings?.voiceoverEnabled===false)return [];
+  const problems:string[]=[];const hook=plan.hook.trim(),script=plan.script.trim();
+  if(genericHook.test(hook))problems.push("generic non-hook");
+  if(/^ini\s+[^.?!]+[.?!]?\s*(?:klik link kat bawah\.)?$/i.test(script)||script.split(/[.!?]+/).filter(Boolean).length<2)problems.push("catalogue description without consumer relevance");
+  const problemSelected=input.settings?.videoStyle==="problem_solution"||input.settings?.angle==="problem";
+  if(problemSelected&&!/(?:susah|tak suka|tak mahu|penat|risau|masalah|makin|selalu|bila|sampai|rimas|leceh|gugur|nipis|kering|berminyak|kotor|panas)/i.test(hook))problems.push("Problem → Solution lacks recognizable friction");
+  if(input.previous_hook&&hook.toLowerCase()===input.previous_hook.trim().toLowerCase())problems.push("regeneration repeated the previous hook");
+  return problems;
 }
 
 export function semanticFallbackPlan(plan:ContentPlan,product:ProductAnalysis,input:JobInput,voice:boolean):ContentPlan{

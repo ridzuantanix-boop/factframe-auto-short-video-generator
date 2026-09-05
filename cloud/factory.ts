@@ -10,10 +10,10 @@ import { decodeImage } from "../src/lib/pawarna/image";
 import type { JobInput, Stage } from "../src/lib/pawarna/types";
 import type { ContentPlan } from "../src/lib/pawarna/types";
 import { approvedPlan, scriptRelevantSnapshot, scriptSettingsHash } from "../src/lib/pawarna/script-gate";
-import { analyseProduct, prepareResearch, createPlan, validateSanitizedReference } from "../src/services/pawarna/intelligence";
+import { directReferenceMedia } from "../src/lib/pawarna/direct-reference";
+import { analyseProduct, prepareResearch, createPlan } from "../src/services/pawarna/intelligence";
 import { buildVideoPrompt } from "../src/lib/pawarna/prompt";
 import { NexabotProvider, ProviderError } from "../src/services/nexabot/provider";
-import { cloudflareCrop, providerReferences } from "./reference-preprocessing";
 
 const terminal = (job: CloudJob) => ["completed", "failed"].includes(job.stage);
 type Row = { id: string; data: string; request_hash: string };
@@ -208,14 +208,11 @@ export class PawarnaFactory extends DurableObject<Env> {
     if (!job.plan) { job.research = await prepareResearch(job.product, input, job.research); this.save(job, "planning"); job.plan = await createPlan(input, job.product, job.research); this.save(job, "queued"); return; }
     const provider = new NexabotProvider();
     if (!job.external_job_id) {
-      const indices=job.product.reference_indices.slice(0,input.avatar?2:3);
-      const prepared=await providerReferences(input,job.product,indices,(source,bounds,index)=>Promise.resolve(input.sanitized_video_references?.[String(index)]||cloudflareCrop(this.env.IMAGES,source,bounds)),validateSanitizedReference);
-      const selected=prepared.media;job.reference_audit=prepared.audit;
-      console.log(JSON.stringify({event:"reference_routing",job_id:job.id,references:prepared.audit.map(item=>({referenceClassification:item.reference_type,referencePathUsed:item.referencePathUsed,sanitizationApplied:item.sanitization_applied,postSanitizationClean:item.postSanitizationClean,residualUiDetected:item.residualUiDetected,sanitizationConfidence:item.sanitization_confidence,providerCallAllowed:item.providerCallAllowed,providerReferenceId:item.provider_reference_id}))}));
-      if(!prepared.providerCallAllowed)throw new ProviderError("rejected","Gambar ini mengandungi terlalu banyak elemen skrin atau promosi yang bertindih dengan produk. Cuba upload gambar produk yang lebih jelas atau screenshot dengan produk yang lebih besar.");
+      const direct=directReferenceMedia(input,job.product),indices=direct.indices,selected=direct.media;
+      if(!direct.providerCallAllowed)throw new ProviderError("rejected","Gambar produk tidak ditemui.");
+      console.log(JSON.stringify({event:"direct_reference_routing",job_id:job.id,indices,count:selected.length,original_uploads:true}));
       const day = new Date().toISOString().slice(0, 10);
       if (!this.consume(`submissions:${day}`, Number(this.env.PAWARNA_DAILY_LIMIT || 20), Date.now() + 172_800_000)) throw new ProviderError("rejected", "Daily limit");
-      for(let i=0;i<selected.length;i++)if(prepared.audit[i].sanitization_applied){const image=decodeImage(selected[i]);await this.env.MEDIA.put(`jobs/${job.id}/sanitized-reference-${i}`,image.bytes,{httpMetadata:{contentType:image.mimeType}});}
       job.plan.video_prompt = buildVideoPrompt(job.product, job.plan, !!input.avatar, selected.length, input.instructions, input.settings);
       const epoch=job.controlled_test ? await this.tests.epoch() : "";
       this.ctx.storage.transactionSync(()=>{
