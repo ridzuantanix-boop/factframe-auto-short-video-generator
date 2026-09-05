@@ -44,7 +44,7 @@ test("strict POV camera rules are isolated and no-hands fallback remains hand-fr
  const noHands=buildVideoPrompt(product,plan,false,1,"",{...DEFAULT_SETTINGS,subjectType:"no_hands"});assert.match(noHands,/POV camera view/);assert.doesNotMatch(noHands,/Hands and forearms originate|hands originate naturally/);
 });
 test("decorative overlays are prohibited while Doodle UGC keeps its intentional non-text exception",()=>{
- const normal=buildVideoPrompt(product,plan,false,1,"",{...DEFAULT_SETTINGS,videoStyle:"real_life"});for(const rule of ["ZERO DECORATIVE OVERLAY LOCK","sparkles","stickers","decorative graphics","fake UI"])assert.ok(normal.includes(rule),rule);
+ for(const style of ["problem_solution","pov_demo","real_life","product_motion","satisfying_demo","closeup_detail","mini_commercial_ugc"] as const){const normal=buildVideoPrompt(product,plan,false,1,"",{...DEFAULT_SETTINGS,videoStyle:style});for(const rule of ["ZERO DECORATIVE OVERLAY LOCK","white sparkles","shine stars","floating icons","decorative particles","animated graphics","generated visual callouts","fake UI","text overlays","Natural real-world light reflections"])assert.ok(normal.includes(rule),`${style}: ${rule}`);}
  const doodle=buildVideoPrompt(product,plan,false,1,"",{...DEFAULT_SETTINGS,videoStyle:"doodle_ugc"});for(const rule of ["DOODLE UGC EXCEPTION","intentional, minimal non-text doodle","no random text","fake UI","alien lettering"])assert.ok(doodle.includes(rule),rule);
 });
 test("multi-piece set remains the product identity without forcing every piece into every frame",()=>{
