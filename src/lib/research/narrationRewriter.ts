@@ -82,14 +82,16 @@ function overlap(left: string, right: string) {
   const a = new Set(tokens(left).filter((token) => token.length > 2)); const b = new Set(tokens(right).filter((token) => token.length > 2));
   return [...a].filter((token) => b.has(token)).length / Math.max(1, Math.min(a.size, b.size));
 }
+function hasOcrGarbage(value: string) { return OCR_GARBAGE.test(value.replace(/\b[A-Z]{1,5}\d{1,4}\b/g, "")); }
 
 export function assessNarrationQuality(claims: ResearchClaim[]): ResearchPackage["narrationQuality"] {
   const spoken = claims.map((claim) => claim.spokenText).filter(Boolean); const allTokens = spoken.flatMap(tokens);
-  const malay = allTokens.filter((token) => MALAY_WORDS.has(token)).length; const english = allTokens.filter((token) => ENGLISH_WORDS.has(token)).length;
+  const malay = allTokens.filter((token) => MALAY_WORDS.has(token) || /^(?:di|me|mem|men|meng|ber|ter|ke|pe|per)[a-z]{3,}(?:kan|i|an)?$/.test(token)).length;
+  const english = allTokens.filter((token) => ENGLISH_WORDS.has(token)).length;
   const malayLanguageRatio = malay + english ? malay / (malay + english) : 0;
   const englishLeakageCount = claims.filter((claim) => claim.spokenText && (normalized(claim.spokenText) === normalized(claim.claimText)
     || (ENGLISH_WORDS.has(tokens(claim.spokenText)[0] ?? "") && overlap(claim.spokenText, claim.claimText) >= .65))).length;
-  const ocrLeakageCount = spoken.filter((text) => OCR_GARBAGE.test(text)).length;
+  const ocrLeakageCount = spoken.filter(hasOcrGarbage).length;
   const fragmentCount = spoken.filter((text) => !/[.!?]$/.test(text) || tokens(text).length < 5 || DATELINE.test(text)).length;
   const headlineLeakageCount = claims.filter((claim) => claim.spokenText && overlap(claim.spokenText, claim.claimText) >= .82 && tokens(claim.claimText).length <= 10).length;
   let repetitionCount = 0; for (let index = 1; index < spoken.length; index += 1) if (spoken.slice(0, index).some((earlier) => overlap(earlier, spoken[index]) >= .78)) repetitionCount += 1;

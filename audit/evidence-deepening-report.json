@@ -1,0 +1,1524 @@
+{
+  "generatedAt": "2026-09-05T06:04:22.851Z",
+  "cohortSize": 100,
+  "phase5Baseline": {
+    "cohortSize": 100,
+    "validSpokenCoverage": 0.472,
+    "averageUsefulClaimsPerStory": 1.08,
+    "ready": 0,
+    "geminiRequestsPerStory": 0.94,
+    "retryRate": 0.44680851063829785,
+    "inputTokens": 36572,
+    "outputTokens": 18371
+  },
+  "beforeCurrentRun": {
+    "averageUsefulClaimsPerStory": 1.1,
+    "validSpokenCoverage": 0.791,
+    "ready": 0
+  },
+  "after": {
+    "averageUsefulClaimsPerStory": 1.1,
+    "validSpokenCoverage": 0.791,
+    "ready": 0
+  },
+  "candidatesAttempted": 95,
+  "candidatesDeepened": 0,
+  "newSourcesFound": 0,
+  "claimsAdded": 2,
+  "providerSearches": 190,
+  "providerResultsReviewed": 596,
+  "errors": 2,
+  "candidateIds": [
+    "cd396f4c-19e0-4055-9195-3b005964a0ba",
+    "4b372ba8-6fc0-492c-8723-0adfa4c05d70",
+    "882ee5c4-403b-47b5-9aeb-c7c304955052",
+    "a3ef3546-a23d-43ca-8b96-411615c0be98",
+    "42fef305-5acc-47e4-8e11-4f9ddafe69da",
+    "2ede644c-2c97-4428-b4bc-e8dee001dc77",
+    "99b0cc2b-dc2c-49a5-8d52-57f8096981dc",
+    "d2903e14-71f5-4a04-91ec-8939a889d6be",
+    "518d37c9-dafa-49ad-8c7a-11df0dfbe609",
+    "6cb5d71b-0425-4268-800e-ef15fc5c6d27",
+    "9633002d-fd92-4b19-964d-2d3b878921ce",
+    "4def894f-2eca-4d65-a6ce-f184eebf0b7e",
+    "5d9f94c2-a559-4dc6-890b-a7bc45b7497d",
+    "e7bfa37c-f4be-4310-b126-c53b32b677fd",
+    "bcfbaef5-b55f-43de-80cb-4d71df160ce7",
+    "38bdaf75-fb29-422c-aaf1-777f2297e2a8",
+    "99b3809a-9e80-4ac6-a693-adf47736670b",
+    "d770d492-85ec-4291-8cc8-ca3839f82cf8",
+    "a37cc5cc-08d4-42fc-a6e3-b6e53d6c040d",
+    "7c0591f8-840e-4e98-80fe-e1e19f9cd3a5",
+    "7d629d67-5f68-49ff-ad4a-9f4b6ca2f716",
+    "8722f525-e618-448b-a1da-b133a256765e",
+    "4606c5c3-677c-4c0f-947e-d4a8e2a7bca1",
+    "42121e1c-0667-4dfa-9133-04342d7eeb3b",
+    "ca1679c9-70c9-4528-b19b-36a41dd3f84c",
+    "cb09ca49-4ca6-4a1c-8c5d-4828ecb0c9e5",
+    "2220b6d4-5b1e-4621-9514-7f6e3390b918",
+    "1cbeff7c-16ef-4f66-8eda-076f9eb728b1",
+    "c2233835-32d3-476f-9fad-7485ce91bb94",
+    "6104b205-f677-45d2-a7dd-7d3f09ad505a",
+    "c1cc69e7-0a2a-4e10-8c34-dba1449b2811",
+    "516fee77-5c0d-44eb-a0df-7474c99b2906",
+    "ca00ef68-c8fa-46ec-ab5e-26d34f9881d3",
+    "45d871f9-22c4-445d-81f5-bbdb1ebc8215",
+    "687dfae3-0fa1-4528-8d37-d8614d910821",
+    "1eb32f3c-456c-43f2-b718-a25c11f1ab77",
+    "1e14335b-d992-4f8d-aac6-ed2b951522c2",
+    "f2e9da58-a6b2-4194-a579-a48646f78cce",
+    "1e9acba3-0784-4703-bf16-9121a1b83152",
+    "c06ec8ad-8b16-47cb-9f63-c9cbd7665dda",
+    "5fee9d57-0cd3-4350-b8ef-1bbe320a5919",
+    "2e709d5f-a353-46f1-90b0-2d949c60f9c7",
+    "87d0b625-1a9b-496a-bf46-ae870ad2dbbe",
+    "0157cd3b-1bf5-48b3-a204-95c2ba16c585",
+    "4dc7f757-56df-4ee3-80b0-a6196f50346b",
+    "94e69355-6fc5-4122-a68a-14442abac45f",
+    "5664677b-b664-427b-8868-5fe4f880989f",
+    "764c85c7-c390-4c2d-98b9-c87fada5d981",
+    "ae9b75d7-9522-4a0d-b730-3d80d1f7b9af",
+    "f8b84f69-076c-4b0c-b646-7ea8c93617fe",
+    "7649027b-c298-4c89-82f6-21d9a8d11437",
+    "b5e8f7d1-242e-46a2-b345-da005d9f91c0",
+    "9323975c-4f17-4ec2-9c8c-7767189280bf",
+    "efa7a7c2-aa28-47a0-a92c-ad77bd25c91e",
+    "e17ac5f5-f6b2-4701-b894-15ed753f4879",
+    "169fea6e-ab70-469a-8d9d-66d39e5a35eb",
+    "2f1e47ab-fa25-49a0-8489-7a56a049f8ee",
+    "48a9235b-5055-4d50-aa29-1a4bb8a90e99",
+    "df09ae8f-9513-4aba-a707-038f92ff6767",
+    "930fe7be-bc41-4868-9ce2-f308ccbd4f40",
+    "412763cb-2587-40cf-8082-d32f0c10c39a",
+    "a6f8b18b-15c3-4770-9684-478723dbc129",
+    "c43a633d-3626-4b70-a4fa-ccc3f578d6c8",
+    "e1dbc390-b58e-48f6-a57a-44a447830f51",
+    "149cea5e-f577-40d4-bef8-03cfaf9646e6",
+    "b8d44dd5-042b-4b34-bb1c-fe4b006ba665",
+    "00e402da-1a7d-46d7-8fc7-d2ad431bf2e0",
+    "fbb25b2b-9d92-4fe2-a4a9-e365be3716da",
+    "5a550b65-203c-4cd4-a772-73c6bd1f6f98",
+    "0b1ef879-b43d-4db1-ba34-571f2cdc4095",
+    "0030df36-6fc2-47a3-aa29-765aaa82ba33",
+    "02c8139b-c846-4c92-ac2c-f4c74cac766e",
+    "a0e87197-ed01-4ae6-824a-e7af13385b96",
+    "33cd462f-91db-4bcc-ad74-d1ae533fb7b5",
+    "de255abd-5ba3-4e4e-b5df-cffa7356f19c",
+    "3ad6ec6d-a8a2-4b8e-a9dd-ac5bd54f95fa",
+    "056c5ce7-f2c0-4288-8231-5b0f7fc32980",
+    "dd092f8c-a1ee-435d-b1e2-c58c3ca0eac0",
+    "2c5a4871-9269-4890-a752-98b3694a4e56",
+    "56aad82d-55e8-4391-bc44-b204a016ce21",
+    "58cd172a-184e-49b5-a903-7c3bae3a7a92",
+    "adeaa558-a069-4208-9359-88649ff80009",
+    "bcad5d60-472b-4789-844f-773f452f18e8",
+    "c1bb8260-4ce7-4315-a00e-debd39739691",
+    "d91066cb-693e-43c5-93d7-c1b002fa32de",
+    "3eca3d99-0d2e-401c-8489-7c7ace78c8c1",
+    "78be0ec6-fc50-4629-96f3-0708de563e0a",
+    "12af02dc-0c02-4f78-ad40-84e41300c3c7",
+    "d52e1b22-771e-4fd0-aeea-821ef180a40e",
+    "7b116423-a841-46fc-bacd-aa1564c62243",
+    "e4d375c6-7078-465a-97d8-bd8fddd15d42",
+    "de98f083-bc00-4d58-95c7-09d3f43b5d20",
+    "eda4c0a1-4a5e-45ff-8108-180b3268d2ad",
+    "d6fc82c0-086c-4b3d-8b7f-0083ccd9e164",
+    "98522079-e521-41c6-b2f3-08019f19d831",
+    "028b3ba6-8012-493c-bef0-a776760c4a06",
+    "2d740be0-015d-4fde-9642-ec1180ea67c3",
+    "65a9e4a4-aed3-4dee-b0c3-13d1b5d27429",
+    "055d9aea-c174-453a-ac3c-89eb94f269f0",
+    "cdff68d7-e332-43a3-8840-60cac4478815"
+  ],
+  "details": [
+    {
+      "candidateId": "4b372ba8-6fc0-492c-8723-0adfa4c05d70",
+      "title": "JOHORE MURDER.",
+      "queries": [],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 3,
+      "claimsAfter": 3
+    },
+    {
+      "candidateId": "882ee5c4-403b-47b5-9aeb-c7c304955052",
+      "title": "Malay's Body Found In Perak River",
+      "queries": [
+        "Batu Gajah body found Perak 1939",
+        "malay river Perak 1939"
+      ],
+      "resultsReviewed": 10,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 0,
+      "claimsAfter": 0
+    },
+    {
+      "candidateId": "cd396f4c-19e0-4055-9195-3b005964a0ba",
+      "title": "GIRL, 10 MISSING",
+      "queries": [
+        "girl missing Kuala Lumpur 1952",
+        "girl Kuala Lumpur 1952"
+      ],
+      "resultsReviewed": 13,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 1,
+      "claimsAfter": 1
+    },
+    {
+      "candidateId": "a3ef3546-a23d-43ca-8b96-411615c0be98",
+      "title": "FATAL ACCIDENT AT KUALA LUMPUR.",
+      "queries": [
+        "fatal accident Kuala Lumpur 1937",
+        "Kuala Lumpur 1937"
+      ],
+      "resultsReviewed": 17,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 2,
+      "claimsAfter": 2
+    },
+    {
+      "candidateId": "2ede644c-2c97-4428-b4bc-e8dee001dc77",
+      "title": "MALAYAN GHOST STORY.",
+      "queries": [
+        "Ghost Story ghost Melaka 1958",
+        "malayan story Melaka 1958"
+      ],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 0,
+      "claimsAfter": 0
+    },
+    {
+      "candidateId": "42fef305-5acc-47e4-8e11-4f9ddafe69da",
+      "title": "CO717/194/52745/21/1: Colonial Office - Federated Malay States: Original Correspondence: Police Department Police Organisation in Singapore MacIntosh Report [undated-4]",
+      "queries": [
+        "Federated Malay States",
+        "co717 194 52745 colonial"
+      ],
+      "resultsReviewed": 10,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 0,
+      "claimsAfter": 0
+    },
+    {
+      "candidateId": "99b0cc2b-dc2c-49a5-8d52-57f8096981dc",
+      "title": "NEW FILM TO KILL ARMY LEGEND",
+      "queries": [
+        "new film kill army legend 1954",
+        "new film kill army 1954"
+      ],
+      "resultsReviewed": 10,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 0,
+      "claimsAfter": 0
+    },
+    {
+      "candidateId": "d2903e14-71f5-4a04-91ec-8939a889d6be",
+      "title": "JOHORE DETECTIVE'S SMART WORK.",
+      "queries": [
+        "detective smart work Johor 1925",
+        "JOHORE DETECTIVE'S SMART WORK. 1925"
+      ],
+      "resultsReviewed": 6,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 0,
+      "claimsAfter": 0
+    },
+    {
+      "candidateId": "518d37c9-dafa-49ad-8c7a-11df0dfbe609",
+      "title": "THE MURDER ON THE \"PERAK.\"",
+      "queries": [
+        "murder Perak 1923",
+        "Perak 1923"
+      ],
+      "resultsReviewed": 20,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 0,
+      "claimsAfter": 0
+    },
+    {
+      "candidateId": "6cb5d71b-0425-4268-800e-ef15fc5c6d27",
+      "title": "NEGRI ASSIZES.",
+      "queries": [
+        "Mr. Justice Burton assizes Negeri Sembilan 1931",
+        "negri Negeri Sembilan 1931"
+      ],
+      "resultsReviewed": 5,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 1,
+      "claimsAfter": 1
+    },
+    {
+      "candidateId": "9633002d-fd92-4b19-964d-2d3b878921ce",
+      "title": "Two more confess to role in murder of Perak prince's wife",
+      "queries": [
+        "Hazliza Ishak murder Kuala Lumpur 2002",
+        "two more confess role Kuala Lumpur 2002"
+      ],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 2,
+      "claimsAfter": 2
+    },
+    {
+      "candidateId": "5d9f94c2-a559-4dc6-890b-a7bc45b7497d",
+      "title": "Girl, woman reported missing",
+      "queries": [
+        "girl woman reported missing Kuala Lumpur 1952",
+        "girl woman Kuala Lumpur 1952"
+      ],
+      "resultsReviewed": 10,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 0,
+      "claimsAfter": 0
+    },
+    {
+      "candidateId": "e7bfa37c-f4be-4310-b126-c53b32b677fd",
+      "title": "PERAK ASSIZES.",
+      "queries": [
+        "assizes Perak 1935",
+        "Perak 1935"
+      ],
+      "resultsReviewed": 20,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 1,
+      "claimsAfter": 1
+    },
+    {
+      "candidateId": "bcfbaef5-b55f-43de-80cb-4d71df160ce7",
+      "title": "Motor Accident at Gombak.",
+      "queries": [
+        "Ginting Simpah accident Kuala Lumpur 1914",
+        "motor gombak Kuala Lumpur 1914"
+      ],
+      "resultsReviewed": 5,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 2,
+      "claimsAfter": 2
+    },
+    {
+      "candidateId": "99b3809a-9e80-4ac6-a693-adf47736670b",
+      "title": "Lorry Driver On Murder Charge",
+      "queries": [
+        "Sinnah Govindan Mudaliar murder Johor 1940",
+        "lorry driver charge Johor 1940"
+      ],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 2,
+      "claimsAfter": 2
+    },
+    {
+      "candidateId": "38bdaf75-fb29-422c-aaf1-777f2297e2a8",
+      "title": "Murder on the Perak. [1923-11-22]",
+      "queries": [
+        "1923 murder Perak 1923",
+        "1923 Perak 1923"
+      ],
+      "resultsReviewed": 20,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 0,
+      "claimsAfter": 0
+    },
+    {
+      "candidateId": "d770d492-85ec-4291-8cc8-ca3839f82cf8",
+      "title": "Motor Cycle Accident.",
+      "queries": [
+        "Mr. Charters Injured accident Kuala Lumpur 1914",
+        "motor cycle Kuala Lumpur 1914"
+      ],
+      "resultsReviewed": 10,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 1,
+      "claimsAfter": 1
+    },
+    {
+      "candidateId": "a37cc5cc-08d4-42fc-a6e3-b6e53d6c040d",
+      "title": "SCHOOLBOY MISSING",
+      "queries": [
+        "From Our Own Reporter missing Kuala Lumpur 1939",
+        "schoolboy Kuala Lumpur 1939"
+      ],
+      "resultsReviewed": 11,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 1,
+      "claimsAfter": 1
+    },
+    {
+      "candidateId": "7c0591f8-840e-4e98-80fe-e1e19f9cd3a5",
+      "title": "MYSTERY OF MISSING CHETTIAR.",
+      "queries": [
+        "mystery chettiar missing Johor 1931",
+        "mystery chettiar Johor 1931"
+      ],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 2,
+      "claimsAfter": 2
+    },
+    {
+      "candidateId": "7d629d67-5f68-49ff-ad4a-9f4b6ca2f716",
+      "title": "Missing Peace Corps volunteer is Beckner of Bellevue",
+      "queries": [
+        "Datu Burok missing Kuala Lumpur 1968",
+        "peace corps volunteer beckner Kuala Lumpur 1968"
+      ],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 2,
+      "claimsAfter": 2
+    },
+    {
+      "candidateId": "4606c5c3-677c-4c0f-947e-d4a8e2a7bca1",
+      "title": "Two missing after chopper crash",
+      "queries": [
+        "two chopper missing crash Sarawak 2005",
+        "two chopper Sarawak 2005"
+      ],
+      "resultsReviewed": 1,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 1,
+      "claimsAfter": 1
+    },
+    {
+      "candidateId": "8722f525-e618-448b-a1da-b133a256765e",
+      "title": "Missing man is safe",
+      "queries": [
+        "Mr. Henry Charles Geach missing Sarawak 1960",
+        "man safe Sarawak 1960"
+      ],
+      "resultsReviewed": 10,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 0,
+      "claimsAfter": 0
+    },
+    {
+      "candidateId": "42121e1c-0667-4dfa-9133-04342d7eeb3b",
+      "title": "ACQUITTED OF MURDER",
+      "queries": [
+        "acquitted murder Negeri Sembilan 1939",
+        "acquitted Negeri Sembilan 1939"
+      ],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 1,
+      "claimsAfter": 1
+    },
+    {
+      "candidateId": "4def894f-2eca-4d65-a6ce-f184eebf0b7e",
+      "title": "FCO 141/15953/3: Singapore: Weekly Intelligence Summaries of the Security Forces, Malaya. Part 3 of 5 - migrated archives [undated-7]",
+      "queries": [
+        "Weekly Intelligence Summaries",
+        "fco 141 15953 weekly"
+      ],
+      "resultsReviewed": 10,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [
+        "fco 141 15953 weekly: Failed to get response from server."
+      ],
+      "claimsBefore": 0,
+      "claimsAfter": 0
+    },
+    {
+      "candidateId": "cb09ca49-4ca6-4a1c-8c5d-4828ecb0c9e5",
+      "title": "Two More Bandits Shot Dead",
+      "queries": [],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 3,
+      "claimsAfter": 3
+    },
+    {
+      "candidateId": "ca1679c9-70c9-4528-b19b-36a41dd3f84c",
+      "title": "MURDER CHARGE",
+      "queries": [
+        "Lee Hong Kwee murder Johor 1950",
+        "charge Johor 1950"
+      ],
+      "resultsReviewed": 10,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 1,
+      "claimsAfter": 1
+    },
+    {
+      "candidateId": "c2233835-32d3-476f-9fad-7485ce91bb94",
+      "title": "PLANTER KILLED IN FLYING ACCIDENT",
+      "queries": [
+        "Port Dickson killed accident Kuala Lumpur 1941",
+        "planter flying Kuala Lumpur 1941"
+      ],
+      "resultsReviewed": 10,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 0,
+      "claimsAfter": 0
+    },
+    {
+      "candidateId": "1cbeff7c-16ef-4f66-8eda-076f9eb728b1",
+      "title": "MISSING GIRL [1936-08-31]",
+      "queries": [
+        "Have Been missing Kuala Lumpur 1936",
+        "girl 1936 Kuala Lumpur 1936"
+      ],
+      "resultsReviewed": 20,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 1,
+      "claimsAfter": 1
+    },
+    {
+      "candidateId": "2220b6d4-5b1e-4621-9514-7f6e3390b918",
+      "title": "THE MISSING CHETTIAR.",
+      "queries": [
+        "chettiar missing Johor 1931",
+        "chettiar Johor 1931"
+      ],
+      "resultsReviewed": 7,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 1,
+      "claimsAfter": 1
+    },
+    {
+      "candidateId": "6104b205-f677-45d2-a7dd-7d3f09ad505a",
+      "title": "JOHORE MURDER TRIAL.",
+      "queries": [
+        "Tuinaug Estate murder trial Johor 1912",
+        "Johor 1912"
+      ],
+      "resultsReviewed": 10,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 0,
+      "claimsAfter": 0
+    },
+    {
+      "candidateId": "516fee77-5c0d-44eb-a0df-7474c99b2906",
+      "title": "MAN'S BODY IS FOUND IN RIVER [1961-01-11]",
+      "queries": [
+        "man river 1961 body found Perak 1961",
+        "man river 1961 Perak 1961"
+      ],
+      "resultsReviewed": 11,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 2,
+      "claimsAfter": 2
+    },
+    {
+      "candidateId": "c1cc69e7-0a2a-4e10-8c34-dba1449b2811",
+      "title": "Body found in Perak River [1963-03-21]",
+      "queries": [
+        "river 1963 body found Perak 1963",
+        "river 1963 Perak 1963"
+      ],
+      "resultsReviewed": 13,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 2,
+      "claimsAfter": 2
+    },
+    {
+      "candidateId": "45d871f9-22c4-445d-81f5-bbdb1ebc8215",
+      "title": "PONTIAN INDONS MURDER COCONUT PLANTER",
+      "queries": [
+        "pontian indons coconut planter murder Johor 1965",
+        "pontian indons coconut planter Johor 1965"
+      ],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 2,
+      "claimsAfter": 2
+    },
+    {
+      "candidateId": "687dfae3-0fa1-4528-8d37-d8614d910821",
+      "title": "Railway Accident.",
+      "queries": [
+        "Sunfrei Besi accident Kuala Lumpur 1925",
+        "railway Kuala Lumpur 1925"
+      ],
+      "resultsReviewed": 10,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 1,
+      "claimsAfter": 1
+    },
+    {
+      "candidateId": "ca00ef68-c8fa-46ec-ab5e-26d34f9881d3",
+      "title": "BODY FOUND",
+      "queries": [
+        "body found Perak 1952",
+        "Perak 1952"
+      ],
+      "resultsReviewed": 20,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 1,
+      "claimsAfter": 1
+    },
+    {
+      "candidateId": "1eb32f3c-456c-43f2-b718-a25c11f1ab77",
+      "title": "3 Police Die In Border Battle",
+      "queries": [
+        "die border battle police Kuala Lumpur 1948",
+        "die border battle Kuala Lumpur 1948"
+      ],
+      "resultsReviewed": 2,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 2,
+      "claimsAfter": 2
+    },
+    {
+      "candidateId": "f2e9da58-a6b2-4194-a579-a48646f78cce",
+      "title": "JUDGE DISAGREES WITH JOHORE ASSESSORS",
+      "queries": [
+        "judge disagrees assessors Johor 1939",
+        "JUDGE DISAGREES WITH JOHORE ASSESSORS 1939"
+      ],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 1,
+      "claimsAfter": 1
+    },
+    {
+      "candidateId": "1e14335b-d992-4f8d-aac6-ed2b951522c2",
+      "title": "Sabah kidnap incidents affecting tourism",
+      "queries": [
+        "kidnap incidents affecting tourism Sabah 2014",
+        "Sabah kidnap incidents affecting tourism 2014"
+      ],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 2,
+      "claimsAfter": 2
+    },
+    {
+      "candidateId": "c06ec8ad-8b16-47cb-9f63-c9cbd7665dda",
+      "title": "BOTH DRIVERS TO BLAME.",
+      "queries": [
+        "Mrs. Lena Evelyn Glffening Kuala Lumpur 1937",
+        "both drivers blame Kuala Lumpur 1937"
+      ],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 1,
+      "claimsAfter": 1
+    },
+    {
+      "candidateId": "5fee9d57-0cd3-4350-b8ef-1bbe320a5919",
+      "title": "GENT INQUEST ADJOURNED",
+      "queries": [
+        "Sir Edward Gent 1948",
+        "gent inquest adjourned 1948"
+      ],
+      "resultsReviewed": 10,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 1,
+      "claimsAfter": 1
+    },
+    {
+      "candidateId": "1e9acba3-0784-4703-bf16-9121a1b83152",
+      "title": "EUROPEAN WOUNDED BY GUN.",
+      "queries": [
+        "european wounded gun Kuala Lumpur 1936",
+        "EUROPEAN WOUNDED BY GUN. 1936"
+      ],
+      "resultsReviewed": 8,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 0,
+      "claimsAfter": 0
+    },
+    {
+      "candidateId": "2e709d5f-a353-46f1-90b0-2d949c60f9c7",
+      "title": "SELANGOR PLANTER’S SUDDEN DEATH.",
+      "queries": [
+        "Holmwood Estate Kuala Lumpur 1936",
+        "planter sudden death Kuala Lumpur 1936"
+      ],
+      "resultsReviewed": 1,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 0,
+      "claimsAfter": 0
+    },
+    {
+      "candidateId": "4dc7f757-56df-4ee3-80b0-a6196f50346b",
+      "title": "3 Bandits Killed, Station Burnt",
+      "queries": [],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 3,
+      "claimsAfter": 3
+    },
+    {
+      "candidateId": "87d0b625-1a9b-496a-bf46-ae870ad2dbbe",
+      "title": "JOHORE MYSTERY.",
+      "queries": [
+        "mystery Johor 1926",
+        "JOHORE MYSTERY. 1926"
+      ],
+      "resultsReviewed": 14,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 1,
+      "claimsAfter": 1
+    },
+    {
+      "candidateId": "0157cd3b-1bf5-48b3-a204-95c2ba16c585",
+      "title": "CURIOUS CASE IN KEDAH.",
+      "queries": [
+        "Fkom Orn Own Cokkksi case Penang 1911",
+        "curious kedah Penang 1911"
+      ],
+      "resultsReviewed": 10,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 1,
+      "claimsAfter": 1
+    },
+    {
+      "candidateId": "94e69355-6fc5-4122-a68a-14442abac45f",
+      "title": "A New Malayan Tribe.",
+      "queries": [
+        "new malayan tribe Terengganu 1914",
+        "A New Malayan Tribe. 1914"
+      ],
+      "resultsReviewed": 9,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 0,
+      "claimsAfter": 0
+    },
+    {
+      "candidateId": "764c85c7-c390-4c2d-98b9-c87fada5d981",
+      "title": "European Is Found Dead",
+      "queries": [
+        "Mr. Gilbert Goodrick Ouddell found dead Perak 1950",
+        "european Perak 1950"
+      ],
+      "resultsReviewed": 10,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 1,
+      "claimsAfter": 1
+    },
+    {
+      "candidateId": "5664677b-b664-427b-8868-5fe4f880989f",
+      "title": "SEVEN MURDER CASES ON LIST",
+      "queries": [
+        "cases list murder Perak 1935",
+        "cases list Perak 1935"
+      ],
+      "resultsReviewed": 14,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 1,
+      "claimsAfter": 1
+    },
+    {
+      "candidateId": "ae9b75d7-9522-4a0d-b730-3d80d1f7b9af",
+      "title": "WOMAN FOUND DEAD IN PIT",
+      "queries": [
+        "Pelam Estate found dead Penang 1947",
+        "woman pit Penang 1947"
+      ],
+      "resultsReviewed": 2,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 0,
+      "claimsAfter": 0
+    },
+    {
+      "candidateId": "f8b84f69-076c-4b0c-b646-7ea8c93617fe",
+      "title": "Harsh interrogation caused opposition aide's suicide",
+      "queries": [
+        "Teoh Beng Hock Kuala Lumpur 2011",
+        "harsh interrogation caused opposition Kuala Lumpur 2011"
+      ],
+      "resultsReviewed": 3,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 1,
+      "claimsAfter": 1
+    },
+    {
+      "candidateId": "7649027b-c298-4c89-82f6-21d9a8d11437",
+      "title": "COLLECTOR 'DISAPPEARED' WITH MONEY",
+      "queries": [
+        "Tan Kong Leng disappeared Penang 1958",
+        "collector money Penang 1958"
+      ],
+      "resultsReviewed": 10,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 0,
+      "claimsAfter": 0
+    },
+    {
+      "candidateId": "b5e8f7d1-242e-46a2-b345-da005d9f91c0",
+      "title": "NIGHT SEARCH FOR MISSING AUSTER",
+      "queries": [
+        "night auster search missing Kuala Lumpur 1956",
+        "night auster Kuala Lumpur 1956"
+      ],
+      "resultsReviewed": 1,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 2,
+      "claimsAfter": 2
+    },
+    {
+      "candidateId": "9323975c-4f17-4ec2-9c8c-7767189280bf",
+      "title": "Stricken Taiwan tanker up in flames",
+      "queries": [
+        "Stricken Taiwan Kuala Lumpur 2009",
+        "stricken taiwan tanker flames Kuala Lumpur 2009"
+      ],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 0,
+      "claimsAfter": 0
+    },
+    {
+      "candidateId": "efa7a7c2-aa28-47a0-a92c-ad77bd25c91e",
+      "title": "TAMIL STABBED",
+      "queries": [
+        "Inche Ahmad Johor 1935",
+        "tamil stabbed Johor 1935"
+      ],
+      "resultsReviewed": 3,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 1,
+      "claimsAfter": 1
+    },
+    {
+      "candidateId": "e17ac5f5-f6b2-4701-b894-15ed753f4879",
+      "title": "Another Great Chartered Trading Company Disappears",
+      "queries": [
+        "Another Great Trading Company Sabah 1946",
+        "another great chartered trading Sabah 1946"
+      ],
+      "resultsReviewed": 2,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 0,
+      "claimsAfter": 0
+    },
+    {
+      "candidateId": "169fea6e-ab70-469a-8d9d-66d39e5a35eb",
+      "title": "DEATH SENTENCE.",
+      "queries": [
+        "Mr. Justice Burton Negeri Sembilan 1931",
+        "death sentence Negeri Sembilan 1931"
+      ],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 1,
+      "claimsAfter": 1
+    },
+    {
+      "candidateId": "2f1e47ab-fa25-49a0-8489-7a56a049f8ee",
+      "title": "BIG RUBBER LOSS. Twakow Disappears With Valuable Cargo.",
+      "queries": [
+        "big rubber loss twakow 1929",
+        "BIG RUBBER LOSS. Twakow Disappears With Valuable Cargo. 1929"
+      ],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 2,
+      "claimsAfter": 2
+    },
+    {
+      "candidateId": "48a9235b-5055-4d50-aa29-1a4bb8a90e99",
+      "title": "CROWN WITNESS MISSING.",
+      "queries": [
+        "crown witness missing Kuala Lumpur 1936",
+        "crown witness Kuala Lumpur 1936"
+      ],
+      "resultsReviewed": 8,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 1,
+      "claimsAfter": 1
+    },
+    {
+      "candidateId": "df09ae8f-9513-4aba-a707-038f92ff6767",
+      "title": "Jeffrey Kitingan missing, says KL paper",
+      "queries": [
+        "Jeffrey Kitingan missing Sabah 1991",
+        "jeffrey kitingan says paper Sabah 1991"
+      ],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 2,
+      "claimsAfter": 2
+    },
+    {
+      "candidateId": "930fe7be-bc41-4868-9ce2-f308ccbd4f40",
+      "title": "SHIPPING NOTES.",
+      "queries": [
+        "shipping notes Penang 1925",
+        "SHIPPING NOTES. 1925"
+      ],
+      "resultsReviewed": 20,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 0,
+      "claimsAfter": 0
+    },
+    {
+      "candidateId": "a6f8b18b-15c3-4770-9684-478723dbc129",
+      "title": "RAJAH OF SARAWAK'S MISSING SPECTACLES",
+      "queries": [
+        "rajah spectacles missing Sarawak 1940",
+        "rajah spectacles Sarawak 1940"
+      ],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 0,
+      "claimsAfter": 0
+    },
+    {
+      "candidateId": "c43a633d-3626-4b70-a4fa-ccc3f578d6c8",
+      "title": "23 missing after ferry capsizes in Sarawak",
+      "queries": [
+        "ferry capsizes missing Sarawak 2013",
+        "ferry capsizes Sarawak 2013"
+      ],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 1,
+      "claimsAfter": 1
+    },
+    {
+      "candidateId": "412763cb-2587-40cf-8082-d32f0c10c39a",
+      "title": "WOMAN WHO GAVE FALSE INFORMATION.",
+      "queries": [
+        "woman who gave false Penang 1929",
+        "WOMAN WHO GAVE FALSE INFORMATION. 1929"
+      ],
+      "resultsReviewed": 20,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 1,
+      "claimsAfter": 1
+    },
+    {
+      "candidateId": "e1dbc390-b58e-48f6-a57a-44a447830f51",
+      "title": "Hunt on for missing border scout",
+      "queries": [
+        "From Geoffrey Gel Jard missing Sarawak 1966",
+        "hunt border scout Sarawak 1966"
+      ],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 1,
+      "claimsAfter": 1
+    },
+    {
+      "candidateId": "149cea5e-f577-40d4-bef8-03cfaf9646e6",
+      "title": "Bound Body lir Sack Found In Perak River",
+      "queries": [
+        "bound lir sack river body found Perak 1947",
+        "bound lir sack river Perak 1947"
+      ],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 2,
+      "claimsAfter": 2
+    },
+    {
+      "candidateId": "b8d44dd5-042b-4b34-bb1c-fe4b006ba665",
+      "title": "Missing—planter who went cruising down the river",
+      "queries": [
+        "planter who went cruising missing Johor 1965",
+        "planter who went cruising Johor 1965"
+      ],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 0,
+      "claimsAfter": 0
+    },
+    {
+      "candidateId": "00e402da-1a7d-46d7-8fc7-d2ad431bf2e0",
+      "title": "MAN & NIECE SENTENCED",
+      "queries": [
+        "man niece sentenced Penang 1941",
+        "MAN & NIECE SENTENCED 1941"
+      ],
+      "resultsReviewed": 10,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 0,
+      "claimsAfter": 0
+    },
+    {
+      "candidateId": "5a550b65-203c-4cd4-a772-73c6bd1f6f98",
+      "title": "Police Party Attacked, Three Killed",
+      "queries": [
+        "Three Killed police attacked Kuala Lumpur 1950",
+        "party Kuala Lumpur 1950"
+      ],
+      "resultsReviewed": 20,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 0,
+      "claimsAfter": 0
+    },
+    {
+      "candidateId": "0b1ef879-b43d-4db1-ba34-571f2cdc4095",
+      "title": "7 S’poreans injured in highway accident in Malaysia",
+      "queries": [
+        "poreans injured highway accident Kuala Lumpur 2013",
+        "poreans injured highway Kuala Lumpur 2013"
+      ],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 1,
+      "claimsAfter": 1
+    },
+    {
+      "candidateId": "0030df36-6fc2-47a3-aa29-765aaa82ba33",
+      "title": "RAWANG-BORN R.A.F. OFFICER AMONG MISSING",
+      "queries": [
+        "rawang born officer among missing Sarawak 1940",
+        "rawang born officer among Sarawak 1940"
+      ],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 0,
+      "claimsAfter": 0
+    },
+    {
+      "candidateId": "02c8139b-c846-4c92-ac2c-f4c74cac766e",
+      "title": "KUALA LUMPUR RACE ACCIDENT. [1928-06-25]",
+      "queries": [
+        "race 1928 accident Kuala Lumpur 1928",
+        "race 1928 Kuala Lumpur 1928"
+      ],
+      "resultsReviewed": 20,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 2,
+      "claimsAfter": 2
+    },
+    {
+      "candidateId": "a0e87197-ed01-4ae6-824a-e7af13385b96",
+      "title": "Search continues for M'sian crash victims",
+      "queries": [
+        "continues sian victims search crash Kuala Lumpur 2004",
+        "continues sian victims Kuala Lumpur 2004"
+      ],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 2,
+      "claimsAfter": 2
+    },
+    {
+      "candidateId": "33cd462f-91db-4bcc-ad74-d1ae533fb7b5",
+      "title": "MISSING WIFE WILL NOT RETURN",
+      "queries": [
+        "Standard Staff Corn missing Penang 1952",
+        "wife will not return Penang 1952"
+      ],
+      "resultsReviewed": 10,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 1,
+      "claimsAfter": 1
+    },
+    {
+      "candidateId": "de255abd-5ba3-4e4e-b5df-cffa7356f19c",
+      "title": "PERAK MURDER CHARGE.",
+      "queries": [
+        "Inspector Yeap Osman murder Perak 1934",
+        "charge Perak 1934"
+      ],
+      "resultsReviewed": 10,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 2,
+      "claimsAfter": 2
+    },
+    {
+      "candidateId": "3ad6ec6d-a8a2-4b8e-a9dd-ac5bd54f95fa",
+      "title": "Two missing on holiday in Malaya",
+      "queries": [
+        "Mrs. Nargris Hassan missing 1952",
+        "two holiday 1952"
+      ],
+      "resultsReviewed": 10,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 1,
+      "claimsAfter": 1
+    },
+    {
+      "candidateId": "056c5ce7-f2c0-4288-8231-5b0f7fc32980",
+      "title": "Naked body of missing Irish teen found in Seremban jungle: Police",
+      "queries": [
+        "naked irish teen seremban body missing Kuala Lumpur 2019",
+        "naked irish teen seremban Kuala Lumpur 2019"
+      ],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 2,
+      "claimsAfter": 2
+    },
+    {
+      "candidateId": "dd092f8c-a1ee-435d-b1e2-c58c3ca0eac0",
+      "title": "Few clues on missing Irish girl in Malaysia, but parents hopeful",
+      "queries": [
+        "few clues irish girl missing Kuala Lumpur 2019",
+        "few clues irish girl Kuala Lumpur 2019"
+      ],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 1,
+      "claimsAfter": 1
+    },
+    {
+      "candidateId": "fbb25b2b-9d92-4fe2-a4a9-e365be3716da",
+      "title": "FCO 141/16257: Singapore: behaviour of S J Thomas (Chief Justice, Federated Malay States) to A Caldecott (Colonial Secretary, Straits Settlements) in connection with the Commission of Inquiry into the Electrical Department at Kuala Lumpur; interim report of the Commission - migrated archives [undated-9]",
+      "queries": [
+        "Chief Justice",
+        "fco 141 16257 behaviour"
+      ],
+      "resultsReviewed": 10,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [
+        "fco 141 16257 behaviour: Failed to get response from server."
+      ],
+      "claimsBefore": 0,
+      "claimsAfter": 0
+    },
+    {
+      "candidateId": "2c5a4871-9269-4890-a752-98b3694a4e56",
+      "title": "Umno politician, husband, son slain in their home",
+      "queries": [
+        "umno politician husband son Kuala Lumpur 2016",
+        "Umno politician, husband, son slain in their home 2016"
+      ],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 1,
+      "claimsAfter": 1
+    },
+    {
+      "candidateId": "56aad82d-55e8-4391-bc44-b204a016ce21",
+      "title": "Seven missing in Sarawak copter crash",
+      "queries": [
+        "copter missing crash Kuala Lumpur 2004",
+        "copter Kuala Lumpur 2004"
+      ],
+      "resultsReviewed": 1,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 1,
+      "claimsAfter": 1
+    },
+    {
+      "candidateId": "58cd172a-184e-49b5-a903-7c3bae3a7a92",
+      "title": "DISAPPEARED WITH EMPLOYER’S GOLD",
+      "queries": [
+        "Mr. Lim Cheng Ean disappeared Penang 1937",
+        "employer gold Penang 1937"
+      ],
+      "resultsReviewed": 6,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 2,
+      "claimsAfter": 2
+    },
+    {
+      "candidateId": "adeaa558-a069-4208-9359-88649ff80009",
+      "title": "Reported Missing [1969-08-21]",
+      "queries": [
+        "1969 reported missing Kuala Lumpur 1969",
+        "1969 Kuala Lumpur 1969"
+      ],
+      "resultsReviewed": 14,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 0,
+      "claimsAfter": 0
+    },
+    {
+      "candidateId": "bcad5d60-472b-4789-844f-773f452f18e8",
+      "title": "Copter goes missing in Sarawak",
+      "queries": [
+        "copter goes missing Sarawak 2004",
+        "copter goes Sarawak 2004"
+      ],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 2,
+      "claimsAfter": 2
+    },
+    {
+      "candidateId": "c1bb8260-4ce7-4315-a00e-debd39739691",
+      "title": "Mystery of missing Sarawak parcel",
+      "queries": [
+        "mystery parcel missing Sarawak 1971",
+        "mystery parcel Sarawak 1971"
+      ],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 2,
+      "claimsAfter": 2
+    },
+    {
+      "candidateId": "3eca3d99-0d2e-401c-8489-7c7ace78c8c1",
+      "title": "Singaporean accused of killing family leads police to severed heads",
+      "queries": [
+        "singaporean accused killing family police Melaka 2019",
+        "singaporean accused killing family Melaka 2019"
+      ],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 2,
+      "claimsAfter": 2
+    },
+    {
+      "candidateId": "d91066cb-693e-43c5-93d7-c1b002fa32de",
+      "title": "Search For Missing Girl Intensified",
+      "queries": [
+        "girl intensified search missing Kuala Lumpur 1939",
+        "girl intensified Kuala Lumpur 1939"
+      ],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 2,
+      "claimsAfter": 2
+    },
+    {
+      "candidateId": "78be0ec6-fc50-4629-96f3-0708de563e0a",
+      "title": "JOHORE MURDER: VITAL CLUES",
+      "queries": [
+        "Craigielea Estate murder Johor 1948",
+        "vital clues Johor 1948"
+      ],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 1,
+      "claimsAfter": 1
+    },
+    {
+      "candidateId": "12af02dc-0c02-4f78-ad40-84e41300c3c7",
+      "title": "Missing: The girl who mixed with 'wrong crowd'",
+      "queries": [
+        "girl who mixed wrong missing Johor 1965",
+        "girl who mixed wrong Johor 1965"
+      ],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 1,
+      "claimsAfter": 1
+    },
+    {
+      "candidateId": "e4d375c6-7078-465a-97d8-bd8fddd15d42",
+      "title": "Case of the missing man and the missing million",
+      "queries": [
+        "man million case missing Sarawak 1983",
+        "man million Sarawak 1983"
+      ],
+      "resultsReviewed": 10,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 1,
+      "claimsAfter": 1
+    },
+    {
+      "candidateId": "de98f083-bc00-4d58-95c7-09d3f43b5d20",
+      "title": "Kuala Lumpur Accident. [1926-11-02]",
+      "queries": [],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 3,
+      "claimsAfter": 3
+    },
+    {
+      "candidateId": "7b116423-a841-46fc-bacd-aa1564c62243",
+      "title": "SHOOTING ACCIDENT",
+      "queries": [
+        "European Official Taken accident Kuala Lumpur 1936",
+        "shooting Kuala Lumpur 1936"
+      ],
+      "resultsReviewed": 12,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 0,
+      "claimsAfter": 0
+    },
+    {
+      "candidateId": "eda4c0a1-4a5e-45ff-8108-180b3268d2ad",
+      "title": "JOHORE TAMIL FACES MURDER CHARGE",
+      "queries": [
+        "tamil faces charge murder Johor 1939",
+        "tamil faces charge Johor 1939"
+      ],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 2,
+      "claimsAfter": 2
+    },
+    {
+      "candidateId": "d6fc82c0-086c-4b3d-8b7f-0083ccd9e164",
+      "title": "MENGLEMBU MURDER SEQUEL",
+      "queries": [
+        "Young Chinese Committed For murder Perak 1936",
+        "menglembu sequel Perak 1936"
+      ],
+      "resultsReviewed": 1,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 2,
+      "claimsAfter": 2
+    },
+    {
+      "candidateId": "028b3ba6-8012-493c-bef0-a776760c4a06",
+      "title": "Police in shoot-out with escaped",
+      "queries": [],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 3,
+      "claimsAfter": 3
+    },
+    {
+      "candidateId": "98522079-e521-41c6-b2f3-08019f19d831",
+      "title": "S’pore saddened over accident",
+      "queries": [
+        "pore saddened over accident Kuala Lumpur 2021",
+        "pore saddened over Kuala Lumpur 2021"
+      ],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 2,
+      "claimsAfter": 2
+    },
+    {
+      "candidateId": "2d740be0-015d-4fde-9642-ec1180ea67c3",
+      "title": "TAMIL ON MURDER CHARGE.",
+      "queries": [
+        "tamil charge murder Negeri Sembilan 1935",
+        "tamil charge Negeri Sembilan 1935"
+      ],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 1,
+      "claimsAfter": 1
+    },
+    {
+      "candidateId": "65a9e4a4-aed3-4dee-b0c3-13d1b5d27429",
+      "title": "Murder trial put off",
+      "queries": [
+        "Sports Minister murder trial Negeri Sembilan 1982",
+        "put off Negeri Sembilan 1982"
+      ],
+      "resultsReviewed": 1,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 2,
+      "claimsAfter": 2
+    },
+    {
+      "candidateId": "055d9aea-c174-453a-ac3c-89eb94f269f0",
+      "title": "TEN KILLED BY FLOODS IN MALAYSIA",
+      "queries": [
+        "East Coast killed Kelantan 1982",
+        "floods Kelantan 1982"
+      ],
+      "resultsReviewed": 5,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 1,
+      "claimsAfter": 1
+    },
+    {
+      "candidateId": "cdff68d7-e332-43a3-8840-60cac4478815",
+      "title": "Selangor player dies in crash",
+      "queries": [
+        "Mohamad Zaid Jamil crash Kuala Lumpur 1994",
+        "player dies Kuala Lumpur 1994"
+      ],
+      "resultsReviewed": 0,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 1,
+      "claimsAfter": 1
+    },
+    {
+      "candidateId": "d52e1b22-771e-4fd0-aeea-821ef180a40e",
+      "title": "CHETTY MISSING.",
+      "queries": [
+        "Arumugam Chettiar missing Perak 1928",
+        "chetty Perak 1928"
+      ],
+      "resultsReviewed": 10,
+      "newSources": 0,
+      "informationGain": [],
+      "errors": [],
+      "claimsBefore": 1,
+      "claimsAfter": 1
+    }
+  ]
+}

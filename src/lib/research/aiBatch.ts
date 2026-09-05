@@ -3,11 +3,12 @@ import type { StoryIndexStatus } from "../types.ts";
 import { createGeminiGateway, enrichCandidateWithAi, type AiGateway } from "./aiEnrichment.ts";
 
 type BatchDetail = { candidateId: string; title: string; storyType: string; status: string; claimsSent: number; rewritten: number; rejected: number; retries: number;
+  primaryRewriteRequests: number; retryRequests: number; storyRequests: number;
   cacheHits: number; storyCacheHit: boolean; storyGenerated: boolean; sourcePagesAttempted: number; sourcesDeepened: number;
   usage: { requests: number; inputTokens: number; outputTokens: number }; failures: Array<{ claimId?: string; attemptedSpokenText?: string; reasons: string[] }> };
 
 export type AiBatchOptions = { limit?: number; status?: StoryIndexStatus | "ALL"; region?: string; category?: string; minSources?: number; minClaims?: number;
-  concurrency?: number; delayMs?: number; candidateIds?: string[]; gateway?: AiGateway | null; store?: StoryStore };
+  concurrency?: number; delayMs?: number; candidateIds?: string[]; newSourceClaimsOnly?: boolean; gateway?: AiGateway | null; store?: StoryStore };
 const TYPES = ["DISAPPEARANCE", "CRIME_MYSTERY", "MYSTERIOUS_DEATH", "DISASTER", "HISTORICAL_INCIDENT", "PARANORMAL_REPORT", "FOLKLORE"];
 function diverse<T extends { id: string; storyType: string }>(items: T[], limit: number) {
   const output: T[] = []; const used = new Set<string>();
@@ -34,18 +35,20 @@ export async function enrichAiBatch(options: AiBatchOptions = {}) {
   let cursor = 0; const details: BatchDetail[] = []; const concurrency = Math.min(2, Math.max(1, options.concurrency ?? 1));
   const delayMs = Math.max(0, Math.min(60_000, options.delayMs ?? 3500));
   async function worker() { while (cursor < candidates.length) { const candidate = candidates[cursor++]; try {
-    const result = await enrichCandidateWithAi(candidate.id, gateway, store); details.push({ candidateId: candidate.id, title: candidate.title, storyType: candidate.storyType,
+    const result = await enrichCandidateWithAi(candidate.id, gateway, store, { newSourceClaimsOnly: options.newSourceClaimsOnly }); details.push({ candidateId: candidate.id, title: candidate.title, storyType: candidate.storyType,
       status: result.package.readyDecision.status, claimsSent: result.claimsSent, rewritten: result.rewritten, rejected: result.rejected, retries: result.retries,
+      primaryRewriteRequests: result.primaryRewriteRequests, retryRequests: result.retryRequests, storyRequests: result.storyRequests,
       cacheHits: result.cacheHits, storyCacheHit: result.storyCacheHit, storyGenerated: result.storyGenerated, sourcePagesAttempted: result.sourcePagesAttempted,
       sourcesDeepened: result.sourcesDeepened, usage: result.usage, failures: result.failures });
   } catch (error) { details.push({ candidateId: candidate.id, title: candidate.title, storyType: candidate.storyType, status: "PARTIAL", claimsSent: 0, rewritten: 0,
-    rejected: 0, retries: 0, cacheHits: 0, storyCacheHit: false, storyGenerated: false, sourcePagesAttempted: 0, sourcesDeepened: 0,
+    rejected: 0, retries: 0, primaryRewriteRequests: 0, retryRequests: 0, storyRequests: 0, cacheHits: 0, storyCacheHit: false, storyGenerated: false, sourcePagesAttempted: 0, sourcesDeepened: 0,
     usage: { requests: 0, inputTokens: 0, outputTokens: 0 }, failures: [{ reasons: [error instanceof Error ? error.message : "AI enrichment failed"] }] }); }
     if (delayMs && details.find((item) => item.candidateId === candidate.id)?.usage.requests) await new Promise((resolve) => setTimeout(resolve, delayMs)); } }
   try { await Promise.all(Array.from({ length: concurrency }, () => worker())); const afterPackages = (await Promise.all(candidates.map((item) => store.getResearchPackage(item.id)))).filter(Boolean);
     const requests = details.reduce((sum, item) => sum + item.usage.requests, 0); const claimsSent = details.reduce((sum, item) => sum + item.claimsSent, 0);
     const cacheHits = details.reduce((sum, item) => sum + item.cacheHits + Number(item.storyCacheHit), 0); const generatedStories = details.filter((item) => item.storyGenerated && !item.storyCacheHit).length;
     const eligibleAfter = eligibleClaims(afterPackages); const validatedGeminiClaims = eligibleAfter.filter((claim) => claim.spokenText && claim.rewriteMethod === "GEMINI").length;
+    const primaryRequests = details.reduce((sum, item) => sum + item.primaryRewriteRequests, 0); const retryRequests = details.reduce((sum, item) => sum + item.retryRequests, 0);
     return { generatedAt: new Date().toISOString(), model: gateway?.model ?? null, geminiAvailable: Boolean(gateway), cohortSize: candidates.length,
       candidateIds: candidates.map((item) => item.id), storyTypes: Object.fromEntries(TYPES.map((type) => [type, candidates.filter((item) => item.storyType === type).length])),
       deterministicSpokenCoverageBefore: coverage(beforePackages, ["DETERMINISTIC"]), validatedSpokenCoverageAfter: coverage(afterPackages, ["DETERMINISTIC", "GEMINI"]),
@@ -53,6 +56,8 @@ export async function enrichAiBatch(options: AiBatchOptions = {}) {
       claimsSafelyRewritten: validatedGeminiClaims, claimsSafelyRewrittenThisRun: details.reduce((sum, item) => sum + item.rewritten, 0),
       rejectedRewrites: details.reduce((sum, item) => sum + item.rejected, 0),
       retryCount: details.reduce((sum, item) => sum + item.retries, 0), geminiRequests: requests, averageClaimsPerRequest: requests ? Number((claimsSent / requests).toFixed(3)) : 0,
+      primaryRewriteRequests: primaryRequests, retryRequests, primaryClaimsPerRequest: primaryRequests ? Number((claimsSent / primaryRequests).toFixed(3)) : 0,
+      retryRate: primaryRequests ? Number((retryRequests / primaryRequests).toFixed(3)) : 0,
       inputTokens: details.reduce((sum, item) => sum + item.usage.inputTokens, 0), outputTokens: details.reduce((sum, item) => sum + item.usage.outputTokens, 0),
       storiesGenerated: generatedStories, storiesGeneratedPerRequest: requests ? Number((generatedStories / requests).toFixed(3)) : 0,
       cacheHits, cacheHitRate: claimsSent + cacheHits ? Number((cacheHits / (claimsSent + cacheHits)).toFixed(3)) : 0,

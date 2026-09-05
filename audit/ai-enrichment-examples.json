@@ -1,6 +1,198 @@
 {
-  "generatedAt": "2026-09-05T05:02:01.154Z",
+  "generatedAt": "2026-09-05T06:05:07.057Z",
   "examples": [
+    {
+      "candidateId": "98522079-e521-41c6-b2f3-08019f19d831",
+      "title": "S’pore saddened over accident",
+      "storyType": "DISASTER",
+      "rawSources": [
+        {
+          "id": "4e2d688d813ee0690143f8049dfb91eb",
+          "title": "S’pore saddened over accident",
+          "rawSnippet": "S’pore saddened over accident The Singapore Government yesterday sent its sympathies to the families affected by the LRT accident in Kuala Lumpur, and wished the injured victims a smooth and...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes20210526-1.2.10.9"
+        }
+      ],
+      "claims": [
+        {
+          "claimId": "a31f7d455571d420517d8ae61d63ed5a",
+          "rawClaim": "S’pore saddened over accident",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "",
+          "claimType": "REPORTED",
+          "sourceIds": [
+            "4e2d688d813ee0690143f8049dfb91eb"
+          ]
+        },
+        {
+          "claimId": "92c67c771f0c03e91ba28db291e87574",
+          "rawClaim": "The Singapore Government yesterday sent its sympathies to the families affected by the LRT accident in Kuala Lumpur, and wished the injured victims a smooth and",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "",
+          "claimType": "REPORTED",
+          "sourceIds": [
+            "4e2d688d813ee0690143f8049dfb91eb"
+          ]
+        }
+      ],
+      "finalNarration": null,
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "Needs two sources or one exceptionally clear source with four claims.",
+          "Unique evidence is insufficient for about 20 seconds."
+        ]
+      },
+      "narrationQuality": {
+        "malayLanguageRatio": 0,
+        "englishLeakageCount": 0,
+        "ocrLeakageCount": 0,
+        "fragmentCount": 0,
+        "headlineLeakageCount": 0,
+        "spokenNaturalnessScore": 0.2,
+        "passes": false
+      },
+      "failures": [
+        {
+          "reasons": [
+            "UNDEFINED_VALUE: Undefined values are not allowed"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "028b3ba6-8012-493c-bef0-a776760c4a06",
+      "title": "Police in shoot-out with escaped",
+      "storyType": "CRIME_MYSTERY",
+      "rawSources": [
+        {
+          "id": "501a42774e29b3b4eda16ca3e6b70313",
+          "title": "Police in shoot-out with escaped",
+          "rawSnippet": "Police in shoot-out with escaped convict PASIR MAS (Kelantan), Thurs. An escaped convict shot it out with the police here yesterday afternoon before giving himself up. Deputy OCPD, ASP Megat...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes19820521-1.2.63.9"
+        }
+      ],
+      "claims": [
+        {
+          "claimId": "6aaf6c396f84eb3dbb50bb99b423c4af",
+          "rawClaim": "Police in shoot-out with escaped",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "",
+          "claimType": "REPORTED",
+          "sourceIds": [
+            "501a42774e29b3b4eda16ca3e6b70313"
+          ]
+        },
+        {
+          "claimId": "1dc2697c1a99903abdfb79f1e6ccb974",
+          "rawClaim": "convict PASIR MAS (Kelantan), Thurs.",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "",
+          "claimType": "REPORTED",
+          "sourceIds": [
+            "501a42774e29b3b4eda16ca3e6b70313"
+          ]
+        },
+        {
+          "claimId": "3a63543e1edb0b4a0041f0e1c55da2c7",
+          "rawClaim": "An escaped convict shot it out with the police here yesterday afternoon before giving himself up.",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "",
+          "claimType": "REPORTED",
+          "sourceIds": [
+            "501a42774e29b3b4eda16ca3e6b70313"
+          ]
+        }
+      ],
+      "finalNarration": null,
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Needs two sources or one exceptionally clear source with four claims.",
+          "Unique evidence is insufficient for about 20 seconds."
+        ]
+      },
+      "narrationQuality": {
+        "malayLanguageRatio": 0,
+        "englishLeakageCount": 0,
+        "ocrLeakageCount": 0,
+        "fragmentCount": 0,
+        "headlineLeakageCount": 0,
+        "spokenNaturalnessScore": 0.2,
+        "passes": false
+      },
+      "failures": [
+        {
+          "reasons": [
+            "UNDEFINED_VALUE: Undefined values are not allowed"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "65a9e4a4-aed3-4dee-b0c3-13d1b5d27429",
+      "title": "Murder trial put off",
+      "storyType": "CRIME_MYSTERY",
+      "rawSources": [
+        {
+          "id": "6cebecf0531e4c937e8c641644ea4df5",
+          "title": "Murder trial put off",
+          "rawSnippet": "Murder trial put off THE murder trial of Culture, Youth and Sports Minister, Datuk Mokhtar Hashim and four others for the alleged killing of former Negri Sembilan State Legislative Assembly...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes19820925-1.2.95.5.3"
+        }
+      ],
+      "claims": [
+        {
+          "claimId": "de1228db5a2e3f5ec4c810c82c3fb376",
+          "rawClaim": "Murder trial put off",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "",
+          "claimType": "REPORTED",
+          "sourceIds": [
+            "6cebecf0531e4c937e8c641644ea4df5"
+          ]
+        },
+        {
+          "claimId": "d9b1f0f9b419c4ae1f5d228f40c4ecf0",
+          "rawClaim": "THE murder trial of Culture, Youth and Sports Minister, Datuk Mokhtar Hashim and four others for the alleged killing of former Negri Sembilan State Legislative Assembly",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "",
+          "claimType": "REPORTED",
+          "sourceIds": [
+            "6cebecf0531e4c937e8c641644ea4df5"
+          ]
+        }
+      ],
+      "finalNarration": null,
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "Needs two sources or one exceptionally clear source with four claims.",
+          "Unique evidence is insufficient for about 20 seconds."
+        ]
+      },
+      "narrationQuality": {
+        "malayLanguageRatio": 0,
+        "englishLeakageCount": 0,
+        "ocrLeakageCount": 0,
+        "fragmentCount": 0,
+        "headlineLeakageCount": 0,
+        "spokenNaturalnessScore": 0.2,
+        "passes": false
+      },
+      "failures": [
+        {
+          "reasons": [
+            "UNDEFINED_VALUE: Undefined values are not allowed"
+          ]
+        }
+      ]
+    },
     {
       "candidateId": "cd396f4c-19e0-4055-9195-3b005964a0ba",
       "title": "GIRL, 10 MISSING",
@@ -49,600 +241,7 @@
         "headlineLeakageCount": 0,
         "spokenNaturalnessScore": 0.2
       },
-      "failures": [
-        {
-          "claimId": "f118ce66492809417729965f2c21996f",
-          "attemptedSpokenText": "Seorang kanak-kanak perempuan Cina dilaporkan masih hilang.",
-          "reasons": [
-            "numbers were added, removed, or changed",
-            "named person omitted: Kampong Dollah"
-          ]
-        }
-      ]
-    },
-    {
-      "candidateId": "a3ef3546-a23d-43ca-8b96-411615c0be98",
-      "title": "FATAL ACCIDENT AT KUALA LUMPUR.",
-      "storyType": "DISASTER",
-      "rawSources": [
-        {
-          "id": "eb4c38087b0236d49bd95a213a59c030",
-          "title": "FATAL KUALA LUMPUR ACCIDENT.",
-          "rawSnippet": "FATAL KUALA LUMPUR ACCIDENT. (From Our Own Correspondent) Kuala Lumpur, Jan. 25. Yusof bin Majld, a mall van driver employed by the Post and Telegraphs Department, was fatally injured yesterday...",
-          "expandedSnippet": null,
-          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes19370126-1.2.77"
-        }
-      ],
-      "claims": [
-        {
-          "claimId": "2b3ba1f4233e005664c55cc98b5aea9e",
-          "rawClaim": "FATAL KUALA LUMPUR ACCIDENT",
-          "deterministicSpokenText": "",
-          "geminiSpokenText": "Dilaporkan berlaku kemalangan maut di Kuala Lumpur.",
-          "validationResult": {
-            "valid": true,
-            "reasons": [],
-            "version": "5.0-claim-preservation",
-            "checkedAt": "2026-09-05T04:22:17.880Z"
-          },
-          "claimType": "REPORTED",
-          "sourceIds": [
-            "eb4c38087b0236d49bd95a213a59c030"
-          ]
-        },
-        {
-          "claimId": "21d70e5e45bc47140721a0eee9b4c42f",
-          "rawClaim": "a mall van driver employed by the Post and Telegraphs Department, was fatally injured yesterday",
-          "deterministicSpokenText": "",
-          "geminiSpokenText": "",
-          "validationResult": null,
-          "claimType": "REPORTED",
-          "sourceIds": [
-            "eb4c38087b0236d49bd95a213a59c030"
-          ]
-        }
-      ],
-      "finalNarration": null,
-      "readyDecision": {
-        "status": "PARTIAL",
-        "reasons": [
-          "Fewer than three clear, useful factual claims.",
-          "Needs two sources or one exceptionally clear source with four claims.",
-          "Unique clear evidence is insufficient for about 20 seconds.",
-          "Malay spoken narration does not pass the language and naturalness gate.",
-          "Validated AI story narration is required after Gemini claim rewriting."
-        ]
-      },
-      "clusterConfidence": "MEDIUM",
-      "narrationQuality": {
-        "passes": false,
-        "fragmentCount": 0,
-        "ocrLeakageCount": 0,
-        "malayLanguageRatio": 1,
-        "englishLeakageCount": 0,
-        "headlineLeakageCount": 0,
-        "spokenNaturalnessScore": 0.875
-      },
-      "failures": [
-        {
-          "claimId": "21d70e5e45bc47140721a0eee9b4c42f",
-          "attemptedSpokenText": "Dilaporkan seorang pemandu van pos maut semalam.",
-          "reasons": [
-            "named person omitted: Telegraphs Department"
-          ]
-        }
-      ]
-    },
-    {
-      "candidateId": "6cb5d71b-0425-4268-800e-ef15fc5c6d27",
-      "title": "NEGRI ASSIZES.",
-      "storyType": "HISTORICAL_INCIDENT",
-      "rawSources": [
-        {
-          "id": "5b74b9929aaa6460f8285a9c66278655",
-          "title": "NEGRI ASSIZES.",
-          "rawSnippet": "NEGRI ASSIZES. Murder Charge Reduced To Culpable Homicide. (From Our Own Correspondent.) Sercmban, May 11. The Hon. Mr. Justice Burton presided at the Negri Sembilan Assizes which commenced today in...",
-          "expandedSnippet": null,
-          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitsbudget19310514-1.2.12"
-        },
-        {
-          "id": "cdbe182e2a38e79f743b7431b5629936",
-          "title": "NEGRI ASSIZES.",
-          "rawSnippet": "NEGRI ASSIZES. Five Years for Culpable Homicide. (From Our Own Correspondent.) Seremban, May 13. At the Negri Sembilan Assizes today, Sinnappoo, a Tamil, who was charged with the murder of...",
-          "expandedSnippet": null,
-          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes19310514-1.2.74"
-        }
-      ],
-      "claims": [
-        {
-          "claimId": "6d0dfb7afab80cb74e9d4e73d84ab218",
-          "rawClaim": "Murder Charge Reduced To Culpable Homicide.",
-          "deterministicSpokenText": "",
-          "geminiSpokenText": "",
-          "validationResult": null,
-          "claimType": "REPORTED",
-          "sourceIds": [
-            "5b74b9929aaa6460f8285a9c66278655"
-          ]
-        }
-      ],
-      "finalNarration": null,
-      "readyDecision": {
-        "status": "PARTIAL",
-        "reasons": [
-          "Fewer than three clear, useful factual claims.",
-          "No grounded hook candidate.",
-          "No grounded payoff or unresolved ending.",
-          "Narrative potential is below 0.55.",
-          "Unique clear evidence is insufficient for about 20 seconds.",
-          "Malay spoken narration does not pass the language and naturalness gate."
-        ]
-      },
-      "clusterConfidence": "HIGH",
-      "narrationQuality": {
-        "passes": false,
-        "fragmentCount": 0,
-        "ocrLeakageCount": 0,
-        "malayLanguageRatio": 0,
-        "englishLeakageCount": 0,
-        "headlineLeakageCount": 0,
-        "spokenNaturalnessScore": 0.2
-      },
-      "failures": [
-        {
-          "claimId": "6d0dfb7afab80cb74e9d4e73d84ab218",
-          "attemptedSpokenText": "Dilaporkan pertuduhan bunuh dikurangkan kepada membunuh tanpa niat.",
-          "reasons": [
-            "named person omitted: Culpable Homicide",
-            "Malay language or spoken-naturalness gate failed"
-          ]
-        }
-      ]
-    },
-    {
-      "candidateId": "e7bfa37c-f4be-4310-b126-c53b32b677fd",
-      "title": "PERAK ASSIZES.",
-      "storyType": "CRIME_MYSTERY",
-      "rawSources": [
-        {
-          "id": "7acdc37522ef96b792ec8b0bb35ae681",
-          "title": "PERAK ASSIZES.",
-          "rawSnippet": "PERAK ASSIZES. Seven Murder Trials On List. (From Our Own Correspondent.) Ipoh, July 3. The third session of the Perak criminal assizes begins on Monday with a long calendar, including...",
-          "expandedSnippet": null,
-          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes19350705-1.2.109"
-        }
-      ],
-      "claims": [
-        {
-          "claimId": "f9f362696d5e872b8164a0a944a58a3a",
-          "rawClaim": "Seven Murder Trials On List.",
-          "deterministicSpokenText": "",
-          "geminiSpokenText": "",
-          "validationResult": null,
-          "claimType": "REPORTED",
-          "sourceIds": [
-            "7acdc37522ef96b792ec8b0bb35ae681"
-          ]
-        }
-      ],
-      "finalNarration": null,
-      "readyDecision": {
-        "status": "PARTIAL",
-        "reasons": [
-          "Fewer than three clear, useful factual claims.",
-          "Needs two sources or one exceptionally clear source with four claims.",
-          "No grounded hook candidate.",
-          "No grounded payoff or unresolved ending.",
-          "Unique clear evidence is insufficient for about 20 seconds.",
-          "Malay spoken narration does not pass the language and naturalness gate."
-        ]
-      },
-      "clusterConfidence": "MEDIUM",
-      "narrationQuality": {
-        "passes": false,
-        "fragmentCount": 0,
-        "ocrLeakageCount": 0,
-        "malayLanguageRatio": 0,
-        "englishLeakageCount": 0,
-        "headlineLeakageCount": 0,
-        "spokenNaturalnessScore": 0.2
-      },
-      "failures": [
-        {
-          "claimId": "f9f362696d5e872b8164a0a944a58a3a",
-          "attemptedSpokenText": "Dilaporkan terdapat tujuh perbicaraan bunuh dalam senarai.",
-          "reasons": [
-            "death meaning changed"
-          ]
-        }
-      ]
-    },
-    {
-      "candidateId": "bcfbaef5-b55f-43de-80cb-4d71df160ce7",
-      "title": "Motor Accident at Gombak.",
-      "storyType": "DISASTER",
-      "rawSources": [
-        {
-          "id": "0af43f0b137d51175ee8f2f0c2a5d782",
-          "title": "Motor Accident at Gombak.",
-          "rawSnippet": "Motor Accident at Gombak. (From Our Own Correspondent). Kuala Lumpur, June 9. A motor accident took place ou Friday, at Gombak thirteen miles from Kuala Lumpur, ou the Ginting Simpah...",
-          "expandedSnippet": null,
-          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitsecho19140609-1.2.37"
-        },
-        {
-          "id": "9706f01cf5f3cf1f88fc16db2934f562",
-          "title": "ACCIDENT TO MOTOR BUS.",
-          "rawSnippet": "ACCIDENT TO MOTOR BUS. PASSENGERS INJURED. [From Our Own Correspondent.] Kuala Lumpur, June 9. A motor accident occurred near Gombok on Friday, thirteen miles from Kuala Lumpur on the Gintir.g...",
-          "expandedSnippet": null,
-          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/pinangazette19140609-1.2.47"
-        },
-        {
-          "id": "29dfbc3e372c08369dde3927961d2a80",
-          "title": "Motor Accident at Gombak.",
-          "rawSnippet": "Motor Accident at Gombak. (From Our Own Correspondent). Kuala Lumpur, June 9. A motor accident took place on Friday, at Gombak thirteen miles from Kuala Lumpur, on the Ginting Simpah...",
-          "expandedSnippet": null,
-          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitsechomail19140611-1.2.154"
-        }
-      ],
-      "claims": [
-        {
-          "claimId": "af9216e1447179f719be27cc5a8cc004",
-          "rawClaim": "A motor accident took place ou Friday, at Gombak thirteen miles from Kuala Lumpur, ou the Ginting Simpah",
-          "deterministicSpokenText": "",
-          "geminiSpokenText": "",
-          "validationResult": null,
-          "claimType": "REPORTED",
-          "sourceIds": [
-            "0af43f0b137d51175ee8f2f0c2a5d782",
-            "9706f01cf5f3cf1f88fc16db2934f562",
-            "29dfbc3e372c08369dde3927961d2a80"
-          ]
-        },
-        {
-          "claimId": "1a25652d6bc0d9aaf1ebbf35631ae349",
-          "rawClaim": "ACCIDENT TO MOTOR BUS",
-          "deterministicSpokenText": "",
-          "geminiSpokenText": "Dilaporkan berlaku kemalangan melibatkan bas bermotor.",
-          "validationResult": {
-            "valid": true,
-            "reasons": [],
-            "version": "5.0-claim-preservation",
-            "checkedAt": "2026-09-05T04:49:03.714Z"
-          },
-          "claimType": "REPORTED",
-          "sourceIds": [
-            "9706f01cf5f3cf1f88fc16db2934f562"
-          ]
-        }
-      ],
-      "finalNarration": null,
-      "readyDecision": {
-        "status": "PARTIAL",
-        "reasons": [
-          "Fewer than three clear, useful factual claims.",
-          "Unique clear evidence is insufficient for about 20 seconds.",
-          "Malay spoken narration does not pass the language and naturalness gate.",
-          "Validated AI story narration is required after Gemini claim rewriting."
-        ]
-      },
-      "clusterConfidence": "HIGH",
-      "narrationQuality": {
-        "passes": false,
-        "fragmentCount": 0,
-        "ocrLeakageCount": 0,
-        "malayLanguageRatio": 1,
-        "englishLeakageCount": 0,
-        "headlineLeakageCount": 0,
-        "spokenNaturalnessScore": 0.875
-      },
-      "failures": [
-        {
-          "claimId": "af9216e1447179f719be27cc5a8cc004",
-          "attemptedSpokenText": "Dilaporkan berlaku satu kemalangan kenderaan bermotor di Gombak, tiga belas batu dari Kuala Lumpur, di Ginting Simpah.",
-          "reasons": [
-            "named person omitted: Motor Accident"
-          ]
-        }
-      ]
-    },
-    {
-      "candidateId": "99b3809a-9e80-4ac6-a693-adf47736670b",
-      "title": "Lorry Driver On Murder Charge",
-      "storyType": "CRIME_MYSTERY",
-      "rawSources": [
-        {
-          "id": "bec5479e76c5b7ef3e086aad951f6c2c",
-          "title": "Lorry Driver On Murder Charge",
-          "rawSnippet": "Lorry Driver On Murder Charge Singapore, Monday. AS a result of police inquiries into the mystery surrounding the disappearance of Sinnah Govindan Mudaliar, an 80--year-old Johore shop-keeper, and the finding...",
-          "expandedSnippet": null,
-          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/maltribune19401112-1.2.61"
-        },
-        {
-          "id": "c0401ad9117ae38dfc27eb581eb61faa",
-          "title": "LORRY DRIVER ON MURDER CHARGE",
-          "rawSnippet": "LORRY DRIVER ON MURDER CHARGE lt&gt; a result of police inquiries into the mystery surrounding the disappearance of Sinnah Govindan Muda'iar. an 80 year old Johore shop-ke; per, and the...",
-          "expandedSnippet": null,
-          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/morningtribune19401112-1.2.54"
-        }
-      ],
-      "claims": [
-        {
-          "claimId": "14ccb34dba94b59a06ee319a21e61c46",
-          "rawClaim": "Lorry Driver On Murder Charge",
-          "deterministicSpokenText": "",
-          "geminiSpokenText": "",
-          "validationResult": null,
-          "claimType": "REPORTED",
-          "sourceIds": [
-            "bec5479e76c5b7ef3e086aad951f6c2c",
-            "c0401ad9117ae38dfc27eb581eb61faa"
-          ]
-        },
-        {
-          "claimId": "ff388c823e6aa67b9fa03584ee39f709",
-          "rawClaim": "AS a result of police inquiries into the mystery surrounding the disappearance of Sinnah Govindan Mudaliar",
-          "deterministicSpokenText": "",
-          "geminiSpokenText": "",
-          "validationResult": null,
-          "claimType": "REPORTED",
-          "sourceIds": [
-            "bec5479e76c5b7ef3e086aad951f6c2c",
-            "c0401ad9117ae38dfc27eb581eb61faa"
-          ]
-        }
-      ],
-      "finalNarration": null,
-      "readyDecision": {
-        "status": "PARTIAL",
-        "reasons": [
-          "Fewer than three clear, useful factual claims.",
-          "No grounded hook candidate.",
-          "No grounded payoff or unresolved ending.",
-          "Unique clear evidence is insufficient for about 20 seconds.",
-          "Malay spoken narration does not pass the language and naturalness gate."
-        ]
-      },
-      "clusterConfidence": "HIGH",
-      "narrationQuality": {
-        "passes": false,
-        "fragmentCount": 0,
-        "ocrLeakageCount": 0,
-        "malayLanguageRatio": 0,
-        "englishLeakageCount": 0,
-        "headlineLeakageCount": 0,
-        "spokenNaturalnessScore": 0.2
-      },
-      "failures": [
-        {
-          "claimId": "14ccb34dba94b59a06ee319a21e61c46",
-          "attemptedSpokenText": "Dilaporkan pemandu lori menghadapi pertuduhan membunuh.",
-          "reasons": [
-            "named person omitted: Lorry Driver",
-            "named person omitted: Murder Charge",
-            "Malay language or spoken-naturalness gate failed"
-          ]
-        },
-        {
-          "claimId": "ff388c823e6aa67b9fa03584ee39f709",
-          "attemptedSpokenText": "Dilaporkan ini adalah hasil siasatan polis berhubung misteri kehilangan Sinnah Govindan Mudaliar.",
-          "reasons": [
-            "numbers were added, removed, or changed"
-          ]
-        }
-      ]
-    },
-    {
-      "candidateId": "d770d492-85ec-4291-8cc8-ca3839f82cf8",
-      "title": "Motor Cycle Accident.",
-      "storyType": "DISASTER",
-      "rawSources": [
-        {
-          "id": "ec29f83660ba6428b8ace8d05131393d",
-          "title": "Motor Cycle Accident.",
-          "rawSnippet": "Motor Cycle Accident. Mr. Charters Injured. (From Our Own Correspondent.) Kuala Lumpur, July 31. Mr. R. Charter, Chief Officer of the Kuala Lumpur Fire Brigade, sustained serious iojunes yesterday from...",
-          "expandedSnippet": null,
-          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitsecho19140731-1.2.34"
-        },
-        {
-          "id": "955d306ec5ccdaa24a5c3209b7d4bbd3",
-          "title": "Motor Cycle Accident.",
-          "rawSnippet": "Motor Cycle Accident. Mr, Charters Injured. (From Our Own Correspondent.) Kuala Lumpur, July 31. Mr. R. Charter, Chief Officer of the Kuala Lumpur Fire Brigade, sustained serious injuries yesterday from...",
-          "expandedSnippet": null,
-          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitsechomail19140806-1.2.35"
-        }
-      ],
-      "claims": [
-        {
-          "claimId": "c39449a741be561c6b46ca2ee50f24b0",
-          "rawClaim": "Motor Cycle Accident",
-          "deterministicSpokenText": "",
-          "geminiSpokenText": "",
-          "validationResult": null,
-          "claimType": "REPORTED",
-          "sourceIds": [
-            "ec29f83660ba6428b8ace8d05131393d",
-            "955d306ec5ccdaa24a5c3209b7d4bbd3"
-          ]
-        }
-      ],
-      "finalNarration": null,
-      "readyDecision": {
-        "status": "PARTIAL",
-        "reasons": [
-          "Fewer than three clear, useful factual claims.",
-          "No grounded hook candidate.",
-          "No grounded payoff or unresolved ending.",
-          "Narrative potential is below 0.55.",
-          "Unique clear evidence is insufficient for about 20 seconds.",
-          "Malay spoken narration does not pass the language and naturalness gate."
-        ]
-      },
-      "clusterConfidence": "HIGH",
-      "narrationQuality": {
-        "passes": false,
-        "fragmentCount": 0,
-        "ocrLeakageCount": 0,
-        "malayLanguageRatio": 0,
-        "englishLeakageCount": 0,
-        "headlineLeakageCount": 0,
-        "spokenNaturalnessScore": 0.2
-      },
-      "failures": [
-        {
-          "claimId": "c39449a741be561c6b46ca2ee50f24b0",
-          "attemptedSpokenText": "Ada dilaporkan berlaku kemalangan motosikal.",
-          "reasons": [
-            "named person omitted: Motor Cycle Accident"
-          ]
-        }
-      ]
-    },
-    {
-      "candidateId": "a37cc5cc-08d4-42fc-a6e3-b6e53d6c040d",
-      "title": "SCHOOLBOY MISSING",
-      "storyType": "DISAPPEARANCE",
-      "rawSources": [
-        {
-          "id": "02e18ae25926fff59fd051138c2be3a1",
-          "title": "SCHOOLBOY MISSING",
-          "rawSnippet": "SCHOOLBOY MISSING (From Our Own Reporter) Kuala Lumpur, June MASTER tiunagnanam, a 16-year- old Methodist Boys' School pupil, has been reported missing by his father Mr. Kathiravellu, Chief Clerk of...",
-          "expandedSnippet": null,
-          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/morningtribune19390608-1.2.21"
-        },
-        {
-          "id": "1927f2b55f738d0b8ad3a6475e3df37c",
-          "title": "SCHOOLBOY MISSING",
-          "rawSnippet": "SCHOOLBOY MISSING (Frora Our Own Reporter) Kuala Lumpur, June G. jyiASTER Gwnagnanmsa, a 16-year- old Methodise Boys' School pupil, has been reported missing by his father Mr. Kathiravellu, Chief Clerk...",
-          "expandedSnippet": null,
-          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/maltribune19390608-1.2.126"
-        }
-      ],
-      "claims": [
-        {
-          "claimId": "5731d894c6147bf30b4e2eaa4f3609ee",
-          "rawClaim": "a 16-year- old Methodist Boys' School pupil, has been reported missing by his father Mr.",
-          "deterministicSpokenText": "",
-          "geminiSpokenText": "",
-          "validationResult": null,
-          "claimType": "UNRESOLVED",
-          "sourceIds": [
-            "02e18ae25926fff59fd051138c2be3a1",
-            "1927f2b55f738d0b8ad3a6475e3df37c"
-          ]
-        }
-      ],
-      "finalNarration": null,
-      "readyDecision": {
-        "status": "PARTIAL",
-        "reasons": [
-          "Fewer than three clear, useful factual claims.",
-          "No grounded hook candidate.",
-          "No grounded payoff or unresolved ending.",
-          "Unique clear evidence is insufficient for about 20 seconds.",
-          "Malay spoken narration does not pass the language and naturalness gate."
-        ]
-      },
-      "clusterConfidence": "HIGH",
-      "narrationQuality": {
-        "passes": false,
-        "fragmentCount": 0,
-        "ocrLeakageCount": 0,
-        "malayLanguageRatio": 0,
-        "englishLeakageCount": 0,
-        "headlineLeakageCount": 0,
-        "spokenNaturalnessScore": 0.2
-      },
-      "failures": [
-        {
-          "claimId": "5731d894c6147bf30b4e2eaa4f3609ee",
-          "attemptedSpokenText": "Seorang pelajar Methodist Boys' School telah dilaporkan hilang oleh bapanya.",
-          "reasons": [
-            "numbers were added, removed, or changed"
-          ]
-        }
-      ]
-    },
-    {
-      "candidateId": "7d629d67-5f68-49ff-ad4a-9f4b6ca2f716",
-      "title": "Missing Peace Corps volunteer is Beckner of Bellevue",
-      "storyType": "DISAPPEARANCE",
-      "rawSources": [
-        {
-          "id": "73605c3c580a366e36a1749b4bed3893",
-          "title": "Missing Peace Corps volunteer is Beckner of Bellevue",
-          "rawSnippet": "Missing Peace Corps volunteer is Beckner of Bellevue KUALA LUMPUR, Sat. The Peace Corps volunteer reported missing while swimming off Datu Burok. Kuala Trengganu yesterday is Mr. John S. Beckner,...",
-          "expandedSnippet": null,
-          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/easternsun19681124-1.2.2"
-        },
-        {
-          "id": "d986f3100ad06c501e05f43b67ef8540",
-          "title": "Peace Corps man missing",
-          "rawSnippet": "Peace Corps man missing IfUALA TRENGGANU, Nov. 22. A member of the American Peace Corps was today reported missing while swimming off Datu Burok here. He friends who had gone...",
-          "expandedSnippet": null,
-          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitsbudget19681127-1.2.131"
-        }
-      ],
-      "claims": [
-        {
-          "claimId": "b0d4403beb1aad2d0690ae279ddfbff4",
-          "rawClaim": "Missing Peace Corps volunteer is Beckner of Bellevue",
-          "deterministicSpokenText": "",
-          "geminiSpokenText": "",
-          "validationResult": null,
-          "claimType": "UNRESOLVED",
-          "sourceIds": [
-            "73605c3c580a366e36a1749b4bed3893",
-            "d986f3100ad06c501e05f43b67ef8540"
-          ]
-        },
-        {
-          "claimId": "819ff545ad56376921702ab4a7db7284",
-          "rawClaim": "The Peace Corps volunteer reported missing while swimming off Datu Burok.",
-          "deterministicSpokenText": "",
-          "geminiSpokenText": "Sukarelawan Peace Corps dilaporkan hilang semasa berenang di Datu Burok.",
-          "validationResult": {
-            "valid": true,
-            "reasons": [],
-            "version": "5.0-claim-preservation",
-            "checkedAt": "2026-09-05T04:24:55.369Z"
-          },
-          "claimType": "UNRESOLVED",
-          "sourceIds": [
-            "73605c3c580a366e36a1749b4bed3893",
-            "d986f3100ad06c501e05f43b67ef8540"
-          ]
-        }
-      ],
-      "finalNarration": null,
-      "readyDecision": {
-        "status": "PARTIAL",
-        "reasons": [
-          "Fewer than three clear, useful factual claims.",
-          "Unique clear evidence is insufficient for about 20 seconds.",
-          "Malay spoken narration does not pass the language and naturalness gate.",
-          "Validated AI story narration is required after Gemini claim rewriting."
-        ]
-      },
-      "clusterConfidence": "HIGH",
-      "narrationQuality": {
-        "passes": false,
-        "fragmentCount": 0,
-        "ocrLeakageCount": 0,
-        "malayLanguageRatio": 1,
-        "englishLeakageCount": 0,
-        "headlineLeakageCount": 0,
-        "spokenNaturalnessScore": 0.875
-      },
-      "failures": [
-        {
-          "claimId": "b0d4403beb1aad2d0690ae279ddfbff4",
-          "attemptedSpokenText": "Seorang sukarelawan Peace Corps yang hilang adalah Beckner dari Bellevue.",
-          "reasons": [
-            "numbers were added, removed, or changed",
-            "named person omitted: Missing Peace Corps"
-          ]
-        }
-      ]
+      "failures": []
     },
     {
       "candidateId": "4b372ba8-6fc0-492c-8723-0adfa4c05d70",
@@ -680,8 +279,19 @@
           "validationResult": {
             "valid": true,
             "reasons": [],
-            "version": "5.0-claim-preservation",
-            "checkedAt": "2026-09-05T04:09:03.880Z"
+            "version": "5.1-entity-aware",
+            "checkedAt": "2026-09-05T05:58:54.218Z",
+            "hardFails": [],
+            "entityTypes": {
+              "Johor": "PLACE",
+              "Johore Bahru": "PLACE",
+              "Johore Court": "ORGANISATION",
+              "From Our Own Correspondent": "OTHER",
+              ". Appeal Against Death Sentence": "LEGAL_TERM"
+            },
+            "softWarnings": [
+              "minor place generalized or omitted: Johore Bahru"
+            ]
           },
           "claimType": "REPORTED",
           "sourceIds": [
@@ -696,8 +306,17 @@
           "validationResult": {
             "valid": true,
             "reasons": [],
-            "version": "5.0-claim-preservation",
-            "checkedAt": "2026-09-05T04:47:50.837Z"
+            "version": "5.1-entity-aware",
+            "checkedAt": "2026-09-05T05:58:54.222Z",
+            "hardFails": [],
+            "entityTypes": {
+              "Johor": "PLACE",
+              "Johore Bahru": "PLACE",
+              "Johore Murder": "LEGAL_TERM",
+              "Remanded From Our Own": "LEGAL_TERM",
+              ". Johore Murder Three Hainanese": "LEGAL_TERM"
+            },
+            "softWarnings": []
           },
           "claimType": "REPORTED",
           "sourceIds": [
@@ -712,8 +331,23 @@
           "validationResult": {
             "valid": true,
             "reasons": [],
-            "version": "5.0-claim-preservation",
-            "checkedAt": "2026-09-05T04:21:57.709Z"
+            "version": "5.1-entity-aware",
+            "checkedAt": "2026-09-05T05:58:54.223Z",
+            "hardFails": [],
+            "entityTypes": {
+              "Johor": "PLACE",
+              "Johore Bahru": "PLACE",
+              "Johore Murder": "LEGAL_TERM",
+              ". Johore Murder One": "LEGAL_TERM",
+              "Remanded From Our Own": "LEGAL_TERM",
+              ". Johore Murder Three Hainanese": "LEGAL_TERM",
+              "Three Accused Discharged Johore": "PLACE"
+            },
+            "softWarnings": [
+              "minor place generalized or omitted: Johore Bahru",
+              "minor place generalized or omitted: Three Accused Discharged Johore",
+              "minor place generalized or omitted: Johor"
+            ]
           },
           "claimType": "REPORTED",
           "sourceIds": [
@@ -756,9 +390,10 @@
         },
         {
           "role": "TURN_PAYOFF",
-          "text": "Kes ini dilaporkan sebagai pembunuhan berkembar tiga di estet getah di Senai.",
+          "text": "Dilaporkan terdapat kes pembunuhan berkembar tiga di estet getah di Senai. Dilaporkan tiga orang Hainan telah direman di Johore Bahru.",
           "claimIds": [
-            "c73206f57a5e4573a0290238b05d39e3"
+            "c73206f57a5e4573a0290238b05d39e3",
+            "2b1acac7db473028fec2627289978165"
           ],
           "sourceIds": [
             "023a8f28ad9e39dc122b771d5cfbf5e6",
@@ -831,6 +466,94 @@
         "englishLeakageCount": 0,
         "headlineLeakageCount": 0,
         "spokenNaturalnessScore": 0.2
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "a3ef3546-a23d-43ca-8b96-411615c0be98",
+      "title": "FATAL ACCIDENT AT KUALA LUMPUR.",
+      "storyType": "DISASTER",
+      "rawSources": [
+        {
+          "id": "eb4c38087b0236d49bd95a213a59c030",
+          "title": "FATAL KUALA LUMPUR ACCIDENT.",
+          "rawSnippet": "FATAL KUALA LUMPUR ACCIDENT. (From Our Own Correspondent) Kuala Lumpur, Jan. 25. Yusof bin Majld, a mall van driver employed by the Post and Telegraphs Department, was fatally injured yesterday...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes19370126-1.2.77"
+        }
+      ],
+      "claims": [
+        {
+          "claimId": "2b3ba1f4233e005664c55cc98b5aea9e",
+          "rawClaim": "FATAL KUALA LUMPUR ACCIDENT",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "Dilaporkan berlaku kemalangan maut di Kuala Lumpur.",
+          "validationResult": {
+            "valid": true,
+            "reasons": [],
+            "version": "5.1-entity-aware",
+            "checkedAt": "2026-09-05T06:00:03.320Z",
+            "hardFails": [],
+            "entityTypes": {
+              "Kuala Lumpur": "PLACE",
+              "Telegraphs Department": "ORGANISATION",
+              "From Our Own Correspondent": "OTHER"
+            },
+            "softWarnings": [
+              "organisation shortened or omitted: Telegraphs Department"
+            ]
+          },
+          "claimType": "REPORTED",
+          "sourceIds": [
+            "eb4c38087b0236d49bd95a213a59c030"
+          ]
+        },
+        {
+          "claimId": "21d70e5e45bc47140721a0eee9b4c42f",
+          "rawClaim": "a mall van driver employed by the Post and Telegraphs Department, was fatally injured yesterday",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "Dilaporkan seorang pemandu van pos maut semalam.",
+          "validationResult": {
+            "valid": true,
+            "reasons": [],
+            "version": "5.1-entity-aware",
+            "checkedAt": "2026-09-05T06:00:03.320Z",
+            "hardFails": [],
+            "entityTypes": {
+              "Kuala Lumpur": "PLACE",
+              "Telegraphs Department": "ORGANISATION",
+              "From Our Own Correspondent": "OTHER"
+            },
+            "softWarnings": [
+              "organisation shortened or omitted: Telegraphs Department",
+              "minor place generalized or omitted: Kuala Lumpur"
+            ]
+          },
+          "claimType": "REPORTED",
+          "sourceIds": [
+            "eb4c38087b0236d49bd95a213a59c030"
+          ]
+        }
+      ],
+      "finalNarration": null,
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "Needs two sources or one exceptionally clear source with four claims.",
+          "Unique clear evidence is insufficient for about 20 seconds.",
+          "Validated AI story narration is required after Gemini claim rewriting."
+        ]
+      },
+      "clusterConfidence": "MEDIUM",
+      "narrationQuality": {
+        "passes": true,
+        "fragmentCount": 0,
+        "ocrLeakageCount": 0,
+        "malayLanguageRatio": 1,
+        "englishLeakageCount": 0,
+        "headlineLeakageCount": 0,
+        "spokenNaturalnessScore": 1
       },
       "failures": []
     },
@@ -948,6 +671,57 @@
           "claimType": "REPORTED",
           "sourceIds": [
             "a9141a54f815190125238f60c7b89249"
+          ]
+        }
+      ],
+      "finalNarration": null,
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "Needs two sources or one exceptionally clear source with four claims.",
+          "No grounded hook candidate.",
+          "No grounded payoff or unresolved ending.",
+          "Narrative potential is below 0.55.",
+          "Unique clear evidence is insufficient for about 20 seconds.",
+          "Malay spoken narration does not pass the language and naturalness gate."
+        ]
+      },
+      "clusterConfidence": "MEDIUM",
+      "narrationQuality": {
+        "passes": false,
+        "fragmentCount": 0,
+        "ocrLeakageCount": 0,
+        "malayLanguageRatio": 0,
+        "englishLeakageCount": 0,
+        "headlineLeakageCount": 0,
+        "spokenNaturalnessScore": 0.2
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "99b0cc2b-dc2c-49a5-8d52-57f8096981dc",
+      "title": "NEW FILM TO KILL ARMY LEGEND",
+      "storyType": "FOLKLORE",
+      "rawSources": [
+        {
+          "id": "52082343efe4994f0dc994ab7ca010b2",
+          "title": "NEW FILM TO KILL ARMY LEGEND",
+          "rawSnippet": "NEW FILM TO KILL ARMY LEGEND SCENES from the jungle war in Malaya are being worked into a film which is going to kiU the legend that a n Ox...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/singstandard19540512-1.2.75"
+        }
+      ],
+      "claims": [
+        {
+          "claimId": "536fe7aa8768fd3b7b74fa1e98cfc643",
+          "rawClaim": "NEW FILM TO KILL ARMY LEGEND",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "",
+          "validationResult": null,
+          "claimType": "FOLKLORE",
+          "sourceIds": [
+            "52082343efe4994f0dc994ab7ca010b2"
           ]
         }
       ],
@@ -1105,6 +879,79 @@
         "englishLeakageCount": 0,
         "headlineLeakageCount": 0,
         "spokenNaturalnessScore": 0.2
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "6cb5d71b-0425-4268-800e-ef15fc5c6d27",
+      "title": "NEGRI ASSIZES.",
+      "storyType": "HISTORICAL_INCIDENT",
+      "rawSources": [
+        {
+          "id": "5b74b9929aaa6460f8285a9c66278655",
+          "title": "NEGRI ASSIZES.",
+          "rawSnippet": "NEGRI ASSIZES. Murder Charge Reduced To Culpable Homicide. (From Our Own Correspondent.) Sercmban, May 11. The Hon. Mr. Justice Burton presided at the Negri Sembilan Assizes which commenced today in...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitsbudget19310514-1.2.12"
+        },
+        {
+          "id": "cdbe182e2a38e79f743b7431b5629936",
+          "title": "NEGRI ASSIZES.",
+          "rawSnippet": "NEGRI ASSIZES. Five Years for Culpable Homicide. (From Our Own Correspondent.) Seremban, May 13. At the Negri Sembilan Assizes today, Sinnappoo, a Tamil, who was charged with the murder of...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes19310514-1.2.74"
+        }
+      ],
+      "claims": [
+        {
+          "claimId": "6d0dfb7afab80cb74e9d4e73d84ab218",
+          "rawClaim": "Murder Charge Reduced To Culpable Homicide.",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "Dilaporkan pertuduhan bunuh dikurangkan kepada membunuh tanpa niat.",
+          "validationResult": {
+            "valid": true,
+            "reasons": [],
+            "version": "5.1-entity-aware",
+            "checkedAt": "2026-09-05T05:56:36.638Z",
+            "hardFails": [],
+            "entityTypes": {
+              ". The Hon": "OTHER",
+              "Justice Burton": "PERSON",
+              "Negeri Sembilan": "PLACE",
+              "Culpable Homicide": "LEGAL_TERM",
+              "Negri Sembilan Assizes": "LEGAL_TERM",
+              ". Murder Charge Reduced": "LEGAL_TERM",
+              "From Our Own Correspondent": "OTHER"
+            },
+            "softWarnings": [
+              "minor place generalized or omitted: Negeri Sembilan"
+            ]
+          },
+          "claimType": "REPORTED",
+          "sourceIds": [
+            "5b74b9929aaa6460f8285a9c66278655"
+          ]
+        }
+      ],
+      "finalNarration": null,
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "Narrative potential is below 0.55.",
+          "Unique clear evidence is insufficient for about 20 seconds.",
+          "Validated AI story narration is required after Gemini claim rewriting."
+        ]
+      },
+      "clusterConfidence": "HIGH",
+      "narrationQuality": {
+        "passes": true,
+        "fragmentCount": 0,
+        "ocrLeakageCount": 0,
+        "malayLanguageRatio": 1,
+        "englishLeakageCount": 0,
+        "headlineLeakageCount": 0,
+        "spokenNaturalnessScore": 1
       },
       "failures": []
     },
@@ -1322,6 +1169,170 @@
       "failures": []
     },
     {
+      "candidateId": "e7bfa37c-f4be-4310-b126-c53b32b677fd",
+      "title": "PERAK ASSIZES.",
+      "storyType": "CRIME_MYSTERY",
+      "rawSources": [
+        {
+          "id": "7acdc37522ef96b792ec8b0bb35ae681",
+          "title": "PERAK ASSIZES.",
+          "rawSnippet": "PERAK ASSIZES. Seven Murder Trials On List. (From Our Own Correspondent.) Ipoh, July 3. The third session of the Perak criminal assizes begins on Monday with a long calendar, including...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes19350705-1.2.109"
+        }
+      ],
+      "claims": [
+        {
+          "claimId": "f9f362696d5e872b8164a0a944a58a3a",
+          "rawClaim": "Seven Murder Trials On List.",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "Dilaporkan terdapat tujuh perbicaraan bunuh dalam senarai.",
+          "validationResult": {
+            "valid": true,
+            "reasons": [],
+            "version": "5.1-entity-aware",
+            "checkedAt": "2026-09-05T06:00:03.118Z",
+            "hardFails": [],
+            "entityTypes": {
+              "Perak": "PLACE",
+              ". Seven Murder Trials": "LEGAL_TERM",
+              "From Our Own Correspondent": "OTHER"
+            },
+            "softWarnings": [
+              "minor place generalized or omitted: Perak"
+            ]
+          },
+          "claimType": "REPORTED",
+          "sourceIds": [
+            "7acdc37522ef96b792ec8b0bb35ae681"
+          ]
+        }
+      ],
+      "finalNarration": null,
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "Needs two sources or one exceptionally clear source with four claims.",
+          "Unique clear evidence is insufficient for about 20 seconds.",
+          "Validated AI story narration is required after Gemini claim rewriting."
+        ]
+      },
+      "clusterConfidence": "MEDIUM",
+      "narrationQuality": {
+        "passes": true,
+        "fragmentCount": 0,
+        "ocrLeakageCount": 0,
+        "malayLanguageRatio": 1,
+        "englishLeakageCount": 0,
+        "headlineLeakageCount": 0,
+        "spokenNaturalnessScore": 1
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "bcfbaef5-b55f-43de-80cb-4d71df160ce7",
+      "title": "Motor Accident at Gombak.",
+      "storyType": "DISASTER",
+      "rawSources": [
+        {
+          "id": "0af43f0b137d51175ee8f2f0c2a5d782",
+          "title": "Motor Accident at Gombak.",
+          "rawSnippet": "Motor Accident at Gombak. (From Our Own Correspondent). Kuala Lumpur, June 9. A motor accident took place ou Friday, at Gombak thirteen miles from Kuala Lumpur, ou the Ginting Simpah...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitsecho19140609-1.2.37"
+        },
+        {
+          "id": "9706f01cf5f3cf1f88fc16db2934f562",
+          "title": "ACCIDENT TO MOTOR BUS.",
+          "rawSnippet": "ACCIDENT TO MOTOR BUS. PASSENGERS INJURED. [From Our Own Correspondent.] Kuala Lumpur, June 9. A motor accident occurred near Gombok on Friday, thirteen miles from Kuala Lumpur on the Gintir.g...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/pinangazette19140609-1.2.47"
+        },
+        {
+          "id": "29dfbc3e372c08369dde3927961d2a80",
+          "title": "Motor Accident at Gombak.",
+          "rawSnippet": "Motor Accident at Gombak. (From Our Own Correspondent). Kuala Lumpur, June 9. A motor accident took place on Friday, at Gombak thirteen miles from Kuala Lumpur, on the Ginting Simpah...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitsechomail19140611-1.2.154"
+        }
+      ],
+      "claims": [
+        {
+          "claimId": "af9216e1447179f719be27cc5a8cc004",
+          "rawClaim": "A motor accident took place ou Friday, at Gombak thirteen miles from Kuala Lumpur, ou the Ginting Simpah",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "Dilaporkan berlaku satu kemalangan kenderaan bermotor di Gombak, tiga belas batu dari Kuala Lumpur, di Ginting Simpah.",
+          "validationResult": {
+            "valid": true,
+            "reasons": [],
+            "version": "5.1-entity-aware",
+            "checkedAt": "2026-09-05T05:56:36.646Z",
+            "hardFails": [],
+            "entityTypes": {
+              "Kuala Lumpur": "PLACE",
+              "Ginting Simpah": "PERSON",
+              "Motor Accident": "OTHER",
+              "From Our Own Correspondent": "OTHER"
+            },
+            "softWarnings": [
+              "format-derived singular added"
+            ]
+          },
+          "claimType": "REPORTED",
+          "sourceIds": [
+            "0af43f0b137d51175ee8f2f0c2a5d782",
+            "9706f01cf5f3cf1f88fc16db2934f562",
+            "29dfbc3e372c08369dde3927961d2a80"
+          ]
+        },
+        {
+          "claimId": "1a25652d6bc0d9aaf1ebbf35631ae349",
+          "rawClaim": "ACCIDENT TO MOTOR BUS",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "Dilaporkan berlaku kemalangan melibatkan bas bermotor.",
+          "validationResult": {
+            "valid": true,
+            "reasons": [],
+            "version": "5.1-entity-aware",
+            "checkedAt": "2026-09-05T06:04:38.814Z",
+            "hardFails": [],
+            "entityTypes": {
+              "Kuala Lumpur": "PLACE",
+              "From Our Own Correspondent": "OTHER"
+            },
+            "softWarnings": [
+              "minor place generalized or omitted: Kuala Lumpur"
+            ]
+          },
+          "claimType": "REPORTED",
+          "sourceIds": [
+            "9706f01cf5f3cf1f88fc16db2934f562"
+          ]
+        }
+      ],
+      "finalNarration": null,
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "Unique clear evidence is insufficient for about 20 seconds.",
+          "Validated AI story narration is required after Gemini claim rewriting."
+        ]
+      },
+      "clusterConfidence": "HIGH",
+      "narrationQuality": {
+        "passes": true,
+        "fragmentCount": 0,
+        "ocrLeakageCount": 0,
+        "malayLanguageRatio": 1,
+        "englishLeakageCount": 0,
+        "headlineLeakageCount": 0,
+        "spokenNaturalnessScore": 1
+      },
+      "failures": []
+    },
+    {
       "candidateId": "38bdaf75-fb29-422c-aaf1-777f2297e2a8",
       "title": "Murder on the Perak. [1923-11-22]",
       "storyType": "CRIME_MYSTERY",
@@ -1386,58 +1397,82 @@
       "failures": []
     },
     {
-      "candidateId": "7c0591f8-840e-4e98-80fe-e1e19f9cd3a5",
-      "title": "MYSTERY OF MISSING CHETTIAR.",
-      "storyType": "DISAPPEARANCE",
+      "candidateId": "99b3809a-9e80-4ac6-a693-adf47736670b",
+      "title": "Lorry Driver On Murder Charge",
+      "storyType": "CRIME_MYSTERY",
       "rawSources": [
         {
-          "id": "7a6e72bdfe923a487c7c044f5b913147",
-          "title": "MYSTERY OF MISSING CHETTIAR.",
-          "rawSnippet": "MYSTERY OF MISSING CHETTIAR. Last Seen at Singapore Race Meeting. The Chettiar community of Singapore and Johore is greatly perturbed over the mysterious disappearance of one of its members since...",
+          "id": "bec5479e76c5b7ef3e086aad951f6c2c",
+          "title": "Lorry Driver On Murder Charge",
+          "rawSnippet": "Lorry Driver On Murder Charge Singapore, Monday. AS a result of police inquiries into the mystery surrounding the disappearance of Sinnah Govindan Mudaliar, an 80--year-old Johore shop-keeper, and the finding...",
           "expandedSnippet": null,
-          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes19310515-1.2.63"
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/maltribune19401112-1.2.61"
         },
         {
-          "id": "46870d60f3516f2a814c60088bffccba",
-          "title": "MYSTERY OF MISSING CHETTIAR.",
-          "rawSnippet": "MYSTERY OF MISSING CHETTIAR. Last Seen at Singapore Race Meeting. The Chettiar community of Singapore and Johore is greatly perturbed over the mysterious disappearance of one of its members since...",
+          "id": "c0401ad9117ae38dfc27eb581eb61faa",
+          "title": "LORRY DRIVER ON MURDER CHARGE",
+          "rawSnippet": "LORRY DRIVER ON MURDER CHARGE lt&gt; a result of police inquiries into the mystery surrounding the disappearance of Sinnah Govindan Muda'iar. an 80 year old Johore shop-ke; per, and the...",
           "expandedSnippet": null,
-          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitsbudget19310521-1.2.22"
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/morningtribune19401112-1.2.54"
         }
       ],
       "claims": [
         {
-          "claimId": "346701cf89dc067c9fb24685dfbd6e0d",
-          "rawClaim": "MYSTERY OF MISSING CHETTIAR",
+          "claimId": "14ccb34dba94b59a06ee319a21e61c46",
+          "rawClaim": "Lorry Driver On Murder Charge",
           "deterministicSpokenText": "",
-          "geminiSpokenText": "Misteri kehilangan Chettiar masih belum pasti.",
+          "geminiSpokenText": "Dilaporkan pemandu lori menghadapi pertuduhan membunuh.",
           "validationResult": {
             "valid": true,
             "reasons": [],
-            "version": "5.0-claim-preservation",
-            "checkedAt": "2026-09-05T04:24:36.947Z"
+            "version": "5.1-entity-aware",
+            "checkedAt": "2026-09-05T05:56:36.648Z",
+            "hardFails": [],
+            "entityTypes": {
+              "Johor": "PLACE",
+              "Murder Charge": "LEGAL_TERM",
+              ". Lorry Driver": "OTHER",
+              "Sinnah Govindan Muda": "PERSON",
+              "Murder Charge Singapore": "LEGAL_TERM",
+              "Sinnah Govindan Mudaliar": "PERSON"
+            },
+            "softWarnings": [
+              "minor place generalized or omitted: Johor"
+            ]
           },
-          "claimType": "UNRESOLVED",
+          "claimType": "REPORTED",
           "sourceIds": [
-            "7a6e72bdfe923a487c7c044f5b913147",
-            "46870d60f3516f2a814c60088bffccba"
+            "bec5479e76c5b7ef3e086aad951f6c2c",
+            "c0401ad9117ae38dfc27eb581eb61faa"
           ]
         },
         {
-          "claimId": "470f65b3d0858bbc51a7d774ded7b707",
-          "rawClaim": "The Chettiar community of Singapore and Johore is greatly perturbed over the mysterious disappearance of one of its members since",
+          "claimId": "ff388c823e6aa67b9fa03584ee39f709",
+          "rawClaim": "AS a result of police inquiries into the mystery surrounding the disappearance of Sinnah Govindan Mudaliar",
           "deterministicSpokenText": "",
-          "geminiSpokenText": "Komuniti Chettiar bimbang mengenai kehilangan misteri salah seorang ahlinya yang masih belum pasti.",
+          "geminiSpokenText": "Dilaporkan ini adalah hasil siasatan polis berhubung misteri kehilangan Sinnah Govindan Mudaliar.",
           "validationResult": {
             "valid": true,
             "reasons": [],
-            "version": "5.0-claim-preservation",
-            "checkedAt": "2026-09-05T04:24:36.948Z"
+            "version": "5.1-entity-aware",
+            "checkedAt": "2026-09-05T05:56:36.650Z",
+            "hardFails": [],
+            "entityTypes": {
+              "Johor": "PLACE",
+              "Murder Charge": "LEGAL_TERM",
+              ". Lorry Driver": "OTHER",
+              "Sinnah Govindan Muda": "PERSON",
+              "Murder Charge Singapore": "LEGAL_TERM",
+              "Sinnah Govindan Mudaliar": "PERSON"
+            },
+            "softWarnings": [
+              "minor place generalized or omitted: Johor"
+            ]
           },
-          "claimType": "UNRESOLVED",
+          "claimType": "REPORTED",
           "sourceIds": [
-            "7a6e72bdfe923a487c7c044f5b913147",
-            "46870d60f3516f2a814c60088bffccba"
+            "bec5479e76c5b7ef3e086aad951f6c2c",
+            "c0401ad9117ae38dfc27eb581eb61faa"
           ]
         }
       ],
@@ -1447,19 +1482,18 @@
         "reasons": [
           "Fewer than three clear, useful factual claims.",
           "Unique clear evidence is insufficient for about 20 seconds.",
-          "Malay spoken narration does not pass the language and naturalness gate.",
           "Validated AI story narration is required after Gemini claim rewriting."
         ]
       },
       "clusterConfidence": "HIGH",
       "narrationQuality": {
-        "passes": false,
+        "passes": true,
         "fragmentCount": 0,
         "ocrLeakageCount": 0,
         "malayLanguageRatio": 1,
         "englishLeakageCount": 0,
         "headlineLeakageCount": 0,
-        "spokenNaturalnessScore": 0.95
+        "spokenNaturalnessScore": 1
       },
       "failures": []
     }

@@ -29,6 +29,9 @@ const languagePass = narratedPackages.filter((value) => quality(value).passes).l
   averageNaturalness: narratedPackages.length ? Number((narratedPackages.reduce((sum, value) => sum + quality(value).spokenNaturalnessScore, 0) / narratedPackages.length).toFixed(3)) : 0,
   englishLeakageCount: spoken.filter((text) => english.test(text)).length, ocrLeakageCount: spoken.filter((text) => ocr.test(text)).length,
   inputTokens: batch.inputTokens, outputTokens: batch.outputTokens, averageClaimsPerRequest: batch.averageClaimsPerRequest,
+  primaryClaimsPerRequest: batch.primaryClaimsPerRequest ?? batch.averageClaimsPerRequest, retryRate: batch.retryRate ?? (batch.geminiRequests ? batch.retryCount / batch.geminiRequests : 0),
+  tokensPerStory: batch.cohortSize ? Number(((batch.inputTokens + batch.outputTokens) / batch.cohortSize).toFixed(1)) : 0,
+  successfulRewritesPerRequest: batch.geminiRequests ? Number((batch.claimsSafelyRewrittenThisRun / batch.geminiRequests).toFixed(3)) : 0,
   storiesGeneratedPerRequest: batch.storiesGeneratedPerRequest, cacheHitRate: batch.cacheHitRate, bestReadyExamples: best.length,
   rejectedOrFailedExamples: rejected.length, exportedExamples: examples.length };
 const examplesFile = await writeAudit("ai-enrichment-examples.json", { generatedAt: report.generatedAt, examples }); const auditFile = await writeAudit("ai-enrichment-audit.json", report);

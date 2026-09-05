@@ -7,6 +7,7 @@ import { calculateResearchMetrics, decideResearchReadiness } from "./researchSco
 import type { AiNarration, GroundedNarrativeElement, ResearchClaim, ResearchPackage } from "./types.ts";
 import { rewriteClaimsForSpeech, assessNarrationQuality } from "./narrationRewriter.ts";
 import { validateSourceCluster } from "../archive/clusterIntegrity.ts";
+import { validateClaimRewrite } from "./aiClaimValidator.ts";
 
 function sourceRole(value: ArchiveReliability) {
   if (["PRIMARY", "OFFICIAL"].includes(value)) return "PRIMARY_OFFICIAL" as const;
@@ -66,8 +67,13 @@ function normalizeLocation(value: string) {
 export async function researchStoryCandidate(candidateId: string, store: StoryStore = createStoryStore()) {
   const candidate = await store.findById(candidateId); if (!candidate) throw new Error(`Story candidate not found: ${candidateId}`);
   if (candidate.metadata.archiveDerived !== true) throw new Error("Only archive-derived candidates are supported by deterministic Phase 4 enrichment.");
+  const prior = await store.getResearchPackage(candidate.id);
   const sources = await store.listSourcesForCandidate(candidate.id); const rawClaims = extractClaimsFromSources(candidate, sources);
-  const merged = mergeDuplicateClaims(rawClaims); const claims = rewriteClaimsForSpeech(merged.claims, candidate.storyType);
+  const merged = mergeDuplicateClaims(rawClaims); const deterministic = rewriteClaimsForSpeech(merged.claims, candidate.storyType); const priorByNormalized = new Map(prior?.claims.map((claim) => [claim.normalizedClaim, claim]) ?? []);
+  const claims = deterministic.map((claim) => { if (claim.spokenText) return claim; const previous = priorByNormalized.get(claim.normalizedClaim); if (!previous?.spokenText) return claim;
+    const validation = validateClaimRewrite(claim, { claimId: claim.id, spokenText: previous.spokenText, preservedClaimType: claim.claimType, preservedSourceIds: claim.sourceIds });
+    return validation.valid ? { ...claim, spokenText: previous.spokenText, rewriteMethod: previous.rewriteMethod, rewriteModel: previous.rewriteModel,
+      validatedAt: validation.checkedAt, validationVersion: validation.version, validationResult: validation } : claim; });
   const packageValue = await persistResearchClaims(candidate, sources, claims, store);
   return { researchPackage: packageValue, rawClaimsExtracted: rawClaims.length, mergedClaimCount: merged.mergedClaimCount };
 }

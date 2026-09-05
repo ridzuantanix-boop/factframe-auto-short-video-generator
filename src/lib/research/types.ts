@@ -22,7 +22,7 @@ export type ResearchClaim = {
   validationResult: ClaimValidationResult | null;
 };
 
-export type ClaimValidationResult = { valid: boolean; reasons: string[]; checkedAt: string; version: string };
+export type ClaimValidationResult = { valid: boolean; reasons: string[]; hardFails?: string[]; softWarnings?: string[]; entityTypes?: Record<string, string>; checkedAt: string; version: string };
 export type AiNarrationSegment = { role: "HOOK" | "CONTEXT" | "DEVELOPMENT" | "TURN_PAYOFF"; text: string; claimIds: string[]; sourceIds: string[] };
 export type AiNarration = { segments: AiNarrationSegment[]; model: string; generatedAt: string; validationVersion: string; requestCount: number; inputTokens: number; outputTokens: number };
 
