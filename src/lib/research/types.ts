@@ -4,6 +4,7 @@ export type ResearchClaim = {
   id: string;
   storyCandidateId: string;
   claimText: string;
+  spokenText: string;
   normalizedClaim: string;
   claimType: ClaimType;
   confidence: "HIGH" | "MEDIUM" | "LOW";
@@ -43,6 +44,16 @@ export type ResearchPackage = {
   keyTurningPoints: GroundedNarrativeElement[];
   unresolvedQuestions: GroundedNarrativeElement[];
   payoff: GroundedNarrativeElement;
+  clusterConfidence: "HIGH" | "MEDIUM" | "LOW";
+  narrationQuality: {
+    malayLanguageRatio: number;
+    englishLeakageCount: number;
+    ocrLeakageCount: number;
+    fragmentCount: number;
+    headlineLeakageCount: number;
+    spokenNaturalnessScore: number;
+    passes: boolean;
+  };
   sourceCoverage: number;
   unsupportedClaimCount: number;
   sourceDiversityScore: number;

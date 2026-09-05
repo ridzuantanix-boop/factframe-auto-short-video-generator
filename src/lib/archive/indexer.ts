@@ -44,7 +44,7 @@ function clusterCandidate(cluster: ArchiveCluster, queryByUrl: Map<string, strin
     country: "Malaysia", region: specificLocation, category: "archive", storyType: representative.incidentType, status: "DISCOVERED",
     sourceCount: documents.length, claimCount: claims.length, researchScore: null, visualScore: null, narrativePotentialScore: null,
     sourceHints: documents.map((document) => document.url), searchTerms: [...new Set([title, ...locations, ...representative.people])], aliases: [],
-    metadata: { categories: ["archive"], archiveDerived: true, archiveClusterKey: cluster.key, originProviders: providers,
+    metadata: { categories: ["archive"], archiveDerived: true, archiveClusterKey: cluster.key, clusterConfidence: documents.length > 1 ? "HIGH" : "MEDIUM", originProviders: providers,
       historicalContext: representative.historicalContext, historicalContextEvidence: representative.historicalContextEvidence,
       geographyConfidence: specificLocation === "Malaysia / Malaya" ? "LOW" : "MEDIUM",
       geographyEvidence: locations.map((location) => ({ type: "ARCHIVE_EXTRACTED_LOCATION", value: location })),

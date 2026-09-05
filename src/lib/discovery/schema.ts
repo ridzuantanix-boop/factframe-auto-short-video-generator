@@ -54,6 +54,7 @@ CREATE TABLE IF NOT EXISTS story_claims (
   id text PRIMARY KEY,
   story_candidate_id text NOT NULL REFERENCES story_candidates(id) ON DELETE CASCADE,
   claim_text text NOT NULL,
+  spoken_text text NOT NULL DEFAULT '',
   normalized_claim text NOT NULL,
   claim_type text NOT NULL CHECK (claim_type IN ('VERIFIED', 'REPORTED', 'DISPUTED', 'UNRESOLVED', 'FOLKLORE', 'THEORY', 'EXPLAINED_LATER')),
   confidence text NOT NULL CHECK (confidence IN ('HIGH', 'MEDIUM', 'LOW')),
@@ -69,6 +70,7 @@ CREATE TABLE IF NOT EXISTS story_claims (
   UNIQUE (story_candidate_id, normalized_claim)
 );
 CREATE INDEX IF NOT EXISTS story_claims_candidate_idx ON story_claims (story_candidate_id, priority, event_date);
+ALTER TABLE story_claims ADD COLUMN IF NOT EXISTS spoken_text text NOT NULL DEFAULT '';
 CREATE TABLE IF NOT EXISTS story_research_packages (
   story_candidate_id text PRIMARY KEY REFERENCES story_candidates(id) ON DELETE CASCADE,
   package jsonb NOT NULL,

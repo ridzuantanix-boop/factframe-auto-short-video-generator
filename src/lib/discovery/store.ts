@@ -20,7 +20,7 @@ function sourceFromRow(row: Row): StoredStorySource {
 }
 
 function claimFromRow(row: Row): ResearchClaim {
-  return { id: String(row.id), storyCandidateId: String(row.story_candidate_id), claimText: String(row.claim_text), normalizedClaim: String(row.normalized_claim),
+  return { id: String(row.id), storyCandidateId: String(row.story_candidate_id), claimText: String(row.claim_text), spokenText: String(row.spoken_text ?? ""), normalizedClaim: String(row.normalized_claim),
     claimType: row.claim_type as ResearchClaim["claimType"], confidence: row.confidence as ResearchClaim["confidence"], sourceIds: strings(row.source_ids),
     eventDate: nullableDate(row.event_date), people: strings(row.people), locations: strings(row.locations), priority: row.priority as ResearchClaim["priority"],
     visualIntent: row.visual_intent as ResearchClaim["visualIntent"], ocrQuality: Number(row.ocr_quality) };
@@ -242,6 +242,32 @@ export class StoryStore {
     return rows.map(fromRow);
   }
 
+  async listResearchCandidatesByIds(ids: string[]) {
+    if (!ids.length) return [];
+    const rows = await this.sql<Row[]>`SELECT * FROM story_candidates WHERE id = ANY(${ids}) ORDER BY updated_at DESC`;
+    const byId = new Map(rows.map((row) => [String(row.id), fromRow(row)]));
+    return ids.map((id) => byId.get(id)).filter((item): item is StoryCandidate => Boolean(item));
+  }
+
+  async moveSources(sourceIds: string[], candidateId: string) {
+    if (!sourceIds.length) return 0;
+    const rows = await this.sql<{ id: string }[]>`UPDATE story_sources SET story_candidate_id=${candidateId} WHERE id = ANY(${sourceIds}) RETURNING id`;
+    return rows.length;
+  }
+
+  async resetClusterResearch(candidateId: string, metadata: Record<string, unknown>) {
+    return this.sql.begin(async (tx) => {
+      await tx`DELETE FROM story_claims WHERE story_candidate_id=${candidateId}`;
+      await tx`DELETE FROM story_research_packages WHERE story_candidate_id=${candidateId}`;
+      const rows = await tx<Row[]>`UPDATE story_candidates candidate SET status='PARTIAL', claim_count=0, research_score=NULL,
+        narrative_potential_score=NULL, metadata=${tx.json(JSON.parse(JSON.stringify(metadata)))}, last_researched_at=NULL,
+        last_verified_at=NULL, source_count=(SELECT count(*)::int FROM story_sources source WHERE source.story_candidate_id=candidate.id), updated_at=now()
+        WHERE id=${candidateId} RETURNING *`;
+      if (!rows[0]) throw new Error(`Story candidate not found: ${candidateId}`);
+      return fromRow(rows[0]);
+    });
+  }
+
   async getResearchPackage(candidateId: string) {
     const rows = await this.sql<{ package: ResearchPackage }[]>`SELECT package FROM story_research_packages WHERE story_candidate_id=${candidateId} LIMIT 1`;
     return rows[0]?.package ?? null;
@@ -256,8 +282,8 @@ export class StoryStore {
     return this.sql.begin(async (tx) => {
       await tx`DELETE FROM story_claims WHERE story_candidate_id=${candidate.id}`;
       for (const claim of claims) await tx`INSERT INTO story_claims
-        (id, story_candidate_id, claim_text, normalized_claim, claim_type, confidence, source_ids, event_date, people, locations, priority, visual_intent, ocr_quality, created_at, updated_at)
-        VALUES (${claim.id}, ${candidate.id}, ${claim.claimText}, ${claim.normalizedClaim}, ${claim.claimType}, ${claim.confidence},
+        (id, story_candidate_id, claim_text, spoken_text, normalized_claim, claim_type, confidence, source_ids, event_date, people, locations, priority, visual_intent, ocr_quality, created_at, updated_at)
+        VALUES (${claim.id}, ${candidate.id}, ${claim.claimText}, ${claim.spokenText}, ${claim.normalizedClaim}, ${claim.claimType}, ${claim.confidence},
           ${tx.json(claim.sourceIds)}, ${claim.eventDate}, ${tx.json(claim.people)}, ${tx.json(claim.locations)}, ${claim.priority}, ${claim.visualIntent}, ${claim.ocrQuality}, now(), now())`;
       await tx`INSERT INTO story_research_packages (story_candidate_id, package, created_at, updated_at)
         VALUES (${candidate.id}, ${tx.json(JSON.parse(JSON.stringify(researchPackage)))}, now(), now())
@@ -265,7 +291,8 @@ export class StoryStore {
       const priorCategories = (Array.isArray(candidate.metadata.categories) ? candidate.metadata.categories.map(String) : [])
         .filter((category) => !["mysteries", "malaysia_mysteries"].includes(category));
       const metadata = { ...candidate.metadata, categories: [...new Set([...priorCategories, "archive",
-        ...(researchPackage.readyDecision.status === "READY" ? ["mysteries", "malaysia_mysteries"] : [])])], researchPackageVersion: "4.0-grounded" };
+        ...(researchPackage.readyDecision.status === "READY" ? ["mysteries", "malaysia_mysteries"] : [])])],
+        clusterConfidence: researchPackage.clusterConfidence, researchPackageVersion: "4.1-coherent-malay" };
       const rows = await tx<Row[]>`UPDATE story_candidates SET status=${researchPackage.readyDecision.status}, claim_count=${claims.length},
         research_score=${researchPackage.researchScore}, narrative_potential_score=${researchPackage.narrativePotentialScore},
         metadata=${tx.json(JSON.parse(JSON.stringify(metadata)))}, last_researched_at=${researchPackage.lastResearchedAt},

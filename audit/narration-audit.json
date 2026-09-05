@@ -1,0 +1,26 @@
+{
+  "generatedAt": "2026-09-05T03:50:01.085Z",
+  "originalCandidatesChecked": 100,
+  "resultingCandidatesChecked": 135,
+  "suspiciousClustersFound": 16,
+  "candidatesSplit": 16,
+  "newClustersCreated": 35,
+  "sourcesReassigned": 50,
+  "claimsBefore": 166,
+  "claimsAfter": 175,
+  "readyBefore": 2,
+  "readyAfter": 1,
+  "narratablePackages": 7,
+  "spokenClaimCoverage": 0.057,
+  "malayLanguageRatio": 1,
+  "spokenNaturalnessScore": 0.915,
+  "rawEnglishLeakageCount": 0,
+  "ocrLeakageCount": 0,
+  "clusterConfidenceDistribution": {
+    "MEDIUM": 66,
+    "HIGH": 69
+  },
+  "readyNarrationsPassing": 1,
+  "readyNarrationsFailing": 0,
+  "exportedExamples": 10
+}

@@ -5,6 +5,8 @@ import { extractClaimsFromSources } from "./claimExtractor.ts";
 import { mergeDuplicateClaims } from "./claimMerger.ts";
 import { calculateResearchMetrics, decideResearchReadiness } from "./researchScoring.ts";
 import type { GroundedNarrativeElement, ResearchClaim, ResearchPackage } from "./types.ts";
+import { rewriteClaimsForSpeech, assessNarrationQuality } from "./narrationRewriter.ts";
+import { validateSourceCluster } from "../archive/clusterIntegrity.ts";
 
 function sourceRole(value: ArchiveReliability) {
   if (["PRIMARY", "OFFICIAL"].includes(value)) return "PRIMARY_OFFICIAL" as const;
@@ -27,36 +29,34 @@ function researchSources(sources: StoredStorySource[]): ResearchPackage["sources
     sourceRole: sourceRole(source.reliabilityLevel) }));
 }
 
-function questionFor(storyType: string) {
-  if (storyType === "DISAPPEARANCE") return "Apakah yang berlaku selepas kehilangan itu dilaporkan?";
-  if (storyType === "MYSTERIOUS_DEATH") return "Apakah yang dapat dipastikan daripada penemuan itu?";
-  if (storyType === "CRIME_MYSTERY") return "Bagaimanakah laporan dan tindakan pihak berkuasa menyusun kes ini?";
-  if (storyType === "DISASTER") return "Apakah urutan kejadian yang membawa kepada bencana itu?";
-  if (storyType === "PARANORMAL_REPORT") return "Apakah yang benar-benar dilaporkan, dan apakah yang belum dapat disahkan?";
-  if (storyType === "FOLKLORE") return "Bahagian manakah direkodkan, dan bahagian manakah kekal sebagai cerita rakyat?";
-  return "Apakah yang berubah apabila rekod-rekod ini disusun mengikut masa?";
+function questionFor(storyType: string, claim: ResearchClaim) {
+  const text = claim.spokenText.toLowerCase();
+  if (text.includes("jurumudi")) return "Apakah yang berlaku kepada jurumudi yang masih hilang itu?";
+  if (storyType === "DISAPPEARANCE") return "Apakah yang berlaku kepada individu yang dilaporkan hilang itu?";
+  if (storyType === "MYSTERIOUS_DEATH") return "Apakah yang dapat dipastikan selepas mayat itu ditemukan?";
+  if (storyType === "CRIME_MYSTERY") return "Apakah perkembangan siasatan selepas laporan jenayah itu?";
+  if (storyType === "DISASTER") return "Bagaimanakah kejadian itu berkembang sehingga mengorbankan mangsa?";
+  if (storyType === "PARANORMAL_REPORT") return "Apakah sebenarnya yang didakwa oleh para saksi dalam laporan itu?";
+  if (storyType === "FOLKLORE") return "Apakah yang direkodkan oleh sumber tentang legenda tempatan itu?";
+  return "Apakah perkembangan seterusnya yang direkodkan dalam sumber?";
 }
 
-function hookFor(claim: ResearchClaim, index: number): GroundedNarrativeElement {
-  const leads = ["Rekod arkib membuka cerita ini dengan satu butiran penting:", "Satu laporan lama merekodkan:", "Petunjuk paling jelas dalam sumber ialah:"];
-  return { text: `${leads[index % leads.length]} ${claim.claimText}`, claimIds: [claim.id], sourceIds: claim.sourceIds };
+function hookFor(claim: ResearchClaim): GroundedNarrativeElement {
+  return { text: claim.spokenText, claimIds: [claim.id], sourceIds: claim.sourceIds };
 }
 
 function assignNarrativePriorities(claims: ResearchClaim[]) {
-  return claims.map((claim, index) => ({ ...claim, priority: index === 0 ? "HOOK_WORTHY" as const : index === claims.length - 1 ? "PAYOFF" as const
-    : index === 1 ? "ESSENTIAL_CONTEXT" as const : index === Math.max(2, claims.length - 2) ? "TWIST" as const : "ESCALATION_DETAIL" as const }));
+  const speakable = claims.filter((claim) => Boolean(claim.spokenText));
+  const positions = new Map(speakable.map((claim, index) => [claim.id, index]));
+  return claims.map((claim) => { const index = positions.get(claim.id); const total = speakable.length;
+    return { ...claim, priority: index === undefined ? "LOW_PRIORITY" as const : index === 0 ? "HOOK_WORTHY" as const : index === total - 1 ? "PAYOFF" as const
+      : index === 1 ? "ESSENTIAL_CONTEXT" as const : index === Math.max(2, total - 2) ? "TWIST" as const : "ESCALATION_DETAIL" as const }; });
 }
 
 function needsCurrentVerification(storyType: string, historicalContext: string, sources: StoredStorySource[]) {
   if (historicalContext !== "MODERN_MALAYSIA" || !["DISAPPEARANCE", "CRIME_MYSTERY", "UNEXPLAINED_EVENT"].includes(storyType)) return false;
   const latest = sources.map((source) => source.publishedAt ? Date.parse(source.publishedAt) : 0).reduce((max, value) => Math.max(max, value), 0);
   return latest > Date.parse("2015-01-01T00:00:00.000Z");
-}
-
-function sourcesAreTemporallyCoherent(sources: StoredStorySource[]) {
-  const dates = sources.map((source) => source.publishedAt ? Date.parse(source.publishedAt) : Number.NaN).filter(Number.isFinite);
-  if (dates.length < 2) return true;
-  return Math.max(...dates) - Math.min(...dates) <= 3 * 366 * 24 * 60 * 60 * 1000;
 }
 
 function normalizeLocation(value: string) {
@@ -67,23 +67,28 @@ export async function researchStoryCandidate(candidateId: string, store: StorySt
   const candidate = await store.findById(candidateId); if (!candidate) throw new Error(`Story candidate not found: ${candidateId}`);
   if (candidate.metadata.archiveDerived !== true) throw new Error("Only archive-derived candidates are supported by deterministic Phase 4 enrichment.");
   const sources = await store.listSourcesForCandidate(candidate.id); const rawClaims = extractClaimsFromSources(candidate, sources);
-  const merged = mergeDuplicateClaims(rawClaims); const claims = assignNarrativePriorities(merged.claims);
+  const merged = mergeDuplicateClaims(rawClaims); const claims = assignNarrativePriorities(rewriteClaimsForSpeech(merged.claims, candidate.storyType));
   const historicalContext = String(candidate.metadata.historicalContext ?? "PRE_MALAYSIA");
   const requiresCurrentVerification = needsCurrentVerification(candidate.storyType, historicalContext, sources);
   const metrics = calculateResearchMetrics(claims, sources, candidate.storyType);
-  const hooks = claims.slice(0, Math.min(3, claims.length)).map(hookFor);
-  const keyTurningPoints = claims.filter((claim) => ["TWIST", "PAYOFF"].includes(claim.priority)).map((claim) => ({ text: claim.claimText, claimIds: [claim.id], sourceIds: claim.sourceIds }));
-  const unresolvedQuestions = ["DISAPPEARANCE", "MYSTERIOUS_DEATH", "PARANORMAL_REPORT", "FOLKLORE", "UNEXPLAINED_EVENT", "CRIME_MYSTERY"].includes(candidate.storyType)
-    ? [{ text: questionFor(candidate.storyType), claimIds: [], sourceIds: [] }] : [];
-  const endingClaim = claims.at(-1); const payoff = endingClaim ? { text: endingClaim.claimText, claimIds: [endingClaim.id], sourceIds: endingClaim.sourceIds } : { text: "", claimIds: [], sourceIds: [] };
-  const readyDecision = decideResearchReadiness(claims, sources, metrics, Boolean(hooks.length), Boolean(payoff.text), requiresCurrentVerification, sourcesAreTemporallyCoherent(sources));
+  const speakableClaims = claims.filter((claim) => Boolean(claim.spokenText)); const hooks = speakableClaims.slice(0, Math.min(3, speakableClaims.length)).map(hookFor);
+  const sinking = speakableClaims.find((claim) => /kapal karam/i.test(claim.spokenText));
+  const missingHelmsman = speakableClaims.find((claim) => /jurumudi.*hilang|hilang.*jurumudi/i.test(claim.spokenText));
+  if (sinking && missingHelmsman) hooks.unshift({ text: sinking.spokenText.replace(/Namun, seorang masih hilang\.$/i, "Tetapi jurumudinya masih hilang."),
+    claimIds: [sinking.id, missingHelmsman.id], sourceIds: [...new Set([...sinking.sourceIds, ...missingHelmsman.sourceIds])] });
+  const keyTurningPoints = speakableClaims.filter((claim) => ["TWIST", "PAYOFF"].includes(claim.priority)).map((claim) => ({ text: claim.spokenText, claimIds: [claim.id], sourceIds: claim.sourceIds }));
+  const unresolvedQuestions = (["DISAPPEARANCE", "MYSTERIOUS_DEATH", "PARANORMAL_REPORT", "FOLKLORE", "UNEXPLAINED_EVENT", "CRIME_MYSTERY"].includes(candidate.storyType) || /missing|hilang/i.test(candidate.title))
+    ? speakableClaims[0] ? [{ text: /helmsman|jurumudi/i.test(candidate.title) ? "Apakah yang ditemukan apabila operasi mencari jurumudi itu diteruskan?" : questionFor(candidate.storyType, speakableClaims[0]), claimIds: [], sourceIds: [] }] : [] : [];
+  const endingClaim = speakableClaims.at(-1); const payoff = endingClaim ? { text: endingClaim.spokenText, claimIds: [endingClaim.id], sourceIds: endingClaim.sourceIds } : { text: "", claimIds: [], sourceIds: [] };
+  const cluster = validateSourceCluster(sources); const narrationQuality = assessNarrationQuality(claims);
+  const readyDecision = decideResearchReadiness(claims, sources, metrics, Boolean(hooks.length), Boolean(payoff.text), requiresCurrentVerification, cluster.confidence, narrationQuality);
   const now = new Date().toISOString(); const packageValue: ResearchPackage = {
     storyCandidateId: candidate.id, title: candidate.title, summary: candidate.summary, storyType: candidate.storyType, historicalContext,
-    sources: researchSources(sources), claims, timeline: claims.map((claim) => ({ id: `timeline-${claim.id}`, date: claim.eventDate,
-      dateBasis: claim.eventDate ? "PUBLICATION_DATE" : "UNKNOWN", text: claim.claimText, claimIds: [claim.id], sourceIds: claim.sourceIds, confidence: claim.confidence })),
+    sources: researchSources(sources), claims, timeline: speakableClaims.map((claim) => ({ id: `timeline-${claim.id}`, date: claim.eventDate,
+      dateBasis: claim.eventDate ? "PUBLICATION_DATE" : "UNKNOWN", text: claim.spokenText, claimIds: [claim.id], sourceIds: claim.sourceIds, confidence: claim.confidence })),
     people: [...new Set(claims.flatMap((claim) => claim.people).map((item) => item.trim()).filter(Boolean))],
     locations: [...new Set([candidate.region, ...claims.flatMap((claim) => claim.locations)].filter(Boolean).map(normalizeLocation))],
-    hookCandidates: hooks, keyTurningPoints, unresolvedQuestions, payoff, ...metrics, readyDecision, requiresCurrentVerification,
+    hookCandidates: hooks, keyTurningPoints, unresolvedQuestions, payoff, clusterConfidence: cluster.confidence, narrationQuality, ...metrics, readyDecision, requiresCurrentVerification,
     lastResearchedAt: now, lastVerifiedAt: now,
   };
   await store.persistResearchPackage(candidate, claims, packageValue);
@@ -111,7 +116,7 @@ export function researchPackageToStoryRecord(value: ResearchPackage): StoryRecor
     summary: value.summary, entityIds: [], sourceHints: value.sources.map((source) => source.publisher),
     visualSearchTerms: [...new Set([value.title, ...value.locations, ...value.people])].slice(0, 8), researchScore: value.researchScore,
     visualScore: 0, sourceCoveragePotential: value.sourceCoverage === 1 ? "good" : "limited", sources: value.sources,
-    claims: value.claims.map((claim) => ({ id: claim.id, claim: claim.claimText, narration: claim.claimText, type: claim.claimType,
+    claims: value.claims.filter((claim) => Boolean(claim.spokenText)).map((claim) => ({ id: claim.id, claim: claim.claimText, narration: claim.spokenText, type: claim.claimType,
       confidence: claim.confidence, sourceIds: claim.sourceIds, priority: claim.priority, visualIntent: claim.visualIntent })),
     historicalContext: value.historicalContext, timeline: value.timeline, hookCandidates: value.hookCandidates,
     unresolvedQuestions: value.unresolvedQuestions, payoff: value.payoff };

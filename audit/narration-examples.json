@@ -1,0 +1,611 @@
+{
+  "generatedAt": "2026-09-05T03:50:01.085Z",
+  "examples": [
+    {
+      "candidateId": "d9c994a2-ac1b-4b72-8cfa-f38506c78fe2",
+      "title": "Search still on for missing Sarawak boat helmsman",
+      "storyType": "HISTORICAL_INCIDENT",
+      "clusterConfidence": "HIGH",
+      "sources": [
+        {
+          "id": "449773c00c72cc9f682fecc00d1dd7db",
+          "title": "1 missing, 7 saved after ship sinks off Sarawak",
+          "publisher": "The Straits Times",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes19920212-1.2.28.10",
+          "date": "1992-02-12T00:00:00.000Z",
+          "rawSnippet": "1 missing, 7 saved after ship sinks off Sarawak KUCHING All except one member of the eight-man crew on board a Sarawak Marine Department vessel which sank in Sarikei district..."
+        },
+        {
+          "id": "f288ce59da6e15daec6a989dbafc089f",
+          "title": "Search still on for missing Sarawak boat helmsman",
+          "publisher": "The Straits Times",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes19920213-1.2.26.9",
+          "date": "1992-02-13T00:00:00.000Z",
+          "rawSnippet": "Search still on for missing Sarawak boat helmsman KUCHING Searchers found the Sarawak Marine Department vessel, Menual, yesterday as the search for its helmsman, missing since it capsized on Monday..."
+        }
+      ],
+      "before": [
+        {
+          "claimText": "1 missing, 7 saved after ship sinks off Sarawak",
+          "sourceIds": [
+            "449773c00c72cc9f682fecc00d1dd7db"
+          ]
+        },
+        {
+          "claimText": "Search still on for missing Sarawak boat helmsman",
+          "sourceIds": [
+            "f288ce59da6e15daec6a989dbafc089f"
+          ]
+        },
+        {
+          "claimText": "KUCHING Searchers found the Sarawak Marine Department vessel, Menual, yesterday as the search for its helmsman, missing since it capsized on Monday",
+          "sourceIds": [
+            "f288ce59da6e15daec6a989dbafc089f"
+          ]
+        }
+      ],
+      "after": [
+        {
+          "spokenText": "Tujuh orang berjaya diselamatkan selepas sebuah kapal karam di perairan Sarawak. Namun, seorang masih hilang.",
+          "sourceIds": [
+            "449773c00c72cc9f682fecc00d1dd7db"
+          ]
+        },
+        {
+          "spokenText": "Usaha mencari jurumudi kapal yang hilang di Sarawak masih diteruskan.",
+          "sourceIds": [
+            "f288ce59da6e15daec6a989dbafc089f"
+          ]
+        },
+        {
+          "spokenText": "Laporan itu menyatakan bahawa pasukan pencari telah menemukan kapal Menual milik Jabatan Laut Sarawak sehari sebelumnya. Jurumudinya masih hilang selepas kapal itu terbalik pada hari Isnin.",
+          "sourceIds": [
+            "f288ce59da6e15daec6a989dbafc089f"
+          ]
+        }
+      ],
+      "finalNarration": "Tujuh orang berjaya diselamatkan selepas sebuah kapal karam di perairan Sarawak. Tetapi jurumudinya masih hilang. Apakah yang ditemukan apabila operasi mencari jurumudi itu diteruskan? Menurut laporan ketika itu, usaha mencari jurumudi kapal yang hilang di Sarawak masih diteruskan. Laporan itu menyatakan bahawa pasukan pencari telah menemukan kapal Menual milik Jabatan Laut Sarawak sehari sebelumnya. Jurumudinya masih hilang selepas kapal itu terbalik pada hari Isnin.",
+      "narrationQuality": {
+        "passes": true,
+        "fragmentCount": 0,
+        "ocrLeakageCount": 0,
+        "malayLanguageRatio": 1,
+        "englishLeakageCount": 0,
+        "headlineLeakageCount": 0,
+        "spokenNaturalnessScore": 1
+      },
+      "readyDecision": {
+        "status": "READY",
+        "reasons": [
+          "All research and narration readiness gates passed."
+        ]
+      },
+      "scriptQuality": {
+        "storytellingScore": 13.2,
+        "structureScore": 0.85,
+        "sourceQualityScore": 1,
+        "narrationQualityScore": 1,
+        "repetitionScore": 1,
+        "passes": true
+      }
+    },
+    {
+      "candidateId": "cd396f4c-19e0-4055-9195-3b005964a0ba",
+      "title": "GIRL, 10 MISSING",
+      "storyType": "DISAPPEARANCE",
+      "clusterConfidence": "MEDIUM",
+      "sources": [
+        {
+          "id": "3c11c8f2930cb266a0cb44744892c2d8",
+          "title": "Girl missing",
+          "publisher": "The Straits Times",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes19520805-1.2.92",
+          "date": "1952-08-05T00:00:00.000Z",
+          "rawSnippet": "Girl missing KUALA LUMPUR, Mon. An 11 -year-old Chinese girl was reported missing from her house at Kampong Dollah in the Pudu area of Kuala Lumpur on Saturday. Police cr..."
+        }
+      ],
+      "before": [
+        {
+          "claimText": "An 11 -year-old Chinese girl was reported missing from her house at Kampong Dollah in the Pudu area of Kuala Lumpur on Saturday.",
+          "sourceIds": [
+            "3c11c8f2930cb266a0cb44744892c2d8"
+          ]
+        }
+      ],
+      "after": [
+        {
+          "spokenText": "",
+          "sourceIds": [
+            "3c11c8f2930cb266a0cb44744892c2d8"
+          ]
+        }
+      ],
+      "finalNarration": "",
+      "narrationQuality": {
+        "passes": false,
+        "fragmentCount": 0,
+        "ocrLeakageCount": 0,
+        "malayLanguageRatio": 0,
+        "englishLeakageCount": 0,
+        "headlineLeakageCount": 0,
+        "spokenNaturalnessScore": 0.2
+      },
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "Needs two sources or one exceptionally clear source with four claims.",
+          "No grounded hook candidate.",
+          "No grounded payoff or unresolved ending.",
+          "Unique clear evidence is insufficient for about 20 seconds.",
+          "Malay spoken narration does not pass the language and naturalness gate."
+        ]
+      },
+      "scriptQuality": null
+    },
+    {
+      "candidateId": "0c51897d-cbb6-4b50-b121-b9e5c4754804",
+      "title": "BODY FOUND IN PERAK RIVER [1952-03-26]",
+      "storyType": "MYSTERIOUS_DEATH",
+      "clusterConfidence": "MEDIUM",
+      "sources": [
+        {
+          "id": "0d5f3c0bf35a390b554db1db73df9cc8",
+          "title": "BODY FOUND IN PERAK RIVER",
+          "publisher": "The Singapore Free Press and Mercantile Advertiser",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/freepress19520326-1.2.54",
+          "date": "1952-03-26T00:00:00.000Z",
+          "rawSnippet": "BODY FOUND IN PERAK RIVER TELUK ANSOtf, Wed.— •nie body of a Malay, believed to be that of one Abu Jamin, reported missing from Bota on Wednesday was found in..."
+        }
+      ],
+      "before": [
+        {
+          "claimText": "BODY FOUND IN PERAK RIVER",
+          "sourceIds": [
+            "0d5f3c0bf35a390b554db1db73df9cc8"
+          ]
+        }
+      ],
+      "after": [
+        {
+          "spokenText": "Satu mayat ditemukan di PERAK RIVER.",
+          "sourceIds": [
+            "0d5f3c0bf35a390b554db1db73df9cc8"
+          ]
+        }
+      ],
+      "finalNarration": "Satu mayat ditemukan di PERAK RIVER.",
+      "narrationQuality": {
+        "passes": true,
+        "fragmentCount": 0,
+        "ocrLeakageCount": 0,
+        "malayLanguageRatio": 1,
+        "englishLeakageCount": 0,
+        "headlineLeakageCount": 0,
+        "spokenNaturalnessScore": 1
+      },
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "Needs two sources or one exceptionally clear source with four claims.",
+          "Unique clear evidence is insufficient for about 20 seconds."
+        ]
+      },
+      "scriptQuality": null
+    },
+    {
+      "candidateId": "4b372ba8-6fc0-492c-8723-0adfa4c05d70",
+      "title": "JOHORE MURDER.",
+      "storyType": "CRIME_MYSTERY",
+      "clusterConfidence": "MEDIUM",
+      "sources": [
+        {
+          "id": "801e6dad1f04161bce8bdb956a925e29",
+          "title": "JOHORE MURDER.",
+          "publisher": "The Straits Budget",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitsbudget19361001-1.2.55",
+          "date": "1936-10-01T00:00:00.000Z",
+          "rawSnippet": "JOHORE MURDER. Appeal Against Death Sentence Fails. (From Our Own Correspondent) Johore Bahru, Sept. 21. rE Johore Court of Appeal today dismissed the appeal of Adaikan against sentence of death..."
+        },
+        {
+          "id": "023a8f28ad9e39dc122b771d5cfbf5e6",
+          "title": "Johore Murder",
+          "publisher": "Morning Tribune",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/morningtribune19361030-1.2.82",
+          "date": "1936-10-30T00:00:00.000Z",
+          "rawSnippet": "Johore Murder Three Hainanese Remanded From Our Own Correspondent) Johore Bahru. Oct. 28. THE three Hainanese arrested in connection with th^ triple murder on 'the rubber estate of a Chinese..."
+        },
+        {
+          "id": "4b53915fa39ea11d6ba4f690a96ff069",
+          "title": "Johore Murder",
+          "publisher": "Morning Tribune",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/morningtribune19361210-1.2.79",
+          "date": "1936-12-10T00:00:00.000Z",
+          "rawSnippet": "Johore Murder One Of Three Accused Discharged Johore Bahru, Dec. 8. IN connection with the triple murder which was committed on the rubber estate of a Chinese small-holder in Senai,..."
+        }
+      ],
+      "before": [
+        {
+          "claimText": "rE Johore Court of Appeal today dismissed the appeal of Adaikan against sentence of death",
+          "sourceIds": [
+            "801e6dad1f04161bce8bdb956a925e29"
+          ]
+        },
+        {
+          "claimText": "Three Hainanese Remanded From Our Own Correspondent) Johore Bahru.",
+          "sourceIds": [
+            "023a8f28ad9e39dc122b771d5cfbf5e6"
+          ]
+        },
+        {
+          "claimText": "IN connection with the triple murder which was committed on the rubber estate of a Chinese small-holder in Senai",
+          "sourceIds": [
+            "023a8f28ad9e39dc122b771d5cfbf5e6",
+            "4b53915fa39ea11d6ba4f690a96ff069"
+          ]
+        }
+      ],
+      "after": [
+        {
+          "spokenText": "",
+          "sourceIds": [
+            "801e6dad1f04161bce8bdb956a925e29"
+          ]
+        },
+        {
+          "spokenText": "",
+          "sourceIds": [
+            "023a8f28ad9e39dc122b771d5cfbf5e6"
+          ]
+        },
+        {
+          "spokenText": "",
+          "sourceIds": [
+            "023a8f28ad9e39dc122b771d5cfbf5e6",
+            "4b53915fa39ea11d6ba4f690a96ff069"
+          ]
+        }
+      ],
+      "finalNarration": "",
+      "narrationQuality": {
+        "passes": false,
+        "fragmentCount": 0,
+        "ocrLeakageCount": 0,
+        "malayLanguageRatio": 0,
+        "englishLeakageCount": 0,
+        "headlineLeakageCount": 0,
+        "spokenNaturalnessScore": 0.2
+      },
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "No grounded hook candidate.",
+          "No grounded payoff or unresolved ending.",
+          "Unique clear evidence is insufficient for about 20 seconds.",
+          "Malay spoken narration does not pass the language and naturalness gate."
+        ]
+      },
+      "scriptQuality": null
+    },
+    {
+      "candidateId": "12a2e512-a180-4858-8dbb-ff6e2ba93dd4",
+      "title": "ACCIDENT AT KUALA LUMPUR. [1909-03-15]",
+      "storyType": "DISASTER",
+      "clusterConfidence": "HIGH",
+      "sources": [
+        {
+          "id": "189cbfb31dc908dfa64e3b76bf21311e",
+          "title": "ACCIDENT AT KUALA LUMPUR.",
+          "publisher": "The Singapore Free Press and Mercantile Advertiser",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/singfreepressb19090315-1.2.27",
+          "date": "1909-03-15T00:00:00.000Z",
+          "rawSnippet": "ACCIDENT AT KUALA LUMPUR. SINGAPORE MAX INJURED. We received information yesterday of what seems to hive been a serious accident m Kuala Lumpur, involving injury to a Singaporean. Particulars are..."
+        },
+        {
+          "id": "670633d6778c64444c01daeefab4d465",
+          "title": "ACCIDENT AT KUALA LUMPUR.",
+          "publisher": "The Singapore Free Press and Mercantile Advertiser",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/singfreepresswk19090318-1.2.54",
+          "date": "1909-03-18T00:00:00.000Z",
+          "rawSnippet": "ACCIDENT AT KUALA LUMPUR. SINGAPORE MAN INJURED. We received information yesterday of what seems to have been a serious accident m Kuala Lumpur, involving injury to a Singaporean. Particulars are..."
+        }
+      ],
+      "before": [],
+      "after": [],
+      "finalNarration": "",
+      "narrationQuality": {
+        "passes": false,
+        "fragmentCount": 0,
+        "ocrLeakageCount": 0,
+        "malayLanguageRatio": 0,
+        "englishLeakageCount": 0,
+        "headlineLeakageCount": 0,
+        "spokenNaturalnessScore": 0.2
+      },
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "Every factual claim must resolve to persisted source IDs.",
+          "No grounded hook candidate.",
+          "No grounded payoff or unresolved ending.",
+          "Narrative potential is below 0.55.",
+          "Unique clear evidence is insufficient for about 20 seconds.",
+          "Malay spoken narration does not pass the language and naturalness gate."
+        ]
+      },
+      "scriptQuality": null
+    },
+    {
+      "candidateId": "43256e13-3241-4e57-9f11-eb40f7e00073",
+      "title": "A 'GHOST' WILL GUARD MUSEUM TEMPLER HELPED TO BUILD",
+      "storyType": "PARANORMAL_REPORT",
+      "clusterConfidence": "HIGH",
+      "sources": [
+        {
+          "id": "f15720e77023c3fabebc428e7009bdb9",
+          "title": "A 'GHOST' WILL GUARD MUSEUM TEMPLER HELPED TO BUILD",
+          "publisher": "The Straits Times",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes19540320-1.2.101",
+          "date": "1954-03-20T00:00:00.000Z",
+          "rawSnippet": "A 'GHOST' WILL GUARD MUSEUM TEMPLER HELPED TO BUILD MALACCA. Fri. A LATE 18th. century Dutch •i* house along Fort Road, said to be haunted by the ghost of a..."
+        },
+        {
+          "id": "abd82bef57fcb3635f169ee67a089058",
+          "title": "A ‘GHOST’ WILL GUARD MUSEUM TEMPLER HELPED TO BUILD",
+          "publisher": "The Straits Budget",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitsbudget19540325-1.2.77",
+          "date": "1954-03-25T00:00:00.000Z",
+          "rawSnippet": "A ‘GHOST’ WILL GUARD MUSEUM TEMPLER HELPED TO BUILD MALACCA. Mar 19 A LATE 18th. century Dutch house along Fort Road, said to be haunted by the ghost of a..."
+        }
+      ],
+      "before": [],
+      "after": [],
+      "finalNarration": "",
+      "narrationQuality": {
+        "passes": false,
+        "fragmentCount": 0,
+        "ocrLeakageCount": 0,
+        "malayLanguageRatio": 0,
+        "englishLeakageCount": 0,
+        "headlineLeakageCount": 0,
+        "spokenNaturalnessScore": 0.2
+      },
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "Every factual claim must resolve to persisted source IDs.",
+          "No grounded hook candidate.",
+          "No grounded payoff or unresolved ending.",
+          "Narrative potential is below 0.55.",
+          "Unique clear evidence is insufficient for about 20 seconds.",
+          "Malay spoken narration does not pass the language and naturalness gate."
+        ]
+      },
+      "scriptQuality": null
+    },
+    {
+      "candidateId": "78a5fa9d-524d-41ec-b15e-7076f9df6892",
+      "title": "Water—but a legend says this will bring Templer back",
+      "storyType": "FOLKLORE",
+      "clusterConfidence": "MEDIUM",
+      "sources": [
+        {
+          "id": "d24c4657a4b25cf1ecabdb79a2cc929c",
+          "title": "Water—but a legend says this will bring Templer back",
+          "publisher": "The Straits Times",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes19540530-1.2.3",
+          "date": "1954-05-30T00:00:00.000Z",
+          "rawSnippet": "Water— but a legend says this will bring Templer back KUALA LUMPUR Saturday. KJALACCA today sent to Kings House here a tare well gift to the Tempters two bottles of..."
+        }
+      ],
+      "before": [],
+      "after": [],
+      "finalNarration": "",
+      "narrationQuality": {
+        "passes": false,
+        "fragmentCount": 0,
+        "ocrLeakageCount": 0,
+        "malayLanguageRatio": 0,
+        "englishLeakageCount": 0,
+        "headlineLeakageCount": 0,
+        "spokenNaturalnessScore": 0.2
+      },
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "Needs two sources or one exceptionally clear source with four claims.",
+          "Every factual claim must resolve to persisted source IDs.",
+          "No grounded hook candidate.",
+          "No grounded payoff or unresolved ending.",
+          "Narrative potential is below 0.55.",
+          "Unique clear evidence is insufficient for about 20 seconds.",
+          "Malay spoken narration does not pass the language and naturalness gate."
+        ]
+      },
+      "scriptQuality": null
+    },
+    {
+      "candidateId": "6cb5d71b-0425-4268-800e-ef15fc5c6d27",
+      "title": "NEGRI ASSIZES.",
+      "storyType": "HISTORICAL_INCIDENT",
+      "clusterConfidence": "HIGH",
+      "sources": [
+        {
+          "id": "5b74b9929aaa6460f8285a9c66278655",
+          "title": "NEGRI ASSIZES.",
+          "publisher": "The Straits Budget",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitsbudget19310514-1.2.12",
+          "date": "1931-05-14T00:00:00.000Z",
+          "rawSnippet": "NEGRI ASSIZES. Murder Charge Reduced To Culpable Homicide. (From Our Own Correspondent.) Sercmban, May 11. The Hon. Mr. Justice Burton presided at the Negri Sembilan Assizes which commenced today in..."
+        },
+        {
+          "id": "cdbe182e2a38e79f743b7431b5629936",
+          "title": "NEGRI ASSIZES.",
+          "publisher": "The Straits Times",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes19310514-1.2.74",
+          "date": "1931-05-14T00:00:00.000Z",
+          "rawSnippet": "NEGRI ASSIZES. Five Years for Culpable Homicide. (From Our Own Correspondent.) Seremban, May 13. At the Negri Sembilan Assizes today, Sinnappoo, a Tamil, who was charged with the murder of..."
+        }
+      ],
+      "before": [
+        {
+          "claimText": "Murder Charge Reduced To Culpable Homicide.",
+          "sourceIds": [
+            "5b74b9929aaa6460f8285a9c66278655"
+          ]
+        }
+      ],
+      "after": [
+        {
+          "spokenText": "",
+          "sourceIds": [
+            "5b74b9929aaa6460f8285a9c66278655"
+          ]
+        }
+      ],
+      "finalNarration": "",
+      "narrationQuality": {
+        "passes": false,
+        "fragmentCount": 0,
+        "ocrLeakageCount": 0,
+        "malayLanguageRatio": 0,
+        "englishLeakageCount": 0,
+        "headlineLeakageCount": 0,
+        "spokenNaturalnessScore": 0.2
+      },
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "No grounded hook candidate.",
+          "No grounded payoff or unresolved ending.",
+          "Narrative potential is below 0.55.",
+          "Unique clear evidence is insufficient for about 20 seconds.",
+          "Malay spoken narration does not pass the language and naturalness gate."
+        ]
+      },
+      "scriptQuality": null
+    },
+    {
+      "candidateId": "1cbeff7c-16ef-4f66-8eda-076f9eb728b1",
+      "title": "MISSING GIRL [1936-08-31]",
+      "storyType": "DISAPPEARANCE",
+      "clusterConfidence": "HIGH",
+      "sources": [
+        {
+          "id": "efa677ec6db3265e7cb6f8974774b3dd",
+          "title": "MISSING GIRL",
+          "publisher": "Malaya Tribune",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/maltribune19360831-1.2.83",
+          "date": "1936-08-31T00:00:00.000Z",
+          "rawSnippet": "MISSING GIRL Said To Have Been In Penang Singapore. Monday. NEWS has been received in Singapore that a young woman answering to the description of Miss Dorothy Sale, who has..."
+        },
+        {
+          "id": "1466a4fae286dce0cb9b23d586d05613",
+          "title": "Missing Girl",
+          "publisher": "Morning Tribune",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/morningtribune19360901-1.2.104",
+          "date": "1936-09-01T00:00:00.000Z",
+          "rawSnippet": "Missing Girl Said To Have Been In Penang Singapore, Monday MEWS has been received in Singapore n that a young woman answering to the description of Miss Dorothy Salt who..."
+        }
+      ],
+      "before": [
+        {
+          "claimText": "Said To Have Been In Penang Singapore.",
+          "sourceIds": [
+            "efa677ec6db3265e7cb6f8974774b3dd"
+          ]
+        }
+      ],
+      "after": [
+        {
+          "spokenText": "",
+          "sourceIds": [
+            "efa677ec6db3265e7cb6f8974774b3dd"
+          ]
+        }
+      ],
+      "finalNarration": "",
+      "narrationQuality": {
+        "passes": false,
+        "fragmentCount": 0,
+        "ocrLeakageCount": 0,
+        "malayLanguageRatio": 0,
+        "englishLeakageCount": 0,
+        "headlineLeakageCount": 0,
+        "spokenNaturalnessScore": 0.2
+      },
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "No grounded hook candidate.",
+          "No grounded payoff or unresolved ending.",
+          "Narrative potential is below 0.55.",
+          "Unique clear evidence is insufficient for about 20 seconds.",
+          "Malay spoken narration does not pass the language and naturalness gate."
+        ]
+      },
+      "scriptQuality": null
+    },
+    {
+      "candidateId": "be758095-1b69-40ee-a8b1-37f6fe005bb1",
+      "title": "GIRL, 10 MISSING [1968-10-06]",
+      "storyType": "DISAPPEARANCE",
+      "clusterConfidence": "MEDIUM",
+      "sources": [
+        {
+          "id": "9b98b9aaf085ddec8e5fb7e90ac641d5",
+          "title": "GIRL, 10 MISSING",
+          "publisher": "NewspaperSG",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/easternsun19681006-1.2.12.29",
+          "date": "1968-10-06T00:00:00.000Z",
+          "rawSnippet": "GIRL, 10 MISSING PENANG. Sat. A 10-year-old girl. Parawathi Munusamy. was reported missing from her home in Pekan Lama. Sungei Patani since Sept, la after she w r as reprimanded..."
+        }
+      ],
+      "before": [
+        {
+          "claimText": "was reported missing from her home in Pekan Lama.",
+          "sourceIds": [
+            "9b98b9aaf085ddec8e5fb7e90ac641d5"
+          ]
+        }
+      ],
+      "after": [
+        {
+          "spokenText": "",
+          "sourceIds": [
+            "9b98b9aaf085ddec8e5fb7e90ac641d5"
+          ]
+        }
+      ],
+      "finalNarration": "",
+      "narrationQuality": {
+        "passes": false,
+        "fragmentCount": 0,
+        "ocrLeakageCount": 0,
+        "malayLanguageRatio": 0,
+        "englishLeakageCount": 0,
+        "headlineLeakageCount": 0,
+        "spokenNaturalnessScore": 0.2
+      },
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "Needs two sources or one exceptionally clear source with four claims.",
+          "No grounded hook candidate.",
+          "No grounded payoff or unresolved ending.",
+          "Unique clear evidence is insufficient for about 20 seconds.",
+          "Malay spoken narration does not pass the language and naturalness gate."
+        ]
+      },
+      "scriptQuality": null
+    }
+  ]
+}

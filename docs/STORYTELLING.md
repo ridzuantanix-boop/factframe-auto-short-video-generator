@@ -21,6 +21,8 @@ An `OPEN_LOOP` is exempt from source coverage only when it is explicitly a quest
 
 Seed mystery claims still map priority to hook/context/escalation/twist/theory/counterpoint/payoff, with labels distinguishing verified, reported, folklore, theory, disputed, explained-later and unresolved material. Gemini output remains constrained by JSON schema and known source IDs. Both deterministic and Gemini mystery scripts now use the same calculated quality functions rather than fixed score/coverage values.
 
-Archive READY stories use the same engine through a persisted `ResearchPackage`. The first grounded hook, unique claims, case-specific open loop, and grounded payoff become narration segments without word-count padding. Each factual segment retains one or more valid source IDs; only a clearly interrogative open loop may be unsourced. Archive newspaper claims remain `REPORTED`, unresolved case material remains `UNRESOLVED`, and folklore remains `FOLKLORE`.
+Archive READY stories use the same engine through a persisted `ResearchPackage`. Archive English/OCR remains in `claimText`; deterministic, meaning-preserving Malaysian Malay is stored separately in `spokenText` with the same `claimType` and `sourceIds`. Only speakable claims enter the script. The strongest sourced sentence is used directly as the hook, the open loop is case-specific, and the payoff states the last known sourced condition without raw-source dumping or word-count padding.
+
+Script quality now exposes separate `structureScore`, `sourceQualityScore`, and `narrationQualityScore`. A structurally complete script cannot compensate for English leakage, OCR debris, fragments, repetition, or missing sources. READY narration must pass all component thresholds.
 
 Duration handling remains 30/60/90 seconds for the existing seed flow. The archive path no longer repeats evidence bridges merely to reach 60/90 seconds: insufficient unique material remains PARTIAL instead of being padded.

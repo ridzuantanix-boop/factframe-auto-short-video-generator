@@ -7,9 +7,12 @@ function days(left: string | null, right: string | null) { if (!left || !right) 
 function sameEvent(left: ExtractedArchiveEvent, right: ExtractedArchiveEvent) {
   const tokenScore = similarity(left.headlineTokens, right.headlineTokens); const locationMatch = overlap(left.locations, right.locations);
   if (left.document.url === right.document.url) return true;
-  if (tokenScore >= 0.72) return true;
-  if (left.incidentType !== right.incidentType || !locationMatch || days(left.eventDate, right.eventDate) > 7) return false;
-  return tokenScore >= 0.38 || (overlap(left.people, right.people) && tokenScore >= 0.2);
+  const dateDistance = days(left.eventDate, right.eventDate); const personMatch = overlap(left.people, right.people);
+  if (left.incidentType !== right.incidentType) return false;
+  if (dateDistance <= 30) return tokenScore >= .55 || (locationMatch && tokenScore >= .28) || (personMatch && tokenScore >= .18);
+  if (dateDistance <= 90) return personMatch && locationMatch && tokenScore >= .2;
+  if (!Number.isFinite(dateDistance)) return personMatch && locationMatch && tokenScore >= .48;
+  return false;
 }
 function clusterKey(event: ExtractedArchiveEvent) {
   const date = event.eventDate?.slice(0, 10) ?? "undated"; const location = event.locations[0] ?? "unknown";

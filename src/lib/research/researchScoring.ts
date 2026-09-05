@@ -1,5 +1,7 @@
 import type { StoredStorySource } from "../archive/types.ts";
 import type { ResearchClaim } from "./types.ts";
+import type { ClusterConfidence } from "../archive/clusterIntegrity.ts";
+import type { ResearchPackage } from "./types.ts";
 
 function actionKinds(value: string) {
   return [
@@ -30,9 +32,10 @@ export function calculateResearchMetrics(claims: ResearchClaim[], sources: Store
     researchScore: Number(researchScore.toFixed(3)), narrativePotentialScore: Number(narrativePotentialScore.toFixed(3)), estimatedNarrationSeconds };
 }
 
-export function decideResearchReadiness(claims: ResearchClaim[], sources: StoredStorySource[], metrics: ReturnType<typeof calculateResearchMetrics>, hasHook: boolean, hasPayoff: boolean, requiresCurrentVerification: boolean, sourcesAreCoherent = true) {
+export function decideResearchReadiness(claims: ResearchClaim[], sources: StoredStorySource[], metrics: ReturnType<typeof calculateResearchMetrics>, hasHook: boolean, hasPayoff: boolean,
+  requiresCurrentVerification: boolean, clusterConfidence: ClusterConfidence = "LOW", narrationQuality?: ResearchPackage["narrationQuality"]) {
   const reasons: string[] = [];
-  const usefulClaims = claims.filter((claim) => claim.confidence !== "LOW" && claim.ocrQuality >= .65);
+  const usefulClaims = claims.filter((claim) => claim.confidence !== "LOW" && claim.ocrQuality >= .65 && Boolean(claim.spokenText));
   if (usefulClaims.length < 3) reasons.push("Fewer than three clear, useful factual claims.");
   const oneStrongSource = sources.length === 1 && usefulClaims.length >= 4 && metrics.ocrQualityScore >= .78;
   if (sources.length < 2 && !oneStrongSource) reasons.push("Needs two sources or one exceptionally clear source with four claims.");
@@ -40,9 +43,10 @@ export function decideResearchReadiness(claims: ResearchClaim[], sources: Stored
   if (!hasHook) reasons.push("No grounded hook candidate.");
   if (!hasPayoff) reasons.push("No grounded payoff or unresolved ending.");
   if (metrics.narrativePotentialScore < .55) reasons.push("Narrative potential is below 0.55.");
-  const usefulWords = usefulClaims.reduce((sum, claim) => sum + claim.claimText.split(/\s+/).length, 0);
+  const usefulWords = usefulClaims.reduce((sum, claim) => sum + claim.spokenText.split(/\s+/).length, 0);
   if ((usefulWords + 10) / 2.25 < 20) reasons.push("Unique clear evidence is insufficient for about 20 seconds.");
-  if (!sourcesAreCoherent) reasons.push("Linked archive reports span disconnected publication periods; deterministic research cannot safely treat them as one event.");
+  if (clusterConfidence === "LOW") reasons.push("Source cluster lacks validated date and entity continuity.");
+  if (!narrationQuality?.passes) reasons.push("Malay spoken narration does not pass the language and naturalness gate.");
   if (requiresCurrentVerification) reasons.push("Current-aware verification is required before READY promotion.");
   return { status: reasons.length ? "PARTIAL" as const : "READY" as const, reasons: reasons.length ? reasons : ["All research and narration readiness gates passed."] };
 }

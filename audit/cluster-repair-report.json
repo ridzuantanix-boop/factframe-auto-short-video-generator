@@ -1,0 +1,2805 @@
+{
+  "generatedAt": "2026-09-05T03:41:59.998Z",
+  "originalCandidateIds": [
+    "cd396f4c-19e0-4055-9195-3b005964a0ba",
+    "43256e13-3241-4e57-9f11-eb40f7e00073",
+    "a3ef3546-a23d-43ca-8b96-411615c0be98",
+    "4b372ba8-6fc0-492c-8723-0adfa4c05d70",
+    "882ee5c4-403b-47b5-9aeb-c7c304955052",
+    "78a5fa9d-524d-41ec-b15e-7076f9df6892",
+    "d2903e14-71f5-4a04-91ec-8939a889d6be",
+    "518d37c9-dafa-49ad-8c7a-11df0dfbe609",
+    "6cb5d71b-0425-4268-800e-ef15fc5c6d27",
+    "3d5227f9-0d60-4c4c-8a8f-c9e75b850719",
+    "9633002d-fd92-4b19-964d-2d3b878921ce",
+    "5d9f94c2-a559-4dc6-890b-a7bc45b7497d",
+    "bcfbaef5-b55f-43de-80cb-4d71df160ce7",
+    "8251722c-30a0-4e22-8d02-bc0ccbe9ec18",
+    "e7bfa37c-f4be-4310-b126-c53b32b677fd",
+    "99b3809a-9e80-4ac6-a693-adf47736670b",
+    "d770d492-85ec-4291-8cc8-ca3839f82cf8",
+    "a37cc5cc-08d4-42fc-a6e3-b6e53d6c040d",
+    "7c0591f8-840e-4e98-80fe-e1e19f9cd3a5",
+    "7d629d67-5f68-49ff-ad4a-9f4b6ca2f716",
+    "6acba7ce-d566-4f05-8f9e-f9d0962177c2",
+    "8722f525-e618-448b-a1da-b133a256765e",
+    "4606c5c3-677c-4c0f-947e-d4a8e2a7bca1",
+    "42121e1c-0667-4dfa-9133-04342d7eeb3b",
+    "ca1679c9-70c9-4528-b19b-36a41dd3f84c",
+    "2220b6d4-5b1e-4621-9514-7f6e3390b918",
+    "c2233835-32d3-476f-9fad-7485ce91bb94",
+    "cb09ca49-4ca6-4a1c-8c5d-4828ecb0c9e5",
+    "6104b205-f677-45d2-a7dd-7d3f09ad505a",
+    "baf24c26-4c1e-475f-904a-b28b14db5be0",
+    "5f426aba-4787-4178-a95d-c1e8e3362101",
+    "ca00ef68-c8fa-46ec-ab5e-26d34f9881d3",
+    "45d871f9-22c4-445d-81f5-bbdb1ebc8215",
+    "687dfae3-0fa1-4528-8d37-d8614d910821",
+    "1eb32f3c-456c-43f2-b718-a25c11f1ab77",
+    "1e14335b-d992-4f8d-aac6-ed2b951522c2",
+    "f2e9da58-a6b2-4194-a579-a48646f78cce",
+    "446ccb10-0116-4081-93ff-588b9854a3be",
+    "1e9acba3-0784-4703-bf16-9121a1b83152",
+    "c06ec8ad-8b16-47cb-9f63-c9cbd7665dda",
+    "2ede644c-2c97-4428-b4bc-e8dee001dc77",
+    "87d0b625-1a9b-496a-bf46-ae870ad2dbbe",
+    "2e709d5f-a353-46f1-90b0-2d949c60f9c7",
+    "5fee9d57-0cd3-4350-b8ef-1bbe320a5919",
+    "0157cd3b-1bf5-48b3-a204-95c2ba16c585",
+    "4dc7f757-56df-4ee3-80b0-a6196f50346b",
+    "94e69355-6fc5-4122-a68a-14442abac45f",
+    "5664677b-b664-427b-8868-5fe4f880989f",
+    "d4e4dc1c-e008-4865-b99a-973dea2d23a8",
+    "00684f88-9192-4188-aa7e-535c27396354",
+    "960ec4e8-b25d-4c01-b3f3-28948f7cca39",
+    "ae9b75d7-9522-4a0d-b730-3d80d1f7b9af",
+    "764c85c7-c390-4c2d-98b9-c87fada5d981",
+    "f8b84f69-076c-4b0c-b646-7ea8c93617fe",
+    "b5e8f7d1-242e-46a2-b345-da005d9f91c0",
+    "d9c994a2-ac1b-4b72-8cfa-f38506c78fe2",
+    "9323975c-4f17-4ec2-9c8c-7767189280bf",
+    "7649027b-c298-4c89-82f6-21d9a8d11437",
+    "e17ac5f5-f6b2-4701-b894-15ed753f4879",
+    "169fea6e-ab70-469a-8d9d-66d39e5a35eb",
+    "efa7a7c2-aa28-47a0-a92c-ad77bd25c91e",
+    "a2bc3905-9ed4-4115-8eb7-9b02906e56db",
+    "48a9235b-5055-4d50-aa29-1a4bb8a90e99",
+    "4166aee5-171a-4174-bde7-2f7e90d1938b",
+    "df09ae8f-9513-4aba-a707-038f92ff6767",
+    "2f1e47ab-fa25-49a0-8489-7a56a049f8ee",
+    "ceea1490-101f-49c9-8404-0da05035d120",
+    "7a37b164-3585-4b9b-a60c-34bd51e42f4d",
+    "412763cb-2587-40cf-8082-d32f0c10c39a",
+    "930fe7be-bc41-4868-9ce2-f308ccbd4f40",
+    "b9037e19-8732-40d5-9c78-d96b621c2b73",
+    "a6f8b18b-15c3-4770-9684-478723dbc129",
+    "c43a633d-3626-4b70-a4fa-ccc3f578d6c8",
+    "e1dbc390-b58e-48f6-a57a-44a447830f51",
+    "149cea5e-f577-40d4-bef8-03cfaf9646e6",
+    "b8d44dd5-042b-4b34-bb1c-fe4b006ba665",
+    "00e402da-1a7d-46d7-8fc7-d2ad431bf2e0",
+    "5a550b65-203c-4cd4-a772-73c6bd1f6f98",
+    "0030df36-6fc2-47a3-aa29-765aaa82ba33",
+    "0b1ef879-b43d-4db1-ba34-571f2cdc4095",
+    "33cd462f-91db-4bcc-ad74-d1ae533fb7b5",
+    "a0e87197-ed01-4ae6-824a-e7af13385b96",
+    "2c5a4871-9269-4890-a752-98b3694a4e56",
+    "dd092f8c-a1ee-435d-b1e2-c58c3ca0eac0",
+    "056c5ce7-f2c0-4288-8231-5b0f7fc32980",
+    "3ad6ec6d-a8a2-4b8e-a9dd-ac5bd54f95fa",
+    "de255abd-5ba3-4e4e-b5df-cffa7356f19c",
+    "58cd172a-184e-49b5-a903-7c3bae3a7a92",
+    "56aad82d-55e8-4391-bc44-b204a016ce21",
+    "d91066cb-693e-43c5-93d7-c1b002fa32de",
+    "c1bb8260-4ce7-4315-a00e-debd39739691",
+    "bcad5d60-472b-4789-844f-773f452f18e8",
+    "78be0ec6-fc50-4629-96f3-0708de563e0a",
+    "e4d375c6-7078-465a-97d8-bd8fddd15d42",
+    "3eca3d99-0d2e-401c-8489-7c7ace78c8c1",
+    "7b116423-a841-46fc-bacd-aa1564c62243",
+    "d52e1b22-771e-4fd0-aeea-821ef180a40e",
+    "12af02dc-0c02-4f78-ad40-84e41300c3c7",
+    "d6fc82c0-086c-4b3d-8b7f-0083ccd9e164",
+    "eda4c0a1-4a5e-45ff-8108-180b3268d2ad"
+  ],
+  "resultCandidateIds": [
+    "cd396f4c-19e0-4055-9195-3b005964a0ba",
+    "1cbeff7c-16ef-4f66-8eda-076f9eb728b1",
+    "be758095-1b69-40ee-a8b1-37f6fe005bb1",
+    "43256e13-3241-4e57-9f11-eb40f7e00073",
+    "a3ef3546-a23d-43ca-8b96-411615c0be98",
+    "12a2e512-a180-4858-8dbb-ff6e2ba93dd4",
+    "de98f083-bc00-4d58-95c7-09d3f43b5d20",
+    "02c8139b-c846-4c92-ac2c-f4c74cac766e",
+    "cae28f09-1ad0-48fd-ae6f-72e8a5a71025",
+    "4b372ba8-6fc0-492c-8723-0adfa4c05d70",
+    "1afa18a1-552b-4764-93d2-80b5a4bbb245",
+    "882ee5c4-403b-47b5-9aeb-c7c304955052",
+    "0c51897d-cbb6-4b50-b121-b9e5c4754804",
+    "75d9aa6b-5d7b-48e5-9272-ff4d32a27e5e",
+    "6edec54c-6717-46a7-b807-b841c08a08fb",
+    "516fee77-5c0d-44eb-a0df-7474c99b2906",
+    "2329e6fd-3f35-40fb-90fc-609c020861a2",
+    "c1cc69e7-0a2a-4e10-8c34-dba1449b2811",
+    "b8481c0c-58a6-4175-a085-350e2fb0d638",
+    "78a5fa9d-524d-41ec-b15e-7076f9df6892",
+    "d2903e14-71f5-4a04-91ec-8939a889d6be",
+    "518d37c9-dafa-49ad-8c7a-11df0dfbe609",
+    "38bdaf75-fb29-422c-aaf1-777f2297e2a8",
+    "6cb5d71b-0425-4268-800e-ef15fc5c6d27",
+    "ee56a3fe-bc16-40ed-b366-b96e39b49885",
+    "81f545f1-3d25-4bb7-aa58-f8bd78b07b8a",
+    "3d5227f9-0d60-4c4c-8a8f-c9e75b850719",
+    "992b27a3-40cc-42b5-9ed4-ab53205e2f12",
+    "f8f4e6a4-7690-4a3c-aa75-b6c6f0fc70e3",
+    "42fef305-5acc-47e4-8e11-4f9ddafe69da",
+    "fbb88059-c634-40b1-bf9e-b94ef0a8d001",
+    "b4910c48-98a9-40a0-834d-5fc2fda44354",
+    "4def894f-2eca-4d65-a6ce-f184eebf0b7e",
+    "f5b837ed-9153-46c0-b416-4a59fe68c79e",
+    "fbb25b2b-9d92-4fe2-a4a9-e365be3716da",
+    "9633002d-fd92-4b19-964d-2d3b878921ce",
+    "a5fcca4d-ae23-418b-ada1-c01026944339",
+    "5d9f94c2-a559-4dc6-890b-a7bc45b7497d",
+    "adeaa558-a069-4208-9359-88649ff80009",
+    "bcfbaef5-b55f-43de-80cb-4d71df160ce7",
+    "8251722c-30a0-4e22-8d02-bc0ccbe9ec18",
+    "faeb4845-b528-4335-a997-1d983a12bf05",
+    "e7bfa37c-f4be-4310-b126-c53b32b677fd",
+    "859d8bb8-a851-4bee-a7f3-1095ea79e6d9",
+    "f3af6473-8700-424e-9447-19c507d74652",
+    "99b3809a-9e80-4ac6-a693-adf47736670b",
+    "d770d492-85ec-4291-8cc8-ca3839f82cf8",
+    "a37cc5cc-08d4-42fc-a6e3-b6e53d6c040d",
+    "7c0591f8-840e-4e98-80fe-e1e19f9cd3a5",
+    "7d629d67-5f68-49ff-ad4a-9f4b6ca2f716",
+    "6acba7ce-d566-4f05-8f9e-f9d0962177c2",
+    "8722f525-e618-448b-a1da-b133a256765e",
+    "57b85711-ae8f-49f0-815e-c1434177fbcc",
+    "4606c5c3-677c-4c0f-947e-d4a8e2a7bca1",
+    "42121e1c-0667-4dfa-9133-04342d7eeb3b",
+    "6018a7ea-6127-45d7-a22f-17a0f2938b01",
+    "ca1679c9-70c9-4528-b19b-36a41dd3f84c",
+    "4f485ae9-e8f7-4b51-9dd6-e33ebf6f9c8d",
+    "2220b6d4-5b1e-4621-9514-7f6e3390b918",
+    "c2233835-32d3-476f-9fad-7485ce91bb94",
+    "cb09ca49-4ca6-4a1c-8c5d-4828ecb0c9e5",
+    "6104b205-f677-45d2-a7dd-7d3f09ad505a",
+    "baf24c26-4c1e-475f-904a-b28b14db5be0",
+    "5f426aba-4787-4178-a95d-c1e8e3362101",
+    "ca00ef68-c8fa-46ec-ab5e-26d34f9881d3",
+    "3fcfdac6-d08f-4603-96ac-db5ca3884d23",
+    "45d871f9-22c4-445d-81f5-bbdb1ebc8215",
+    "687dfae3-0fa1-4528-8d37-d8614d910821",
+    "1eb32f3c-456c-43f2-b718-a25c11f1ab77",
+    "1e14335b-d992-4f8d-aac6-ed2b951522c2",
+    "f2e9da58-a6b2-4194-a579-a48646f78cce",
+    "446ccb10-0116-4081-93ff-588b9854a3be",
+    "1e9acba3-0784-4703-bf16-9121a1b83152",
+    "c06ec8ad-8b16-47cb-9f63-c9cbd7665dda",
+    "2ede644c-2c97-4428-b4bc-e8dee001dc77",
+    "c56a3c62-74d3-4cc7-a04f-df659a07d674",
+    "87d0b625-1a9b-496a-bf46-ae870ad2dbbe",
+    "2e709d5f-a353-46f1-90b0-2d949c60f9c7",
+    "5fee9d57-0cd3-4350-b8ef-1bbe320a5919",
+    "0157cd3b-1bf5-48b3-a204-95c2ba16c585",
+    "4dc7f757-56df-4ee3-80b0-a6196f50346b",
+    "94e69355-6fc5-4122-a68a-14442abac45f",
+    "5664677b-b664-427b-8868-5fe4f880989f",
+    "d4e4dc1c-e008-4865-b99a-973dea2d23a8",
+    "00684f88-9192-4188-aa7e-535c27396354",
+    "960ec4e8-b25d-4c01-b3f3-28948f7cca39",
+    "ae9b75d7-9522-4a0d-b730-3d80d1f7b9af",
+    "764c85c7-c390-4c2d-98b9-c87fada5d981",
+    "f8b84f69-076c-4b0c-b646-7ea8c93617fe",
+    "b5e8f7d1-242e-46a2-b345-da005d9f91c0",
+    "d9c994a2-ac1b-4b72-8cfa-f38506c78fe2",
+    "9323975c-4f17-4ec2-9c8c-7767189280bf",
+    "7649027b-c298-4c89-82f6-21d9a8d11437",
+    "e17ac5f5-f6b2-4701-b894-15ed753f4879",
+    "169fea6e-ab70-469a-8d9d-66d39e5a35eb",
+    "efa7a7c2-aa28-47a0-a92c-ad77bd25c91e",
+    "a2bc3905-9ed4-4115-8eb7-9b02906e56db",
+    "48a9235b-5055-4d50-aa29-1a4bb8a90e99",
+    "4166aee5-171a-4174-bde7-2f7e90d1938b",
+    "df09ae8f-9513-4aba-a707-038f92ff6767",
+    "2f1e47ab-fa25-49a0-8489-7a56a049f8ee",
+    "ceea1490-101f-49c9-8404-0da05035d120",
+    "7a37b164-3585-4b9b-a60c-34bd51e42f4d",
+    "412763cb-2587-40cf-8082-d32f0c10c39a",
+    "930fe7be-bc41-4868-9ce2-f308ccbd4f40",
+    "b9037e19-8732-40d5-9c78-d96b621c2b73",
+    "a6f8b18b-15c3-4770-9684-478723dbc129",
+    "c43a633d-3626-4b70-a4fa-ccc3f578d6c8",
+    "e1dbc390-b58e-48f6-a57a-44a447830f51",
+    "149cea5e-f577-40d4-bef8-03cfaf9646e6",
+    "b8d44dd5-042b-4b34-bb1c-fe4b006ba665",
+    "00e402da-1a7d-46d7-8fc7-d2ad431bf2e0",
+    "5a550b65-203c-4cd4-a772-73c6bd1f6f98",
+    "0030df36-6fc2-47a3-aa29-765aaa82ba33",
+    "0b1ef879-b43d-4db1-ba34-571f2cdc4095",
+    "33cd462f-91db-4bcc-ad74-d1ae533fb7b5",
+    "a0e87197-ed01-4ae6-824a-e7af13385b96",
+    "2c5a4871-9269-4890-a752-98b3694a4e56",
+    "dd092f8c-a1ee-435d-b1e2-c58c3ca0eac0",
+    "056c5ce7-f2c0-4288-8231-5b0f7fc32980",
+    "3ad6ec6d-a8a2-4b8e-a9dd-ac5bd54f95fa",
+    "de255abd-5ba3-4e4e-b5df-cffa7356f19c",
+    "58cd172a-184e-49b5-a903-7c3bae3a7a92",
+    "56aad82d-55e8-4391-bc44-b204a016ce21",
+    "d91066cb-693e-43c5-93d7-c1b002fa32de",
+    "c1bb8260-4ce7-4315-a00e-debd39739691",
+    "bcad5d60-472b-4789-844f-773f452f18e8",
+    "78be0ec6-fc50-4629-96f3-0708de563e0a",
+    "e4d375c6-7078-465a-97d8-bd8fddd15d42",
+    "3eca3d99-0d2e-401c-8489-7c7ace78c8c1",
+    "7b116423-a841-46fc-bacd-aa1564c62243",
+    "d52e1b22-771e-4fd0-aeea-821ef180a40e",
+    "12af02dc-0c02-4f78-ad40-84e41300c3c7",
+    "d6fc82c0-086c-4b3d-8b7f-0083ccd9e164",
+    "eda4c0a1-4a5e-45ff-8108-180b3268d2ad"
+  ],
+  "originalCandidatesChecked": 100,
+  "suspiciousClustersFound": 16,
+  "candidatesSplit": 16,
+  "newClustersCreated": 35,
+  "sourcesReassigned": 50,
+  "claimsBefore": 166,
+  "readyBefore": 2,
+  "readyImmediatelyAfter": 0,
+  "details": [
+    {
+      "originalCandidateId": "cd396f4c-19e0-4055-9195-3b005964a0ba",
+      "title": "GIRL, 10 MISSING",
+      "sourceCountBefore": 4,
+      "resultingCandidateIds": [
+        "cd396f4c-19e0-4055-9195-3b005964a0ba",
+        "1cbeff7c-16ef-4f66-8eda-076f9eb728b1",
+        "be758095-1b69-40ee-a8b1-37f6fe005bb1"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1952-08-05"
+          ],
+          "sourceIds": [
+            "3c11c8f2930cb266a0cb44744892c2d8"
+          ]
+        },
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1936-08-31",
+            "1936-09-01"
+          ],
+          "sourceIds": [
+            "efa677ec6db3265e7cb6f8974774b3dd",
+            "1466a4fae286dce0cb9b23d586d05613"
+          ]
+        },
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1968-10-06"
+          ],
+          "sourceIds": [
+            "9b98b9aaf085ddec8e5fb7e90ac641d5"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "43256e13-3241-4e57-9f11-eb40f7e00073",
+      "title": "A 'GHOST' WILL GUARD MUSEUM TEMPLER HELPED TO BUILD",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "43256e13-3241-4e57-9f11-eb40f7e00073"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1954-03-20",
+            "1954-03-25"
+          ],
+          "sourceIds": [
+            "f15720e77023c3fabebc428e7009bdb9",
+            "abd82bef57fcb3635f169ee67a089058"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "a3ef3546-a23d-43ca-8b96-411615c0be98",
+      "title": "FATAL ACCIDENT AT KUALA LUMPUR.",
+      "sourceCountBefore": 6,
+      "resultingCandidateIds": [
+        "a3ef3546-a23d-43ca-8b96-411615c0be98",
+        "12a2e512-a180-4858-8dbb-ff6e2ba93dd4",
+        "de98f083-bc00-4d58-95c7-09d3f43b5d20",
+        "02c8139b-c846-4c92-ac2c-f4c74cac766e",
+        "cae28f09-1ad0-48fd-ae6f-72e8a5a71025"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1937-01-26"
+          ],
+          "sourceIds": [
+            "eb4c38087b0236d49bd95a213a59c030"
+          ]
+        },
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1909-03-15",
+            "1909-03-18"
+          ],
+          "sourceIds": [
+            "189cbfb31dc908dfa64e3b76bf21311e",
+            "670633d6778c64444c01daeefab4d465"
+          ]
+        },
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1926-11-02"
+          ],
+          "sourceIds": [
+            "6064227cb434ab564945e4ae2c8d086c"
+          ]
+        },
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1928-06-25"
+          ],
+          "sourceIds": [
+            "7e954cbd576c6444997964cf1002962c"
+          ]
+        },
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1934-10-25"
+          ],
+          "sourceIds": [
+            "27356b8b8dd9467e35b19c61473e955a"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "4b372ba8-6fc0-492c-8723-0adfa4c05d70",
+      "title": "JOHORE MURDER.",
+      "sourceCountBefore": 4,
+      "resultingCandidateIds": [
+        "4b372ba8-6fc0-492c-8723-0adfa4c05d70",
+        "1afa18a1-552b-4764-93d2-80b5a4bbb245"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 3,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1936-10-01",
+            "1936-10-30",
+            "1936-12-10"
+          ],
+          "sourceIds": [
+            "801e6dad1f04161bce8bdb956a925e29",
+            "023a8f28ad9e39dc122b771d5cfbf5e6",
+            "4b53915fa39ea11d6ba4f690a96ff069"
+          ]
+        },
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1932-07-26"
+          ],
+          "sourceIds": [
+            "1c4417061fce23e11789ba8cae9a9b37"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "882ee5c4-403b-47b5-9aeb-c7c304955052",
+      "title": "Malay's Body Found In Perak River",
+      "sourceCountBefore": 10,
+      "resultingCandidateIds": [
+        "882ee5c4-403b-47b5-9aeb-c7c304955052",
+        "0c51897d-cbb6-4b50-b121-b9e5c4754804",
+        "75d9aa6b-5d7b-48e5-9272-ff4d32a27e5e",
+        "6edec54c-6717-46a7-b807-b841c08a08fb",
+        "516fee77-5c0d-44eb-a0df-7474c99b2906",
+        "2329e6fd-3f35-40fb-90fc-609c020861a2",
+        "c1cc69e7-0a2a-4e10-8c34-dba1449b2811",
+        "b8481c0c-58a6-4175-a085-350e2fb0d638"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1939-04-27"
+          ],
+          "sourceIds": [
+            "18fdc7b1a2bd269fbdd93a66373b07b3"
+          ]
+        },
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1952-03-26"
+          ],
+          "sourceIds": [
+            "0d5f3c0bf35a390b554db1db73df9cc8"
+          ]
+        },
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1955-03-20"
+          ],
+          "sourceIds": [
+            "86760f192d21a7ad1e961bb27d36b771"
+          ]
+        },
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1958-06-07"
+          ],
+          "sourceIds": [
+            "9d500a57d1836e113b3d45f47f01b1fe"
+          ]
+        },
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1961-01-11",
+            "1961-01-18"
+          ],
+          "sourceIds": [
+            "2de5efdb284646d384efd76a63b7a14a",
+            "96fb7d24e43d7e67a00d0f87650446a8"
+          ]
+        },
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1961-06-08"
+          ],
+          "sourceIds": [
+            "a9700628a6737d6e1d2b396528f162fd"
+          ]
+        },
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1963-03-21",
+            "1963-03-27"
+          ],
+          "sourceIds": [
+            "086e5740269c61897da428e2d9e8a171",
+            "4b85690adf4122bed764ceac95afca11"
+          ]
+        },
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1969-02-26"
+          ],
+          "sourceIds": [
+            "7d3c6c2896a1bc853ba6a0648a33389e"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "78a5fa9d-524d-41ec-b15e-7076f9df6892",
+      "title": "Water—but a legend says this will bring Templer back",
+      "sourceCountBefore": 1,
+      "resultingCandidateIds": [
+        "78a5fa9d-524d-41ec-b15e-7076f9df6892"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1954-05-30"
+          ],
+          "sourceIds": [
+            "d24c4657a4b25cf1ecabdb79a2cc929c"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "d2903e14-71f5-4a04-91ec-8939a889d6be",
+      "title": "JOHORE DETECTIVE'S SMART WORK.",
+      "sourceCountBefore": 4,
+      "resultingCandidateIds": [
+        "d2903e14-71f5-4a04-91ec-8939a889d6be"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 4,
+          "confidence": "HIGH",
+          "dates": [
+            "1925-07-13",
+            "1925-07-13",
+            "1925-07-17",
+            "1925-07-22"
+          ],
+          "sourceIds": [
+            "e6a473eff912db84a4e27f388035c644",
+            "fc07c4c98af52f6f37725d6f8afafbb9",
+            "eccb029e3587d2715bc697ab3268e8f4",
+            "0146e6f0e4f941d1774cd72941a9894e"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "518d37c9-dafa-49ad-8c7a-11df0dfbe609",
+      "title": "THE MURDER ON THE \"PERAK.\"",
+      "sourceCountBefore": 4,
+      "resultingCandidateIds": [
+        "518d37c9-dafa-49ad-8c7a-11df0dfbe609",
+        "38bdaf75-fb29-422c-aaf1-777f2297e2a8"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1923-11-26"
+          ],
+          "sourceIds": [
+            "9a788501259fc0aef740488e5058b24e"
+          ]
+        },
+        {
+          "sourceCount": 3,
+          "confidence": "HIGH",
+          "dates": [
+            "1923-11-22",
+            "1923-11-23",
+            "1923-11-24"
+          ],
+          "sourceIds": [
+            "807e56f1daabf256311df3bd91430e36",
+            "fd90236f67e38d15e80880542ad2d095",
+            "8113f930783494951b3231a726b94f52"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "6cb5d71b-0425-4268-800e-ef15fc5c6d27",
+      "title": "NEGRI ASSIZES.",
+      "sourceCountBefore": 4,
+      "resultingCandidateIds": [
+        "6cb5d71b-0425-4268-800e-ef15fc5c6d27",
+        "ee56a3fe-bc16-40ed-b366-b96e39b49885",
+        "81f545f1-3d25-4bb7-aa58-f8bd78b07b8a"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1931-05-14",
+            "1931-05-14"
+          ],
+          "sourceIds": [
+            "5b74b9929aaa6460f8285a9c66278655",
+            "cdbe182e2a38e79f743b7431b5629936"
+          ]
+        },
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1932-08-03"
+          ],
+          "sourceIds": [
+            "8ddf1b5d48e5e86ea9933f87ba79f8d5"
+          ]
+        },
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1933-10-14"
+          ],
+          "sourceIds": [
+            "4cec8e4fae2ef499134ad6ac17b626d9"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "3d5227f9-0d60-4c4c-8a8f-c9e75b850719",
+      "title": "Home Department No. 1 of 1855 - Narrative of the proceedings of the Government of the Straits of Malacca for the first quarter of 1855, prepared by E A Blundell, Governor of the Straits Settlements. Issues covered for the quarter include: 1) decision on duties on wild and cultivated nutmegs; 2) inquiry into the death of a Prussian supposedly killed during the May Riot in Singapore; 3) private memorial to the Government seeking redress from Siamese authorities; 4) personnel matters concerning appointments, salaries, pensions, leave applications and duties of various civil servants; 5) returns of sugar and rum manufactured in Penang and Province Wellesley; 6) discussion on the Law of Inheritance, the Draft Act for preservation of the Public Peace, and Excise Act 14 of 1851; 7) education matters concerning the Malacca Free School, Singapore Institution Free School, and state of education in the Straits; 8) raising of the patriotic fund in Singapore; 9) various convict matters, including classification, pensions, entitlements and treatment; 10) discussion on marketability of pineapple hemp and plumbags; 11) resignation of Col. Butterworth as Governor and new appointments made thereafter; 12) supply of coal to Penang depot; 13) table of fees for the Admiralty Court; 14) legal cases concerning recovery of fines and payment; and 15) complaints regarding the new postal arrangements in Singapore.",
+      "sourceCountBefore": 17,
+      "resultingCandidateIds": [
+        "3d5227f9-0d60-4c4c-8a8f-c9e75b850719",
+        "992b27a3-40cc-42b5-9ed4-ab53205e2f12",
+        "f8f4e6a4-7690-4a3c-aa75-b6c6f0fc70e3",
+        "42fef305-5acc-47e4-8e11-4f9ddafe69da",
+        "fbb88059-c634-40b1-bf9e-b94ef0a8d001",
+        "b4910c48-98a9-40a0-834d-5fc2fda44354",
+        "4def894f-2eca-4d65-a6ce-f184eebf0b7e",
+        "f5b837ed-9153-46c0-b416-4a59fe68c79e",
+        "fbb25b2b-9d92-4fe2-a4a9-e365be3716da"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1963-01-01"
+          ],
+          "sourceIds": [
+            "68cdde29cd99c8a981d044b799d4e937"
+          ]
+        },
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "2002-12-30"
+          ],
+          "sourceIds": [
+            "753f95a5e038034d3b27467f29e5035b"
+          ]
+        },
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            null
+          ],
+          "sourceIds": [
+            "0ac694586fb4ac0b7d9dfcb3d46cfd18"
+          ]
+        },
+        {
+          "sourceCount": 5,
+          "confidence": "MEDIUM",
+          "dates": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "sourceIds": [
+            "0ec6c68aff4f3e74887083ceb3651b16",
+            "17fedc27ccd9cc429fe15e1ff7572e6b",
+            "2b0e9bd0fcb6d877f9b80fdc54ecbe7f",
+            "f19f871be0c461c8415f729525f0aa02",
+            "f54b54c7f695c734d3358c95ea9774c9"
+          ]
+        },
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            null
+          ],
+          "sourceIds": [
+            "12a3169b58a40601993c1d60434629af"
+          ]
+        },
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            null
+          ],
+          "sourceIds": [
+            "156bd85a43a21971e1851d96e6191686"
+          ]
+        },
+        {
+          "sourceCount": 4,
+          "confidence": "MEDIUM",
+          "dates": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "sourceIds": [
+            "3431c096c03718cae572e62772aa2991",
+            "cb9f67f77918a7a2ceb249f5333a3cdd",
+            "eb5345d9f558ae1cf563d05d1ab61a41",
+            "f930974e9b64853289893935c9bc940b"
+          ]
+        },
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            null
+          ],
+          "sourceIds": [
+            "9f3cb0c7c0a1262d7c15ef2b69a64547"
+          ]
+        },
+        {
+          "sourceCount": 2,
+          "confidence": "MEDIUM",
+          "dates": [
+            null,
+            null
+          ],
+          "sourceIds": [
+            "a99d66de83e1492728419ed1501cca65",
+            "e5bcc20341c5a557ddec3bfb952b44cb"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "9633002d-fd92-4b19-964d-2d3b878921ce",
+      "title": "Two more confess to role in murder of Perak prince's wife",
+      "sourceCountBefore": 4,
+      "resultingCandidateIds": [
+        "9633002d-fd92-4b19-964d-2d3b878921ce",
+        "a5fcca4d-ae23-418b-ada1-c01026944339"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 3,
+          "confidence": "HIGH",
+          "dates": [
+            "2002-10-22",
+            "2002-10-25",
+            "2002-10-26"
+          ],
+          "sourceIds": [
+            "f312cc0a1f8e9bca42649d75d5263787",
+            "6fdf0f5e39d56b315b28aaebd168794e",
+            "895286daef0738072bce8f48492791b6"
+          ]
+        },
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "2002-10-17"
+          ],
+          "sourceIds": [
+            "5dbb8695096b7a60e3f027e89471c63c"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "5d9f94c2-a559-4dc6-890b-a7bc45b7497d",
+      "title": "Girl, woman reported missing",
+      "sourceCountBefore": 3,
+      "resultingCandidateIds": [
+        "5d9f94c2-a559-4dc6-890b-a7bc45b7497d",
+        "adeaa558-a069-4208-9359-88649ff80009"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1952-06-03",
+            "1952-06-03"
+          ],
+          "sourceIds": [
+            "094e825f3f36754edef95e003a1e9716",
+            "ec80a5c332f709b0a33300fed125aa76"
+          ]
+        },
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1969-08-21"
+          ],
+          "sourceIds": [
+            "b65360f87f3d78ea05aa41569ae36f74"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "bcfbaef5-b55f-43de-80cb-4d71df160ce7",
+      "title": "Motor Accident at Gombak.",
+      "sourceCountBefore": 3,
+      "resultingCandidateIds": [
+        "bcfbaef5-b55f-43de-80cb-4d71df160ce7"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 3,
+          "confidence": "HIGH",
+          "dates": [
+            "1914-06-09",
+            "1914-06-09",
+            "1914-06-11"
+          ],
+          "sourceIds": [
+            "0af43f0b137d51175ee8f2f0c2a5d782",
+            "9706f01cf5f3cf1f88fc16db2934f562",
+            "29dfbc3e372c08369dde3927961d2a80"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "8251722c-30a0-4e22-8d02-bc0ccbe9ec18",
+      "title": "Page 18 Miscellaneous Column 1",
+      "sourceCountBefore": 3,
+      "resultingCandidateIds": [
+        "8251722c-30a0-4e22-8d02-bc0ccbe9ec18",
+        "faeb4845-b528-4335-a997-1d983a12bf05"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1964-11-03"
+          ],
+          "sourceIds": [
+            "430b470f607b2ac77900f5f92f241e33"
+          ]
+        },
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1927-02-08",
+            "1927-02-09"
+          ],
+          "sourceIds": [
+            "cf7c676f9e0a41051563d1e45ad29074",
+            "d2b522f9d4d5b7f30c9d091824259f28"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "e7bfa37c-f4be-4310-b126-c53b32b677fd",
+      "title": "PERAK ASSIZES.",
+      "sourceCountBefore": 3,
+      "resultingCandidateIds": [
+        "e7bfa37c-f4be-4310-b126-c53b32b677fd",
+        "859d8bb8-a851-4bee-a7f3-1095ea79e6d9",
+        "f3af6473-8700-424e-9447-19c507d74652"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1935-07-05"
+          ],
+          "sourceIds": [
+            "7acdc37522ef96b792ec8b0bb35ae681"
+          ]
+        },
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1926-08-26"
+          ],
+          "sourceIds": [
+            "3eb5cd6bbb80d7b24889e8222623a139"
+          ]
+        },
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1935-08-05"
+          ],
+          "sourceIds": [
+            "4678c1cd90ab99059e87f902512ec709"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "99b3809a-9e80-4ac6-a693-adf47736670b",
+      "title": "Lorry Driver On Murder Charge",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "99b3809a-9e80-4ac6-a693-adf47736670b"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1940-11-12",
+            "1940-11-12"
+          ],
+          "sourceIds": [
+            "bec5479e76c5b7ef3e086aad951f6c2c",
+            "c0401ad9117ae38dfc27eb581eb61faa"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "d770d492-85ec-4291-8cc8-ca3839f82cf8",
+      "title": "Motor Cycle Accident.",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "d770d492-85ec-4291-8cc8-ca3839f82cf8"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1914-07-31",
+            "1914-08-06"
+          ],
+          "sourceIds": [
+            "ec29f83660ba6428b8ace8d05131393d",
+            "955d306ec5ccdaa24a5c3209b7d4bbd3"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "a37cc5cc-08d4-42fc-a6e3-b6e53d6c040d",
+      "title": "SCHOOLBOY MISSING",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "a37cc5cc-08d4-42fc-a6e3-b6e53d6c040d"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1939-06-08",
+            "1939-06-08"
+          ],
+          "sourceIds": [
+            "02e18ae25926fff59fd051138c2be3a1",
+            "1927f2b55f738d0b8ad3a6475e3df37c"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "7c0591f8-840e-4e98-80fe-e1e19f9cd3a5",
+      "title": "MYSTERY OF MISSING CHETTIAR.",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "7c0591f8-840e-4e98-80fe-e1e19f9cd3a5"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1931-05-15",
+            "1931-05-21"
+          ],
+          "sourceIds": [
+            "7a6e72bdfe923a487c7c044f5b913147",
+            "46870d60f3516f2a814c60088bffccba"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "7d629d67-5f68-49ff-ad4a-9f4b6ca2f716",
+      "title": "Missing Peace Corps volunteer is Beckner of Bellevue",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "7d629d67-5f68-49ff-ad4a-9f4b6ca2f716"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1968-11-24",
+            "1968-11-27"
+          ],
+          "sourceIds": [
+            "73605c3c580a366e36a1749b4bed3893",
+            "d986f3100ad06c501e05f43b67ef8540"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "6acba7ce-d566-4f05-8f9e-f9d0962177c2",
+      "title": "Johore murder: more arrests",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "6acba7ce-d566-4f05-8f9e-f9d0962177c2"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1948-06-17",
+            "1948-06-18"
+          ],
+          "sourceIds": [
+            "20231d6e66423cb918210124420a08e6",
+            "b4b46f902efbec59c31711d1d3b289da"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "8722f525-e618-448b-a1da-b133a256765e",
+      "title": "Missing man is safe",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "8722f525-e618-448b-a1da-b133a256765e",
+        "57b85711-ae8f-49f0-815e-c1434177fbcc"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1960-12-23"
+          ],
+          "sourceIds": [
+            "92aea0d6d4a71bebdbd76662aa694093"
+          ]
+        },
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1971-01-07"
+          ],
+          "sourceIds": [
+            "45b5ef0b2dd9105c58b0147872183823"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "4606c5c3-677c-4c0f-947e-d4a8e2a7bca1",
+      "title": "Two missing after chopper crash",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "4606c5c3-677c-4c0f-947e-d4a8e2a7bca1"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "2005-07-27",
+            "2005-07-27"
+          ],
+          "sourceIds": [
+            "0006f202bd2397552500df648f42164f",
+            "3b23082b03c74874595fbb1f6c5ba814"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "42121e1c-0667-4dfa-9133-04342d7eeb3b",
+      "title": "ACQUITTED OF MURDER",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "42121e1c-0667-4dfa-9133-04342d7eeb3b",
+        "6018a7ea-6127-45d7-a22f-17a0f2938b01"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1939-06-15"
+          ],
+          "sourceIds": [
+            "78bf8e53588debb9347c47876bb523d1"
+          ]
+        },
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1947-08-14"
+          ],
+          "sourceIds": [
+            "eb88afecb87f4e769d14f63068496326"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "ca1679c9-70c9-4528-b19b-36a41dd3f84c",
+      "title": "MURDER CHARGE",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "ca1679c9-70c9-4528-b19b-36a41dd3f84c",
+        "4f485ae9-e8f7-4b51-9dd6-e33ebf6f9c8d"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1950-05-05"
+          ],
+          "sourceIds": [
+            "50ecd58cbe187f7d52c207c2f0cee462"
+          ]
+        },
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1934-03-06"
+          ],
+          "sourceIds": [
+            "1cbd853ccb19b223b85ccb1359531603"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "2220b6d4-5b1e-4621-9514-7f6e3390b918",
+      "title": "THE MISSING CHETTIAR.",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "2220b6d4-5b1e-4621-9514-7f6e3390b918"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1931-08-22",
+            "1931-08-27"
+          ],
+          "sourceIds": [
+            "28148802bd4c6125de45f0ce72c8e043",
+            "9fda6b68727ae3ba52542d5b770380db"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "c2233835-32d3-476f-9fad-7485ce91bb94",
+      "title": "PLANTER KILLED IN FLYING ACCIDENT",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "c2233835-32d3-476f-9fad-7485ce91bb94"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1941-02-05",
+            "1941-02-13"
+          ],
+          "sourceIds": [
+            "ee553bc710b3516591ca6dd5602bcffe",
+            "d2bbfbceb4dbf750f3244c9ab9c73e76"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "cb09ca49-4ca6-4a1c-8c5d-4828ecb0c9e5",
+      "title": "Two More Bandits Shot Dead",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "cb09ca49-4ca6-4a1c-8c5d-4828ecb0c9e5"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1948-10-28",
+            "1948-11-04"
+          ],
+          "sourceIds": [
+            "8bf7da56bba157cc7ffcc99df0507bf5",
+            "0542a153f0e22089381a2fbc3aab84d1"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "6104b205-f677-45d2-a7dd-7d3f09ad505a",
+      "title": "JOHORE MURDER TRIAL.",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "6104b205-f677-45d2-a7dd-7d3f09ad505a"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1912-08-19",
+            "1912-08-22"
+          ],
+          "sourceIds": [
+            "7cfab73d168277f61e47db5a190d4eae",
+            "8b25d43526917d2b6ee21750452be8b0"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "baf24c26-4c1e-475f-904a-b28b14db5be0",
+      "title": "Shooting.",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "baf24c26-4c1e-475f-904a-b28b14db5be0"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1906-10-01",
+            "1906-10-05"
+          ],
+          "sourceIds": [
+            "d023193e5a70354b83fd4c304d365efb",
+            "c04df02b6bee4fd7ce6bacc1fb09d1e3"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "5f426aba-4787-4178-a95d-c1e8e3362101",
+      "title": "Municipal Inquiry. PENANG ADVOCATES SUSPENSION OF EXISTING BOARDS. Personnel of the Commission.",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "5f426aba-4787-4178-a95d-c1e8e3362101"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1909-08-31",
+            "1909-09-02"
+          ],
+          "sourceIds": [
+            "3eee809da4fa6480df54121c20c17e7f",
+            "4aee840a6c16307c4784927472e02f5d"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "ca00ef68-c8fa-46ec-ab5e-26d34f9881d3",
+      "title": "BODY FOUND",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "ca00ef68-c8fa-46ec-ab5e-26d34f9881d3",
+        "3fcfdac6-d08f-4603-96ac-db5ca3884d23"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1952-04-05"
+          ],
+          "sourceIds": [
+            "2f99ba9d860df0480e0c075d78c4317b"
+          ]
+        },
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1961-10-11"
+          ],
+          "sourceIds": [
+            "1035e050c68ee44d49134f046cb28e53"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "45d871f9-22c4-445d-81f5-bbdb1ebc8215",
+      "title": "PONTIAN INDONS MURDER COCONUT PLANTER",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "45d871f9-22c4-445d-81f5-bbdb1ebc8215"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1965-06-07",
+            "1965-06-16"
+          ],
+          "sourceIds": [
+            "e05d2395e233ebd7632db4e535d7fb9a",
+            "3368ca38ed285d4e17594984221659d4"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "687dfae3-0fa1-4528-8d37-d8614d910821",
+      "title": "Railway Accident.",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "687dfae3-0fa1-4528-8d37-d8614d910821"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1925-09-19",
+            "1925-09-25"
+          ],
+          "sourceIds": [
+            "206158fa03451cc46941b8a7a413583a",
+            "cd74d54567f8b5bf6febf31ac636c702"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "1eb32f3c-456c-43f2-b718-a25c11f1ab77",
+      "title": "3 Police Die In Border Battle",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "1eb32f3c-456c-43f2-b718-a25c11f1ab77"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1948-09-17",
+            "1948-09-23"
+          ],
+          "sourceIds": [
+            "9143a14cf3d950aa68905f4e3b07cbce",
+            "22fc53274215b46d6575a262849f96fa"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "1e14335b-d992-4f8d-aac6-ed2b951522c2",
+      "title": "Sabah kidnap incidents affecting tourism",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "1e14335b-d992-4f8d-aac6-ed2b951522c2"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "2014-06-18",
+            "2014-06-18"
+          ],
+          "sourceIds": [
+            "e9321c1e9f984361bd9a724bce15c94c",
+            "ea10e8cff01d84ee8b5b64ca216bae3d"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "f2e9da58-a6b2-4194-a579-a48646f78cce",
+      "title": "JUDGE DISAGREES WITH JOHORE ASSESSORS",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "f2e9da58-a6b2-4194-a579-a48646f78cce"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1939-10-26",
+            "1939-11-02"
+          ],
+          "sourceIds": [
+            "22b99ede287519e544a7db3456644dd4",
+            "74d4eb6fae0253dad9326cd7542b535d"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "446ccb10-0116-4081-93ff-588b9854a3be",
+      "title": "MALACCA COMMISSIONERS ADOPT NEW CREST.",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "446ccb10-0116-4081-93ff-588b9854a3be"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1938-06-04",
+            "1938-06-09"
+          ],
+          "sourceIds": [
+            "d48e6c0660766f373c5dd9d9415ef96b",
+            "d98a5e9e92e7b2d295282c5e4e3b236f"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "1e9acba3-0784-4703-bf16-9121a1b83152",
+      "title": "EUROPEAN WOUNDED BY GUN.",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "1e9acba3-0784-4703-bf16-9121a1b83152"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1936-11-16",
+            "1936-11-19"
+          ],
+          "sourceIds": [
+            "fd8afa6b10280ceda676fb7275211425",
+            "241dcbbd18c29109904d414c189e35b5"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "c06ec8ad-8b16-47cb-9f63-c9cbd7665dda",
+      "title": "BOTH DRIVERS TO BLAME.",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "c06ec8ad-8b16-47cb-9f63-c9cbd7665dda"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1937-03-08",
+            "1937-03-11"
+          ],
+          "sourceIds": [
+            "88afc7e84498f8bc93ed2ea73695c4a5",
+            "cdb4a8dcf88b87fe211209423ff9adbc"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "2ede644c-2c97-4428-b4bc-e8dee001dc77",
+      "title": "MALAYAN GHOST STORY.",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "2ede644c-2c97-4428-b4bc-e8dee001dc77",
+        "c56a3c62-74d3-4cc7-a04f-df659a07d674"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1958-01-08"
+          ],
+          "sourceIds": [
+            "a9141a54f815190125238f60c7b89249"
+          ]
+        },
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1929-02-02"
+          ],
+          "sourceIds": [
+            "7a2dfc0dd11173097fc54906658965e9"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "87d0b625-1a9b-496a-bf46-ae870ad2dbbe",
+      "title": "JOHORE MYSTERY.",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "87d0b625-1a9b-496a-bf46-ae870ad2dbbe"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1926-01-23",
+            "1926-01-27"
+          ],
+          "sourceIds": [
+            "e1844ca6a8af4d9d17c6e9743bb3ac42",
+            "afd589a3b07492794222843c0cb70c5e"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "2e709d5f-a353-46f1-90b0-2d949c60f9c7",
+      "title": "SELANGOR PLANTER’S SUDDEN DEATH.",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "2e709d5f-a353-46f1-90b0-2d949c60f9c7"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1936-06-18",
+            "1936-07-02"
+          ],
+          "sourceIds": [
+            "23ae3785fdca0a32e5414f7caebec596",
+            "efe7d55f8923f0a662bd8dffeee71c2f"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "5fee9d57-0cd3-4350-b8ef-1bbe320a5919",
+      "title": "GENT INQUEST ADJOURNED",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "5fee9d57-0cd3-4350-b8ef-1bbe320a5919"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1948-08-05",
+            "1948-08-06"
+          ],
+          "sourceIds": [
+            "ccf99c9a3d329e014ce42f78ef365c6f",
+            "b408ea7c897c89316afc2257f97e85a0"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "0157cd3b-1bf5-48b3-a204-95c2ba16c585",
+      "title": "CURIOUS CASE IN KEDAH.",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "0157cd3b-1bf5-48b3-a204-95c2ba16c585"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1911-01-23",
+            "1911-01-26"
+          ],
+          "sourceIds": [
+            "11393ed882aa63433dea2acdca9d5762",
+            "585948995a98e296a8644883056bf8be"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "4dc7f757-56df-4ee3-80b0-a6196f50346b",
+      "title": "3 Bandits Killed, Station Burnt",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "4dc7f757-56df-4ee3-80b0-a6196f50346b"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1950-08-10",
+            "1950-08-17"
+          ],
+          "sourceIds": [
+            "da3d2327227218eab9684dc9af244218",
+            "1ed884f2eb10ec8b23cfc7a51448970e"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "94e69355-6fc5-4122-a68a-14442abac45f",
+      "title": "A New Malayan Tribe.",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "94e69355-6fc5-4122-a68a-14442abac45f"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1914-06-12",
+            "1914-06-18"
+          ],
+          "sourceIds": [
+            "bcbe69345922125c111f6243e8c7897f",
+            "4d5cbca24a32faebda28a9a169ae8ba5"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "5664677b-b664-427b-8868-5fe4f880989f",
+      "title": "SEVEN MURDER CASES ON LIST",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "5664677b-b664-427b-8868-5fe4f880989f"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1935-07-03",
+            "1935-07-06"
+          ],
+          "sourceIds": [
+            "09740092746b43500ce6815c04c45b68",
+            "c41029aa91ad4038226567b5b55e7f37"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "d4e4dc1c-e008-4865-b99a-973dea2d23a8",
+      "title": "\"DANCING, DRIFTING BALLS OF LIGHT'' Malayan Jungle Mystery",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "d4e4dc1c-e008-4865-b99a-973dea2d23a8"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1936-04-19",
+            "1936-04-21"
+          ],
+          "sourceIds": [
+            "c6220e08430d3a11a4c2e48b10716346",
+            "2ee1ecf85cf0c4abbbccb3af88400ba3"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "00684f88-9192-4188-aa7e-535c27396354",
+      "title": "A JOHORE MURDERER'S LEAP FROM THE DOCK.",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "00684f88-9192-4188-aa7e-535c27396354"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1937-03-23",
+            "1937-04-01"
+          ],
+          "sourceIds": [
+            "ee7599095f9105910bc2bd7479bfb5e7",
+            "46741522c4546ab52e3f6aa309785652"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "960ec4e8-b25d-4c01-b3f3-28948f7cca39",
+      "title": "Osborne Shield Shooting.",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "960ec4e8-b25d-4c01-b3f3-28948f7cca39"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1909-11-10",
+            "1909-11-12"
+          ],
+          "sourceIds": [
+            "e13e2a1829826590b4d70f023b64aa78",
+            "a10475c57e1db2eda5b29ec3f41f555c"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "ae9b75d7-9522-4a0d-b730-3d80d1f7b9af",
+      "title": "WOMAN FOUND DEAD IN PIT",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "ae9b75d7-9522-4a0d-b730-3d80d1f7b9af"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1947-07-16",
+            "1947-07-17"
+          ],
+          "sourceIds": [
+            "25d57069b6569f003c26451f5a56e5ca",
+            "369128e19a0f6dc8a9989c501af2540a"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "764c85c7-c390-4c2d-98b9-c87fada5d981",
+      "title": "European Is Found Dead",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "764c85c7-c390-4c2d-98b9-c87fada5d981"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1950-12-08",
+            "1950-12-14"
+          ],
+          "sourceIds": [
+            "436cf258a879e0c91ff99fd3edd0442a",
+            "542d6d115736a5dd2c60e0644b3bca7f"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "f8b84f69-076c-4b0c-b646-7ea8c93617fe",
+      "title": "Harsh interrogation caused opposition aide's suicide",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "f8b84f69-076c-4b0c-b646-7ea8c93617fe"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "2011-07-22",
+            "2011-07-22"
+          ],
+          "sourceIds": [
+            "0745a0352a7814ccc59c52304db128a9",
+            "51d20f2377bc901c25f29b8a067531cb"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "b5e8f7d1-242e-46a2-b345-da005d9f91c0",
+      "title": "NIGHT SEARCH FOR MISSING AUSTER",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "b5e8f7d1-242e-46a2-b345-da005d9f91c0"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1956-05-24",
+            "1956-05-31"
+          ],
+          "sourceIds": [
+            "b302a0294f26699f6d8d66003e466897",
+            "65ae5c41d5a1dfd20ee62d6e80a5a972"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "d9c994a2-ac1b-4b72-8cfa-f38506c78fe2",
+      "title": "Search still on for missing Sarawak boat helmsman",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "d9c994a2-ac1b-4b72-8cfa-f38506c78fe2"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1992-02-12",
+            "1992-02-13"
+          ],
+          "sourceIds": [
+            "449773c00c72cc9f682fecc00d1dd7db",
+            "f288ce59da6e15daec6a989dbafc089f"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "9323975c-4f17-4ec2-9c8c-7767189280bf",
+      "title": "Stricken Taiwan tanker up in flames",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "9323975c-4f17-4ec2-9c8c-7767189280bf"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "2009-08-20",
+            "2009-08-20"
+          ],
+          "sourceIds": [
+            "7f1aa7ebe968dfe3e68fb9d6827f11ac",
+            "a37b32f292e771a12cde0dc662c08728"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "7649027b-c298-4c89-82f6-21d9a8d11437",
+      "title": "COLLECTOR 'DISAPPEARED' WITH MONEY",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "7649027b-c298-4c89-82f6-21d9a8d11437"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1958-07-17",
+            "1958-07-18"
+          ],
+          "sourceIds": [
+            "8ad6ca5420c00ee24095c44afcd3652d",
+            "16479e2f11aff5d061c2e15a8210b4d4"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "e17ac5f5-f6b2-4701-b894-15ed753f4879",
+      "title": "Another Great Chartered Trading Company Disappears",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "e17ac5f5-f6b2-4701-b894-15ed753f4879"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1946-07-15",
+            "1946-07-17"
+          ],
+          "sourceIds": [
+            "a2e5854372331e2fe1032910b94b90b8",
+            "30ed8c76e65cfaba45c6b429f2013aec"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "169fea6e-ab70-469a-8d9d-66d39e5a35eb",
+      "title": "DEATH SENTENCE.",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "169fea6e-ab70-469a-8d9d-66d39e5a35eb"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1931-08-14",
+            "1931-08-20"
+          ],
+          "sourceIds": [
+            "27e11dff42f9988ccb8cab8df2d1f3bb",
+            "8408593f57d4b9921f79e9be909d64dc"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "efa7a7c2-aa28-47a0-a92c-ad77bd25c91e",
+      "title": "TAMIL STABBED",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "efa7a7c2-aa28-47a0-a92c-ad77bd25c91e"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1935-10-18",
+            "1935-10-21"
+          ],
+          "sourceIds": [
+            "40b002dbbb146b15b95a53e94a344c32",
+            "5049941f135f2f7f9484fae246797c14"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "a2bc3905-9ed4-4115-8eb7-9b02906e56db",
+      "title": "JOHORE BOAT SINKS: THREE MISSING.",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "a2bc3905-9ed4-4115-8eb7-9b02906e56db"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1937-10-20",
+            "1937-10-28"
+          ],
+          "sourceIds": [
+            "f9b9b13dc81df59cdff04fe4fa17b260",
+            "752d860aa7818ba7918e362df505b165"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "48a9235b-5055-4d50-aa29-1a4bb8a90e99",
+      "title": "CROWN WITNESS MISSING.",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "48a9235b-5055-4d50-aa29-1a4bb8a90e99"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1936-05-09",
+            "1936-05-16"
+          ],
+          "sourceIds": [
+            "2f27524de4c02670fe7bcbff7764186d",
+            "9f60c811d78e49ff64f00d61d9181bb9"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "4166aee5-171a-4174-bde7-2f7e90d1938b",
+      "title": "ANGLICANS URGED: AID THE DISASTER FUND",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "4166aee5-171a-4174-bde7-2f7e90d1938b"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1967-01-19",
+            "1967-01-25"
+          ],
+          "sourceIds": [
+            "f64b65f4b097de18c507f77d392a46c0",
+            "d3043898c432f4e74d846c6f7449592b"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "df09ae8f-9513-4aba-a707-038f92ff6767",
+      "title": "Jeffrey Kitingan missing, says KL paper",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "df09ae8f-9513-4aba-a707-038f92ff6767"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1991-02-11",
+            "1991-02-16"
+          ],
+          "sourceIds": [
+            "5a91c3dd322673442e0b31ef336ebc4e",
+            "0b4c350f9f9ca2848d53400e7599eef0"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "2f1e47ab-fa25-49a0-8489-7a56a049f8ee",
+      "title": "BIG RUBBER LOSS. Twakow Disappears With Valuable Cargo.",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "2f1e47ab-fa25-49a0-8489-7a56a049f8ee"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1929-03-07",
+            "1929-03-14"
+          ],
+          "sourceIds": [
+            "2f1ad05cb356e18c57f69fde68b43f61",
+            "14ffb508bef61ff40cbebfe287064960"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "ceea1490-101f-49c9-8404-0da05035d120",
+      "title": "THE SHORT WAY TO SUCCESS...",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "ceea1490-101f-49c9-8404-0da05035d120"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1959-01-22",
+            "1959-01-28"
+          ],
+          "sourceIds": [
+            "5555d693cd2b6c8346b5c2a7ea4f3e2e",
+            "69371f0ccd646c1a7df425a61a055f02"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "7a37b164-3585-4b9b-a60c-34bd51e42f4d",
+      "title": "THE PAHANG TRAGEDY.",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "7a37b164-3585-4b9b-a60c-34bd51e42f4d"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1908-07-22",
+            "1908-07-23"
+          ],
+          "sourceIds": [
+            "b374a52735bd463fd33be9d30380e78e",
+            "0fbc665eaa614e067eacc2e0fdd83fa5"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "412763cb-2587-40cf-8082-d32f0c10c39a",
+      "title": "WOMAN WHO GAVE FALSE INFORMATION.",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "412763cb-2587-40cf-8082-d32f0c10c39a"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1929-01-30",
+            "1929-01-31"
+          ],
+          "sourceIds": [
+            "c5d75d46083cf3ad58ff5a9ebc91677f",
+            "0ff29dec7e4e263babf5d9495973f23c"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "930fe7be-bc41-4868-9ce2-f308ccbd4f40",
+      "title": "SHIPPING NOTES.",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "930fe7be-bc41-4868-9ce2-f308ccbd4f40"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1925-11-24",
+            "1925-11-24"
+          ],
+          "sourceIds": [
+            "68e5c3ac1ea687c4cd4c8aef5daab988",
+            "b393b895712ca996f421ab6b482ede14"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "b9037e19-8732-40d5-9c78-d96b621c2b73",
+      "title": "Vanished Millions",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "b9037e19-8732-40d5-9c78-d96b621c2b73"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1947-06-20",
+            "1947-06-26"
+          ],
+          "sourceIds": [
+            "97f258c9991eafff589cd7d9215a5369",
+            "e6a3b58f64c89e600685eeda5d58edbd"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "a6f8b18b-15c3-4770-9684-478723dbc129",
+      "title": "RAJAH OF SARAWAK'S MISSING SPECTACLES",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "a6f8b18b-15c3-4770-9684-478723dbc129"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1940-10-25",
+            "1940-10-25"
+          ],
+          "sourceIds": [
+            "42939347df2ffa45f950cf70d1bd3a12",
+            "65846e0711fda24269162860b71e03de"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "c43a633d-3626-4b70-a4fa-ccc3f578d6c8",
+      "title": "23 missing after ferry capsizes in Sarawak",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "c43a633d-3626-4b70-a4fa-ccc3f578d6c8"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "2013-05-29",
+            "2013-05-29"
+          ],
+          "sourceIds": [
+            "4034d4edcdd1b3decc2d373c03c43752",
+            "bda93d8da077e91aa14e2b248f20b287"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "e1dbc390-b58e-48f6-a57a-44a447830f51",
+      "title": "Hunt on for missing border scout",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "e1dbc390-b58e-48f6-a57a-44a447830f51"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1966-10-05",
+            "1966-10-12"
+          ],
+          "sourceIds": [
+            "6e2a21bcdbc0c51d28427afeb2e552d7",
+            "288ee5253bbdd29b66c7548e9daeb94a"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "149cea5e-f577-40d4-bef8-03cfaf9646e6",
+      "title": "Bound Body lir Sack Found In Perak River",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "149cea5e-f577-40d4-bef8-03cfaf9646e6"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1947-10-03",
+            "1947-10-09"
+          ],
+          "sourceIds": [
+            "0a2a2c9ef7282a6f1ec48e1b47162ba2",
+            "65922c09bfa242d445953a358702fb06"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "b8d44dd5-042b-4b34-bb1c-fe4b006ba665",
+      "title": "Missing—planter who went cruising down the river",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "b8d44dd5-042b-4b34-bb1c-fe4b006ba665"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1965-01-20",
+            "1965-01-27"
+          ],
+          "sourceIds": [
+            "396898454c7430d0cdc6394f9292bcdf",
+            "b0fa3e2950e72d33dbf1ca2495d161b2"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "00e402da-1a7d-46d7-8fc7-d2ad431bf2e0",
+      "title": "MAN & NIECE SENTENCED",
+      "sourceCountBefore": 2,
+      "resultingCandidateIds": [
+        "00e402da-1a7d-46d7-8fc7-d2ad431bf2e0"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 2,
+          "confidence": "HIGH",
+          "dates": [
+            "1941-05-08",
+            "1941-05-15"
+          ],
+          "sourceIds": [
+            "3dfa0e0e135b3194c69c550d9b791a07",
+            "1143b94f8421b3446e19d4cecf5f9b35"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "5a550b65-203c-4cd4-a772-73c6bd1f6f98",
+      "title": "Police Party Attacked, Three Killed",
+      "sourceCountBefore": 1,
+      "resultingCandidateIds": [
+        "5a550b65-203c-4cd4-a772-73c6bd1f6f98"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1950-12-06"
+          ],
+          "sourceIds": [
+            "85f0fd54473cb38f42c0ed1bc6b80d2d"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "0030df36-6fc2-47a3-aa29-765aaa82ba33",
+      "title": "RAWANG-BORN R.A.F. OFFICER AMONG MISSING",
+      "sourceCountBefore": 1,
+      "resultingCandidateIds": [
+        "0030df36-6fc2-47a3-aa29-765aaa82ba33"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1940-09-30"
+          ],
+          "sourceIds": [
+            "47d6310cdc6e9c38e9b77d9ad4ef066f"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "0b1ef879-b43d-4db1-ba34-571f2cdc4095",
+      "title": "7 S’poreans injured in highway accident in Malaysia",
+      "sourceCountBefore": 1,
+      "resultingCandidateIds": [
+        "0b1ef879-b43d-4db1-ba34-571f2cdc4095"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "2013-09-12"
+          ],
+          "sourceIds": [
+            "e6cf4a08e04c61d79011ec41e3ebc14a"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "33cd462f-91db-4bcc-ad74-d1ae533fb7b5",
+      "title": "MISSING WIFE WILL NOT RETURN",
+      "sourceCountBefore": 1,
+      "resultingCandidateIds": [
+        "33cd462f-91db-4bcc-ad74-d1ae533fb7b5"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1952-05-06"
+          ],
+          "sourceIds": [
+            "14632d108d00f72ca2a52c781bc781ab"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "a0e87197-ed01-4ae6-824a-e7af13385b96",
+      "title": "Search continues for M'sian crash victims",
+      "sourceCountBefore": 1,
+      "resultingCandidateIds": [
+        "a0e87197-ed01-4ae6-824a-e7af13385b96"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "2004-07-20"
+          ],
+          "sourceIds": [
+            "2636a45a53d1d2382143df0db3c67f39"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "2c5a4871-9269-4890-a752-98b3694a4e56",
+      "title": "Umno politician, husband, son slain in their home",
+      "sourceCountBefore": 1,
+      "resultingCandidateIds": [
+        "2c5a4871-9269-4890-a752-98b3694a4e56"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "2016-08-26"
+          ],
+          "sourceIds": [
+            "7e1cf99349eef5830c813bdbbbd6e233"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "dd092f8c-a1ee-435d-b1e2-c58c3ca0eac0",
+      "title": "Few clues on missing Irish girl in Malaysia, but parents hopeful",
+      "sourceCountBefore": 1,
+      "resultingCandidateIds": [
+        "dd092f8c-a1ee-435d-b1e2-c58c3ca0eac0"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "2019-08-11"
+          ],
+          "sourceIds": [
+            "7e1805fa35b92f94169f731290702834"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "056c5ce7-f2c0-4288-8231-5b0f7fc32980",
+      "title": "Naked body of missing Irish teen found in Seremban jungle: Police",
+      "sourceCountBefore": 1,
+      "resultingCandidateIds": [
+        "056c5ce7-f2c0-4288-8231-5b0f7fc32980"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "2019-08-14"
+          ],
+          "sourceIds": [
+            "44d637d75daf342a8c916a67f424511c"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "3ad6ec6d-a8a2-4b8e-a9dd-ac5bd54f95fa",
+      "title": "Two missing on holiday in Malaya",
+      "sourceCountBefore": 1,
+      "resultingCandidateIds": [
+        "3ad6ec6d-a8a2-4b8e-a9dd-ac5bd54f95fa"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1952-08-15"
+          ],
+          "sourceIds": [
+            "a7be40680696820d902c54f6cddcf8e4"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "de255abd-5ba3-4e4e-b5df-cffa7356f19c",
+      "title": "PERAK MURDER CHARGE.",
+      "sourceCountBefore": 1,
+      "resultingCandidateIds": [
+        "de255abd-5ba3-4e4e-b5df-cffa7356f19c"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1934-07-27"
+          ],
+          "sourceIds": [
+            "6558df97d257b7f98d751cc23c945b25"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "58cd172a-184e-49b5-a903-7c3bae3a7a92",
+      "title": "DISAPPEARED WITH EMPLOYER’S GOLD",
+      "sourceCountBefore": 1,
+      "resultingCandidateIds": [
+        "58cd172a-184e-49b5-a903-7c3bae3a7a92"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1937-12-29"
+          ],
+          "sourceIds": [
+            "126a7c2e14e2eccadff5252cbdb4ae75"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "56aad82d-55e8-4391-bc44-b204a016ce21",
+      "title": "Seven missing in Sarawak copter crash",
+      "sourceCountBefore": 1,
+      "resultingCandidateIds": [
+        "56aad82d-55e8-4391-bc44-b204a016ce21"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "2004-07-15"
+          ],
+          "sourceIds": [
+            "4dffe211fc91f032bfa7bea72388aab6"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "d91066cb-693e-43c5-93d7-c1b002fa32de",
+      "title": "Search For Missing Girl Intensified",
+      "sourceCountBefore": 1,
+      "resultingCandidateIds": [
+        "d91066cb-693e-43c5-93d7-c1b002fa32de"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1939-06-20"
+          ],
+          "sourceIds": [
+            "00aeee59791b3567832bd2a28474d295"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "c1bb8260-4ce7-4315-a00e-debd39739691",
+      "title": "Mystery of missing Sarawak parcel",
+      "sourceCountBefore": 1,
+      "resultingCandidateIds": [
+        "c1bb8260-4ce7-4315-a00e-debd39739691"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1971-04-23"
+          ],
+          "sourceIds": [
+            "507c815ef3e5150d4a2d48ebbde2a6ba"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "bcad5d60-472b-4789-844f-773f452f18e8",
+      "title": "Copter goes missing in Sarawak",
+      "sourceCountBefore": 1,
+      "resultingCandidateIds": [
+        "bcad5d60-472b-4789-844f-773f452f18e8"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "2004-08-16"
+          ],
+          "sourceIds": [
+            "48b202c9ffa71fe410b58aceba28d809"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "78be0ec6-fc50-4629-96f3-0708de563e0a",
+      "title": "JOHORE MURDER: VITAL CLUES",
+      "sourceCountBefore": 1,
+      "resultingCandidateIds": [
+        "78be0ec6-fc50-4629-96f3-0708de563e0a"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1948-10-21"
+          ],
+          "sourceIds": [
+            "eeca3076a212a4cb88466dc253e63216"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "e4d375c6-7078-465a-97d8-bd8fddd15d42",
+      "title": "Case of the missing man and the missing million",
+      "sourceCountBefore": 1,
+      "resultingCandidateIds": [
+        "e4d375c6-7078-465a-97d8-bd8fddd15d42"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1983-01-02"
+          ],
+          "sourceIds": [
+            "02e6069d36a35d76dcc59a70a40604ec"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "3eca3d99-0d2e-401c-8489-7c7ace78c8c1",
+      "title": "Singaporean accused of killing family leads police to severed heads",
+      "sourceCountBefore": 1,
+      "resultingCandidateIds": [
+        "3eca3d99-0d2e-401c-8489-7c7ace78c8c1"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "2019-10-13"
+          ],
+          "sourceIds": [
+            "9f3d2e649f0fdc1e3116e76013bc7e36"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "7b116423-a841-46fc-bacd-aa1564c62243",
+      "title": "SHOOTING ACCIDENT",
+      "sourceCountBefore": 1,
+      "resultingCandidateIds": [
+        "7b116423-a841-46fc-bacd-aa1564c62243"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1936-11-17"
+          ],
+          "sourceIds": [
+            "462c945a9d201a061a8a34307b374695"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "d52e1b22-771e-4fd0-aeea-821ef180a40e",
+      "title": "CHETTY MISSING.",
+      "sourceCountBefore": 1,
+      "resultingCandidateIds": [
+        "d52e1b22-771e-4fd0-aeea-821ef180a40e"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1928-11-26"
+          ],
+          "sourceIds": [
+            "9c4e1bdc60253413fa575f91448e83ae"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "12af02dc-0c02-4f78-ad40-84e41300c3c7",
+      "title": "Missing: The girl who mixed with 'wrong crowd'",
+      "sourceCountBefore": 1,
+      "resultingCandidateIds": [
+        "12af02dc-0c02-4f78-ad40-84e41300c3c7"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1965-03-21"
+          ],
+          "sourceIds": [
+            "d7369d173bdc7ad8f3dbb00619aae8dc"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "d6fc82c0-086c-4b3d-8b7f-0083ccd9e164",
+      "title": "MENGLEMBU MURDER SEQUEL",
+      "sourceCountBefore": 1,
+      "resultingCandidateIds": [
+        "d6fc82c0-086c-4b3d-8b7f-0083ccd9e164"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1936-01-31"
+          ],
+          "sourceIds": [
+            "7393ae2114a4278919c4d1f84c149031"
+          ]
+        }
+      ]
+    },
+    {
+      "originalCandidateId": "eda4c0a1-4a5e-45ff-8108-180b3268d2ad",
+      "title": "JOHORE TAMIL FACES MURDER CHARGE",
+      "sourceCountBefore": 1,
+      "resultingCandidateIds": [
+        "eda4c0a1-4a5e-45ff-8108-180b3268d2ad"
+      ],
+      "resultingClusters": [
+        {
+          "sourceCount": 1,
+          "confidence": "MEDIUM",
+          "dates": [
+            "1939-04-18"
+          ],
+          "sourceIds": [
+            "730394aa1ecac293cf625018979357e7"
+          ]
+        }
+      ]
+    }
+  ]
+}

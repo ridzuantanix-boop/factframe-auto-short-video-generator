@@ -5,6 +5,8 @@ import { mergeDuplicateClaims } from "../src/lib/research/claimMerger.ts";
 import { calculateResearchMetrics, decideResearchReadiness } from "../src/lib/research/researchScoring.ts";
 import { researchPackageToStoryRecord } from "../src/lib/research/storyResearch.ts";
 import { buildMysteryScript } from "../src/lib/mystery/storyEngine.ts";
+import { assessNarrationQuality, rewriteArchiveClaimToMalay } from "../src/lib/research/narrationRewriter.ts";
+import { validateSourceCluster } from "../src/lib/archive/clusterIntegrity.ts";
 
 const candidate = (storyType = "DISAPPEARANCE") => ({ id: "candidate-1", canonicalEntityId: null, canonicalUrl: "https://example.test/story", title: "Girl, 10, reported missing",
   normalizedTitle: "girl 10 reported missing", slug: "girl-10", summary: "A documented archive report.", country: "Malaysia", region: "Johor", category: "archive", storyType,
@@ -51,27 +53,49 @@ test("READY requires grounded depth while insufficient evidence stays PARTIAL", 
     "Search parties checked roads and settlements across the district during the following day",
     "A second newspaper recorded that the police investigation remained active after the first search",
     "Later reports said the available records still did not state where the missing child had gone"];
-  const claims = texts.map((claimText, index) => ({ ...base, id: `c${index}`, claimText, normalizedClaim: claimText.toLowerCase(), sourceIds: [sources[index % 2].id],
+  const claims = texts.map((claimText, index) => ({ ...base, id: `c${index}`, claimText, spokenText: `Laporan polis merekodkan perkembangan berbeza nombor ${index + 1} dalam usaha mencari kanak-kanak yang hilang di Johor.`, normalizedClaim: claimText.toLowerCase(), sourceIds: [sources[index % 2].id],
     sourcePublisher: sources[index % 2].publisher, sourceProvider: sources[index % 2].provider, priority: index ? "ESCALATION_DETAIL" : "HOOK_WORTHY" }));
   const metrics = calculateResearchMetrics(claims, sources, "DISAPPEARANCE");
-  assert.equal(decideResearchReadiness(claims, sources, metrics, true, true, false).status, "READY");
+  const quality = { malayLanguageRatio: 1, englishLeakageCount: 0, ocrLeakageCount: 0, fragmentCount: 0, headlineLeakageCount: 0, spokenNaturalnessScore: .95, passes: true };
+  assert.equal(decideResearchReadiness(claims, sources, metrics, true, true, false, "HIGH", quality).status, "READY");
   const weakMetrics = calculateResearchMetrics(claims.slice(0, 1), sources.slice(0, 1), "DISAPPEARANCE");
-  assert.equal(decideResearchReadiness(claims.slice(0, 1), sources.slice(0, 1), weakMetrics, true, true, false).status, "PARTIAL");
+  assert.equal(decideResearchReadiness(claims.slice(0, 1), sources.slice(0, 1), weakMetrics, true, true, false, "MEDIUM", quality).status, "PARTIAL");
 });
 
 test("narration built from a research package preserves source traceability", () => {
   const sources = [source("s1", "Publisher One"), source("s2", "Publisher Two")]; const base = extractClaimsFromSource(candidate(), sources[0])[0];
   const claims = Array.from({ length: 5 }, (_, index) => ({ ...base, id: `claim-${index}`, claimText: `Police report number ${index + 1} recorded a distinct search event involving the missing girl in Johor`,
+    spokenText: `Laporan polis nombor ${index + 1} merekodkan perkembangan berbeza dalam usaha mencari kanak-kanak yang hilang di Johor.`,
     normalizedClaim: `police report ${index + 1} distinct search event missing girl johor`, sourceIds: [sources[index % 2].id], priority: index === 0 ? "HOOK_WORTHY" : index === 4 ? "PAYOFF" : "ESCALATION_DETAIL" }));
   const value = { storyCandidateId: "candidate-1", title: "Archive disappearance", summary: "Sourced archive story", storyType: "DISAPPEARANCE", historicalContext: "FEDERATION_OF_MALAYA",
     sources: sources.map((item) => ({ id: item.id, title: item.title, publisher: item.publisher, type: "ARCHIVAL", url: item.url, date: item.publishedAt,
       accessedAt: item.accessedAt, reliabilityLevel: "ARCHIVAL", sourceRole: "ARCHIVAL_NEWSPAPER" })), claims, timeline: [], people: [], locations: ["Johor"],
     hookCandidates: [{ text: claims[0].claimText, claimIds: [claims[0].id], sourceIds: claims[0].sourceIds }], keyTurningPoints: [],
     unresolvedQuestions: [{ text: "Apakah yang berlaku selepas laporan itu?", claimIds: [], sourceIds: [] }], payoff: { text: claims[4].claimText, claimIds: [claims[4].id], sourceIds: claims[4].sourceIds },
+    clusterConfidence: "HIGH", narrationQuality: { malayLanguageRatio: 1, englishLeakageCount: 0, ocrLeakageCount: 0, fragmentCount: 0, headlineLeakageCount: 0, spokenNaturalnessScore: .95, passes: true },
     sourceCoverage: 1, unsupportedClaimCount: 0, sourceDiversityScore: .67, claimDiversityScore: .8, ocrQualityScore: .9, researchScore: .85,
     narrativePotentialScore: .8, estimatedNarrationSeconds: 30, readyDecision: { status: "READY", reasons: [] }, requiresCurrentVerification: false,
     lastResearchedAt: "2026-01-01T00:00:00.000Z", lastVerifiedAt: "2026-01-01T00:00:00.000Z" };
   const story = researchPackageToStoryRecord(value); const script = buildMysteryScript(story, 30, "DOCUMENTARY", true);
   const valid = new Set(story.sources.map((item) => item.id));
   assert.ok(script.segments.filter((segment) => segment.role !== "OPEN_LOOP").every((segment) => segment.sourceIds.length && segment.sourceIds.every((id) => valid.has(id))));
+});
+
+test("archive English remains claimText while Sarawak narration is natural Malay", () => {
+  const spoken = rewriteArchiveClaimToMalay("1 missing, 7 saved after ship sinks off Sarawak", "DISAPPEARANCE");
+  assert.match(spoken, /Tujuh orang berjaya diselamatkan/); assert.doesNotMatch(spoken, /\b(?:missing|saved|ship|sinks|KUCHING)\b/i);
+  const claim = { ...extractClaimsFromSource(candidate(), source())[0], spokenText: spoken };
+  const quality = assessNarrationQuality([claim]); assert.equal(quality.englishLeakageCount, 0); assert.equal(quality.ocrLeakageCount, 0);
+});
+
+test("cluster integrity splits similar generic headlines from distant years", () => {
+  const first = source("a"); const distant = { ...source("b"), publishedAt: "1968-03-01T00:00:00.000Z", metadata: { extractedLocations: ["Johor"], extractedPeople: [] } };
+  const result = validateSourceCluster([first, distant]); assert.equal(result.coherent, false); assert.equal(result.clusters.length, 2); assert.equal(result.confidence, "LOW");
+});
+
+test("READY rejects raw English narration even when evidence is sourced", () => {
+  const sources = [source("s1", "Publisher One"), source("s2", "Publisher Two")]; const base = extractClaimsFromSource(candidate(), sources[0])[0];
+  const claims = Array.from({ length: 4 }, (_, index) => ({ ...base, id: `bad-${index}`, spokenText: "Search still on for the missing person after the report.", sourceIds: [sources[index % 2].id] }));
+  const metrics = calculateResearchMetrics(claims, sources, "DISAPPEARANCE"); const quality = assessNarrationQuality(claims);
+  assert.equal(quality.passes, false); assert.equal(decideResearchReadiness(claims, sources, metrics, true, true, false, "HIGH", quality).status, "PARTIAL");
 });

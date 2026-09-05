@@ -21,8 +21,12 @@ function openLoop(story: StoryRecord): MysterySegment {
     REPORTED_CLAIM: "Apakah yang benar-benar dilaporkan, dan apakah yang belum dapat disahkan?",
     DISPUTED: "Bahagian manakah disokong oleh rekod, dan bahagian manakah masih dipertikaikan?",
   };
-  const text = story.unresolvedQuestions?.[0]?.text ?? fallback[story.caseStatus];
-  return { role: "OPEN_LOOP", text, sourceIds: [], claimType: "UNRESOLVED", visualIntent: "FACT_CARD" };
+  const title = story.title.toLowerCase();
+  const topicSpecific = /helmsman|jurumudi/.test(title) ? "Apakah yang ditemukan apabila operasi mencari jurumudi itu diteruskan?"
+    : /missing|hilang/.test(title) ? "Apakah yang berlaku kepada individu yang dilaporkan hilang itu?" : null;
+  const text = story.unresolvedQuestions?.[0]?.text ?? topicSpecific ?? fallback[story.caseStatus];
+  const grounded = story.unresolvedQuestions?.[0];
+  return { role: "OPEN_LOOP", text, sourceIds: grounded?.sourceIds ?? [], claimType: "UNRESOLVED", visualIntent: "FACT_CARD" };
 }
 
 export function buildMysteryScript(story: StoryRecord, duration: StoryDuration, tone: StoryTone, showSourceNote: boolean): MysteryScript {
@@ -49,5 +53,7 @@ export function mysteryScriptToTopic(story: StoryRecord, script: MysteryScript):
 }
 
 export function passesQualityGate(script: MysteryScript) {
-  return script.sourceCoverage === 1 && script.storytellingScore >= 10 && script.repetitionScore >= .7 && Boolean(script.hook) && Boolean(script.openLoop) && Boolean(script.payoff) && script.unsupportedClaims === 0;
+  return script.sourceCoverage === 1 && script.storytellingScore >= 10 && script.structureScore >= .65 && script.sourceQualityScore === 1
+    && script.narrationQualityScore >= .78 && script.repetitionScore >= .7 && Boolean(script.hook) && Boolean(script.openLoop)
+    && Boolean(script.payoff) && script.unsupportedClaims === 0;
 }

@@ -2,6 +2,7 @@ CREATE TABLE IF NOT EXISTS story_claims (
   id text PRIMARY KEY,
   story_candidate_id text NOT NULL REFERENCES story_candidates(id) ON DELETE CASCADE,
   claim_text text NOT NULL,
+  spoken_text text NOT NULL DEFAULT '',
   normalized_claim text NOT NULL,
   claim_type text NOT NULL CHECK (claim_type IN ('VERIFIED', 'REPORTED', 'DISPUTED', 'UNRESOLVED', 'FOLKLORE', 'THEORY', 'EXPLAINED_LATER')),
   confidence text NOT NULL CHECK (confidence IN ('HIGH', 'MEDIUM', 'LOW')),

@@ -83,7 +83,7 @@ export function extractClaimsFromSource(candidate: StoryCandidate, source: Store
     if (/\b(?:a|an|and|at|by|for|from|in|of|on|or|the|to|when|where|which|who|whose|with|whose body)\s*$/i.test(text)) continue;
     const chunkQuality = calculateOcrQuality(text); if (chunkQuality < .58) continue;
     const id = createHash("sha256").update(`${candidate.id}:${source.id}:${normalized}`).digest("hex").slice(0, 32);
-    result.push({ id, storyCandidateId: candidate.id, claimText: text, normalizedClaim: normalized, claimType: claimType(candidate),
+    result.push({ id, storyCandidateId: candidate.id, claimText: text, spokenText: "", normalizedClaim: normalized, claimType: claimType(candidate),
       confidence: quality >= .7 ? "MEDIUM" : "LOW", sourceIds: [source.id], eventDate: source.publishedAt,
       people, locations, priority: index === 0 ? "ESSENTIAL_CONTEXT" : "ESCALATION_DETAIL", visualIntent: visualIntent(candidate, text),
       ocrQuality: Math.min(quality, chunkQuality), sourcePublisher: source.publisher, sourceProvider: source.provider });

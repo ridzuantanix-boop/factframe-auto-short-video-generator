@@ -68,11 +68,33 @@ export function calculateStorytellingScore(input: Pick<MysteryScript, "segments"
   return Math.min(14, score);
 }
 
+export function calculateStructureScore(segments: MysterySegment[]) {
+  if (!segments.length) return 0;
+  const roles = segments.map((segment) => segment.role); let score = 0;
+  if (roles[0] === "HOOK" && segments[0].text.trim()) score += .25;
+  if (roles.includes("OPEN_LOOP")) score += .15;
+  if (roles.some((role) => ["CONTEXT", "ESCALATION"].includes(role))) score += .2;
+  if (roles.some((role) => ["TWIST", "COUNTERPOINT"].includes(role))) score += .15;
+  if (roles.at(-1) === "PAYOFF" && segments.at(-1)?.text.trim()) score += .25;
+  return Number(Math.min(1, score).toFixed(3));
+}
+
+export function calculateNarrationQualityScore(segments: MysterySegment[]) {
+  const spoken = segments.filter((segment) => segment.role !== "OPEN_LOOP"); if (!spoken.length) return 0;
+  const english = /\b(?:the|was|were|is|are|after|before|missing|saved|ship|search|found|body|murder|investigation|arrested|reported|yesterday|since|capsized)\b/i;
+  const ocr = /[�■<>]|\b\d+[a-z]{2,}\b|\b(?:7fwo|whioh|ctfc|lowrtt|iolunes|gintir)\b/i;
+  const complete = spoken.filter((segment) => /[.!?]$/.test(segment.text.trim()) && segment.text.trim().split(/\s+/).length >= 5).length / spoken.length;
+  const clean = spoken.filter((segment) => !english.test(segment.text) && !ocr.test(segment.text)).length / spoken.length;
+  const varied = calculateRepetitionScore(segments);
+  return Number(Math.max(0, Math.min(1, complete * .4 + clean * .4 + varied * .2)).toFixed(3));
+}
+
 export function calculateScriptQuality(segments: MysterySegment[], sources: ResearchSource[]) {
+  const sourceCoverage = calculateSourceCoverage(segments, sources); const unsupportedClaims = calculateUnsupportedClaims(segments, sources);
+  const structureScore = calculateStructureScore(segments); const sourceQualityScore = Number((sourceCoverage * (unsupportedClaims ? .5 : 1)).toFixed(3));
+  const narrationQualityScore = calculateNarrationQualityScore(segments); const repetitionScore = calculateRepetitionScore(segments);
   return {
-    sourceCoverage: calculateSourceCoverage(segments, sources),
-    unsupportedClaims: calculateUnsupportedClaims(segments, sources),
-    repetitionScore: calculateRepetitionScore(segments),
-    storytellingScore: calculateStorytellingScore({ segments, sources }),
+    sourceCoverage, unsupportedClaims, repetitionScore, structureScore, sourceQualityScore, narrationQualityScore,
+    storytellingScore: Number((14 * (structureScore * .4 + sourceQualityScore * .3 + narrationQualityScore * .3)).toFixed(1)),
   };
 }

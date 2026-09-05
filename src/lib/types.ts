@@ -148,6 +148,9 @@ export type MysteryScript = {
   segments: MysterySegment[];
   payoff: string;
   storytellingScore: number;
+  structureScore: number;
+  sourceQualityScore: number;
+  narrationQualityScore: number;
   repetitionScore: number;
   sourceCoverage: number;
   unsupportedClaims: number;

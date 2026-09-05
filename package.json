@@ -15,6 +15,8 @@
     "index:archives": "node --env-file-if-exists=.env.local scripts/index-archives.mjs",
     "reclassify:archives": "node --env-file-if-exists=.env.local scripts/reclassify-archives.mjs",
     "enrich:stories": "node --env-file-if-exists=.env.local scripts/enrich-stories.mjs",
+    "repair:clusters": "node --env-file-if-exists=.env.local scripts/repair-clusters.mjs",
+    "audit:narration": "node --env-file-if-exists=.env.local scripts/audit-narration.mjs",
     "reclassify:stories": "node --env-file-if-exists=.env.local scripts/reclassify-stories.mjs",
     "audit:project": "node --env-file-if-exists=.env.local scripts/audit-project.mjs",
     "audit:discovery": "node --env-file-if-exists=.env.local scripts/audit-discovery.mjs",

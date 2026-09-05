@@ -8,6 +8,8 @@ PARTIAL candidate
   -> deterministic atomic claim extraction
   -> OCR quality/confidence
   -> near-duplicate merge with all source IDs
+  -> date/entity cluster validation and repair
+  -> deterministic claimText -> Malaysian Malay spokenText
   -> timeline + people + normalized locations
   -> grounded hooks, turning points, questions, payoff
   -> calculated research/narrative metrics
@@ -18,7 +20,7 @@ PARTIAL candidate
 
 ## Persistence
 
-`migrations/003_story_research.sql` creates `story_claims` and `story_research_packages`. A claim stores normalized text, type, confidence, source IDs, publication/event date, people, locations, narrative priority, visual intent, and OCR quality. The package stores the complete research input and calculated decision. Persistence is transactional and rerunning enrichment replaces claims for that candidate, so the command is idempotent.
+`migrations/003_story_research.sql` creates `story_claims` and `story_research_packages`; migration `004_narration_cluster_integrity.sql` adds durable `spoken_text` to existing databases. A claim stores both untouched factual `claimText` and TTS-ready `spokenText`, plus normalized text, type, confidence, source IDs, publication/event date, people, locations, narrative priority, visual intent, and OCR quality.
 
 ## Extraction and trust
 
@@ -36,7 +38,8 @@ All conditions must pass:
 - grounded hook and payoff;
 - narrative potential at least 0.55;
 - about 20 seconds of unique evidence without padding;
-- temporally coherent source set;
+- HIGH or validated MEDIUM date/entity cluster confidence;
+- complete Malaysian Malay narration with no English headline/OCR leakage and a passing spoken-naturalness score;
 - no outstanding current-aware verification.
 
 Visual availability is not part of Phase 4 readiness. A failed gate persists the package and explanatory reasons while retaining `PARTIAL`.
@@ -45,11 +48,13 @@ Visual availability is not part of Phase 4 readiness. A failed gate persists the
 
 ```bash
 npm run db:migrate
+npm run repair:clusters
 npm run enrich:stories -- --status=PARTIAL --limit=25 --category=archive --min-sources=1 --concurrency=2 --delay=100
 npm run audit:research
+npm run audit:narration
 ```
 
-The 2026-09-05 controlled `--status=ALL --limit=100` audit produced 242 raw claims, 166 unique claims, 76 merges, 2 READY, 98 PARTIAL, average coverage 0.85, zero unsupported claims, and no processing failures. Ten complete packages spanning the seven required story types are exported in `audit/research-examples.json`; summary metrics are in `audit/research-audit.json`.
+The Phase 4.1 recheck starts from the same 100 IDs. It found 16 suspicious candidates, split them into 35 additional event candidates, and reassigned 50 source links without deleting source records. The resulting 135 coherent candidates contain 175 claims; strict narration gates leave one READY and 134 PARTIAL. Details are in `audit/cluster-repair-report.json`, `audit/narration-audit.json`, and ten before/after samples in `audit/narration-examples.json`.
 
 ## Generation integration
 

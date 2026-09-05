@@ -3,7 +3,7 @@ import type { StoryIndexStatus } from "../types.ts";
 import { researchStoryCandidate } from "./storyResearch.ts";
 import type { ResearchPackage } from "./types.ts";
 
-export type ResearchBatchOptions = { status?: StoryIndexStatus | "ALL"; limit?: number; category?: string; region?: string; minSources?: number; concurrency?: number; delayMs?: number; store?: StoryStore };
+export type ResearchBatchOptions = { status?: StoryIndexStatus | "ALL"; limit?: number; category?: string; region?: string; minSources?: number; concurrency?: number; delayMs?: number; candidateIds?: string[]; store?: StoryStore };
 const REQUIRED_TYPES = ["DISAPPEARANCE", "MYSTERIOUS_DEATH", "CRIME_MYSTERY", "DISASTER", "PARANORMAL_REPORT", "FOLKLORE", "HISTORICAL_INCIDENT"];
 
 function diverseSelection<T extends { storyType: string }>(items: T[], limit: number) {
@@ -23,8 +23,9 @@ export async function enrichStoryBatch(options: ResearchBatchOptions = {}) {
   const store = options.store ?? createStoryStore(); const ownsStore = !options.store; await store.migrate();
   const limit = Math.min(500, Math.max(1, options.limit ?? 25)); const concurrency = Math.min(4, Math.max(1, options.concurrency ?? 2));
   const delayMs = Math.min(5000, Math.max(0, options.delayMs ?? 100));
-  const available = await store.listResearchCandidates({ status: options.status ?? "PARTIAL", limit: 500, category: options.category, region: options.region, minSources: options.minSources ?? 1 });
-  const candidates = diverseSelection(available, limit); let cursor = 0; const packages: ResearchPackage[] = []; const failures: Array<{ candidateId: string; error: string }> = [];
+  const available = options.candidateIds?.length ? await store.listResearchCandidatesByIds(options.candidateIds)
+    : await store.listResearchCandidates({ status: options.status ?? "PARTIAL", limit: 500, category: options.category, region: options.region, minSources: options.minSources ?? 1 });
+  const candidates = options.candidateIds?.length ? available.slice(0, limit) : diverseSelection(available, limit); let cursor = 0; const packages: ResearchPackage[] = []; const failures: Array<{ candidateId: string; error: string }> = [];
   let rawClaimsExtracted = 0; let claimsMerged = 0;
   async function worker() {
     while (cursor < candidates.length) {
@@ -43,6 +44,8 @@ export async function enrichStoryBatch(options: ResearchBatchOptions = {}) {
       totalClaims, claimsMerged, averageClaimsPerStory: packages.length ? Number((totalClaims / packages.length).toFixed(3)) : 0,
       storiesPromotedReady: ready, storiesKeptPartial: packages.length - ready,
       averageSourceCoverage: packages.length ? Number((packages.reduce((sum, item) => sum + item.sourceCoverage, 0) / packages.length).toFixed(3)) : 0,
+      averageSpokenNaturalnessScore: packages.length ? Number((packages.reduce((sum, item) => sum + item.narrationQuality.spokenNaturalnessScore, 0) / packages.length).toFixed(3)) : 0,
+      clusterConfidenceDistribution: packages.reduce((counts, item) => ({ ...counts, [item.clusterConfidence]: (counts[item.clusterConfidence] ?? 0) + 1 }), {} as Record<string, number>),
       unsupportedClaims: packages.reduce((sum, item) => sum + item.unsupportedClaimCount, 0), failures, candidateIds: packages.map((item) => item.storyCandidateId) };
   } finally { if (ownsStore) await store.close(); }
 }
