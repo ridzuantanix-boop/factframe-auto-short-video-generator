@@ -44,6 +44,8 @@ test("research is conditional and skipped is distinct from unavailable",()=>{
   assert.equal(shouldResearchProduct(product,{instructions:"Jangan research. Jangan sebut kapasiti."}),false);
   for(const change of [{confidence:"medium" as const},{uncertainty:"Model tidak jelas"},{variant_verification_required:true},{missing_required_facts:["Exact model"]},{observed_features:[]}])assert.ok(shouldResearchProduct({...product,...change}));
   for(const context of [{requiredFacts:["capacity"]},{angle:"benefit"},{explicitlyRequested:true},{instructions:"Tolong research produk ini"},{instructions:"Semak kapasiti sebenar"}])assert.ok(shouldResearchProduct(product,context));
+  const vitamin={...product,name:"Mommy Hana Vitamin C Gummies",category:"Vitamin supplement",visible_text:"Vitamin C Gummies",primary_function:"Belum disahkan",target_audience:"Belum disahkan"};assert.ok(shouldResearchProduct(vitamin));assert.ok(researchReasons(vitamin).includes("fact_sensitive_category"));
+  assert.equal(shouldResearchProduct(product,{instructions:"Jangan cari audience. Jangan semak fungsi."}),false);
   assert.ok(researchReasons(product,{angle:"benefit"}).includes("angle_requires_function"));
   assert.equal(observationOnly().status,"observation_only");
   assert.notEqual(researchLabel(observationOnly()),researchLabel({...observationOnly(),status:"unverified"}));
@@ -71,6 +73,8 @@ test("planner and conditional Search use mocked transport only, including saved-
     const searched=await prepareResearch(product,changed,clear);assert.equal(searches,1);assert.equal(searched.status,"unverified");
     await prepareResearch(product,changed,searched);assert.equal(searches,1,"No replay of unavailable research in same context");
     await researchProduct({...product,confidence:"low"});assert.equal(searches,2);
+    const vitamin={...product,name:"Mommy Hana Vitamin C Gummies",category:"Vitamin supplement",visible_text:"Vitamin C Gummies",observed_features:["Packaging compact"],primary_function:"Belum disahkan",target_audience:"Belum disahkan"};
+    const safe=await createPlan(input,vitamin,{...observationOnly(),status:"unverified",note:"Search quota unavailable"});assert.match(safe.script,/Mommy Hana Vitamin C Gummies|Packaging compact/);assert.doesNotMatch(safe.script,/anak|kanak|snek|sesuai|berkhasiat/i);assert.equal(safe.claim_evidence_ids.length,0);assert.match(safe.visual_direction,/Do not imply audience, function, suitability, efficacy/);
   }finally{globalThis.fetch=original;if(key===undefined)delete process.env.GEMINI_API_KEY;else process.env.GEMINI_API_KEY=key;if(base===undefined)delete process.env.GEMINI_API_BASE_URL;else process.env.GEMINI_API_BASE_URL=base;}
 });
 

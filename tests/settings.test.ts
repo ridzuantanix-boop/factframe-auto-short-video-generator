@@ -28,7 +28,7 @@ test("Shariah OFF removes both compliance and aurat modules",()=>{
 });
 test("visual master, scene beats, product fidelity and correct hand anatomy are locked",()=>{
  const prompt=buildVideoPrompt(product,plan,false,1,"",DEFAULT_SETTINGS);
- for(const part of ["PAWARNA_VISUAL_MASTER_LOCK","PRODUCT_LOCK","SCENE_PLAN",'"0-2"','"2-6"','"6-8"','"8-10"',"five fingers","natural grip","realistic product scale","grey wash","fake HDR"])assert.ok(prompt.includes(part),part);
+ for(const part of ["PAWARNA_VISUAL_MASTER_LOCK","PRODUCT_LOCK","REAL-WORLD PRODUCT SCALE LOCK","believable palm or hand proportions","oversized","hero-sized","stretched","elongated","large in frame does not mean physically oversized","SCENE_PLAN",'"0-2"','"2-6"','"6-8"','"8-10"',"five fingers","natural grip","realistic product scale","grey wash","fake HDR"])assert.ok(prompt.includes(part),part);
  const noHands=buildVideoPrompt(product,plan,false,1,"",{...DEFAULT_SETTINGS,subjectType:"no_hands",shariahCompliance:false,auratLevel:null});assert.match(noHands,/No people, hands, faces/);assert.doesNotMatch(noHands,/Hands-only POV/);
 });
 test("reference sanitization is global and preserves only physical product identity",()=>{
