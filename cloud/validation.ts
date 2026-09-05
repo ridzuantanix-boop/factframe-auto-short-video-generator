@@ -7,7 +7,9 @@ export function validateInput(body: Record<string, unknown>): JobInput {
   if (!MODES.includes((body.mode || "Auto") as typeof MODES[number])) throw new Error("Gaya video tidak sah.");
   if (body.instructions !== undefined && (typeof body.instructions !== "string" || body.instructions.length > 1000)) throw new Error("Arahan maksimum 1,000 aksara.");
   if (body.avatar !== undefined && typeof body.avatar !== "string") throw new Error("Imej avatar tidak sah.");
-  const input: JobInput = { images: body.images as string[], avatar: body.avatar ? String(body.avatar) : undefined, mode: (body.mode || "Auto") as JobInput["mode"], instructions: String(body.instructions || ""), angle_seed: "default" };
+  if(body.product_title!==undefined&&(typeof body.product_title!=="string"||body.product_title.length>200))throw new Error("Nama produk maksimum 200 aksara.");
+  if(body.product_url!==undefined&&(typeof body.product_url!=="string"||body.product_url.length>2048||body.product_url&&!/^https:\/\//i.test(body.product_url)))throw new Error("Link produk mesti URL HTTPS yang sah.");
+  const input: JobInput = { images: body.images as string[], avatar: body.avatar ? String(body.avatar) : undefined, product_title:String(body.product_title||"").trim()||undefined,product_url:String(body.product_url||"").trim()||undefined,mode: (body.mode || "Auto") as JobInput["mode"], instructions: String(body.instructions || ""), angle_seed: "default" };
   let total = 0;
   for (const value of [...input.images, ...(input.avatar ? [input.avatar] : [])]) {
     const { bytes, mimeType } = decodeImage(value); total += bytes.length;

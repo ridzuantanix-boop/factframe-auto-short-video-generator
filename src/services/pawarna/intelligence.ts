@@ -6,6 +6,7 @@ import { decodeImage } from "../../lib/pawarna/image";
 import { needsConservativeFallback, observationOnly, researchContext, researchKey, researchReasons, shouldResearchProduct, type ResearchContext } from "../../lib/pawarna/research";
 import { speechInstructions, validSpeech } from "../../lib/pawarna/speech";
 import { globalPromptLocks } from "../../lib/pawarna/locks";
+import { resolveProductIntelligence } from "../../lib/pawarna/product-resolver";
 export { shouldResearchProduct } from "../../lib/pawarna/research";
 
 const model = () => process.env.PAWARNA_GEMINI_MODEL || process.env.GEMINI_TEXT_MODEL || "gemini-3.1-flash-lite";
@@ -17,12 +18,13 @@ const string = { type: "string" };
 const strings = { type: "array", items: string };
 const object = (properties: Record<string, unknown>) => ({ type: "object", properties, required: Object.keys(properties) });
 const productStructureSchema={type:"object",properties:{type:{type:"string",enum:["single","set","uncertain"]},visiblePieceCount:{anyOf:[{type:"integer"},{type:"null"}]},majorComponents:strings,accessories:strings},required:["type","visiblePieceCount","majorComponents","accessories"]};
+const intelligenceFields={physical_product_text:strings,listing_text:strings,ui_text:strings,variant:string,primary_function_source:{type:"string",enum:["physical_packaging","listing_text","unknown"]},primary_function_confidence:{type:"string",enum:["high","medium","low"]},target_audience_source:{type:"string",enum:["physical_packaging","listing_text","unknown"]},target_audience_confidence:{type:"string",enum:["high","medium","low"]}};
 async function json<T>(prompt: string, schema: unknown, parts: Part[] = []): Promise<T> {
   for (let attempt = 0; ; attempt++) {
   try {
   const evidenceRules = "VISUAL EVIDENCE LIMIT: A flat cover/product photograph does NOT establish material, finish, binding, capacity or performance. Do not call a book hardcover/softcover, a gold-coloured pattern gold foil, or packaging glass/plastic unless explicitly readable on the label or verified for that exact edition/variant. This holds even if an earlier analysis listed it as observed. Say cover, gold-coloured pattern, container instead. Report unknowns as an empty string when there are none, not the word none.\n\n";
-  const structureRules=prompt.startsWith("Inspect these photographs")?"PRODUCT STRUCTURE: Classify productStructure.type as single, set, or uncertain using visual evidence only. For a clear bundle/set, visiblePieceCount is the number of visibly distinguishable main pieces, or null if uncertain. majorComponents and accessories contain only visibly supported generic descriptions. Never infer an exact SKU, hidden package contents, or marketing quantity.\n\n":"";
-  if(structureRules&&schema&&typeof schema==="object"&&"properties" in schema&&"required" in schema){const shaped=schema as {properties:Record<string,unknown>;required:string[]};shaped.properties.productStructure=productStructureSchema;if(!shaped.required.includes("productStructure"))shaped.required.push("productStructure");}
+  const structureRules=prompt.startsWith("Inspect these photographs")?"PRODUCT STRUCTURE: Classify productStructure.type as single, set, or uncertain using visual evidence only. For a clear bundle/set, visiblePieceCount is the number of visibly distinguishable main pieces, or null if uncertain. majorComponents and accessories contain only visibly supported generic descriptions. Never infer an exact SKU, hidden package contents, or marketing quantity. TEXT SEPARATION: merge evidence across all images of the same variant. Return physical_product_text only for text physically printed on product or packaging; listing_text only for marketplace title, variant, bullets or product attributes; ui_text for PayLater, shipping, Buy Now, usernames, navigation, social controls and promotional interface. Conflicts across images must be stated in uncertainty, never resolved arbitrarily. Set purpose/audience source and confidence only when directly supported by physical packaging or listing text; otherwise unknown/low.\n\n":"";
+  if(structureRules&&schema&&typeof schema==="object"&&"properties" in schema&&"required" in schema){const shaped=schema as {properties:Record<string,unknown>;required:string[]};shaped.properties.productStructure=productStructureSchema;Object.assign(shaped.properties,intelligenceFields);for(const field of ["productStructure",...Object.keys(intelligenceFields)])if(!shaped.required.includes(field))shaped.required.push(field);}
   const result = await client().models.generateContent({ model: model(), contents: [{ role: "user", parts: [{ text: evidenceRules + structureRules + prompt }, ...parts] }],
     config: { responseMimeType: "application/json", responseJsonSchema: schema, temperature: .35 } });
   return JSON.parse(result.text || "{}");
@@ -41,7 +43,7 @@ export async function analyseProduct(input: JobInput): Promise<ProductAnalysis> 
   product.reference_indices = [...new Set(product.reference_indices || [])].filter(i => Number.isInteger(i) && i >= 0 && i < input.images.length).slice(0, 3);
   if (!product.reference_indices.length) product.reference_indices = [0];
   if (/^(none|tiada|n\/a)$/i.test(product.uncertainty?.trim() || "")) product.uncertainty = "";
-  return product;
+  return resolveProductIntelligence(product,input);
 }
 export async function validateSanitizedReference(image:string){
   const {mimeType,data}=decodeImage(image);
@@ -91,7 +93,8 @@ async function searchProduct(product: ProductAnalysis, context: ResearchContext)
 const planSchema = object({ angle: string, hook: string, script: string, cta: string, mode: { type: "string", enum: MODES.filter(m => m !== "Auto") }, visual_direction: string, claim_evidence_ids: strings, scene_plan: object({ "0-2": string, "2-6": string, "6-8": string, "8-10": string }) });
 export async function createPlan(input: JobInput, product: ProductAnalysis, research: Research): Promise<ContentPlan> {
   const voice = input.settings?.voiceoverEnabled !== false;
-  const controls = [...globalPromptLocks(voice), ...(input.settings ? controlModules(input.settings, !!input.avatar) : [])].join("\n");
+  const resolverRules="PRODUCT INTELLIGENCE: distinguish what the product IS, what its category is FOR, and what the exact product CLAIMS to do. SAFE_VISIBLE_FACT and SAFE_CATEGORY_FUNCTION may be used. USER_SUPPLIED_FACT, LISTING_SUPPLIED_FACT and PRODUCT_PAGE_FACT are contextual and must match identity; phrase conservatively. Never use UNVERIFIED_INFERENCE or PROHIBITED_CLAIM. Unknown audience/function stays unknown. A vitamin gummy category may establish supplement in gummy form, never children, snack, immunity, pregnancy safety or medical outcomes without higher-priority evidence.";
+  const controls = [...globalPromptLocks(voice), ...(input.settings ? controlModules(input.settings, !!input.avatar) : []),resolverRules].join("\n");
   const facts = { product, research: { evidence: research.evidence, note: research.note }, notes: input.instructions };
   let feedback = "";
   for (let attempt = 0; attempt < 3; attempt++) {

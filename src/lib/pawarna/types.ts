@@ -10,12 +10,19 @@ export const STAGES: Record<Stage, string> = {
 export interface ProductAnalysis {
   variant_verification_required?: boolean; missing_required_facts?: string[];
   primary_function?: string; target_audience?: string;
+  physical_product_text?: string[]; listing_text?: string[]; ui_text?: string[]; variant?: string;
+  primary_function_source?: IntelligenceSource; primary_function_confidence?: "high"|"medium"|"low";
+  target_audience_source?: IntelligenceSource; target_audience_confidence?: "high"|"medium"|"low";
+  product_profile?: ProductProfile;
   productStructure?: { type:"single"|"set"|"uncertain"; visiblePieceCount:number|null; majorComponents:string[]; accessories:string[] };
   name: string; brand: string; category: string; confidence: "high" | "medium" | "low";
   visible_text: string; description: string; observed_features: string[];
   search_query: string; uncertainty: string; reference_indices: number[];
   reference_preprocessing?: ReferenceAssessment[];
 }
+export type IntelligenceSource="physical_packaging"|"listing_text"|"product_page"|"user_supplied"|"category_knowledge"|"unknown";
+export type ClaimSafety="SAFE_VISIBLE_FACT"|"SAFE_CATEGORY_FUNCTION"|"USER_SUPPLIED_FACT"|"LISTING_SUPPLIED_FACT"|"PRODUCT_PAGE_FACT"|"UNVERIFIED_INFERENCE"|"PROHIBITED_CLAIM";
+export interface ProductProfile { productIdentity:string; product_identity_source:IntelligenceSource; category:string; primaryFunction:string; primary_function_source:IntelligenceSource; primary_function_confidence:"high"|"medium"|"low"; targetAudience:string; target_audience_source:IntelligenceSource; target_audience_confidence:"high"|"medium"|"low"; variant:string; observedFacts:string[]; listingFacts:string[]; userFacts:string[]; productPageFacts:string[]; safeCategoryFacts:string[]; unknowns:string[]; claims:{text:string;safety:ClaimSafety;source:IntelligenceSource}[]; confidence:"high"|"medium"|"low"; listing_text_detected:boolean; product_page_fetch_attempted:boolean; product_page_fetch_status:"not_requested"|"success"|"failed"|"identity_mismatch"; product_page_identity_match:boolean; category_knowledge_used:boolean; micro_question_required:boolean; }
 export interface ReferenceAssessment {
   index: number; reference_type: "CLEAN_PRODUCT_IMAGE" | "SCREENSHOT_OR_UI_IMAGE" | "UNCERTAIN";
   detected_ui: boolean; product_region: { left:number; top:number; right:number; bottom:number } | null;
@@ -40,7 +47,7 @@ export interface ContentPlan {
   angle: string; hook: string; script: string; cta: string; mode: Exclude<Mode, "Auto">;
   visual_direction: string; claim_evidence_ids: string[]; video_prompt: string;
 }
-export interface JobInput { images: string[]; sanitized_video_references?: Record<string,string>; avatar?: string; mode: Mode; instructions: string; angle_seed: string; previous_hook?: string; settings?: import("./settings").GenerationSettings }
+export interface JobInput { images: string[]; sanitized_video_references?: Record<string,string>; avatar?: string; product_title?:string; product_url?:string; mode: Mode; instructions: string; angle_seed: string; previous_hook?: string; settings?: import("./settings").GenerationSettings }
 export interface Job {
   settings?: import("./settings").GenerationSettings;
   id: string; owner: string; input: JobInput; stage: Stage; created_at: number; updated_at: number;
