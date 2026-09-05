@@ -39,9 +39,17 @@ test("reference sanitization is global and preserves only physical product ident
 });
 test("strict POV camera rules are isolated and no-hands fallback remains hand-free",()=>{
  const pov=buildVideoPrompt(product,plan,false,1,"",{...DEFAULT_SETTINGS,subjectType:"female_hands"});
- for(const rule of ["TRUE FIRST-PERSON POV","camera is the viewer's eyes","originate naturally from below the camera","third person","commercial hero shot","commercial montage"])assert.ok(pov.includes(rule),rule);
- for(const style of ["product_motion","closeup_detail","mini_commercial_ugc"] as const){const other=buildVideoPrompt(product,plan,false,1,"",{...DEFAULT_SETTINGS,videoStyle:style});assert.doesNotMatch(other,/TRUE FIRST-PERSON POV|camera is the viewer's eyes|originate naturally from below the camera/);}
+ for(const rule of ["DIRECT-EYESIGHT POV","camera IS the viewer's direct eyesight","smartphone used for filming","camera body","viewfinder","recording interface","screen-within-screen","The video itself IS the POV","TRUE FIRST-PERSON POV","originate naturally from below the camera","third person","commercial hero shot","commercial montage"])assert.ok(pov.includes(rule),rule);
+ for(const style of ["product_motion","closeup_detail","mini_commercial_ugc"] as const){const other=buildVideoPrompt(product,plan,false,1,"",{...DEFAULT_SETTINGS,videoStyle:style});assert.doesNotMatch(other,/DIRECT-EYESIGHT POV|TRUE FIRST-PERSON POV|camera IS the viewer's direct eyesight|originate naturally from below the camera/);}
  const noHands=buildVideoPrompt(product,plan,false,1,"",{...DEFAULT_SETTINGS,subjectType:"no_hands"});assert.match(noHands,/POV camera view/);assert.doesNotMatch(noHands,/Hands and forearms originate|hands originate naturally/);
+});
+test("decorative overlays are prohibited while Doodle UGC keeps its intentional non-text exception",()=>{
+ const normal=buildVideoPrompt(product,plan,false,1,"",{...DEFAULT_SETTINGS,videoStyle:"real_life"});for(const rule of ["ZERO DECORATIVE OVERLAY LOCK","sparkles","stickers","decorative graphics","fake UI"])assert.ok(normal.includes(rule),rule);
+ const doodle=buildVideoPrompt(product,plan,false,1,"",{...DEFAULT_SETTINGS,videoStyle:"doodle_ugc"});for(const rule of ["DOODLE UGC EXCEPTION","intentional, minimal non-text doodle","no random text","fake UI","alien lettering"])assert.ok(doodle.includes(rule),rule);
+});
+test("multi-piece set remains the product identity without forcing every piece into every frame",()=>{
+ const set={...product,productStructure:{type:"set" as const,visiblePieceCount:5,majorComponents:["five cookware vessels"],accessories:["two oven mitts"]}};
+ const prompt=buildVideoPrompt(set,plan,false,1,"",DEFAULT_SETTINGS);for(const rule of ["PRODUCT SET IDENTITY LOCK","complete set as the product identity","Individual pieces may be used or demonstrated","do not force every piece into every frame","never silently reduce it to fewer pieces","invent additional pieces","duplicate pieces to fake quantity"])assert.ok(prompt.includes(rule),rule);
 });
 test("public product allowlist hides owner and storage; correction remains unverified note",()=>{
  const p=publicProduct({id:"example",owner:"PRIVATE",input_key:"PRIVATE/R2",created_at:1,updated_at:1,stage:"ready",image_count:2,product,corrections:"User label"});

@@ -1,6 +1,8 @@
 // Single source of truth for global generation rules. Both current and legacy adapters use these.
 export const SPOKEN_CTA = "Klik link kat bawah.";
 export const PAWARNA_VIDEO_EXECUTION_LOCK = `Create ONE finished approximately 10-second vertical 9:16 video. Begin immediately with actual moving scene footage. Uploaded reference images are visual ingredients only: never a first-frame still, still intro, slideshow, screenshot, app interface or fake video frame. Zero generated on-screen text: no subtitles, captions, prices, CTA graphics, random letters, text overlays or fake UI. Physical printed product labels remain unchanged.`;
+export const ZERO_DECORATIVE_OVERLAY_LOCK = `ZERO DECORATIVE OVERLAY LOCK. Do not generate decorative graphics or editing overlays: no sparkles, shine icons, stars, graphic floating particles, stickers, emojis, doodles, arrows, circles, checkmarks, animated icons, visual callouts, fake UI, decorative text or promotional badges. Output must look like clean raw real-world smartphone footage. EXCEPTION: only when the explicitly selected style is Doodle UGC, allow intentional minimal non-text doodle graphics; still no random text, fake UI or alien lettering.`;
+export const PRODUCT_SET_IDENTITY_LOCK = `PRODUCT SET IDENTITY LOCK. If the uploaded reference represents a multi-piece product set, bundle, kit or collection, treat the complete set as the product identity. Preserve the approximate visually supported piece count, major included components, relative appearance, colour family, design consistency and meaningful visible accessories. Individual pieces may be used or demonstrated during the video; do not force every piece into every frame. When presenting or revealing the COMPLETE product or set, never silently reduce it to fewer pieces. Do not remove major pieces, invent additional pieces, duplicate pieces to fake quantity, replace pieces with different products or imply that a partial subset is the complete bundle. If showing the entire set naturally is impractical, continue demonstrating individual pieces instead of creating an inaccurate full-set reveal. Never invent an exact marketing quantity when visual evidence is uncertain. PRODUCT ACCURACY IS MORE IMPORTANT THAN FORCING A HERO SHOT.`;
 export const REFERENCE_SANITIZATION_LOCK = `UPLOADED IMAGE ROLE — PRODUCT IDENTITY ONLY
 
 PRODUCT IDENTITY REFERENCES ONLY.
@@ -54,6 +56,8 @@ export const SILENT_AUDIO_LOCK = `VOICEOVER: OFF. No dialogue, speech, singing, 
 export function globalPromptLocks(voice = true) {
   return ["PAWARNA_VIDEO_EXECUTION_LOCK: " + PAWARNA_VIDEO_EXECUTION_LOCK,
     "REFERENCE_SANITIZATION_LOCK: " + REFERENCE_SANITIZATION_LOCK,
+    "ZERO_DECORATIVE_OVERLAY_LOCK: " + ZERO_DECORATIVE_OVERLAY_LOCK,
+    "PRODUCT_SET_IDENTITY_LOCK: " + PRODUCT_SET_IDENTITY_LOCK,
     "PAWARNA_VISUAL_MASTER_LOCK: " + PAWARNA_VISUAL_MASTER_LOCK,
     "PRODUCT_LOCK: " + PRODUCT_LOCK, "CAMERA_LOCK: " + CAMERA_LOCK,
     "LANGUAGE_AUDIO_LOCK: " + (voice ? LANGUAGE_AUDIO_LOCK : SILENT_AUDIO_LOCK)];

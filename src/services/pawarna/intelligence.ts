@@ -16,11 +16,14 @@ function client() {
 const string = { type: "string" };
 const strings = { type: "array", items: string };
 const object = (properties: Record<string, unknown>) => ({ type: "object", properties, required: Object.keys(properties) });
+const productStructureSchema={type:"object",properties:{type:{type:"string",enum:["single","set","uncertain"]},visiblePieceCount:{anyOf:[{type:"integer"},{type:"null"}]},majorComponents:strings,accessories:strings},required:["type","visiblePieceCount","majorComponents","accessories"]};
 async function json<T>(prompt: string, schema: unknown, parts: Part[] = []): Promise<T> {
   for (let attempt = 0; ; attempt++) {
   try {
   const evidenceRules = "VISUAL EVIDENCE LIMIT: A flat cover/product photograph does NOT establish material, finish, binding, capacity or performance. Do not call a book hardcover/softcover, a gold-coloured pattern gold foil, or packaging glass/plastic unless explicitly readable on the label or verified for that exact edition/variant. This holds even if an earlier analysis listed it as observed. Say cover, gold-coloured pattern, container instead. Report unknowns as an empty string when there are none, not the word none.\n\n";
-  const result = await client().models.generateContent({ model: model(), contents: [{ role: "user", parts: [{ text: evidenceRules + prompt }, ...parts] }],
+  const structureRules=prompt.startsWith("Inspect these photographs")?"PRODUCT STRUCTURE: Classify productStructure.type as single, set, or uncertain using visual evidence only. For a clear bundle/set, visiblePieceCount is the number of visibly distinguishable main pieces, or null if uncertain. majorComponents and accessories contain only visibly supported generic descriptions. Never infer an exact SKU, hidden package contents, or marketing quantity.\n\n":"";
+  if(structureRules&&schema&&typeof schema==="object"&&"properties" in schema&&"required" in schema){const shaped=schema as {properties:Record<string,unknown>;required:string[]};shaped.properties.productStructure=productStructureSchema;if(!shaped.required.includes("productStructure"))shaped.required.push("productStructure");}
+  const result = await client().models.generateContent({ model: model(), contents: [{ role: "user", parts: [{ text: evidenceRules + structureRules + prompt }, ...parts] }],
     config: { responseMimeType: "application/json", responseJsonSchema: schema, temperature: .35 } });
   return JSON.parse(result.text || "{}");
   } catch (e) {

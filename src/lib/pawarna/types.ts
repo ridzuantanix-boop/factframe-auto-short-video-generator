@@ -10,6 +10,7 @@ export const STAGES: Record<Stage, string> = {
 export interface ProductAnalysis {
   variant_verification_required?: boolean; missing_required_facts?: string[];
   primary_function?: string; target_audience?: string;
+  productStructure?: { type:"single"|"set"|"uncertain"; visiblePieceCount:number|null; majorComponents:string[]; accessories:string[] };
   name: string; brand: string; category: string; confidence: "high" | "medium" | "low";
   visible_text: string; description: string; observed_features: string[];
   search_query: string; uncertainty: string; reference_indices: number[];
