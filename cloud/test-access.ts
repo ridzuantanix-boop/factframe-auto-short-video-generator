@@ -1,6 +1,9 @@
 import { hash, json, readBody, type CloudJob } from "./utils";
 import type { Env } from "./worker";
 import type { Evaluation } from "./test-types";
+import type { ProductProject } from "../src/lib/pawarna/projects";
+import type { JobInput } from "../src/lib/pawarna/types";
+import { decodeImage } from "../src/lib/pawarna/image";
 
 export const SCORE_FIELDS = ["product_fidelity", "product_scale", "first_frame", "ugc_realism", "brightness_sharpness", "hands_anatomy", "voice_naturalness", "script_completion", "cta_completion", "shariah_aurat", "style_accuracy", "angle_accuracy", "overall"] as const;
 export function evaluation(value: Record<string, unknown>): Evaluation {
@@ -83,6 +86,18 @@ export class TestAccess {
     if (path === "/api/test/jobs" && request.method === "GET") {
       const jobs=this.ctx.storage.sql.exec<{data:string}>("SELECT data FROM jobs WHERE owner=? AND json_extract(data,'$.controlled_test') IS NOT NULL ORDER BY created_at",owner).toArray().map(row=>this.report(JSON.parse(row.data)));
       return json({limit:testLimit(this.env),attempts:this.count("attempts"),remaining:this.available(),jobs});
+    }
+    if(path==="/api/test/reference-inspect"&&request.method==="GET"){
+      const name=(new URL(request.url).searchParams.get("name")||"").trim().toLowerCase();if(!name||name.length>80)return json({},400);
+      const projects=this.ctx.storage.sql.exec<{data:string}>("SELECT data FROM products ORDER BY rowid DESC LIMIT 100").toArray().map(row=>JSON.parse(row.data) as ProductProject);
+      const project=projects.find(item=>item.stage==="ready"&&item.product?.name.toLowerCase().includes(name));if(!project)return json({},404);
+      const input=await this.env.MEDIA.get(project.input_key).then(object=>object?.json<JobInput>());if(!input)return json({},404);
+      return json({project_id:project.id,product_name:project.product?.name,created_at:project.created_at,reference_preprocessing:(project.reference_audit||[]).map(item=>({...item,original_preview_url:`/api/test/products/${project.id}/reference/${item.index}?kind=original`,sanitized_preview_url:item.sanitization_applied?`/api/test/products/${project.id}/reference/${item.index}?kind=sanitized`:null}))});
+    }
+    const productPreview=/^\/api\/test\/products\/([a-f0-9-]{36})\/reference\/(\d+)$/.exec(path);
+    if(productPreview&&request.method==="GET"){
+      const row=this.ctx.storage.sql.exec<{data:string}>("SELECT data FROM products WHERE id=?",productPreview[1]).toArray()[0];if(!row)return json({},404);const project:ProductProject=JSON.parse(row.data),input=await this.env.MEDIA.get(project.input_key).then(object=>object?.json<JobInput>()),index=Number(productPreview[2]);
+      const source=new URL(request.url).searchParams.get("kind")==="sanitized"?input?.sanitized_video_references?.[String(index)]:input?.images[index];if(!source)return json({},404);const image=decodeImage(source);return new Response(image.bytes,{headers:{"Content-Type":image.mimeType,"Cache-Control":"no-store"}});
     }
     const preview=/^\/api\/test\/jobs\/([a-f0-9-]{36})\/sanitized-reference\/(\d+)$/.exec(path);
     if(preview&&request.method==="GET"){
