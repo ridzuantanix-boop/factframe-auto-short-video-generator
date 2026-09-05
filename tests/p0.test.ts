@@ -63,7 +63,7 @@ test("planner and conditional Search use mocked transport only, including saved-
       searches++;return Response.json({candidates:[{content:{role:"model",parts:[{text:"No exact evidence"}]}}]});
     }
     let value: unknown;
-    if(text.includes("Audit this Malay script"))value={approved:true,reason:"Supported"};
+    if(text.includes("Audit this Malay script"))value={safety_safe:true,quality_approved:true,reason:"Supported"};
     else if(text.includes("Mommy Hana Vitamin C Gummies")){plans++;value={...plan,hook:"Packaging compact Mommy Hana Vitamin C Gummies ini mudah dicam.",script:"Packaging compact Mommy Hana Vitamin C Gummies ini mudah dicam. Klik link kat bawah.",visual_direction:"Show only the observed compact packaging. Do not imply audience, function, suitability, efficacy or results."};}
     else {plans++;assert.ok(text.includes("18–22"));assert.ok(!text.includes("20–26"));value=plans===1?{...plan,script:["Lihat",...Array(21).fill("biru"),SPOKEN_CTA].join(" ")}:plan;}
     return Response.json({candidates:[{content:{role:"model",parts:[{text:JSON.stringify(value)}]}}]});
