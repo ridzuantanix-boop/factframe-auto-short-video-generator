@@ -5,11 +5,12 @@ export interface ProductProject {
   stage: "queued" | "analysing" | "researching" | "ready" | "failed";
   product?: ProductAnalysis; research?: Research; error?: string;
   image_count: number; input_key: string; corrections?: string;
+  reference_audit?: import("./types").ReferenceAudit[];
 }
-export type PublicProduct = Omit<ProductProject, "owner" | "input_key"> & { image_urls: string[] };
+export type PublicProduct = Omit<ProductProject, "owner" | "input_key" | "reference_audit"> & { image_urls: string[]; sanitized_reference_urls: string[] };
 export function publicProduct(p: ProductProject): PublicProduct {
   return { source_job:p.source_job, id: p.id, created_at: p.created_at, updated_at: p.updated_at, stage: p.stage, product: p.product, research: p.research, error: p.error, corrections: p.corrections, image_count: p.image_count,
-    image_urls: Array.from({ length: p.image_count }, (_, i) => `/api/products/${p.id}/media?index=${i}`) };
+    image_urls: Array.from({ length: p.image_count }, (_, i) => `/api/products/${p.id}/media?index=${i}`), sanitized_reference_urls:(p.reference_audit||[]).filter(a=>a.sanitization_applied).map(a=>`/api/products/${p.id}/media?index=${a.index}&sanitized=1`) };
 }
 export function correction(value: unknown): string {
   if (typeof value !== "string" || value.length > 1000) throw new Error("Arahan pembetulan maksimum 1,000 aksara.");

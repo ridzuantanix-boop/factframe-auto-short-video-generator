@@ -11,6 +11,7 @@
   "durable_objects": { "bindings": [{ "name": "FACTORY", "class_name": "PawarnaFactory" }] },
   "migrations": [{ "tag": "v1", "new_sqlite_classes": ["PawarnaFactory"] }],
   "r2_buckets": [{ "binding": "MEDIA", "bucket_name": "pawarna-video-factory-media" }],
+  "images": { "binding": "IMAGES" },
   "vars": { "GEMINI_TEXT_MODEL": "gemini-3.1-flash-lite", "PAWARNA_GEMINI_MODEL": "gemini-3.1-flash-lite", "NEXABOT_BASE_URL": "https://nexabot.id", "PAWARNA_MAX_ACTIVE": "3", "PAWARNA_DAILY_LIMIT": "20", "GENERATION_ENABLED": "true", "PAWARNA_TEST_GENERATION_ENABLED": "true", "PAWARNA_TEST_MAX_GENERATIONS": "10" },
   "observability": { "enabled": true, "logs": { "invocation_logs": false } }
 }

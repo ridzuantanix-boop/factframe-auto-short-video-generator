@@ -6,6 +6,7 @@ import { analyseProduct, researchProduct } from "../src/services/pawarna/intelli
 import { decodeImage } from "../src/lib/pawarna/image";
 import { validateInput } from "./validation";
 import { hash, json, readBody, type CloudJob } from "./utils";
+import { cloudflareCrop, providerReferences } from "./reference-preprocessing";
 export class Products {
   constructor(private ctx: DurableObjectState, private env: Env) {
     ctx.storage.sql.exec("CREATE TABLE IF NOT EXISTS products(id TEXT PRIMARY KEY, owner TEXT NOT NULL, request_key TEXT NOT NULL, request_hash TEXT NOT NULL, data TEXT NOT NULL, UNIQUE(owner,request_key))");
@@ -21,7 +22,7 @@ export class Products {
       const p = this.get(match[1]); if (!p || p.owner !== owner) return json({error:"Produk tidak ditemui."},404);
       if (match[2] === "media" && ["GET","HEAD"].includes(request.method)) {
         const index = Number(url.searchParams.get("index") || 0); if (!Number.isInteger(index) || index < 0 || index >= p.image_count) return json({},404);
-        const input = await this.input(p); const image = decodeImage(input.images[index]);
+        const input = await this.input(p); const source=url.searchParams.get("sanitized")==="1"?input.sanitized_video_references?.[String(index)]:input.images[index];if(!source)return json({},404);const image = decodeImage(source);
         return new Response(request.method === "HEAD" ? null : image.bytes, { headers:{"Content-Type":image.mimeType,"Cache-Control":"no-store"} });
       }
       if (match[2] === "corrections" && request.method === "POST") {
@@ -67,7 +68,9 @@ export class Products {
       // An interrupted AI request is not replayed automatically.
       if (p.stage === "analysing" || p.stage === "researching") throw new Error("Interrupted analysis");
       const input = await this.input(p); p.stage="analysing"; this.save(p); await this.ctx.storage.sync();
-      p.product ||= await analyseProduct(input); p.stage=shouldResearchProduct(p.product,researchContext(input))?"researching":"analysing";this.save(p);
+      p.product ||= await analyseProduct(input);
+      if(!input.sanitized_video_references){const indices=input.images.map((_,index)=>index),prepared=await providerReferences(input,p.product,indices,(source,bounds)=>cloudflareCrop(this.env.IMAGES,source,bounds));input.sanitized_video_references={};for(let i=0;i<indices.length;i++)if(prepared.audit[i].sanitization_applied)input.sanitized_video_references[String(indices[i])]=prepared.media[i];p.reference_audit=prepared.audit;await this.env.MEDIA.put(p.input_key,JSON.stringify(input),{httpMetadata:{contentType:"application/json"}});this.save(p);}
+      p.stage=shouldResearchProduct(p.product,researchContext(input))?"researching":"analysing";this.save(p);
       if(!await allowAnalysis(p.owner))throw new Error("Research authorization expired");
       p.research ||= await researchProduct(p.product,researchContext(input)); p.stage="ready";this.save(p);
     } catch { p.stage="failed";p.error="Analisis belum dapat disiapkan. Semak gambar atau akses analisis. Tiada video berbayar dihantar.";this.save(p); }

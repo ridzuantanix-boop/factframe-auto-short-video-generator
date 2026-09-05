@@ -4,6 +4,7 @@ export { PawarnaFactory } from "./factory";
 export interface Env {
   FACTORY: DurableObjectNamespace;
   MEDIA: R2Bucket;
+  IMAGES: ImagesBinding;
   ASSETS: Fetcher;
   GEMINI_API_KEY?: string;
   NEXABOT_API_KEY?: string;

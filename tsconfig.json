@@ -43,6 +43,8 @@
     "cloud/utils.ts",
     "cloud/products.ts",
     "cloud/test-access.ts",
-    "tests/test-access.test.ts"
+    "cloud/reference-preprocessing.ts",
+    "tests/test-access.test.ts",
+    "tests/reference-preprocessing.test.ts"
   ]
 }

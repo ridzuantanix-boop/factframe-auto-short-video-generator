@@ -11,6 +11,7 @@ import type { JobInput, Stage } from "../src/lib/pawarna/types";
 import { analyseProduct, prepareResearch, createPlan } from "../src/services/pawarna/intelligence";
 import { buildVideoPrompt } from "../src/lib/pawarna/prompt";
 import { NexabotProvider, ProviderError } from "../src/services/nexabot/provider";
+import { cloudflareCrop, providerReferences } from "./reference-preprocessing";
 
 const terminal = (job: CloudJob) => ["completed", "failed"].includes(job.stage);
 type Row = { id: string; data: string; request_hash: string };
@@ -93,7 +94,7 @@ export class PawarnaFactory extends DurableObject<Env> {
           if(!avatarObject)return json({error:"Avatar tidak ditemui."},404);
           body.avatar=(await avatarObject.json<JobInput>()).avatar;
         }
-        input = validateInput({...saved, instructions:body.instructions || "", avatar:body.avatar, settings:validateSettings(body.settings,project.id)});
+        input = validateInput({...saved, instructions:body.instructions || "", avatar:body.avatar, settings:validateSettings(body.settings,project.id)});input.sanitized_video_references=saved.sanitized_video_references;
         input = projectInput(input,project); input.angle_seed = key;
       } else if (body.source_job) {
         if (!["another_angle", "regenerate"].includes(String(body.action))) throw new Error("Permintaan jana semula tidak sah.");
@@ -199,7 +200,10 @@ export class PawarnaFactory extends DurableObject<Env> {
     if (!job.external_job_id) {
       const day = new Date().toISOString().slice(0, 10);
       if (!this.consume(`submissions:${day}`, Number(this.env.PAWARNA_DAILY_LIMIT || 20), Date.now() + 172_800_000)) throw new ProviderError("rejected", "Daily limit");
-      const selected = job.product.reference_indices.slice(0, input.avatar ? 2 : 3).map(index => input.images[index]);
+      const indices=job.product.reference_indices.slice(0,input.avatar?2:3);
+      const prepared=await providerReferences(input,job.product,indices,(source,bounds,index)=>Promise.resolve(input.sanitized_video_references?.[String(index)]||cloudflareCrop(this.env.IMAGES,source,bounds)));
+      const selected=prepared.media;job.reference_audit=prepared.audit;
+      for(let i=0;i<selected.length;i++)if(prepared.audit[i].sanitization_applied){const image=decodeImage(selected[i]);await this.env.MEDIA.put(`jobs/${job.id}/sanitized-reference-${i}`,image.bytes,{httpMetadata:{contentType:image.mimeType}});}
       job.plan.video_prompt = buildVideoPrompt(job.product, job.plan, !!input.avatar, selected.length, input.instructions, input.settings);
       const epoch=job.controlled_test ? await this.tests.epoch() : "";
       this.ctx.storage.transactionSync(()=>{

@@ -13,6 +13,16 @@ export interface ProductAnalysis {
   name: string; brand: string; category: string; confidence: "high" | "medium" | "low";
   visible_text: string; description: string; observed_features: string[];
   search_query: string; uncertainty: string; reference_indices: number[];
+  reference_preprocessing?: ReferenceAssessment[];
+}
+export interface ReferenceAssessment {
+  index: number; reference_type: "CLEAN_PRODUCT_IMAGE" | "SCREENSHOT_OR_UI_IMAGE" | "UNCERTAIN";
+  detected_ui: boolean; product_region: { left:number; top:number; right:number; bottom:number } | null;
+  ui_overlap_product: boolean; sanitization_confidence: "high" | "medium" | "low"; reason: string;
+}
+export interface ReferenceAudit extends ReferenceAssessment {
+  original_reference_id: string; provider_reference_id: string; sanitization_applied: boolean;
+  sanitization_method: "original_pixel_crop" | "none"; crop_bounds: ReferenceAssessment["product_region"];
 }
 export interface Source { id: string; title: string; url: string }
 export interface Research {
@@ -26,7 +36,7 @@ export interface ContentPlan {
   angle: string; hook: string; script: string; cta: string; mode: Exclude<Mode, "Auto">;
   visual_direction: string; claim_evidence_ids: string[]; video_prompt: string;
 }
-export interface JobInput { images: string[]; avatar?: string; mode: Mode; instructions: string; angle_seed: string; previous_hook?: string; settings?: import("./settings").GenerationSettings }
+export interface JobInput { images: string[]; sanitized_video_references?: Record<string,string>; avatar?: string; mode: Mode; instructions: string; angle_seed: string; previous_hook?: string; settings?: import("./settings").GenerationSettings }
 export interface Job {
   settings?: import("./settings").GenerationSettings;
   id: string; owner: string; input: JobInput; stage: Stage; created_at: number; updated_at: number;
@@ -34,6 +44,7 @@ export interface Job {
   retry_count: number; error?: string; video_path?: string; lease_until: number;
   provider_requests: { at: number; external_job_id?: string; status: string; cost: number; refund_expected?: boolean }[];
   duration_seconds: number; parent_generation_id?: string; segment_number: number;
+  reference_audit?: ReferenceAudit[];
 }
 export type PublicJob = Omit<Job, "owner" | "input" | "lease_until" | "provider_requests" | "video_path"> & {
   has_avatar: boolean; image_count: number; video_url?: string; thumbnail_url: string;

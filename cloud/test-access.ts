@@ -59,6 +59,7 @@ export class TestAccess {
       attempts:job.provider_requests.map(({at,status,external_job_id})=>({at,status,provider_job_id:external_job_id || null})),
       output_url:job.video_path?`/api/factory/jobs/${job.id}/media`:null, output_path:job.video_path || null,
       requested_duration_seconds:job.duration_seconds, actual_duration_seconds:null,
+      reference_preprocessing:job.reference_audit?.map((item,index)=>({...item,sanitized_preview_url:item.sanitization_applied?`/api/test/jobs/${job.id}/sanitized-reference/${index}`:null})),
       elapsed_seconds:job.controlled_test!.finished_at?Math.round((job.controlled_test!.finished_at-job.created_at)/1000):null,
       evaluation:job.controlled_test!.evaluation };
   }
@@ -82,6 +83,12 @@ export class TestAccess {
     if (path === "/api/test/jobs" && request.method === "GET") {
       const jobs=this.ctx.storage.sql.exec<{data:string}>("SELECT data FROM jobs WHERE owner=? AND json_extract(data,'$.controlled_test') IS NOT NULL ORDER BY created_at",owner).toArray().map(row=>this.report(JSON.parse(row.data)));
       return json({limit:testLimit(this.env),attempts:this.count("attempts"),remaining:this.available(),jobs});
+    }
+    const preview=/^\/api\/test\/jobs\/([a-f0-9-]{36})\/sanitized-reference\/(\d+)$/.exec(path);
+    if(preview&&request.method==="GET"){
+      const row=this.ctx.storage.sql.exec<{data:string}>("SELECT data FROM jobs WHERE id=? AND owner=?",preview[1],owner).toArray()[0];if(!row)return json({},404);
+      const job:CloudJob=JSON.parse(row.data),index=Number(preview[2]);if(!job.controlled_test||!job.reference_audit?.[index]?.sanitization_applied)return json({},404);
+      const object=await this.env.MEDIA.get(`jobs/${job.id}/sanitized-reference-${index}`);return object?new Response(object.body,{headers:{"Content-Type":object.httpMetadata?.contentType||"image/webp","Cache-Control":"no-store"}}):json({},404);
     }
     const match=/^\/api\/test\/jobs\/([a-f0-9-]{36})\/evaluation$/.exec(path);
     if(match && request.method==="POST") {

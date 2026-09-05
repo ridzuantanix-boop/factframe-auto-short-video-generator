@@ -2,13 +2,13 @@
 
 Status: **prepared, not executed**. Owner manually selects real products and submits each video. No bulk run or automatic real generation.
 
-Test #1 hotfix note: the current Nexabot adapter accepts `i2v` prompt plus one to three complete media inputs. The documented/integrated request contract exposes no crop, mask, bounding-box or product-extraction field. Automated product-only cropping is therefore not implemented; prompt-level reference sanitization is used so an unreliable crop cannot remove product packaging or labels. Provider-side preprocessing capability beyond this request contract remains uncertain.
+Reference Preprocessing V1: Nexabot's request contract has no crop/mask field, so high-confidence screenshot crops are prepared before submission with Cloudflare Images `trim`, using original pixels only. Clean, uncertain, overlapping-UI, invalid-region and transform-failure cases retain the complete original. Sanitized references are stored separately, auditable by hash, and sent instead of—not alongside—the screenshot. No generative redraw is used.
 
 Approved P0 commit `7782cdd6bca562b309787fb233e58589198b2688` was deployed first as Worker version `7f26ddcd-d922-441d-b968-1731e64c316a`. Controlled-mode deployments carry the implementation Git commit in their Worker version tag/message. Live verification script: `scripts/verify-controlled-live.mjs` (auth, public denial, UI, offline PWA, asset hashes; no authorized generation request).
 
 ## Access and safety
 
-- Public `GENERATION_ENABLED=false`. Only Cloudflare owner test sessions can bypass the public pause when `PAWARNA_TEST_GENERATION_ENABLED=true`.
+- Current owner-approved production configuration is `GENERATION_ENABLED=true`; Controlled Test Mode remains available separately for owner diagnostics and its permanent capped counter.
 - Open `/owner-test` (also linked from Saya) in the same browser/PWA session as the product library. Enter the server-configured token, never in a URL. It issues a fresh `__Host-` HttpOnly, Secure, SameSite=Strict test cookie bound to the existing product-library session for 12 hours; the public cookie alone cannot inherit testing privileges. Token is never stored in client JS/localStorage. Logout revokes that session; rotating the Worker secret revokes every grant, including queued jobs not yet submitted.
 - Production token lives in Worker secret `PAWARNA_TEST_TOKEN`. The owner's local, Git-ignored access file is `.pawarna/owner-test-access.json`. Never commit/share it. `scripts/provision-test-access.mjs` provisions it without printing its contents.
 - Permanent hard limit: **10 provider attempts total**, shared across owner sessions. Pending reservations also consume available slots. No daily reset, counter reset endpoint, hidden retry or failed-attempt refund. A submission checkpoint is counted before network I/O; a crash at that boundary conservatively consumes a slot even if delivery cannot be confirmed.
