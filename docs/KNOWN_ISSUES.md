@@ -9,7 +9,10 @@
 - Endpoint ingestion berjadual tersedia tetapi Vercel Cron belum diaktifkan sehingga DB production dan `CRON_SECRET` disediakan dengan selamat.
 - Mystery berkualiti tinggi kebanyakannya seed manual. Auto-mystery daripada entity live ialah struktur generik dan semua fakta diklasifikasi `VERIFIED` daripada reference data.
 - Dynamic angles now use generic event-term and date heuristics with supporting fact IDs, but they do not yet use embeddings, causal extraction or multi-source cluster validation.
-- Current-aware ialah flag dan timestamp request sahaja. Tiada news/official-current provider atau stale-claim invalidation.
+- Phase 4 controlled research audit memproses 100 calon: 242 raw claims, 166 claims selepas 76 merge, 2 READY, 98 PARTIAL, 0 unsupported, dan purata source coverage 0.85. Sasaran aspirasi 50 READY tidak disokong oleh snippet semasa; kebanyakan calon hanya mempunyai 0–2 claim jelas. Gate tidak dilonggarkan.
+- Beberapa cluster archive terdahulu menggabungkan tajuk generik dari tahun berlainan. Research readiness kini menahan source set yang merentasi lebih tiga tahun sebagai PARTIAL, tetapi semantic event reconciliation yang lebih mendalam belum ada.
+- Claim extraction masih bergantung pada headline/snippet NLB yang pendek atau truncated. OCR penalty menghalang teks rosak daripada menjadi claim yakin, namun sesetengah ayat lama masih boleh kedengaran terpotong dan memerlukan full-text/OCR provider pada fasa kemudian.
+- Current-aware kini menghalang READY bagi kes moden sensitif yang memerlukan verifikasi, tetapi tiada news/official-current provider atau stale-claim invalidation.
 - Source ranking live lemah: Wikidata/Wikipedia dilabel `REFERENCE`; research/visual score seed adalah manual.
 - Evidence bridge 60/90 saat boleh berbunyi filler. Basic token/date repetition detection now exists, but no embedding-based semantic or dedicated filler detector is implemented.
 - Gemini text/TTS tertakluk kuota/rate limit dan latency. Full narration boleh jatuh kepada TTS lokal walaupun preview berjaya.

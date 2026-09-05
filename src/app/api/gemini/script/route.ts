@@ -1,5 +1,7 @@
 import { getGeminiClient, GEMINI_TEXT_MODEL } from "@/lib/gemini/client";
 import { getMysteryStory } from "@/lib/mystery/catalog";
+import { getStoryStore, isStoryIndexConfigured } from "@/lib/discovery/store";
+import { loadResearchStory } from "@/lib/research/storyResearch";
 import { passesQualityGate } from "@/lib/mystery/storyEngine";
 import { calculateScriptQuality } from "@/lib/story/qualityScoring";
 import type { ClaimType, MysteryScript, SegmentRole, StoryDuration, StoryTone, VisualIntent } from "@/lib/types";
@@ -12,7 +14,7 @@ export async function POST(request: Request) {
   const client = getGeminiClient();
   if (!client) return Response.json({ error: "Gemini belum dikonfigurasi." }, { status: 503 });
   const body = await request.json() as { storyId?: string; duration?: StoryDuration; tone?: StoryTone; showSourceNote?: boolean };
-  const story = body.storyId ? getMysteryStory(body.storyId) : undefined;
+  const story = body.storyId ? getMysteryStory(body.storyId) ?? (isStoryIndexConfigured() ? await loadResearchStory(body.storyId, getStoryStore()) ?? undefined : undefined) : undefined;
   if (!story || ![30, 60, 90].includes(body.duration ?? 0)) return Response.json({ error: "Permintaan skrip tidak sah." }, { status: 400 });
   const duration = body.duration!;
   const tone = body.tone === "SUSPENSEFUL" ? "SUSPENSEFUL" : "DOCUMENTARY";

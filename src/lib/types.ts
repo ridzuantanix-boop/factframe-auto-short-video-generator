@@ -121,6 +121,11 @@ export type StoryRecord = {
   sourceCoveragePotential: "good" | "limited";
   sources: ResearchSource[];
   claims: StoryClaim[];
+  historicalContext?: string;
+  timeline?: Array<{ date: string | null; text: string; claimIds: string[]; sourceIds: string[] }>;
+  hookCandidates?: Array<{ text: string; claimIds: string[]; sourceIds: string[] }>;
+  unresolvedQuestions?: Array<{ text: string; claimIds: string[]; sourceIds: string[] }>;
+  payoff?: { text: string; claimIds: string[]; sourceIds: string[] };
 };
 
 export type MysterySegment = {

@@ -17,4 +17,10 @@ Hanya provider yang benar-benar dipanggil oleh kod disenaraikan.
 
 Sumber institusi/primer/akademik seperti MOT Malaysia, ATSB, FBI, Yale, NADMA dan U.S. Air Force masih wujud sebagai URL metadata dalam seed catalog. NLB kini mempunyai connector discovery khusus, tetapi sistem tetap tidak menyalin kandungan penuh.
 
+## Research provenance
+
+Phase 4 reads every persisted source linked to a selected archive candidate. Deterministic extraction stores atomic claims in `story_claims`; near-duplicates retain all supporting source IDs. Research packages label source roles as primary/official, archival newspaper, institutional, or reference. Newspaper evidence supports wording such as “reported”, not automatic objective verification. Garbled snippets are excluded or assigned lower confidence, and publication dates are explicitly marked `PUBLICATION_DATE` rather than inferred as event dates.
+
+No new provider or mass Gemini research call was added. `npm run enrich:stories -- --status=PARTIAL --limit=25` is bounded by default and supports `--category`, `--region`, `--min-sources`, `--concurrency`, and `--delay`. `--status=ALL` exists for controlled re-audits of both PARTIAL and READY archive packages.
+
 Tidak dilaksanakan: Internet Archive API, stock-video provider, map provider, news/current-affairs provider atau database peribadi.

@@ -1,0 +1,17 @@
+{
+  "generatedAt": "2026-09-05T03:05:44.593Z",
+  "candidatesProcessed": 100,
+  "claimsExtracted": 242,
+  "uniqueClaims": 166,
+  "claimsMerged": 76,
+  "averageClaimsPerStory": 1.66,
+  "storiesPromotedReady": 2,
+  "storiesKeptPartial": 98,
+  "averageSourceCoverage": 0.85,
+  "unsupportedClaims": 0,
+  "failures": [],
+  "invalidClaimSourceLinks": 0,
+  "exportedExamples": 10,
+  "readyExampleNarrations": 2,
+  "readyNarrationsPassingQualityGate": 2
+}

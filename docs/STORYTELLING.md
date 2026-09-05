@@ -21,4 +21,6 @@ An `OPEN_LOOP` is exempt from source coverage only when it is explicitly a quest
 
 Seed mystery claims still map priority to hook/context/escalation/twist/theory/counterpoint/payoff, with labels distinguishing verified, reported, folklore, theory, disputed, explained-later and unresolved material. Gemini output remains constrained by JSON schema and known source IDs. Both deterministic and Gemini mystery scripts now use the same calculated quality functions rather than fixed score/coverage values.
 
-Duration handling remains 30/60/90 seconds. Mystery 60/90-second deterministic expansion still uses evidence bridges; semantic filler detection beyond repetition scoring is not part of Phase 1.
+Archive READY stories use the same engine through a persisted `ResearchPackage`. The first grounded hook, unique claims, case-specific open loop, and grounded payoff become narration segments without word-count padding. Each factual segment retains one or more valid source IDs; only a clearly interrogative open loop may be unsourced. Archive newspaper claims remain `REPORTED`, unresolved case material remains `UNRESOLVED`, and folklore remains `FOLKLORE`.
+
+Duration handling remains 30/60/90 seconds for the existing seed flow. The archive path no longer repeats evidence bridges merely to reach 60/90 seconds: insufficient unique material remains PARTIAL instead of being padded.

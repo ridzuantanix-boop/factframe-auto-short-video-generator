@@ -34,6 +34,10 @@ async function readJson<T>(response: Response): Promise<T> {
   return data;
 }
 
+function randomCatalogStory(stories: StoryRecord[]) {
+  return stories[Math.floor(Math.random() * stories.length)];
+}
+
 export function Generator() {
   const [mode, setMode] = useState<ContentMode>("STORY");
   const [query, setQuery] = useState("");
@@ -122,6 +126,10 @@ export function Generator() {
   async function selectEntity(result: SearchResult) {
     setError(""); setProgress({ message: "Menyediakan fakta", percent: 12 }); setStage("generating");
     try {
+      if (!/^Q\d+$/.test(result.id)) {
+        const research = await readJson<{ story: StoryRecord }>(await fetch(`/api/research?id=${encodeURIComponent(result.id)}`));
+        await selectMystery(research.story); return;
+      }
       const topicData = await readJson<{ topic: Topic }>(await fetch(`/api/topic?id=${result.id}&label=${encodeURIComponent(result.label)}`));
       if (mode === "MYSTERY") {
         const script = buildAutoMysteryScript(topicData.topic, duration, tone, showSourceNote);
@@ -229,7 +237,7 @@ export function Generator() {
 
   function randomMystery() {
     const eligible = mysteryCatalog.filter((story) => story.researchScore >= .9 && story.visualScore >= .8 && story.sourceCoveragePotential === "good");
-    const next = eligible[Math.floor(Math.random() * eligible.length)];
+    const next = randomCatalogStory(eligible);
     if (next) void selectMystery(next);
   }
 

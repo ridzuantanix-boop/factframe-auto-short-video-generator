@@ -6,12 +6,12 @@ FactFrame ialah aplikasi Next.js 16 App Router dengan indeks calon cerita Postgr
 |---|---|---|
 | User | Memilih mode, topik, sudut, tempoh, nada, suara dan watermark | Browser, `Generator.tsx` |
 | Discovery/catalog | PostgreSQL index dahulu; Wikipedia/Wikidata dan provider arkib berabstraksi; 10 seed kekal fixture/fallback | `/api/catalog`, `/api/discover`, `story_candidates`, `story_sources` |
-| Story/entity selection | Seed dipilih terus; calon live dihidratkan melalui Wikidata/Wikipedia | Browser + `/api/topic` |
+| Story/entity selection | Seed dipilih terus; calon live dihidratkan melalui Wikidata/Wikipedia; calon arkib READY dimuat daripada research package tersimpan | Browser + `/api/topic`, `/api/research` |
 | Story angle | Dynamic generic event clusters dengan supporting fact IDs | Browser, `explainerEngine.ts` |
-| Research | Entity JSON, label, intro Wikipedia; seed mempunyai sources/claims manual | Server + external API / build-time seed |
+| Research | Entity JSON/Wikipedia untuk entity live; deterministic source-to-claim enrichment dan research package kekal untuk calon arkib | Server + `story_claims`, `story_research_packages` |
 | Current-aware check | Flag heuristik untuk person/organisation/place/event dan `lastVerifiedAt` tarikh request | Server; tiada semakan provider berita khusus |
 | Source ranking | Seed menyimpan reliability label; data live dianggap `REFERENCE` | Build-time/manual + browser |
-| Claim extraction/classification | Seed manual; explainer live menukar fakta kepada `VERIFIED` | Build-time/manual + browser |
+| Claim extraction/classification | Seed manual; explainer live menukar fakta kepada `VERIFIED`; arkib mengekstrak `REPORTED`, `UNRESOLVED`, atau `FOLKLORE` dengan source IDs dan penalti OCR | Server batch + browser |
 | Story arc | Algoritma deterministik atau Gemini JSON berstruktur | Browser; Gemini melalui server |
 | Retention narration | Hook/open-loop/escalation/twist/payoff dan quality gate | Browser; Gemini opsyenal server |
 | Visual planner | Satu intent/query set bagi setiap segmen | Server `/api/media` |
@@ -27,11 +27,11 @@ FactFrame ialah aplikasi Next.js 16 App Router dengan indeks calon cerita Postgr
 USER
   -> POSTGRES STORY INDEX
   -> ARCHIVE DOCUMENTS -> EVENT EXTRACTION -> CROSS-ARTICLE CLUSTERS
-  -> STORY SOURCES
+  -> STORY SOURCES -> CLAIM EXTRACTION -> DEDUPE -> RESEARCH PACKAGE
   -> INDEX-FIRST DISCOVERY / LIVE FALLBACK
   -> STORY / ENTITY SELECTION
   -> STORY ANGLE
-  -> RESEARCH
+  -> PERSISTED RESEARCH (FOR READY ARCHIVE STORIES)
   -> CURRENT-AWARE FLAG
   -> SOURCE METADATA
   -> CLAIM EXTRACTION / CLASSIFICATION
@@ -48,9 +48,11 @@ Major trust boundaries: browser input enters Next.js routes; Gemini key stays se
 
 ## Persistent story index
 
-Migration `migrations/001_story_index.sql` creates `story_candidates`; `migrations/002_archive_sources.sql` adds durable `story_sources` with candidate foreign key and unique provider URL. Constraints cover four statuses, JSONB metadata, browse/search indexes, Q-ID, canonical URL and normalized title. Upsert takes a PostgreSQL advisory lock per identity, then merges aliases, categories, search terms, source hints and `originProviders` without downgrading qualification.
+Migration `migrations/001_story_index.sql` creates `story_candidates`; `migrations/002_archive_sources.sql` adds durable `story_sources`; `migrations/003_story_research.sql` adds normalized `story_claims` and versioned JSONB `story_research_packages`. Constraints cover four statuses, source/claim foreign keys, JSONB metadata, browse/search indexes, Q-ID, canonical URL and normalized title. Upsert takes a PostgreSQL advisory lock per identity, then merges aliases, categories, search terms, source hints and `originProviders` without downgrading qualification.
 
-`DISCOVERED` rows keep research/visual/narrative scores null. Archive ingestion promotes to `PARTIAL` only after one usable persisted source and one extracted event/claim. It never auto-promotes archive results to `READY`. READY requires at least two valid linked sources, five factual claims, source coverage of at least 0.8 and enough non-repetitive material for the requested short; visual readiness remains evaluated separately. `HIDDEN` is sticky and reserved for invalid/noisy/manual suppression.
+`DISCOVERED` rows keep research/visual/narrative scores null. Archive ingestion promotes to `PARTIAL` only after one usable persisted source and one extracted event/claim. Enrichment alone may promote to `READY`: at least three clear claims, two sources (or one unusually rich source), 100% claim linkage, zero unsupported claims, grounded hook/payoff, narrative score ≥0.55, about 20 seconds of unique evidence, coherent source dates, and no pending current verification. Visual readiness is deliberately separate. `HIDDEN` is sticky and reserved for invalid/noisy/manual suppression.
+
+Archive generation is index-first: a UUID selection calls `/api/research`, which returns a `StoryRecord` built from the persisted READY package. The mystery engine carries each claim's `sourceIds` through narration. Gemini/media routes resolve the same package and do not reconstruct archive stories from a title or snippet.
 
 Discovery provenance and entity classification are separate. `originQuery`, `originProvider`, `metadata.categories` and `discoveredViaCategory` explain how a candidate was found; they never prove geography or story type. Geography classification prioritizes Wikidata P17/P27/P495, location hierarchy, coordinates, historical relationships, then explicit entity text. Evidence and `HIGH|MEDIUM|LOW|UNKNOWN` confidence are stored in metadata. `mysteryPotential` is preliminary and does not imply `storyType=MYSTERY` or readiness.
 

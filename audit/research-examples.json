@@ -1,0 +1,2224 @@
+{
+  "generatedAt": "2026-09-05T03:05:44.593Z",
+  "examples": [
+    {
+      "candidate": {
+        "id": "cd396f4c-19e0-4055-9195-3b005964a0ba",
+        "title": "GIRL, 10 MISSING",
+        "storyType": "DISAPPEARANCE",
+        "historicalContext": "MODERN_MALAYSIA"
+      },
+      "sources": [
+        {
+          "id": "efa677ec6db3265e7cb6f8974774b3dd",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/maltribune19360831-1.2.83",
+          "date": "1936-08-31T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "MISSING GIRL",
+          "publisher": "Malaya Tribune",
+          "accessedAt": "2026-09-04T15:53:46.467Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        },
+        {
+          "id": "1466a4fae286dce0cb9b23d586d05613",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/morningtribune19360901-1.2.104",
+          "date": "1936-09-01T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "Missing Girl",
+          "publisher": "Morning Tribune",
+          "accessedAt": "2026-09-04T15:53:46.467Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        },
+        {
+          "id": "3c11c8f2930cb266a0cb44744892c2d8",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes19520805-1.2.92",
+          "date": "1952-08-05T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "Girl missing",
+          "publisher": "The Straits Times",
+          "accessedAt": "2026-09-04T15:53:11.762Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        },
+        {
+          "id": "9b98b9aaf085ddec8e5fb7e90ac641d5",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/easternsun19681006-1.2.12.29",
+          "date": "1968-10-06T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "GIRL, 10 MISSING",
+          "publisher": "NewspaperSG",
+          "accessedAt": "2026-09-04T15:53:16.764Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        }
+      ],
+      "claims": [
+        {
+          "id": "9243bb5c9f7501d6c202851598719b2f",
+          "people": [
+            "Have Been",
+            "Penang Singapore",
+            "Miss Dorothy Sale"
+          ],
+          "priority": "HOOK_WORTHY",
+          "claimText": "Said To Have Been In Penang Singapore.",
+          "claimType": "UNRESOLVED",
+          "eventDate": "1936-08-31T00:00:00.000Z",
+          "locations": [
+            "Penang",
+            "Kuala Lumpur"
+          ],
+          "sourceIds": [
+            "efa677ec6db3265e7cb6f8974774b3dd"
+          ],
+          "confidence": "MEDIUM",
+          "ocrQuality": 0.84,
+          "visualIntent": "ARCHIVAL_PHOTO",
+          "normalizedClaim": "said been penang singapore",
+          "storyCandidateId": "cd396f4c-19e0-4055-9195-3b005964a0ba"
+        },
+        {
+          "id": "f118ce66492809417729965f2c21996f",
+          "people": [
+            "Kampong Dollah"
+          ],
+          "priority": "ESSENTIAL_CONTEXT",
+          "claimText": "An 11 -year-old Chinese girl was reported missing from her house at Kampong Dollah in the Pudu area of Kuala Lumpur on Saturday.",
+          "claimType": "UNRESOLVED",
+          "eventDate": "1952-08-05T00:00:00.000Z",
+          "locations": [
+            "Kuala Lumpur"
+          ],
+          "sourceIds": [
+            "3c11c8f2930cb266a0cb44744892c2d8"
+          ],
+          "confidence": "MEDIUM",
+          "ocrQuality": 1,
+          "visualIntent": "TIMELINE",
+          "normalizedClaim": "year old chinese girl reported missing house kampong dollah pudu area kuala lumpur saturday",
+          "storyCandidateId": "cd396f4c-19e0-4055-9195-3b005964a0ba"
+        },
+        {
+          "id": "966a7ca5d5cf183eef587ec4b0d8985d",
+          "people": [
+            ". Parawathi Munusamy",
+            "Pekan Lama",
+            ". Sungei Patani"
+          ],
+          "priority": "PAYOFF",
+          "claimText": "was reported missing from her home in Pekan Lama.",
+          "claimType": "UNRESOLVED",
+          "eventDate": "1968-10-06T00:00:00.000Z",
+          "locations": [
+            "Penang",
+            "Kuala Lumpur"
+          ],
+          "sourceIds": [
+            "9b98b9aaf085ddec8e5fb7e90ac641d5"
+          ],
+          "confidence": "LOW",
+          "ocrQuality": 0.521,
+          "visualIntent": "ARCHIVAL_PHOTO",
+          "normalizedClaim": "reported missing home pekan lama",
+          "storyCandidateId": "cd396f4c-19e0-4055-9195-3b005964a0ba"
+        }
+      ],
+      "timeline": [
+        {
+          "id": "timeline-9243bb5c9f7501d6c202851598719b2f",
+          "date": "1936-08-31T00:00:00.000Z",
+          "text": "Said To Have Been In Penang Singapore.",
+          "claimIds": [
+            "9243bb5c9f7501d6c202851598719b2f"
+          ],
+          "dateBasis": "PUBLICATION_DATE",
+          "sourceIds": [
+            "efa677ec6db3265e7cb6f8974774b3dd"
+          ],
+          "confidence": "MEDIUM"
+        },
+        {
+          "id": "timeline-f118ce66492809417729965f2c21996f",
+          "date": "1952-08-05T00:00:00.000Z",
+          "text": "An 11 -year-old Chinese girl was reported missing from her house at Kampong Dollah in the Pudu area of Kuala Lumpur on Saturday.",
+          "claimIds": [
+            "f118ce66492809417729965f2c21996f"
+          ],
+          "dateBasis": "PUBLICATION_DATE",
+          "sourceIds": [
+            "3c11c8f2930cb266a0cb44744892c2d8"
+          ],
+          "confidence": "MEDIUM"
+        },
+        {
+          "id": "timeline-966a7ca5d5cf183eef587ec4b0d8985d",
+          "date": "1968-10-06T00:00:00.000Z",
+          "text": "was reported missing from her home in Pekan Lama.",
+          "claimIds": [
+            "966a7ca5d5cf183eef587ec4b0d8985d"
+          ],
+          "dateBasis": "PUBLICATION_DATE",
+          "sourceIds": [
+            "9b98b9aaf085ddec8e5fb7e90ac641d5"
+          ],
+          "confidence": "LOW"
+        }
+      ],
+      "hookCandidates": [
+        {
+          "text": "Rekod arkib membuka cerita ini dengan satu butiran penting: Said To Have Been In Penang Singapore.",
+          "claimIds": [
+            "9243bb5c9f7501d6c202851598719b2f"
+          ],
+          "sourceIds": [
+            "efa677ec6db3265e7cb6f8974774b3dd"
+          ]
+        },
+        {
+          "text": "Satu laporan lama merekodkan: An 11 -year-old Chinese girl was reported missing from her house at Kampong Dollah in the Pudu area of Kuala Lumpur on Saturday.",
+          "claimIds": [
+            "f118ce66492809417729965f2c21996f"
+          ],
+          "sourceIds": [
+            "3c11c8f2930cb266a0cb44744892c2d8"
+          ]
+        },
+        {
+          "text": "Petunjuk paling jelas dalam sumber ialah: was reported missing from her home in Pekan Lama.",
+          "claimIds": [
+            "966a7ca5d5cf183eef587ec4b0d8985d"
+          ],
+          "sourceIds": [
+            "9b98b9aaf085ddec8e5fb7e90ac641d5"
+          ]
+        }
+      ],
+      "payoff": {
+        "text": "was reported missing from her home in Pekan Lama.",
+        "claimIds": [
+          "966a7ca5d5cf183eef587ec4b0d8985d"
+        ],
+        "sourceIds": [
+          "9b98b9aaf085ddec8e5fb7e90ac641d5"
+        ]
+      },
+      "researchScore": 0.87,
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "Unique clear evidence is insufficient for about 20 seconds.",
+          "Linked archive reports span disconnected publication periods; deterministic research cannot safely treat them as one event."
+        ]
+      },
+      "narration": null
+    },
+    {
+      "candidate": {
+        "id": "882ee5c4-403b-47b5-9aeb-c7c304955052",
+        "title": "Malay's Body Found In Perak River",
+        "storyType": "MYSTERIOUS_DEATH",
+        "historicalContext": "PRE_MALAYSIA"
+      },
+      "sources": [
+        {
+          "id": "18fdc7b1a2bd269fbdd93a66373b07b3",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/singfreepressb19390427-1.2.76.9",
+          "date": "1939-04-27T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "Malay's Body Found In Perak River",
+          "publisher": "The Singapore Free Press and Mercantile Advertiser",
+          "accessedAt": "2026-09-04T15:53:14.691Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        },
+        {
+          "id": "0d5f3c0bf35a390b554db1db73df9cc8",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/freepress19520326-1.2.54",
+          "date": "1952-03-26T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "BODY FOUND IN PERAK RIVER",
+          "publisher": "The Singapore Free Press and Mercantile Advertiser",
+          "accessedAt": "2026-09-04T15:53:14.691Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        },
+        {
+          "id": "86760f192d21a7ad1e961bb27d36b771",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/sundaystandard19550320-1.2.35",
+          "date": "1955-03-20T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "Body Found In Perak River",
+          "publisher": "NewspaperSG",
+          "accessedAt": "2026-09-04T15:53:14.691Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        },
+        {
+          "id": "9d500a57d1836e113b3d45f47f01b1fe",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/singstandard19580607-1.2.24",
+          "date": "1958-06-07T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "Woman's Body Found In River",
+          "publisher": "Singapore Standard",
+          "accessedAt": "2026-09-04T15:53:15.570Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        },
+        {
+          "id": "2de5efdb284646d384efd76a63b7a14a",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes19610111-1.2.88",
+          "date": "1961-01-11T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "MAN'S BODY IS FOUND IN RIVER",
+          "publisher": "The Straits Times",
+          "accessedAt": "2026-09-04T15:53:15.569Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        },
+        {
+          "id": "96fb7d24e43d7e67a00d0f87650446a8",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitsbudget19610118-1.2.76",
+          "date": "1961-01-18T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "MAN’S BODY IS FOUND IN RIVER",
+          "publisher": "The Straits Budget",
+          "accessedAt": "2026-09-04T15:53:15.569Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        },
+        {
+          "id": "a9700628a6737d6e1d2b396528f162fd",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes19610608-1.2.48",
+          "date": "1961-06-08T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "Body found in Perak River",
+          "publisher": "The Straits Times",
+          "accessedAt": "2026-09-04T15:53:14.691Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        },
+        {
+          "id": "086e5740269c61897da428e2d9e8a171",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes19630321-1.2.93",
+          "date": "1963-03-21T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "Body found in Perak River",
+          "publisher": "The Straits Times",
+          "accessedAt": "2026-09-04T15:53:14.691Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        },
+        {
+          "id": "4b85690adf4122bed764ceac95afca11",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitsbudget19630327-1.2.80",
+          "date": "1963-03-27T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "Body found in Perak River",
+          "publisher": "The Straits Budget",
+          "accessedAt": "2026-09-04T15:53:14.691Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        },
+        {
+          "id": "7d3c6c2896a1bc853ba6a0648a33389e",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes19690226-1.2.29",
+          "date": "1969-02-26T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "Body found in river",
+          "publisher": "The Straits Times",
+          "accessedAt": "2026-09-04T15:53:14.839Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        }
+      ],
+      "claims": [
+        {
+          "id": "6c402303abf8176b328f3f0074c63ed5",
+          "people": [
+            "Body Found",
+            "Perak River",
+            ". Body Found",
+            "The Police",
+            "The Perak River",
+            "Teluk Anson"
+          ],
+          "priority": "HOOK_WORTHY",
+          "claimText": "TELOK ANSON\\ Bat.— The Police recovered the body ot a Chinese found floating in The Perak River near the town jetty in Teluk Anson late",
+          "claimType": "REPORTED",
+          "eventDate": "1955-03-20T00:00:00.000Z",
+          "locations": [
+            "Perak"
+          ],
+          "sourceIds": [
+            "86760f192d21a7ad1e961bb27d36b771"
+          ],
+          "confidence": "MEDIUM",
+          "ocrQuality": 0.819,
+          "visualIntent": "DOCUMENT",
+          "normalizedClaim": "telok anson bat police recovered body chinese found floating perak river near town jetty teluk anson late",
+          "storyCandidateId": "882ee5c4-403b-47b5-9aeb-c7c304955052"
+        },
+        {
+          "id": "661f71d10f0d1c74950a0d33be1c1eae",
+          "people": [
+            "Body Found",
+            "Perak River"
+          ],
+          "priority": "ESSENTIAL_CONTEXT",
+          "claimText": "The body of a young woman, reported missing six days ago was found in the Perak River by a fisherman near Kampong",
+          "claimType": "REPORTED",
+          "eventDate": "1958-06-07T00:00:00.000Z",
+          "locations": [
+            "Perak"
+          ],
+          "sourceIds": [
+            "9d500a57d1836e113b3d45f47f01b1fe"
+          ],
+          "confidence": "LOW",
+          "ocrQuality": 0.661,
+          "visualIntent": "LOCATION",
+          "normalizedClaim": "body young woman reported missing six days ago found perak river fisherman near kampong",
+          "storyCandidateId": "882ee5c4-403b-47b5-9aeb-c7c304955052"
+        },
+        {
+          "id": "0fe055d8d2e2cf291a12220d6df2c78b",
+          "people": [
+            "Body Found",
+            "Perak River",
+            "Our Own Correspondent",
+            "Batu Gajah",
+            "Abu Jamin",
+            "Baiak Rabit Road",
+            "Baiak Habit Road",
+            "Mokhtar Rudin",
+            "Turn The"
+          ],
+          "priority": "ESCALATION_DETAIL",
+          "claimText": "MAN'S BODY IS FOUND IN RIVER",
+          "claimType": "REPORTED",
+          "eventDate": "1961-01-11T00:00:00.000Z",
+          "locations": [
+            "Perak"
+          ],
+          "sourceIds": [
+            "18fdc7b1a2bd269fbdd93a66373b07b3",
+            "0d5f3c0bf35a390b554db1db73df9cc8",
+            "2de5efdb284646d384efd76a63b7a14a",
+            "96fb7d24e43d7e67a00d0f87650446a8",
+            "a9700628a6737d6e1d2b396528f162fd",
+            "086e5740269c61897da428e2d9e8a171",
+            "4b85690adf4122bed764ceac95afca11",
+            "7d3c6c2896a1bc853ba6a0648a33389e"
+          ],
+          "confidence": "HIGH",
+          "ocrQuality": 0.873,
+          "visualIntent": "LOCATION",
+          "normalizedClaim": "man body found river",
+          "storyCandidateId": "882ee5c4-403b-47b5-9aeb-c7c304955052"
+        },
+        {
+          "id": "3d31d5072761fbd81aaf2874391ea13c",
+          "people": [
+            "Perak River",
+            "Baiak Rabit Road",
+            "Baiak Habit Road"
+          ],
+          "priority": "ESCALATION_DETAIL",
+          "claimText": "Police have recovered the body of Tan Ah Geok, 50.",
+          "claimType": "REPORTED",
+          "eventDate": "1961-01-11T00:00:00.000Z",
+          "locations": [
+            "Perak"
+          ],
+          "sourceIds": [
+            "2de5efdb284646d384efd76a63b7a14a",
+            "96fb7d24e43d7e67a00d0f87650446a8"
+          ],
+          "confidence": "HIGH",
+          "ocrQuality": 0.994,
+          "visualIntent": "DOCUMENT",
+          "normalizedClaim": "police recovered body tan geok",
+          "storyCandidateId": "882ee5c4-403b-47b5-9aeb-c7c304955052"
+        },
+        {
+          "id": "c79cc3c6b2aa2ca091fe216cca4ba26d",
+          "people": [
+            "Perak River",
+            "Mokhtar Rudin"
+          ],
+          "priority": "ESCALATION_DETAIL",
+          "claimText": "was found in the Perak River here yesterday after he had told his",
+          "claimType": "REPORTED",
+          "eventDate": "1961-06-08T00:00:00.000Z",
+          "locations": [
+            "Perak"
+          ],
+          "sourceIds": [
+            "a9700628a6737d6e1d2b396528f162fd"
+          ],
+          "confidence": "MEDIUM",
+          "ocrQuality": 0.836,
+          "visualIntent": "TIMELINE",
+          "normalizedClaim": "found perak river here yesterday told",
+          "storyCandidateId": "882ee5c4-403b-47b5-9aeb-c7c304955052"
+        },
+        {
+          "id": "cb5fc3a0ef9dfbbc38b998200d7b6bbc",
+          "people": [
+            "Perak River"
+          ],
+          "priority": "ESCALATION_DETAIL",
+          "claimText": "Wed— Police yesterday recovered the body of an unknown Chinese, aged about 70, from the Perak River opposite the town Jetty off King",
+          "claimType": "REPORTED",
+          "eventDate": "1963-03-21T00:00:00.000Z",
+          "locations": [
+            "Perak"
+          ],
+          "sourceIds": [
+            "086e5740269c61897da428e2d9e8a171",
+            "4b85690adf4122bed764ceac95afca11"
+          ],
+          "confidence": "HIGH",
+          "ocrQuality": 0.99,
+          "visualIntent": "TIMELINE",
+          "normalizedClaim": "wed police yesterday recovered body unknown chinese aged about perak river opposite town jetty off king",
+          "storyCandidateId": "882ee5c4-403b-47b5-9aeb-c7c304955052"
+        },
+        {
+          "id": "f7540d215b9a1ce6dae1246d8272d33b",
+          "people": [
+            "Turn The"
+          ],
+          "priority": "TWIST",
+          "claimText": "unemnloved, was found in the Perak Ri\\er this morning.",
+          "claimType": "REPORTED",
+          "eventDate": "1969-02-26T00:00:00.000Z",
+          "locations": [
+            "Perak"
+          ],
+          "sourceIds": [
+            "7d3c6c2896a1bc853ba6a0648a33389e"
+          ],
+          "confidence": "MEDIUM",
+          "ocrQuality": 0.836,
+          "visualIntent": "ARCHIVAL_PHOTO",
+          "normalizedClaim": "unemnloved found perak morning",
+          "storyCandidateId": "882ee5c4-403b-47b5-9aeb-c7c304955052"
+        },
+        {
+          "id": "11231c248823c3df9aba2cd44feb6648",
+          "people": [
+            "Turn The"
+          ],
+          "priority": "PAYOFF",
+          "claimText": "He ua.s reported miMins after he went tuning",
+          "claimType": "REPORTED",
+          "eventDate": "1969-02-26T00:00:00.000Z",
+          "locations": [
+            "Perak"
+          ],
+          "sourceIds": [
+            "7d3c6c2896a1bc853ba6a0648a33389e"
+          ],
+          "confidence": "MEDIUM",
+          "ocrQuality": 0.836,
+          "visualIntent": "TIMELINE",
+          "normalizedClaim": "reported mimins went tuning",
+          "storyCandidateId": "882ee5c4-403b-47b5-9aeb-c7c304955052"
+        }
+      ],
+      "timeline": [
+        {
+          "id": "timeline-6c402303abf8176b328f3f0074c63ed5",
+          "date": "1955-03-20T00:00:00.000Z",
+          "text": "TELOK ANSON\\ Bat.— The Police recovered the body ot a Chinese found floating in The Perak River near the town jetty in Teluk Anson late",
+          "claimIds": [
+            "6c402303abf8176b328f3f0074c63ed5"
+          ],
+          "dateBasis": "PUBLICATION_DATE",
+          "sourceIds": [
+            "86760f192d21a7ad1e961bb27d36b771"
+          ],
+          "confidence": "MEDIUM"
+        },
+        {
+          "id": "timeline-661f71d10f0d1c74950a0d33be1c1eae",
+          "date": "1958-06-07T00:00:00.000Z",
+          "text": "The body of a young woman, reported missing six days ago was found in the Perak River by a fisherman near Kampong",
+          "claimIds": [
+            "661f71d10f0d1c74950a0d33be1c1eae"
+          ],
+          "dateBasis": "PUBLICATION_DATE",
+          "sourceIds": [
+            "9d500a57d1836e113b3d45f47f01b1fe"
+          ],
+          "confidence": "LOW"
+        },
+        {
+          "id": "timeline-0fe055d8d2e2cf291a12220d6df2c78b",
+          "date": "1961-01-11T00:00:00.000Z",
+          "text": "MAN'S BODY IS FOUND IN RIVER",
+          "claimIds": [
+            "0fe055d8d2e2cf291a12220d6df2c78b"
+          ],
+          "dateBasis": "PUBLICATION_DATE",
+          "sourceIds": [
+            "18fdc7b1a2bd269fbdd93a66373b07b3",
+            "0d5f3c0bf35a390b554db1db73df9cc8",
+            "2de5efdb284646d384efd76a63b7a14a",
+            "96fb7d24e43d7e67a00d0f87650446a8",
+            "a9700628a6737d6e1d2b396528f162fd",
+            "086e5740269c61897da428e2d9e8a171",
+            "4b85690adf4122bed764ceac95afca11",
+            "7d3c6c2896a1bc853ba6a0648a33389e"
+          ],
+          "confidence": "HIGH"
+        },
+        {
+          "id": "timeline-3d31d5072761fbd81aaf2874391ea13c",
+          "date": "1961-01-11T00:00:00.000Z",
+          "text": "Police have recovered the body of Tan Ah Geok, 50.",
+          "claimIds": [
+            "3d31d5072761fbd81aaf2874391ea13c"
+          ],
+          "dateBasis": "PUBLICATION_DATE",
+          "sourceIds": [
+            "2de5efdb284646d384efd76a63b7a14a",
+            "96fb7d24e43d7e67a00d0f87650446a8"
+          ],
+          "confidence": "HIGH"
+        },
+        {
+          "id": "timeline-c79cc3c6b2aa2ca091fe216cca4ba26d",
+          "date": "1961-06-08T00:00:00.000Z",
+          "text": "was found in the Perak River here yesterday after he had told his",
+          "claimIds": [
+            "c79cc3c6b2aa2ca091fe216cca4ba26d"
+          ],
+          "dateBasis": "PUBLICATION_DATE",
+          "sourceIds": [
+            "a9700628a6737d6e1d2b396528f162fd"
+          ],
+          "confidence": "MEDIUM"
+        },
+        {
+          "id": "timeline-cb5fc3a0ef9dfbbc38b998200d7b6bbc",
+          "date": "1963-03-21T00:00:00.000Z",
+          "text": "Wed— Police yesterday recovered the body of an unknown Chinese, aged about 70, from the Perak River opposite the town Jetty off King",
+          "claimIds": [
+            "cb5fc3a0ef9dfbbc38b998200d7b6bbc"
+          ],
+          "dateBasis": "PUBLICATION_DATE",
+          "sourceIds": [
+            "086e5740269c61897da428e2d9e8a171",
+            "4b85690adf4122bed764ceac95afca11"
+          ],
+          "confidence": "HIGH"
+        },
+        {
+          "id": "timeline-f7540d215b9a1ce6dae1246d8272d33b",
+          "date": "1969-02-26T00:00:00.000Z",
+          "text": "unemnloved, was found in the Perak Ri\\er this morning.",
+          "claimIds": [
+            "f7540d215b9a1ce6dae1246d8272d33b"
+          ],
+          "dateBasis": "PUBLICATION_DATE",
+          "sourceIds": [
+            "7d3c6c2896a1bc853ba6a0648a33389e"
+          ],
+          "confidence": "MEDIUM"
+        },
+        {
+          "id": "timeline-11231c248823c3df9aba2cd44feb6648",
+          "date": "1969-02-26T00:00:00.000Z",
+          "text": "He ua.s reported miMins after he went tuning",
+          "claimIds": [
+            "11231c248823c3df9aba2cd44feb6648"
+          ],
+          "dateBasis": "PUBLICATION_DATE",
+          "sourceIds": [
+            "7d3c6c2896a1bc853ba6a0648a33389e"
+          ],
+          "confidence": "MEDIUM"
+        }
+      ],
+      "hookCandidates": [
+        {
+          "text": "Rekod arkib membuka cerita ini dengan satu butiran penting: TELOK ANSON\\ Bat.— The Police recovered the body ot a Chinese found floating in The Perak River near the town jetty in Teluk Anson late",
+          "claimIds": [
+            "6c402303abf8176b328f3f0074c63ed5"
+          ],
+          "sourceIds": [
+            "86760f192d21a7ad1e961bb27d36b771"
+          ]
+        },
+        {
+          "text": "Satu laporan lama merekodkan: The body of a young woman, reported missing six days ago was found in the Perak River by a fisherman near Kampong",
+          "claimIds": [
+            "661f71d10f0d1c74950a0d33be1c1eae"
+          ],
+          "sourceIds": [
+            "9d500a57d1836e113b3d45f47f01b1fe"
+          ]
+        },
+        {
+          "text": "Petunjuk paling jelas dalam sumber ialah: MAN'S BODY IS FOUND IN RIVER",
+          "claimIds": [
+            "0fe055d8d2e2cf291a12220d6df2c78b"
+          ],
+          "sourceIds": [
+            "18fdc7b1a2bd269fbdd93a66373b07b3",
+            "0d5f3c0bf35a390b554db1db73df9cc8",
+            "2de5efdb284646d384efd76a63b7a14a",
+            "96fb7d24e43d7e67a00d0f87650446a8",
+            "a9700628a6737d6e1d2b396528f162fd",
+            "086e5740269c61897da428e2d9e8a171",
+            "4b85690adf4122bed764ceac95afca11",
+            "7d3c6c2896a1bc853ba6a0648a33389e"
+          ]
+        }
+      ],
+      "payoff": {
+        "text": "He ua.s reported miMins after he went tuning",
+        "claimIds": [
+          "11231c248823c3df9aba2cd44feb6648"
+        ],
+        "sourceIds": [
+          "7d3c6c2896a1bc853ba6a0648a33389e"
+        ]
+      },
+      "researchScore": 0.926,
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Linked archive reports span disconnected publication periods; deterministic research cannot safely treat them as one event."
+        ]
+      },
+      "narration": null
+    },
+    {
+      "candidate": {
+        "id": "4b372ba8-6fc0-492c-8723-0adfa4c05d70",
+        "title": "JOHORE MURDER.",
+        "storyType": "CRIME_MYSTERY",
+        "historicalContext": "PRE_MALAYSIA"
+      },
+      "sources": [
+        {
+          "id": "1c4417061fce23e11789ba8cae9a9b37",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes19320726-1.2.68",
+          "date": "1932-07-26T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "JOHORE MURDER.",
+          "publisher": "The Straits Times",
+          "accessedAt": "2026-09-04T15:53:17.731Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        },
+        {
+          "id": "801e6dad1f04161bce8bdb956a925e29",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitsbudget19361001-1.2.55",
+          "date": "1936-10-01T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "JOHORE MURDER.",
+          "publisher": "The Straits Budget",
+          "accessedAt": "2026-09-04T15:53:18.437Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        },
+        {
+          "id": "023a8f28ad9e39dc122b771d5cfbf5e6",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/morningtribune19361030-1.2.82",
+          "date": "1936-10-30T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "Johore Murder",
+          "publisher": "Morning Tribune",
+          "accessedAt": "2026-09-04T15:53:17.493Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        },
+        {
+          "id": "4b53915fa39ea11d6ba4f690a96ff069",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/morningtribune19361210-1.2.79",
+          "date": "1936-12-10T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "Johore Murder",
+          "publisher": "Morning Tribune",
+          "accessedAt": "2026-09-04T15:53:17.493Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        }
+      ],
+      "claims": [
+        {
+          "id": "f547bf5bdad8bc086b15d99f01107e00",
+          "people": [
+            ". State Assigns Counsel For",
+            "Johore Assizes"
+          ],
+          "priority": "HOOK_WORTHY",
+          "claimText": "The hearing at the Johore Assizes of the case in which Eric McHeyzer is charged with the double murder of his father",
+          "claimType": "REPORTED",
+          "eventDate": "1932-07-26T00:00:00.000Z",
+          "locations": [
+            "Johor"
+          ],
+          "sourceIds": [
+            "1c4417061fce23e11789ba8cae9a9b37"
+          ],
+          "confidence": "MEDIUM",
+          "ocrQuality": 1,
+          "visualIntent": "ARCHIVAL_PHOTO",
+          "normalizedClaim": "hearing johore assizes case which eric mcheyzer charged double murder father",
+          "storyCandidateId": "4b372ba8-6fc0-492c-8723-0adfa4c05d70"
+        },
+        {
+          "id": "69ecad934981083a31202c1ae9a21864",
+          "people": [
+            ". Appeal Against Death Sentence",
+            "From Our Own Correspondent",
+            "Johore Bahru",
+            "Johore Court"
+          ],
+          "priority": "ESSENTIAL_CONTEXT",
+          "claimText": "rE Johore Court of Appeal today dismissed the appeal of Adaikan against sentence of death",
+          "claimType": "REPORTED",
+          "eventDate": "1936-10-01T00:00:00.000Z",
+          "locations": [
+            "Johor"
+          ],
+          "sourceIds": [
+            "801e6dad1f04161bce8bdb956a925e29"
+          ],
+          "confidence": "MEDIUM",
+          "ocrQuality": 1,
+          "visualIntent": "TIMELINE",
+          "normalizedClaim": "johore court appeal today dismissed appeal adaikan against sentence death",
+          "storyCandidateId": "4b372ba8-6fc0-492c-8723-0adfa4c05d70"
+        },
+        {
+          "id": "2b1acac7db473028fec2627289978165",
+          "people": [
+            "Johore Murder",
+            ". Johore Murder Three Hainanese",
+            "Remanded From Our Own",
+            "Johore Bahru"
+          ],
+          "priority": "TWIST",
+          "claimText": "Three Hainanese Remanded From Our Own Correspondent) Johore Bahru.",
+          "claimType": "REPORTED",
+          "eventDate": "1936-10-30T00:00:00.000Z",
+          "locations": [
+            "Johor"
+          ],
+          "sourceIds": [
+            "023a8f28ad9e39dc122b771d5cfbf5e6"
+          ],
+          "confidence": "MEDIUM",
+          "ocrQuality": 0.835,
+          "visualIntent": "ARCHIVAL_PHOTO",
+          "normalizedClaim": "three hainanese remanded our own correspondent johore bahru",
+          "storyCandidateId": "4b372ba8-6fc0-492c-8723-0adfa4c05d70"
+        },
+        {
+          "id": "c73206f57a5e4573a0290238b05d39e3",
+          "people": [
+            "Johore Murder",
+            ". Johore Murder Three Hainanese",
+            "Remanded From Our Own",
+            "Johore Bahru",
+            ". Johore Murder One",
+            "Three Accused Discharged Johore"
+          ],
+          "priority": "PAYOFF",
+          "claimText": "IN connection with the triple murder which was committed on the rubber estate of a Chinese small-holder in Senai",
+          "claimType": "REPORTED",
+          "eventDate": "1936-12-10T00:00:00.000Z",
+          "locations": [
+            "Johor"
+          ],
+          "sourceIds": [
+            "023a8f28ad9e39dc122b771d5cfbf5e6",
+            "4b53915fa39ea11d6ba4f690a96ff069"
+          ],
+          "confidence": "MEDIUM",
+          "ocrQuality": 0.819,
+          "visualIntent": "ARCHIVAL_PHOTO",
+          "normalizedClaim": "connection triple murder which committed rubber estate chinese small holder senai",
+          "storyCandidateId": "4b372ba8-6fc0-492c-8723-0adfa4c05d70"
+        }
+      ],
+      "timeline": [
+        {
+          "id": "timeline-f547bf5bdad8bc086b15d99f01107e00",
+          "date": "1932-07-26T00:00:00.000Z",
+          "text": "The hearing at the Johore Assizes of the case in which Eric McHeyzer is charged with the double murder of his father",
+          "claimIds": [
+            "f547bf5bdad8bc086b15d99f01107e00"
+          ],
+          "dateBasis": "PUBLICATION_DATE",
+          "sourceIds": [
+            "1c4417061fce23e11789ba8cae9a9b37"
+          ],
+          "confidence": "MEDIUM"
+        },
+        {
+          "id": "timeline-69ecad934981083a31202c1ae9a21864",
+          "date": "1936-10-01T00:00:00.000Z",
+          "text": "rE Johore Court of Appeal today dismissed the appeal of Adaikan against sentence of death",
+          "claimIds": [
+            "69ecad934981083a31202c1ae9a21864"
+          ],
+          "dateBasis": "PUBLICATION_DATE",
+          "sourceIds": [
+            "801e6dad1f04161bce8bdb956a925e29"
+          ],
+          "confidence": "MEDIUM"
+        },
+        {
+          "id": "timeline-2b1acac7db473028fec2627289978165",
+          "date": "1936-10-30T00:00:00.000Z",
+          "text": "Three Hainanese Remanded From Our Own Correspondent) Johore Bahru.",
+          "claimIds": [
+            "2b1acac7db473028fec2627289978165"
+          ],
+          "dateBasis": "PUBLICATION_DATE",
+          "sourceIds": [
+            "023a8f28ad9e39dc122b771d5cfbf5e6"
+          ],
+          "confidence": "MEDIUM"
+        },
+        {
+          "id": "timeline-c73206f57a5e4573a0290238b05d39e3",
+          "date": "1936-12-10T00:00:00.000Z",
+          "text": "IN connection with the triple murder which was committed on the rubber estate of a Chinese small-holder in Senai",
+          "claimIds": [
+            "c73206f57a5e4573a0290238b05d39e3"
+          ],
+          "dateBasis": "PUBLICATION_DATE",
+          "sourceIds": [
+            "023a8f28ad9e39dc122b771d5cfbf5e6",
+            "4b53915fa39ea11d6ba4f690a96ff069"
+          ],
+          "confidence": "MEDIUM"
+        }
+      ],
+      "hookCandidates": [
+        {
+          "text": "Rekod arkib membuka cerita ini dengan satu butiran penting: The hearing at the Johore Assizes of the case in which Eric McHeyzer is charged with the double murder of his father",
+          "claimIds": [
+            "f547bf5bdad8bc086b15d99f01107e00"
+          ],
+          "sourceIds": [
+            "1c4417061fce23e11789ba8cae9a9b37"
+          ]
+        },
+        {
+          "text": "Satu laporan lama merekodkan: rE Johore Court of Appeal today dismissed the appeal of Adaikan against sentence of death",
+          "claimIds": [
+            "69ecad934981083a31202c1ae9a21864"
+          ],
+          "sourceIds": [
+            "801e6dad1f04161bce8bdb956a925e29"
+          ]
+        },
+        {
+          "text": "Petunjuk paling jelas dalam sumber ialah: Three Hainanese Remanded From Our Own Correspondent) Johore Bahru.",
+          "claimIds": [
+            "2b1acac7db473028fec2627289978165"
+          ],
+          "sourceIds": [
+            "023a8f28ad9e39dc122b771d5cfbf5e6"
+          ]
+        }
+      ],
+      "payoff": {
+        "text": "IN connection with the triple murder which was committed on the rubber estate of a Chinese small-holder in Senai",
+        "claimIds": [
+          "c73206f57a5e4573a0290238b05d39e3"
+        ],
+        "sourceIds": [
+          "023a8f28ad9e39dc122b771d5cfbf5e6",
+          "4b53915fa39ea11d6ba4f690a96ff069"
+        ]
+      },
+      "researchScore": 0.916,
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Linked archive reports span disconnected publication periods; deterministic research cannot safely treat them as one event."
+        ]
+      },
+      "narration": null
+    },
+    {
+      "candidate": {
+        "id": "a3ef3546-a23d-43ca-8b96-411615c0be98",
+        "title": "FATAL ACCIDENT AT KUALA LUMPUR.",
+        "storyType": "DISASTER",
+        "historicalContext": "PRE_MALAYSIA"
+      },
+      "sources": [
+        {
+          "id": "189cbfb31dc908dfa64e3b76bf21311e",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/singfreepressb19090315-1.2.27",
+          "date": "1909-03-15T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "ACCIDENT AT KUALA LUMPUR.",
+          "publisher": "The Singapore Free Press and Mercantile Advertiser",
+          "accessedAt": "2026-09-04T15:53:42.646Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        },
+        {
+          "id": "670633d6778c64444c01daeefab4d465",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/singfreepresswk19090318-1.2.54",
+          "date": "1909-03-18T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "ACCIDENT AT KUALA LUMPUR.",
+          "publisher": "The Singapore Free Press and Mercantile Advertiser",
+          "accessedAt": "2026-09-04T15:53:42.646Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        },
+        {
+          "id": "6064227cb434ab564945e4ae2c8d086c",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes19261102-1.2.61",
+          "date": "1926-11-02T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "Kuala Lumpur Accident.",
+          "publisher": "The Straits Times",
+          "accessedAt": "2026-09-04T15:53:43.177Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        },
+        {
+          "id": "7e954cbd576c6444997964cf1002962c",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/pinangazette19280625-1.2.26",
+          "date": "1928-06-25T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "KUALA LUMPUR RACE ACCIDENT.",
+          "publisher": "NewspaperSG",
+          "accessedAt": "2026-09-04T15:53:42.110Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        },
+        {
+          "id": "27356b8b8dd9467e35b19c61473e955a",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitsbudget19341025-1.2.29",
+          "date": "1934-10-25T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "FATAL ACCIDENT AT KUALA LUMPUR.",
+          "publisher": "The Straits Budget",
+          "accessedAt": "2026-09-04T15:53:43.178Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        },
+        {
+          "id": "eb4c38087b0236d49bd95a213a59c030",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes19370126-1.2.77",
+          "date": "1937-01-26T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "FATAL KUALA LUMPUR ACCIDENT.",
+          "publisher": "The Straits Times",
+          "accessedAt": "2026-09-04T15:53:42.646Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        }
+      ],
+      "claims": [
+        {
+          "id": "c4fb87d2297c84c92ab6711e9806c3ac",
+          "people": [
+            "Kuala Lumpur Accident",
+            ". Injured European Not From",
+            "From Our Own Correspondent",
+            "Kunla Lumpur"
+          ],
+          "priority": "HOOK_WORTHY",
+          "claimText": "Injured European Not From Singapore.",
+          "claimType": "REPORTED",
+          "eventDate": "1926-11-02T00:00:00.000Z",
+          "locations": [
+            "Kuala Lumpur"
+          ],
+          "sourceIds": [
+            "6064227cb434ab564945e4ae2c8d086c"
+          ],
+          "confidence": "MEDIUM",
+          "ocrQuality": 0.84,
+          "visualIntent": "ARCHIVAL_PHOTO",
+          "normalizedClaim": "injured european not singapore",
+          "storyCandidateId": "a3ef3546-a23d-43ca-8b96-411615c0be98"
+        },
+        {
+          "id": "4a39f5468a0faebd436e397eebf8ecf5",
+          "people": [
+            "Kuala Lumpur Accident",
+            ". Injured European Not From",
+            "From Our Own Correspondent",
+            "Kunla Lumpur"
+          ],
+          "priority": "ESSENTIAL_CONTEXT",
+          "claimText": "It now transpires that the European who met with a motor accident in Ampanjr",
+          "claimType": "REPORTED",
+          "eventDate": "1926-11-02T00:00:00.000Z",
+          "locations": [
+            "Kuala Lumpur"
+          ],
+          "sourceIds": [
+            "6064227cb434ab564945e4ae2c8d086c"
+          ],
+          "confidence": "MEDIUM",
+          "ocrQuality": 0.814,
+          "visualIntent": "ARCHIVAL_PHOTO",
+          "normalizedClaim": "now transpires european who met motor accident ampanjr",
+          "storyCandidateId": "a3ef3546-a23d-43ca-8b96-411615c0be98"
+        },
+        {
+          "id": "203d5b2a6e425614828f78d4a8d8da27",
+          "people": [
+            "Kuala Lumpur Accident",
+            ". Injured European Not From",
+            "From Our Own Correspondent",
+            "Kunla Lumpur",
+            ". The Stewards",
+            "Telegraphs Department"
+          ],
+          "priority": "ESCALATION_DETAIL",
+          "claimText": "KUALA LUMPUR RACE ACCIDENT",
+          "claimType": "REPORTED",
+          "eventDate": "1928-06-25T00:00:00.000Z",
+          "locations": [
+            "Kuala Lumpur"
+          ],
+          "sourceIds": [
+            "6064227cb434ab564945e4ae2c8d086c",
+            "7e954cbd576c6444997964cf1002962c",
+            "27356b8b8dd9467e35b19c61473e955a",
+            "eb4c38087b0236d49bd95a213a59c030"
+          ],
+          "confidence": "HIGH",
+          "ocrQuality": 0.8,
+          "visualIntent": "ARCHIVAL_PHOTO",
+          "normalizedClaim": "kuala lumpur race accident",
+          "storyCandidateId": "a3ef3546-a23d-43ca-8b96-411615c0be98"
+        },
+        {
+          "id": "bf8baf0aa5f44050a8e82c9d118ca0b5",
+          "people": [
+            "From Our Own Correspondent",
+            ". The Stewards"
+          ],
+          "priority": "TWIST",
+          "claimText": "The Stewards’ inquiry into the recent serious accident at Kuala Lumpur races resulted in the suspension",
+          "claimType": "REPORTED",
+          "eventDate": "1928-06-25T00:00:00.000Z",
+          "locations": [
+            "Kuala Lumpur"
+          ],
+          "sourceIds": [
+            "7e954cbd576c6444997964cf1002962c"
+          ],
+          "confidence": "MEDIUM",
+          "ocrQuality": 0.99,
+          "visualIntent": "ARCHIVAL_PHOTO",
+          "normalizedClaim": "stewards inquiry recent serious accident kuala lumpur races resulted suspension",
+          "storyCandidateId": "a3ef3546-a23d-43ca-8b96-411615c0be98"
+        },
+        {
+          "id": "21d70e5e45bc47140721a0eee9b4c42f",
+          "people": [
+            "From Our Own Correspondent",
+            "Telegraphs Department"
+          ],
+          "priority": "PAYOFF",
+          "claimText": "a mall van driver employed by the Post and Telegraphs Department, was fatally injured yesterday",
+          "claimType": "REPORTED",
+          "eventDate": "1937-01-26T00:00:00.000Z",
+          "locations": [
+            "Kuala Lumpur"
+          ],
+          "sourceIds": [
+            "eb4c38087b0236d49bd95a213a59c030"
+          ],
+          "confidence": "MEDIUM",
+          "ocrQuality": 0.817,
+          "visualIntent": "TIMELINE",
+          "normalizedClaim": "mall van driver employed post telegraphs department fatally injured yesterday",
+          "storyCandidateId": "a3ef3546-a23d-43ca-8b96-411615c0be98"
+        }
+      ],
+      "timeline": [
+        {
+          "id": "timeline-c4fb87d2297c84c92ab6711e9806c3ac",
+          "date": "1926-11-02T00:00:00.000Z",
+          "text": "Injured European Not From Singapore.",
+          "claimIds": [
+            "c4fb87d2297c84c92ab6711e9806c3ac"
+          ],
+          "dateBasis": "PUBLICATION_DATE",
+          "sourceIds": [
+            "6064227cb434ab564945e4ae2c8d086c"
+          ],
+          "confidence": "MEDIUM"
+        },
+        {
+          "id": "timeline-4a39f5468a0faebd436e397eebf8ecf5",
+          "date": "1926-11-02T00:00:00.000Z",
+          "text": "It now transpires that the European who met with a motor accident in Ampanjr",
+          "claimIds": [
+            "4a39f5468a0faebd436e397eebf8ecf5"
+          ],
+          "dateBasis": "PUBLICATION_DATE",
+          "sourceIds": [
+            "6064227cb434ab564945e4ae2c8d086c"
+          ],
+          "confidence": "MEDIUM"
+        },
+        {
+          "id": "timeline-203d5b2a6e425614828f78d4a8d8da27",
+          "date": "1928-06-25T00:00:00.000Z",
+          "text": "KUALA LUMPUR RACE ACCIDENT",
+          "claimIds": [
+            "203d5b2a6e425614828f78d4a8d8da27"
+          ],
+          "dateBasis": "PUBLICATION_DATE",
+          "sourceIds": [
+            "6064227cb434ab564945e4ae2c8d086c",
+            "7e954cbd576c6444997964cf1002962c",
+            "27356b8b8dd9467e35b19c61473e955a",
+            "eb4c38087b0236d49bd95a213a59c030"
+          ],
+          "confidence": "HIGH"
+        },
+        {
+          "id": "timeline-bf8baf0aa5f44050a8e82c9d118ca0b5",
+          "date": "1928-06-25T00:00:00.000Z",
+          "text": "The Stewards’ inquiry into the recent serious accident at Kuala Lumpur races resulted in the suspension",
+          "claimIds": [
+            "bf8baf0aa5f44050a8e82c9d118ca0b5"
+          ],
+          "dateBasis": "PUBLICATION_DATE",
+          "sourceIds": [
+            "7e954cbd576c6444997964cf1002962c"
+          ],
+          "confidence": "MEDIUM"
+        },
+        {
+          "id": "timeline-21d70e5e45bc47140721a0eee9b4c42f",
+          "date": "1937-01-26T00:00:00.000Z",
+          "text": "a mall van driver employed by the Post and Telegraphs Department, was fatally injured yesterday",
+          "claimIds": [
+            "21d70e5e45bc47140721a0eee9b4c42f"
+          ],
+          "dateBasis": "PUBLICATION_DATE",
+          "sourceIds": [
+            "eb4c38087b0236d49bd95a213a59c030"
+          ],
+          "confidence": "MEDIUM"
+        }
+      ],
+      "hookCandidates": [
+        {
+          "text": "Rekod arkib membuka cerita ini dengan satu butiran penting: Injured European Not From Singapore.",
+          "claimIds": [
+            "c4fb87d2297c84c92ab6711e9806c3ac"
+          ],
+          "sourceIds": [
+            "6064227cb434ab564945e4ae2c8d086c"
+          ]
+        },
+        {
+          "text": "Satu laporan lama merekodkan: It now transpires that the European who met with a motor accident in Ampanjr",
+          "claimIds": [
+            "4a39f5468a0faebd436e397eebf8ecf5"
+          ],
+          "sourceIds": [
+            "6064227cb434ab564945e4ae2c8d086c"
+          ]
+        },
+        {
+          "text": "Petunjuk paling jelas dalam sumber ialah: KUALA LUMPUR RACE ACCIDENT",
+          "claimIds": [
+            "203d5b2a6e425614828f78d4a8d8da27"
+          ],
+          "sourceIds": [
+            "6064227cb434ab564945e4ae2c8d086c",
+            "7e954cbd576c6444997964cf1002962c",
+            "27356b8b8dd9467e35b19c61473e955a",
+            "eb4c38087b0236d49bd95a213a59c030"
+          ]
+        }
+      ],
+      "payoff": {
+        "text": "a mall van driver employed by the Post and Telegraphs Department, was fatally injured yesterday",
+        "claimIds": [
+          "21d70e5e45bc47140721a0eee9b4c42f"
+        ],
+        "sourceIds": [
+          "eb4c38087b0236d49bd95a213a59c030"
+        ]
+      },
+      "researchScore": 0.857,
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Linked archive reports span disconnected publication periods; deterministic research cannot safely treat them as one event."
+        ]
+      },
+      "narration": null
+    },
+    {
+      "candidate": {
+        "id": "43256e13-3241-4e57-9f11-eb40f7e00073",
+        "title": "A 'GHOST' WILL GUARD MUSEUM TEMPLER HELPED TO BUILD",
+        "storyType": "PARANORMAL_REPORT",
+        "historicalContext": "FEDERATION_OF_MALAYA"
+      },
+      "sources": [
+        {
+          "id": "f15720e77023c3fabebc428e7009bdb9",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes19540320-1.2.101",
+          "date": "1954-03-20T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "A 'GHOST' WILL GUARD MUSEUM TEMPLER HELPED TO BUILD",
+          "publisher": "The Straits Times",
+          "accessedAt": "2026-09-04T15:53:56.436Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        },
+        {
+          "id": "abd82bef57fcb3635f169ee67a089058",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitsbudget19540325-1.2.77",
+          "date": "1954-03-25T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "A ‘GHOST’ WILL GUARD MUSEUM TEMPLER HELPED TO BUILD",
+          "publisher": "The Straits Budget",
+          "accessedAt": "2026-09-04T15:53:56.436Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        }
+      ],
+      "claims": [],
+      "timeline": [],
+      "hookCandidates": [],
+      "payoff": {
+        "text": "",
+        "claimIds": [],
+        "sourceIds": []
+      },
+      "researchScore": 0.12,
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "Every factual claim must resolve to persisted source IDs.",
+          "No grounded hook candidate.",
+          "No grounded payoff or unresolved ending.",
+          "Narrative potential is below 0.55.",
+          "Unique clear evidence is insufficient for about 20 seconds."
+        ]
+      },
+      "narration": null
+    },
+    {
+      "candidate": {
+        "id": "78a5fa9d-524d-41ec-b15e-7076f9df6892",
+        "title": "Water—but a legend says this will bring Templer back",
+        "storyType": "FOLKLORE",
+        "historicalContext": "FEDERATION_OF_MALAYA"
+      },
+      "sources": [
+        {
+          "id": "d24c4657a4b25cf1ecabdb79a2cc929c",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes19540530-1.2.3",
+          "date": "1954-05-30T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "Water—but a legend says this will bring Templer back",
+          "publisher": "The Straits Times",
+          "accessedAt": "2026-09-04T15:54:19.014Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        }
+      ],
+      "claims": [],
+      "timeline": [],
+      "hookCandidates": [],
+      "payoff": {
+        "text": "",
+        "claimIds": [],
+        "sourceIds": []
+      },
+      "researchScore": 0.06,
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "Needs two sources or one exceptionally clear source with four claims.",
+          "Every factual claim must resolve to persisted source IDs.",
+          "No grounded hook candidate.",
+          "No grounded payoff or unresolved ending.",
+          "Narrative potential is below 0.55.",
+          "Unique clear evidence is insufficient for about 20 seconds."
+        ]
+      },
+      "narration": null
+    },
+    {
+      "candidate": {
+        "id": "9633002d-fd92-4b19-964d-2d3b878921ce",
+        "title": "Two more confess to role in murder of Perak prince's wife",
+        "storyType": "HISTORICAL_INCIDENT",
+        "historicalContext": "MODERN_MALAYSIA"
+      },
+      "sources": [
+        {
+          "id": "5dbb8695096b7a60e3f027e89471c63c",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes20021017-1.2.37.8.4",
+          "date": "2002-10-17T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "Two more confess to role in murder of Perak prince's wife",
+          "publisher": "The Straits Times",
+          "accessedAt": "2026-09-04T15:53:46.050Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        },
+        {
+          "id": "f312cc0a1f8e9bca42649d75d5263787",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes20021022-1.2.41.8.6",
+          "date": "2002-10-22T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "Perak murder: Prince's wife questioned",
+          "publisher": "The Straits Times",
+          "accessedAt": "2026-09-04T15:53:45.552Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        },
+        {
+          "id": "6fdf0f5e39d56b315b28aaebd168794e",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes20021025-1.2.72.8.4",
+          "date": "2002-10-25T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "Perak murder: Prince's first wife remanded",
+          "publisher": "The Straits Times",
+          "accessedAt": "2026-09-04T15:53:45.553Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        },
+        {
+          "id": "895286daef0738072bce8f48492791b6",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/stoverseas20021026-1.2.12.5",
+          "date": "2002-10-26T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "Perak murder: Prince's first wife remanded",
+          "publisher": "NewspaperSG",
+          "accessedAt": "2026-09-04T15:53:45.553Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        }
+      ],
+      "claims": [
+        {
+          "id": "9c7e461c0424a6409d59588f9dcda5be",
+          "people": [],
+          "priority": "HOOK_WORTHY",
+          "claimText": "Two more confess to role in murder of Perak prince's wife",
+          "claimType": "REPORTED",
+          "eventDate": "2002-10-17T00:00:00.000Z",
+          "locations": [
+            "Kuala Lumpur",
+            "Perak"
+          ],
+          "sourceIds": [
+            "5dbb8695096b7a60e3f027e89471c63c"
+          ],
+          "confidence": "MEDIUM",
+          "ocrQuality": 0.688,
+          "visualIntent": "ARCHIVAL_PHOTO",
+          "normalizedClaim": "two more confess role murder perak prince wife",
+          "storyCandidateId": "9633002d-fd92-4b19-964d-2d3b878921ce"
+        },
+        {
+          "id": "e9bc6c74a6e9119544ccd604e9103969",
+          "people": [],
+          "priority": "ESSENTIAL_CONTEXT",
+          "claimText": "KUALA LUMPUR Two more suspects have confessed to having a role m the kidnapping and murder of Ms Hazliza",
+          "claimType": "REPORTED",
+          "eventDate": "2002-10-17T00:00:00.000Z",
+          "locations": [
+            "Kuala Lumpur",
+            "Perak"
+          ],
+          "sourceIds": [
+            "5dbb8695096b7a60e3f027e89471c63c"
+          ],
+          "confidence": "LOW",
+          "ocrQuality": 0.652,
+          "visualIntent": "ARCHIVAL_PHOTO",
+          "normalizedClaim": "kuala lumpur two more suspects confessed having role kidnapping murder hazliza",
+          "storyCandidateId": "9633002d-fd92-4b19-964d-2d3b878921ce"
+        },
+        {
+          "id": "4c6964ad076985d1d0adfac823c05b57",
+          "people": [
+            "Hazliza Ishak"
+          ],
+          "priority": "TWIST",
+          "claimText": "Prince's first wife remanded",
+          "claimType": "REPORTED",
+          "eventDate": "2002-10-25T00:00:00.000Z",
+          "locations": [
+            "Perak",
+            "Kuala Lumpur"
+          ],
+          "sourceIds": [
+            "6fdf0f5e39d56b315b28aaebd168794e",
+            "895286daef0738072bce8f48492791b6"
+          ],
+          "confidence": "HIGH",
+          "ocrQuality": 0.839,
+          "visualIntent": "ARCHIVAL_PHOTO",
+          "normalizedClaim": "prince first wife remanded",
+          "storyCandidateId": "9633002d-fd92-4b19-964d-2d3b878921ce"
+        },
+        {
+          "id": "395609b619aacfd759734f6b140b63ec",
+          "people": [
+            "Hazliza Ishak"
+          ],
+          "priority": "PAYOFF",
+          "claimText": "IPOH The wife of a Perak prince was remanded yesterday to help the investigation into the murder of her husband's second wife, Hazliza Ishak",
+          "claimType": "REPORTED",
+          "eventDate": "2002-10-25T00:00:00.000Z",
+          "locations": [
+            "Perak",
+            "Kuala Lumpur"
+          ],
+          "sourceIds": [
+            "6fdf0f5e39d56b315b28aaebd168794e",
+            "895286daef0738072bce8f48492791b6"
+          ],
+          "confidence": "HIGH",
+          "ocrQuality": 0.829,
+          "visualIntent": "TIMELINE",
+          "normalizedClaim": "ipoh wife perak prince remanded yesterday help investigation murder husband second wife hazliza ishak",
+          "storyCandidateId": "9633002d-fd92-4b19-964d-2d3b878921ce"
+        }
+      ],
+      "timeline": [
+        {
+          "id": "timeline-9c7e461c0424a6409d59588f9dcda5be",
+          "date": "2002-10-17T00:00:00.000Z",
+          "text": "Two more confess to role in murder of Perak prince's wife",
+          "claimIds": [
+            "9c7e461c0424a6409d59588f9dcda5be"
+          ],
+          "dateBasis": "PUBLICATION_DATE",
+          "sourceIds": [
+            "5dbb8695096b7a60e3f027e89471c63c"
+          ],
+          "confidence": "MEDIUM"
+        },
+        {
+          "id": "timeline-e9bc6c74a6e9119544ccd604e9103969",
+          "date": "2002-10-17T00:00:00.000Z",
+          "text": "KUALA LUMPUR Two more suspects have confessed to having a role m the kidnapping and murder of Ms Hazliza",
+          "claimIds": [
+            "e9bc6c74a6e9119544ccd604e9103969"
+          ],
+          "dateBasis": "PUBLICATION_DATE",
+          "sourceIds": [
+            "5dbb8695096b7a60e3f027e89471c63c"
+          ],
+          "confidence": "LOW"
+        },
+        {
+          "id": "timeline-4c6964ad076985d1d0adfac823c05b57",
+          "date": "2002-10-25T00:00:00.000Z",
+          "text": "Prince's first wife remanded",
+          "claimIds": [
+            "4c6964ad076985d1d0adfac823c05b57"
+          ],
+          "dateBasis": "PUBLICATION_DATE",
+          "sourceIds": [
+            "6fdf0f5e39d56b315b28aaebd168794e",
+            "895286daef0738072bce8f48492791b6"
+          ],
+          "confidence": "HIGH"
+        },
+        {
+          "id": "timeline-395609b619aacfd759734f6b140b63ec",
+          "date": "2002-10-25T00:00:00.000Z",
+          "text": "IPOH The wife of a Perak prince was remanded yesterday to help the investigation into the murder of her husband's second wife, Hazliza Ishak",
+          "claimIds": [
+            "395609b619aacfd759734f6b140b63ec"
+          ],
+          "dateBasis": "PUBLICATION_DATE",
+          "sourceIds": [
+            "6fdf0f5e39d56b315b28aaebd168794e",
+            "895286daef0738072bce8f48492791b6"
+          ],
+          "confidence": "HIGH"
+        }
+      ],
+      "hookCandidates": [
+        {
+          "text": "Rekod arkib membuka cerita ini dengan satu butiran penting: Two more confess to role in murder of Perak prince's wife",
+          "claimIds": [
+            "9c7e461c0424a6409d59588f9dcda5be"
+          ],
+          "sourceIds": [
+            "5dbb8695096b7a60e3f027e89471c63c"
+          ]
+        },
+        {
+          "text": "Satu laporan lama merekodkan: KUALA LUMPUR Two more suspects have confessed to having a role m the kidnapping and murder of Ms Hazliza",
+          "claimIds": [
+            "e9bc6c74a6e9119544ccd604e9103969"
+          ],
+          "sourceIds": [
+            "5dbb8695096b7a60e3f027e89471c63c"
+          ]
+        },
+        {
+          "text": "Petunjuk paling jelas dalam sumber ialah: Prince's first wife remanded",
+          "claimIds": [
+            "4c6964ad076985d1d0adfac823c05b57"
+          ],
+          "sourceIds": [
+            "6fdf0f5e39d56b315b28aaebd168794e",
+            "895286daef0738072bce8f48492791b6"
+          ]
+        }
+      ],
+      "payoff": {
+        "text": "IPOH The wife of a Perak prince was remanded yesterday to help the investigation into the murder of her husband's second wife, Hazliza Ishak",
+        "claimIds": [
+          "395609b619aacfd759734f6b140b63ec"
+        ],
+        "sourceIds": [
+          "6fdf0f5e39d56b315b28aaebd168794e",
+          "895286daef0738072bce8f48492791b6"
+        ]
+      },
+      "researchScore": 0.81,
+      "readyDecision": {
+        "status": "READY",
+        "reasons": [
+          "All research and narration readiness gates passed."
+        ]
+      },
+      "narration": {
+        "text": "Rekod arkib membuka cerita ini dengan satu butiran penting: Two more confess to role in murder of Perak prince's wife Apakah urutan peristiwa yang dapat dipastikan daripada laporan ini? Menurut laporan ketika itu, kUALA LUMPUR Two more suspects have confessed to having a role m the kidnapping and murder of Ms Hazliza Menurut laporan ketika itu, prince's first wife remanded IPOH The wife of a Perak prince was remanded yesterday to help the investigation into the murder of her husband's second wife, Hazliza Ishak",
+        "segments": [
+          {
+            "role": "HOOK",
+            "text": "Rekod arkib membuka cerita ini dengan satu butiran penting: Two more confess to role in murder of Perak prince's wife",
+            "sourceIds": [
+              "5dbb8695096b7a60e3f027e89471c63c"
+            ],
+            "claimType": "REPORTED",
+            "visualIntent": "ARCHIVAL_PHOTO"
+          },
+          {
+            "role": "OPEN_LOOP",
+            "text": "Apakah urutan peristiwa yang dapat dipastikan daripada laporan ini?",
+            "sourceIds": [],
+            "claimType": "UNRESOLVED",
+            "visualIntent": "FACT_CARD"
+          },
+          {
+            "role": "CONTEXT",
+            "text": "Menurut laporan ketika itu, kUALA LUMPUR Two more suspects have confessed to having a role m the kidnapping and murder of Ms Hazliza",
+            "sourceIds": [
+              "5dbb8695096b7a60e3f027e89471c63c"
+            ],
+            "claimType": "REPORTED",
+            "visualIntent": "ARCHIVAL_PHOTO"
+          },
+          {
+            "role": "TWIST",
+            "text": "Menurut laporan ketika itu, prince's first wife remanded",
+            "sourceIds": [
+              "6fdf0f5e39d56b315b28aaebd168794e",
+              "895286daef0738072bce8f48492791b6"
+            ],
+            "claimType": "REPORTED",
+            "visualIntent": "ARCHIVAL_PHOTO"
+          },
+          {
+            "role": "PAYOFF",
+            "text": "IPOH The wife of a Perak prince was remanded yesterday to help the investigation into the murder of her husband's second wife, Hazliza Ishak",
+            "sourceIds": [
+              "6fdf0f5e39d56b315b28aaebd168794e",
+              "895286daef0738072bce8f48492791b6"
+            ],
+            "claimType": "REPORTED",
+            "visualIntent": "TIMELINE"
+          }
+        ],
+        "sourceCoverage": 1,
+        "unsupportedClaims": 0,
+        "passesQualityGate": true
+      }
+    },
+    {
+      "candidate": {
+        "id": "d9c994a2-ac1b-4b72-8cfa-f38506c78fe2",
+        "title": "Search still on for missing Sarawak boat helmsman",
+        "storyType": "HISTORICAL_INCIDENT",
+        "historicalContext": "MODERN_MALAYSIA"
+      },
+      "sources": [
+        {
+          "id": "449773c00c72cc9f682fecc00d1dd7db",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes19920212-1.2.28.10",
+          "date": "1992-02-12T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "1 missing, 7 saved after ship sinks off Sarawak",
+          "publisher": "The Straits Times",
+          "accessedAt": "2026-09-04T15:54:00.167Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        },
+        {
+          "id": "f288ce59da6e15daec6a989dbafc089f",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes19920213-1.2.26.9",
+          "date": "1992-02-13T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "Search still on for missing Sarawak boat helmsman",
+          "publisher": "The Straits Times",
+          "accessedAt": "2026-09-04T15:53:59.497Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        }
+      ],
+      "claims": [
+        {
+          "id": "4e3d10b4a0de6d74439c835cd432ad33",
+          "people": [
+            "Sarawak Marine Department"
+          ],
+          "priority": "HOOK_WORTHY",
+          "claimText": "1 missing, 7 saved after ship sinks off Sarawak",
+          "claimType": "REPORTED",
+          "eventDate": "1992-02-12T00:00:00.000Z",
+          "locations": [
+            "Sarawak"
+          ],
+          "sourceIds": [
+            "449773c00c72cc9f682fecc00d1dd7db"
+          ],
+          "confidence": "MEDIUM",
+          "ocrQuality": 0.843,
+          "visualIntent": "TIMELINE",
+          "normalizedClaim": "missing saved ship sinks off sarawak",
+          "storyCandidateId": "d9c994a2-ac1b-4b72-8cfa-f38506c78fe2"
+        },
+        {
+          "id": "713197ee525b5f815019f3acf99c6a97",
+          "people": [
+            "Sarawak Marine Department"
+          ],
+          "priority": "ESSENTIAL_CONTEXT",
+          "claimText": "Search still on for missing Sarawak boat helmsman",
+          "claimType": "REPORTED",
+          "eventDate": "1992-02-13T00:00:00.000Z",
+          "locations": [
+            "Sarawak"
+          ],
+          "sourceIds": [
+            "f288ce59da6e15daec6a989dbafc089f"
+          ],
+          "confidence": "MEDIUM",
+          "ocrQuality": 1,
+          "visualIntent": "ARCHIVAL_PHOTO",
+          "normalizedClaim": "search still missing sarawak boat helmsman",
+          "storyCandidateId": "d9c994a2-ac1b-4b72-8cfa-f38506c78fe2"
+        },
+        {
+          "id": "eed5cf61a8530e23a746be81ea5b134a",
+          "people": [
+            "Sarawak Marine Department"
+          ],
+          "priority": "PAYOFF",
+          "claimText": "KUCHING Searchers found the Sarawak Marine Department vessel, Menual, yesterday as the search for its helmsman, missing since it capsized on Monday",
+          "claimType": "REPORTED",
+          "eventDate": "1992-02-13T00:00:00.000Z",
+          "locations": [
+            "Sarawak"
+          ],
+          "sourceIds": [
+            "f288ce59da6e15daec6a989dbafc089f"
+          ],
+          "confidence": "MEDIUM",
+          "ocrQuality": 1,
+          "visualIntent": "TIMELINE",
+          "normalizedClaim": "kuching searchers found sarawak marine department vessel menual yesterday search helmsman missing since capsized monday",
+          "storyCandidateId": "d9c994a2-ac1b-4b72-8cfa-f38506c78fe2"
+        }
+      ],
+      "timeline": [
+        {
+          "id": "timeline-4e3d10b4a0de6d74439c835cd432ad33",
+          "date": "1992-02-12T00:00:00.000Z",
+          "text": "1 missing, 7 saved after ship sinks off Sarawak",
+          "claimIds": [
+            "4e3d10b4a0de6d74439c835cd432ad33"
+          ],
+          "dateBasis": "PUBLICATION_DATE",
+          "sourceIds": [
+            "449773c00c72cc9f682fecc00d1dd7db"
+          ],
+          "confidence": "MEDIUM"
+        },
+        {
+          "id": "timeline-713197ee525b5f815019f3acf99c6a97",
+          "date": "1992-02-13T00:00:00.000Z",
+          "text": "Search still on for missing Sarawak boat helmsman",
+          "claimIds": [
+            "713197ee525b5f815019f3acf99c6a97"
+          ],
+          "dateBasis": "PUBLICATION_DATE",
+          "sourceIds": [
+            "f288ce59da6e15daec6a989dbafc089f"
+          ],
+          "confidence": "MEDIUM"
+        },
+        {
+          "id": "timeline-eed5cf61a8530e23a746be81ea5b134a",
+          "date": "1992-02-13T00:00:00.000Z",
+          "text": "KUCHING Searchers found the Sarawak Marine Department vessel, Menual, yesterday as the search for its helmsman, missing since it capsized on Monday",
+          "claimIds": [
+            "eed5cf61a8530e23a746be81ea5b134a"
+          ],
+          "dateBasis": "PUBLICATION_DATE",
+          "sourceIds": [
+            "f288ce59da6e15daec6a989dbafc089f"
+          ],
+          "confidence": "MEDIUM"
+        }
+      ],
+      "hookCandidates": [
+        {
+          "text": "Rekod arkib membuka cerita ini dengan satu butiran penting: 1 missing, 7 saved after ship sinks off Sarawak",
+          "claimIds": [
+            "4e3d10b4a0de6d74439c835cd432ad33"
+          ],
+          "sourceIds": [
+            "449773c00c72cc9f682fecc00d1dd7db"
+          ]
+        },
+        {
+          "text": "Satu laporan lama merekodkan: Search still on for missing Sarawak boat helmsman",
+          "claimIds": [
+            "713197ee525b5f815019f3acf99c6a97"
+          ],
+          "sourceIds": [
+            "f288ce59da6e15daec6a989dbafc089f"
+          ]
+        },
+        {
+          "text": "Petunjuk paling jelas dalam sumber ialah: KUCHING Searchers found the Sarawak Marine Department vessel, Menual, yesterday as the search for its helmsman, missing since it capsized on Monday",
+          "claimIds": [
+            "eed5cf61a8530e23a746be81ea5b134a"
+          ],
+          "sourceIds": [
+            "f288ce59da6e15daec6a989dbafc089f"
+          ]
+        }
+      ],
+      "payoff": {
+        "text": "KUCHING Searchers found the Sarawak Marine Department vessel, Menual, yesterday as the search for its helmsman, missing since it capsized on Monday",
+        "claimIds": [
+          "eed5cf61a8530e23a746be81ea5b134a"
+        ],
+        "sourceIds": [
+          "f288ce59da6e15daec6a989dbafc089f"
+        ]
+      },
+      "researchScore": 0.8,
+      "readyDecision": {
+        "status": "READY",
+        "reasons": [
+          "All research and narration readiness gates passed."
+        ]
+      },
+      "narration": {
+        "text": "Rekod arkib membuka cerita ini dengan satu butiran penting: 1 missing, 7 saved after ship sinks off Sarawak Apakah urutan peristiwa yang dapat dipastikan daripada laporan ini? Menurut laporan ketika itu, search still on for missing Sarawak boat helmsman KUCHING Searchers found the Sarawak Marine Department vessel, Menual, yesterday as the search for its helmsman, missing since it capsized on Monday",
+        "segments": [
+          {
+            "role": "HOOK",
+            "text": "Rekod arkib membuka cerita ini dengan satu butiran penting: 1 missing, 7 saved after ship sinks off Sarawak",
+            "sourceIds": [
+              "449773c00c72cc9f682fecc00d1dd7db"
+            ],
+            "claimType": "REPORTED",
+            "visualIntent": "TIMELINE"
+          },
+          {
+            "role": "OPEN_LOOP",
+            "text": "Apakah urutan peristiwa yang dapat dipastikan daripada laporan ini?",
+            "sourceIds": [],
+            "claimType": "UNRESOLVED",
+            "visualIntent": "FACT_CARD"
+          },
+          {
+            "role": "CONTEXT",
+            "text": "Menurut laporan ketika itu, search still on for missing Sarawak boat helmsman",
+            "sourceIds": [
+              "f288ce59da6e15daec6a989dbafc089f"
+            ],
+            "claimType": "REPORTED",
+            "visualIntent": "ARCHIVAL_PHOTO"
+          },
+          {
+            "role": "PAYOFF",
+            "text": "KUCHING Searchers found the Sarawak Marine Department vessel, Menual, yesterday as the search for its helmsman, missing since it capsized on Monday",
+            "sourceIds": [
+              "f288ce59da6e15daec6a989dbafc089f"
+            ],
+            "claimType": "REPORTED",
+            "visualIntent": "TIMELINE"
+          }
+        ],
+        "sourceCoverage": 1,
+        "unsupportedClaims": 0,
+        "passesQualityGate": true
+      }
+    },
+    {
+      "candidate": {
+        "id": "d2903e14-71f5-4a04-91ec-8939a889d6be",
+        "title": "JOHORE DETECTIVE'S SMART WORK.",
+        "storyType": "CRIME_MYSTERY",
+        "historicalContext": "PRE_MALAYSIA"
+      },
+      "sources": [
+        {
+          "id": "e6a473eff912db84a4e27f388035c644",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/pinangazette19250713-1.2.7",
+          "date": "1925-07-13T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "CLEVER JOHORE DETECTIVE.",
+          "publisher": "NewspaperSG",
+          "accessedAt": "2026-09-04T15:53:29.914Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        },
+        {
+          "id": "fc07c4c98af52f6f37725d6f8afafbb9",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/maltribune19250713-1.2.48",
+          "date": "1925-07-13T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "DETECTIVE'S SMART WORK",
+          "publisher": "Malaya Tribune",
+          "accessedAt": "2026-09-04T15:53:29.914Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        },
+        {
+          "id": "eccb029e3587d2715bc697ab3268e8f4",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/singfreepressb19250717-1.2.6",
+          "date": "1925-07-17T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "JOHORE DETECTIVE'S SMART WORK.",
+          "publisher": "The Singapore Free Press and Mercantile Advertiser",
+          "accessedAt": "2026-09-04T15:53:29.914Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        },
+        {
+          "id": "0146e6f0e4f941d1774cd72941a9894e",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/singfreepresswk19250722-1.2.81",
+          "date": "1925-07-22T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "JOHORE DETECTIVE'S SMART WORK.",
+          "publisher": "The Singapore Free Press and Mercantile Advertiser",
+          "accessedAt": "2026-09-04T15:53:29.914Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        }
+      ],
+      "claims": [
+        {
+          "id": "adb57e494d8287bbb6d8323aaf08f7ab",
+          "people": [
+            ". Arrests Alleged Murderer"
+          ],
+          "priority": "HOOK_WORTHY",
+          "claimText": "Arrests Alleged Murderer on a Train.",
+          "claimType": "REPORTED",
+          "eventDate": "1925-07-22T00:00:00.000Z",
+          "locations": [
+            "Johor"
+          ],
+          "sourceIds": [
+            "eccb029e3587d2715bc697ab3268e8f4",
+            "0146e6f0e4f941d1774cd72941a9894e"
+          ],
+          "confidence": "LOW",
+          "ocrQuality": 0.523,
+          "visualIntent": "ARCHIVAL_PHOTO",
+          "normalizedClaim": "arrests alleged murderer train",
+          "storyCandidateId": "d2903e14-71f5-4a04-91ec-8939a889d6be"
+        }
+      ],
+      "timeline": [
+        {
+          "id": "timeline-adb57e494d8287bbb6d8323aaf08f7ab",
+          "date": "1925-07-22T00:00:00.000Z",
+          "text": "Arrests Alleged Murderer on a Train.",
+          "claimIds": [
+            "adb57e494d8287bbb6d8323aaf08f7ab"
+          ],
+          "dateBasis": "PUBLICATION_DATE",
+          "sourceIds": [
+            "eccb029e3587d2715bc697ab3268e8f4",
+            "0146e6f0e4f941d1774cd72941a9894e"
+          ],
+          "confidence": "LOW"
+        }
+      ],
+      "hookCandidates": [
+        {
+          "text": "Rekod arkib membuka cerita ini dengan satu butiran penting: Arrests Alleged Murderer on a Train.",
+          "claimIds": [
+            "adb57e494d8287bbb6d8323aaf08f7ab"
+          ],
+          "sourceIds": [
+            "eccb029e3587d2715bc697ab3268e8f4",
+            "0146e6f0e4f941d1774cd72941a9894e"
+          ]
+        }
+      ],
+      "payoff": {
+        "text": "Arrests Alleged Murderer on a Train.",
+        "claimIds": [
+          "adb57e494d8287bbb6d8323aaf08f7ab"
+        ],
+        "sourceIds": [
+          "eccb029e3587d2715bc697ab3268e8f4",
+          "0146e6f0e4f941d1774cd72941a9894e"
+        ]
+      },
+      "researchScore": 0.721,
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "Unique clear evidence is insufficient for about 20 seconds."
+        ]
+      },
+      "narration": null
+    },
+    {
+      "candidate": {
+        "id": "518d37c9-dafa-49ad-8c7a-11df0dfbe609",
+        "title": "THE MURDER ON THE \"PERAK.\"",
+        "storyType": "CRIME_MYSTERY",
+        "historicalContext": "PRE_MALAYSIA"
+      },
+      "sources": [
+        {
+          "id": "807e56f1daabf256311df3bd91430e36",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes19231122-1.2.61",
+          "date": "1923-11-22T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "Murder on the Perak.",
+          "publisher": "The Straits Times",
+          "accessedAt": "2026-09-04T15:53:15.570Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        },
+        {
+          "id": "fd90236f67e38d15e80880542ad2d095",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitsbudget19231123-1.2.13",
+          "date": "1923-11-23T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "Murder on the Perak.",
+          "publisher": "The Straits Budget",
+          "accessedAt": "2026-09-04T15:53:15.570Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        },
+        {
+          "id": "8113f930783494951b3231a726b94f52",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/pinangazette19231124-1.2.71",
+          "date": "1923-11-24T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "MURDER ON THE \"PERAK.\"",
+          "publisher": "NewspaperSG",
+          "accessedAt": "2026-09-04T15:53:15.570Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        },
+        {
+          "id": "9a788501259fc0aef740488e5058b24e",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/pinangazette19231126-1.2.17",
+          "date": "1923-11-26T00:00:00.000Z",
+          "type": "ARCHIVAL",
+          "title": "THE MURDER ON THE \"PERAK.\"",
+          "publisher": "NewspaperSG",
+          "accessedAt": "2026-09-04T15:53:46.049Z",
+          "sourceRole": "ARCHIVAL_NEWSPAPER",
+          "reliabilityLevel": "ARCHIVAL"
+        }
+      ],
+      "claims": [
+        {
+          "id": "26bae965f953c782fbabc3c6e25cec25",
+          "people": [],
+          "priority": "HOOK_WORTHY",
+          "claimText": "When the steamer Perak arrived at Singapore yesterday morning a Malay deck passenjrer was found dead with stab wounds on his body.",
+          "claimType": "REPORTED",
+          "eventDate": "1923-11-22T00:00:00.000Z",
+          "locations": [
+            "Perak"
+          ],
+          "sourceIds": [
+            "807e56f1daabf256311df3bd91430e36",
+            "8113f930783494951b3231a726b94f52"
+          ],
+          "confidence": "HIGH",
+          "ocrQuality": 0.603,
+          "visualIntent": "TIMELINE",
+          "normalizedClaim": "when steamer perak arrived singapore yesterday morning malay deck passenjrer found dead stab wounds body",
+          "storyCandidateId": "518d37c9-dafa-49ad-8c7a-11df0dfbe609"
+        },
+        {
+          "id": "d358cade768a006cafd2da7c63887ca4",
+          "people": [],
+          "priority": "ESSENTIAL_CONTEXT",
+          "claimText": "Further light has been thro™ murder on the Perak, by a who reports to the pob« slttß1 ,to off Muar.",
+          "claimType": "REPORTED",
+          "eventDate": "1923-11-26T00:00:00.000Z",
+          "locations": [
+            "Perak"
+          ],
+          "sourceIds": [
+            "9a788501259fc0aef740488e5058b24e"
+          ],
+          "confidence": "LOW",
+          "ocrQuality": 0.635,
+          "visualIntent": "ARCHIVAL_PHOTO",
+          "normalizedClaim": "further light been thro murder perak who reports pob slttß1 off muar",
+          "storyCandidateId": "518d37c9-dafa-49ad-8c7a-11df0dfbe609"
+        },
+        {
+          "id": "7c4ff23f3b329d0d07b881a849f370c4",
+          "people": [],
+          "priority": "PAYOFF",
+          "claimText": "anil saw two gather.",
+          "claimType": "REPORTED",
+          "eventDate": "1923-11-26T00:00:00.000Z",
+          "locations": [
+            "Perak"
+          ],
+          "sourceIds": [
+            "9a788501259fc0aef740488e5058b24e"
+          ],
+          "confidence": "LOW",
+          "ocrQuality": 0.672,
+          "visualIntent": "ARCHIVAL_PHOTO",
+          "normalizedClaim": "anil saw two gather",
+          "storyCandidateId": "518d37c9-dafa-49ad-8c7a-11df0dfbe609"
+        }
+      ],
+      "timeline": [
+        {
+          "id": "timeline-26bae965f953c782fbabc3c6e25cec25",
+          "date": "1923-11-22T00:00:00.000Z",
+          "text": "When the steamer Perak arrived at Singapore yesterday morning a Malay deck passenjrer was found dead with stab wounds on his body.",
+          "claimIds": [
+            "26bae965f953c782fbabc3c6e25cec25"
+          ],
+          "dateBasis": "PUBLICATION_DATE",
+          "sourceIds": [
+            "807e56f1daabf256311df3bd91430e36",
+            "8113f930783494951b3231a726b94f52"
+          ],
+          "confidence": "HIGH"
+        },
+        {
+          "id": "timeline-d358cade768a006cafd2da7c63887ca4",
+          "date": "1923-11-26T00:00:00.000Z",
+          "text": "Further light has been thro™ murder on the Perak, by a who reports to the pob« slttß1 ,to off Muar.",
+          "claimIds": [
+            "d358cade768a006cafd2da7c63887ca4"
+          ],
+          "dateBasis": "PUBLICATION_DATE",
+          "sourceIds": [
+            "9a788501259fc0aef740488e5058b24e"
+          ],
+          "confidence": "LOW"
+        },
+        {
+          "id": "timeline-7c4ff23f3b329d0d07b881a849f370c4",
+          "date": "1923-11-26T00:00:00.000Z",
+          "text": "anil saw two gather.",
+          "claimIds": [
+            "7c4ff23f3b329d0d07b881a849f370c4"
+          ],
+          "dateBasis": "PUBLICATION_DATE",
+          "sourceIds": [
+            "9a788501259fc0aef740488e5058b24e"
+          ],
+          "confidence": "LOW"
+        }
+      ],
+      "hookCandidates": [
+        {
+          "text": "Rekod arkib membuka cerita ini dengan satu butiran penting: When the steamer Perak arrived at Singapore yesterday morning a Malay deck passenjrer was found dead with stab wounds on his body.",
+          "claimIds": [
+            "26bae965f953c782fbabc3c6e25cec25"
+          ],
+          "sourceIds": [
+            "807e56f1daabf256311df3bd91430e36",
+            "8113f930783494951b3231a726b94f52"
+          ]
+        },
+        {
+          "text": "Satu laporan lama merekodkan: Further light has been thro™ murder on the Perak, by a who reports to the pob« slttß1 ,to off Muar.",
+          "claimIds": [
+            "d358cade768a006cafd2da7c63887ca4"
+          ],
+          "sourceIds": [
+            "9a788501259fc0aef740488e5058b24e"
+          ]
+        },
+        {
+          "text": "Petunjuk paling jelas dalam sumber ialah: anil saw two gather.",
+          "claimIds": [
+            "7c4ff23f3b329d0d07b881a849f370c4"
+          ],
+          "sourceIds": [
+            "9a788501259fc0aef740488e5058b24e"
+          ]
+        }
+      ],
+      "payoff": {
+        "text": "anil saw two gather.",
+        "claimIds": [
+          "7c4ff23f3b329d0d07b881a849f370c4"
+        ],
+        "sourceIds": [
+          "9a788501259fc0aef740488e5058b24e"
+        ]
+      },
+      "researchScore": 0.847,
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "Unique clear evidence is insufficient for about 20 seconds."
+        ]
+      },
+      "narration": null
+    }
+  ]
+}

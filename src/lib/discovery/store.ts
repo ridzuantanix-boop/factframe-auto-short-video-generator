@@ -1,6 +1,7 @@
 import postgres, { type Sql, type TransactionSql } from "postgres";
 import type { StoryCandidate, StoryCandidateInput, StoryIndexStatus } from "../types";
 import type { StoredStorySource, StorySourceInput } from "../archive/types.ts";
+import type { ResearchClaim, ResearchPackage } from "../research/types.ts";
 import { dedupeKey, mergeCandidates } from "./dedupe.ts";
 import { STORY_INDEX_SCHEMA } from "./schema.ts";
 
@@ -16,6 +17,13 @@ function sourceFromRow(row: Row): StoredStorySource {
     title: String(row.title), publisher: String(row.publisher), url: String(row.url), publishedAt: nullableDate(row.published_at), accessedAt: date(row.accessed_at),
     snippet: String(row.snippet), metadata: (row.metadata && typeof row.metadata === "object" ? row.metadata : {}) as Record<string, unknown>,
     reliabilityLevel: row.reliability_level as StoredStorySource["reliabilityLevel"] };
+}
+
+function claimFromRow(row: Row): ResearchClaim {
+  return { id: String(row.id), storyCandidateId: String(row.story_candidate_id), claimText: String(row.claim_text), normalizedClaim: String(row.normalized_claim),
+    claimType: row.claim_type as ResearchClaim["claimType"], confidence: row.confidence as ResearchClaim["confidence"], sourceIds: strings(row.source_ids),
+    eventDate: nullableDate(row.event_date), people: strings(row.people), locations: strings(row.locations), priority: row.priority as ResearchClaim["priority"],
+    visualIntent: row.visual_intent as ResearchClaim["visualIntent"], ocrQuality: Number(row.ocr_quality) };
 }
 
 function fromRow(row: Row): StoryCandidate {
@@ -210,6 +218,60 @@ export class StoryStore {
 
   async updateArchiveSourceMetadata(id: string, metadata: Record<string, unknown>) {
     await this.sql`UPDATE story_sources SET metadata=${this.sql.json(JSON.parse(JSON.stringify(metadata)))} WHERE id=${id}`;
+  }
+
+  async findById(id: string) {
+    const rows = await this.sql<Row[]>`SELECT * FROM story_candidates WHERE id=${id} LIMIT 1`;
+    return rows[0] ? fromRow(rows[0]) : null;
+  }
+
+  async listSourcesForCandidate(candidateId: string) {
+    const rows = await this.sql<Row[]>`SELECT * FROM story_sources WHERE story_candidate_id=${candidateId} ORDER BY published_at NULLS LAST, id`;
+    return rows.map(sourceFromRow);
+  }
+
+  async listResearchCandidates(options: { status?: StoryIndexStatus | "ALL"; limit?: number; category?: string; region?: string; minSources?: number } = {}) {
+    const status = options.status ?? "PARTIAL"; const category = options.category || null; const region = options.region || null;
+    const minSources = Math.max(1, options.minSources ?? 1); const limit = Math.min(500, Math.max(1, options.limit ?? 25));
+    const rows = await this.sql<Row[]>`SELECT * FROM story_candidates WHERE metadata->>'archiveDerived'='true'
+      AND (${status}='ALL' AND status IN ('PARTIAL', 'READY') OR status=${status})
+      AND source_count >= ${minSources} AND (${category}::text IS NULL OR category=${category} OR metadata->'categories' ? ${category})
+      AND (${region}::text IS NULL OR region ILIKE ${region ? `%${region}%` : null})
+      ORDER BY source_count DESC, CASE metadata->>'storyTypeConfidence' WHEN 'HIGH' THEN 0 WHEN 'MEDIUM' THEN 1 ELSE 2 END,
+        length(summary) DESC, updated_at DESC LIMIT ${limit}`;
+    return rows.map(fromRow);
+  }
+
+  async getResearchPackage(candidateId: string) {
+    const rows = await this.sql<{ package: ResearchPackage }[]>`SELECT package FROM story_research_packages WHERE story_candidate_id=${candidateId} LIMIT 1`;
+    return rows[0]?.package ?? null;
+  }
+
+  async listClaimsForCandidate(candidateId: string) {
+    const rows = await this.sql<Row[]>`SELECT * FROM story_claims WHERE story_candidate_id=${candidateId} ORDER BY priority, event_date NULLS LAST, id`;
+    return rows.map(claimFromRow);
+  }
+
+  async persistResearchPackage(candidate: StoryCandidate, claims: ResearchClaim[], researchPackage: ResearchPackage) {
+    return this.sql.begin(async (tx) => {
+      await tx`DELETE FROM story_claims WHERE story_candidate_id=${candidate.id}`;
+      for (const claim of claims) await tx`INSERT INTO story_claims
+        (id, story_candidate_id, claim_text, normalized_claim, claim_type, confidence, source_ids, event_date, people, locations, priority, visual_intent, ocr_quality, created_at, updated_at)
+        VALUES (${claim.id}, ${candidate.id}, ${claim.claimText}, ${claim.normalizedClaim}, ${claim.claimType}, ${claim.confidence},
+          ${tx.json(claim.sourceIds)}, ${claim.eventDate}, ${tx.json(claim.people)}, ${tx.json(claim.locations)}, ${claim.priority}, ${claim.visualIntent}, ${claim.ocrQuality}, now(), now())`;
+      await tx`INSERT INTO story_research_packages (story_candidate_id, package, created_at, updated_at)
+        VALUES (${candidate.id}, ${tx.json(JSON.parse(JSON.stringify(researchPackage)))}, now(), now())
+        ON CONFLICT (story_candidate_id) DO UPDATE SET package=EXCLUDED.package, updated_at=now()`;
+      const priorCategories = (Array.isArray(candidate.metadata.categories) ? candidate.metadata.categories.map(String) : [])
+        .filter((category) => !["mysteries", "malaysia_mysteries"].includes(category));
+      const metadata = { ...candidate.metadata, categories: [...new Set([...priorCategories, "archive",
+        ...(researchPackage.readyDecision.status === "READY" ? ["mysteries", "malaysia_mysteries"] : [])])], researchPackageVersion: "4.0-grounded" };
+      const rows = await tx<Row[]>`UPDATE story_candidates SET status=${researchPackage.readyDecision.status}, claim_count=${claims.length},
+        research_score=${researchPackage.researchScore}, narrative_potential_score=${researchPackage.narrativePotentialScore},
+        metadata=${tx.json(JSON.parse(JSON.stringify(metadata)))}, last_researched_at=${researchPackage.lastResearchedAt},
+        last_verified_at=${researchPackage.lastVerifiedAt}, updated_at=now() WHERE id=${candidate.id} RETURNING *`;
+      return fromRow(rows[0]);
+    });
   }
 }
 

@@ -13,7 +13,15 @@ function naturalText(claim: StoryClaim, tone: StoryTone) {
 }
 
 function openLoop(story: StoryRecord): MysterySegment {
-  const text = story.caseStatus === "PARTIALLY_EXPLAINED" ? "Jadi, apa yang benar-benar berlaku—dan apa yang cuma legenda?" : "Jadi, ke mana semua petunjuk ini sebenarnya membawa?";
+  const fallback: Record<StoryRecord["caseStatus"], string> = {
+    SOLVED: "Apakah urutan bukti yang membawa kepada kesimpulan itu?",
+    UNSOLVED: "Apakah yang masih belum dapat dipastikan daripada rekod ini?",
+    PARTIALLY_EXPLAINED: "Apakah urutan peristiwa yang dapat dipastikan daripada laporan ini?",
+    LEGEND: "Bahagian manakah direkodkan, dan bahagian manakah kekal sebagai cerita rakyat?",
+    REPORTED_CLAIM: "Apakah yang benar-benar dilaporkan, dan apakah yang belum dapat disahkan?",
+    DISPUTED: "Bahagian manakah disokong oleh rekod, dan bahagian manakah masih dipertikaikan?",
+  };
+  const text = story.unresolvedQuestions?.[0]?.text ?? fallback[story.caseStatus];
   return { role: "OPEN_LOOP", text, sourceIds: [], claimType: "UNRESOLVED", visualIntent: "FACT_CARD" };
 }
 
@@ -23,32 +31,11 @@ export function buildMysteryScript(story: StoryRecord, duration: StoryDuration, 
   const chosen = usableClaims.slice(0, limit);
   const loop = openLoop(story);
   const segments: MysterySegment[] = chosen.map((item) => ({ role: roleByPriority[item.priority], text: naturalText(item, tone), sourceIds: item.sourceIds, claimType: item.type, visualIntent: item.visualIntent }));
+  const groundedHook = story.hookCandidates?.[0];
+  if (segments[0] && groundedHook) segments[0] = { ...segments[0], role: "HOOK", text: groundedHook.text, sourceIds: groundedHook.sourceIds };
   segments.splice(1, 0, loop);
-  if (duration >= 60) {
-    const sourcedBridge = chosen.find((item) => item.priority === "ESCALATION_DETAIL") ?? chosen[1];
-    segments.splice(Math.min(4, segments.length - 1), 0, { role: "ESCALATION", text: `Kemudian muncul satu lagi petunjuk. ${sourcedBridge.narration}`, sourceIds: sourcedBridge.sourceIds, claimType: sourcedBridge.type, visualIntent: "TIMELINE" });
-  }
-  if (duration === 90) {
-    const counter = chosen.find((item) => item.priority === "COUNTERPOINT") ?? chosen.at(-1)!;
-    segments.splice(-1, 0, { role: "COUNTERPOINT", text: `Masalahnya, bukti yang ada masih belum menutup semua persoalan. ${counter.narration}`, sourceIds: counter.sourceIds, claimType: counter.type, visualIntent: "EVIDENCE" });
-  }
-  const minimumWords = duration === 30 ? 65 : duration === 60 ? 130 : 190;
-  const evidenceTemplates = [
-    (publisher: string) => `Rekod daripada ${publisher} menyokong petunjuk ini dan meletakkannya dalam garis masa utama kes.`,
-    () => "Petunjuk ini bukan sekadar cerita kemudian. Ia muncul dalam sumber yang masih boleh diperiksa.",
-    () => "Perbezaan ini penting kerana fakta yang direkodkan tidak sama dengan teori yang menjadi popular.",
-    () => "Setakat bukti tersebut, hanya bahagian ini boleh disebut dengan yakin tanpa menambah andaian.",
-    () => "Di sinilah cerita berubah. Satu butiran kecil mengehadkan penjelasan yang masih mungkin.",
-  ];
-  let noteIndex = 0;
-  const wordCount = () => segments.reduce((sum, segment) => sum + segment.text.split(/\s+/).length, 0);
-  while (wordCount() < minimumWords && noteIndex < 12) {
-    const linkedClaim = chosen[noteIndex % chosen.length];
-    const linkedSource = story.sources.find((item) => linkedClaim.sourceIds.includes(item.id));
-    const template = evidenceTemplates[noteIndex % evidenceTemplates.length];
-    segments.splice(-1, 0, { role: "ESCALATION", text: template(linkedSource?.publisher ?? "sumber penyiasatan"), sourceIds: linkedClaim.sourceIds, claimType: linkedClaim.type, visualIntent: noteIndex % 2 ? "DOCUMENT" : "EVIDENCE" });
-    noteIndex += 1;
-  }
+  const groundedPayoff = story.payoff;
+  if (groundedPayoff?.text && segments.length) segments[segments.length - 1] = { ...segments[segments.length - 1], role: "PAYOFF", text: groundedPayoff.text, sourceIds: groundedPayoff.sourceIds };
   const quality = calculateScriptQuality(segments, story.sources);
   return { storyId: story.id, title: story.title, durationTarget: duration, tone, hook: segments[0].text, openLoop: loop.text, caseStatus: story.caseStatus, segments, payoff: segments.at(-1)?.text ?? "", ...quality, sources: story.sources, showSourceNote };
 }

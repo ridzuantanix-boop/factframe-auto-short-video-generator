@@ -8,18 +8,18 @@ export async function GET(request: NextRequest) {
   const category = request.nextUrl.searchParams.get("category") ?? "interesting";
   const page = Math.max(0, Number(request.nextUrl.searchParams.get("page") ?? 0));
   const queries = DISCOVERY_CATEGORY_QUERIES[category] ?? DISCOVERY_CATEGORY_QUERIES.interesting;
+  const mysteryCategory = category === "mysteries" || category === "malaysia_mysteries";
   try {
     let indexedResults: Array<{ id: string; label: string; description: string; url: string }> = [];
     let persistedTotal: number | null = null;
     if (isStoryIndexConfigured()) {
       try {
-        const indexed = await getStoryStore().list({ category, page: page + 1, limit: 48, sort: "newest" });
+        const indexed = await getStoryStore().list({ category, status: mysteryCategory ? "READY" : undefined, page: page + 1, limit: 48, sort: "newest" });
         indexedResults = indexed.items.map((item) => ({ id: item.canonicalEntityId ?? item.id, label: item.title, description: item.summary, url: item.canonicalUrl ?? item.sourceHints[0] ?? "" }));
         persistedTotal = indexed.total;
         if (indexed.items.length >= 12 || indexed.hasMore) return NextResponse.json({ results: indexedResults, page, hasMore: indexed.hasMore, total: indexed.total, source: "persistent-index" }, { headers: { "Cache-Control": "public, s-maxage=300, stale-while-revalidate=900" } });
       } catch (error) { console.warn("[discover] Persistent index unavailable; using live fallback", error instanceof Error ? error.message : "unknown error"); }
     }
-    const mysteryCategory = category === "mysteries" || category === "malaysia_mysteries";
     const groupSize = DISCOVERY_GROUP_SIZE;
     const groupCount = Math.ceil(queries.length / groupSize);
     const groupIndex = page % groupCount;

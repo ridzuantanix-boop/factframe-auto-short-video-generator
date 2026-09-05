@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { searchVisuals } from "@/lib/data/wikimedia";
 import { getMysteryStory } from "@/lib/mystery/catalog";
+import { getStoryStore, isStoryIndexConfigured } from "@/lib/discovery/store";
+import { loadResearchStory } from "@/lib/research/storyResearch";
 import { planStoryVisuals, planTopicVisuals } from "@/lib/video/visualPlanner";
 import type { MysteryScript, Topic } from "@/lib/types";
 
@@ -18,12 +20,19 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json() as { storyId?: string; script?: MysteryScript; topic?: Topic };
-    const story = body.storyId ? getMysteryStory(body.storyId) : undefined;
+    const seedStory = body.storyId ? getMysteryStory(body.storyId) : undefined;
+    const researchStory = body.storyId && !seedStory && isStoryIndexConfigured() ? await loadResearchStory(body.storyId, getStoryStore()) ?? undefined : undefined;
+    const story = seedStory ?? researchStory;
     if (!body.script) return NextResponse.json({ error: "Cerita atau skrip tidak sah." }, { status: 400 });
     const result = story && body.script.storyId === story.id ? await planStoryVisuals(story, body.script) : body.topic && body.script.storyId === body.topic.id ? await planTopicVisuals(body.topic, body.script) : undefined;
     if (!result) return NextResponse.json({ error: "Cerita atau skrip tidak sah." }, { status: 400 });
     if (!result.visuals.length) return NextResponse.json({ error: "Media berlesen yang relevan tidak mencukupi." }, { status: 404 });
-    const complete = result.visuals.length === body.script.segments.length && result.quality.repetitionScore >= .8 && result.quality.relevanceScore >= .35 && result.quality.visualTypeDiversity >= 2 && result.visuals.some((visual) => visual.mediaType !== "programmatic");
+    // Phase 4 research READY is independent of visual-media readiness. A persisted
+    // archive story may reach preview with the planner's programmatic evidence cards;
+    // the stricter licensed-media gate remains in force for the existing seed flow.
+    const complete = researchStory
+      ? result.visuals.length === body.script.segments.length
+      : result.visuals.length === body.script.segments.length && result.quality.repetitionScore >= .8 && result.quality.relevanceScore >= .35 && result.quality.visualTypeDiversity >= 2 && result.visuals.some((visual) => visual.mediaType !== "programmatic");
     if (!complete) return NextResponse.json({ error: "Calon ini belum melepasi readiness gate visual." }, { status: 422 });
     return NextResponse.json(result, { headers: { "Cache-Control": "no-store" } });
   } catch (error) {
