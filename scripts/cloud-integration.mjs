@@ -90,10 +90,15 @@ try {
   assert.equal(submissions,0,"Product analysis must never submit a paid video");
   assert.equal(searches,0,"Clear product must skip Search");assert.equal((await list(cookie)).products[0].research.status,"observation_only");assert.equal("usage" in await list(cookie),false);
   const settings={productId:saved.id,videoStyle:"real_life",angle:"curiosity",voiceoverEnabled:true,voiceGender:"female",voiceStyle:"soft_sell",subjectType:"female_creator",shariahCompliance:true,auratLevel:"full",durationSeconds:10};
-  const input = {product_id:saved.id, avatar:image, settings};
+  const scriptFor=async(productId,scriptSettings,instructions="")=>{const before=submissions,response=await fetch(`${origin}/api/products/${productId}/script`,{method:"POST",headers:{origin,cookie,"content-type":"application/json"},body:JSON.stringify({settings:scriptSettings,instructions})});assert.equal(response.status,200);assert.equal(submissions,before,"Script generation reached video provider");const draft=await response.json();return {approved_script:draft.script,script_settings_hash:draft.settings_hash,instructions};};
+  const firstDraft=await scriptFor(saved.id,settings);assert.equal(submissions,0);
+  const editedScript="Skrip manual owner, kekal tepat tanpa ditulis semula.";
+  const input = {product_id:saved.id, avatar:image, settings,...firstDraft,approved_script:editedScript};
 
   const key = crypto.randomUUID();
   const send = (body, id = key, reqOrigin = origin) => fetch(`${origin}/api/generate`, { method: "POST", headers: { origin: reqOrigin, cookie, "content-type": "application/json", "idempotency-key": id }, body: JSON.stringify(body) });
+  assert.equal((await send({product_id:saved.id,avatar:image,settings},crypto.randomUUID())).status,400);assert.equal(submissions,0,"Missing script reached provider");
+  assert.equal((await send({...input,settings:{...settings,angle:"problem"}},crypto.randomUUID())).status,400);assert.equal(submissions,0,"Stale script reached provider");
   assert.equal((await send(input, crypto.randomUUID(), "https://evil.invalid")).status, 403);
   const results = await Promise.all([send(input), send(input)]);
   assert.equal(results[0].status, 202); assert.equal(results[1].status, 202);
@@ -106,7 +111,7 @@ try {
   assert.equal((await fetch(origin+"/api/generate",{method:"POST",headers:{origin,cookie:otherCookie,"content-type":"application/json","idempotency-key":crypto.randomUUID()},body:JSON.stringify(input)})).status,controlled?503:404);
   assert.equal((await fetch(`${origin}${a.job.thumbnail_url}`, { headers: { cookie: otherCookie } })).status, 404);
   const completed = await waitJob(cookie, a.job.id);
-  assert.equal(completed.stage, "completed", completed.error); assert.deepEqual(completed.settings,settings);assert.ok(completed.plan.scene_plan);assert.ok(lastPrompt.includes("SHARIAH_RULES:"));assert.ok(lastPrompt.includes("soft_sell")); assert.equal(submissions, 1); assert.equal(analyses, 1); assert.equal(searches, 0);
+  assert.equal(completed.stage, "completed", completed.error); assert.deepEqual(completed.settings,settings);assert.ok(completed.plan.scene_plan);assert.equal(completed.plan.script,editedScript);assert.equal(completed.plan.script_source,"user_edited");assert.ok(lastPrompt.includes(`SPOKEN_SCRIPT: ${editedScript}`));assert.ok(lastPrompt.includes("SHARIAH_RULES:"));assert.ok(lastPrompt.includes("soft_sell")); assert.equal(submissions, 1); assert.equal(analyses, 1); assert.equal(searches, 0);
   const download = await fetch(`${origin}${completed.video_url}`, { headers: { cookie } }); assert.equal(download.status, 200); assert.deepEqual(Buffer.from(await download.arrayBuffer()), video);
   const range = await fetch(`${origin}${completed.video_url}`, { headers: { cookie, range: "bytes=4-7" } }); assert.equal(range.status, 206); assert.equal(await range.text(), "ftyp");
   assert.equal((await fetch(`${origin}${completed.video_url}`, { headers: { cookie, range: "bytes=999-" } })).status, 416);
@@ -117,19 +122,21 @@ try {
     assert.equal((await fetch(origin+"/api/test/jobs",{headers:{cookie:otherCookie}})).status,403);
   }
   mode = "uncertain";
-  const regen = await send({ source_job: completed.id, action: "regenerate" }, crypto.randomUUID()); assert.equal(regen.status, 202);
+  const regeneratedDraft=await scriptFor(saved.id,settings);assert.equal(submissions,1);assert.ok(regeneratedDraft.approved_script);
+  const regen = await send({product_id:saved.id,avatar:image,settings,...regeneratedDraft}, crypto.randomUUID()); assert.equal(regen.status, 202);
   const failed = await waitJob(cookie, (await regen.json()).job.id);
   assert.equal(failed.stage, "failed"); assert.ok(failed.error.includes("Hubungi sokongan")); assert.equal(submissions, 2);
   await delay(10_000); assert.equal(submissions, 2, "Uncertain paid POST was replayed");
   mode = "failed";
-  const rejected = await send({ source_job: completed.id, action: "regenerate" }, crypto.randomUUID()); assert.equal(rejected.status, 202);
+  const rejectedDraft=await scriptFor(saved.id,settings);
+  const rejected = await send({product_id:saved.id,avatar:image,settings,...rejectedDraft}, crypto.randomUUID()); assert.equal(rejected.status, 202);
   const rejectedJob = await waitJob(cookie, (await rejected.json()).job.id);
   assert.equal(rejectedJob.stage, "failed"); assert.equal(rejectedJob.retry_count, 0); assert.ok(rejectedJob.error.includes("Hubungi sokongan"));
   await delay(10_000); assert.equal(submissions, 3, "Explicit provider failure created an automatic paid retry");
   
   mode="success";
   const silent={...settings,videoStyle:"product_motion",angle:"discovery",voiceoverEnabled:false,subjectType:"no_hands",shariahCompliance:false,auratLevel:null};
-  const silentResponse=await send({product_id:saved.id,settings:silent},crypto.randomUUID());assert.equal(silentResponse.status,202);
+  const silentDraft=await scriptFor(saved.id,silent);const silentResponse=await send({product_id:saved.id,settings:silent,...silentDraft},crypto.randomUUID());assert.equal(silentResponse.status,202);
   const silentJob=await waitJob(cookie,(await silentResponse.json()).job.id);
   assert.equal(silentJob.stage,"completed",silentJob.error);assert.deepEqual(silentJob.settings,silent);
   assert.equal(silentJob.plan.script,"");assert.equal(analyses,1);assert.equal(searches,0);
@@ -148,7 +155,7 @@ try {
   dirtyReference=true;const beforeBlocked=submissions;
   const dirtyProductResponse=await productRequest({images:[image]},crypto.randomUUID());assert.equal(dirtyProductResponse.status,202);const dirtyId=(await dirtyProductResponse.json()).product.id;
   for(let i=0;i<120;i++){const p=(await list(cookie)).products.find(p=>p.id===dirtyId);if(p.stage==="ready")break;if(p.stage==="failed")throw Error(p.error);await delay(1000);}
-  const dirtySettings={...settings,productId:dirtyId,videoStyle:"pov_demo",subjectType:"female_hands"};const blockedResponse=await send({product_id:dirtyId,settings:dirtySettings},crypto.randomUUID());assert.equal(blockedResponse.status,202);const blockedJob=await waitJob(cookie,(await blockedResponse.json()).job.id);assert.equal(blockedJob.stage,"failed");assert.ok(blockedJob.error.includes("terlalu banyak elemen skrin"));assert.equal(submissions,beforeBlocked,"Unsafe screenshot reached Nexabot mock");dirtyReference=false;
+  const dirtySettings={...settings,productId:dirtyId,videoStyle:"pov_demo",subjectType:"female_hands"},dirtyDraft=await scriptFor(dirtyId,dirtySettings);const blockedResponse=await send({product_id:dirtyId,settings:dirtySettings,...dirtyDraft},crypto.randomUUID());assert.equal(blockedResponse.status,202);const blockedJob=await waitJob(cookie,(await blockedResponse.json()).job.id);assert.equal(blockedJob.stage,"failed");assert.ok(blockedJob.error.includes("terlalu banyak elemen skrin"));assert.equal(submissions,beforeBlocked,"Unsafe screenshot reached Nexabot mock");dirtyReference=false;
   product.confidence="low";product.uncertainty="Exact model unclear";
   const uncertainProduct=await productRequest({images:[image]},crypto.randomUUID());assert.equal(uncertainProduct.status,202);const uncertainId=(await uncertainProduct.json()).product.id;
   for(let i=0;i<120;i++){const p=(await list(cookie)).products.find(p=>p.id===uncertainId);if(p.stage==="ready"){assert.equal(p.research.status,"grounded");break;}if(p.stage==="failed")throw Error(p.error);await delay(1000);}

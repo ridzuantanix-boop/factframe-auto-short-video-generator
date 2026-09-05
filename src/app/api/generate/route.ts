@@ -1,9 +1,10 @@
 import { getProduct } from "@/lib/pawarna/store";
 import { projectInput } from "@/lib/pawarna/projects";
 import { validateSettings } from "@/lib/pawarna/settings";
-import { createJob, getJob, publicJob, workerReady } from "@/lib/pawarna/store";
+import { createJob, getJob, publicJob, saveJob, workerReady } from "@/lib/pawarna/store";
 import { ownerId, sameOrigin } from "@/lib/pawarna/session";
 import { validateInput } from "@/lib/pawarna/validation";
+import { approvedPlan,scriptRelevantSnapshot,scriptSettingsHash } from "@/lib/pawarna/script-gate";
 export const runtime = "nodejs";
 export async function POST(request: Request) {
   try {
@@ -20,13 +21,19 @@ export async function POST(request: Request) {
     const reader = request.body.getReader(); const parts: Uint8Array[] = []; let total = 0;
     for (;;) { const { value, done } = await reader.read(); if (done) break; total += value.length; if (total > 43 * 1024 * 1024) { await reader.cancel(); return Response.json({ error: "Jumlah imej terlalu besar." }, { status: 413 }); } parts.push(value); }
     const body = JSON.parse(Buffer.concat(parts).toString());
+    if(!body.product_id)throw new Error("Skrip mesti dijana dan disemak sebelum jana video.");
     if (body.product_id) {
       const saved=getProduct(String(body.product_id));
       if(!saved || saved.project.owner!==owner)return Response.json({error:"Produk tidak ditemui."},{status:404});
       if(saved.project.stage!=="ready")throw new Error("Tunggu analisis produk siap.");
       if(body.avatar_source_job && !body.avatar){const avatarJob=getJob(String(body.avatar_source_job));if(!avatarJob||avatarJob.owner!==owner)return Response.json({error:"Avatar tidak ditemui."},{status:404});body.avatar=avatarJob.input.avatar;}
-      const input=projectInput(await validateInput({...saved.input,avatar:body.avatar,instructions:body.instructions || "",settings:validateSettings(body.settings,saved.project.id)}),saved.project);input.angle_seed=key;
-      return Response.json({job:publicJob(createJob(owner,key,input,undefined,saved.project))},{status:202});
+      const rawInstructions=String(body.instructions||""),input=projectInput(await validateInput({...saved.input,avatar:body.avatar,instructions:rawInstructions,settings:validateSettings(body.settings,saved.project.id)}),saved.project);input.angle_seed=key;
+      const suppliedHash=String(body.script_settings_hash||""),expectedHash=await scriptSettingsHash(scriptRelevantSnapshot(saved.project,input.settings!,rawInstructions));
+      if(!saved.project.script_draft||!suppliedHash||saved.project.script_draft.settings_hash!==suppliedHash||expectedHash!==suppliedHash)throw new Error("Skrip belum sah atau tetapan video dah berubah. Jana semula skrip dahulu.");
+      if(typeof body.approved_script!=="string"||(input.settings?.voiceoverEnabled!==false&&!body.approved_script.trim()))throw new Error("Skrip mesti disemak sebelum jana video.");
+      input.approved_script=body.approved_script;input.script_settings_hash=suppliedHash;input.script_source=body.approved_script===saved.project.script_draft.plan.script?"ai":"user_edited";
+      const job=createJob(owner,key,input,undefined,saved.project);job.plan=approvedPlan(saved.project.script_draft.plan,body.approved_script,suppliedHash,body.approved_script===saved.project.script_draft.plan.script?"ai":"user_edited");saveJob(job);
+      return Response.json({job:publicJob(job)},{status:202});
     }
     if (body.source_job) {
       if (!["another_angle", "regenerate"].includes(body.action)) throw new Error("Permintaan jana semula tidak sah.");
@@ -44,7 +51,7 @@ export async function POST(request: Request) {
     const job = createJob(owner, key, input);
     return Response.json({ job: publicJob(job) }, { status: 202 });
   } catch (e) {
-    const safe = e instanceof Error && /^(Upload|Hanya|Setiap|Fail|Gaya|Arahan|Imej|Permintaan|Tunggu)/.test(e.message) ? e.message : "Permintaan tidak sah. Semak gambar dan cuba lagi.";
+    const safe = e instanceof Error && /^(Upload|Hanya|Setiap|Fail|Gaya|Arahan|Imej|Permintaan|Tunggu|Skrip)/.test(e.message) ? e.message : "Permintaan tidak sah. Semak gambar dan cuba lagi.";
     return Response.json({ error: safe }, { status: 400 });
   }
 }

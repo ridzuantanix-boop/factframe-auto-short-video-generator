@@ -8,6 +8,8 @@ import { hash, json, parseRange, publicJob, readBody, type CloudJob } from "./ut
 import { validateInput } from "./validation";
 import { decodeImage } from "../src/lib/pawarna/image";
 import type { JobInput, Stage } from "../src/lib/pawarna/types";
+import type { ContentPlan } from "../src/lib/pawarna/types";
+import { approvedPlan, scriptRelevantSnapshot, scriptSettingsHash } from "../src/lib/pawarna/script-gate";
 import { analyseProduct, prepareResearch, createPlan, validateSanitizedReference } from "../src/services/pawarna/intelligence";
 import { buildVideoPrompt } from "../src/lib/pawarna/prompt";
 import { NexabotProvider, ProviderError } from "../src/services/nexabot/provider";
@@ -81,7 +83,7 @@ export class PawarnaFactory extends DurableObject<Env> {
       const existing = this.ctx.storage.sql.exec<Row>("SELECT id,data,request_hash FROM jobs WHERE owner=? AND request_key=?", owner, key).toArray()[0];
       if (existing) return existing.request_hash === fingerprint ? json({ job: publicJob(JSON.parse(existing.data)) }, 202) : json({ error: "Permintaan berulang mempunyai input berbeza." }, 409);
       if(testAllowed && this.tests.available()<1)return json({error:LIMIT_MESSAGE},429);
-      let input: JobInput; let parent: CloudJob | undefined; let project: ProductProject | undefined;
+      let input: JobInput; let parent: CloudJob | undefined; let project: ProductProject | undefined; let approved:ContentPlan|undefined;
       if (body.product_id) {
         project = this.products.get(String(body.product_id));
         if (!project || project.owner !== owner) return json({error:"Produk tidak ditemui."},404);
@@ -94,7 +96,13 @@ export class PawarnaFactory extends DurableObject<Env> {
           if(!avatarObject)return json({error:"Avatar tidak ditemui."},404);
           body.avatar=(await avatarObject.json<JobInput>()).avatar;
         }
-        input = validateInput({...saved, instructions:body.instructions || "", avatar:body.avatar, settings:validateSettings(body.settings,project.id)});input.sanitized_video_references=saved.sanitized_video_references;
+        const rawInstructions=String(body.instructions||"");
+        input = validateInput({...saved, instructions:rawInstructions, avatar:body.avatar, settings:validateSettings(body.settings,project.id)});input.sanitized_video_references=saved.sanitized_video_references;
+        const suppliedHash=String(body.script_settings_hash||""),expectedHash=await scriptSettingsHash(scriptRelevantSnapshot(project,input.settings!,rawInstructions));
+        if(!project.script_draft||!suppliedHash||project.script_draft.settings_hash!==suppliedHash||expectedHash!==suppliedHash)throw new Error("Skrip belum sah atau tetapan video dah berubah. Jana semula skrip dahulu.");
+        if(typeof body.approved_script!=="string"||(input.settings?.voiceoverEnabled!==false&&!body.approved_script.trim()))throw new Error("Skrip mesti disemak sebelum jana video.");
+        approved=approvedPlan(project.script_draft.plan,body.approved_script,suppliedHash,body.approved_script===project.script_draft.plan.script?"ai":"user_edited");
+        input.approved_script=body.approved_script;input.script_settings_hash=suppliedHash;input.script_source=approved.script_source;
         input = projectInput(input,project); input.angle_seed = key;
       } else if (body.source_job) {
         if (!["another_angle", "regenerate"].includes(String(body.action))) throw new Error("Permintaan jana semula tidak sah.");
@@ -111,9 +119,10 @@ export class PawarnaFactory extends DurableObject<Env> {
         }
         input.angle_seed = key; input.previous_hook = parent.plan?.hook;
       } else input = validateInput(body);
+      if(!approved)throw new Error("Skrip mesti dijana dan disemak sebelum jana video.");
       const thumbnail = decodeImage(input.images[0]);
       const job: CloudJob = { settings: input.settings, id: crypto.randomUUID(), owner, input_key: "", image_count: input.images.length, has_avatar: !!input.avatar, thumbnail_type: thumbnail.mimeType, stage: "queued", created_at: now, updated_at: now, retry_count: 0, provider_requests: [], lease_until: now + 120_000, duration_seconds: 10, segment_number: 1, parent_generation_id: parent?.id,
-        product: project?.product || parent?.product, research: project?.research || parent?.research, plan: undefined };
+        product: project?.product || parent?.product, research: project?.research || parent?.research, plan: approved };
       job.input_key = `jobs/${job.id}/input.json`;
       // Reserve atomically before remote storage I/O. New sessions cannot bypass the global limits.
       const awaitEpoch = testAllowed ? await this.tests.epoch() : "";
@@ -137,7 +146,7 @@ export class PawarnaFactory extends DurableObject<Env> {
       } catch { job.error = "Gambar belum berjaya disimpan di cloud. Cuba job baru."; this.save(job, "failed"); return json({ error: job.error }, 503); }
       return json({ job: publicJob(job) }, 202);
     } catch (error) {
-      const message = error instanceof Error && /^(Upload|Hanya|Setiap|Fail|Gaya|Arahan|Imej|Permintaan|Tunggu|Jumlah|Had)/.test(error.message) ? error.message : "Permintaan tidak sah. Semak gambar dan cuba lagi.";
+      const message = error instanceof Error && /^(Upload|Hanya|Setiap|Fail|Gaya|Arahan|Imej|Permintaan|Tunggu|Jumlah|Had|Skrip)/.test(error.message) ? error.message : "Permintaan tidak sah. Semak gambar dan cuba lagi.";
       return json({ error: message }, message.startsWith("Had") || message.startsWith("Tunggu") ? 429 : 400);
     }
   }

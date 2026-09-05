@@ -6,8 +6,9 @@ export interface ProductProject {
   product?: ProductAnalysis; research?: Research; error?: string;
   image_count: number; input_key: string; corrections?: string;
   reference_audit?: import("./types").ReferenceAudit[];
+  script_draft?: {plan:import("./types").ContentPlan;settings_hash:string;generated_at:number};
 }
-export type PublicProduct = Omit<ProductProject, "owner" | "input_key" | "reference_audit"> & { image_urls: string[]; sanitized_reference_urls: string[] };
+export type PublicProduct = Omit<ProductProject, "owner" | "input_key" | "reference_audit" | "script_draft"> & { image_urls: string[]; sanitized_reference_urls: string[] };
 export function publicProduct(p: ProductProject): PublicProduct {
   return { source_job:p.source_job, id: p.id, created_at: p.created_at, updated_at: p.updated_at, stage: p.stage, product: p.product, research: p.research, error: p.error, corrections: p.corrections, image_count: p.image_count,
     image_urls: Array.from({ length: p.image_count }, (_, i) => `/api/products/${p.id}/media?index=${i}`), sanitized_reference_urls:(p.reference_audit||[]).filter(a=>a.sanitization_applied).map(a=>`/api/products/${p.id}/media?index=${a.index}&sanitized=1`) };

@@ -1,0 +1,13 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import {approvedPlan,scriptRelevantSnapshot,scriptSettingsHash} from "../src/lib/pawarna/script-gate";
+import {DEFAULT_SETTINGS} from "../src/lib/pawarna/settings";
+import type {ProductProject} from "../src/lib/pawarna/projects";
+import type {ContentPlan,ProductAnalysis} from "../src/lib/pawarna/types";
+const product:ProductAnalysis={name:"Produk X",brand:"",category:"gadget",confidence:"high",visible_text:"Produk X",description:"Produk",observed_features:[],search_query:"",uncertainty:"",reference_indices:[0]};
+const project:ProductProject={id:"p",owner:"o",created_at:1,updated_at:1,stage:"ready",image_count:1,input_key:"x",product};
+const settings={...DEFAULT_SETTINGS,productId:"p"};
+const plan:ContentPlan={angle:"Curiosity",hook:"Hook",script:"AI script. Klik link kat bawah.",cta:"Klik link kat bawah.",mode:"Product Demo",visual_direction:"Demo",claim_evidence_ids:[],video_prompt:"",scene_plan:{"0-2":"a","2-6":"b","6-8":"c","8-10":"d"}};
+test("script hash changes only for script-relevant inputs",async()=>{const base=scriptRelevantSnapshot(project,settings,""),visual=scriptRelevantSnapshot(project,{...settings,shariahCompliance:false,auratLevel:null},"");assert.equal(base,visual);for(const changed of [{...settings,videoStyle:"real_life" as const},{...settings,angle:"problem" as const},{...settings,voiceStyle:"direct" as const},{...settings,subjectType:"female_hands" as const}])assert.notEqual(base,scriptRelevantSnapshot(project,changed,""));assert.notEqual(await scriptSettingsHash(base),await scriptSettingsHash(scriptRelevantSnapshot(project,settings,"Arahan")));});
+test("manual edit is preserved byte-for-byte and CTA is not silently restored",()=>{const edited="Saya dah guna 3 bulan. Ini ayat saya.";const result=approvedPlan(plan,edited,"abc","user_edited");assert.equal(result.script,edited);assert.equal(result.cta,"");assert.equal(result.script_source,"user_edited");assert.doesNotMatch(result.script,/berkesan/);});
+test("AI-approved script persists unchanged",()=>assert.equal(approvedPlan(plan,plan.script,"abc","ai").script,plan.script));
