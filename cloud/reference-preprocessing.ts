@@ -7,10 +7,10 @@ function safe(a:ReferenceAssessment|undefined,index:number): a is ReferenceAsses
   return !!a&&a.index===index&&a.reference_type==="SCREENSHOT_OR_UI_IMAGE"&&a.detected_ui&&a.sanitization_confidence==="high"&&!a.ui_overlap_product&&!!b&&[b.left,b.top,b.right,b.bottom].every(Number.isFinite)&&b.left>=0&&b.top>=0&&b.right<=1&&b.bottom<=1&&b.right-b.left>=.15&&b.bottom-b.top>=.15;
 }
 export type OriginalPixelCrop=(source:string,bounds:NonNullable<ReferenceAssessment["product_region"]>,index:number)=>Promise<string>;
-export async function providerReferences(input:JobInput,product:ProductAnalysis,indices:number[],crop:OriginalPixelCrop){
+export async function providerReferences(input:JobInput,product:ProductAnalysis,indices:number[],crop:OriginalPixelCrop,forceOriginal=false){
   const media:string[]=[],audit:ReferenceAudit[]=[];
   for(const index of indices){const original=input.images[index],assessment=product.reference_preprocessing?.find(a=>a.index===index);let provider=original,applied=false;
-    if(safe(assessment,index)){try{provider=await crop(original,assessment.product_region!,index);applied=provider!==original;}catch{/* fail closed to the complete original */}}
+    if(!forceOriginal&&safe(assessment,index)){try{provider=await crop(original,assessment.product_region!,index);applied=provider!==original;}catch{/* fail closed to the complete original */}}
     const raw:ReferenceAssessment=assessment||{index,reference_type:"UNCERTAIN",detected_ui:false,product_region:null,ui_overlap_product:false,sanitization_confidence:"low",reason:"No conservative assessment available."};
     const base:ReferenceAssessment=raw.ui_overlap_product?{...raw,sanitization_confidence:"low",reason:`${raw.reason} UI overlaps the product region; V1 keeps the complete original.`}:raw;
     media.push(provider);audit.push({...base,original_reference_id:id(original),provider_reference_id:id(provider),sanitization_applied:applied,sanitization_method:applied?"original_pixel_crop":"none",crop_bounds:applied?base.product_region:null});

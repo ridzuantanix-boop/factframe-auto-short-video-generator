@@ -1,7 +1,51 @@
 // Single source of truth for global generation rules. Both current and legacy adapters use these.
 export const SPOKEN_CTA = "Klik link kat bawah.";
 export const PAWARNA_VIDEO_EXECUTION_LOCK = `Create ONE finished approximately 10-second vertical 9:16 video. Begin immediately with actual moving scene footage. Uploaded reference images are visual ingredients only: never a first-frame still, still intro, slideshow, screenshot, app interface or fake video frame. Zero generated on-screen text: no subtitles, captions, prices, CTA graphics, random letters, text overlays or fake UI. Physical printed product labels remain unchanged.`;
-export const REFERENCE_SANITIZATION_LOCK = `REFERENCE SANITIZATION — CRITICAL. Uploaded reference images are PRODUCT IDENTITY REFERENCES ONLY. PRODUCT IDENTITY is not REFERENCE COMPOSITION. Extract and recreate only the physical product. Preserve its actual packaging, shape, proportions, label layout and visible colours, including genuine text physically printed on the product label. Never display the source reference image itself, even for one frame: not as a first frame, still, background, poster, screenshot, phone screen, floating image, picture-in-picture, slideshow or transition. Ignore and remove all non-product screenshot and interface elements, including TikTok UI, Shopee UI, social-media controls, usernames, captions, prices, ratings, likes, comments, share buttons, icons, navigation bars, thumbnail strips, borders, watermarks, promotional graphics and surrounding text overlays. UI text surrounding the product must disappear; genuine physical product-label text remains part of product identity. Reconstruct the product naturally in a completely new real-world scene. FRAME 1 REQUIREMENT: the very first rendered frame belongs to that new physical scene and already has natural movement. No still-image intro, reference flash, fade from reference, screenshot transition or artificial camera whip.`;
+export const REFERENCE_SANITIZATION_LOCK = `UPLOADED IMAGE ROLE — PRODUCT IDENTITY ONLY
+
+PRODUCT IDENTITY REFERENCES ONLY.
+
+The uploaded image is NOT the first frame of the video.
+It is NOT a scene reference.
+It is NOT a composition reference.
+It is NOT a background reference.
+
+Use it only to identify the physical product.
+
+Preserve only:
+- exact product identity
+- shape
+- proportions
+- colours
+- packaging
+- genuine physical logo/label
+- included physical accessories
+
+Ignore everything else in the uploaded image.
+
+Do NOT reproduce:
+- original screenshot composition
+- original background
+- TikTok UI
+- PayLater graphics
+- installment banners
+- shopping interface
+- usernames
+- captions
+- social controls
+- promotional graphics
+- surrounding text
+- phone UI
+
+Create a completely NEW real-world scene from scratch.
+
+The product physically exists inside that new scene.
+
+Frame 1 must already be the NEW generated moving scene.
+
+The uploaded image itself must never appear as a frame, background, overlay, poster or transition.
+
+REFERENCE SANITIZATION — CRITICAL. PRODUCT IDENTITY is not REFERENCE COMPOSITION. Preserve genuine text physically printed on the product label. Never display the source reference image itself, including as a phone screen, floating image, picture-in-picture or slideshow. Ignore TikTok UI, Shopee UI and all social-media controls. UI text surrounding the product must disappear; genuine physical product-label text remains part of product identity. The very first rendered frame belongs to the new physical scene. No still-image intro, reference flash, fade from reference, screenshot transition or artificial camera whip.`;
 export const PRODUCT_LOCK = `The uploaded PRODUCT photographs are the absolute visual source of truth. Preserve exact product shape, size, proportions, packaging, cap, bottle, label layout, logo/brand identity and visible colours. Never elongate bottles, widen packaging, invent logos, change colours, redesign labels, generate alternate packaging or oversize the product. Keep realistic physical scale relative to hands and surroundings. Do not reveal unseen surfaces or invent hidden product parts. Do not transform, replace or beautify the packaging. Books remain closed unless interior reference photographs were uploaded; never invent unseen pages, back cover, interiors or contents.`;
 export const CAMERA_LOCK = `Use a believable flagship-smartphone camera with natural handheld micro-movement and small lateral/body movement when appropriate. Physically believable movement and gestures. No tripod feel, cinematic glide, aggressive zoom, artificial hero-spin or exaggerated influencer acting. POV styles may use genuine POV behaviour. No TV-commercial cinematic footage.`;
 export const PAWARNA_VISUAL_MASTER_LOCK = `Realistic flagship-smartphone UGC footage: a good creator filming with a flagship smartphone in good light. Bright, clean, crisp and sharp; natural local contrast, clean whites, accurate product colour, realistic material texture and skin, natural dynamic range. Believable Malaysian everyday environment, no fixed ethnicity. Realistic motion blur only when physically appropriate. No grey wash, dull/kusam output, yellow/orange cinematic grading, moody darkness, dreamy softness, excessive bokeh, AI plastic skin, waxy skin, plastic-looking product, fake HDR or overprocessed commercial/studio look.`;

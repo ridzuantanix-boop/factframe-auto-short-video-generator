@@ -201,7 +201,8 @@ export class PawarnaFactory extends DurableObject<Env> {
       const day = new Date().toISOString().slice(0, 10);
       if (!this.consume(`submissions:${day}`, Number(this.env.PAWARNA_DAILY_LIMIT || 20), Date.now() + 172_800_000)) throw new ProviderError("rejected", "Daily limit");
       const indices=job.product.reference_indices.slice(0,input.avatar?2:3);
-      const prepared=await providerReferences(input,job.product,indices,(source,bounds,index)=>Promise.resolve(input.sanitized_video_references?.[String(index)]||cloudflareCrop(this.env.IMAGES,source,bounds)));
+      const omniReferenceOnlyExperiment=this.env.PAWARNA_OMNI_REFERENCE_ONLY_PRODUCT_ID===input.settings?.productId;
+      const prepared=await providerReferences(input,job.product,indices,(source,bounds,index)=>Promise.resolve(input.sanitized_video_references?.[String(index)]||cloudflareCrop(this.env.IMAGES,source,bounds)),omniReferenceOnlyExperiment);
       const selected=prepared.media;job.reference_audit=prepared.audit;
       for(let i=0;i<selected.length;i++)if(prepared.audit[i].sanitization_applied){const image=decodeImage(selected[i]);await this.env.MEDIA.put(`jobs/${job.id}/sanitized-reference-${i}`,image.bytes,{httpMetadata:{contentType:image.mimeType}});}
       job.plan.video_prompt = buildVideoPrompt(job.product, job.plan, !!input.avatar, selected.length, input.instructions, input.settings);
