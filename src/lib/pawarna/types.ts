@@ -48,7 +48,7 @@ export interface ContentPlan {
   visual_direction: string; claim_evidence_ids: string[]; video_prompt: string;
   script_source?: "ai"|"user_edited"; script_settings_hash?:string; script_generated_at?:number;
 }
-export interface JobInput { images: string[]; sanitized_video_references?: Record<string,string>; avatar?: string; product_title?:string; product_url?:string; mode: Mode; instructions: string; angle_seed: string; previous_hook?: string; approved_script?:string; script_settings_hash?:string; script_source?:"ai"|"user_edited"; settings?: import("./settings").GenerationSettings }
+export interface JobInput { images: string[]; sanitized_video_references?: Record<string,string>; avatar?: string; product_title?:string; product_url?:string; mode: Mode; instructions: string; angle_seed: string; previous_hook?: string; previous_scripts?:string[]; approved_script?:string; script_settings_hash?:string; script_source?:"ai"|"user_edited"; settings?: import("./settings").GenerationSettings }
 export interface Job {
   settings?: import("./settings").GenerationSettings;
   id: string; owner: string; input: JobInput; stage: Stage; created_at: number; updated_at: number;

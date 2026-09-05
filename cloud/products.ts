@@ -37,10 +37,10 @@ export class Products {
         if(!this.env.GEMINI_API_KEY)return json({error:"Skrip belum tersedia buat masa ini."},503);
         const body=await readBody(request,8192),settings=validateSettings(body.settings,p.id),instructions=String(body.instructions||"");
         if(instructions.length>1000)throw new Error("Arahan maksimum 1,000 aksara.");
-        const saved=await this.input(p),input=projectInput({...saved,settings,instructions,angle_seed:crypto.randomUUID(),previous_hook:p.script_draft?.plan.hook},p);
+        const saved=await this.input(p),history=[...(p.script_history||[]),...(p.script_draft?.plan.script?[p.script_draft.plan.script]:[])].slice(-5),input=projectInput({...saved,settings,instructions,angle_seed:crypto.randomUUID(),previous_hook:p.script_draft?.plan.hook,previous_scripts:history},p);
         const reused=body.source_job?source(String(body.source_job)):undefined;if(body.source_job&&(!reused||reused.owner!==owner||!reused.plan))return json({error:"Video tidak ditemui."},404);
         const plan=reused?.plan?{...reused.plan,video_prompt:""}:await createPlan(input,p.product,p.research),snapshot=scriptRelevantSnapshot(p,settings,instructions),settings_hash=await scriptSettingsHash(snapshot),generated_at=Date.now();
-        p.script_draft={plan:{...plan,script_source:"ai",script_settings_hash:settings_hash,script_generated_at:generated_at},settings_hash,generated_at};this.save(p);
+        p.script_history=history;p.script_draft={plan:{...plan,script_source:"ai",script_settings_hash:settings_hash,script_generated_at:generated_at},settings_hash,generated_at};this.save(p);
         return json({script:plan.script,plan:p.script_draft.plan,settings_hash,generated_at,source:"ai"});
       }
       return json({},405);

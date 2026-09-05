@@ -1,7 +1,7 @@
 import type { ContentPlan, JobInput, ProductAnalysis } from "./types";
 
 const rules:[string,RegExp][]=[
-  ["unsupported creator experience",/\b(?:saya|aku)\s+(?:dah|sudah|memang|selalu|pernah)\s+(?:guna|pakai|cuba|test|makan)|\banak saya suka\b|\bsaya (?:suka|repeat|beli lagi)\b/i],
+  ["unsupported creator experience",/\b(?:saya|aku)\s+(?:dah|sudah|memang|selalu|pernah)\s+(?:guna|pakai|cuba|test|makan)|\banak (?:saya|aku) (?:guna|suka)\b|\b(?:saya|aku) (?:suka sebab|suka|repeat|beli lagi)\b/i],
   ["unsupported testimonial or social proof",/\b(?:review (?:kata )?(?:bagus|best|positif)|ramai (?:ibu|parents?|orang|yang)?\s*(?:dah )?(?:guna|beli|repeat|puas hati|suka)|semua suka|feedback (?:memang )?best|customer suka|viral|trending|best\s?seller|popular|famous|recommended by many|\d+[km]?\s+(?:satisfied|puas hati))\b/i],
   ["unsupported price or promotion",/\b(?:harga (?:tengah )?(?:promo|jatuh|berbaloi|murah|special)|sekarang murah|murah sekarang|diskaun besar|tengah sale|special price|offer hari ini|offer hari ni|promo)\b/i],
   ["unsupported scarcity or urgency",/\b(?:stok tinggal sikit|tinggal beberapa unit|cepat sebelum habis|ramai tengah grab|promo nak habis|last chance|harga akan naik)\b/i],
@@ -14,14 +14,22 @@ export function planClaimGuard(plan:ContentPlan){
 }
 
 const genericHook=/^(?:tengah cari produk|tengah cari .+ yang sesuai|nak cari produk|ini produk|produk ni|kalau korang tengah cari|jom tengok produk|nak tahu produk apa)/i;
-export function scriptQualityProblems(plan:ContentPlan,input:JobInput){
+const formalCopy=/\b(?:produk ini sesuai untuk|produk ini mengandungi|produk ini direka untuk|produk ini merupakan|berdasarkan maklumat|bagi mereka yang|sekiranya anda)\b/i;
+const normalize=(value:string)=>value.toLowerCase().replace(/[^a-z0-9\u00c0-\u024f]+/g," ").trim();
+export function scriptSimilarity(a:string,b:string){const aa=new Set(normalize(a).split(" ").filter(Boolean)),bb=new Set(normalize(b).split(" ").filter(Boolean));if(!aa.size||!bb.size)return 0;const common=[...aa].filter(word=>bb.has(word)).length;return common/(aa.size+bb.size-common);}
+export function scriptQualityProblems(plan:ContentPlan,input:JobInput,evidenceText=""){
   if(input.settings?.voiceoverEnabled===false)return [];
   const problems:string[]=[];const hook=plan.hook.trim(),script=plan.script.trim();
   if(genericHook.test(hook))problems.push("generic non-hook");
+  if(formalCopy.test(script))problems.push("written or formal catalogue language");
   if(/^ini\s+[^.?!]+[.?!]?\s*(?:klik link kat bawah\.)?$/i.test(script)||script.split(/[.!?]+/).filter(Boolean).length<2)problems.push("catalogue description without consumer relevance");
   const problemSelected=input.settings?.videoStyle==="problem_solution"||input.settings?.angle==="problem";
   if(problemSelected&&!/(?:susah|tak suka|tak mahu|penat|risau|masalah|makin|selalu|bila|sampai|rimas|leceh|gugur|nipis|kering|berminyak|kotor|panas)/i.test(hook))problems.push("Problem → Solution lacks recognizable friction");
+  if(problemSelected&&!/(?:jangan|risau|ketara|buat tak tahu|ambil perhatian|makin teruk|sebelum jadi|dah mula)/i.test(script.slice(hook.length)))problems.push("Problem → Solution lacks tension or consequence");
   if(input.previous_hook&&hook.toLowerCase()===input.previous_hook.trim().toLowerCase())problems.push("regeneration repeated the previous hook");
+  for(const previous of input.previous_scripts||[])if(normalize(script)===normalize(previous)||scriptSimilarity(script,previous)>=.72){problems.push("regeneration substantially duplicates a recent script");break;}
+  if(/\b(?:\d+[\d,.]*\s*(?:k|ribu|juta)?\s*(?:terjual|sold|review|ulasan)|rating\s*\d|\d+%|nombor\s*1|top seller)\b/i.test(script)&&!evidenceText.toLowerCase().includes(normalize(script).match(/\d+[\d,.]*/)?.[0]||"__none__"))problems.push("numeric social proof lacks evidence");
+  if(/\b(?:review|ulasan)\b/i.test(script)&&!/(?:ada yang|pembeli|reviewer|ulasan)\s+(?:review\s+)?(?:kata|sebut)|menurut\s+(?:review|ulasan)/i.test(script))problems.push("review evidence is not attributed");
   return problems;
 }
 

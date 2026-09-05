@@ -27,7 +27,11 @@ const mock = createServer(async (req, res) => {
       searches++;
       res.end(JSON.stringify({ candidates: [{ content: { role: "model", parts: [{ text: "Cover buku berwarna biru." }] }, groundingMetadata: { groundingChunks: [{ web: { uri: "https://example.com/book", title: "Mock source" } }], groundingSupports: [{ segment: { text: "Cover biru" }, groundingChunkIndices: [0] }], webSearchQueries: ["Buku Biru"] } }] })); return;
     } else if (content.includes("Audit this Malay script")) value = { approved: true, reason: "Supported" };
-    else if(content.includes("VOICE IS OFF:"))value={...plan,script:"",cta:"",hook:"Show closed blue cover"};else{planCalls++;const hook=`Suka tengok buku biru dari sudut berbeza ${planCalls}?`;value={...plan,hook,script:`${hook} Warna birunya jelas dan tajuknya ada pada bahagian depan. Klik link kat bawah.`};}
+    else if(content.includes("VOICE IS OFF:"))value={...plan,script:"",cta:"",hook:"Show closed blue cover"};else{const variants=[
+      {hook:"Cover biru ni terus curi perhatian?",script:"Cover biru ni terus curi perhatian? Tajuknya jelas pada bahagian depan. Klik link kat bawah sekarang."},
+      {hook:"Kalau suka rekaan ringkas, tengok ni.",script:"Kalau suka rekaan ringkas, tengok ni. Buku Biru tampil dengan tajuk jelas. Klik link kat bawah sekarang."},
+      {hook:"Apa yang buat buku ni mudah dicam?",script:"Apa yang buat buku ni mudah dicam? Warna biru dan tajuk depannya. Klik link kat bawah sekarang."}
+    ];value={...plan,...variants[planCalls++%variants.length],cta:"Klik link kat bawah sekarang."};}
     res.end(JSON.stringify({ candidates: [{ content: { role: "model", parts: [{ text: JSON.stringify(value) }] } }] })); return;
   }
   assert.equal(req.headers["x-api-key"], "test-only");
@@ -96,7 +100,7 @@ try {
   const input = {product_id:saved.id, avatar:image, settings,...firstDraft,approved_script:editedScript};
 
   const key = crypto.randomUUID();
-  const send = (body, id = key, reqOrigin = origin) => fetch(`${origin}/api/generate`, { method: "POST", headers: { origin: reqOrigin, cookie, "content-type": "application/json", "idempotency-key": id }, body: JSON.stringify(body) });
+  const send = (body, id = key, reqOrigin = origin) => fetch(`${origin}/api/generate`, { method: "POST", headers: { origin: reqOrigin, cookie, "content-type": "application/json", "idempotency-key": id, "x-pawarna-ip":`integration-${id}` }, body: JSON.stringify(body) });
   assert.equal((await send({product_id:saved.id,avatar:image,settings},crypto.randomUUID())).status,400);assert.equal(submissions,0,"Missing script reached provider");
   assert.equal((await send({...input,settings:{...settings,angle:"problem"}},crypto.randomUUID())).status,400);assert.equal(submissions,0,"Stale script reached provider");
   assert.equal((await send(input, crypto.randomUUID(), "https://evil.invalid")).status, 403);
