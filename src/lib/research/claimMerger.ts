@@ -31,7 +31,8 @@ function mergeGroup(group: RawResearchClaim[]): ResearchClaim {
   const confidence = independentSources >= 2 ? "HIGH" : best.ocrQuality >= .68 ? "MEDIUM" : "LOW";
   const normalizedClaim = best.normalizedClaim;
   return { id: createHash("sha256").update(`${best.storyCandidateId}:${normalizedClaim}`).digest("hex").slice(0, 32),
-    storyCandidateId: best.storyCandidateId, claimText: best.claimText, spokenText: best.spokenText, normalizedClaim, claimType: best.claimType, confidence, sourceIds,
+    storyCandidateId: best.storyCandidateId, claimText: best.claimText, spokenText: best.spokenText, rewriteMethod: best.rewriteMethod, rewriteModel: best.rewriteModel,
+    validatedAt: best.validatedAt, validationVersion: best.validationVersion, validationResult: best.validationResult, normalizedClaim, claimType: best.claimType, confidence, sourceIds,
     eventDate: best.eventDate, people: [...new Set(group.flatMap((claim) => claim.people))],
     locations: [...new Set(group.flatMap((claim) => claim.locations))], priority: best.priority, visualIntent: best.visualIntent,
     ocrQuality: Number((group.reduce((sum, claim) => sum + claim.ocrQuality, 0) / group.length).toFixed(3)) };

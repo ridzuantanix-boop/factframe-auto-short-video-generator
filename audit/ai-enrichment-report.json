@@ -1,0 +1,2708 @@
+{
+  "generatedAt": "2026-09-05T05:01:30.190Z",
+  "model": "gemini-3.5-flash-lite",
+  "geminiAvailable": true,
+  "cohortSize": 100,
+  "candidateIds": [
+    "cd396f4c-19e0-4055-9195-3b005964a0ba",
+    "4b372ba8-6fc0-492c-8723-0adfa4c05d70",
+    "882ee5c4-403b-47b5-9aeb-c7c304955052",
+    "a3ef3546-a23d-43ca-8b96-411615c0be98",
+    "42fef305-5acc-47e4-8e11-4f9ddafe69da",
+    "2ede644c-2c97-4428-b4bc-e8dee001dc77",
+    "99b0cc2b-dc2c-49a5-8d52-57f8096981dc",
+    "d2903e14-71f5-4a04-91ec-8939a889d6be",
+    "518d37c9-dafa-49ad-8c7a-11df0dfbe609",
+    "6cb5d71b-0425-4268-800e-ef15fc5c6d27",
+    "9633002d-fd92-4b19-964d-2d3b878921ce",
+    "4def894f-2eca-4d65-a6ce-f184eebf0b7e",
+    "5d9f94c2-a559-4dc6-890b-a7bc45b7497d",
+    "e7bfa37c-f4be-4310-b126-c53b32b677fd",
+    "bcfbaef5-b55f-43de-80cb-4d71df160ce7",
+    "38bdaf75-fb29-422c-aaf1-777f2297e2a8",
+    "99b3809a-9e80-4ac6-a693-adf47736670b",
+    "d770d492-85ec-4291-8cc8-ca3839f82cf8",
+    "a37cc5cc-08d4-42fc-a6e3-b6e53d6c040d",
+    "7c0591f8-840e-4e98-80fe-e1e19f9cd3a5",
+    "7d629d67-5f68-49ff-ad4a-9f4b6ca2f716",
+    "8722f525-e618-448b-a1da-b133a256765e",
+    "4606c5c3-677c-4c0f-947e-d4a8e2a7bca1",
+    "42121e1c-0667-4dfa-9133-04342d7eeb3b",
+    "ca1679c9-70c9-4528-b19b-36a41dd3f84c",
+    "cb09ca49-4ca6-4a1c-8c5d-4828ecb0c9e5",
+    "2220b6d4-5b1e-4621-9514-7f6e3390b918",
+    "1cbeff7c-16ef-4f66-8eda-076f9eb728b1",
+    "c2233835-32d3-476f-9fad-7485ce91bb94",
+    "6104b205-f677-45d2-a7dd-7d3f09ad505a",
+    "c1cc69e7-0a2a-4e10-8c34-dba1449b2811",
+    "516fee77-5c0d-44eb-a0df-7474c99b2906",
+    "ca00ef68-c8fa-46ec-ab5e-26d34f9881d3",
+    "45d871f9-22c4-445d-81f5-bbdb1ebc8215",
+    "687dfae3-0fa1-4528-8d37-d8614d910821",
+    "1eb32f3c-456c-43f2-b718-a25c11f1ab77",
+    "1e14335b-d992-4f8d-aac6-ed2b951522c2",
+    "f2e9da58-a6b2-4194-a579-a48646f78cce",
+    "1e9acba3-0784-4703-bf16-9121a1b83152",
+    "c06ec8ad-8b16-47cb-9f63-c9cbd7665dda",
+    "5fee9d57-0cd3-4350-b8ef-1bbe320a5919",
+    "2e709d5f-a353-46f1-90b0-2d949c60f9c7",
+    "87d0b625-1a9b-496a-bf46-ae870ad2dbbe",
+    "0157cd3b-1bf5-48b3-a204-95c2ba16c585",
+    "4dc7f757-56df-4ee3-80b0-a6196f50346b",
+    "94e69355-6fc5-4122-a68a-14442abac45f",
+    "5664677b-b664-427b-8868-5fe4f880989f",
+    "764c85c7-c390-4c2d-98b9-c87fada5d981",
+    "ae9b75d7-9522-4a0d-b730-3d80d1f7b9af",
+    "f8b84f69-076c-4b0c-b646-7ea8c93617fe",
+    "7649027b-c298-4c89-82f6-21d9a8d11437",
+    "b5e8f7d1-242e-46a2-b345-da005d9f91c0",
+    "9323975c-4f17-4ec2-9c8c-7767189280bf",
+    "efa7a7c2-aa28-47a0-a92c-ad77bd25c91e",
+    "e17ac5f5-f6b2-4701-b894-15ed753f4879",
+    "169fea6e-ab70-469a-8d9d-66d39e5a35eb",
+    "2f1e47ab-fa25-49a0-8489-7a56a049f8ee",
+    "48a9235b-5055-4d50-aa29-1a4bb8a90e99",
+    "df09ae8f-9513-4aba-a707-038f92ff6767",
+    "930fe7be-bc41-4868-9ce2-f308ccbd4f40",
+    "412763cb-2587-40cf-8082-d32f0c10c39a",
+    "a6f8b18b-15c3-4770-9684-478723dbc129",
+    "c43a633d-3626-4b70-a4fa-ccc3f578d6c8",
+    "e1dbc390-b58e-48f6-a57a-44a447830f51",
+    "149cea5e-f577-40d4-bef8-03cfaf9646e6",
+    "b8d44dd5-042b-4b34-bb1c-fe4b006ba665",
+    "00e402da-1a7d-46d7-8fc7-d2ad431bf2e0",
+    "fbb25b2b-9d92-4fe2-a4a9-e365be3716da",
+    "5a550b65-203c-4cd4-a772-73c6bd1f6f98",
+    "0b1ef879-b43d-4db1-ba34-571f2cdc4095",
+    "0030df36-6fc2-47a3-aa29-765aaa82ba33",
+    "02c8139b-c846-4c92-ac2c-f4c74cac766e",
+    "a0e87197-ed01-4ae6-824a-e7af13385b96",
+    "33cd462f-91db-4bcc-ad74-d1ae533fb7b5",
+    "de255abd-5ba3-4e4e-b5df-cffa7356f19c",
+    "3ad6ec6d-a8a2-4b8e-a9dd-ac5bd54f95fa",
+    "056c5ce7-f2c0-4288-8231-5b0f7fc32980",
+    "dd092f8c-a1ee-435d-b1e2-c58c3ca0eac0",
+    "2c5a4871-9269-4890-a752-98b3694a4e56",
+    "56aad82d-55e8-4391-bc44-b204a016ce21",
+    "58cd172a-184e-49b5-a903-7c3bae3a7a92",
+    "adeaa558-a069-4208-9359-88649ff80009",
+    "bcad5d60-472b-4789-844f-773f452f18e8",
+    "c1bb8260-4ce7-4315-a00e-debd39739691",
+    "d91066cb-693e-43c5-93d7-c1b002fa32de",
+    "3eca3d99-0d2e-401c-8489-7c7ace78c8c1",
+    "78be0ec6-fc50-4629-96f3-0708de563e0a",
+    "12af02dc-0c02-4f78-ad40-84e41300c3c7",
+    "d52e1b22-771e-4fd0-aeea-821ef180a40e",
+    "7b116423-a841-46fc-bacd-aa1564c62243",
+    "e4d375c6-7078-465a-97d8-bd8fddd15d42",
+    "de98f083-bc00-4d58-95c7-09d3f43b5d20",
+    "eda4c0a1-4a5e-45ff-8108-180b3268d2ad",
+    "d6fc82c0-086c-4b3d-8b7f-0083ccd9e164",
+    "98522079-e521-41c6-b2f3-08019f19d831",
+    "028b3ba6-8012-493c-bef0-a776760c4a06",
+    "2d740be0-015d-4fde-9642-ec1180ea67c3",
+    "65a9e4a4-aed3-4dee-b0c3-13d1b5d27429",
+    "055d9aea-c174-453a-ac3c-89eb94f269f0",
+    "cdff68d7-e332-43a3-8840-60cac4478815"
+  ],
+  "storyTypes": {
+    "DISAPPEARANCE": 22,
+    "CRIME_MYSTERY": 28,
+    "MYSTERIOUS_DEATH": 7,
+    "DISASTER": 14,
+    "HISTORICAL_INCIDENT": 24,
+    "PARANORMAL_REPORT": 1,
+    "FOLKLORE": 1
+  },
+  "deterministicSpokenCoverageBefore": 0.028,
+  "validatedSpokenCoverageAfter": 0.472,
+  "eligibleClaimCount": 108,
+  "readyBefore": 0,
+  "readyAfter": 0,
+  "claimsSent": 68,
+  "claimsSafelyRewritten": 48,
+  "claimsSafelyRewrittenThisRun": 18,
+  "rejectedRewrites": 50,
+  "retryCount": 42,
+  "geminiRequests": 94,
+  "averageClaimsPerRequest": 0.723,
+  "inputTokens": 36572,
+  "outputTokens": 18371,
+  "storiesGenerated": 1,
+  "storiesGeneratedPerRequest": 0.011,
+  "cacheHits": 30,
+  "cacheHitRate": 0.306,
+  "sourcePagesAttempted": 151,
+  "sourcesDeepened": 0,
+  "details": [
+    {
+      "candidateId": "cd396f4c-19e0-4055-9195-3b005964a0ba",
+      "title": "GIRL, 10 MISSING",
+      "storyType": "DISAPPEARANCE",
+      "status": "PARTIAL",
+      "claimsSent": 1,
+      "rewritten": 0,
+      "rejected": 1,
+      "retries": 1,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 1,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 653,
+        "outputTokens": 267
+      },
+      "failures": [
+        {
+          "claimId": "f118ce66492809417729965f2c21996f",
+          "attemptedSpokenText": "Seorang kanak-kanak perempuan Cina dilaporkan masih hilang.",
+          "reasons": [
+            "numbers were added, removed, or changed",
+            "named person omitted: Kampong Dollah"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "4b372ba8-6fc0-492c-8723-0adfa4c05d70",
+      "title": "JOHORE MURDER.",
+      "storyType": "CRIME_MYSTERY",
+      "status": "PARTIAL",
+      "claimsSent": 1,
+      "rewritten": 1,
+      "rejected": 0,
+      "retries": 1,
+      "cacheHits": 2,
+      "storyCacheHit": false,
+      "storyGenerated": true,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 3,
+        "inputTokens": 1300,
+        "outputTokens": 836
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "882ee5c4-403b-47b5-9aeb-c7c304955052",
+      "title": "Malay's Body Found In Perak River",
+      "storyType": "MYSTERIOUS_DEATH",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 1,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "a3ef3546-a23d-43ca-8b96-411615c0be98",
+      "title": "FATAL ACCIDENT AT KUALA LUMPUR.",
+      "storyType": "DISASTER",
+      "status": "PARTIAL",
+      "claimsSent": 1,
+      "rewritten": 0,
+      "rejected": 1,
+      "retries": 1,
+      "cacheHits": 1,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 1,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 611,
+        "outputTokens": 263
+      },
+      "failures": [
+        {
+          "claimId": "21d70e5e45bc47140721a0eee9b4c42f",
+          "attemptedSpokenText": "Dilaporkan seorang pemandu van pos maut semalam.",
+          "reasons": [
+            "named person omitted: Telegraphs Department"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "42fef305-5acc-47e4-8e11-4f9ddafe69da",
+      "title": "CO717/194/52745/21/1: Colonial Office - Federated Malay States: Original Correspondence: Police Department Police Organisation in Singapore MacIntosh Report [undated-4]",
+      "storyType": "HISTORICAL_INCIDENT",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "2ede644c-2c97-4428-b4bc-e8dee001dc77",
+      "title": "MALAYAN GHOST STORY.",
+      "storyType": "PARANORMAL_REPORT",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 1,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "99b0cc2b-dc2c-49a5-8d52-57f8096981dc",
+      "title": "NEW FILM TO KILL ARMY LEGEND",
+      "storyType": "FOLKLORE",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 0,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": [
+        {
+          "reasons": [
+            "Run deterministic research before AI enrichment."
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "d2903e14-71f5-4a04-91ec-8939a889d6be",
+      "title": "JOHORE DETECTIVE'S SMART WORK.",
+      "storyType": "CRIME_MYSTERY",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "518d37c9-dafa-49ad-8c7a-11df0dfbe609",
+      "title": "THE MURDER ON THE \"PERAK.\"",
+      "storyType": "CRIME_MYSTERY",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 1,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "6cb5d71b-0425-4268-800e-ef15fc5c6d27",
+      "title": "NEGRI ASSIZES.",
+      "storyType": "HISTORICAL_INCIDENT",
+      "status": "PARTIAL",
+      "claimsSent": 1,
+      "rewritten": 0,
+      "rejected": 1,
+      "retries": 1,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 661,
+        "outputTokens": 269
+      },
+      "failures": [
+        {
+          "claimId": "6d0dfb7afab80cb74e9d4e73d84ab218",
+          "attemptedSpokenText": "Dilaporkan pertuduhan bunuh dikurangkan kepada membunuh tanpa niat.",
+          "reasons": [
+            "named person omitted: Culpable Homicide",
+            "Malay language or spoken-naturalness gate failed"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "9633002d-fd92-4b19-964d-2d3b878921ce",
+      "title": "Two more confess to role in murder of Perak prince's wife",
+      "storyType": "HISTORICAL_INCIDENT",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "4def894f-2eca-4d65-a6ce-f184eebf0b7e",
+      "title": "FCO 141/15953/3: Singapore: Weekly Intelligence Summaries of the Security Forces, Malaya. Part 3 of 5 - migrated archives [undated-7]",
+      "storyType": "HISTORICAL_INCIDENT",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "5d9f94c2-a559-4dc6-890b-a7bc45b7497d",
+      "title": "Girl, woman reported missing",
+      "storyType": "DISAPPEARANCE",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "e7bfa37c-f4be-4310-b126-c53b32b677fd",
+      "title": "PERAK ASSIZES.",
+      "storyType": "CRIME_MYSTERY",
+      "status": "PARTIAL",
+      "claimsSent": 1,
+      "rewritten": 0,
+      "rejected": 1,
+      "retries": 1,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 1,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 598,
+        "outputTokens": 264
+      },
+      "failures": [
+        {
+          "claimId": "f9f362696d5e872b8164a0a944a58a3a",
+          "attemptedSpokenText": "Dilaporkan terdapat tujuh perbicaraan bunuh dalam senarai.",
+          "reasons": [
+            "death meaning changed"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "bcfbaef5-b55f-43de-80cb-4d71df160ce7",
+      "title": "Motor Accident at Gombak.",
+      "storyType": "DISASTER",
+      "status": "PARTIAL",
+      "claimsSent": 2,
+      "rewritten": 1,
+      "rejected": 1,
+      "retries": 1,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 1047,
+        "outputTokens": 633
+      },
+      "failures": [
+        {
+          "claimId": "af9216e1447179f719be27cc5a8cc004",
+          "attemptedSpokenText": "Dilaporkan berlaku satu kemalangan kenderaan bermotor di Gombak, tiga belas batu dari Kuala Lumpur, di Ginting Simpah.",
+          "reasons": [
+            "named person omitted: Motor Accident"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "38bdaf75-fb29-422c-aaf1-777f2297e2a8",
+      "title": "Murder on the Perak. [1923-11-22]",
+      "storyType": "CRIME_MYSTERY",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "99b3809a-9e80-4ac6-a693-adf47736670b",
+      "title": "Lorry Driver On Murder Charge",
+      "storyType": "CRIME_MYSTERY",
+      "status": "PARTIAL",
+      "claimsSent": 2,
+      "rewritten": 0,
+      "rejected": 2,
+      "retries": 1,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 1115,
+        "outputTokens": 621
+      },
+      "failures": [
+        {
+          "claimId": "14ccb34dba94b59a06ee319a21e61c46",
+          "attemptedSpokenText": "Dilaporkan pemandu lori menghadapi pertuduhan membunuh.",
+          "reasons": [
+            "named person omitted: Lorry Driver",
+            "named person omitted: Murder Charge",
+            "Malay language or spoken-naturalness gate failed"
+          ]
+        },
+        {
+          "claimId": "ff388c823e6aa67b9fa03584ee39f709",
+          "attemptedSpokenText": "Dilaporkan ini adalah hasil siasatan polis berhubung misteri kehilangan Sinnah Govindan Mudaliar.",
+          "reasons": [
+            "numbers were added, removed, or changed"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "d770d492-85ec-4291-8cc8-ca3839f82cf8",
+      "title": "Motor Cycle Accident.",
+      "storyType": "DISASTER",
+      "status": "PARTIAL",
+      "claimsSent": 1,
+      "rewritten": 0,
+      "rejected": 1,
+      "retries": 1,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 685,
+        "outputTokens": 316
+      },
+      "failures": [
+        {
+          "claimId": "c39449a741be561c6b46ca2ee50f24b0",
+          "attemptedSpokenText": "Ada dilaporkan berlaku kemalangan motosikal.",
+          "reasons": [
+            "named person omitted: Motor Cycle Accident"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "a37cc5cc-08d4-42fc-a6e3-b6e53d6c040d",
+      "title": "SCHOOLBOY MISSING",
+      "storyType": "DISAPPEARANCE",
+      "status": "PARTIAL",
+      "claimsSent": 1,
+      "rewritten": 0,
+      "rejected": 1,
+      "retries": 1,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 717,
+        "outputTokens": 328
+      },
+      "failures": [
+        {
+          "claimId": "5731d894c6147bf30b4e2eaa4f3609ee",
+          "attemptedSpokenText": "Seorang pelajar Methodist Boys' School telah dilaporkan hilang oleh bapanya.",
+          "reasons": [
+            "numbers were added, removed, or changed"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "7c0591f8-840e-4e98-80fe-e1e19f9cd3a5",
+      "title": "MYSTERY OF MISSING CHETTIAR.",
+      "storyType": "DISAPPEARANCE",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 2,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "7d629d67-5f68-49ff-ad4a-9f4b6ca2f716",
+      "title": "Missing Peace Corps volunteer is Beckner of Bellevue",
+      "storyType": "DISAPPEARANCE",
+      "status": "PARTIAL",
+      "claimsSent": 1,
+      "rewritten": 0,
+      "rejected": 1,
+      "retries": 1,
+      "cacheHits": 1,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 721,
+        "outputTokens": 333
+      },
+      "failures": [
+        {
+          "claimId": "b0d4403beb1aad2d0690ae279ddfbff4",
+          "attemptedSpokenText": "Seorang sukarelawan Peace Corps yang hilang adalah Beckner dari Bellevue.",
+          "reasons": [
+            "numbers were added, removed, or changed",
+            "named person omitted: Missing Peace Corps"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "8722f525-e618-448b-a1da-b133a256765e",
+      "title": "Missing man is safe",
+      "storyType": "DISAPPEARANCE",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 1,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "4606c5c3-677c-4c0f-947e-d4a8e2a7bca1",
+      "title": "Two missing after chopper crash",
+      "storyType": "DISAPPEARANCE",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 1,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "42121e1c-0667-4dfa-9133-04342d7eeb3b",
+      "title": "ACQUITTED OF MURDER",
+      "storyType": "CRIME_MYSTERY",
+      "status": "PARTIAL",
+      "claimsSent": 1,
+      "rewritten": 0,
+      "rejected": 1,
+      "retries": 1,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 1,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 660,
+        "outputTokens": 272
+      },
+      "failures": [
+        {
+          "claimId": "18311565ce7fdb417120c7d00e85b61b",
+          "attemptedSpokenText": "Dilaporkan seorang lelaki Tamil dibebaskan daripada pertuduhan membunuh.",
+          "reasons": [
+            "numbers were added, removed, or changed",
+            "named person omitted: Negri Sembilan Assizes"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "ca1679c9-70c9-4528-b19b-36a41dd3f84c",
+      "title": "MURDER CHARGE",
+      "storyType": "CRIME_MYSTERY",
+      "status": "PARTIAL",
+      "claimsSent": 1,
+      "rewritten": 1,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 1,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 1,
+        "inputTokens": 328,
+        "outputTokens": 142
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "cb09ca49-4ca6-4a1c-8c5d-4828ecb0c9e5",
+      "title": "Two More Bandits Shot Dead",
+      "storyType": "CRIME_MYSTERY",
+      "status": "PARTIAL",
+      "claimsSent": 3,
+      "rewritten": 1,
+      "rejected": 2,
+      "retries": 1,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 1426,
+        "outputTokens": 852
+      },
+      "failures": [
+        {
+          "claimId": "d72c366fdc8bb61e1aed9ef2069e4e42",
+          "attemptedSpokenText": "Dilaporkan dua lagi penjahat telah ditembak mati.",
+          "reasons": [
+            "named person omitted: Two More Bandits Shot"
+          ]
+        },
+        {
+          "claimId": "76e923e8f7c4f901a1f31a4182a195ce",
+          "attemptedSpokenText": "Dilaporkan pihak polis dan tentera telah membunuh pengganas.",
+          "reasons": [
+            "numbers were added, removed, or changed"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "2220b6d4-5b1e-4621-9514-7f6e3390b918",
+      "title": "THE MISSING CHETTIAR.",
+      "storyType": "DISAPPEARANCE",
+      "status": "PARTIAL",
+      "claimsSent": 1,
+      "rewritten": 0,
+      "rejected": 1,
+      "retries": 1,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 654,
+        "outputTokens": 322
+      },
+      "failures": [
+        {
+          "claimId": "18585312c37a2dd9d9b37e249118ed8f",
+          "attemptedSpokenText": "Tiada sebarang petunjuk mengenai kehilangan itu.",
+          "reasons": [
+            "named person omitted: Disappearance Since May",
+            "negation removed",
+            "unresolved status was removed"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "1cbeff7c-16ef-4f66-8eda-076f9eb728b1",
+      "title": "MISSING GIRL [1936-08-31]",
+      "storyType": "DISAPPEARANCE",
+      "status": "PARTIAL",
+      "claimsSent": 1,
+      "rewritten": 0,
+      "rejected": 1,
+      "retries": 1,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 611,
+        "outputTokens": 246
+      },
+      "failures": [
+        {
+          "claimId": "ab82ab5a7e446b4e4961599329fbc59c",
+          "attemptedSpokenText": "",
+          "reasons": [
+            "spoken text is empty",
+            "named person omitted: Have Been",
+            "named person omitted: Penang Singapore",
+            "unresolved status was removed",
+            "Malay language or spoken-naturalness gate failed"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "c2233835-32d3-476f-9fad-7485ce91bb94",
+      "title": "PLANTER KILLED IN FLYING ACCIDENT",
+      "storyType": "DISASTER",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "6104b205-f677-45d2-a7dd-7d3f09ad505a",
+      "title": "JOHORE MURDER TRIAL.",
+      "storyType": "CRIME_MYSTERY",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "c1cc69e7-0a2a-4e10-8c34-dba1449b2811",
+      "title": "Body found in Perak River [1963-03-21]",
+      "storyType": "MYSTERIOUS_DEATH",
+      "status": "PARTIAL",
+      "claimsSent": 1,
+      "rewritten": 0,
+      "rejected": 1,
+      "retries": 1,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 681,
+        "outputTokens": 317
+      },
+      "failures": [
+        {
+          "claimId": "6c6ca8af99e60ccdab114ff4e33b16d2",
+          "attemptedSpokenText": "Polis dilaporkan menemui mayat di Perak River.",
+          "reasons": [
+            "numbers were added, removed, or changed"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "516fee77-5c0d-44eb-a0df-7474c99b2906",
+      "title": "MAN'S BODY IS FOUND IN RIVER [1961-01-11]",
+      "storyType": "MYSTERIOUS_DEATH",
+      "status": "PARTIAL",
+      "claimsSent": 2,
+      "rewritten": 0,
+      "rejected": 2,
+      "retries": 1,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 1057,
+        "outputTokens": 634
+      },
+      "failures": [
+        {
+          "claimId": "bae141c3aaf29b987415b4d6ce75b42d",
+          "attemptedSpokenText": "Dilaporkan satu mayat lelaki telah dijumpai di dalam sungai.",
+          "reasons": [
+            "numbers were added, removed, or changed"
+          ]
+        },
+        {
+          "claimId": "54f948af470d78f6ee7e06aabbc3565c",
+          "attemptedSpokenText": "Polis dilaporkan telah menemui semula mayat Tan Ah Geok.",
+          "reasons": [
+            "numbers were added, removed, or changed"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "ca00ef68-c8fa-46ec-ab5e-26d34f9881d3",
+      "title": "BODY FOUND",
+      "storyType": "MYSTERIOUS_DEATH",
+      "status": "PARTIAL",
+      "claimsSent": 1,
+      "rewritten": 0,
+      "rejected": 1,
+      "retries": 1,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 1,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 658,
+        "outputTokens": 265
+      },
+      "failures": [
+        {
+          "claimId": "3a443ede4c200f8bd8b0bae06ebd5208",
+          "attemptedSpokenText": "Dilaporkan mayat Halimah binti Khalid yang hilang ketika mandi di Sungai Perak telah ditemui.",
+          "reasons": [
+            "numbers were added, removed, or changed",
+            "named person omitted: Perak River"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "45d871f9-22c4-445d-81f5-bbdb1ebc8215",
+      "title": "PONTIAN INDONS MURDER COCONUT PLANTER",
+      "storyType": "CRIME_MYSTERY",
+      "status": "PARTIAL",
+      "claimsSent": 2,
+      "rewritten": 1,
+      "rejected": 1,
+      "retries": 1,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 850,
+        "outputTokens": 477
+      },
+      "failures": [
+        {
+          "claimId": "3fe3eae58885a89cef38c871b28ca4ad",
+          "attemptedSpokenText": "Dilaporkan penyusup mendarat dan membunuh seorang pekantan kelapa.",
+          "reasons": [
+            "numbers were added, removed, or changed"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "687dfae3-0fa1-4528-8d37-d8614d910821",
+      "title": "Railway Accident.",
+      "storyType": "DISASTER",
+      "status": "PARTIAL",
+      "claimsSent": 1,
+      "rewritten": 0,
+      "rejected": 1,
+      "retries": 1,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 704,
+        "outputTokens": 328
+      },
+      "failures": [
+        {
+          "claimId": "a19f47bb0b169fae31cd78fd2619a252",
+          "attemptedSpokenText": "Dilaporkan berlaku satu kemalangan kereta api yang serius.",
+          "reasons": [
+            "named person omitted: Railway Accident",
+            "named person omitted: Sunfrei Besi"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "1eb32f3c-456c-43f2-b718-a25c11f1ab77",
+      "title": "3 Police Die In Border Battle",
+      "storyType": "HISTORICAL_INCIDENT",
+      "status": "PARTIAL",
+      "claimsSent": 2,
+      "rewritten": 0,
+      "rejected": 2,
+      "retries": 1,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 1091,
+        "outputTokens": 648
+      },
+      "failures": [
+        {
+          "claimId": "200dbbde06049260b3210554076014e9",
+          "attemptedSpokenText": "Dilaporkan tiga polis maut dalam pertempuran sempadan.",
+          "reasons": [
+            "named person omitted: Border Battle"
+          ]
+        },
+        {
+          "claimId": "e83b4300f99055b54c4fbfc1847b4b38",
+          "attemptedSpokenText": "Dilaporkan beberapa anggota polis terkorban, cedera, dan hilang.",
+          "reasons": [
+            "numbers were added, removed, or changed",
+            "death meaning changed"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "1e14335b-d992-4f8d-aac6-ed2b951522c2",
+      "title": "Sabah kidnap incidents affecting tourism",
+      "storyType": "CRIME_MYSTERY",
+      "status": "PARTIAL",
+      "claimsSent": 1,
+      "rewritten": 0,
+      "rejected": 1,
+      "retries": 1,
+      "cacheHits": 1,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 681,
+        "outputTokens": 350
+      },
+      "failures": [
+        {
+          "claimId": "5cf71dfe3cde422938013ef42b58d378",
+          "attemptedSpokenText": "Dilaporkan kes penculikan di Sabah memberi kesan lebih besar kepada industri pelancongan berbanding kehilangan pesawat MH370.",
+          "reasons": [
+            "Malay language or spoken-naturalness gate failed"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "f2e9da58-a6b2-4194-a579-a48646f78cce",
+      "title": "JUDGE DISAGREES WITH JOHORE ASSESSORS",
+      "storyType": "CRIME_MYSTERY",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 1,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "1e9acba3-0784-4703-bf16-9121a1b83152",
+      "title": "EUROPEAN WOUNDED BY GUN.",
+      "storyType": "CRIME_MYSTERY",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "c06ec8ad-8b16-47cb-9f63-c9cbd7665dda",
+      "title": "BOTH DRIVERS TO BLAME.",
+      "storyType": "DISASTER",
+      "status": "PARTIAL",
+      "claimsSent": 1,
+      "rewritten": 1,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 1,
+        "inputTokens": 344,
+        "outputTokens": 163
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "5fee9d57-0cd3-4350-b8ef-1bbe320a5919",
+      "title": "GENT INQUEST ADJOURNED",
+      "storyType": "CRIME_MYSTERY",
+      "status": "PARTIAL",
+      "claimsSent": 1,
+      "rewritten": 0,
+      "rejected": 1,
+      "retries": 1,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 669,
+        "outputTokens": 337
+      },
+      "failures": [
+        {
+          "claimId": "cf02a069bdc6666950bd9e7a23d11703",
+          "attemptedSpokenText": "Dilaporkan Pesuruhjaya Tinggi Malaya Sir Edward Gent terbunuh.",
+          "reasons": [
+            "named person omitted: High Commissioner",
+            "death meaning changed",
+            "Malay language or spoken-naturalness gate failed"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "2e709d5f-a353-46f1-90b0-2d949c60f9c7",
+      "title": "SELANGOR PLANTER’S SUDDEN DEATH.",
+      "storyType": "MYSTERIOUS_DEATH",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "87d0b625-1a9b-496a-bf46-ae870ad2dbbe",
+      "title": "JOHORE MYSTERY.",
+      "storyType": "UNEXPLAINED_EVENT",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 1,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "0157cd3b-1bf5-48b3-a204-95c2ba16c585",
+      "title": "CURIOUS CASE IN KEDAH.",
+      "storyType": "STRANGE_EVENT",
+      "status": "PARTIAL",
+      "claimsSent": 1,
+      "rewritten": 0,
+      "rejected": 1,
+      "retries": 1,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 628,
+        "outputTokens": 261
+      },
+      "failures": [
+        {
+          "claimId": "72b1bccb2a803e4df8289ab59103dab0",
+          "attemptedSpokenText": "Satu kejadian luar biasa dilaporkan berlaku susulan pencarian individu yang hilang di Kota Kedah.",
+          "reasons": [
+            "numbers were added, removed, or changed"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "4dc7f757-56df-4ee3-80b0-a6196f50346b",
+      "title": "3 Bandits Killed, Station Burnt",
+      "storyType": "CRIME_MYSTERY",
+      "status": "PARTIAL",
+      "claimsSent": 2,
+      "rewritten": 0,
+      "rejected": 2,
+      "retries": 1,
+      "cacheHits": 1,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 1020,
+        "outputTokens": 566
+      },
+      "failures": [
+        {
+          "claimId": "bccb40238509c3af1420adee8a8f2e8c",
+          "attemptedSpokenText": "Dilaporkan tiga penjenayah terbunuh dan sebuah stesen dibakar.",
+          "reasons": [
+            "numbers were added, removed, or changed",
+            "named person omitted: Bandits Killed",
+            "named person omitted: Station Burnt",
+            "death meaning changed"
+          ]
+        },
+        {
+          "claimId": "5dac9e4fbe6a06d577a878e6c1288d93",
+          "attemptedSpokenText": "Dilaporkan selaras pistol dan beberapa peluru telah ditemui semula.",
+          "reasons": [
+            "numbers were added, removed, or changed"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "94e69355-6fc5-4122-a68a-14442abac45f",
+      "title": "A New Malayan Tribe.",
+      "storyType": "HISTORICAL_CURIOSITY",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "5664677b-b664-427b-8868-5fe4f880989f",
+      "title": "SEVEN MURDER CASES ON LIST",
+      "storyType": "CRIME_MYSTERY",
+      "status": "PARTIAL",
+      "claimsSent": 1,
+      "rewritten": 1,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 1,
+        "inputTokens": 332,
+        "outputTokens": 165
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "764c85c7-c390-4c2d-98b9-c87fada5d981",
+      "title": "European Is Found Dead",
+      "storyType": "MYSTERIOUS_DEATH",
+      "status": "PARTIAL",
+      "claimsSent": 1,
+      "rewritten": 0,
+      "rejected": 1,
+      "retries": 1,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 683,
+        "outputTokens": 325
+      },
+      "failures": [
+        {
+          "claimId": "c2fcec5e069e9e10e9a6004a10b7d3a3",
+          "attemptedSpokenText": "Dilaporkan seorang warga Eropah ditemukan mati.",
+          "reasons": [
+            "numbers were added, removed, or changed",
+            "named person omitted: Found Dead"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "ae9b75d7-9522-4a0d-b730-3d80d1f7b9af",
+      "title": "WOMAN FOUND DEAD IN PIT",
+      "storyType": "MYSTERIOUS_DEATH",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "f8b84f69-076c-4b0c-b646-7ea8c93617fe",
+      "title": "Harsh interrogation caused opposition aide's suicide",
+      "storyType": "HISTORICAL_INCIDENT",
+      "status": "PARTIAL",
+      "claimsSent": 1,
+      "rewritten": 0,
+      "rejected": 1,
+      "retries": 1,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 698,
+        "outputTokens": 367
+      },
+      "failures": [
+        {
+          "claimId": "ec487435c0997f2c815c0fe661eb89f6",
+          "attemptedSpokenText": "Dilaporkan suruhanjaya siasatan mendapati pembantu pembangkang Teoh Beng Hock didorong membunuh diri akibat soal siasat yang agresif.",
+          "reasons": [
+            "numbers were added, removed, or changed",
+            "discovery action omitted"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "7649027b-c298-4c89-82f6-21d9a8d11437",
+      "title": "COLLECTOR 'DISAPPEARED' WITH MONEY",
+      "storyType": "HISTORICAL_INCIDENT",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "b5e8f7d1-242e-46a2-b345-da005d9f91c0",
+      "title": "NIGHT SEARCH FOR MISSING AUSTER",
+      "storyType": "HISTORICAL_INCIDENT",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 2,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "9323975c-4f17-4ec2-9c8c-7767189280bf",
+      "title": "Stricken Taiwan tanker up in flames",
+      "storyType": "HISTORICAL_INCIDENT",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "efa7a7c2-aa28-47a0-a92c-ad77bd25c91e",
+      "title": "TAMIL STABBED",
+      "storyType": "HISTORICAL_INCIDENT",
+      "status": "PARTIAL",
+      "claimsSent": 1,
+      "rewritten": 0,
+      "rejected": 1,
+      "retries": 1,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 677,
+        "outputTokens": 256
+      },
+      "failures": [
+        {
+          "claimId": "ace3e384967601646b4259774eed8ba8",
+          "attemptedSpokenText": "Satu kes bunuh telah dilaporkan.",
+          "reasons": [
+            "numbers were added, removed, or changed",
+            "named person omitted: Alleged Murder",
+            "named person omitted: Johore Estate",
+            "named person omitted: Johore Bahru Oct",
+            "death meaning changed"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "e17ac5f5-f6b2-4701-b894-15ed753f4879",
+      "title": "Another Great Chartered Trading Company Disappears",
+      "storyType": "HISTORICAL_INCIDENT",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "169fea6e-ab70-469a-8d9d-66d39e5a35eb",
+      "title": "DEATH SENTENCE.",
+      "storyType": "HISTORICAL_INCIDENT",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 1,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "2f1e47ab-fa25-49a0-8489-7a56a049f8ee",
+      "title": "BIG RUBBER LOSS. Twakow Disappears With Valuable Cargo.",
+      "storyType": "HISTORICAL_INCIDENT",
+      "status": "PARTIAL",
+      "claimsSent": 1,
+      "rewritten": 0,
+      "rejected": 1,
+      "retries": 1,
+      "cacheHits": 1,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 690,
+        "outputTokens": 332
+      },
+      "failures": [
+        {
+          "claimId": "86c391b79465f3f83e0428f313a08f1e",
+          "attemptedSpokenText": "Polis Malaya dilaporkan sedang menyiasat kehilangan sebuah twakow.",
+          "reasons": [
+            "numbers were added, removed, or changed"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "48a9235b-5055-4d50-aa29-1a4bb8a90e99",
+      "title": "CROWN WITNESS MISSING.",
+      "storyType": "HISTORICAL_INCIDENT",
+      "status": "PARTIAL",
+      "claimsSent": 1,
+      "rewritten": 1,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 1,
+        "inputTokens": 296,
+        "outputTokens": 131
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "df09ae8f-9513-4aba-a707-038f92ff6767",
+      "title": "Jeffrey Kitingan missing, says KL paper",
+      "storyType": "HISTORICAL_INCIDENT",
+      "status": "PARTIAL",
+      "claimsSent": 2,
+      "rewritten": 0,
+      "rejected": 2,
+      "retries": 1,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 1134,
+        "outputTokens": 657
+      },
+      "failures": [
+        {
+          "claimId": "a103f3e6083e0093289354afd0945c35",
+          "attemptedSpokenText": "Akhbar Kuala Lumpur melaporkan bahawa Jeffrey Kitingan hilang.",
+          "reasons": [
+            "reported status became an assertion"
+          ]
+        },
+        {
+          "claimId": "75afb5a0203d48cccf920acdc8234587",
+          "attemptedSpokenText": "Dilaporkan bahawa pengarah Sabah Foundation, Datuk Dr Jeffrey Kitingan, menghadapi pertuduhan rasuah.",
+          "reasons": [
+            "numbers were added, removed, or changed",
+            "negation removed",
+            "Malay language or spoken-naturalness gate failed"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "930fe7be-bc41-4868-9ce2-f308ccbd4f40",
+      "title": "SHIPPING NOTES.",
+      "storyType": "HISTORICAL_INCIDENT",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "412763cb-2587-40cf-8082-d32f0c10c39a",
+      "title": "WOMAN WHO GAVE FALSE INFORMATION.",
+      "storyType": "HISTORICAL_INCIDENT",
+      "status": "PARTIAL",
+      "claimsSent": 1,
+      "rewritten": 1,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 1,
+        "inputTokens": 290,
+        "outputTokens": 134
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "a6f8b18b-15c3-4770-9684-478723dbc129",
+      "title": "RAJAH OF SARAWAK'S MISSING SPECTACLES",
+      "storyType": "HISTORICAL_INCIDENT",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "c43a633d-3626-4b70-a4fa-ccc3f578d6c8",
+      "title": "23 missing after ferry capsizes in Sarawak",
+      "storyType": "HISTORICAL_INCIDENT",
+      "status": "PARTIAL",
+      "claimsSent": 1,
+      "rewritten": 0,
+      "rejected": 1,
+      "retries": 1,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 636,
+        "outputTokens": 333
+      },
+      "failures": [
+        {
+          "claimId": "6db46bfa8de96654c4e2d57e17eee662",
+          "attemptedSpokenText": "Dilaporkan seramai dua puluh tiga orang hilang selepas sebuah feri terbalik di Sarawak.",
+          "reasons": [
+            "numbers were added, removed, or changed"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "e1dbc390-b58e-48f6-a57a-44a447830f51",
+      "title": "Hunt on for missing border scout",
+      "storyType": "HISTORICAL_INCIDENT",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 1,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "149cea5e-f577-40d4-bef8-03cfaf9646e6",
+      "title": "Bound Body lir Sack Found In Perak River",
+      "storyType": "HISTORICAL_INCIDENT",
+      "status": "PARTIAL",
+      "claimsSent": 2,
+      "rewritten": 0,
+      "rejected": 2,
+      "retries": 1,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 1049,
+        "outputTokens": 570
+      },
+      "failures": [
+        {
+          "claimId": "a2a3e7862e7aa413f8a8adc5e918f2d4",
+          "attemptedSpokenText": "Dilaporkan mayat terikat dalam guni ditemui di Sungai Perak.",
+          "reasons": [
+            "named person omitted: Bound Body",
+            "named person omitted: Sack Found",
+            "named person omitted: Perak River"
+          ]
+        },
+        {
+          "claimId": "49bfea5a95cc1cd941cc6c7b6670929c",
+          "attemptedSpokenText": "Dilaporkan polis menemui satu guni terapung.",
+          "reasons": [
+            "numbers were added, removed, or changed"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "b8d44dd5-042b-4b34-bb1c-fe4b006ba665",
+      "title": "Missing—planter who went cruising down the river",
+      "storyType": "HISTORICAL_INCIDENT",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "00e402da-1a7d-46d7-8fc7-d2ad431bf2e0",
+      "title": "MAN & NIECE SENTENCED",
+      "storyType": "HISTORICAL_INCIDENT",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "fbb25b2b-9d92-4fe2-a4a9-e365be3716da",
+      "title": "FCO 141/16257: Singapore: behaviour of S J Thomas (Chief Justice, Federated Malay States) to A Caldecott (Colonial Secretary, Straits Settlements) in connection with the Commission of Inquiry into the Electrical Department at Kuala Lumpur; interim report of the Commission - migrated archives [undated-9]",
+      "storyType": "HISTORICAL_INCIDENT",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 2,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "5a550b65-203c-4cd4-a772-73c6bd1f6f98",
+      "title": "Police Party Attacked, Three Killed",
+      "storyType": "CRIME_MYSTERY",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 1,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "0b1ef879-b43d-4db1-ba34-571f2cdc4095",
+      "title": "7 S’poreans injured in highway accident in Malaysia",
+      "storyType": "DISASTER",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 1,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 1,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "0030df36-6fc2-47a3-aa29-765aaa82ba33",
+      "title": "RAWANG-BORN R.A.F. OFFICER AMONG MISSING",
+      "storyType": "DISAPPEARANCE",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 1,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "02c8139b-c846-4c92-ac2c-f4c74cac766e",
+      "title": "KUALA LUMPUR RACE ACCIDENT. [1928-06-25]",
+      "storyType": "DISASTER",
+      "status": "PARTIAL",
+      "claimsSent": 1,
+      "rewritten": 1,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 1,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 1,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 1,
+        "inputTokens": 286,
+        "outputTokens": 131
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "a0e87197-ed01-4ae6-824a-e7af13385b96",
+      "title": "Search continues for M'sian crash victims",
+      "storyType": "DISASTER",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 2,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 1,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "33cd462f-91db-4bcc-ad74-d1ae533fb7b5",
+      "title": "MISSING WIFE WILL NOT RETURN",
+      "storyType": "DISAPPEARANCE",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 1,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 1,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "de255abd-5ba3-4e4e-b5df-cffa7356f19c",
+      "title": "PERAK MURDER CHARGE.",
+      "storyType": "CRIME_MYSTERY",
+      "status": "PARTIAL",
+      "claimsSent": 2,
+      "rewritten": 0,
+      "rejected": 2,
+      "retries": 1,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 1,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 1007,
+        "outputTokens": 529
+      },
+      "failures": [
+        {
+          "claimId": "82b244ec7a8ae7d3bb237537d7a0904d",
+          "attemptedSpokenText": "Ada dilaporkan tuduhan bunuh di Perak.",
+          "reasons": [
+            "death meaning changed"
+          ]
+        },
+        {
+          "claimId": "20700030341ea068f59029d64529070f",
+          "attemptedSpokenText": "Dilaporkan bahawa Inspektor Yeap Osman dari Polis Mantin telah membawa seorang Cina bernama Chan Tham berhubung dakwaan kes bunuh di mahkamah majistret Seremban.",
+          "reasons": [
+            "named person omitted: Inspector Yeap Osman",
+            "named person omitted: Chinese Chan Tham",
+            "death meaning changed"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "3ad6ec6d-a8a2-4b8e-a9dd-ac5bd54f95fa",
+      "title": "Two missing on holiday in Malaya",
+      "storyType": "DISAPPEARANCE",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 1,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 1,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "056c5ce7-f2c0-4288-8231-5b0f7fc32980",
+      "title": "Naked body of missing Irish teen found in Seremban jungle: Police",
+      "storyType": "DISAPPEARANCE",
+      "status": "PARTIAL",
+      "claimsSent": 2,
+      "rewritten": 2,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 1,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 1,
+        "inputTokens": 462,
+        "outputTokens": 253
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "dd092f8c-a1ee-435d-b1e2-c58c3ca0eac0",
+      "title": "Few clues on missing Irish girl in Malaysia, but parents hopeful",
+      "storyType": "DISAPPEARANCE",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 1,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 1,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "2c5a4871-9269-4890-a752-98b3694a4e56",
+      "title": "Umno politician, husband, son slain in their home",
+      "storyType": "CRIME_MYSTERY",
+      "status": "PARTIAL",
+      "claimsSent": 1,
+      "rewritten": 1,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 1,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 1,
+        "inputTokens": 305,
+        "outputTokens": 134
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "56aad82d-55e8-4391-bc44-b204a016ce21",
+      "title": "Seven missing in Sarawak copter crash",
+      "storyType": "DISASTER",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 1,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 1,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "58cd172a-184e-49b5-a903-7c3bae3a7a92",
+      "title": "DISAPPEARED WITH EMPLOYER’S GOLD",
+      "storyType": "DISAPPEARANCE",
+      "status": "PARTIAL",
+      "claimsSent": 1,
+      "rewritten": 0,
+      "rejected": 1,
+      "retries": 1,
+      "cacheHits": 1,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 1,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 649,
+        "outputTokens": 273
+      },
+      "failures": [
+        {
+          "claimId": "d5f11415f37c869711e96511570a68ba",
+          "attemptedSpokenText": "Nasib majikan emas masih belum pasti.",
+          "reasons": [
+            "named person omitted: Convicted Man Offers",
+            "named person omitted: Off Employers"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "adeaa558-a069-4208-9359-88649ff80009",
+      "title": "Reported Missing [1969-08-21]",
+      "storyType": "DISAPPEARANCE",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 1,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "bcad5d60-472b-4789-844f-773f452f18e8",
+      "title": "Copter goes missing in Sarawak",
+      "storyType": "DISAPPEARANCE",
+      "status": "PARTIAL",
+      "claimsSent": 1,
+      "rewritten": 0,
+      "rejected": 1,
+      "retries": 1,
+      "cacheHits": 1,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 1,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 638,
+        "outputTokens": 275
+      },
+      "failures": [
+        {
+          "claimId": "02563ebadca3727e080633e761cfffb3",
+          "attemptedSpokenText": "Sebuah helikopter Nuri Tentera Udara Diraja Malaysia dengan 10 orang di dalamnya dilaporkan masih hilang.",
+          "reasons": [
+            "named person omitted: Royal Malaysian Air Force"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "c1bb8260-4ce7-4315-a00e-debd39739691",
+      "title": "Mystery of missing Sarawak parcel",
+      "storyType": "DISAPPEARANCE",
+      "status": "PARTIAL",
+      "claimsSent": 1,
+      "rewritten": 1,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 1,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 1,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 1,
+        "inputTokens": 289,
+        "outputTokens": 125
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "d91066cb-693e-43c5-93d7-c1b002fa32de",
+      "title": "Search For Missing Girl Intensified",
+      "storyType": "DISAPPEARANCE",
+      "status": "PARTIAL",
+      "claimsSent": 2,
+      "rewritten": 0,
+      "rejected": 2,
+      "retries": 1,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 1,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 999,
+        "outputTokens": 502
+      },
+      "failures": [
+        {
+          "claimId": "45795002648671c375f595355094df4d",
+          "attemptedSpokenText": "",
+          "reasons": [
+            "spoken text is empty",
+            "named person omitted: Search For Missing Girl",
+            "missing/disappearance meaning changed",
+            "search action omitted",
+            "unresolved status was removed",
+            "Malay language or spoken-naturalness gate failed"
+          ]
+        },
+        {
+          "claimId": "49d9c012a617eb2a4fc603583af605d4",
+          "attemptedSpokenText": "Polis di seluruh Tanah Melayu sedang membantu mencari seorang gadis Cina muda bernama Wong Ah Fong yang masih hilang.",
+          "reasons": [
+            "named person omitted: Detective Branch"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "3eca3d99-0d2e-401c-8489-7c7ace78c8c1",
+      "title": "Singaporean accused of killing family leads police to severed heads",
+      "storyType": "CRIME_MYSTERY",
+      "status": "PARTIAL",
+      "claimsSent": 2,
+      "rewritten": 1,
+      "rejected": 1,
+      "retries": 1,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 1,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 769,
+        "outputTokens": 409
+      },
+      "failures": [
+        {
+          "claimId": "4242ef0829bbc4134a8fc597018568d6",
+          "attemptedSpokenText": "Dilaporkan seorang lelaki didakwa membunuh dan mengerat isterinya serta anak tirinya di Melaka sebelum ditangkap di S’pore.",
+          "reasons": [
+            "legal action omitted"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "78be0ec6-fc50-4629-96f3-0708de563e0a",
+      "title": "JOHORE MURDER: VITAL CLUES",
+      "storyType": "CRIME_MYSTERY",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 1,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 1,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "12af02dc-0c02-4f78-ad40-84e41300c3c7",
+      "title": "Missing: The girl who mixed with 'wrong crowd'",
+      "storyType": "DISAPPEARANCE",
+      "status": "PARTIAL",
+      "claimsSent": 1,
+      "rewritten": 0,
+      "rejected": 1,
+      "retries": 1,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 1,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 641,
+        "outputTokens": 267
+      },
+      "failures": [
+        {
+          "claimId": "74236e2f995847b87658298d8e4dea2a",
+          "attemptedSpokenText": "Polis sedang menyiasat kehilangan seorang bekas pelajar perempuan sekolah convent yang masih belum pasti.",
+          "reasons": [
+            "numbers were added, removed, or changed",
+            "named person omitted: Convent School"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "d52e1b22-771e-4fd0-aeea-821ef180a40e",
+      "title": "CHETTY MISSING.",
+      "storyType": "DISAPPEARANCE",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 1,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 1,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "7b116423-a841-46fc-bacd-aa1564c62243",
+      "title": "SHOOTING ACCIDENT",
+      "storyType": "CRIME_MYSTERY",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 1,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "e4d375c6-7078-465a-97d8-bd8fddd15d42",
+      "title": "Case of the missing man and the missing million",
+      "storyType": "DISAPPEARANCE",
+      "status": "PARTIAL",
+      "claimsSent": 1,
+      "rewritten": 0,
+      "rejected": 1,
+      "retries": 1,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 1,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 584,
+        "outputTokens": 266
+      },
+      "failures": [
+        {
+          "claimId": "2673a5cff0f9810bb4bdc4892b7e7179",
+          "attemptedSpokenText": "Kes seorang lelaki dan sejuta yang hilang masih belum pasti.",
+          "reasons": [
+            "numbers were added, removed, or changed"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "de98f083-bc00-4d58-95c7-09d3f43b5d20",
+      "title": "Kuala Lumpur Accident. [1926-11-02]",
+      "storyType": "DISASTER",
+      "status": "PARTIAL",
+      "claimsSent": 2,
+      "rewritten": 1,
+      "rejected": 1,
+      "retries": 1,
+      "cacheHits": 1,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 1,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 765,
+        "outputTokens": 375
+      },
+      "failures": [
+        {
+          "claimId": "1861ce5c11d56faf75fe16b5acee25c0",
+          "attemptedSpokenText": "Dilaporkan berlaku satu kemalangan di Kuala Lumpur.",
+          "reasons": [
+            "numbers were added, removed, or changed",
+            "named person omitted: Kuala Lumpur Accident"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "eda4c0a1-4a5e-45ff-8108-180b3268d2ad",
+      "title": "JOHORE TAMIL FACES MURDER CHARGE",
+      "storyType": "CRIME_MYSTERY",
+      "status": "PARTIAL",
+      "claimsSent": 2,
+      "rewritten": 0,
+      "rejected": 2,
+      "retries": 1,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 1,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 945,
+        "outputTokens": 514
+      },
+      "failures": [
+        {
+          "claimId": "34c4814cbe651d46398b1bb46fc1834e",
+          "attemptedSpokenText": "Dilaporkan seorang lelaki Tamil dari Johor berdepan pertuduhan membunuh.",
+          "reasons": [
+            "numbers were added, removed, or changed"
+          ]
+        },
+        {
+          "claimId": "0a412b22a2c59099d0f5ba2df75db358",
+          "attemptedSpokenText": "Dilaporkan pertuduhan awal membunuh telah dikemukakan terhadap Karuppiah.",
+          "reasons": [
+            "numbers were added, removed, or changed"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "d6fc82c0-086c-4b3d-8b7f-0083ccd9e164",
+      "title": "MENGLEMBU MURDER SEQUEL",
+      "storyType": "CRIME_MYSTERY",
+      "status": "PARTIAL",
+      "claimsSent": 2,
+      "rewritten": 1,
+      "rejected": 1,
+      "retries": 1,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 1,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 961,
+        "outputTokens": 477
+      },
+      "failures": [
+        {
+          "claimId": "b9c61a29ff1c3dadedd108af25ebd6cb",
+          "attemptedSpokenText": "",
+          "reasons": [
+            "spoken text is empty",
+            "death meaning changed",
+            "reported status became an assertion",
+            "Malay language or spoken-naturalness gate failed"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "98522079-e521-41c6-b2f3-08019f19d831",
+      "title": "S’pore saddened over accident",
+      "storyType": "DISASTER",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 0,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": [
+        {
+          "reasons": [
+            "UNDEFINED_VALUE: Undefined values are not allowed"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "028b3ba6-8012-493c-bef0-a776760c4a06",
+      "title": "Police in shoot-out with escaped",
+      "storyType": "CRIME_MYSTERY",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 0,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": [
+        {
+          "reasons": [
+            "UNDEFINED_VALUE: Undefined values are not allowed"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "2d740be0-015d-4fde-9642-ec1180ea67c3",
+      "title": "TAMIL ON MURDER CHARGE.",
+      "storyType": "CRIME_MYSTERY",
+      "status": "PARTIAL",
+      "claimsSent": 1,
+      "rewritten": 1,
+      "rejected": 0,
+      "retries": 1,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 1,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 2,
+        "inputTokens": 617,
+        "outputTokens": 261
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "65a9e4a4-aed3-4dee-b0c3-13d1b5d27429",
+      "title": "Murder trial put off",
+      "storyType": "CRIME_MYSTERY",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 0,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": [
+        {
+          "reasons": [
+            "UNDEFINED_VALUE: Undefined values are not allowed"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "055d9aea-c174-453a-ac3c-89eb94f269f0",
+      "title": "TEN KILLED BY FLOODS IN MALAYSIA",
+      "storyType": "DISASTER",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 0,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": [
+        {
+          "reasons": [
+            "Run deterministic research before AI enrichment."
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "cdff68d7-e332-43a3-8840-60cac4478815",
+      "title": "Selangor player dies in crash",
+      "storyType": "DISASTER",
+      "status": "PARTIAL",
+      "claimsSent": 0,
+      "rewritten": 0,
+      "rejected": 0,
+      "retries": 0,
+      "cacheHits": 0,
+      "storyCacheHit": false,
+      "storyGenerated": false,
+      "sourcePagesAttempted": 0,
+      "sourcesDeepened": 0,
+      "usage": {
+        "requests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "failures": [
+        {
+          "reasons": [
+            "Run deterministic research before AI enrichment."
+          ]
+        }
+      ]
+    }
+  ]
+}

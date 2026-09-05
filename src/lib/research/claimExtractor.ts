@@ -42,7 +42,8 @@ function visualIntent(candidate: StoryCandidate, text: string) {
 }
 
 function candidateChunks(source: StoredStorySource) {
-  const title = decode(source.title).replace(/[.!?]+$/, ""); let body = decode(source.snippet);
+  const title = decode(source.title).replace(/[.!?]+$/, ""); const expandedSnippet = typeof source.metadata.expandedSnippet === "string" ? source.metadata.expandedSnippet : "";
+  let body = decode(expandedSnippet.length > source.snippet.length ? expandedSnippet : source.snippet);
   if (body.toLowerCase().startsWith(title.toLowerCase())) body = body.slice(title.length).replace(/^[\s:;,.—-]+/, "");
   body = body.replace(/\.{3,}\s*$/, "").trim();
   const sentences = body.split(/(?<=[.!?])\s+|;\s+/).map((item) => item.trim()).filter(Boolean);
@@ -83,7 +84,8 @@ export function extractClaimsFromSource(candidate: StoryCandidate, source: Store
     if (/\b(?:a|an|and|at|by|for|from|in|of|on|or|the|to|when|where|which|who|whose|with|whose body)\s*$/i.test(text)) continue;
     const chunkQuality = calculateOcrQuality(text); if (chunkQuality < .58) continue;
     const id = createHash("sha256").update(`${candidate.id}:${source.id}:${normalized}`).digest("hex").slice(0, 32);
-    result.push({ id, storyCandidateId: candidate.id, claimText: text, spokenText: "", normalizedClaim: normalized, claimType: claimType(candidate),
+    result.push({ id, storyCandidateId: candidate.id, claimText: text, spokenText: "", rewriteMethod: "NONE", rewriteModel: null, validatedAt: null,
+      validationVersion: null, validationResult: null, normalizedClaim: normalized, claimType: claimType(candidate),
       confidence: quality >= .7 ? "MEDIUM" : "LOW", sourceIds: [source.id], eventDate: source.publishedAt,
       people, locations, priority: index === 0 ? "ESSENTIAL_CONTEXT" : "ESCALATION_DETAIL", visualIntent: visualIntent(candidate, text),
       ocrQuality: Math.min(quality, chunkQuality), sourcePublisher: source.publisher, sourceProvider: source.provider });

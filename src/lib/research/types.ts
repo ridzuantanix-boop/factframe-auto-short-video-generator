@@ -15,7 +15,16 @@ export type ResearchClaim = {
   priority: StoryClaim["priority"];
   visualIntent: StoryClaim["visualIntent"];
   ocrQuality: number;
+  rewriteMethod: "NONE" | "DETERMINISTIC" | "GEMINI";
+  rewriteModel: string | null;
+  validatedAt: string | null;
+  validationVersion: string | null;
+  validationResult: ClaimValidationResult | null;
 };
+
+export type ClaimValidationResult = { valid: boolean; reasons: string[]; checkedAt: string; version: string };
+export type AiNarrationSegment = { role: "HOOK" | "CONTEXT" | "DEVELOPMENT" | "TURN_PAYOFF"; text: string; claimIds: string[]; sourceIds: string[] };
+export type AiNarration = { segments: AiNarrationSegment[]; model: string; generatedAt: string; validationVersion: string; requestCount: number; inputTokens: number; outputTokens: number };
 
 export type ResearchTimelineEntry = {
   id: string;
@@ -54,6 +63,7 @@ export type ResearchPackage = {
     spokenNaturalnessScore: number;
     passes: boolean;
   };
+  aiNarration?: AiNarration;
   sourceCoverage: number;
   unsupportedClaimCount: number;
   sourceDiversityScore: number;

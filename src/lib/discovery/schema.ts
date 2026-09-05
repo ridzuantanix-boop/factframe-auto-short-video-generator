@@ -55,6 +55,11 @@ CREATE TABLE IF NOT EXISTS story_claims (
   story_candidate_id text NOT NULL REFERENCES story_candidates(id) ON DELETE CASCADE,
   claim_text text NOT NULL,
   spoken_text text NOT NULL DEFAULT '',
+  rewrite_method text NOT NULL DEFAULT 'NONE',
+  rewrite_model text,
+  validated_at timestamptz,
+  validation_version text,
+  validation_result jsonb,
   normalized_claim text NOT NULL,
   claim_type text NOT NULL CHECK (claim_type IN ('VERIFIED', 'REPORTED', 'DISPUTED', 'UNRESOLVED', 'FOLKLORE', 'THEORY', 'EXPLAINED_LATER')),
   confidence text NOT NULL CHECK (confidence IN ('HIGH', 'MEDIUM', 'LOW')),
@@ -71,6 +76,11 @@ CREATE TABLE IF NOT EXISTS story_claims (
 );
 CREATE INDEX IF NOT EXISTS story_claims_candidate_idx ON story_claims (story_candidate_id, priority, event_date);
 ALTER TABLE story_claims ADD COLUMN IF NOT EXISTS spoken_text text NOT NULL DEFAULT '';
+ALTER TABLE story_claims ADD COLUMN IF NOT EXISTS rewrite_method text NOT NULL DEFAULT 'NONE';
+ALTER TABLE story_claims ADD COLUMN IF NOT EXISTS rewrite_model text;
+ALTER TABLE story_claims ADD COLUMN IF NOT EXISTS validated_at timestamptz;
+ALTER TABLE story_claims ADD COLUMN IF NOT EXISTS validation_version text;
+ALTER TABLE story_claims ADD COLUMN IF NOT EXISTS validation_result jsonb;
 CREATE TABLE IF NOT EXISTS story_research_packages (
   story_candidate_id text PRIMARY KEY REFERENCES story_candidates(id) ON DELETE CASCADE,
   package jsonb NOT NULL,

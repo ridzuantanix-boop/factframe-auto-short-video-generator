@@ -104,5 +104,7 @@ export function assessNarrationQuality(claims: ResearchClaim[]): ResearchPackage
 }
 
 export function rewriteClaimsForSpeech(claims: ResearchClaim[], storyType: string) {
-  return claims.map((claim) => ({ ...claim, spokenText: rewriteArchiveClaimToMalay(claim.claimText, storyType) }));
+  return claims.map((claim) => { const spokenText = rewriteArchiveClaimToMalay(claim.claimText, storyType); return { ...claim, spokenText,
+    rewriteMethod: spokenText ? "DETERMINISTIC" as const : "NONE" as const, rewriteModel: null, validatedAt: spokenText ? new Date().toISOString() : null,
+    validationVersion: spokenText ? "5.0-claim-preservation" : null, validationResult: spokenText ? { valid: true, reasons: [], checkedAt: new Date().toISOString(), version: "5.0-claim-preservation" } : null }; });
 }

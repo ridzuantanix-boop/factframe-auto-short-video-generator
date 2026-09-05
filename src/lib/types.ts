@@ -126,6 +126,12 @@ export type StoryRecord = {
   hookCandidates?: Array<{ text: string; claimIds: string[]; sourceIds: string[] }>;
   unresolvedQuestions?: Array<{ text: string; claimIds: string[]; sourceIds: string[] }>;
   payoff?: { text: string; claimIds: string[]; sourceIds: string[] };
+  aiNarration?: {
+    segments: Array<{ role: "HOOK" | "CONTEXT" | "DEVELOPMENT" | "TURN_PAYOFF"; text: string; claimIds: string[]; sourceIds: string[] }>;
+    model: string;
+    generatedAt: string;
+    validationVersion: string;
+  };
 };
 
 export type MysterySegment = {

@@ -4,7 +4,7 @@ import type { CaseStatus, ResearchSource, StoryCategory, StoryRecord } from "../
 import { extractClaimsFromSources } from "./claimExtractor.ts";
 import { mergeDuplicateClaims } from "./claimMerger.ts";
 import { calculateResearchMetrics, decideResearchReadiness } from "./researchScoring.ts";
-import type { GroundedNarrativeElement, ResearchClaim, ResearchPackage } from "./types.ts";
+import type { AiNarration, GroundedNarrativeElement, ResearchClaim, ResearchPackage } from "./types.ts";
 import { rewriteClaimsForSpeech, assessNarrationQuality } from "./narrationRewriter.ts";
 import { validateSourceCluster } from "../archive/clusterIntegrity.ts";
 
@@ -67,7 +67,13 @@ export async function researchStoryCandidate(candidateId: string, store: StorySt
   const candidate = await store.findById(candidateId); if (!candidate) throw new Error(`Story candidate not found: ${candidateId}`);
   if (candidate.metadata.archiveDerived !== true) throw new Error("Only archive-derived candidates are supported by deterministic Phase 4 enrichment.");
   const sources = await store.listSourcesForCandidate(candidate.id); const rawClaims = extractClaimsFromSources(candidate, sources);
-  const merged = mergeDuplicateClaims(rawClaims); const claims = assignNarrativePriorities(rewriteClaimsForSpeech(merged.claims, candidate.storyType));
+  const merged = mergeDuplicateClaims(rawClaims); const claims = rewriteClaimsForSpeech(merged.claims, candidate.storyType);
+  const packageValue = await persistResearchClaims(candidate, sources, claims, store);
+  return { researchPackage: packageValue, rawClaimsExtracted: rawClaims.length, mergedClaimCount: merged.mergedClaimCount };
+}
+
+export async function persistResearchClaims(candidate: Awaited<ReturnType<StoryStore["findById"]>> & {}, sources: StoredStorySource[], inputClaims: ResearchClaim[], store: StoryStore, aiNarration?: AiNarration) {
+  const claims = assignNarrativePriorities(inputClaims);
   const historicalContext = String(candidate.metadata.historicalContext ?? "PRE_MALAYSIA");
   const requiresCurrentVerification = needsCurrentVerification(candidate.storyType, historicalContext, sources);
   const metrics = calculateResearchMetrics(claims, sources, candidate.storyType);
@@ -82,17 +88,20 @@ export async function researchStoryCandidate(candidateId: string, store: StorySt
   const endingClaim = speakableClaims.at(-1); const payoff = endingClaim ? { text: endingClaim.spokenText, claimIds: [endingClaim.id], sourceIds: endingClaim.sourceIds } : { text: "", claimIds: [], sourceIds: [] };
   const cluster = validateSourceCluster(sources); const narrationQuality = assessNarrationQuality(claims);
   const readyDecision = decideResearchReadiness(claims, sources, metrics, Boolean(hooks.length), Boolean(payoff.text), requiresCurrentVerification, cluster.confidence, narrationQuality);
+  if (claims.some((claim) => claim.rewriteMethod === "GEMINI") && !aiNarration) {
+    readyDecision.status = "PARTIAL"; readyDecision.reasons = [...readyDecision.reasons.filter((reason) => !reason.startsWith("All research")), "Validated AI story narration is required after Gemini claim rewriting."];
+  }
   const now = new Date().toISOString(); const packageValue: ResearchPackage = {
     storyCandidateId: candidate.id, title: candidate.title, summary: candidate.summary, storyType: candidate.storyType, historicalContext,
     sources: researchSources(sources), claims, timeline: speakableClaims.map((claim) => ({ id: `timeline-${claim.id}`, date: claim.eventDate,
       dateBasis: claim.eventDate ? "PUBLICATION_DATE" : "UNKNOWN", text: claim.spokenText, claimIds: [claim.id], sourceIds: claim.sourceIds, confidence: claim.confidence })),
     people: [...new Set(claims.flatMap((claim) => claim.people).map((item) => item.trim()).filter(Boolean))],
     locations: [...new Set([candidate.region, ...claims.flatMap((claim) => claim.locations)].filter(Boolean).map(normalizeLocation))],
-    hookCandidates: hooks, keyTurningPoints, unresolvedQuestions, payoff, clusterConfidence: cluster.confidence, narrationQuality, ...metrics, readyDecision, requiresCurrentVerification,
+    hookCandidates: hooks, keyTurningPoints, unresolvedQuestions, payoff, clusterConfidence: cluster.confidence, narrationQuality, aiNarration, ...metrics, readyDecision, requiresCurrentVerification,
     lastResearchedAt: now, lastVerifiedAt: now,
   };
   await store.persistResearchPackage(candidate, claims, packageValue);
-  return { researchPackage: packageValue, rawClaimsExtracted: rawClaims.length, mergedClaimCount: merged.mergedClaimCount };
+  return packageValue;
 }
 
 function storyCategory(storyType: string): StoryCategory {
@@ -119,7 +128,7 @@ export function researchPackageToStoryRecord(value: ResearchPackage): StoryRecor
     claims: value.claims.filter((claim) => Boolean(claim.spokenText)).map((claim) => ({ id: claim.id, claim: claim.claimText, narration: claim.spokenText, type: claim.claimType,
       confidence: claim.confidence, sourceIds: claim.sourceIds, priority: claim.priority, visualIntent: claim.visualIntent })),
     historicalContext: value.historicalContext, timeline: value.timeline, hookCandidates: value.hookCandidates,
-    unresolvedQuestions: value.unresolvedQuestions, payoff: value.payoff };
+    unresolvedQuestions: value.unresolvedQuestions, payoff: value.payoff, aiNarration: value.aiNarration };
 }
 
 export async function loadResearchStory(candidateId: string, store: StoryStore = createStoryStore()) {

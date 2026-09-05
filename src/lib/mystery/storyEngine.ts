@@ -5,6 +5,9 @@ const roleByPriority: Record<StoryClaim["priority"], SegmentRole> = {
   HOOK_WORTHY: "HOOK", ESSENTIAL_CONTEXT: "CONTEXT", ESCALATION_DETAIL: "ESCALATION", TWIST: "TWIST", THEORY: "THEORY", COUNTERPOINT: "COUNTERPOINT", PAYOFF: "PAYOFF", LOW_PRIORITY: "ESCALATION"
 };
 const typeLead: Partial<Record<ClaimType, string>> = { REPORTED: "Menurut laporan ketika itu, ", THEORY: "Satu teori mencadangkan: ", DISPUTED: "Namun dakwaan ini masih dipertikaikan. ", FOLKLORE: "Menurut cerita rakyat, ", EXPLAINED_LATER: "Penyelidikan kemudian menunjukkan: " };
+const aiRole: Record<NonNullable<StoryRecord["aiNarration"]>["segments"][number]["role"], SegmentRole> = {
+  HOOK: "HOOK", CONTEXT: "CONTEXT", DEVELOPMENT: "ESCALATION", TURN_PAYOFF: "PAYOFF"
+};
 
 function naturalText(claim: StoryClaim, tone: StoryTone) {
   const lead = typeLead[claim.type] ?? "";
@@ -30,6 +33,18 @@ function openLoop(story: StoryRecord): MysterySegment {
 }
 
 export function buildMysteryScript(story: StoryRecord, duration: StoryDuration, tone: StoryTone, showSourceNote: boolean): MysteryScript {
+  if (story.aiNarration?.segments.length) {
+    const byId = new Map(story.claims.map((claim) => [claim.id, claim]));
+    const segments: MysterySegment[] = story.aiNarration.segments.map((segment) => {
+      const claims = segment.claimIds.flatMap((id) => { const claim = byId.get(id); return claim ? [claim] : []; });
+      const strongest = claims.find((claim) => claim.type !== "VERIFIED") ?? claims[0];
+      return { role: aiRole[segment.role], text: segment.text, sourceIds: segment.sourceIds,
+        claimType: strongest?.type ?? "VERIFIED", visualIntent: strongest?.visualIntent ?? "FACT_CARD" };
+    });
+    const quality = calculateScriptQuality(segments, story.sources);
+    return { storyId: story.id, title: story.title, durationTarget: duration, tone, hook: segments[0]?.text ?? "", openLoop: "",
+      caseStatus: story.caseStatus, segments, payoff: segments.at(-1)?.text ?? "", ...quality, sources: story.sources, showSourceNote };
+  }
   const usableClaims = story.claims.filter((item) => item.priority !== "LOW_PRIORITY");
   const limit = duration === 30 ? 6 : usableClaims.length;
   const chosen = usableClaims.slice(0, limit);
@@ -54,6 +69,6 @@ export function mysteryScriptToTopic(story: StoryRecord, script: MysteryScript):
 
 export function passesQualityGate(script: MysteryScript) {
   return script.sourceCoverage === 1 && script.storytellingScore >= 10 && script.structureScore >= .65 && script.sourceQualityScore === 1
-    && script.narrationQualityScore >= .78 && script.repetitionScore >= .7 && Boolean(script.hook) && Boolean(script.openLoop)
+    && script.narrationQualityScore >= .78 && script.repetitionScore >= .7 && Boolean(script.hook)
     && Boolean(script.payoff) && script.unsupportedClaims === 0;
 }

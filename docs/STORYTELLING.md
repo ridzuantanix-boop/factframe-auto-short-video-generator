@@ -26,3 +26,9 @@ Archive READY stories use the same engine through a persisted `ResearchPackage`.
 Script quality now exposes separate `structureScore`, `sourceQualityScore`, and `narrationQualityScore`. A structurally complete script cannot compensate for English leakage, OCR debris, fragments, repetition, or missing sources. READY narration must pass all component thresholds.
 
 Duration handling remains 30/60/90 seconds for the existing seed flow. The archive path no longer repeats evidence bridges merely to reach 60/90 seconds: insufficient unique material remains PARTIAL instead of being padded.
+
+## Validated AI narration
+
+Phase 5 first rewrites claims independently and validates each rewrite before any story-level request. The story writer receives only approved `spokenText`, claim IDs, source IDs, dates, entities, story type, and historical context. Its strict four-segment result is rejected if it changes the source union, references an unknown claim, adds a number, weakens REPORTED/FOLKLORE/UNRESOLVED status, or fails the Malaysian Malay gate.
+
+The video script builder consumes a cached, validated AI narration when present; otherwise it uses the deterministic claim path. AI narration is not required to contain an open-loop question. Source coverage, unsupported-claim, repetition, structure, narration, and overall storytelling scores are still calculated on the actual final segments.

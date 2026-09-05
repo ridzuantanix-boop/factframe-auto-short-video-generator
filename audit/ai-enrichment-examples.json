@@ -1,0 +1,1467 @@
+{
+  "generatedAt": "2026-09-05T05:02:01.154Z",
+  "examples": [
+    {
+      "candidateId": "cd396f4c-19e0-4055-9195-3b005964a0ba",
+      "title": "GIRL, 10 MISSING",
+      "storyType": "DISAPPEARANCE",
+      "rawSources": [
+        {
+          "id": "3c11c8f2930cb266a0cb44744892c2d8",
+          "title": "Girl missing",
+          "rawSnippet": "Girl missing KUALA LUMPUR, Mon. An 11 -year-old Chinese girl was reported missing from her house at Kampong Dollah in the Pudu area of Kuala Lumpur on Saturday. Police cr...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes19520805-1.2.92"
+        }
+      ],
+      "claims": [
+        {
+          "claimId": "f118ce66492809417729965f2c21996f",
+          "rawClaim": "An 11 -year-old Chinese girl was reported missing from her house at Kampong Dollah in the Pudu area of Kuala Lumpur on Saturday.",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "",
+          "validationResult": null,
+          "claimType": "UNRESOLVED",
+          "sourceIds": [
+            "3c11c8f2930cb266a0cb44744892c2d8"
+          ]
+        }
+      ],
+      "finalNarration": null,
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "Needs two sources or one exceptionally clear source with four claims.",
+          "No grounded hook candidate.",
+          "No grounded payoff or unresolved ending.",
+          "Unique clear evidence is insufficient for about 20 seconds.",
+          "Malay spoken narration does not pass the language and naturalness gate."
+        ]
+      },
+      "clusterConfidence": "MEDIUM",
+      "narrationQuality": {
+        "passes": false,
+        "fragmentCount": 0,
+        "ocrLeakageCount": 0,
+        "malayLanguageRatio": 0,
+        "englishLeakageCount": 0,
+        "headlineLeakageCount": 0,
+        "spokenNaturalnessScore": 0.2
+      },
+      "failures": [
+        {
+          "claimId": "f118ce66492809417729965f2c21996f",
+          "attemptedSpokenText": "Seorang kanak-kanak perempuan Cina dilaporkan masih hilang.",
+          "reasons": [
+            "numbers were added, removed, or changed",
+            "named person omitted: Kampong Dollah"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "a3ef3546-a23d-43ca-8b96-411615c0be98",
+      "title": "FATAL ACCIDENT AT KUALA LUMPUR.",
+      "storyType": "DISASTER",
+      "rawSources": [
+        {
+          "id": "eb4c38087b0236d49bd95a213a59c030",
+          "title": "FATAL KUALA LUMPUR ACCIDENT.",
+          "rawSnippet": "FATAL KUALA LUMPUR ACCIDENT. (From Our Own Correspondent) Kuala Lumpur, Jan. 25. Yusof bin Majld, a mall van driver employed by the Post and Telegraphs Department, was fatally injured yesterday...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes19370126-1.2.77"
+        }
+      ],
+      "claims": [
+        {
+          "claimId": "2b3ba1f4233e005664c55cc98b5aea9e",
+          "rawClaim": "FATAL KUALA LUMPUR ACCIDENT",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "Dilaporkan berlaku kemalangan maut di Kuala Lumpur.",
+          "validationResult": {
+            "valid": true,
+            "reasons": [],
+            "version": "5.0-claim-preservation",
+            "checkedAt": "2026-09-05T04:22:17.880Z"
+          },
+          "claimType": "REPORTED",
+          "sourceIds": [
+            "eb4c38087b0236d49bd95a213a59c030"
+          ]
+        },
+        {
+          "claimId": "21d70e5e45bc47140721a0eee9b4c42f",
+          "rawClaim": "a mall van driver employed by the Post and Telegraphs Department, was fatally injured yesterday",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "",
+          "validationResult": null,
+          "claimType": "REPORTED",
+          "sourceIds": [
+            "eb4c38087b0236d49bd95a213a59c030"
+          ]
+        }
+      ],
+      "finalNarration": null,
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "Needs two sources or one exceptionally clear source with four claims.",
+          "Unique clear evidence is insufficient for about 20 seconds.",
+          "Malay spoken narration does not pass the language and naturalness gate.",
+          "Validated AI story narration is required after Gemini claim rewriting."
+        ]
+      },
+      "clusterConfidence": "MEDIUM",
+      "narrationQuality": {
+        "passes": false,
+        "fragmentCount": 0,
+        "ocrLeakageCount": 0,
+        "malayLanguageRatio": 1,
+        "englishLeakageCount": 0,
+        "headlineLeakageCount": 0,
+        "spokenNaturalnessScore": 0.875
+      },
+      "failures": [
+        {
+          "claimId": "21d70e5e45bc47140721a0eee9b4c42f",
+          "attemptedSpokenText": "Dilaporkan seorang pemandu van pos maut semalam.",
+          "reasons": [
+            "named person omitted: Telegraphs Department"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "6cb5d71b-0425-4268-800e-ef15fc5c6d27",
+      "title": "NEGRI ASSIZES.",
+      "storyType": "HISTORICAL_INCIDENT",
+      "rawSources": [
+        {
+          "id": "5b74b9929aaa6460f8285a9c66278655",
+          "title": "NEGRI ASSIZES.",
+          "rawSnippet": "NEGRI ASSIZES. Murder Charge Reduced To Culpable Homicide. (From Our Own Correspondent.) Sercmban, May 11. The Hon. Mr. Justice Burton presided at the Negri Sembilan Assizes which commenced today in...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitsbudget19310514-1.2.12"
+        },
+        {
+          "id": "cdbe182e2a38e79f743b7431b5629936",
+          "title": "NEGRI ASSIZES.",
+          "rawSnippet": "NEGRI ASSIZES. Five Years for Culpable Homicide. (From Our Own Correspondent.) Seremban, May 13. At the Negri Sembilan Assizes today, Sinnappoo, a Tamil, who was charged with the murder of...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes19310514-1.2.74"
+        }
+      ],
+      "claims": [
+        {
+          "claimId": "6d0dfb7afab80cb74e9d4e73d84ab218",
+          "rawClaim": "Murder Charge Reduced To Culpable Homicide.",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "",
+          "validationResult": null,
+          "claimType": "REPORTED",
+          "sourceIds": [
+            "5b74b9929aaa6460f8285a9c66278655"
+          ]
+        }
+      ],
+      "finalNarration": null,
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "No grounded hook candidate.",
+          "No grounded payoff or unresolved ending.",
+          "Narrative potential is below 0.55.",
+          "Unique clear evidence is insufficient for about 20 seconds.",
+          "Malay spoken narration does not pass the language and naturalness gate."
+        ]
+      },
+      "clusterConfidence": "HIGH",
+      "narrationQuality": {
+        "passes": false,
+        "fragmentCount": 0,
+        "ocrLeakageCount": 0,
+        "malayLanguageRatio": 0,
+        "englishLeakageCount": 0,
+        "headlineLeakageCount": 0,
+        "spokenNaturalnessScore": 0.2
+      },
+      "failures": [
+        {
+          "claimId": "6d0dfb7afab80cb74e9d4e73d84ab218",
+          "attemptedSpokenText": "Dilaporkan pertuduhan bunuh dikurangkan kepada membunuh tanpa niat.",
+          "reasons": [
+            "named person omitted: Culpable Homicide",
+            "Malay language or spoken-naturalness gate failed"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "e7bfa37c-f4be-4310-b126-c53b32b677fd",
+      "title": "PERAK ASSIZES.",
+      "storyType": "CRIME_MYSTERY",
+      "rawSources": [
+        {
+          "id": "7acdc37522ef96b792ec8b0bb35ae681",
+          "title": "PERAK ASSIZES.",
+          "rawSnippet": "PERAK ASSIZES. Seven Murder Trials On List. (From Our Own Correspondent.) Ipoh, July 3. The third session of the Perak criminal assizes begins on Monday with a long calendar, including...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes19350705-1.2.109"
+        }
+      ],
+      "claims": [
+        {
+          "claimId": "f9f362696d5e872b8164a0a944a58a3a",
+          "rawClaim": "Seven Murder Trials On List.",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "",
+          "validationResult": null,
+          "claimType": "REPORTED",
+          "sourceIds": [
+            "7acdc37522ef96b792ec8b0bb35ae681"
+          ]
+        }
+      ],
+      "finalNarration": null,
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "Needs two sources or one exceptionally clear source with four claims.",
+          "No grounded hook candidate.",
+          "No grounded payoff or unresolved ending.",
+          "Unique clear evidence is insufficient for about 20 seconds.",
+          "Malay spoken narration does not pass the language and naturalness gate."
+        ]
+      },
+      "clusterConfidence": "MEDIUM",
+      "narrationQuality": {
+        "passes": false,
+        "fragmentCount": 0,
+        "ocrLeakageCount": 0,
+        "malayLanguageRatio": 0,
+        "englishLeakageCount": 0,
+        "headlineLeakageCount": 0,
+        "spokenNaturalnessScore": 0.2
+      },
+      "failures": [
+        {
+          "claimId": "f9f362696d5e872b8164a0a944a58a3a",
+          "attemptedSpokenText": "Dilaporkan terdapat tujuh perbicaraan bunuh dalam senarai.",
+          "reasons": [
+            "death meaning changed"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "bcfbaef5-b55f-43de-80cb-4d71df160ce7",
+      "title": "Motor Accident at Gombak.",
+      "storyType": "DISASTER",
+      "rawSources": [
+        {
+          "id": "0af43f0b137d51175ee8f2f0c2a5d782",
+          "title": "Motor Accident at Gombak.",
+          "rawSnippet": "Motor Accident at Gombak. (From Our Own Correspondent). Kuala Lumpur, June 9. A motor accident took place ou Friday, at Gombak thirteen miles from Kuala Lumpur, ou the Ginting Simpah...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitsecho19140609-1.2.37"
+        },
+        {
+          "id": "9706f01cf5f3cf1f88fc16db2934f562",
+          "title": "ACCIDENT TO MOTOR BUS.",
+          "rawSnippet": "ACCIDENT TO MOTOR BUS. PASSENGERS INJURED. [From Our Own Correspondent.] Kuala Lumpur, June 9. A motor accident occurred near Gombok on Friday, thirteen miles from Kuala Lumpur on the Gintir.g...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/pinangazette19140609-1.2.47"
+        },
+        {
+          "id": "29dfbc3e372c08369dde3927961d2a80",
+          "title": "Motor Accident at Gombak.",
+          "rawSnippet": "Motor Accident at Gombak. (From Our Own Correspondent). Kuala Lumpur, June 9. A motor accident took place on Friday, at Gombak thirteen miles from Kuala Lumpur, on the Ginting Simpah...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitsechomail19140611-1.2.154"
+        }
+      ],
+      "claims": [
+        {
+          "claimId": "af9216e1447179f719be27cc5a8cc004",
+          "rawClaim": "A motor accident took place ou Friday, at Gombak thirteen miles from Kuala Lumpur, ou the Ginting Simpah",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "",
+          "validationResult": null,
+          "claimType": "REPORTED",
+          "sourceIds": [
+            "0af43f0b137d51175ee8f2f0c2a5d782",
+            "9706f01cf5f3cf1f88fc16db2934f562",
+            "29dfbc3e372c08369dde3927961d2a80"
+          ]
+        },
+        {
+          "claimId": "1a25652d6bc0d9aaf1ebbf35631ae349",
+          "rawClaim": "ACCIDENT TO MOTOR BUS",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "Dilaporkan berlaku kemalangan melibatkan bas bermotor.",
+          "validationResult": {
+            "valid": true,
+            "reasons": [],
+            "version": "5.0-claim-preservation",
+            "checkedAt": "2026-09-05T04:49:03.714Z"
+          },
+          "claimType": "REPORTED",
+          "sourceIds": [
+            "9706f01cf5f3cf1f88fc16db2934f562"
+          ]
+        }
+      ],
+      "finalNarration": null,
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "Unique clear evidence is insufficient for about 20 seconds.",
+          "Malay spoken narration does not pass the language and naturalness gate.",
+          "Validated AI story narration is required after Gemini claim rewriting."
+        ]
+      },
+      "clusterConfidence": "HIGH",
+      "narrationQuality": {
+        "passes": false,
+        "fragmentCount": 0,
+        "ocrLeakageCount": 0,
+        "malayLanguageRatio": 1,
+        "englishLeakageCount": 0,
+        "headlineLeakageCount": 0,
+        "spokenNaturalnessScore": 0.875
+      },
+      "failures": [
+        {
+          "claimId": "af9216e1447179f719be27cc5a8cc004",
+          "attemptedSpokenText": "Dilaporkan berlaku satu kemalangan kenderaan bermotor di Gombak, tiga belas batu dari Kuala Lumpur, di Ginting Simpah.",
+          "reasons": [
+            "named person omitted: Motor Accident"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "99b3809a-9e80-4ac6-a693-adf47736670b",
+      "title": "Lorry Driver On Murder Charge",
+      "storyType": "CRIME_MYSTERY",
+      "rawSources": [
+        {
+          "id": "bec5479e76c5b7ef3e086aad951f6c2c",
+          "title": "Lorry Driver On Murder Charge",
+          "rawSnippet": "Lorry Driver On Murder Charge Singapore, Monday. AS a result of police inquiries into the mystery surrounding the disappearance of Sinnah Govindan Mudaliar, an 80--year-old Johore shop-keeper, and the finding...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/maltribune19401112-1.2.61"
+        },
+        {
+          "id": "c0401ad9117ae38dfc27eb581eb61faa",
+          "title": "LORRY DRIVER ON MURDER CHARGE",
+          "rawSnippet": "LORRY DRIVER ON MURDER CHARGE lt&gt; a result of police inquiries into the mystery surrounding the disappearance of Sinnah Govindan Muda'iar. an 80 year old Johore shop-ke; per, and the...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/morningtribune19401112-1.2.54"
+        }
+      ],
+      "claims": [
+        {
+          "claimId": "14ccb34dba94b59a06ee319a21e61c46",
+          "rawClaim": "Lorry Driver On Murder Charge",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "",
+          "validationResult": null,
+          "claimType": "REPORTED",
+          "sourceIds": [
+            "bec5479e76c5b7ef3e086aad951f6c2c",
+            "c0401ad9117ae38dfc27eb581eb61faa"
+          ]
+        },
+        {
+          "claimId": "ff388c823e6aa67b9fa03584ee39f709",
+          "rawClaim": "AS a result of police inquiries into the mystery surrounding the disappearance of Sinnah Govindan Mudaliar",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "",
+          "validationResult": null,
+          "claimType": "REPORTED",
+          "sourceIds": [
+            "bec5479e76c5b7ef3e086aad951f6c2c",
+            "c0401ad9117ae38dfc27eb581eb61faa"
+          ]
+        }
+      ],
+      "finalNarration": null,
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "No grounded hook candidate.",
+          "No grounded payoff or unresolved ending.",
+          "Unique clear evidence is insufficient for about 20 seconds.",
+          "Malay spoken narration does not pass the language and naturalness gate."
+        ]
+      },
+      "clusterConfidence": "HIGH",
+      "narrationQuality": {
+        "passes": false,
+        "fragmentCount": 0,
+        "ocrLeakageCount": 0,
+        "malayLanguageRatio": 0,
+        "englishLeakageCount": 0,
+        "headlineLeakageCount": 0,
+        "spokenNaturalnessScore": 0.2
+      },
+      "failures": [
+        {
+          "claimId": "14ccb34dba94b59a06ee319a21e61c46",
+          "attemptedSpokenText": "Dilaporkan pemandu lori menghadapi pertuduhan membunuh.",
+          "reasons": [
+            "named person omitted: Lorry Driver",
+            "named person omitted: Murder Charge",
+            "Malay language or spoken-naturalness gate failed"
+          ]
+        },
+        {
+          "claimId": "ff388c823e6aa67b9fa03584ee39f709",
+          "attemptedSpokenText": "Dilaporkan ini adalah hasil siasatan polis berhubung misteri kehilangan Sinnah Govindan Mudaliar.",
+          "reasons": [
+            "numbers were added, removed, or changed"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "d770d492-85ec-4291-8cc8-ca3839f82cf8",
+      "title": "Motor Cycle Accident.",
+      "storyType": "DISASTER",
+      "rawSources": [
+        {
+          "id": "ec29f83660ba6428b8ace8d05131393d",
+          "title": "Motor Cycle Accident.",
+          "rawSnippet": "Motor Cycle Accident. Mr. Charters Injured. (From Our Own Correspondent.) Kuala Lumpur, July 31. Mr. R. Charter, Chief Officer of the Kuala Lumpur Fire Brigade, sustained serious iojunes yesterday from...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitsecho19140731-1.2.34"
+        },
+        {
+          "id": "955d306ec5ccdaa24a5c3209b7d4bbd3",
+          "title": "Motor Cycle Accident.",
+          "rawSnippet": "Motor Cycle Accident. Mr, Charters Injured. (From Our Own Correspondent.) Kuala Lumpur, July 31. Mr. R. Charter, Chief Officer of the Kuala Lumpur Fire Brigade, sustained serious injuries yesterday from...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitsechomail19140806-1.2.35"
+        }
+      ],
+      "claims": [
+        {
+          "claimId": "c39449a741be561c6b46ca2ee50f24b0",
+          "rawClaim": "Motor Cycle Accident",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "",
+          "validationResult": null,
+          "claimType": "REPORTED",
+          "sourceIds": [
+            "ec29f83660ba6428b8ace8d05131393d",
+            "955d306ec5ccdaa24a5c3209b7d4bbd3"
+          ]
+        }
+      ],
+      "finalNarration": null,
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "No grounded hook candidate.",
+          "No grounded payoff or unresolved ending.",
+          "Narrative potential is below 0.55.",
+          "Unique clear evidence is insufficient for about 20 seconds.",
+          "Malay spoken narration does not pass the language and naturalness gate."
+        ]
+      },
+      "clusterConfidence": "HIGH",
+      "narrationQuality": {
+        "passes": false,
+        "fragmentCount": 0,
+        "ocrLeakageCount": 0,
+        "malayLanguageRatio": 0,
+        "englishLeakageCount": 0,
+        "headlineLeakageCount": 0,
+        "spokenNaturalnessScore": 0.2
+      },
+      "failures": [
+        {
+          "claimId": "c39449a741be561c6b46ca2ee50f24b0",
+          "attemptedSpokenText": "Ada dilaporkan berlaku kemalangan motosikal.",
+          "reasons": [
+            "named person omitted: Motor Cycle Accident"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "a37cc5cc-08d4-42fc-a6e3-b6e53d6c040d",
+      "title": "SCHOOLBOY MISSING",
+      "storyType": "DISAPPEARANCE",
+      "rawSources": [
+        {
+          "id": "02e18ae25926fff59fd051138c2be3a1",
+          "title": "SCHOOLBOY MISSING",
+          "rawSnippet": "SCHOOLBOY MISSING (From Our Own Reporter) Kuala Lumpur, June MASTER tiunagnanam, a 16-year- old Methodist Boys' School pupil, has been reported missing by his father Mr. Kathiravellu, Chief Clerk of...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/morningtribune19390608-1.2.21"
+        },
+        {
+          "id": "1927f2b55f738d0b8ad3a6475e3df37c",
+          "title": "SCHOOLBOY MISSING",
+          "rawSnippet": "SCHOOLBOY MISSING (Frora Our Own Reporter) Kuala Lumpur, June G. jyiASTER Gwnagnanmsa, a 16-year- old Methodise Boys' School pupil, has been reported missing by his father Mr. Kathiravellu, Chief Clerk...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/maltribune19390608-1.2.126"
+        }
+      ],
+      "claims": [
+        {
+          "claimId": "5731d894c6147bf30b4e2eaa4f3609ee",
+          "rawClaim": "a 16-year- old Methodist Boys' School pupil, has been reported missing by his father Mr.",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "",
+          "validationResult": null,
+          "claimType": "UNRESOLVED",
+          "sourceIds": [
+            "02e18ae25926fff59fd051138c2be3a1",
+            "1927f2b55f738d0b8ad3a6475e3df37c"
+          ]
+        }
+      ],
+      "finalNarration": null,
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "No grounded hook candidate.",
+          "No grounded payoff or unresolved ending.",
+          "Unique clear evidence is insufficient for about 20 seconds.",
+          "Malay spoken narration does not pass the language and naturalness gate."
+        ]
+      },
+      "clusterConfidence": "HIGH",
+      "narrationQuality": {
+        "passes": false,
+        "fragmentCount": 0,
+        "ocrLeakageCount": 0,
+        "malayLanguageRatio": 0,
+        "englishLeakageCount": 0,
+        "headlineLeakageCount": 0,
+        "spokenNaturalnessScore": 0.2
+      },
+      "failures": [
+        {
+          "claimId": "5731d894c6147bf30b4e2eaa4f3609ee",
+          "attemptedSpokenText": "Seorang pelajar Methodist Boys' School telah dilaporkan hilang oleh bapanya.",
+          "reasons": [
+            "numbers were added, removed, or changed"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "7d629d67-5f68-49ff-ad4a-9f4b6ca2f716",
+      "title": "Missing Peace Corps volunteer is Beckner of Bellevue",
+      "storyType": "DISAPPEARANCE",
+      "rawSources": [
+        {
+          "id": "73605c3c580a366e36a1749b4bed3893",
+          "title": "Missing Peace Corps volunteer is Beckner of Bellevue",
+          "rawSnippet": "Missing Peace Corps volunteer is Beckner of Bellevue KUALA LUMPUR, Sat. The Peace Corps volunteer reported missing while swimming off Datu Burok. Kuala Trengganu yesterday is Mr. John S. Beckner,...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/easternsun19681124-1.2.2"
+        },
+        {
+          "id": "d986f3100ad06c501e05f43b67ef8540",
+          "title": "Peace Corps man missing",
+          "rawSnippet": "Peace Corps man missing IfUALA TRENGGANU, Nov. 22. A member of the American Peace Corps was today reported missing while swimming off Datu Burok here. He friends who had gone...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitsbudget19681127-1.2.131"
+        }
+      ],
+      "claims": [
+        {
+          "claimId": "b0d4403beb1aad2d0690ae279ddfbff4",
+          "rawClaim": "Missing Peace Corps volunteer is Beckner of Bellevue",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "",
+          "validationResult": null,
+          "claimType": "UNRESOLVED",
+          "sourceIds": [
+            "73605c3c580a366e36a1749b4bed3893",
+            "d986f3100ad06c501e05f43b67ef8540"
+          ]
+        },
+        {
+          "claimId": "819ff545ad56376921702ab4a7db7284",
+          "rawClaim": "The Peace Corps volunteer reported missing while swimming off Datu Burok.",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "Sukarelawan Peace Corps dilaporkan hilang semasa berenang di Datu Burok.",
+          "validationResult": {
+            "valid": true,
+            "reasons": [],
+            "version": "5.0-claim-preservation",
+            "checkedAt": "2026-09-05T04:24:55.369Z"
+          },
+          "claimType": "UNRESOLVED",
+          "sourceIds": [
+            "73605c3c580a366e36a1749b4bed3893",
+            "d986f3100ad06c501e05f43b67ef8540"
+          ]
+        }
+      ],
+      "finalNarration": null,
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "Unique clear evidence is insufficient for about 20 seconds.",
+          "Malay spoken narration does not pass the language and naturalness gate.",
+          "Validated AI story narration is required after Gemini claim rewriting."
+        ]
+      },
+      "clusterConfidence": "HIGH",
+      "narrationQuality": {
+        "passes": false,
+        "fragmentCount": 0,
+        "ocrLeakageCount": 0,
+        "malayLanguageRatio": 1,
+        "englishLeakageCount": 0,
+        "headlineLeakageCount": 0,
+        "spokenNaturalnessScore": 0.875
+      },
+      "failures": [
+        {
+          "claimId": "b0d4403beb1aad2d0690ae279ddfbff4",
+          "attemptedSpokenText": "Seorang sukarelawan Peace Corps yang hilang adalah Beckner dari Bellevue.",
+          "reasons": [
+            "numbers were added, removed, or changed",
+            "named person omitted: Missing Peace Corps"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateId": "4b372ba8-6fc0-492c-8723-0adfa4c05d70",
+      "title": "JOHORE MURDER.",
+      "storyType": "CRIME_MYSTERY",
+      "rawSources": [
+        {
+          "id": "801e6dad1f04161bce8bdb956a925e29",
+          "title": "JOHORE MURDER.",
+          "rawSnippet": "JOHORE MURDER. Appeal Against Death Sentence Fails. (From Our Own Correspondent) Johore Bahru, Sept. 21. rE Johore Court of Appeal today dismissed the appeal of Adaikan against sentence of death...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitsbudget19361001-1.2.55"
+        },
+        {
+          "id": "023a8f28ad9e39dc122b771d5cfbf5e6",
+          "title": "Johore Murder",
+          "rawSnippet": "Johore Murder Three Hainanese Remanded From Our Own Correspondent) Johore Bahru. Oct. 28. THE three Hainanese arrested in connection with th^ triple murder on 'the rubber estate of a Chinese...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/morningtribune19361030-1.2.82"
+        },
+        {
+          "id": "4b53915fa39ea11d6ba4f690a96ff069",
+          "title": "Johore Murder",
+          "rawSnippet": "Johore Murder One Of Three Accused Discharged Johore Bahru, Dec. 8. IN connection with the triple murder which was committed on the rubber estate of a Chinese small-holder in Senai,...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/morningtribune19361210-1.2.79"
+        }
+      ],
+      "claims": [
+        {
+          "claimId": "69ecad934981083a31202c1ae9a21864",
+          "rawClaim": "rE Johore Court of Appeal today dismissed the appeal of Adaikan against sentence of death",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "Menurut laporan, Johore Court of Appeal telah menolak rayuan Adaikan terhadap hukuman mati.",
+          "validationResult": {
+            "valid": true,
+            "reasons": [],
+            "version": "5.0-claim-preservation",
+            "checkedAt": "2026-09-05T04:09:03.880Z"
+          },
+          "claimType": "REPORTED",
+          "sourceIds": [
+            "801e6dad1f04161bce8bdb956a925e29"
+          ]
+        },
+        {
+          "claimId": "2b1acac7db473028fec2627289978165",
+          "rawClaim": "Three Hainanese Remanded From Our Own Correspondent) Johore Bahru.",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "Dilaporkan tiga orang Hainan telah direman di Johore Bahru.",
+          "validationResult": {
+            "valid": true,
+            "reasons": [],
+            "version": "5.0-claim-preservation",
+            "checkedAt": "2026-09-05T04:47:50.837Z"
+          },
+          "claimType": "REPORTED",
+          "sourceIds": [
+            "023a8f28ad9e39dc122b771d5cfbf5e6"
+          ]
+        },
+        {
+          "claimId": "c73206f57a5e4573a0290238b05d39e3",
+          "rawClaim": "IN connection with the triple murder which was committed on the rubber estate of a Chinese small-holder in Senai",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "Dilaporkan terdapat kes pembunuhan berkembar tiga di estet getah di Senai.",
+          "validationResult": {
+            "valid": true,
+            "reasons": [],
+            "version": "5.0-claim-preservation",
+            "checkedAt": "2026-09-05T04:21:57.709Z"
+          },
+          "claimType": "REPORTED",
+          "sourceIds": [
+            "023a8f28ad9e39dc122b771d5cfbf5e6",
+            "4b53915fa39ea11d6ba4f690a96ff069"
+          ]
+        }
+      ],
+      "finalNarration": [
+        {
+          "role": "HOOK",
+          "text": "Dilaporkan terdapat kes pembunuhan berkembar tiga di estet getah di Senai.",
+          "claimIds": [
+            "c73206f57a5e4573a0290238b05d39e3"
+          ],
+          "sourceIds": [
+            "023a8f28ad9e39dc122b771d5cfbf5e6",
+            "4b53915fa39ea11d6ba4f690a96ff069"
+          ]
+        },
+        {
+          "role": "CONTEXT",
+          "text": "Dilaporkan tiga orang Hainan telah direman di Johore Bahru.",
+          "claimIds": [
+            "2b1acac7db473028fec2627289978165"
+          ],
+          "sourceIds": [
+            "023a8f28ad9e39dc122b771d5cfbf5e6"
+          ]
+        },
+        {
+          "role": "DEVELOPMENT",
+          "text": "Menurut laporan, Johore Court of Appeal telah menolak rayuan Adaikan terhadap hukuman mati.",
+          "claimIds": [
+            "69ecad934981083a31202c1ae9a21864"
+          ],
+          "sourceIds": [
+            "801e6dad1f04161bce8bdb956a925e29"
+          ]
+        },
+        {
+          "role": "TURN_PAYOFF",
+          "text": "Kes ini dilaporkan sebagai pembunuhan berkembar tiga di estet getah di Senai.",
+          "claimIds": [
+            "c73206f57a5e4573a0290238b05d39e3"
+          ],
+          "sourceIds": [
+            "023a8f28ad9e39dc122b771d5cfbf5e6",
+            "4b53915fa39ea11d6ba4f690a96ff069"
+          ]
+        }
+      ],
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Unique clear evidence is insufficient for about 20 seconds."
+        ]
+      },
+      "clusterConfidence": "MEDIUM",
+      "narrationQuality": {
+        "passes": true,
+        "fragmentCount": 0,
+        "ocrLeakageCount": 0,
+        "malayLanguageRatio": 1,
+        "englishLeakageCount": 0,
+        "headlineLeakageCount": 0,
+        "spokenNaturalnessScore": 1
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "882ee5c4-403b-47b5-9aeb-c7c304955052",
+      "title": "Malay's Body Found In Perak River",
+      "storyType": "MYSTERIOUS_DEATH",
+      "rawSources": [
+        {
+          "id": "18fdc7b1a2bd269fbdd93a66373b07b3",
+          "title": "Malay's Body Found In Perak River",
+          "rawSnippet": "Malay's Body Found In Perak River iFrom Our Own Correspondent.) Batu Gajah, Apr. BS. A drownhig tragedy came m light yesterday, when the body of a male Malay, identified as...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/singfreepressb19390427-1.2.76.9"
+        }
+      ],
+      "claims": [
+        {
+          "claimId": "73b8de8d9aa52b12ed5d2feed6edb9f0",
+          "rawClaim": "Malay's Body Found In Perak River",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "",
+          "validationResult": null,
+          "claimType": "REPORTED",
+          "sourceIds": [
+            "18fdc7b1a2bd269fbdd93a66373b07b3"
+          ]
+        }
+      ],
+      "finalNarration": null,
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "Needs two sources or one exceptionally clear source with four claims.",
+          "No grounded hook candidate.",
+          "No grounded payoff or unresolved ending.",
+          "Unique clear evidence is insufficient for about 20 seconds.",
+          "Malay spoken narration does not pass the language and naturalness gate."
+        ]
+      },
+      "clusterConfidence": "MEDIUM",
+      "narrationQuality": {
+        "passes": false,
+        "fragmentCount": 0,
+        "ocrLeakageCount": 0,
+        "malayLanguageRatio": 0,
+        "englishLeakageCount": 0,
+        "headlineLeakageCount": 0,
+        "spokenNaturalnessScore": 0.2
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "42fef305-5acc-47e4-8e11-4f9ddafe69da",
+      "title": "CO717/194/52745/21/1: Colonial Office - Federated Malay States: Original Correspondence: Police Department Police Organisation in Singapore MacIntosh Report [undated-4]",
+      "storyType": "HISTORICAL_INCIDENT",
+      "rawSources": [
+        {
+          "id": "0ec6c68aff4f3e74887083ceb3651b16",
+          "title": "CO717/194/52745/21/1: Colonial Office - Federated Malay States: Original Correspondence: Police Department Police Organisation in Singapore MacIntosh Report",
+          "rawSnippet": "This file contains the 'Police Department Police Organisation in Singapore MacIntosh Report'. Essentially, ...",
+          "expandedSnippet": null,
+          "url": "https://go.nlb.gov.sg/r2/OneSearch?p=nLw800JuHoY3dVF/eBiYqkW+abN1xfnkznv8qvLbh4w2DKDEJbGxkgFbS4om9q87jFkMYUvG+xJm+EXmknNhsHSSyXWwh/op7nghDfMol8GzkB5V4mTwJ2C5fZoErgpXZqGcB+VMaDofZg/ZMPnV5BgZXDcmZtWw69crGkP/eIN0MMDgDmckKc+wpPHU7//Ivic7IKM4rw70GNM4+MuUVxj4LnwhVGHoqgHJ3OBLlMKov8hKItK41ml7FeGGenox16h8KD2Ej2qcF1Z9Tde6KVUlKw+mBrjCVZlu/fRZCbP7xSbMGBn2djauX6XnKu7wheUoejPU5F+1dQ1pVuUAy8fovRtFVbxJSv2LEQbj9JcvdVO4Z8evvieeY7l1eJ31rOK4XNcwCVmVPiiNqFuv165fskvHONW2MXSjlem9jByMhzff1xopVFjOmXMeJiIBiBdf1THqh4xpmdSlNqB/pl+6DiNrg+2GIYOkhCJu+WguwnCLqyJ6ztBrzB/PTq4XriQjcCtU9u3RCB8byht/+thXBZ2yd+cCMkCMcYw2BJnUN5DlmC9I4OZqNLz8d1InOC/AIgf2b6kENz5GY5b9DNwRhlis/jUvlN/QJa6Ifwg=&a=ONESEARCH"
+        },
+        {
+          "id": "17fedc27ccd9cc429fe15e1ff7572e6b",
+          "title": "CO717/194/52745/19/2: Colonial Office - Federated Malay States: Original Correspondence: Police Department Mission of Enquiry",
+          "rawSnippet": "This file contains memoranda and reports pertaining to the operations and affairs of the police department ...",
+          "expandedSnippet": null,
+          "url": "https://go.nlb.gov.sg/r2/OneSearch?p=nLw800JuHoY3dVF/eBiYqkW+abN1xfnkznv8qvLbh4w2DKDEJbGxkgFbS4om9q87jFkMYUvG+xJm+EXmknNhsHSSyXWwh/op7nghDfMol8GzkB5V4mTwJ2C5fZoErgpXZqGcB+VMaDofZg/ZMPnV5BgZXDcmZtWw69crGkP/eIN0MMDgDmckKc+wpPHU7//Ivic7IKM4rw70GNM4+MuUVxj4LnwhVGHoqgHJ3OBLlMKQd8qUsyWg9WfWILt31Pd5MHjtgY48J/GKQkaSbgoHzAgFlEC6sFOIKMvU4yJQjVsiO8TCM77gbJ9tpX0i/ZTX3a1TiHZ9blUsGy8mbqTNMpoCPlqVWpSTMPz7m+WaXMOEEkOdu4z+PfUbCotV+K4aeqRNpEMh2Zn566gATwVHY8sCF59V+MDkHdOmo9KCybQ1/rH2jC9acLIRN/SKPtBzJY0t3s5R87zW0f7OGOo5gKa6dayiUEKrGhi3nFqlaaBcGMtSxrv95CDKew9RuX7fVdxsl64ioZbjMlM00C2Su1yxeetCTNB9vXPt42SZ6Pc7l7wG9or4EwUzzpLYdqV8i7e3HVsClEYjeGTXl0RAvmAwJUi+Zi6dZn3sdJzh/jk=&a=ONESEARCH"
+        },
+        {
+          "id": "2b0e9bd0fcb6d877f9b80fdc54ecbe7f",
+          "title": "CO717/194/52745/21/3: Colonial Office - Federated Malay States: Original Correspondence: Police Department Police Organisation in Singapore Taylor Report",
+          "rawSnippet": "This file contains memoranda and reports on all aspects of the police force; from operations, the budget, ...",
+          "expandedSnippet": null,
+          "url": "https://go.nlb.gov.sg/r2/OneSearch?p=nLw800JuHoY3dVF/eBiYqkW+abN1xfnkznv8qvLbh4w2DKDEJbGxkgFbS4om9q87jFkMYUvG+xJm+EXmknNhsHSSyXWwh/op7nghDfMol8GzkB5V4mTwJ2C5fZoErgpXZqGcB+VMaDofZg/ZMPnV5BgZXDcmZtWw69crGkP/eIN0MMDgDmckKc+wpPHU7//Ivic7IKM4rw70GNM4+MuUVxj4LnwhVGHoqgHJ3OBLlMKet5xpKgxcqTcu8ej2PPCntCsLGAeiHAxIIXMJdCvj7t+fsYThMWmw9vfarCZCPS7HwnrBgK1zsBROOqy5QvIAGJrEt5gHOC7GJazu7xZ6qKcKHl0xJ8vN/lkLe+DBD7r8iWBQy23h9QAzsOiuqpEpIm02aAVGFc20NgybMI8lcbuNTidWAcjsXaitgDb7PuOmS0ZvXXxnpMtE8WyYjDwQqaZ3DK7E/s84jZIFo0EcFJFlEDJPSSXQY7Uig3tXzFPlWjl2li+FNOvO3FywG7CofDWmXeIN8nV5YWxwsFyUZogDi5uwID2lQFz5M7At1e+jDxHmrXXcaz+D4GeoPIEkBi05/j2Agk2EyPpenszo/FjupkzlnRwLP58Oq5lDxSk=&a=ONESEARCH"
+        },
+        {
+          "id": "f19f871be0c461c8415f729525f0aa02",
+          "title": "CO717/194/52745/21/2: Colonial Office - Federated Malay States: Original Correspondence: Police Department Police Organisation in Singapore Committee of Enquiry into Rates of Pay of the Rank and File",
+          "rawSnippet": "This file contains a report by the Committee of Enquiry on the organisation of the police force in Singapore ...",
+          "expandedSnippet": null,
+          "url": "https://go.nlb.gov.sg/r2/OneSearch?p=nLw800JuHoY3dVF/eBiYqkW+abN1xfnkznv8qvLbh4w2DKDEJbGxkgFbS4om9q87jFkMYUvG+xJm+EXmknNhsHSSyXWwh/op7nghDfMol8GzkB5V4mTwJ2C5fZoErgpXZqGcB+VMaDofZg/ZMPnV5BgZXDcmZtWw69crGkP/eIN0MMDgDmckKc+wpPHU7//Ivic7IKM4rw70GNM4+MuUVxj4LnwhVGHoqgHJ3OBLlMLbv09K0mSIxqcsQfm2520sikJXydTYfAnbdHWaPZExcimxQ/9Y9uCwh6PLuGSnmW8nwtPKCAopS1pB3lFh+O+10SFDg3HDgvVOkUgrCgXfMGbFmTZAlEwBH4j8DlRPX3FPfAwqSaBE3CI9tc3h9w8LWgYShDPAp6vK6Y06e50ITAVdjur4HwqUaodj5QG66LuQgQmpOM86FyPbd6pqNh2pN+DAaFICRCETuRmJGjS/KVpKc9+JexHmSGlFHG6d8OU2/5QF8UKWr9VuAnLoi0QwnXCtAM7ktLxVL7QsHxEMaHOz/0RgHL8dtyfE+vxcEYseAGGgCjxkb1NXnr/whx3EoJDdgs+8Xvp8kbToV+pCD6HgFioZbtVZIveldIPBbtg=&a=ONESEARCH"
+        },
+        {
+          "id": "f54b54c7f695c734d3358c95ea9774c9",
+          "title": "CO717/194/52745/3: Colonial Office - Federated Malay States: Original Correspondence: Police Department Staff Recruitment of Ghurkhas",
+          "rawSnippet": "This file contains memoranda and correspondence pertaining to the recruitment of Ghurkhas in Burma for ...",
+          "expandedSnippet": null,
+          "url": "https://go.nlb.gov.sg/r2/OneSearch?p=nLw800JuHoY3dVF/eBiYqkW+abN1xfnkznv8qvLbh4w2DKDEJbGxkgFbS4om9q87jFkMYUvG+xJm+EXmknNhsHSSyXWwh/op7nghDfMol8GzkB5V4mTwJ2C5fZoErgpXZqGcB+VMaDofZg/ZMPnV5BgZXDcmZtWw69crGkP/eIN0MMDgDmckKc+wpPHU7//Ivic7IKM4rw70GNM4+MuUVxj4LnwhVGHoqgHJ3OBLlMIuFPY2E04dvh3SRBQyaJsyizW3yZ8OTaRESnSNMjWfi2celfLsogNavv7ZPTzMRPVkpdRbAegb27BmpPkebTcLnkYEsPM+WqxsmFETcwlwbmztsB8Jl/45WnXJ2y/Fq9emf6lnPgtocbkr1+snMBEupuh+oD3cIOPqtWTty05axGnsADIfsFAQSgNiaXWXFPJcjWIBmEOB1bCTS8SCK3dK/HiHLG7f8sDzNZY9TSZ+fuM6UvCD1AkxhrUdMeQAFstgvHnNbbPIUNb+RRsYJOmU9E8FSXimpqPJnrCahZIgEjvocIhACC+Y5FsSFkaZZH9nRslL1oFCftZoVoS3ip9hec0x8j6w1uSjZKYtTqPOseVNVRNhqY7MnQACG0+NCKI=&a=ONESEARCH"
+        }
+      ],
+      "claims": [
+        {
+          "claimId": "f572058d1896d407732bddd43e9014f0",
+          "rawClaim": "Police Department Police Organisation in Singapore Taylor Report",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "",
+          "validationResult": null,
+          "claimType": "REPORTED",
+          "sourceIds": [
+            "0ec6c68aff4f3e74887083ceb3651b16",
+            "2b0e9bd0fcb6d877f9b80fdc54ecbe7f",
+            "f19f871be0c461c8415f729525f0aa02"
+          ]
+        },
+        {
+          "claimId": "397d0ec75aace1fea0513d574e21a7e2",
+          "rawClaim": "This file contains memoranda and reports on all aspects of the police force",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "",
+          "validationResult": null,
+          "claimType": "REPORTED",
+          "sourceIds": [
+            "17fedc27ccd9cc429fe15e1ff7572e6b",
+            "2b0e9bd0fcb6d877f9b80fdc54ecbe7f"
+          ]
+        }
+      ],
+      "finalNarration": null,
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "No grounded hook candidate.",
+          "No grounded payoff or unresolved ending.",
+          "Unique clear evidence is insufficient for about 20 seconds.",
+          "Malay spoken narration does not pass the language and naturalness gate."
+        ]
+      },
+      "clusterConfidence": "MEDIUM",
+      "narrationQuality": {
+        "passes": false,
+        "fragmentCount": 0,
+        "ocrLeakageCount": 0,
+        "malayLanguageRatio": 0,
+        "englishLeakageCount": 0,
+        "headlineLeakageCount": 0,
+        "spokenNaturalnessScore": 0.2
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "2ede644c-2c97-4428-b4bc-e8dee001dc77",
+      "title": "MALAYAN GHOST STORY.",
+      "storyType": "PARANORMAL_REPORT",
+      "rawSources": [
+        {
+          "id": "a9141a54f815190125238f60c7b89249",
+          "title": "Ghost Story",
+          "rawSnippet": "Ghost Story ]\\JOLLY Ycoh, a student Of the Teachers* Training College. Malacca, relates her experience m a haunted bunC'ilow: On the first day of my December holidays. I went to...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/singstandard19580108-1.2.150"
+        }
+      ],
+      "claims": [
+        {
+          "claimId": "7151c723b58e7f6e8c15e13b30c35704",
+          "rawClaim": "Malacca, relates her experience m a haunted bunC'ilow: On the first day of my December holidays.",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "",
+          "validationResult": null,
+          "claimType": "REPORTED",
+          "sourceIds": [
+            "a9141a54f815190125238f60c7b89249"
+          ]
+        }
+      ],
+      "finalNarration": null,
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "Needs two sources or one exceptionally clear source with four claims.",
+          "No grounded hook candidate.",
+          "No grounded payoff or unresolved ending.",
+          "Narrative potential is below 0.55.",
+          "Unique clear evidence is insufficient for about 20 seconds.",
+          "Malay spoken narration does not pass the language and naturalness gate."
+        ]
+      },
+      "clusterConfidence": "MEDIUM",
+      "narrationQuality": {
+        "passes": false,
+        "fragmentCount": 0,
+        "ocrLeakageCount": 0,
+        "malayLanguageRatio": 0,
+        "englishLeakageCount": 0,
+        "headlineLeakageCount": 0,
+        "spokenNaturalnessScore": 0.2
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "d2903e14-71f5-4a04-91ec-8939a889d6be",
+      "title": "JOHORE DETECTIVE'S SMART WORK.",
+      "storyType": "CRIME_MYSTERY",
+      "rawSources": [
+        {
+          "id": "e6a473eff912db84a4e27f388035c644",
+          "title": "CLEVER JOHORE DETECTIVE.",
+          "rawSnippet": "CLEVER JOHORE DETECTIVE. ARRESTS ALLEGED MURDERER. The prompt and meritorious action of a Johore detective in following up a sud de«j flash of recollection called up by the chance view...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/pinangazette19250713-1.2.7"
+        },
+        {
+          "id": "fc07c4c98af52f6f37725d6f8afafbb9",
+          "title": "DETECTIVE'S SMART WORK",
+          "rawSnippet": "DETECTIVE'S SMART WORK Travels with Alleged Murderer on a Train The prompt and meritorious action of a Johore detective in following up a sudden flash of recollection called up by...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/maltribune19250713-1.2.48"
+        },
+        {
+          "id": "eccb029e3587d2715bc697ab3268e8f4",
+          "title": "JOHORE DETECTIVE'S SMART WORK.",
+          "rawSnippet": "JOHORE DETECTIVE'S SMART WORK. Arrests Alleged Murderer i.r. a Train. Tlu prompt and meritorious actio:; of a Johore detective in following up a eudden flash of recollection called up by...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/singfreepressb19250717-1.2.6"
+        },
+        {
+          "id": "0146e6f0e4f941d1774cd72941a9894e",
+          "title": "JOHORE DETECTIVE'S SMART WORK.",
+          "rawSnippet": "JOHORE DETECTIVE'S SMART WORK. Arrests Alleged Murderer on a Train. The prompt and meritorious action of a Johore detective m following up sudden flash of recollection called up by the...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/singfreepresswk19250722-1.2.81"
+        }
+      ],
+      "claims": [
+        {
+          "claimId": "adb57e494d8287bbb6d8323aaf08f7ab",
+          "rawClaim": "Arrests Alleged Murderer on a Train.",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "",
+          "validationResult": null,
+          "claimType": "REPORTED",
+          "sourceIds": [
+            "eccb029e3587d2715bc697ab3268e8f4",
+            "0146e6f0e4f941d1774cd72941a9894e"
+          ]
+        }
+      ],
+      "finalNarration": null,
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "No grounded hook candidate.",
+          "No grounded payoff or unresolved ending.",
+          "Unique clear evidence is insufficient for about 20 seconds.",
+          "Malay spoken narration does not pass the language and naturalness gate."
+        ]
+      },
+      "clusterConfidence": "HIGH",
+      "narrationQuality": {
+        "passes": false,
+        "fragmentCount": 0,
+        "ocrLeakageCount": 0,
+        "malayLanguageRatio": 0,
+        "englishLeakageCount": 0,
+        "headlineLeakageCount": 0,
+        "spokenNaturalnessScore": 0.2
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "518d37c9-dafa-49ad-8c7a-11df0dfbe609",
+      "title": "THE MURDER ON THE \"PERAK.\"",
+      "storyType": "CRIME_MYSTERY",
+      "rawSources": [
+        {
+          "id": "9a788501259fc0aef740488e5058b24e",
+          "title": "THE MURDER ON THE \"PERAK.\"",
+          "rawSnippet": "THE MURDER ON THE \"PERAK.\" Further light has been thro™ murder on the Perak, by a who reports to the pob« slttß1 ,to off Muar. anil saw two gather. Suddenly...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/pinangazette19231126-1.2.17"
+        }
+      ],
+      "claims": [
+        {
+          "claimId": "d358cade768a006cafd2da7c63887ca4",
+          "rawClaim": "Further light has been thro™ murder on the Perak, by a who reports to the pob« slttß1 ,to off Muar.",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "",
+          "validationResult": null,
+          "claimType": "REPORTED",
+          "sourceIds": [
+            "9a788501259fc0aef740488e5058b24e"
+          ]
+        },
+        {
+          "claimId": "7c4ff23f3b329d0d07b881a849f370c4",
+          "rawClaim": "anil saw two gather.",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "",
+          "validationResult": null,
+          "claimType": "REPORTED",
+          "sourceIds": [
+            "9a788501259fc0aef740488e5058b24e"
+          ]
+        }
+      ],
+      "finalNarration": null,
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "Needs two sources or one exceptionally clear source with four claims.",
+          "No grounded hook candidate.",
+          "No grounded payoff or unresolved ending.",
+          "Unique clear evidence is insufficient for about 20 seconds.",
+          "Malay spoken narration does not pass the language and naturalness gate."
+        ]
+      },
+      "clusterConfidence": "MEDIUM",
+      "narrationQuality": {
+        "passes": false,
+        "fragmentCount": 0,
+        "ocrLeakageCount": 0,
+        "malayLanguageRatio": 0,
+        "englishLeakageCount": 0,
+        "headlineLeakageCount": 0,
+        "spokenNaturalnessScore": 0.2
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "9633002d-fd92-4b19-964d-2d3b878921ce",
+      "title": "Two more confess to role in murder of Perak prince's wife",
+      "storyType": "HISTORICAL_INCIDENT",
+      "rawSources": [
+        {
+          "id": "f312cc0a1f8e9bca42649d75d5263787",
+          "title": "Perak murder: Prince's wife questioned",
+          "rawSnippet": "Perak murder: Prince's wife questioned KUALA LUMPUR The first wife of a Perak prince was questioned by police m their investigation into the murder of his second wife whose body...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes20021022-1.2.41.8.6"
+        },
+        {
+          "id": "6fdf0f5e39d56b315b28aaebd168794e",
+          "title": "Perak murder: Prince's first wife remanded",
+          "rawSnippet": "Perak murder: Prince's first wife remanded IPOH The wife of a Perak prince was remanded yesterday to help the investigation into the murder of her husband's second wife, Hazliza Ishak....",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes20021025-1.2.72.8.4"
+        },
+        {
+          "id": "895286daef0738072bce8f48492791b6",
+          "title": "Perak murder: Prince's first wife remanded",
+          "rawSnippet": "Perak murder: Prince's first wife remanded Bernama IPOH The wife of a Perak prince was remanded on Thursday to help the investigation into the murder of her husband’s second wife,...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/stoverseas20021026-1.2.12.5"
+        }
+      ],
+      "claims": [
+        {
+          "claimId": "4c6964ad076985d1d0adfac823c05b57",
+          "rawClaim": "Prince's first wife remanded",
+          "deterministicSpokenText": "Isteri pertama seorang kerabat Perak direman bagi membantu siasatan.",
+          "geminiSpokenText": "",
+          "validationResult": null,
+          "claimType": "REPORTED",
+          "sourceIds": [
+            "6fdf0f5e39d56b315b28aaebd168794e",
+            "895286daef0738072bce8f48492791b6"
+          ]
+        },
+        {
+          "claimId": "395609b619aacfd759734f6b140b63ec",
+          "rawClaim": "IPOH The wife of a Perak prince was remanded yesterday to help the investigation into the murder of her husband's second wife, Hazliza Ishak",
+          "deterministicSpokenText": "Isteri pertama seorang kerabat Perak direman bagi membantu siasatan pembunuhan Hazliza Ishak.",
+          "geminiSpokenText": "",
+          "validationResult": null,
+          "claimType": "REPORTED",
+          "sourceIds": [
+            "6fdf0f5e39d56b315b28aaebd168794e",
+            "895286daef0738072bce8f48492791b6"
+          ]
+        }
+      ],
+      "finalNarration": null,
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "Narrative potential is below 0.55.",
+          "Unique clear evidence is insufficient for about 20 seconds.",
+          "Malay spoken narration does not pass the language and naturalness gate."
+        ]
+      },
+      "clusterConfidence": "HIGH",
+      "narrationQuality": {
+        "passes": false,
+        "fragmentCount": 0,
+        "ocrLeakageCount": 0,
+        "malayLanguageRatio": 1,
+        "englishLeakageCount": 0,
+        "headlineLeakageCount": 0,
+        "spokenNaturalnessScore": 0.95
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "4def894f-2eca-4d65-a6ce-f184eebf0b7e",
+      "title": "FCO 141/15953/3: Singapore: Weekly Intelligence Summaries of the Security Forces, Malaya. Part 3 of 5 - migrated archives [undated-7]",
+      "storyType": "HISTORICAL_INCIDENT",
+      "rawSources": [
+        {
+          "id": "3431c096c03718cae572e62772aa2991",
+          "title": "FCO 141/15953/3: Singapore: Weekly Intelligence Summaries of the Security Forces, Malaya. Part 3 of 5 - migrated archives",
+          "rawSnippet": "Intelligence Summaries issued by the HQ Federation of Malaya Police. Summaries Nos. 192 - 223 (week ...",
+          "expandedSnippet": null,
+          "url": "https://go.nlb.gov.sg/r2/OneSearch?p=nLw800JuHoY3dVF/eBiYqkW+abN1xfnkznv8qvLbh4w2DKDEJbGxkgFbS4om9q87jFkMYUvG+xJm+EXmknNhsHSSyXWwh/op7nghDfMol8GzkB5V4mTwJ2C5fZoErgpXZqGcB+VMaDofZg/ZMPnV5BgZXDcmZtWw69crGkP/eIN0MMDgDmckKc+wpPHU7//Ivic7IKM4rw70GNM4+MuUV0dQUvKVpsvBDhl3SbNK3t8B0KHFXeXmuVTOH4o6hmt9xrVeRrb0intClzpsRvyOAqK+cKE/r5qVcAeZmFNa18YL6isaRzVAkuIlN+ApkZI418uGZ412/GuiMzLXVfoEWw1KtWeAaFaq2tf3ZfQL0LYC7QXPROB/jk5mjoUsy9dC93b9sIK2TILdhRFg+IaJHa9DhHhOJX5yEchnui2Uz8ckm/B85kbKoD4d9qgCRVpAvlfTYjZ6E4vvkXFBE4BgmLD8HYkKrmKwUzfAKVZwLoEbCu0vPJXZXD6EGRnOOycrfAfakJMFlUmC8StJGEkJlzn7QiwpfC1bGYHRwYTz7WjkfyW4Fcet/3kjJbql8qIjDwhzerCpYvFrYMaq6Bj3DqZqOUBsbIRaoLR5ZB60YOY=&a=ONESEARCH"
+        },
+        {
+          "id": "cb9f67f77918a7a2ceb249f5333a3cdd",
+          "title": "FCO 141/15953/4: Singapore: Weekly Intelligence Summaries of the Security Forces, Malaya. Part 4 of 5 - migrated archives",
+          "rawSnippet": "Intelligence Summaries issued by the HQ Federation of Malaya Police. Summaries Nos.224-250 (week ending ...",
+          "expandedSnippet": null,
+          "url": "https://go.nlb.gov.sg/r2/OneSearch?p=nLw800JuHoY3dVF/eBiYqkW+abN1xfnkznv8qvLbh4w2DKDEJbGxkgFbS4om9q87jFkMYUvG+xJm+EXmknNhsHSSyXWwh/op7nghDfMol8GzkB5V4mTwJ2C5fZoErgpXZqGcB+VMaDofZg/ZMPnV5BgZXDcmZtWw69crGkP/eIN0MMDgDmckKc+wpPHU7//Ivic7IKM4rw70GNM4+MuUV126mgmdF3frhYrIBkwl//8ujMte9GG2KEn0w5zoept1wvk6SXpVNPRl5UZEewrqVT2mQBXQbhl9Xv3I94JNxqMQZ62R+PCurOJxHgWIMoG4VRDFfbomncXicnduunT94/i/HRq5eVBUYqsJr7nhna5E2O6pUcZWpDV+3Wd65PHyXpe/hd8AY9Hk40KtMP/w4NS3qRGac2XH8RTbEMdEGJ0Ka0gixYDQqqwCrHNEejHL/xL+GML0iy3nvSlhUf5CHNXh7RHKKq7mXGFc8pBopWBf32hobYiLl2NtuP5VBMuGyFybYUpiZK7sZwOc1bHKkMJab0yjBAKz0EUcHHSChcx/US6wASLct1anFZSMKmoVoQeQb3OlgvVNdKYEJUFQQsqtsLNEwgwKHv2Z8FhLiVU=&a=ONESEARCH"
+        },
+        {
+          "id": "eb5345d9f558ae1cf563d05d1ab61a41",
+          "title": "FCO 141/15953/5: Singapore: Weekly Intelligence Summaries of the Security Forces, Malaya. Part 5 of 5 - migrated archives",
+          "rawSnippet": "Intelligence Summaries issued by the HQ Federation of Malaya Police. Summaries Nos.252-281 (week ending24 ...",
+          "expandedSnippet": null,
+          "url": "https://go.nlb.gov.sg/r2/OneSearch?p=nLw800JuHoY3dVF/eBiYqkW+abN1xfnkznv8qvLbh4w2DKDEJbGxkgFbS4om9q87jFkMYUvG+xJm+EXmknNhsHSSyXWwh/op7nghDfMol8GzkB5V4mTwJ2C5fZoErgpXZqGcB+VMaDofZg/ZMPnV5BgZXDcmZtWw69crGkP/eIN0MMDgDmckKc+wpPHU7//Ivic7IKM4rw70GNM4+MuUV4M7qT29iP4MR0NgbLQ1k+ygQSycvRCBgbzS4x8f/XliKurKMtKhqWQv8zH9rE122S/ZsNaomNdVC+xh1TXjf6wiKd7JZdYp92JC4bT86lbpVT8tMU83hYrKQOYaJuJ+goZwMThsP+2rrHxGug1GnVQ0iC3zx9ADz7PPQEEO38ALOTuzjIZT4mm3ylRh3m0ow+o2n78hS48M42y91edLA1friaV/EF7epJUQOiTIzbtWHni9aQyr/zfEkZKHwk93hjCUNi3ucPNWfgtweuu2VQJWzD9ab2Rvmv0rMtzZR7XFHp87sHeDX/nWoa0L0seBbE7qANSfrprinI4Npv5WempwgpVj4sJYUWXQsDJbGEBglt1q5+WZIRYAU3ambZVBF2lz+kcsVrODGWC3hqgUaYo=&a=ONESEARCH"
+        },
+        {
+          "id": "f930974e9b64853289893935c9bc940b",
+          "title": "FCO 141/15953/1: Singapore: Weekly Intelligence Summaries of the Security Forces, Malaya. Part 1 of 5 - migrated archives",
+          "rawSnippet": "Intelligence Summaries issued by the HQ Federation of Malaya Police. Summaries Nos. 140 - 161 (week ...",
+          "expandedSnippet": null,
+          "url": "https://go.nlb.gov.sg/r2/OneSearch?p=nLw800JuHoY3dVF/eBiYqkW+abN1xfnkznv8qvLbh4w2DKDEJbGxkgFbS4om9q87jFkMYUvG+xJm+EXmknNhsHSSyXWwh/op7nghDfMol8GzkB5V4mTwJ2C5fZoErgpXZqGcB+VMaDofZg/ZMPnV5BgZXDcmZtWw69crGkP/eIN0MMDgDmckKc+wpPHU7//Ivic7IKM4rw70GNM4+MuUVzgCb5kOd7OJDKzyoZmhsdAVYQxvFiwEyMexhDmkbOXsV4PYhlA4ORPatO/ddWyQH8gC5YMgQqJ2wn1aY8p/hLikjpEOspdLnMFJu9M8Qim7ErkKHMVGet0ZH+/2K3jTQLeyNcgDWERmwqRrYU13cRGgnPKvv/dEJIZgue3aY5T/nqH1aew4mWQVOyMFaryych8JqZ/FuBpp0oeImAcOpjra9CV5/USGNzBbIlWVX4Z0/lCzL8fEnvf9Kl1eo8evmwewKpRTnG6xQl/MftJVfGjQJbSGZUb1xvsR0qD1ezHtdnuJfpQYFsg9D+4iptOp1VfiDRzqhCW7xwExApY4t9U7qi/YA7yoHqg501cuWuPVRlEDBpO3Wu6NthSZy43KD2G76+nR58td6gtcLzKrByI=&a=ONESEARCH"
+        }
+      ],
+      "claims": [
+        {
+          "claimId": "1e226ccbff36f60f1e563073e6c924b9",
+          "rawClaim": "Summaries Nos.224-250 (week ending",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "",
+          "validationResult": null,
+          "claimType": "REPORTED",
+          "sourceIds": [
+            "cb9f67f77918a7a2ceb249f5333a3cdd"
+          ]
+        }
+      ],
+      "finalNarration": null,
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "No grounded hook candidate.",
+          "No grounded payoff or unresolved ending.",
+          "Narrative potential is below 0.55.",
+          "Unique clear evidence is insufficient for about 20 seconds.",
+          "Malay spoken narration does not pass the language and naturalness gate."
+        ]
+      },
+      "clusterConfidence": "MEDIUM",
+      "narrationQuality": {
+        "passes": false,
+        "fragmentCount": 0,
+        "ocrLeakageCount": 0,
+        "malayLanguageRatio": 0,
+        "englishLeakageCount": 0,
+        "headlineLeakageCount": 0,
+        "spokenNaturalnessScore": 0.2
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "5d9f94c2-a559-4dc6-890b-a7bc45b7497d",
+      "title": "Girl, woman reported missing",
+      "storyType": "DISAPPEARANCE",
+      "rawSources": [
+        {
+          "id": "094e825f3f36754edef95e003a1e9716",
+          "title": "2 reported missing",
+          "rawSnippet": "2 reported missing KUALA LUMPUR, Tues. 'FWO persons were reported -I missing one m Klang and the other m Kuala Lumpur over the weekend. They were a 13-year-old- Tamil girl...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/freepress19520603-1.2.69"
+        },
+        {
+          "id": "ec80a5c332f709b0a33300fed125aa76",
+          "title": "Girl, woman reported missing",
+          "rawSnippet": "Girl, woman reported missing KUALA LUMPUR, Mon. 7FWO persons were reported ■1 missing one In Klang and the other in Kuala Lumpur—over the weekend. They were a 13-year-old Tamil girl...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes19520603-1.2.127"
+        }
+      ],
+      "claims": [
+        {
+          "claimId": "6b34bc29c0a47bda4f92815d24311c84",
+          "rawClaim": "Girl, woman reported missing",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "",
+          "validationResult": null,
+          "claimType": "UNRESOLVED",
+          "sourceIds": [
+            "ec80a5c332f709b0a33300fed125aa76"
+          ]
+        },
+        {
+          "claimId": "b776a6707f0e653f2c2a177b775e07b7",
+          "rawClaim": "7FWO persons were reported ■1 missing one In Klang and the other in Kuala Lumpur—over the weekend.",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "",
+          "validationResult": null,
+          "claimType": "UNRESOLVED",
+          "sourceIds": [
+            "ec80a5c332f709b0a33300fed125aa76"
+          ]
+        }
+      ],
+      "finalNarration": null,
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "No grounded hook candidate.",
+          "No grounded payoff or unresolved ending.",
+          "Unique clear evidence is insufficient for about 20 seconds.",
+          "Malay spoken narration does not pass the language and naturalness gate."
+        ]
+      },
+      "clusterConfidence": "HIGH",
+      "narrationQuality": {
+        "passes": false,
+        "fragmentCount": 0,
+        "ocrLeakageCount": 0,
+        "malayLanguageRatio": 0,
+        "englishLeakageCount": 0,
+        "headlineLeakageCount": 0,
+        "spokenNaturalnessScore": 0.2
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "38bdaf75-fb29-422c-aaf1-777f2297e2a8",
+      "title": "Murder on the Perak. [1923-11-22]",
+      "storyType": "CRIME_MYSTERY",
+      "rawSources": [
+        {
+          "id": "807e56f1daabf256311df3bd91430e36",
+          "title": "Murder on the Perak.",
+          "rawSnippet": "Murder on the Perak. When the steamer Perak arrived at Singapore yesterday morning a Malay deck passenjrer was found dead with stab wounds on his body. A Malay who came...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes19231122-1.2.61"
+        },
+        {
+          "id": "fd90236f67e38d15e80880542ad2d095",
+          "title": "Murder on the Perak.",
+          "rawSnippet": "Murder on the Perak. When the steamer Perak arrived ;J t Singapore on Thursday morning a Mala&gt; deck passenger was found dead 1 1 stab wounds on his body. A...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitsbudget19231123-1.2.13"
+        },
+        {
+          "id": "8113f930783494951b3231a726b94f52",
+          "title": "MURDER ON THE \"PERAK.\"",
+          "rawSnippet": "MURDER ON THE \"PERAK.\" V hen the steamer Perak arrived at Singapore on Wednesday morning, a Malay deck passenger was found dead with stab wounds on his body. A Malay...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/pinangazette19231124-1.2.71"
+        }
+      ],
+      "claims": [
+        {
+          "claimId": "c53bc957580c1e2698f7e2a55630c4c9",
+          "rawClaim": "When the steamer Perak arrived at Singapore yesterday morning a Malay deck passenjrer was found dead with stab wounds on his body.",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "",
+          "validationResult": null,
+          "claimType": "REPORTED",
+          "sourceIds": [
+            "807e56f1daabf256311df3bd91430e36",
+            "8113f930783494951b3231a726b94f52"
+          ]
+        }
+      ],
+      "finalNarration": null,
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "No grounded hook candidate.",
+          "No grounded payoff or unresolved ending.",
+          "Unique clear evidence is insufficient for about 20 seconds.",
+          "Malay spoken narration does not pass the language and naturalness gate."
+        ]
+      },
+      "clusterConfidence": "HIGH",
+      "narrationQuality": {
+        "passes": false,
+        "fragmentCount": 0,
+        "ocrLeakageCount": 0,
+        "malayLanguageRatio": 0,
+        "englishLeakageCount": 0,
+        "headlineLeakageCount": 0,
+        "spokenNaturalnessScore": 0.2
+      },
+      "failures": []
+    },
+    {
+      "candidateId": "7c0591f8-840e-4e98-80fe-e1e19f9cd3a5",
+      "title": "MYSTERY OF MISSING CHETTIAR.",
+      "storyType": "DISAPPEARANCE",
+      "rawSources": [
+        {
+          "id": "7a6e72bdfe923a487c7c044f5b913147",
+          "title": "MYSTERY OF MISSING CHETTIAR.",
+          "rawSnippet": "MYSTERY OF MISSING CHETTIAR. Last Seen at Singapore Race Meeting. The Chettiar community of Singapore and Johore is greatly perturbed over the mysterious disappearance of one of its members since...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes19310515-1.2.63"
+        },
+        {
+          "id": "46870d60f3516f2a814c60088bffccba",
+          "title": "MYSTERY OF MISSING CHETTIAR.",
+          "rawSnippet": "MYSTERY OF MISSING CHETTIAR. Last Seen at Singapore Race Meeting. The Chettiar community of Singapore and Johore is greatly perturbed over the mysterious disappearance of one of its members since...",
+          "expandedSnippet": null,
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitsbudget19310521-1.2.22"
+        }
+      ],
+      "claims": [
+        {
+          "claimId": "346701cf89dc067c9fb24685dfbd6e0d",
+          "rawClaim": "MYSTERY OF MISSING CHETTIAR",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "Misteri kehilangan Chettiar masih belum pasti.",
+          "validationResult": {
+            "valid": true,
+            "reasons": [],
+            "version": "5.0-claim-preservation",
+            "checkedAt": "2026-09-05T04:24:36.947Z"
+          },
+          "claimType": "UNRESOLVED",
+          "sourceIds": [
+            "7a6e72bdfe923a487c7c044f5b913147",
+            "46870d60f3516f2a814c60088bffccba"
+          ]
+        },
+        {
+          "claimId": "470f65b3d0858bbc51a7d774ded7b707",
+          "rawClaim": "The Chettiar community of Singapore and Johore is greatly perturbed over the mysterious disappearance of one of its members since",
+          "deterministicSpokenText": "",
+          "geminiSpokenText": "Komuniti Chettiar bimbang mengenai kehilangan misteri salah seorang ahlinya yang masih belum pasti.",
+          "validationResult": {
+            "valid": true,
+            "reasons": [],
+            "version": "5.0-claim-preservation",
+            "checkedAt": "2026-09-05T04:24:36.948Z"
+          },
+          "claimType": "UNRESOLVED",
+          "sourceIds": [
+            "7a6e72bdfe923a487c7c044f5b913147",
+            "46870d60f3516f2a814c60088bffccba"
+          ]
+        }
+      ],
+      "finalNarration": null,
+      "readyDecision": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Fewer than three clear, useful factual claims.",
+          "Unique clear evidence is insufficient for about 20 seconds.",
+          "Malay spoken narration does not pass the language and naturalness gate.",
+          "Validated AI story narration is required after Gemini claim rewriting."
+        ]
+      },
+      "clusterConfidence": "HIGH",
+      "narrationQuality": {
+        "passes": false,
+        "fragmentCount": 0,
+        "ocrLeakageCount": 0,
+        "malayLanguageRatio": 1,
+        "englishLeakageCount": 0,
+        "headlineLeakageCount": 0,
+        "spokenNaturalnessScore": 0.95
+      },
+      "failures": []
+    }
+  ]
+}

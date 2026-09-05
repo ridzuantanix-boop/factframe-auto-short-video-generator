@@ -23,7 +23,9 @@ function claimFromRow(row: Row): ResearchClaim {
   return { id: String(row.id), storyCandidateId: String(row.story_candidate_id), claimText: String(row.claim_text), spokenText: String(row.spoken_text ?? ""), normalizedClaim: String(row.normalized_claim),
     claimType: row.claim_type as ResearchClaim["claimType"], confidence: row.confidence as ResearchClaim["confidence"], sourceIds: strings(row.source_ids),
     eventDate: nullableDate(row.event_date), people: strings(row.people), locations: strings(row.locations), priority: row.priority as ResearchClaim["priority"],
-    visualIntent: row.visual_intent as ResearchClaim["visualIntent"], ocrQuality: Number(row.ocr_quality) };
+    visualIntent: row.visual_intent as ResearchClaim["visualIntent"], ocrQuality: Number(row.ocr_quality), rewriteMethod: String(row.rewrite_method ?? "NONE") as ResearchClaim["rewriteMethod"],
+    rewriteModel: row.rewrite_model ? String(row.rewrite_model) : null, validatedAt: nullableDate(row.validated_at), validationVersion: row.validation_version ? String(row.validation_version) : null,
+    validationResult: row.validation_result && typeof row.validation_result === "object" ? row.validation_result as ResearchClaim["validationResult"] : null };
 }
 
 function fromRow(row: Row): StoryCandidate {
@@ -220,6 +222,10 @@ export class StoryStore {
     await this.sql`UPDATE story_sources SET metadata=${this.sql.json(JSON.parse(JSON.stringify(metadata)))} WHERE id=${id}`;
   }
 
+  async updateSourceEnrichment(id: string, metadata: Record<string, unknown>) {
+    await this.sql`UPDATE story_sources SET metadata=${this.sql.json(JSON.parse(JSON.stringify(metadata)))} WHERE id=${id}`;
+  }
+
   async findById(id: string) {
     const rows = await this.sql<Row[]>`SELECT * FROM story_candidates WHERE id=${id} LIMIT 1`;
     return rows[0] ? fromRow(rows[0]) : null;
@@ -230,12 +236,12 @@ export class StoryStore {
     return rows.map(sourceFromRow);
   }
 
-  async listResearchCandidates(options: { status?: StoryIndexStatus | "ALL"; limit?: number; category?: string; region?: string; minSources?: number } = {}) {
+  async listResearchCandidates(options: { status?: StoryIndexStatus | "ALL"; limit?: number; category?: string; region?: string; minSources?: number; minClaims?: number } = {}) {
     const status = options.status ?? "PARTIAL"; const category = options.category || null; const region = options.region || null;
-    const minSources = Math.max(1, options.minSources ?? 1); const limit = Math.min(500, Math.max(1, options.limit ?? 25));
+    const minSources = Math.max(1, options.minSources ?? 1); const minClaims = Math.max(0, options.minClaims ?? 0); const limit = Math.min(500, Math.max(1, options.limit ?? 25));
     const rows = await this.sql<Row[]>`SELECT * FROM story_candidates WHERE metadata->>'archiveDerived'='true'
       AND (${status}='ALL' AND status IN ('PARTIAL', 'READY') OR status=${status})
-      AND source_count >= ${minSources} AND (${category}::text IS NULL OR category=${category} OR metadata->'categories' ? ${category})
+      AND source_count >= ${minSources} AND claim_count >= ${minClaims} AND (${category}::text IS NULL OR category=${category} OR metadata->'categories' ? ${category})
       AND (${region}::text IS NULL OR region ILIKE ${region ? `%${region}%` : null})
       ORDER BY source_count DESC, CASE metadata->>'storyTypeConfidence' WHEN 'HIGH' THEN 0 WHEN 'MEDIUM' THEN 1 ELSE 2 END,
         length(summary) DESC, updated_at DESC LIMIT ${limit}`;
@@ -282,8 +288,8 @@ export class StoryStore {
     return this.sql.begin(async (tx) => {
       await tx`DELETE FROM story_claims WHERE story_candidate_id=${candidate.id}`;
       for (const claim of claims) await tx`INSERT INTO story_claims
-        (id, story_candidate_id, claim_text, spoken_text, normalized_claim, claim_type, confidence, source_ids, event_date, people, locations, priority, visual_intent, ocr_quality, created_at, updated_at)
-        VALUES (${claim.id}, ${candidate.id}, ${claim.claimText}, ${claim.spokenText}, ${claim.normalizedClaim}, ${claim.claimType}, ${claim.confidence},
+        (id, story_candidate_id, claim_text, spoken_text, rewrite_method, rewrite_model, validated_at, validation_version, validation_result, normalized_claim, claim_type, confidence, source_ids, event_date, people, locations, priority, visual_intent, ocr_quality, created_at, updated_at)
+        VALUES (${claim.id}, ${candidate.id}, ${claim.claimText}, ${claim.spokenText}, ${claim.rewriteMethod}, ${claim.rewriteModel}, ${claim.validatedAt}, ${claim.validationVersion}, ${claim.validationResult ? tx.json(claim.validationResult) : null}, ${claim.normalizedClaim}, ${claim.claimType}, ${claim.confidence},
           ${tx.json(claim.sourceIds)}, ${claim.eventDate}, ${tx.json(claim.people)}, ${tx.json(claim.locations)}, ${claim.priority}, ${claim.visualIntent}, ${claim.ocrQuality}, now(), now())`;
       await tx`INSERT INTO story_research_packages (story_candidate_id, package, created_at, updated_at)
         VALUES (${candidate.id}, ${tx.json(JSON.parse(JSON.stringify(researchPackage)))}, now(), now())
