@@ -86,3 +86,4 @@ test("customer UI and APIs do not expose operational credit ledger; settings IDs
   assert.equal(DEFAULT_SETTINGS.auratLevel,"full");assert.equal(DEFAULT_SETTINGS.voiceStyle,"natural");
   assert.match(readFileSync("wrangler.jsonc","utf8"),/"GENERATION_ENABLED": "true"/);
 });
+test("iPhone save uses file share sheet and keeps direct navigation only as fallback",()=>{const source=readFileSync("src/components/PawarnaGenerator.tsx","utf8");for(const rule of ["navigator.canShare","navigator.share","new File","URL.createObjectURL","Simpan Video"])assert.ok(source.includes(rule),rule);assert.doesNotMatch(source,/href=\{job\.video_url\+"\?download=1"\}/);});
