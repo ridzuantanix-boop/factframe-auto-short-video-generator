@@ -35,6 +35,7 @@ test("spoken ranges prefer natural pacing, allow shorter scripts and reject over
   assert.match(speechInstructions("natural"),/18–22/);assert.match(speechInstructions("direct"),/maximum 24/);
   assert.ok(validSpeech(plan,DEFAULT_SETTINGS));
   assert.ok(validSpeech({...plan,script:`Lihat cover biru ini. ${STRONG_SPOKEN_CTA}`,cta:STRONG_SPOKEN_CTA},DEFAULT_SETTINGS));
+  for(const cta of ["Tekan link kat bawah.","Kalau nak tengok, klik link kat bawah.","Pergi tengok dekat link bawah."])assert.ok(validSpeech({...plan,script:`Lihat cover biru ini. ${cta}`,cta},DEFAULT_SETTINGS),cta);
   for(const invalid of [{cta:"Klik pautan."},{script:plan.script.replace(SPOKEN_CTA,"Klik pautan.")},{script:plan.script+" Tambahan."},{script:plan.script+" "+SPOKEN_CTA}])assert.equal(validSpeech({...plan,...invalid},DEFAULT_SETTINGS),false);
   assert.ok(validSpeech({...plan,script:"",cta:""},{...DEFAULT_SETTINGS,voiceoverEnabled:false}));
 });

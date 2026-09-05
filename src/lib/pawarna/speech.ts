@@ -8,7 +8,7 @@ export function speechPolicy(style: GenerationSettings["voiceStyle"] = "natural"
 }
 export function speechInstructions(style?: GenerationSettings["voiceStyle"]) {
   const policy = speechPolicy(style);
-  return `Target ${policy.target} spoken words TOTAL including CTA; maximum ${policy.max}. Default 18–23; natural/soft sell strongly prefer 18–22. Shorter natural scripts are welcome: never pad to reach a minimum. Prioritise natural human pacing, understandable hook, ONE key point, then a complete CTA. Default AI CTA is "${STRONG_SPOKEN_CTA}"; the shorter legacy CTA remains valid. CTA field must exactly match the script ending. Complete script exactly once, no extra sentences.`;
+  return `Target ${policy.target} spoken words TOTAL including CTA; maximum ${policy.max}. Default 18–23; natural/soft sell strongly prefer 18–22. Shorter natural scripts are welcome: never pad to reach a minimum. Prioritise natural human pacing, understandable hook, ONE key point, then a complete CTA. Preferred AI CTA is "${STRONG_SPOKEN_CTA}"; natural Malaysian variations such as "Tekan link kat bawah." or "Kalau nak tengok, klik link kat bawah." are valid. CTA field must exactly match the script ending. Complete script exactly once, no extra sentences.`;
 }
 export function validSpeech(plan: ContentPlan, settings?: GenerationSettings) {
   if (settings?.voiceoverEnabled === false) return plan.script === "" && plan.cta === "";

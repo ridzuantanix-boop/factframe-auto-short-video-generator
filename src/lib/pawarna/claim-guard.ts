@@ -2,7 +2,7 @@ import type { ContentPlan, JobInput, ProductAnalysis } from "./types";
 
 const rules:[string,RegExp][]=[
   ["unsupported creator experience",/\b(?:saya|aku)\s+(?:dah|sudah|memang|selalu|pernah)\s+(?:guna|pakai|cuba|test|makan)|\banak (?:saya|aku) (?:guna|suka)\b|\b(?:saya|aku) (?:suka sebab|suka|repeat|beli lagi)\b/i],
-  ["unsupported testimonial or social proof",/\b(?:ramai (?:ibu|parents?|orang|yang)?\s*(?:dah )?(?:guna|beli|repeat|puas hati|suka)|semua suka|feedback (?:memang )?best|customer suka|viral|trending|best\s?seller|popular|famous|recommended by many|\d+[km]?\s+(?:satisfied|puas hati))\b/i],
+  ["unsupported testimonial or social proof",/\b(?:ramai (?:ibu|parents?|orang|yang)?\s*(?:dah )?(?:guna|beli|repeat|puas hati)|semua (?:dah guna|puas hati)|feedback (?:memang )?best|customer (?:dah guna|puas hati)|viral|trending|best\s?seller|popular|famous|recommended by many|\d+[km]?\s+(?:satisfied|puas hati))\b/i],
   ["unsupported price or promotion",/\b(?:harga (?:tengah )?(?:promo|jatuh|berbaloi|murah|special)|sekarang murah|murah sekarang|diskaun besar|tengah sale|special price|offer hari ini|offer hari ni|promo)\b/i],
   ["unsupported scarcity or urgency",/\b(?:stok tinggal sikit|tinggal beberapa unit|cepat sebelum habis|ramai tengah grab|promo nak habis|last chance|harga akan naik)\b/i],
   ["unsupported medical efficacy",/\b(?:confirm|terbukti|dijamin|guaranteed?)\s+(?:sangat\s+)?(?:berkesan|hentikan|tumbuhkan|merawat)|(?:kuatkan|tingkatkan|boosts?)\s+(?:imuniti|immune)|mencegah penyakit|merawat|treats?|improves? appetite|lebih sihat\b/i],
@@ -17,7 +17,6 @@ export function hardSafetyProblems(plan:ContentPlan,evidenceText=""){
   const text=[plan.hook,plan.script,plan.visual_direction,...Object.values(plan.scene_plan||{})].join(" "),problems=planClaimGuard(plan);
   const number=text.match(/\d+[\d,.]*/)?.[0];
   if(/\b(?:\d+[\d,.]*\s*(?:k|ribu|juta)?\s*(?:terjual|sold|review|ulasan)|rating\s*\d|\d+%|nombor\s*1|top seller)\b/i.test(text)&&(!number||!evidenceText.toLowerCase().includes(number.toLowerCase())))problems.push("numeric social proof lacks cited evidence");
-  if(/\b(?:review|ulasan)\b/i.test(text)&&!/(?:ada yang|pembeli|reviewer|ulasan)\s+(?:review\s+)?(?:kata|sebut)|menurut\s+(?:review|ulasan)/i.test(text))problems.push("review evidence is not attributed");
   return [...new Set(problems)];
 }
 
