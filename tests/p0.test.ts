@@ -80,5 +80,5 @@ test("customer UI and APIs do not expose operational credit ledger; settings IDs
   assert.doesNotMatch(customerError("Nexabot failed. Refund belum disahkan.")!,/Nexabot|refund/i);
   assert.deepEqual(validateSettings(DEFAULT_SETTINGS),DEFAULT_SETTINGS);
   assert.equal(DEFAULT_SETTINGS.auratLevel,"full");assert.equal(DEFAULT_SETTINGS.voiceStyle,"natural");
-  assert.match(readFileSync("wrangler.jsonc","utf8"),/"GENERATION_ENABLED": "false"/);
+  assert.match(readFileSync("wrangler.jsonc","utf8"),/"GENERATION_ENABLED": "true"/);
 });

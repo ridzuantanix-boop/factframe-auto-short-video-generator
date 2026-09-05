@@ -2,6 +2,8 @@
 
 Status: **prepared, not executed**. Owner manually selects real products and submits each video. No bulk run or automatic real generation.
 
+Test #1 hotfix note: the current Nexabot adapter accepts `i2v` prompt plus one to three complete media inputs. The documented/integrated request contract exposes no crop, mask, bounding-box or product-extraction field. Automated product-only cropping is therefore not implemented; prompt-level reference sanitization is used so an unreliable crop cannot remove product packaging or labels. Provider-side preprocessing capability beyond this request contract remains uncertain.
+
 Approved P0 commit `7782cdd6bca562b309787fb233e58589198b2688` was deployed first as Worker version `7f26ddcd-d922-441d-b968-1731e64c316a`. Controlled-mode deployments carry the implementation Git commit in their Worker version tag/message. Live verification script: `scripts/verify-controlled-live.mjs` (auth, public denial, UI, offline PWA, asset hashes; no authorized generation request).
 
 ## Access and safety

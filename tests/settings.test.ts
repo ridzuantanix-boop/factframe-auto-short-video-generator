@@ -31,6 +31,18 @@ test("visual master, scene beats, product fidelity and correct hand anatomy are 
  for(const part of ["PAWARNA_VISUAL_MASTER_LOCK","PRODUCT_LOCK","SCENE_PLAN",'"0-2"','"2-6"','"6-8"','"8-10"',"five fingers","natural grip","realistic product scale","grey wash","fake HDR"])assert.ok(prompt.includes(part),part);
  const noHands=buildVideoPrompt(product,plan,false,1,"",{...DEFAULT_SETTINGS,subjectType:"no_hands",shariahCompliance:false,auratLevel:null});assert.match(noHands,/No people, hands, faces/);assert.doesNotMatch(noHands,/Hands-only POV/);
 });
+test("reference sanitization is global and preserves only physical product identity",()=>{
+ const prompt=buildVideoPrompt(product,plan,false,1,"",DEFAULT_SETTINGS);
+ for(const rule of ["PRODUCT IDENTITY REFERENCES ONLY","Never display the source reference image","TikTok UI","social-media controls","very first rendered frame","genuine physical product-label text"])assert.ok(prompt.includes(rule),rule);
+ const ordered=["PAWARNA_VIDEO_EXECUTION_LOCK:","REFERENCE_SANITIZATION_LOCK:","PAWARNA_VISUAL_MASTER_LOCK:","PRODUCT_LOCK:","CAMERA_LOCK:","VIDEO_STYLE:","SALES_ANGLE:","SCENE_PLAN:","PRODUCT_INTELLIGENCE:","SPOKEN_SCRIPT:","USER_INSTRUCTIONS:"];
+ for(let i=1;i<ordered.length;i++)assert.ok(prompt.indexOf(ordered[i-1])<prompt.indexOf(ordered[i]),`${ordered[i-1]} before ${ordered[i]}`);
+});
+test("strict POV camera rules are isolated and no-hands fallback remains hand-free",()=>{
+ const pov=buildVideoPrompt(product,plan,false,1,"",{...DEFAULT_SETTINGS,subjectType:"female_hands"});
+ for(const rule of ["TRUE FIRST-PERSON POV","camera is the viewer's eyes","originate naturally from below the camera","third person","commercial hero shot","commercial montage"])assert.ok(pov.includes(rule),rule);
+ for(const style of ["product_motion","closeup_detail","mini_commercial_ugc"] as const){const other=buildVideoPrompt(product,plan,false,1,"",{...DEFAULT_SETTINGS,videoStyle:style});assert.doesNotMatch(other,/TRUE FIRST-PERSON POV|camera is the viewer's eyes|originate naturally from below the camera/);}
+ const noHands=buildVideoPrompt(product,plan,false,1,"",{...DEFAULT_SETTINGS,subjectType:"no_hands"});assert.match(noHands,/POV camera view/);assert.doesNotMatch(noHands,/Hands and forearms originate|hands originate naturally/);
+});
 test("public product allowlist hides owner and storage; correction remains unverified note",()=>{
  const p=publicProduct({id:"example",owner:"PRIVATE",input_key:"PRIVATE/R2",created_at:1,updated_at:1,stage:"ready",image_count:2,product,corrections:"User label"});
  assert.doesNotMatch(JSON.stringify(p),/PRIVATE/);assert.equal(p.image_urls.length,2);assert.equal(correction("  Label  "),"Label");assert.throws(()=>correction("x".repeat(1001)));
