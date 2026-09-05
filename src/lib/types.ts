@@ -68,7 +68,7 @@ export type Topic = {
 };
 
 export type ContentMode = "STORY" | "MYSTERY";
-export type StoryDuration = 30 | 60 | 90;
+export type StoryDuration = number;
 export type StoryTone = "DOCUMENTARY" | "SUSPENSEFUL";
 export type StoryCategory = "UNSOLVED_MYSTERY" | "HISTORICAL_MYSTERY" | "DISAPPEARANCE" | "STRANGE_EVENT" | "CRIME_MYSTERY" | "CONSPIRACY_THEORY" | "PARANORMAL_CLAIM" | "URBAN_LEGEND" | "ARCHAEOLOGICAL_MYSTERY" | "UNEXPLAINED_PHENOMENON";
 export type CaseStatus = "UNSOLVED" | "PARTIALLY_EXPLAINED" | "SOLVED" | "DISPUTED" | "LEGEND" | "REPORTED_CLAIM";
@@ -132,6 +132,10 @@ export type StoryRecord = {
     generatedAt: string;
     validationVersion: string;
   };
+  supportedDurationSeconds?: number;
+  supportedDurationBand?: "MICRO" | "SHORT" | "STANDARD" | "LONG";
+  storyCompletenessScore?: number;
+  endingType?: "RESOLVED" | "UNRESOLVED" | "FOLLOW_UP" | "DOCUMENTED_FACT" | "REPORTED_CLAIM" | "FOLKLORE_OPEN_END";
 };
 
 export type MysterySegment = {
@@ -160,6 +164,7 @@ export type MysteryScript = {
   repetitionScore: number;
   sourceCoverage: number;
   unsupportedClaims: number;
+  storyCompletenessScore?: number;
   sources: ResearchSource[];
   showSourceNote: boolean;
 };

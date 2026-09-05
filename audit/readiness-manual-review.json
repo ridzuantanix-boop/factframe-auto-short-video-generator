@@ -1,0 +1,17 @@
+{
+  "reviewedAt": "2026-09-05T06:53:00.000Z",
+  "scope": "All newly READY stories (1 available; fewer than the requested maximum sample of 20)",
+  "reviews": [
+    {
+      "candidateId": "bcad5d60-472b-4789-844f-773f452f18e8",
+      "title": "Copter goes missing in Sarawak",
+      "verdict": "PASS",
+      "factualCompleteness": true,
+      "naturalMalay": true,
+      "noObviousPadding": true,
+      "sensibleDuration": true,
+      "nonArtificialEnding": true,
+      "notes": "The 10-second micro-story identifies the event and place, then adds the aircraft identity, passenger count and honestly unresolved ending. Both sentences remain linked to the same archival source."
+    }
+  ]
+}

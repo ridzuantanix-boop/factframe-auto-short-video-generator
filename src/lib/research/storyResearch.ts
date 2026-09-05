@@ -79,10 +79,11 @@ export async function researchStoryCandidate(candidateId: string, store: StorySt
 }
 
 export async function persistResearchClaims(candidate: Awaited<ReturnType<StoryStore["findById"]>> & {}, sources: StoredStorySource[], inputClaims: ResearchClaim[], store: StoryStore, aiNarration?: AiNarration) {
-  const claims = assignNarrativePriorities(inputClaims);
+  const claims = assignNarrativePriorities(inputClaims.map((claim) => ({ ...claim, spokenText: claim.spokenText ?? "", sourceIds: claim.sourceIds ?? [], people: claim.people ?? [],
+    locations: claim.locations ?? [], rewriteMethod: claim.rewriteMethod ?? "NONE", rewriteModel: claim.rewriteModel ?? null, validatedAt: claim.validatedAt ?? null,
+    validationVersion: claim.validationVersion ?? null, validationResult: claim.validationResult ?? null })));
   const historicalContext = String(candidate.metadata.historicalContext ?? "PRE_MALAYSIA");
   const requiresCurrentVerification = needsCurrentVerification(candidate.storyType, historicalContext, sources);
-  const metrics = calculateResearchMetrics(claims, sources, candidate.storyType);
   const speakableClaims = claims.filter((claim) => Boolean(claim.spokenText)); const hooks = speakableClaims.slice(0, Math.min(3, speakableClaims.length)).map(hookFor);
   const sinking = speakableClaims.find((claim) => /kapal karam/i.test(claim.spokenText));
   const missingHelmsman = speakableClaims.find((claim) => /jurumudi.*hilang|hilang.*jurumudi/i.test(claim.spokenText));
@@ -92,11 +93,9 @@ export async function persistResearchClaims(candidate: Awaited<ReturnType<StoryS
   const unresolvedQuestions = (["DISAPPEARANCE", "MYSTERIOUS_DEATH", "PARANORMAL_REPORT", "FOLKLORE", "UNEXPLAINED_EVENT", "CRIME_MYSTERY"].includes(candidate.storyType) || /missing|hilang/i.test(candidate.title))
     ? speakableClaims[0] ? [{ text: /helmsman|jurumudi/i.test(candidate.title) ? "Apakah yang ditemukan apabila operasi mencari jurumudi itu diteruskan?" : questionFor(candidate.storyType, speakableClaims[0]), claimIds: [], sourceIds: [] }] : [] : [];
   const endingClaim = speakableClaims.at(-1); const payoff = endingClaim ? { text: endingClaim.spokenText, claimIds: [endingClaim.id], sourceIds: endingClaim.sourceIds } : { text: "", claimIds: [], sourceIds: [] };
+  const metrics = calculateResearchMetrics(claims, sources, candidate.storyType, Boolean(payoff.text));
   const cluster = validateSourceCluster(sources); const narrationQuality = assessNarrationQuality(claims);
   const readyDecision = decideResearchReadiness(claims, sources, metrics, Boolean(hooks.length), Boolean(payoff.text), requiresCurrentVerification, cluster.confidence, narrationQuality);
-  if (claims.some((claim) => claim.rewriteMethod === "GEMINI") && !aiNarration) {
-    readyDecision.status = "PARTIAL"; readyDecision.reasons = [...readyDecision.reasons.filter((reason) => !reason.startsWith("All research")), "Validated AI story narration is required after Gemini claim rewriting."];
-  }
   const now = new Date().toISOString(); const packageValue: ResearchPackage = {
     storyCandidateId: candidate.id, title: candidate.title, summary: candidate.summary, storyType: candidate.storyType, historicalContext,
     sources: researchSources(sources), claims, timeline: speakableClaims.map((claim) => ({ id: `timeline-${claim.id}`, date: claim.eventDate,
@@ -134,7 +133,9 @@ export function researchPackageToStoryRecord(value: ResearchPackage): StoryRecor
     claims: value.claims.filter((claim) => Boolean(claim.spokenText)).map((claim) => ({ id: claim.id, claim: claim.claimText, narration: claim.spokenText, type: claim.claimType,
       confidence: claim.confidence, sourceIds: claim.sourceIds, priority: claim.priority, visualIntent: claim.visualIntent })),
     historicalContext: value.historicalContext, timeline: value.timeline, hookCandidates: value.hookCandidates,
-    unresolvedQuestions: value.unresolvedQuestions, payoff: value.payoff, aiNarration: value.aiNarration };
+    unresolvedQuestions: value.unresolvedQuestions, payoff: value.payoff, aiNarration: value.aiNarration,
+    supportedDurationSeconds: value.supportedDurationSeconds, supportedDurationBand: value.supportedDurationBand,
+    storyCompletenessScore: value.storyCompletenessScore, endingType: value.endingType };
 }
 
 export async function loadResearchStory(candidateId: string, store: StoryStore = createStoryStore()) {

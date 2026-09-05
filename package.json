@@ -21,6 +21,7 @@
     "audit:narration": "node --env-file-if-exists=.env.local scripts/audit-narration.mjs",
     "audit:ai-enrichment": "node --env-file-if-exists=.env.local scripts/audit-ai-enrichment.mjs",
     "audit:validator": "node --env-file-if-exists=.env.local scripts/audit-validator.mjs",
+    "audit:readiness": "node --env-file-if-exists=.env.local scripts/audit-readiness.mjs",
     "reclassify:stories": "node --env-file-if-exists=.env.local scripts/reclassify-stories.mjs",
     "audit:project": "node --env-file-if-exists=.env.local scripts/audit-project.mjs",
     "audit:discovery": "node --env-file-if-exists=.env.local scripts/audit-discovery.mjs",

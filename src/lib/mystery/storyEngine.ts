@@ -32,8 +32,14 @@ function openLoop(story: StoryRecord): MysterySegment {
   return { role: "OPEN_LOOP", text, sourceIds: grounded?.sourceIds ?? [], claimType: "UNRESOLVED", visualIntent: "FACT_CARD" };
 }
 
+export function effectiveStoryDuration(story: StoryRecord, requested: StoryDuration): StoryDuration {
+  const supported = story.supportedDurationSeconds;
+  return supported && requested > supported ? supported : requested;
+}
+
 export function buildMysteryScript(story: StoryRecord, duration: StoryDuration, tone: StoryTone, showSourceNote: boolean): MysteryScript {
-  if (story.aiNarration?.segments.length) {
+  const effectiveDuration = effectiveStoryDuration(story, duration);
+  if (story.aiNarration?.segments.length && effectiveDuration > 20) {
     const byId = new Map(story.claims.map((claim) => [claim.id, claim]));
     const segments: MysterySegment[] = story.aiNarration.segments.map((segment) => {
       const claims = segment.claimIds.flatMap((id) => { const claim = byId.get(id); return claim ? [claim] : []; });
@@ -41,22 +47,24 @@ export function buildMysteryScript(story: StoryRecord, duration: StoryDuration, 
       return { role: aiRole[segment.role], text: segment.text, sourceIds: segment.sourceIds,
         claimType: strongest?.type ?? "VERIFIED", visualIntent: strongest?.visualIntent ?? "FACT_CARD" };
     });
-    const quality = calculateScriptQuality(segments, story.sources);
-    return { storyId: story.id, title: story.title, durationTarget: duration, tone, hook: segments[0]?.text ?? "", openLoop: "",
-      caseStatus: story.caseStatus, segments, payoff: segments.at(-1)?.text ?? "", ...quality, sources: story.sources, showSourceNote };
+    const quality = calculateScriptQuality(segments, story.sources, story.storyCompletenessScore);
+    return { storyId: story.id, title: story.title, durationTarget: effectiveDuration, tone, hook: segments[0]?.text ?? "", openLoop: "",
+      caseStatus: story.caseStatus, segments, payoff: segments.at(-1)?.text ?? "", ...quality, storyCompletenessScore: story.storyCompletenessScore, sources: story.sources, showSourceNote };
   }
   const usableClaims = story.claims.filter((item) => item.priority !== "LOW_PRIORITY");
-  const limit = duration === 30 ? 6 : usableClaims.length;
+  const limit = story.supportedDurationSeconds
+    ? effectiveDuration <= 15 ? 2 : effectiveDuration <= 30 ? 4 : effectiveDuration <= 45 ? 7 : usableClaims.length
+    : effectiveDuration === 30 ? 6 : usableClaims.length;
   const chosen = usableClaims.slice(0, limit);
   const loop = openLoop(story);
   const segments: MysterySegment[] = chosen.map((item) => ({ role: roleByPriority[item.priority], text: naturalText(item, tone), sourceIds: item.sourceIds, claimType: item.type, visualIntent: item.visualIntent }));
   const groundedHook = story.hookCandidates?.[0];
   if (segments[0] && groundedHook) segments[0] = { ...segments[0], role: "HOOK", text: groundedHook.text, sourceIds: groundedHook.sourceIds };
-  segments.splice(1, 0, loop);
+  if (effectiveDuration > 20) segments.splice(1, 0, loop);
   const groundedPayoff = story.payoff;
-  if (groundedPayoff?.text && segments.length) segments[segments.length - 1] = { ...segments[segments.length - 1], role: "PAYOFF", text: groundedPayoff.text, sourceIds: groundedPayoff.sourceIds };
-  const quality = calculateScriptQuality(segments, story.sources);
-  return { storyId: story.id, title: story.title, durationTarget: duration, tone, hook: segments[0].text, openLoop: loop.text, caseStatus: story.caseStatus, segments, payoff: segments.at(-1)?.text ?? "", ...quality, sources: story.sources, showSourceNote };
+  if (groundedPayoff?.text && segments.length > 1) segments[segments.length - 1] = { ...segments[segments.length - 1], role: "PAYOFF", text: groundedPayoff.text, sourceIds: groundedPayoff.sourceIds };
+  const quality = calculateScriptQuality(segments, story.sources, story.storyCompletenessScore);
+  return { storyId: story.id, title: story.title, durationTarget: effectiveDuration, tone, hook: segments[0].text, openLoop: effectiveDuration > 20 ? loop.text : "", caseStatus: story.caseStatus, segments, payoff: groundedPayoff?.text ?? segments.at(-1)?.text ?? "", ...quality, storyCompletenessScore: story.storyCompletenessScore, sources: story.sources, showSourceNote };
 }
 
 export function mysteryScriptToTopic(story: StoryRecord, script: MysteryScript): Topic {

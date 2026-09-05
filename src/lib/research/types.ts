@@ -1,4 +1,5 @@
 import type { ClaimType, ResearchSource, StoryClaim, StoryIndexStatus } from "../types.ts";
+import type { StoryEndingType, SupportedDurationBand } from "./durationScoring.ts";
 
 export type ResearchClaim = {
   id: string;
@@ -59,6 +60,7 @@ export type ResearchPackage = {
     englishLeakageCount: number;
     ocrLeakageCount: number;
     fragmentCount: number;
+    unnaturalPhraseCount: number;
     headlineLeakageCount: number;
     spokenNaturalnessScore: number;
     passes: boolean;
@@ -72,6 +74,13 @@ export type ResearchPackage = {
   researchScore: number;
   narrativePotentialScore: number;
   estimatedNarrationSeconds: number;
+  supportedDurationSeconds: number;
+  supportedDurationBand: SupportedDurationBand;
+  storyCompletenessScore: number;
+  endingType: StoryEndingType;
+  narrationWordCount: number;
+  distinctUsefulClaimCount: number;
+  singleClaimComplete: boolean;
   readyDecision: { status: Extract<StoryIndexStatus, "READY" | "PARTIAL">; reasons: string[] };
   requiresCurrentVerification: boolean;
   lastResearchedAt: string;

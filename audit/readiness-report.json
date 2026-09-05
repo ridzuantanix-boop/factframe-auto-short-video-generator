@@ -1,0 +1,20 @@
+{
+  "generatedAt": "2026-09-05T06:58:21.565Z",
+  "totalEvaluated": 100,
+  "readyBefore": 0,
+  "readyAfter": 1,
+  "newlyReady": 1,
+  "durationDistribution": {
+    "MICRO": 1,
+    "SHORT": 0,
+    "STANDARD": 0,
+    "LONG": 0
+  },
+  "averageClaimsPerReadyStory": 2,
+  "averageSupportedDuration": 10,
+  "unsupportedClaimCount": 0,
+  "manualReviewsCompleted": 1,
+  "manualReviewPassRate": 1,
+  "recalculationFailures": 0,
+  "failures": []
+}

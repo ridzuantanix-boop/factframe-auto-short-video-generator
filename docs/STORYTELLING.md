@@ -27,6 +27,8 @@ Script quality now exposes separate `structureScore`, `sourceQualityScore`, and 
 
 Duration handling remains 30/60/90 seconds for the existing seed flow. The archive path no longer repeats evidence bridges merely to reach 60/90 seconds: insufficient unique material remains PARTIAL instead of being padded.
 
+Archive duration is evidence-adaptive. Distinct usable spoken claims and actual narration words determine a maximum supported duration and the MICRO/SHORT/STANDARD/LONG band. Completeness checks subject, event, context, meaningful development/result, continuity, and an ending that reflects the known state. Length itself earns no quality points. MICRO/SHORT scripts start with core context, omit forced open loops, and preserve `RESOLVED`, `UNRESOLVED`, `FOLLOW_UP`, `DOCUMENTED_FACT`, `REPORTED_CLAIM`, or `FOLKLORE_OPEN_END` endings without fake suspense.
+
 ## Validated AI narration
 
 Phase 5 first rewrites claims independently and validates each rewrite before any story-level request. The story writer receives only approved `spokenText`, claim IDs, source IDs, dates, entities, story type, and historical context. Its strict four-segment result is rejected if it changes the source union, references an unknown claim, adds a number, weakens REPORTED/FOLKLORE/UNRESOLVED status, or fails the Malaysian Malay gate.

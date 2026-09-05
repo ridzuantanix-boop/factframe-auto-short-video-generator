@@ -36,17 +36,19 @@ OCR quality is calculated from readable characters, broken tokens, mixed letter/
 
 All conditions must pass:
 
-- at least three clear factual claims;
-- at least two sources, or one clear source with at least four claims;
+- at least two distinct clear factual claims, or one unusually rich claim containing a complete subject, event, context and outcome;
+- at least one clear persisted source; a single archival source is allowed for a complete micro-story while retaining its reported/medium-confidence language;
 - source coverage exactly 1 and zero unsupported claims;
 - grounded hook and payoff;
-- narrative potential at least 0.55;
-- about 20 seconds of unique evidence without padding;
+- story completeness at least 0.85;
+- enough grounded spoken material for the package's calculated supported duration, with an absolute floor of about eight seconds/20 words;
 - HIGH or validated MEDIUM date/entity cluster confidence;
 - complete Malaysian Malay narration with no English headline/OCR leakage and a passing spoken-naturalness score;
 - no outstanding current-aware verification.
 
-If Gemini rewrote any claim, READY additionally requires a validated four-part AI narration built only from approved spoken claims. Gemini availability never changes readiness by itself. Modern unresolved/current cases remain blocked until current-aware verification exists.
+Validated claim-level Gemini text may be assembled by the deterministic story path and does not require another story-level Gemini call. Gemini availability never changes readiness by itself. Modern unresolved/current cases remain blocked until current-aware verification exists.
+
+Phase 5.2 calculates `supportedDurationSeconds`, `supportedDurationBand`, `estimatedNarrationSeconds`, `storyCompletenessScore`, and an honest ending type from distinct usable spoken claims. MICRO/SHORT stories use a direct HOOK → DETAIL/KNOWN OUTCOME structure without a forced question. A longer user request is capped to the evidence-supported duration; it never duplicates claims to fill time.
 
 Visual availability is not part of Phase 4 readiness. A failed gate persists the package and explanatory reasons while retaining `PARTIAL`.
 
@@ -61,6 +63,7 @@ npm run audit:narration
 npm run enrich:ai -- --status=PARTIAL --limit=20 --min-sources=1 --min-claims=1
 npm run audit:ai-enrichment
 npm run audit:validator
+npm run audit:readiness
 npm run deepen:evidence -- --candidate-ids-file=audit/ai-enrichment-report.json --limit=100
 ```
 
@@ -69,6 +72,8 @@ npm run deepen:evidence -- --candidate-ids-file=audit/ai-enrichment-report.json 
 The controlled Phase 5 cohort contained 100 PARTIAL candidates across disappearance, crime, mysterious death, disaster, historical incident, paranormal report, and folklore. Among 108 eligible claims, narratable coverage rose from 2.8% deterministic to 47.2% after validated Gemini output. The final cached pass recorded 94 requests, 48 validated Gemini claims in the cohort, 50 rejected rewrites, 42 retries, zero unsupported claims, and zero English/OCR leakage. READY remained 0 → 0 because the thin archive snippets still failed evidence-depth/duration gates; no gate was relaxed.
 
 Phase 5.1 revalidated those exact 50 rejected outputs before generating anything. Manual inspection classified 36 as safe false rejects and retained 14 real hard failures, producing 100% measured hard-fail precision and zero false rejects among the retained hard failures. The recovered cache raised valid spoken coverage on the same cohort from 47.2% to 79.1%; useful claims averaged 1.08 → 1.10 and READY stayed 0 → 0. Follow-up discovery ran 190 NLB searches and inspected 596 results. None passed the tightened event/entity continuity rule, so no source was linked; the two additional useful claims came from initializing previously missing deterministic packages, not from follow-up sources. The new-source-only Gemini pass therefore made zero requests and consumed zero tokens. Full results are preserved in `audit/validator-audit.json`, `audit/evidence-deepening-report.json`, and `audit/ai-enrichment-audit.json`.
+
+The Phase 5.2 recalculation used the same 100 IDs and made no Gemini calls. One complete 10-second MICRO story became READY; the other 99 remained PARTIAL. It has two distinct useful claims, one coherent archival source, 100% source coverage, zero unsupported claims, and passed the only available newly-READY manual review. No SHORT/STANDARD/LONG story passed the unchanged factual and language gates. Audit details are in `audit/readiness-report.json`, `audit/readiness-ready-stories.json`, and `audit/readiness-manual-review.json`.
 
 The Phase 4.1 recheck starts from the same 100 IDs. It found 16 suspicious candidates, split them into 35 additional event candidates, and reassigned 50 source links without deleting source records. The resulting 135 coherent candidates contain 175 claims; strict narration gates leave one READY and 134 PARTIAL. Details are in `audit/cluster-repair-report.json`, `audit/narration-audit.json`, and ten before/after samples in `audit/narration-examples.json`.
 

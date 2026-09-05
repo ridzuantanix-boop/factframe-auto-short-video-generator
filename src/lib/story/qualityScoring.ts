@@ -70,11 +70,11 @@ export function calculateStorytellingScore(input: Pick<MysteryScript, "segments"
 
 export function calculateStructureScore(segments: MysterySegment[]) {
   if (!segments.length) return 0;
-  const roles = segments.map((segment) => segment.role); let score = 0;
+  const roles = segments.map((segment) => segment.role); const factual = factualSegments(segments); let score = 0;
   if (roles[0] === "HOOK" && segments[0].text.trim()) score += .25;
-  if (roles.includes("OPEN_LOOP")) score += .15;
-  if (roles.some((role) => ["CONTEXT", "ESCALATION"].includes(role))) score += .2;
-  if (roles.some((role) => ["TWIST", "COUNTERPOINT"].includes(role))) score += .15;
+  if (roles.includes("OPEN_LOOP") || factual.length >= 2) score += .15;
+  if (roles.some((role) => ["CONTEXT", "ESCALATION"].includes(role)) || factual.length >= 2) score += .2;
+  if (roles.some((role) => ["TWIST", "COUNTERPOINT"].includes(role)) || factual.length >= 3) score += .15;
   if (roles.at(-1) === "PAYOFF" && segments.at(-1)?.text.trim()) score += .25;
   return Number(Math.min(1, score).toFixed(3));
 }
@@ -89,9 +89,10 @@ export function calculateNarrationQualityScore(segments: MysterySegment[]) {
   return Number(Math.max(0, Math.min(1, complete * .4 + clean * .4 + varied * .2)).toFixed(3));
 }
 
-export function calculateScriptQuality(segments: MysterySegment[], sources: ResearchSource[]) {
+export function calculateScriptQuality(segments: MysterySegment[], sources: ResearchSource[], storyCompletenessScore = 0) {
   const sourceCoverage = calculateSourceCoverage(segments, sources); const unsupportedClaims = calculateUnsupportedClaims(segments, sources);
-  const structureScore = calculateStructureScore(segments); const sourceQualityScore = Number((sourceCoverage * (unsupportedClaims ? .5 : 1)).toFixed(3));
+  const measuredStructure = calculateStructureScore(segments); const structureScore = storyCompletenessScore >= .9 && factualSegments(segments).length <= 2 ? Math.max(.75, measuredStructure) : measuredStructure;
+  const sourceQualityScore = Number((sourceCoverage * (unsupportedClaims ? .5 : 1)).toFixed(3));
   const narrationQualityScore = calculateNarrationQualityScore(segments); const repetitionScore = calculateRepetitionScore(segments);
   return {
     sourceCoverage, unsupportedClaims, repetitionScore, structureScore, sourceQualityScore, narrationQualityScore,

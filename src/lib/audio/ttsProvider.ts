@@ -1,7 +1,8 @@
 import { DEFAULT_VOICE_PRESET_ID, type VoicePresetId } from "@/lib/audio/voicePresets";
+import type { StoryDuration } from "@/lib/types";
 
 export type TTSProgress = (message: string, percent?: number) => void;
-export type TTSOptions = { tone?: "DOCUMENTARY" | "SUSPENSEFUL"; voicePresetId?: VoicePresetId; targetDurationSeconds?: 30 | 60 | 90; preview?: boolean };
+export type TTSOptions = { tone?: "DOCUMENTARY" | "SUSPENSEFUL"; voicePresetId?: VoicePresetId; targetDurationSeconds?: StoryDuration; preview?: boolean };
 export type GeneratedSpeech = { audioBlob: Blob; mimeType: string; durationSeconds: number; voicePresetId: VoicePresetId; provider: "gemini" | "local" };
 
 export interface TTSProvider {
@@ -64,8 +65,8 @@ class GeminiHumanTTS implements TTSProvider {
           const durationSeconds = await validateAudio(audioBlob);
           const target = options.targetDurationSeconds;
           if (!options.preview && target) {
-            const range = target === 30 ? [25, 35] : target === 60 ? [50, 70] : [75, 100];
-            if (durationSeconds < range[0] * .75 || durationSeconds > range[1] * 1.25) throw new Error(`Tempoh suara ${Math.round(durationSeconds)} saat terlalu jauh daripada sasaran ${target} saat.`);
+            const range = [Math.max(6, target * .65), target * 1.4];
+            if (durationSeconds < range[0] || durationSeconds > range[1]) throw new Error(`Tempoh suara ${Math.round(durationSeconds)} saat terlalu jauh daripada sasaran ${target} saat.`);
           }
           onProgress?.("Suara Gemini siap", 100);
           return { audioBlob, mimeType: audioBlob.type, durationSeconds, voicePresetId, provider: "gemini" as const };

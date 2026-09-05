@@ -289,7 +289,7 @@ export class StoryStore {
       await tx`DELETE FROM story_claims WHERE story_candidate_id=${candidate.id}`;
       for (const claim of claims) await tx`INSERT INTO story_claims
         (id, story_candidate_id, claim_text, spoken_text, rewrite_method, rewrite_model, validated_at, validation_version, validation_result, normalized_claim, claim_type, confidence, source_ids, event_date, people, locations, priority, visual_intent, ocr_quality, created_at, updated_at)
-        VALUES (${claim.id}, ${candidate.id}, ${claim.claimText}, ${claim.spokenText}, ${claim.rewriteMethod}, ${claim.rewriteModel}, ${claim.validatedAt}, ${claim.validationVersion}, ${claim.validationResult ? tx.json(claim.validationResult) : null}, ${claim.normalizedClaim}, ${claim.claimType}, ${claim.confidence},
+        VALUES (${claim.id}, ${candidate.id}, ${claim.claimText}, ${claim.spokenText}, ${claim.rewriteMethod}, ${claim.rewriteModel}, ${claim.validatedAt}, ${claim.validationVersion}, ${claim.validationResult ? tx.json(JSON.parse(JSON.stringify(claim.validationResult))) : null}, ${claim.normalizedClaim}, ${claim.claimType}, ${claim.confidence},
           ${tx.json(claim.sourceIds)}, ${claim.eventDate}, ${tx.json(claim.people)}, ${tx.json(claim.locations)}, ${claim.priority}, ${claim.visualIntent}, ${claim.ocrQuality}, now(), now())`;
       await tx`INSERT INTO story_research_packages (story_candidate_id, package, created_at, updated_at)
         VALUES (${candidate.id}, ${tx.json(JSON.parse(JSON.stringify(researchPackage)))}, now(), now())

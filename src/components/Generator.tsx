@@ -7,7 +7,7 @@ import { adaptiveTtsProvider, previewNarrator } from "@/lib/audio/ttsProvider";
 import { DEFAULT_VOICE_PRESET_ID, VOICE_PRESETS, type VoicePresetId } from "@/lib/audio/voicePresets";
 import { renderVideo } from "@/lib/video/renderer";
 import { caseStatusLabels, categoryLabels, mysteryCatalog } from "@/lib/mystery/catalog";
-import { buildMysteryScript, mysteryScriptToTopic, passesQualityGate } from "@/lib/mystery/storyEngine";
+import { buildMysteryScript, effectiveStoryDuration, mysteryScriptToTopic, passesQualityGate } from "@/lib/mystery/storyEngine";
 import { autoMysteryScriptToTopic, buildAutoMysteryScript } from "@/lib/mystery/autoEngine";
 import { buildExplainerScript, explainerScriptToTopic, generateStoryAngles } from "@/lib/story/explainerEngine";
 import type { ContentMode, MysteryScript, SearchResult, StoryAngle, StoryDuration, StoryRecord, StoryTone, Topic, Visual, VisualQualityReport, WatermarkConfig, WatermarkPosition } from "@/lib/types";
@@ -50,6 +50,7 @@ export function Generator() {
   const [videoUrl, setVideoUrl] = useState("");
   const [selectedStory, setSelectedStory] = useState<StoryRecord | null>(null);
   const [duration, setDuration] = useState<StoryDuration>(30);
+  const [durationNotice, setDurationNotice] = useState("");
   const [tone, setTone] = useState<StoryTone>("DOCUMENTARY");
   const [showSourceNote, setShowSourceNote] = useState(true);
   const [catalogFilter, setCatalogFilter] = useState("Semua");
@@ -93,6 +94,7 @@ export function Generator() {
     return () => { active = false; };
   }, []);
   const estimatedSeconds = useMemo(() => topic ? (topic.mystery?.durationTarget ?? Math.max(20, Math.min(35, Math.round(topic.narration.split(/\s+/).length / 2)))) : 0, [topic]);
+  const durationOptions = useMemo(() => [...new Set([...(selectedStory?.supportedDurationSeconds ? [selectedStory.supportedDurationSeconds as StoryDuration] : []), 30, 60, 90] as StoryDuration[])].sort((a, b) => a - b), [selectedStory]);
   const previewVisual = visuals.find((visual) => Boolean(visual.thumbUrl)) ?? visuals[0];
 
   function updateWatermark(patch: Partial<WatermarkConfig>) {
@@ -190,13 +192,15 @@ export function Generator() {
   async function selectMystery(story: StoryRecord) {
     setError(""); setSelectedStory(story); setProgress({ message: "Menyusun dakwaan bersumber", percent: 18 }); setStage("generating");
     try {
-      let script = buildMysteryScript(story, duration, tone, showSourceNote);
+      const effectiveDuration = effectiveStoryDuration(story, duration); setDuration(effectiveDuration);
+      setDurationNotice(story.supportedDurationSeconds ? `Cadangan: ${story.supportedDurationSeconds} saat berdasarkan bahan bersumber yang tersedia.` : "");
+      let script = buildMysteryScript(story, effectiveDuration, tone, showSourceNote);
       if (geminiConfigured) {
         try {
           setProgress({ message: "Gemini sedang menulis semula cerita", percent: 30 });
-          const response = await fetch("/api/gemini/script", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ storyId: story.id, duration, tone, showSourceNote }) });
-          const data = await readJson<{ script: typeof script }>(response);
-          script = data.script; setAiEnhanced(true);
+          const response = await fetch("/api/gemini/script", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ storyId: story.id, duration: effectiveDuration, tone, showSourceNote }) });
+          const data = await readJson<{ script: typeof script; durationNotice?: string | null }>(response);
+          script = data.script; if (data.durationNotice) setDurationNotice(data.durationNotice); setAiEnhanced(true);
         } catch { setAiEnhanced(false); setProgress({ message: "Menggunakan skrip bersumber tempatan", percent: 36 }); }
       } else setAiEnhanced(false);
       if (!passesQualityGate(script)) throw new Error("Cerita ini belum melepasi semakan sumber dan penceritaan.");
@@ -208,16 +212,22 @@ export function Generator() {
   }
 
   async function updateMystery(nextDuration: StoryDuration, nextTone: StoryTone, nextSourceNote: boolean) {
-    setDuration(nextDuration); setTone(nextTone); setShowSourceNote(nextSourceNote);
+    setTone(nextTone); setShowSourceNote(nextSourceNote);
     if (selectedStory) {
-      const script = buildMysteryScript(selectedStory, nextDuration, nextTone, nextSourceNote);
+      const effectiveDuration = effectiveStoryDuration(selectedStory, nextDuration); setDuration(effectiveDuration);
+      setDurationNotice(nextDuration > effectiveDuration
+        ? `Bahan yang sah untuk cerita ini paling sesuai sekitar ${effectiveDuration} saat. Kami pendekkan supaya cerita tidak dipanjangkan dengan fakta berulang.`
+        : `Cadangan: ${selectedStory.supportedDurationSeconds ?? effectiveDuration} saat berdasarkan bahan bersumber yang tersedia.`);
+      const script = buildMysteryScript(selectedStory, effectiveDuration, nextTone, nextSourceNote);
       setTopic(mysteryScriptToTopic(selectedStory, script)); setAiEnhanced(false);
       try { const mediaData = await fetchStoryVisuals(selectedStory, script); setVisuals(mediaData.visuals); setVisualQuality(mediaData.quality); } catch { /* Visual lama kekal sebagai fallback selamat. */ }
     } else if (baseTopic && selectedAngle) {
+      setDuration(nextDuration);
       const explainer = buildExplainerScript(baseTopic, selectedAngle, nextDuration, nextTone, nextSourceNote);
       setTopic(explainerScriptToTopic(baseTopic, selectedAngle, explainer)); setAiEnhanced(false);
       try { const mediaData = await fetchStoryVisuals(null, explainer, baseTopic); setVisuals(mediaData.visuals); setVisualQuality(mediaData.quality); } catch { /* Visual lama kekal sebagai fallback selamat. */ }
     } else if (baseTopic && mode === "MYSTERY") {
+      setDuration(nextDuration);
       const script = buildAutoMysteryScript(baseTopic, nextDuration, nextTone, nextSourceNote);
       setTopic(autoMysteryScriptToTopic(baseTopic, script)); setAiEnhanced(false);
       try { const mediaData = await fetchStoryVisuals(null, script, baseTopic); setVisuals(mediaData.visuals); setVisualQuality(mediaData.quality); } catch { /* Visual lama kekal sebagai fallback selamat. */ }
@@ -270,7 +280,7 @@ export function Generator() {
   }
 
   function reset() {
-    setQuery(""); setResults([]); setTopic(null); setBaseTopic(null); setStoryAngles([]); setSelectedAngle(null); setSelectedStory(null); setVisuals([]); setVisualQuality(null); setError(""); setAiEnhanced(false); setTtsFailed(false); setVoiceProvider(null); setStage("idle");
+    setQuery(""); setResults([]); setTopic(null); setBaseTopic(null); setStoryAngles([]); setSelectedAngle(null); setSelectedStory(null); setVisuals([]); setVisualQuality(null); setError(""); setDurationNotice(""); setAiEnhanced(false); setTtsFailed(false); setVoiceProvider(null); setStage("idle");
     if (videoUrl) { URL.revokeObjectURL(videoUrl); setVideoUrl(""); }
   }
 
@@ -359,7 +369,7 @@ export function Generator() {
         <aside className="storyPanel">
           {topic.mystery && <div className="storyControls">
             <div className={`aiStatus ${geminiConfigured ? "ready" : "local"}`}><span>{mode === "STORY" ? "CERITA BERSUMBER" : geminiConfigured ? "GEMINI AKTIF" : "MOD TEMPATAN"}</span><small>{mode === "STORY" ? (geminiConfigured ? "Sumber semasa + suara Gemini" : "Sumber semasa + suara tempatan") : geminiConfigured ? "Skrip AI + suara manusia" : "Tambah GEMINI_API_KEY untuk suara premium"}</small></div>
-            <div><label><Clock3 size={14} /> Tempoh</label><div className="segmented">{([30, 60, 90] as StoryDuration[]).map((value) => <button className={duration === value ? "active" : ""} key={value} onClick={() => void updateMystery(value, tone, showSourceNote)}>{value}s</button>)}</div></div>
+            <div><label><Clock3 size={14} /> Tempoh</label><div className="segmented">{durationOptions.map((value) => <button className={duration === value ? "active" : ""} key={value} onClick={() => void updateMystery(value, tone, showSourceNote)}>{value}s</button>)}</div>{durationNotice && <p className="safeAreaNote">{durationNotice}</p>}</div>
             <div><label><Film size={14} /> Nada</label><div className="segmented"><button className={tone === "DOCUMENTARY" ? "active" : ""} onClick={() => void updateMystery(duration, "DOCUMENTARY", showSourceNote)}>Dokumentari</button><button className={tone === "SUSPENSEFUL" ? "active" : ""} onClick={() => void updateMystery(duration, "SUSPENSEFUL", showSourceNote)}>Suspens</button></div></div>
             <label className="sourceToggle"><input type="checkbox" checked={showSourceNote} onChange={(event) => void updateMystery(duration, tone, event.target.checked)} /> Nota sumber di akhir</label>
             {geminiConfigured && selectedStory && <button className="rewriteButton" onClick={() => void rewriteWithGemini()}><Sparkles size={14} /> {aiEnhanced ? "Tulis semula dengan Gemini" : "Tingkatkan skrip dengan Gemini"}</button>}

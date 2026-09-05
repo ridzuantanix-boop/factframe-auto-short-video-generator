@@ -1,0 +1,93 @@
+{
+  "generatedAt": "2026-09-05T06:58:21.565Z",
+  "stories": [
+    {
+      "candidateId": "bcad5d60-472b-4789-844f-773f452f18e8",
+      "title": "Copter goes missing in Sarawak",
+      "storyType": "DISAPPEARANCE",
+      "sources": [
+        {
+          "id": "48b202c9ffa71fe410b58aceba28d809",
+          "title": "Copter goes missing in Sarawak",
+          "publisher": "The Straits Times",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes20040816-1.2.36.7.3",
+          "reliabilityLevel": "ARCHIVAL"
+        }
+      ],
+      "claims": [
+        {
+          "id": "0e0e474728ffc0b789026b46a8fe998c",
+          "claimText": "Copter goes missing in Sarawak",
+          "claimType": "UNRESOLVED",
+          "confidence": "MEDIUM",
+          "sourceIds": [
+            "48b202c9ffa71fe410b58aceba28d809"
+          ]
+        },
+        {
+          "id": "02563ebadca3727e080633e761cfffb3",
+          "claimText": "KUCHING A Royal Malaysian Air Force (RMAF) Nuri helicopter with 10 people on board was reported missing yesterday near Ba'Kelalan in Sarawak's highlands region.",
+          "claimType": "UNRESOLVED",
+          "confidence": "MEDIUM",
+          "sourceIds": [
+            "48b202c9ffa71fe410b58aceba28d809"
+          ]
+        }
+      ],
+      "spokenClaims": [
+        {
+          "id": "0e0e474728ffc0b789026b46a8fe998c",
+          "spokenText": "Helikopter hilang di Sarawak dan masih belum pasti.",
+          "sourceIds": [
+            "48b202c9ffa71fe410b58aceba28d809"
+          ]
+        },
+        {
+          "id": "02563ebadca3727e080633e761cfffb3",
+          "spokenText": "Sebuah helikopter Nuri Tentera Udara Diraja Malaysia dengan 10 orang di dalamnya dilaporkan masih hilang.",
+          "sourceIds": [
+            "48b202c9ffa71fe410b58aceba28d809"
+          ]
+        }
+      ],
+      "finalNarration": [
+        {
+          "role": "HOOK",
+          "text": "Helikopter hilang di Sarawak dan masih belum pasti.",
+          "sourceIds": [
+            "48b202c9ffa71fe410b58aceba28d809"
+          ]
+        },
+        {
+          "role": "PAYOFF",
+          "text": "Sebuah helikopter Nuri Tentera Udara Diraja Malaysia dengan 10 orang di dalamnya dilaporkan masih hilang.",
+          "sourceIds": [
+            "48b202c9ffa71fe410b58aceba28d809"
+          ]
+        }
+      ],
+      "supportedDurationSeconds": 10,
+      "supportedDurationBand": "MICRO",
+      "estimatedNarrationSeconds": 10.2,
+      "storyCompletenessScore": 1,
+      "endingType": "UNRESOLVED",
+      "sourceCoverage": 1,
+      "unsupportedClaims": 0,
+      "scriptQualityPass": true,
+      "readyReason": [
+        "All research and narration readiness gates passed."
+      ],
+      "manualReview": {
+        "candidateId": "bcad5d60-472b-4789-844f-773f452f18e8",
+        "title": "Copter goes missing in Sarawak",
+        "verdict": "PASS",
+        "factualCompleteness": true,
+        "naturalMalay": true,
+        "noObviousPadding": true,
+        "sensibleDuration": true,
+        "nonArtificialEnding": true,
+        "notes": "The 10-second micro-story identifies the event and place, then adds the aircraft identity, passenger count and honestly unresolved ending. Both sentences remain linked to the same archival source."
+      }
+    }
+  ]
+}

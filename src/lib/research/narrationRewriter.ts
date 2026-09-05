@@ -93,16 +93,17 @@ export function assessNarrationQuality(claims: ResearchClaim[]): ResearchPackage
     || (ENGLISH_WORDS.has(tokens(claim.spokenText)[0] ?? "") && overlap(claim.spokenText, claim.claimText) >= .65))).length;
   const ocrLeakageCount = spoken.filter(hasOcrGarbage).length;
   const fragmentCount = spoken.filter((text) => !/[.!?]$/.test(text) || tokens(text).length < 5 || DATELINE.test(text)).length;
+  const unnaturalPhraseCount = spoken.filter((text) => /\b(?:Ada dilaporkan|adalah Beckner)\b/i.test(text)).length;
   const headlineLeakageCount = claims.filter((claim) => claim.spokenText && overlap(claim.spokenText, claim.claimText) >= .82 && tokens(claim.claimText).length <= 10).length;
   let repetitionCount = 0; for (let index = 1; index < spoken.length; index += 1) if (spoken.slice(0, index).some((earlier) => overlap(earlier, spoken[index]) >= .78)) repetitionCount += 1;
   const coverage = claims.length ? spoken.length / claims.length : 0;
   const sentenceQuality = spoken.length ? spoken.filter((text) => tokens(text).length >= 5 && tokens(text).length <= 32 && /[.!?]$/.test(text)).length / spoken.length : 0;
   const spokenNaturalnessScore = Math.max(0, Math.min(1, malayLanguageRatio * .35 + coverage * .25 + sentenceQuality * .2
-    + (englishLeakageCount ? 0 : .08) + (ocrLeakageCount ? 0 : .07) + (fragmentCount || headlineLeakageCount || repetitionCount ? 0 : .05)));
+    + (englishLeakageCount ? 0 : .08) + (ocrLeakageCount ? 0 : .07) + (fragmentCount || unnaturalPhraseCount || headlineLeakageCount || repetitionCount ? 0 : .05)));
   const rounded = Number(spokenNaturalnessScore.toFixed(3));
-  return { malayLanguageRatio: Number(malayLanguageRatio.toFixed(3)), englishLeakageCount, ocrLeakageCount, fragmentCount,
+  return { malayLanguageRatio: Number(malayLanguageRatio.toFixed(3)), englishLeakageCount, ocrLeakageCount, fragmentCount, unnaturalPhraseCount,
     headlineLeakageCount, spokenNaturalnessScore: rounded, passes: coverage === 1 && malayLanguageRatio >= .72 && !englishLeakageCount
-      && !ocrLeakageCount && !fragmentCount && !headlineLeakageCount && !repetitionCount && rounded >= .78 };
+      && !ocrLeakageCount && !fragmentCount && !unnaturalPhraseCount && !headlineLeakageCount && !repetitionCount && rounded >= .78 };
 }
 
 export function rewriteClaimsForSpeech(claims: ResearchClaim[], storyType: string) {
