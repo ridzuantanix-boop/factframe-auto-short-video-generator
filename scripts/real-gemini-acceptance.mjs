@@ -10,6 +10,7 @@ const created=await fetch(origin+"/api/products",{method:"POST",headers:{...head
 let product;
 for(let i=0;i<120;i++){const state=await (await fetch(origin+"/api/factory",{headers:{cookie}})).json();product=state.products.find(item=>item.id===id);if(product?.stage==="ready")break;if(product?.stage==="failed")throw Error(product.error);await new Promise(resolve=>setTimeout(resolve,1000));}
 if(product?.stage!=="ready")throw Error("product analysis timeout");
+console.error(JSON.stringify({acceptance_product_id:id,analysed_product:product.product}));
 const corrected=await fetch(`${origin}/api/products/${id}/corrections`,{method:"POST",headers,body:JSON.stringify({name:title,category:"hair care",primary_function:"penjagaan rambut yang menipis dan mudah gugur"})});if(!corrected.ok)throw Error(`correction ${corrected.status}: ${await corrected.text()}`);
 const settings={productId:id,videoStyle:"problem_solution",angle:"auto",voiceoverEnabled:true,voiceGender:"female",voiceStyle:"energetic",subjectType:"female_hands",shariahCompliance:true,auratLevel:"full",durationSeconds:10};
 const outputs=[];

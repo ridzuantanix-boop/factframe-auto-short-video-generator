@@ -66,7 +66,7 @@ export class PawarnaFactory extends DurableObject<Env> {
       return json({ products: this.products.list(owner), jobs: rows.map(row => publicJob(JSON.parse(row.data))), testMode: testAuthorized ? { authorized:true,enabled:testEnabled(this.env),limit:testLimit(this.env),attempts:this.tests.count("attempts"),remaining:this.tests.available() } : undefined, paused: !generationAllowed || testAllowed && this.tests.available()<1, ready: { gemini: !!this.env.GEMINI_API_KEY, nexabot: !!this.env.NEXABOT_API_KEY, worker: generationAllowed }, deployment: "cloudflare", model: this.env.GEMINI_TEXT_MODEL });
     }
     if (url.pathname.startsWith("/api/products")) {
-      try { return await this.products.route(request, owner, id => this.get(id), generationAllowed); } catch (e) { return json({error:e instanceof Error && /^(Upload|Gaya|Arahan|Imej|Had|Jumlah|Fail|Setiap)/.test(e.message) ? e.message : "Permintaan produk tidak sah."},400); }
+      try { return await this.products.route(request, owner, id => this.get(id), generationAllowed); } catch (e) { console.error(JSON.stringify({event:"product_route_failed",message:e instanceof Error?e.message:"unknown"}));return json({error:e instanceof Error && /^(Upload|Gaya|Arahan|Imej|Had|Jumlah|Fail|Setiap|Skrip)/.test(e.message) ? e.message : "Permintaan produk tidak sah."},400); }
     }
     const media = /^\/api\/factory\/jobs\/([a-f0-9-]{36})\/media$/.exec(url.pathname);
     if (media && ["GET", "HEAD"].includes(request.method)) return this.media(request, owner, media[1]);
