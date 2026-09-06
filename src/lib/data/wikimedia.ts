@@ -1,5 +1,5 @@
-import { isReusableLicense, licenseScore } from "@/lib/licensing/licenseFilter";
-import type { Visual } from "@/lib/types";
+import { isReusableLicense, licenseScore } from "../licensing/licenseFilter.ts";
+import type { Visual } from "../types.ts";
 
 const API = "https://commons.wikimedia.org/w/api.php";
 
@@ -41,8 +41,15 @@ async function searchCommons(query: string, mediaType: "image" | "video", limit 
     format: "json",
     origin: "*",
   });
-  const response = await fetch(`${API}?${params}`, { headers: { "Api-User-Agent": "FactFrame/1.2 (local documentary video generator)" }, next: { revalidate: 86400 } });
-  if (!response.ok) throw new Error("Carian Wikimedia Commons gagal");
+  const url = `${API}?${params}`; let response: Response | null = null;
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    const controller = new AbortController(); const timer = setTimeout(() => controller.abort(), 10000);
+    try { response = await fetch(url, { signal: controller.signal, headers: { "Api-User-Agent": "FactFrame/2.0 (evidence-aware visual planner)" }, next: { revalidate: 86400 } }); }
+    catch { response = null; } finally { clearTimeout(timer); }
+    if (response?.ok || (response && response.status < 500 && response.status !== 429)) break;
+    await new Promise((resolve) => setTimeout(resolve, 500 * (attempt + 1)));
+  }
+  if (!response?.ok) throw new Error(`Carian Wikimedia Commons gagal${response ? ` (${response.status})` : ""}`);
   const data = await response.json();
   const pages: Page[] = Object.values(data.query?.pages ?? {});
   return pages.flatMap((page): Visual[] => {

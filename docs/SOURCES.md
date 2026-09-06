@@ -23,4 +23,6 @@ Phase 4 reads every persisted source linked to a selected archive candidate. Det
 
 No new provider or mass Gemini research call was added. `npm run enrich:stories -- --status=PARTIAL --limit=25` is bounded by default and supports `--category`, `--region`, `--min-sources`, `--concurrency`, and `--delay`. `--status=ALL` exists for controlled re-audits of both PARTIAL and READY archive packages.
 
-Tidak dilaksanakan: Internet Archive API, stock-video provider, map provider, news/current-affairs provider atau database peribadi.
+Visual planning additionally resolves Wikidata P18 image properties through Commons metadata and geocodes significant places through OpenStreetMap Nominatim. OSM plans store coordinates, region label, bounding box, source link, ODbL attribution, and a real marker render instruction; they do not masquerade as a raster archive image. Indexed archive/news URLs remain `RESTRICTED_REFERENCE` unless explicit preview reuse rights are present. No article screenshot is taken automatically.
+
+Tidak dilaksanakan: Internet Archive API, stock-video provider, paid provider, news/current-affairs provider atau database peribadi.

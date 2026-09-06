@@ -2,6 +2,7 @@ const ALLOWED = ["public domain", "cc0", "cc by", "cc-by", "creative commons att
 
 export function isReusableLicense(name: string) {
   const normalized = name.toLowerCase();
+  if (/noncommercial|no derivatives|cc[ -]?by[ -]?(?:nc|nd)/.test(normalized)) return false;
   return ALLOWED.some((license) => normalized.includes(license));
 }
 

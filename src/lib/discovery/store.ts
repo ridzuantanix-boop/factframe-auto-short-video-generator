@@ -4,6 +4,7 @@ import type { StoredStorySource, StorySourceInput } from "../archive/types.ts";
 import type { ResearchClaim, ResearchPackage } from "../research/types.ts";
 import { dedupeKey, mergeCandidates } from "./dedupe.ts";
 import { STORY_INDEX_SCHEMA } from "./schema.ts";
+import type { VisualAssetRecord, VisualPlan } from "../visual/types.ts";
 
 type Row = Record<string, unknown>;
 export type CatalogQuery = { category?: string; country?: string; status?: StoryIndexStatus; search?: string; page?: number; limit?: number; sort?: "newest" | "oldest" | "title" | "research" };
@@ -305,6 +306,50 @@ export class StoryStore {
         last_verified_at=${researchPackage.lastVerifiedAt}, updated_at=now() WHERE id=${candidate.id} RETURNING *`;
       return fromRow(rows[0]);
     });
+  }
+
+  async persistVisualPlan(plan: VisualPlan) {
+    return this.sql.begin(async (tx) => {
+      const resolved = new Map<string, string>();
+      for (const asset of plan.assets) {
+        const existing = await tx<{ id: string }[]>`SELECT id FROM story_visual_assets WHERE
+          story_candidate_id=${asset.storyCandidateId} AND ((${asset.providerAssetId}::text IS NOT NULL AND provider=${asset.provider} AND provider_asset_id=${asset.providerAssetId})
+          OR (${asset.originalUrl}::text != '' AND original_url=${asset.originalUrl})
+          OR (${asset.contentHash}::text IS NOT NULL AND content_hash=${asset.contentHash})) LIMIT 1`;
+        if (existing[0]) { resolved.set(asset.id, String(existing[0].id)); continue; }
+        const rows = await tx<Row[]>`INSERT INTO story_visual_assets
+          (id, story_candidate_id, source_id, provider_asset_id, asset_type, provider, url, thumbnail_url, original_url, title, description, creator,
+           license, license_url, attribution, published_at, relevance_score, relevance_type, representation_type, visual_role, usage_status, content_hash, metadata)
+          VALUES (${asset.id}, ${asset.storyCandidateId}, ${asset.sourceId}, ${asset.providerAssetId}, ${asset.assetType}, ${asset.provider}, ${asset.url}, ${asset.thumbnailUrl},
+            ${asset.originalUrl}, ${asset.title}, ${asset.description}, ${asset.creator}, ${asset.license}, ${asset.licenseUrl}, ${asset.attribution}, ${asset.publishedAt},
+            ${asset.relevanceScore}, ${asset.relevanceType}, ${asset.representationType}, ${asset.visualRole}, ${asset.usageStatus}, ${asset.contentHash},
+            ${tx.json(JSON.parse(JSON.stringify(asset.metadata)))})
+          RETURNING id`;
+        resolved.set(asset.id, String(rows[0]?.id ?? asset.id));
+      }
+      const persisted = { ...plan, assets: plan.assets.map((asset) => ({ ...asset, id: resolved.get(asset.id) ?? asset.id })),
+        segments: plan.segments.map((segment) => ({ ...segment, assetIds: segment.assetIds.map((id) => resolved.get(id) ?? id) })) };
+      await tx`INSERT INTO story_visual_plans (id, story_candidate_id, duration_seconds, status, plan)
+        VALUES (${plan.id}, ${plan.storyCandidateId}, ${plan.durationSeconds}, ${plan.status}, ${tx.json(JSON.parse(JSON.stringify(persisted)))})
+        ON CONFLICT (story_candidate_id, duration_seconds) DO UPDATE SET status=EXCLUDED.status, plan=EXCLUDED.plan, updated_at=now()`;
+      return persisted;
+    });
+  }
+
+  async getVisualPlan(candidateId: string, durationSeconds: number) {
+    const rows = await this.sql<{ plan: VisualPlan }[]>`SELECT plan FROM story_visual_plans WHERE story_candidate_id=${candidateId} AND duration_seconds=${durationSeconds} LIMIT 1`;
+    return rows[0]?.plan ?? null;
+  }
+
+  async listVisualAssets(candidateId: string) {
+    const rows = await this.sql<Row[]>`SELECT * FROM story_visual_assets WHERE story_candidate_id=${candidateId} ORDER BY relevance_score DESC, id`;
+    return rows.map((row): VisualAssetRecord => ({ id: String(row.id), storyCandidateId: String(row.story_candidate_id), sourceId: row.source_id ? String(row.source_id) : null,
+      providerAssetId: row.provider_asset_id ? String(row.provider_asset_id) : null, assetType: row.asset_type as VisualAssetRecord["assetType"], provider: row.provider as VisualAssetRecord["provider"],
+      url: String(row.url), thumbnailUrl: String(row.thumbnail_url), originalUrl: String(row.original_url), title: String(row.title), description: String(row.description), creator: String(row.creator),
+      license: String(row.license), licenseUrl: String(row.license_url), attribution: String(row.attribution), publishedAt: nullableDate(row.published_at), relevanceScore: Number(row.relevance_score),
+      relevanceType: row.relevance_type as VisualAssetRecord["relevanceType"], representationType: row.representation_type as VisualAssetRecord["representationType"], visualRole: String(row.visual_role),
+      usageStatus: row.usage_status as VisualAssetRecord["usageStatus"], contentHash: row.content_hash ? String(row.content_hash) : null,
+      metadata: (row.metadata && typeof row.metadata === "object" ? row.metadata : {}) as Record<string, unknown> }));
   }
 }
 

@@ -59,7 +59,7 @@ export function buildMysteryScript(story: StoryRecord, duration: StoryDuration, 
     const segments: MysterySegment[] = story.aiNarration.segments.map((segment) => {
       const claims = segment.claimIds.flatMap((id) => { const claim = byId.get(id); return claim ? [claim] : []; });
       const strongest = claims.find((claim) => claim.type !== "VERIFIED") ?? claims[0];
-      return { role: aiRole[segment.role], text: segment.text, sourceIds: segment.sourceIds,
+      return { role: aiRole[segment.role], text: segment.text, claimIds: segment.claimIds, sourceIds: segment.sourceIds,
         claimType: strongest?.type ?? "VERIFIED", visualIntent: strongest?.visualIntent ?? "FACT_CARD" };
     });
     const quality = calculateScriptQuality(segments, story.sources, story.storyCompletenessScore);
@@ -72,12 +72,12 @@ export function buildMysteryScript(story: StoryRecord, duration: StoryDuration, 
     : effectiveDuration === 30 ? 6 : usableClaims.length;
   const chosen = usableClaims.slice(0, limit);
   const loop = openLoop(story);
-  const segments: MysterySegment[] = chosen.map((item) => ({ role: roleByPriority[item.priority], text: naturalText(item, tone), sourceIds: item.sourceIds, claimType: item.type, visualIntent: item.visualIntent }));
+  const segments: MysterySegment[] = chosen.map((item) => ({ role: roleByPriority[item.priority], text: naturalText(item, tone), claimIds: [item.id], sourceIds: item.sourceIds, claimType: item.type, visualIntent: item.visualIntent }));
   const groundedHook = story.hookCandidates?.[0];
-  if (segments[0] && groundedHook) segments[0] = { ...segments[0], role: "HOOK", text: groundedHook.text, sourceIds: groundedHook.sourceIds };
+  if (segments[0] && groundedHook) segments[0] = { ...segments[0], role: "HOOK", text: groundedHook.text, claimIds: groundedHook.claimIds, sourceIds: groundedHook.sourceIds };
   if (effectiveDuration > 20) segments.splice(1, 0, loop);
   const groundedPayoff = story.payoff;
-  if (groundedPayoff?.text && segments.length > 1) segments[segments.length - 1] = { ...segments[segments.length - 1], role: "PAYOFF", text: groundedPayoff.text, sourceIds: groundedPayoff.sourceIds };
+  if (groundedPayoff?.text && segments.length > 1) segments[segments.length - 1] = { ...segments[segments.length - 1], role: "PAYOFF", text: groundedPayoff.text, claimIds: groundedPayoff.claimIds, sourceIds: groundedPayoff.sourceIds };
   const quality = calculateScriptQuality(segments, story.sources, story.storyCompletenessScore);
   return { storyId: story.id, title: story.title, durationTarget: effectiveDuration, tone, hook: segments[0].text, openLoop: effectiveDuration > 20 ? loop.text : "", caseStatus: story.caseStatus, segments, payoff: groundedPayoff?.text ?? segments.at(-1)?.text ?? "", ...quality, storyCompletenessScore: story.storyCompletenessScore, sources: story.sources, showSourceNote };
 }

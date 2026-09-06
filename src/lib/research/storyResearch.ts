@@ -132,7 +132,7 @@ export function researchPackageToStoryRecord(value: ResearchPackage): StoryRecor
   return { id: value.storyCandidateId, title: value.title, country: "Malaysia", region: value.locations[0] ?? "Malaysia / Malaya", year,
     decade: `${Math.floor(year / 10) * 10}-an`, category: storyCategory(value.storyType), caseStatus: caseStatus(value.storyType, value.claims, value.latestKnownState),
     summary: value.summary, entityIds: [], sourceHints: value.sources.map((source) => source.publisher),
-    visualSearchTerms: [...new Set([value.title, ...value.locations, ...value.people])].slice(0, 8), researchScore: value.researchScore,
+    visualSearchTerms: [...new Set([value.title, ...value.locations, ...value.people])].slice(0, 8), people: value.people, locations: value.locations, researchScore: value.researchScore,
     visualScore: 0, sourceCoveragePotential: value.sourceCoverage === 1 ? "good" : "limited", sources: value.sources,
     claims: value.claims.filter((claim) => Boolean(claim.spokenText)).map((claim) => ({ id: claim.id, claim: claim.claimText, narration: claim.spokenText, type: claim.claimType,
       confidence: claim.confidence, sourceIds: claim.sourceIds, priority: claim.priority, visualIntent: claim.visualIntent })),

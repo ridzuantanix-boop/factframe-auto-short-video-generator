@@ -24,9 +24,10 @@
 - Evidence bridge 60/90 saat boleh berbunyi filler. Basic token/date repetition detection now exists, but no embedding-based semantic or dedicated filler detector is implemented.
 - Gemini text/TTS tertakluk kuota/rate limit dan latency. Enrichment kini mempunyai batch kecil, had concurrency, satu retry, cache, provenance, dan fallback deterministik; ia masih memerlukan pemantauan kos/model availability. Full narration boleh jatuh kepada TTS lokal walaupun preview berjaya.
 - Local TTS download pertama kira-kira 114 MB, perlahan pada peranti mudah alih, dan lesen CC BY-NC 4.0 mengehadkan penggunaan komersial.
-- Commons ialah satu-satunya media visual provider. Source archive kini boleh dijejaki tetapi belum digunakan sebagai visual secara automatik; hak penggunaan setiap imej/dokumen masih perlu diperiksa.
+- Commons dan Wikidata P18 ialah provider imej sebenar; OpenStreetMap menyediakan data lokasi sebenar. Provider arkib sedia ada hanya menyumbang metadata citation sehingga rights/preview setiap item dapat disahkan.
 - Wikimedia video/WebM disokong pada prinsipnya, tetapi availability, CORS dan codec browser berubah. Source audio dimute.
-- Peta, newspaper, document, evidence dan timeline ialah grafik generik, bukan artefak geografi/arkib sebenar.
+- Peta kini memakai koordinat/label/area OpenStreetMap sebenar, tetapi belum dirender menjadi tile raster server-side. Newspaper/document/timeline fallback kekal grafik programatik yang dilabel jelas, bukan artefak arkib.
+- Exact-event imagery masih jarang dan klasifikasi relevan menggunakan padanan token/caption, bukan computer vision. Commons/Wikidata upstream, CORS dan link rot boleh menyebabkan fallback pada masa request.
 - Penalti ID/URL tidak mengesan near-duplicate crops; satu subject photo masih boleh berulang sebagai backdrop.
 - Render browser hampir real-time, menggunakan CPU/RAM tinggi; background tab dan mobile browser boleh menghentikan proses.
 - FFmpeg core bergantung pada jsDelivr ketika direct MP4 tidak tersedia. Offline penuh belum disokong.

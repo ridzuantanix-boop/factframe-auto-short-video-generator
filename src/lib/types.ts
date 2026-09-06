@@ -116,6 +116,8 @@ export type StoryRecord = {
   entityIds: string[];
   sourceHints: string[];
   visualSearchTerms: string[];
+  people?: string[];
+  locations?: string[];
   researchScore: number;
   visualScore: number;
   sourceCoveragePotential: "good" | "limited";
@@ -147,6 +149,7 @@ export type StoryRecord = {
 export type MysterySegment = {
   role: SegmentRole;
   text: string;
+  claimIds?: string[];
   sourceIds: string[];
   claimType: ClaimType;
   visualIntent: VisualIntent;

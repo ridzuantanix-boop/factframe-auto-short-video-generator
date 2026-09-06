@@ -30,7 +30,7 @@
     "audit:archives": "node --env-file-if-exists=.env.local scripts/audit-archives.mjs",
     "audit:archive-classification": "node scripts/audit-archive-classification.mjs",
     "audit:research": "node --env-file-if-exists=.env.local scripts/audit-research.mjs",
-    "audit:visuals": "node scripts/audit-visuals.mjs",
+    "audit:visuals": "node --env-file-if-exists=.env.local scripts/audit-visuals.mjs",
     "export:catalog": "node --env-file-if-exists=.env.local scripts/export-catalog.mjs",
     "export:audit-samples": "node scripts/export-audit-samples.mjs"
   },

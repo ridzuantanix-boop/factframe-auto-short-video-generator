@@ -59,3 +59,9 @@ Discovery provenance and entity classification are separate. `originQuery`, `ori
 Archive classification follows a separate evidence path. Historical territory wording has priority, followed by publication date plus region; missing dates use `PRE_MALAYSIA` rather than an unsupported modern label. Story types use weighted headline and snippet signals plus compatible subject/action context. The reclassifier updates both `story_candidates` and every linked `story_sources` row and is idempotently audited against the original Phase 3 rules.
 
 The authenticated `/api/index` endpoint provides bounded scheduled ingestion, but no Vercel Cron declaration is enabled until production `DATABASE_URL`, migration, and `CRON_SECRET` are safely configured.
+
+## Evidence-aware visual planning
+
+Migration `006_visual_planning.sql` adds deduplicated `story_visual_assets` and duration-specific `story_visual_plans`. The new `/api/visual-plan` endpoint accepts only a factual READY candidate, returns a cached plan when present, and never changes factual status. Each scene retains claim/source IDs, timing, intent, selected asset, relevance class, representation mode, and an honest fallback reason. `visualCoverageScore`, `realAssetCoverage`, and `fallbackCoverage` are reported separately.
+
+The planner uses bounded cached searches against Wikidata image properties, Wikimedia Commons, and OpenStreetMap/Nominatim. Indexed newspaper metadata is retained as a restricted citation reference; it is not treated as permission to republish the page. See `docs/VISUAL_PIPELINE.md`.
