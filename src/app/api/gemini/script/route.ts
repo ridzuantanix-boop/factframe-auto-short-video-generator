@@ -5,12 +5,18 @@ import { loadResearchStory } from "@/lib/research/storyResearch";
 import { effectiveStoryDuration, passesQualityGate } from "@/lib/mystery/storyEngine";
 import { calculateScriptQuality } from "@/lib/story/qualityScoring";
 import type { ClaimType, MysteryScript, SegmentRole, StoryDuration, StoryTone, VisualIntent } from "@/lib/types";
+import { enforceRateLimit, rejectOversizedRequest } from "@/lib/server/rateLimit";
+import { logFailure } from "@/lib/server/structuredLog";
+import { createHash } from "node:crypto";
 
 const roles: SegmentRole[] = ["HOOK", "OPEN_LOOP", "CONTEXT", "ESCALATION", "TWIST", "THEORY", "COUNTERPOINT", "PAYOFF"];
 const claimTypes: ClaimType[] = ["VERIFIED", "REPORTED", "THEORY", "DISPUTED", "UNRESOLVED", "FOLKLORE", "EXPLAINED_LATER"];
 const visualIntents: VisualIntent[] = ["ARCHIVAL_PHOTO", "PORTRAIT", "LOCATION", "MAP", "NEWSPAPER", "DOCUMENT", "TIMELINE", "THEORY_CARD", "FACT_CARD", "EVIDENCE", "ENDING"];
+const scriptCache = new Map<string, { script: MysteryScript; durationNotice: string | null }>();
 
 export async function POST(request: Request) {
+  const limited = enforceRateLimit(request, { name: "script", limit: 10, windowMs: 10 * 60_000 }); if (limited) return limited;
+  const oversized = rejectOversizedRequest(request, 8_000); if (oversized) return oversized;
   const client = getGeminiClient();
   if (!client) return Response.json({ error: "Gemini belum dikonfigurasi." }, { status: 503 });
   const body = await request.json() as { storyId?: string; duration?: StoryDuration; tone?: StoryTone; showSourceNote?: boolean };
@@ -22,6 +28,8 @@ export async function POST(request: Request) {
     ? duration <= 12 ? [20, 32] : duration <= 20 ? [30, 50] : duration <= 30 ? [45, 75] : duration <= 45 ? [70, 110] : [100, 145]
     : duration === 30 ? [65, 90] : duration === 60 ? [130, 170] : [190, 240];
   const target = `${range[0]}–${range[1]}`;
+  const cacheKey = createHash("sha256").update(JSON.stringify({ storyId: story.id, claims: story.claims, sources: story.sources.map((source) => source.id), duration, tone, showSourceNote: body.showSourceNote !== false })).digest("hex");
+  const cached = scriptCache.get(cacheKey); if (cached) return Response.json({ ...cached, cached: true });
   const allowedSourceIds = new Set(story.sources.map((source) => source.id));
   const schema = {
     type: "object", properties: {
@@ -50,9 +58,10 @@ export async function POST(request: Request) {
     const script: MysteryScript = { storyId: story.id, title: story.title, durationTarget: duration, tone, hook: parsed.hook, openLoop: parsed.openLoop, caseStatus: story.caseStatus, segments: parsed.segments, payoff: parsed.payoff, ...quality, storyCompletenessScore: story.storyCompletenessScore, sources: story.sources, showSourceNote: body.showSourceNote !== false };
     if (!roleSet.has("HOOK") || (duration > 20 && !roleSet.has("OPEN_LOOP")) || !roleSet.has("PAYOFF") || !passesQualityGate(script)) throw new Error("Skrip AI tidak melepasi quality gate.");
     const durationNotice = requestedDuration > duration ? `Bahan yang sah untuk cerita ini paling sesuai sekitar ${duration} saat. Kami pendekkan supaya cerita tidak dipanjangkan dengan fakta berulang.` : null;
-    return Response.json({ script, provider: "gemini", durationNotice });
+    scriptCache.set(cacheKey, { script, durationNotice }); if (scriptCache.size > 50) scriptCache.delete(scriptCache.keys().next().value!);
+    return Response.json({ script, durationNotice, cached: false });
   } catch (error) {
-    console.error("[script] Gemini generation failed", error instanceof Error ? error.message : "unknown error");
-    return Response.json({ error: error instanceof Error ? error.message : "Gemini gagal menghasilkan skrip." }, { status: 502 });
+    logFailure("research.ai_script_failure", error, { storyId: body.storyId ?? "missing" });
+    return Response.json({ error: "Skrip belum dapat disediakan. Cerita bersumber asal masih boleh digunakan." }, { status: 502 });
   }
 }

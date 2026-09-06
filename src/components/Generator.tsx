@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { ArrowRight, BookOpen, Check, ChevronDown, Clock3, Dice5, Download, Film, LoaderCircle, Play, Search, ShieldCheck, Sparkles, Volume2, X } from "lucide-react";
 import { adaptiveTtsProvider, previewNarrator } from "@/lib/audio/ttsProvider";
 import { DEFAULT_VOICE_PRESET_ID, VOICE_PRESETS, type VoicePresetId } from "@/lib/audio/voicePresets";
@@ -13,6 +13,8 @@ import { buildExplainerScript, explainerScriptToTopic, generateStoryAngles } fro
 import type { ContentMode, MysteryScript, SearchResult, StoryAngle, StoryDuration, StoryRecord, StoryTone, Topic, Visual, VisualQualityReport, WatermarkConfig, WatermarkPosition } from "@/lib/types";
 import type { VisualPlan } from "@/lib/visual/types";
 import type { ExportManifest } from "@/lib/video/renderer";
+import { canGenerateStory, friendlyGenerationError, supportedDurationLabel, userReadinessLabel } from "@/lib/product/readiness";
+import { safePublicUrl } from "@/lib/security/assetPolicy";
 
 type Stage = "idle" | "searching" | "choosing" | "angles" | "preview" | "generating" | "done";
 
@@ -36,12 +38,18 @@ async function readJson<T>(response: Response): Promise<T> {
   return data;
 }
 
-function randomCatalogStory(stories: StoryRecord[]) {
+// Keep instrumentation outside React's render-purity analysis. This helper is only
+// called from event handlers and effects, never while deriving rendered output.
+function monotonicNowMs() {
+  return globalThis.performance.now();
+}
+
+function randomCatalogStory<T>(stories: T[]) {
   return stories[Math.floor(Math.random() * stories.length)];
 }
 
 export function Generator() {
-  const [mode, setMode] = useState<ContentMode>("STORY");
+  const [mode, setMode] = useState<ContentMode>("MYSTERY");
   const [query, setQuery] = useState("");
   const [stage, setStage] = useState<Stage>("idle");
   const [results, setResults] = useState<SearchResult[]>([]);
@@ -64,9 +72,9 @@ export function Generator() {
   const [voicePresetId, setVoicePresetId] = useState<VoicePresetId>(DEFAULT_VOICE_PRESET_ID);
   const [previewingVoice, setPreviewingVoice] = useState<VoicePresetId | null>(null);
   const [previewAudioUrl, setPreviewAudioUrl] = useState("");
-  const [ttsFailed, setTtsFailed] = useState(false);
-  const [voiceProvider, setVoiceProvider] = useState<"gemini" | "local" | null>(null);
-  const [visualQuality, setVisualQuality] = useState<VisualQualityReport | null>(null);
+  const [, setTtsFailed] = useState(false);
+  const [, setVoiceProvider] = useState<"gemini" | "local" | null>(null);
+  const [, setVisualQuality] = useState<VisualQualityReport | null>(null);
   const [watermark, setWatermark] = useState<WatermarkConfig>(DEFAULT_WATERMARK);
   const [baseTopic, setBaseTopic] = useState<Topic | null>(null);
   const [storyAngles, setStoryAngles] = useState<StoryAngle[]>([]);
@@ -82,8 +90,11 @@ export function Generator() {
   const [mysteryLoading, setMysteryLoading] = useState(false);
   const [mysteryHasMore, setMysteryHasMore] = useState(true);
   const [mysteryTotal, setMysteryTotal] = useState<number | null>(null);
+  const [failedStage, setFailedStage] = useState<"voice" | "visual" | "render" | null>(null);
+  const timingsRef = useRef({ researchLoadMs: 0, visualPlanLoadMs: 0 });
 
   useEffect(() => () => { if (videoUrl) URL.revokeObjectURL(videoUrl); }, [videoUrl]);
+  useEffect(() => { if (exportManifest && new URLSearchParams(window.location.search).get("debug") === "1") (window as Window & { __FACTFRAME_AUDIT__?: ExportManifest }).__FACTFRAME_AUDIT__ = exportManifest; }, [exportManifest]);
   useEffect(() => { void fetch("/api/gemini/status").then((response) => response.json()).then((data) => setGeminiConfigured(Boolean(data.configured))).catch(() => setGeminiConfigured(false)); }, []);
   useEffect(() => { const saved = localStorage.getItem("factframe-voice-preset") as VoicePresetId | null; if (VOICE_PRESETS.some((preset) => preset.id === saved)) queueMicrotask(() => setVoicePresetId(saved!)); }, []);
   useEffect(() => { try { const saved = localStorage.getItem("factframe-watermark"); if (saved) { const parsed = JSON.parse(saved) as Partial<WatermarkConfig>; queueMicrotask(() => setWatermark({ ...DEFAULT_WATERMARK, ...parsed, text: String(parsed.text ?? "").replace(/[\r\n]+/g, " ").slice(0, 40) })); } } catch { /* Kekalkan tetapan lalai jika data lama rosak. */ } }, []);
@@ -98,9 +109,40 @@ export function Generator() {
     }).catch(() => { /* Carian manual masih tersedia jika feed discovery gagal. */ });
     return () => { active = false; };
   }, []);
+  useEffect(() => {
+    const restoreId = new URLSearchParams(window.location.search).get("story") ?? sessionStorage.getItem("factframe-last-story");
+    if (restoreId && !/^Q\d+$/.test(restoreId)) {
+      const researchStartedAt = monotonicNowMs();
+      void fetch(`/api/research?id=${encodeURIComponent(restoreId)}`)
+        .then((response) => readJson<{ story: StoryRecord }>(response))
+        .then(({ story }) => {
+          timingsRef.current.researchLoadMs = Math.round(monotonicNowMs() - researchStartedAt);
+          // The restore effect intentionally invokes the stable function declaration below.
+          // eslint-disable-next-line react-hooks/immutability
+          return selectMystery(story, false);
+        })
+        .catch(() => sessionStorage.removeItem("factframe-last-story"));
+    }
+    const onBack = () => { if (!new URLSearchParams(window.location.search).has("story")) { setTopic(null); setSelectedStory(null); setVisuals([]); setError(""); setStage("idle"); } };
+    window.addEventListener("popstate", onBack); return () => window.removeEventListener("popstate", onBack);
+    // Restore is intentionally a one-time navigation bootstrap.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const estimatedSeconds = useMemo(() => topic ? (topic.mystery?.durationTarget ?? Math.max(20, Math.min(35, Math.round(topic.narration.split(/\s+/).length / 2)))) : 0, [topic]);
   const durationOptions = useMemo(() => [...new Set([...(selectedStory?.supportedDurationSeconds ? [selectedStory.supportedDurationSeconds as StoryDuration] : []), 30, 60, 90] as StoryDuration[])].sort((a, b) => a - b), [selectedStory]);
   const previewVisual = visuals.find((visual) => Boolean(visual.thumbUrl)) ?? visuals[0];
+  const debugMode = typeof window !== "undefined" && new URLSearchParams(window.location.search).get("debug") === "1";
+
+  function sessionHeaders() {
+    let id = sessionStorage.getItem("factframe-session");
+    if (!id) { id = crypto.randomUUID(); sessionStorage.setItem("factframe-session", id); }
+    return { "Content-Type": "application/json", "X-FactFrame-Session": id };
+  }
+
+  function clearRenderedOutput() {
+    if (videoUrl) URL.revokeObjectURL(videoUrl);
+    setVideoUrl(""); setExportManifest(null); setVoiceProvider(null); setFailedStage(null);
+  }
 
   function updateWatermark(patch: Partial<WatermarkConfig>) {
     const next = { ...watermark, ...patch };
@@ -109,8 +151,9 @@ export function Generator() {
   }
 
   async function fetchStoryVisuals(story: StoryRecord | null, script: MysteryScript, sourceTopic?: Topic) {
+    const startedAt = monotonicNowMs();
     if (story && !mysteryCatalog.some((item) => item.id === story.id)) {
-      const data = await readJson<{ plan: VisualPlan; researchPackageHash: string; visualPlanHash: string }>(await fetch("/api/visual-plan", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ storyCandidateId: story.id, durationSeconds: script.durationTarget }) }));
+      const data = await readJson<{ plan: VisualPlan; researchPackageHash: string; visualPlanHash: string }>(await fetch("/api/visual-plan", { method: "POST", headers: sessionHeaders(), body: JSON.stringify({ storyCandidateId: story.id, durationSeconds: script.durationTarget }) }));
       const byId = new Map(data.plan.assets.map((asset) => [asset.id, asset]));
       const visuals = data.plan.segments.flatMap((segment): Visual[] => { const asset = byId.get(segment.assetIds[0]); if (!asset || asset.usageStatus === "RESTRICTED_REFERENCE") return [];
         return [{ id: asset.id, title: asset.title, url: asset.url, thumbUrl: asset.thumbnailUrl, width: Number(asset.metadata.width ?? 720), height: Number(asset.metadata.height ?? 1280),
@@ -119,10 +162,11 @@ export function Generator() {
           visualKind: asset.assetType === "MAP" ? "MAP" : asset.assetType === "TIMELINE" ? "TIMELINE" : asset.assetType === "DOCUMENT" ? "DOCUMENT" : asset.assetType === "FACT_CARD" ? "FACT_CARD" : asset.assetType === "NEWSPAPER_CLIP" ? "NEWSPAPER" : asset.assetType === "ARCHIVAL_VIDEO" ? "VIDEO" : "PHOTO",
           visualIntent: segment.visualIntent, segmentIndex: segment.segmentIndex, relevanceScore: asset.relevanceScore, metadata: { ...asset.metadata, representationType: asset.representationType, usageStatus: asset.usageStatus } }]; });
       const kinds = [...new Set(visuals.map((item) => item.visualKind ?? "PHOTO"))]; setRenderHashes({ researchPackageHash: data.researchPackageHash, visualPlanHash: data.visualPlanHash });
+      timingsRef.current.visualPlanLoadMs = Math.round(monotonicNowMs() - startedAt);
       return { visuals, quality: { repetitionScore: new Set(visuals.map((item) => item.id)).size / Math.max(1, visuals.length), relevanceScore: visuals.reduce((sum, item) => sum + (item.relevanceScore ?? 0), 0) / Math.max(1, visuals.length), visualTypeDiversity: kinds.length, visualKinds: kinds } };
     }
-    const response = await fetch("/api/media", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(story ? { storyId: story.id, script } : { topic: sourceTopic, script }) });
-    return readJson<{ visuals: Visual[]; quality: VisualQualityReport }>(response);
+    const response = await fetch("/api/media", { method: "POST", headers: sessionHeaders(), body: JSON.stringify(story ? { storyId: story.id, script } : { topic: sourceTopic, script }) });
+    const result = await readJson<{ visuals: Visual[]; quality: VisualQualityReport }>(response); timingsRef.current.visualPlanLoadMs = Math.round(monotonicNowMs() - startedAt); return result;
   }
 
   async function searchTopic(event: React.FormEvent) {
@@ -143,10 +187,13 @@ export function Generator() {
   }
 
   async function selectEntity(result: SearchResult) {
+    if (!canGenerateStory(result)) { setError("Bahan untuk cerita ini masih disemak. Pilih cerita bertanda ‘Boleh dijana’. "); return; }
     setError(""); setProgress({ message: "Menyediakan fakta", percent: 12 }); setStage("generating");
     try {
       if (!/^Q\d+$/.test(result.id)) {
+        const researchStartedAt = monotonicNowMs();
         const research = await readJson<{ story: StoryRecord }>(await fetch(`/api/research?id=${encodeURIComponent(result.id)}`));
+        timingsRef.current.researchLoadMs = Math.round(monotonicNowMs() - researchStartedAt);
         await selectMystery(research.story); return;
       }
       const topicData = await readJson<{ topic: Topic }>(await fetch(`/api/topic?id=${result.id}&label=${encodeURIComponent(result.label)}`));
@@ -171,15 +218,6 @@ export function Generator() {
     } catch (caught) { setError(caught instanceof Error ? caught.message : "Cerita tidak dapat disediakan."); setStage("angles"); }
   }
 
-  async function discover(seed: string) {
-    setError(""); setQuery(seed); setStage("searching");
-    try {
-      const data = await readJson<{ results: SearchResult[] }>(await fetch(`/api/search?q=${encodeURIComponent(seed)}`));
-      if (!data.results.length) throw new Error("Tiada calon cerita ditemui buat masa ini.");
-      setResults(data.results); setStage("choosing");
-    } catch (caught) { setError(caught instanceof Error ? caught.message : "Discovery gagal."); setStage("idle"); }
-  }
-
   async function loadDiscovery(category: string, page = 0) {
     setDiscoveryLoading(true); setError("");
     try {
@@ -202,33 +240,26 @@ export function Generator() {
   }
 
   function randomStory() {
-    const seeds = ["Malaysia history", "tokoh Malaysia", "scientist", "invention", "world history", "technology", "city", "company"];
-    void discover(seeds[Math.floor(Math.random() * seeds.length)]);
+    const ready = discoveryItems.filter(canGenerateStory); const next = randomCatalogStory(ready);
+    if (next) void selectEntity(next); else setError("Belum ada cerita sedia dijana dalam kategori ini. Cuba bahagian Misteri & Teori.");
   }
 
-  async function selectMystery(story: StoryRecord) {
-    setError(""); setSelectedStory(story); setProgress({ message: "Menyusun dakwaan bersumber", percent: 18 }); setStage("generating");
+  async function selectMystery(story: StoryRecord, updateHistory = true) {
+    clearRenderedOutput(); setError(""); setSelectedStory(story); setProgress({ message: "Semak cerita", percent: 18 }); setStage("generating");
     try {
       const effectiveDuration = effectiveStoryDuration(story, duration); setDuration(effectiveDuration);
       setDurationNotice(story.supportedDurationSeconds ? `Cadangan: ${story.supportedDurationSeconds} saat berdasarkan bahan bersumber yang tersedia.` : "");
-      let script = buildMysteryScript(story, effectiveDuration, tone, showSourceNote);
-      if (geminiConfigured) {
-        try {
-          setProgress({ message: "Gemini sedang menulis semula cerita", percent: 30 });
-          const response = await fetch("/api/gemini/script", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ storyId: story.id, duration: effectiveDuration, tone, showSourceNote }) });
-          const data = await readJson<{ script: typeof script; durationNotice?: string | null }>(response);
-          script = data.script; if (data.durationNotice) setDurationNotice(data.durationNotice); setAiEnhanced(true);
-        } catch { setAiEnhanced(false); setProgress({ message: "Menggunakan skrip bersumber tempatan", percent: 36 }); }
-      } else setAiEnhanced(false);
+      const script = buildMysteryScript(story, effectiveDuration, tone, showSourceNote); setAiEnhanced(Boolean(story.aiNarration));
       if (!passesQualityGate(script)) throw new Error("Cerita ini belum melepasi semakan sumber dan penceritaan.");
-      setProgress({ message: "Mencari visual dokumentari", percent: 58 });
+      setProgress({ message: "Cari visual", percent: 58 });
       const mediaData = await fetchStoryVisuals(story, script);
       if (!mediaData.visuals.length) throw new Error("Sumber ditemui, tetapi visual berlesen yang relevan tidak mencukupi.");
-      setTopic(mysteryScriptToTopic(story, script)); setVisuals(mediaData.visuals); setVisualQuality(mediaData.quality); setStage("preview");
-    } catch (caught) { setError(caught instanceof Error ? caught.message : "Penyediaan cerita gagal."); setStage("idle"); }
+      setTopic(mysteryScriptToTopic(story, script)); setVisuals(mediaData.visuals); setVisualQuality(mediaData.quality); sessionStorage.setItem("factframe-last-story", story.id); if (updateHistory) history.pushState({ storyId: story.id }, "", `?story=${encodeURIComponent(story.id)}`); setStage("preview");
+    } catch (caught) { setFailedStage("visual"); setError(friendlyGenerationError("visual", caught)); setStage("idle"); }
   }
 
   async function updateMystery(nextDuration: StoryDuration, nextTone: StoryTone, nextSourceNote: boolean) {
+    clearRenderedOutput();
     setTone(nextTone); setShowSourceNote(nextSourceNote);
     if (selectedStory) {
       const effectiveDuration = effectiveStoryDuration(selectedStory, nextDuration); setDuration(effectiveDuration);
@@ -253,13 +284,13 @@ export function Generator() {
 
   async function rewriteWithGemini() {
     if (!selectedStory || !geminiConfigured) return;
-    setError(""); setStage("generating"); setProgress({ message: "Gemini sedang membina jalan cerita", percent: 35 });
+    clearRenderedOutput(); setError(""); setStage("generating"); setProgress({ message: "Semak cerita", percent: 35 });
     try {
-      const response = await fetch("/api/gemini/script", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ storyId: selectedStory.id, duration, tone, showSourceNote }) });
+      const response = await fetch("/api/gemini/script", { method: "POST", headers: sessionHeaders(), body: JSON.stringify({ storyId: selectedStory.id, duration, tone, showSourceNote }) });
       const data = await readJson<{ script: NonNullable<Topic["mystery"]> }>(response);
       const mediaData = await fetchStoryVisuals(selectedStory, data.script);
       setTopic(mysteryScriptToTopic(selectedStory, data.script)); setVisuals(mediaData.visuals); setVisualQuality(mediaData.quality); setAiEnhanced(true); setStage("preview");
-    } catch (caught) { setError(caught instanceof Error ? caught.message : "Gemini gagal menulis skrip."); setStage("preview"); }
+    } catch { setError("Cerita asal masih boleh digunakan. Versi yang diperkemas belum tersedia."); setStage("preview"); }
   }
 
   function randomMystery() {
@@ -269,7 +300,7 @@ export function Generator() {
   }
 
   function selectVoice(id: VoicePresetId) {
-    setVoicePresetId(id); localStorage.setItem("factframe-voice-preset", id); setTtsFailed(false);
+    clearRenderedOutput(); setVoicePresetId(id); localStorage.setItem("factframe-voice-preset", id); setTtsFailed(false);
   }
 
   async function previewVoice(id: VoicePresetId) {
@@ -286,21 +317,25 @@ export function Generator() {
 
   async function generate() {
     if (!topic || !visuals.length) return;
-      setError(""); setTtsFailed(false); setStage("generating"); setProgress({ message: "Menyediakan suara narator", percent: 2 });
+    const generationStartedAt = performance.now(); let activeStage: "voice" | "render" = "voice";
+      setError(""); setFailedStage(null); setTtsFailed(false); setStage("generating"); setProgress({ message: "Sediakan suara", percent: 2 });
     try {
-      const narration = await adaptiveTtsProvider.generateSpeech(topic.narration, "ms-MY", (message, percent = 0) => setProgress({ message, percent: Math.min(28, percent * .28) }), { tone: topic.mystery?.tone, voicePresetId, targetDurationSeconds: topic.mystery?.durationTarget });
+      const ttsStartedAt = performance.now();
+      const narration = await adaptiveTtsProvider.generateSpeech(topic.narration, "ms-MY", (_message, percent = 0) => setProgress({ message: "Sediakan suara", percent: Math.min(28, percent * .28) }), { tone: topic.mystery?.tone, voicePresetId, targetDurationSeconds: topic.mystery?.durationTarget });
+      const ttsMs = Math.round(performance.now() - ttsStartedAt); activeStage = "render"; setProgress({ message: "Susun video", percent: 29 });
       setVoiceProvider(narration.provider);
-      const video = await renderVideo(topic, visuals, narration.audioBlob, (message, percent) => setProgress({ message, percent: 28 + percent * .72 }), watermark,
-        { storyCandidateId: selectedStory?.id ?? topic.id, ...renderHashes, narrationHash: narration.narrationHash, ttsProvider: narration.provider, voicePreset: narration.voicePresetId });
+      const auditResolution = typeof window !== "undefined" && new URLSearchParams(window.location.search).get("render") === "1080" ? "1080x1920" as const : "720x1280" as const;
+      const video = await renderVideo(topic, visuals, narration.audioBlob, (_message, percent) => setProgress({ message: percent >= 94 ? "Siapkan video" : "Susun video", percent: 28 + percent * .72 }), watermark,
+        { storyCandidateId: selectedStory?.id ?? topic.id, ...renderHashes, narrationHash: narration.narrationHash, ttsProvider: narration.provider, voicePreset: narration.voicePresetId, resolution: auditResolution, timings: { ...timingsRef.current, ttsMs, totalGenerationMs: Math.round(performance.now() - generationStartedAt) } });
       if (videoUrl) URL.revokeObjectURL(videoUrl);
       setVideoUrl(URL.createObjectURL(video.blob)); setExportManifest(video.manifest); setExportExtension(video.extension);
       localStorage.setItem(`factframe-audio:${narration.narrationHash}:${narration.voicePresetId}`, JSON.stringify({ duration: narration.durationSeconds, provider: narration.provider, voicePreset: narration.voicePresetId, generatedAt: narration.generatedAt, narrationHash: narration.narrationHash, mimeType: narration.mimeType, estimatedNarrationSeconds: narration.estimatedNarrationSeconds, actualNarrationSeconds: narration.durationSeconds }));
       localStorage.setItem(`factframe-render:${video.manifest.storyCandidateId}`, JSON.stringify(video.manifest)); setStage("done");
-    } catch (caught) { setTtsFailed(true); setError(caught instanceof Error ? caught.message : "Penjanaan suara gagal."); setStage("preview"); }
+    } catch (caught) { setTtsFailed(activeStage === "voice"); setFailedStage(activeStage); setError(friendlyGenerationError(activeStage, caught)); setStage("preview"); }
   }
 
   function reset() {
-    setQuery(""); setResults([]); setTopic(null); setBaseTopic(null); setStoryAngles([]); setSelectedAngle(null); setSelectedStory(null); setVisuals([]); setVisualQuality(null); setError(""); setDurationNotice(""); setAiEnhanced(false); setTtsFailed(false); setVoiceProvider(null); setStage("idle");
+    setQuery(""); setResults([]); setTopic(null); setBaseTopic(null); setStoryAngles([]); setSelectedAngle(null); setSelectedStory(null); setVisuals([]); setVisualQuality(null); setError(""); setDurationNotice(""); setAiEnhanced(false); setTtsFailed(false); setFailedStage(null); setVoiceProvider(null); setStage("idle"); sessionStorage.removeItem("factframe-last-story"); history.replaceState({}, "", window.location.pathname);
     if (videoUrl) { URL.revokeObjectURL(videoUrl); setVideoUrl(""); }
   }
 
@@ -320,8 +355,8 @@ export function Generator() {
         <div className="eyebrow">{mode === "MYSTERY" ? <><BookOpen size={14} /> Misteri &amp; legenda bersumber</> : <><Sparkles size={14} /> Kilang dokumentari pendek</>}</div>
         <h1>{mode === "MYSTERY" ? <>Misteri sebenar.<br /><em>Sumber yang boleh diperiksa.</em></> : <>Pilih sebuah cerita.<br /><em>Kami uruskan selebihnya.</em></>}</h1>
         <p className="heroCopy">{mode === "MYSTERY" ? "Pilih misteri atau legenda. Fakta, dakwaan dan perkara yang tidak dapat disahkan kekal dibezakan." : "Temui topik, pilih sudut, dan hasilkan video menegak bersumber—tanpa penyelidikan manual atau kemahiran menyunting."}</p>
-        {mode === "MYSTERY" && stage === "idle" && <button className="randomButton" onClick={randomMystery}><Dice5 size={19} /> Jana misteri rawak <span>Hanya cerita skor tinggi</span></button>}
-        {mode === "STORY" && stage === "idle" && <button className="randomButton" onClick={randomStory}><Dice5 size={19} /> Beri saya satu cerita <span>Calon bersumber</span></button>}
+        {mode === "MYSTERY" && stage === "idle" && <button className="randomButton" onClick={randomMystery}><Dice5 size={19} /> Pilihkan misteri <span>Boleh dijana</span></button>}
+        {mode === "STORY" && stage === "idle" && <button className="randomButton" onClick={randomStory}><Dice5 size={19} /> Beri saya satu cerita <span>Boleh dijana</span></button>}
         <form className="searchForm" onSubmit={searchTopic}>
           <Search size={21} />
           <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder={mode === "MYSTERY" ? "Cari misteri, legenda atau peristiwa pelik" : "Cari tokoh, tempat, syarikat, sains atau sejarah"} aria-label="Cari apa-apa topik" disabled={stage === "searching" || stage === "generating"} />
@@ -333,11 +368,12 @@ export function Generator() {
       </section>
 
       {mode === "STORY" && stage === "idle" && <section className="discovery shell reveal">
-        <div className="sectionHeading"><div><span className="step">TEROKAI</span><h2>Apa yang anda mahu hasilkan?</h2></div><p>Calon persisten digunakan dahulu; carian sumber live mengisi ruang yang belum diindeks.</p></div>
+        <div className="sectionHeading"><div><span className="step">TEROKAI</span><h2>Apa yang anda mahu hasilkan?</h2></div><p>Hanya cerita dengan bahan yang mencukupi boleh dijana sekarang.</p></div>
         <div className="discoveryGrid">{DISCOVERY_CATEGORIES.map(([icon, label, category]) => <button className={discoveryCategory === category ? "active" : ""} key={label} onClick={() => void loadDiscovery(category)} disabled={discoveryLoading}><span>{icon}</span><strong>{label}</strong><ArrowRight size={15} /></button>)}</div>
-        <div className="discoveryCatalogHead"><div><strong>{DISCOVERY_CATEGORIES.find((item) => item[2] === discoveryCategory)?.[1]}</strong><span>{discoveryItems.length} dimuatkan{discoveryTotal === null ? " daripada carian live" : ` · ${discoveryTotal} calon persisten`}</span></div>{discoveryLoading && <LoaderCircle className="spin" size={20} />}</div>
-        <div className="resultsGrid discoveryResults">{discoveryItems.map((result) => <button className="resultCard" key={result.id} onClick={() => void selectEntity(result)}><span className="resultId">{result.id}</span><strong>{result.label}</strong><p>{result.description}</p><span className="selectArrow"><ArrowRight size={18} /></span></button>)}</div>
-        {discoveryHasMore && <button className="loadMore" onClick={() => void loadDiscovery(discoveryCategory, discoveryPage + 1)} disabled={discoveryLoading}>{discoveryLoading ? <LoaderCircle className="spin" size={18} /> : <ChevronDown size={18} />} Muatkan sehingga 100 lagi</button>}
+        <div className="discoveryCatalogHead"><div><strong>{DISCOVERY_CATEGORIES.find((item) => item[2] === discoveryCategory)?.[1]}</strong><span>{discoveryTotal ? `${discoveryTotal} cerita sedia dijana` : "Belum ada cerita sedia dijana dalam pilihan ini"}</span></div>{discoveryLoading && <LoaderCircle className="spin" size={20} />}</div>
+        <div className="resultsGrid discoveryResults">{discoveryItems.map((result) => <button className="resultCard" key={result.id} onClick={() => void selectEntity(result)} disabled={!canGenerateStory(result)}><span className={`readiness ${result.status === "READY" ? "ready" : "review"}`}>{userReadinessLabel(result.status)}</span><strong>{result.label}</strong><p>{result.description}</p><div className="cardMeta"><span>{result.category ?? "Cerita"}</span><span>{supportedDurationLabel(result.supportedDurationSeconds)}</span><span>{result.timeContext === "SEMASA" ? "Semasa" : "Sejarah"}</span></div>{canGenerateStory(result) && <span className="selectArrow"><ArrowRight size={18} /></span>}</button>)}</div>
+        {!discoveryItems.length && !discoveryLoading && <div className="emptyState"><strong>Belum ada cerita sedia dijana di sini.</strong><p>Lagi banyak cerita sedang disemak. Cuba kategori lain.</p></div>}
+        {discoveryHasMore && <button className="loadMore" onClick={() => void loadDiscovery(discoveryCategory, discoveryPage + 1)} disabled={discoveryLoading}>{discoveryLoading ? <LoaderCircle className="spin" size={18} /> : <ChevronDown size={18} />} Lihat lagi</button>}
       </section>}
 
       {mode === "MYSTERY" && stage === "idle" && <section className="catalog shell reveal">
@@ -345,19 +381,20 @@ export function Generator() {
         <div className="filterRow">{["Semua", "Malaysia / Malaya", "Kehilangan", "Misteri sejarah", "Teori konspirasi"].map((filter) => <button className={catalogFilter === filter ? "active" : ""} key={filter} onClick={() => setCatalogFilter(filter)}>{filter}</button>)}</div>
         <div className="mysteryGrid">{mysteryCatalog.filter((story) => catalogFilter === "Semua" || (catalogFilter === "Malaysia / Malaya" ? ["Malaysia", "Malaya"].includes(story.country) : categoryLabels[story.category] === catalogFilter)).map((story) => <article className="mysteryCard" key={story.id}>
           <div className="mysteryMeta"><span>{story.country}</span><span>{story.decade}</span></div><h3>{story.title}</h3><p>{story.summary}</p>
-          <div className="storyTags"><span>{categoryLabels[story.category]}</span><span>{caseStatusLabels[story.caseStatus]}</span></div>
-          <div className="scoreLine"><span>Sumber {Math.round(story.researchScore * 100)}%</span><span>Visual {Math.round(story.visualScore * 100)}%</span></div>
+          <div className="storyTags"><span>{categoryLabels[story.category]}</span><span>{caseStatusLabels[story.caseStatus]}</span><span>{story.year > 2000 ? "Semasa" : "Sejarah"}</span></div>
+          <div className="cardMeta"><span>Boleh dijana</span><span>{supportedDurationLabel(story.supportedDurationSeconds ?? 30)}</span></div>
           <button onClick={() => void selectMystery(story)}>Pilih cerita <ArrowRight size={16} /></button>
         </article>)}</div>
-        <div className="discoveryCatalogHead"><div><strong>Calon penyiasatan automatik</strong><span>{mysteryCandidates.length} dimuatkan{mysteryTotal === null ? " daripada carian live" : ` · ${mysteryTotal} calon persisten`}</span></div><button className="miniAction" onClick={() => void loadMysteryCandidates(0, true)}>Fokus Malaysia</button></div>
-        <div className="resultsGrid discoveryResults">{mysteryCandidates.map((result) => <button className="resultCard" key={result.id} onClick={() => void selectEntity(result)}><span className="resultId">DITEMUI · {result.id}</span><strong>{result.label}</strong><p>{result.description}</p><span className="selectArrow"><ArrowRight size={18} /></span></button>)}</div>
-        {mysteryHasMore && <button className="loadMore" onClick={() => void loadMysteryCandidates(mysteryPage + 1)} disabled={mysteryLoading}>{mysteryLoading ? <LoaderCircle className="spin" size={18} /> : <ChevronDown size={18} />} Muatkan sehingga 100 lagi</button>}
+        <div className="discoveryCatalogHead"><div><strong>Cerita arkib yang sudah disemak</strong><span>{mysteryTotal ? `${mysteryTotal} cerita sedia dijana sekarang` : "Lagi banyak cerita sedang disemak"}</span></div><button className="miniAction" onClick={() => void loadMysteryCandidates(0, true)}>Fokus Malaysia</button></div>
+        <div className="resultsGrid discoveryResults">{mysteryCandidates.map((result) => <button className="resultCard" key={result.id} onClick={() => void selectEntity(result)} disabled={!canGenerateStory(result)}><span className={`readiness ${result.status === "READY" ? "ready" : "review"}`}>{userReadinessLabel(result.status)}</span><strong>{result.label}</strong><p>{result.description}</p><div className="cardMeta"><span>{result.category ?? "Misteri"}</span><span>{supportedDurationLabel(result.supportedDurationSeconds)}</span><span>{result.timeContext === "SEMASA" ? "Semasa" : "Sejarah"}</span></div>{canGenerateStory(result) && <span className="selectArrow"><ArrowRight size={18} /></span>}</button>)}</div>
+        {!mysteryCandidates.length && !mysteryLoading && <div className="emptyState"><strong>Belum ada cerita arkib yang boleh dijana.</strong><p>Lagi banyak sedang disemak.</p></div>}
+        {mysteryHasMore && <button className="loadMore" onClick={() => void loadMysteryCandidates(mysteryPage + 1)} disabled={mysteryLoading}>{mysteryLoading ? <LoaderCircle className="spin" size={18} /> : <ChevronDown size={18} />} Lihat lagi</button>}
       </section>}
 
       {stage === "choosing" && <section className="panel shell reveal">
         <div className="sectionHeading"><div><span className="step">01</span><h2>Pilih topik yang tepat</h2></div><p>Kami menemui beberapa padanan. Pilih satu supaya fakta yang digunakan kekal tepat.</p></div>
-        <div className="resultsGrid">{results.map((result) => <button className="resultCard" key={result.id} onClick={() => selectEntity(result)}>
-          <span className="resultId">{result.id}</span><strong>{result.label}</strong><p>{result.description}</p><span className="selectArrow"><ArrowRight size={18} /></span>
+        <div className="resultsGrid">{results.map((result) => <button className="resultCard" key={result.id} onClick={() => selectEntity(result)} disabled={!canGenerateStory(result)}>
+          <span className={`readiness ${result.status === "READY" ? "ready" : "review"}`}>{userReadinessLabel(result.status)}</span><strong>{result.label}</strong><p>{result.description}</p><div className="cardMeta"><span>{supportedDurationLabel(result.supportedDurationSeconds)}</span></div>{canGenerateStory(result) && <span className="selectArrow"><ArrowRight size={18} /></span>}
         </button>)}</div>
       </section>}
 
@@ -382,20 +419,20 @@ export function Generator() {
                 {watermark.enabled && watermark.text && <span className={`watermarkPreview ${watermark.position} ${watermark.size}`} style={{ opacity: watermark.opacity }}>{watermark.text}</span>}
               </>}
             </div>
-            <div className="formatLabel"><span>9:16</span><span>720 × 1280</span><span>~{estimatedSeconds} saat</span></div>
+            <div className="formatLabel"><span>9:16</span><span>{exportManifest?.resolution.replace("x", " × ") ?? "720 × 1280"}</span><span>~{exportManifest?.videoDuration.toFixed(1) ?? estimatedSeconds} saat</span></div>
           </div>
         </div>
 
         <aside className="storyPanel">
           {topic.mystery && <div className="storyControls">
-            <div className={`aiStatus ${geminiConfigured ? "ready" : "local"}`}><span>{mode === "STORY" ? "CERITA BERSUMBER" : geminiConfigured ? "GEMINI AKTIF" : "MOD TEMPATAN"}</span><small>{mode === "STORY" ? (geminiConfigured ? "Sumber semasa + suara Gemini" : "Sumber semasa + suara tempatan") : geminiConfigured ? "Skrip AI + suara manusia" : "Tambah GEMINI_API_KEY untuk suara premium"}</small></div>
+            <div className={`aiStatus ${geminiConfigured ? "ready" : "local"}`}><span>CERITA SUDAH DISEMAK</span><small>{geminiConfigured ? "Suara narator tersedia" : "Suara asas akan digunakan"}</small></div>
             <div><label><Clock3 size={14} /> Tempoh</label><div className="segmented">{durationOptions.map((value) => <button className={duration === value ? "active" : ""} key={value} onClick={() => void updateMystery(value, tone, showSourceNote)}>{value}s</button>)}</div>{durationNotice && <p className="safeAreaNote">{durationNotice}</p>}</div>
             <div><label><Film size={14} /> Nada</label><div className="segmented"><button className={tone === "DOCUMENTARY" ? "active" : ""} onClick={() => void updateMystery(duration, "DOCUMENTARY", showSourceNote)}>Dokumentari</button><button className={tone === "SUSPENSEFUL" ? "active" : ""} onClick={() => void updateMystery(duration, "SUSPENSEFUL", showSourceNote)}>Suspens</button></div></div>
             <label className="sourceToggle"><input type="checkbox" checked={showSourceNote} onChange={(event) => void updateMystery(duration, tone, event.target.checked)} /> Nota sumber di akhir</label>
-            {geminiConfigured && selectedStory && <button className="rewriteButton" onClick={() => void rewriteWithGemini()}><Sparkles size={14} /> {aiEnhanced ? "Tulis semula dengan Gemini" : "Tingkatkan skrip dengan Gemini"}</button>}
+            {geminiConfigured && selectedStory && <button className="rewriteButton" onClick={() => void rewriteWithGemini()}><Sparkles size={14} /> {aiEnhanced ? "Perkemas semula skrip" : "Perkemas skrip"}</button>}
           </div>}
           {topic.mystery && <section className="voiceSelector" aria-labelledby="voice-selector-title">
-            <div className="voiceHeading"><div><Volume2 size={15} /><strong id="voice-selector-title">Suara narator</strong></div><span>{geminiConfigured ? "Gemini TTS" : "Gemini diperlukan"}</span></div>
+            <div className="voiceHeading"><div><Volume2 size={15} /><strong id="voice-selector-title">Suara narator</strong></div><span>{geminiConfigured ? "Sedia" : "Suara asas"}</span></div>
             <div className="voiceGrid">{VOICE_PRESETS.map((preset) => <label className={`voiceCard ${voicePresetId === preset.id ? "selected" : ""}`} key={preset.id}>
               <input type="radio" name="voice-preset" value={preset.id} checked={voicePresetId === preset.id} onChange={() => selectVoice(preset.id)} />
               <span className="radioMark" /><span className="voiceCopy"><strong>{preset.label}</strong><small>{preset.description}</small></span>
@@ -413,31 +450,30 @@ export function Generator() {
           </section>}
           <div className="topicHeader"><div><span className="typeTag">{{ person: "tokoh", place: "tempat", event: "peristiwa", object: "objek", organisation: "organisasi", animal: "haiwan", space: "angkasa", general: "umum" }[topic.entityType]}</span><h2>{topic.name}</h2><p>{topic.description}</p></div><span className="factCount">{topic.facts.length} fakta</span></div>
           <div className="factList">{topic.facts.map((fact, index) => <div className="fact" key={`${fact.label}-${index}`}><span>{String(index + 1).padStart(2, "0")}</span><div><strong>{({ VERIFIED: "Fakta disahkan", REPORTED: "Laporan", THEORY: "Teori", DISPUTED: "Dipertikaikan", UNRESOLVED: "Belum terjawab", FOLKLORE: "Cerita rakyat", "EXPLAINED LATER": "Dijelaskan kemudian" } as Record<string, string>)[fact.label] ?? fact.label}</strong><p>{fact.sentence}</p></div><Check size={16} /></div>)}</div>
-          <div className="narration"><div className="cardLabel"><Volume2 size={16} /> Skrip narasi {aiEnhanced && <span className="aiBadge">Gemini</span>}</div><p>{topic.narration}</p><div>{topic.narration.split(/\s+/).length} patah perkataan · {voiceProvider === "local" ? "Suara neural tempatan" : voiceProvider === "gemini" ? "Suara ekspresif Gemini" : geminiConfigured ? "Gemini dengan fallback tempatan" : "Suara neural tempatan"}</div></div>
-          {topic.mystery && <div className="qualityGate"><div><ShieldCheck size={16} /><strong>Lulus semakan kualiti</strong></div><span>Liputan sumber {Math.round(topic.mystery.sourceCoverage * 100)}%</span><span>Skor penceritaan {topic.mystery.storytellingScore}/14</span><span>{topic.mystery.unsupportedClaims} dakwaan tanpa sumber</span></div>}
-          {topic.mystery && visualQuality && <div className="visualQuality"><strong>Semakan visual</strong><span>Relevan {Math.round(visualQuality.relevanceScore * 100)}%</span><span>Tanpa ulang {Math.round(visualQuality.repetitionScore * 100)}%</span><span>{visualQuality.visualTypeDiversity} jenis visual</span></div>}
-          {stage === "done" ? <a className="generateButton downloadButton" href={videoUrl} download={`${topic.name.replace(/[^a-z0-9]+/gi, "-").toLowerCase()}-factframe${exportExtension}`}><Download size={19} /> Muat turun {exportExtension.slice(1).toUpperCase()}</a> : <button className="generateButton" onClick={generate}><Sparkles size={19} /> {ttsFailed ? "Cuba semula suara" : "Hasilkan video"} <span>~{estimatedSeconds} saat</span></button>}
+          <div className="narration"><div className="cardLabel"><Volume2 size={16} /> Skrip narasi {aiEnhanced && <span className="aiBadge">Diperkemas</span>}</div><p>{topic.narration}</p><div>{topic.narration.split(/\s+/).length} patah perkataan · suara narator</div></div>
+          {topic.mystery && <div className="qualityGate"><div><ShieldCheck size={16} /><strong>Boleh dijana</strong></div><span>Fakta dan sumber sudah disemak</span></div>}
+          {stage === "done" ? <a className="generateButton downloadButton" href={videoUrl} download={`${topic.name.replace(/[^a-z0-9]+/gi, "-").toLowerCase()}-factframe${exportExtension}`}><Download size={19} /> Muat turun video {exportExtension.slice(1).toUpperCase()} <span>{exportManifest?.videoDuration.toFixed(1)} saat</span></a> : <button className="generateButton" onClick={generate}><Sparkles size={19} /> {failedStage ? "Cuba semula" : "Hasilkan video"} <span>~{estimatedSeconds} saat</span></button>}
           {stage === "done" && <button className="rewriteButton" onClick={generate}><Film size={14} /> Hasilkan semula video yang sama</button>}
-          {stage === "done" && exportManifest && <div className="visualQuality"><strong>Eksport disahkan</strong><span>{exportManifest.resolution} · {exportManifest.mimeType.split(";")[0]}</span><span>{exportManifest.videoDuration.toFixed(1)} saat · sari kata {Math.round(exportManifest.captionCoverage * 100)}%</span></div>}
-          {stage === "done" && exportManifest && <details className="sources" data-testid="export-manifest"><summary>Metadata eksport <ChevronDown size={17} /></summary><div className="sourceBody"><span>{JSON.stringify(exportManifest)}</span></div></details>}
+          {stage === "done" && exportManifest && <div className="visualQuality"><strong>Video siap</strong><span>{exportExtension.slice(1).toUpperCase()}</span><span>{exportManifest.resolution} · {exportManifest.videoDuration.toFixed(1)} saat</span></div>}
+          {stage === "done" && exportManifest && debugMode && <output hidden data-testid="performance-audit" data-manifest={JSON.stringify(exportManifest)} />}
           {stage === "done" && <div className="publishPack"><strong>Pakej untuk diterbitkan</strong><div><span>Tajuk</span><p>{topic.name}</p></div><div><span>Deskripsi</span><p>{mode === "MYSTERY" ? `${topic.description} Cerita ini membezakan fakta direkodkan daripada dakwaan atau perkara yang tidak dapat disahkan.` : `${topic.description} Dihasilkan daripada sumber awam yang boleh diperiksa.`}</p></div></div>}
-          <p className="renderNote">{voiceProvider === "local" ? "Gemini tidak tersedia, jadi suara neural tempatan digunakan. Container fail mengikut codec sebenar pelayar." : geminiConfigured ? "Gemini digunakan apabila tersedia dan bertukar automatik kepada suara tempatan jika kuota habis; video kekal dirender pada peranti anda." : "Kali pertama akan memuat turun model suara neural ~114 MB. Selepas itu model dicache; video kekal dirender pada peranti anda."}</p>
-          <details className="sources"><summary>Sumber &amp; penyelidikan <ChevronDown size={17} /></summary>
+          <p className="renderNote">Video disediakan pada peranti anda. Kali pertama mungkin mengambil masa lebih lama kerana suara dan visual perlu dimuatkan.</p>
+          <details className="sources"><summary>Sumber &amp; kredit <ChevronDown size={17} /></summary>
               <div className="sourceBody">
-                {topic.mystery?.sources.map((source, index) => <a href={source.url} target="_blank" rel="noreferrer" key={source.id}><strong>{index + 1}. {source.type}</strong><span>{source.title} · {source.publisher}</span></a>)}
+                {topic.mystery?.sources.map((source) => <a href={safePublicUrl(source.url) ?? undefined} target="_blank" rel="noreferrer" key={source.id}><strong>{source.publisher}</strong><span>{source.title}</span></a>)}
                 {!topic.mystery && <a href={`https://www.wikidata.org/wiki/${topic.id}`} target="_blank" rel="noreferrer"><strong>Fakta</strong><span>Wikidata · {topic.id}</span></a>}
-              {topic.wikipediaUrl && <a href={topic.wikipediaUrl} target="_blank" rel="noreferrer"><strong>Konteks</strong><span>Wikipedia</span></a>}
-              {visuals.filter((visual) => visual.sourceUrl).map((visual, index) => <a href={visual.sourceUrl} target="_blank" rel="noreferrer" key={`${visual.sourceUrl}-${index}`}><strong>{visual.mediaType === "video" ? "Video" : visual.mediaType === "programmatic" ? "Grafik" : "Imej"} {index + 1}</strong><span>{visual.title} · {visual.license.replace(/Public domain/i, "Domain awam")} · {visual.creator}</span></a>)}
+              {topic.wikipediaUrl && <a href={safePublicUrl(topic.wikipediaUrl) ?? undefined} target="_blank" rel="noreferrer"><strong>Konteks</strong><span>Wikipedia</span></a>}
+              {visuals.filter((visual) => visual.sourceUrl).map((visual, index) => <a href={safePublicUrl(visual.sourceUrl) ?? undefined} target="_blank" rel="noreferrer" key={`${visual.sourceUrl}-${index}`}><strong>Kredit visual</strong><span>{visual.title} · {visual.creator} · {visual.license.replace(/Public domain/i, "Domain awam")}</span></a>)}
             </div>
           </details>
         </aside>
       </section>}
 
       {stage === "generating" && <div className="renderOverlay" role="status">
-        <div className="renderCard"><div className="renderOrb"><Film size={32} /></div><span className="step">MENGHASILKAN FILEM ANDA</span><h2>{progress.message}</h2><p>Biarkan tab ini terbuka sementara peranti anda bekerja.</p><div className="progressTrack"><span style={{ width: `${Math.max(3, progress.percent)}%` }} /></div><strong>{Math.round(progress.percent)}%</strong></div>
+        <div className="renderCard"><div className="renderOrb"><Film size={32} /></div><span className="step">VIDEO SEDANG DISEDIAKAN</span><h2>{progress.message}</h2><p>Biarkan tab ini terbuka sehingga video siap.</p><div className="progressTrack"><span style={{ width: `${Math.max(3, progress.percent)}%` }} /></div><strong>{Math.round(progress.percent)}%</strong></div>
       </div>}
 
-      <footer className="shell"><span>FACTFRAME / V2</span><p>Sumber institusi, arkib, Wikidata &amp; Wikipedia · Media daripada Wikimedia Commons</p><span>Tanpa akaun. Tanpa API berbayar.</span></footer>
+      <footer className="shell"><span>FACTFRAME / V2</span><p>Cerita bersumber · Visual berlesen · Kredit dikekalkan</p><span>Video disediakan pada peranti anda</span></footer>
     </main>
   );
 }

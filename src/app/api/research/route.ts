@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getStoryStore, isStoryIndexConfigured } from "@/lib/discovery/store";
 import { loadResearchStory } from "@/lib/research/storyResearch";
+import { logFailure } from "@/lib/server/structuredLog";
 
 export async function GET(request: NextRequest) {
   const id = request.nextUrl.searchParams.get("id")?.trim();
@@ -11,7 +12,7 @@ export async function GET(request: NextRequest) {
     if (!story) return NextResponse.json({ error: "Cerita arkib ini belum mempunyai pakej penyelidikan READY." }, { status: 404 });
     return NextResponse.json({ story }, { headers: { "Cache-Control": "no-store" } });
   } catch (error) {
-    console.error("[research] Research package load failed", error instanceof Error ? error.message : "unknown error");
+    logFailure("research.failure", error, { storyId: id });
     return NextResponse.json({ error: "Pakej penyelidikan tidak dapat dimuatkan." }, { status: 502 });
   }
 }

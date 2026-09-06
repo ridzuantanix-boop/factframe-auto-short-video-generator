@@ -31,10 +31,15 @@
 - Penalti ID/URL tidak mengesan near-duplicate crops; satu subject photo masih boleh berulang sebagai backdrop.
 - Render browser hampir real-time, menggunakan CPU/RAM tinggi; background tab dan mobile browser boleh menghentikan proses.
 - Direct MP4 hanya tersedia pada pelayar yang mengiklankan codec AVC/AAC MediaRecorder. Pelayar lain dieksport secara jujur sebagai WebM; automatic FFmpeg/WASM conversion tidak lagi dipaksa.
-- Output yang diaudit ialah 720×1280 untuk kestabilan browser. Seni bina canvas kekal 9:16 tetapi preset 1080×1920 dan server-side render farm belum dilaksanakan.
+- Output production kekal 720×1280 untuk kestabilan browser. Phase 7 menyediakan laluan audit 1080×1920 melalui `?render=1080`; ia mesti kekal experimental sehingga ukuran dua render pada peranti sasaran stabil. Server-side render farm belum dilaksanakan.
 - Caption timing ialah anggaran deterministik berasaskan panjang frasa, tanda baca dan durasi audio sebenar; ia bukan word-level alignment daripada provider TTS.
 - Cache audio metadata disimpan dalam browser untuk sesi produk, bukan object storage bersama. Blob video besar tidak disimpan pada server dan object URL hanya hidup pada tab semasa.
-- Tiada automated end-to-end browser test dalam `npm test`; suite semasa menguji catalog, quality gate dan query diversity sahaja.
+- Audit browser end-to-end masih dijalankan secara terkawal sebelum release; `npm test` merangkumi readiness language, generation gate, format, cache invalidation, rate limiting dan asset allowlist tetapi bukan penggantian penuh untuk matrix peranti sebenar.
+- Rate limiter Phase 7 disimpan dalam memori proses. Ia melindungi satu instance dan sesuai sebagai guard awal, tetapi production multi-instance memerlukan backend rate-limit bersama sebelum trafik awam besar.
+- TTS provider menentukan durasi sebenar audio. Ujian Nuri menghasilkan kira-kira 29.6 saat untuk pakej yang mencadangkan 18 saat; renderer tidak memotong fakta atau audio, tetapi kalibrasi label/durasi perlu diperbaiki sebelum janji tempoh dianggap tepat.
+- Nuri ialah satu-satunya pakej arkib persistent yang lulus gate READY semasa audit Phase 7. Baris READY lama tanpa keputusan verifikasi/durasi kini disembunyikan; cerita kedua tidak direka-reka.
+- Edge/Chromium membuka dan mengendalikan katalog, manakala render penuh diuji pada Chromium desktop/mobile emulation. Safari/iOS dan playback pada peranti fizikal belum disahkan.
+- Dua aset jauh gagal pada render audit Nuri dan diganti dengan fallback programatik berlabel. Video kekal lengkap, tetapi kebolehpercayaan visual real-media belum cukup untuk mengangkat laluan 1080 daripada experimental.
 - Seed `accessedAt` statik dan memerlukan commit untuk refresh. Link rot/source content drift tidak dipantau.
 - Deployment Vercel pernah mempunyai SSO protection; project semasa telah dibuka awam, tetapi setting deployment bukan dikawal oleh source code.
 - Beberapa teks lama dalam source mungkin mempunyai mojibake (`Â·`, `â€¦`) pada caption/ellipsis dan perlu normalisasi berasingan.

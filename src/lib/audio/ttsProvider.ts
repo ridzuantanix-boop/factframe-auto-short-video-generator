@@ -66,11 +66,6 @@ class GeminiHumanTTS implements TTSProvider {
           }
           const audioBlob = await response.blob();
           const durationSeconds = await validateAudio(audioBlob);
-          const target = options.targetDurationSeconds;
-          if (!options.preview && target) {
-            const range = [Math.max(6, target * .65), target * 1.4];
-            if (durationSeconds < range[0] || durationSeconds > range[1]) throw new Error(`Tempoh suara ${Math.round(durationSeconds)} saat terlalu jauh daripada sasaran ${target} saat.`);
-          }
           onProgress?.("Suara Gemini siap", 100);
           return { audioBlob, mimeType: audioBlob.type, durationSeconds, voicePresetId, provider: "gemini" as const, narrationHash: await sha256(text), ...speechMetadata(text, options.targetDurationSeconds) };
         } catch (error) { lastError = error instanceof Error ? error : new Error("Penjanaan suara gagal."); }

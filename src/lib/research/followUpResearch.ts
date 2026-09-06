@@ -3,6 +3,7 @@ import type { ArchiveDocument, DiscoveryProvider, StoredStorySource } from "../a
 import type { StoryCandidate } from "../types.ts";
 import type { StoryStore } from "../discovery/store.ts";
 import type { ResearchClaim, ResearchPackage, StoryCaseState, VerificationStatus, VerificationType } from "./types.ts";
+import { logFailure } from "../server/structuredLog.ts";
 
 export const FOLLOW_UP_WINDOWS_DAYS = [1, 7, 30, 365] as const;
 const PENDING = /\b(?:missing|hilang|search(?:ing)?|pencarian|investigat(?:e|ion|ing)|siasatan|unknown|tidak diketahui|awaiting|pending|belum ditemui|masih dicari|trial pending|accused|suspected|arrested|charged|didakwa|disyaki|ditangkap|direman)\b/i;
@@ -103,7 +104,7 @@ export async function runFollowUpVerification(candidate: StoryCandidate, pkg: Re
   if (!baseDate) return { searches: 0, sourcesFound: 0, sourcesAccepted: 0, acceptedSourceIds: [], errors: ["No dated initial source for bounded follow-up search."] };
   const query = buildFollowUpQuery(candidate, pkg, sources); let searches = 0; let sourcesFound = 0; const acceptedSourceIds: string[] = []; const errors: string[] = [];
   for (const days of FOLLOW_UP_WINDOWS_DAYS) { const window = { from: new Date(baseDate + 1).toISOString(), to: new Date(baseDate + days * 86_400_000).toISOString(), days };
-    const found: ArchiveDocument[] = []; for (const provider of providers) { searches += 1; try { found.push(...await provider.search(query, window)); } catch (error) { errors.push(`${provider.id}: ${error instanceof Error ? error.message : "search failed"}`); } }
+    const found: ArchiveDocument[] = []; for (const provider of providers) { searches += 1; try { found.push(...await provider.search(query, window)); } catch (error) { logFailure("follow_up_verification.failure", error, { storyId: candidate.id, provider: provider.id, windowDays: days }); errors.push(`${provider.id}: search failed`); } }
     sourcesFound += found.length; for (const document of found.sort((a, b) => sourcePriority(a.reliabilityLevel) - sourcePriority(b.reliabilityLevel))) {
       if (!hasStrongContinuity(candidate, pkg, sources, document)) continue;
       const id = createHash("sha256").update(`${document.provider}:${document.url}`).digest("hex").slice(0, 32); const saved = await store.upsertSource({ id, storyCandidateId: candidate.id, provider: document.provider,

@@ -4,10 +4,14 @@ import { buildMysteryScript } from "@/lib/mystery/storyEngine";
 import { loadResearchStory } from "@/lib/research/storyResearch";
 import { planEvidenceAwareVisuals } from "@/lib/visual/planner";
 import { createHash } from "node:crypto";
+import { enforceRateLimit, rejectOversizedRequest } from "@/lib/server/rateLimit";
+import { logFailure } from "@/lib/server/structuredLog";
 
 const hash = (value: unknown) => createHash("sha256").update(JSON.stringify(value)).digest("hex");
 
 export async function POST(request: NextRequest) {
+  const limited = enforceRateLimit(request, { name: "visual-plan", limit: 30, windowMs: 10 * 60_000 }); if (limited) return limited;
+  const oversized = rejectOversizedRequest(request, 4_000); if (oversized) return oversized;
   if (!isStoryIndexConfigured()) return NextResponse.json({ error: "Indeks cerita belum dikonfigurasi." }, { status: 503 });
   try {
     const { storyCandidateId, durationSeconds } = await request.json() as { storyCandidateId?: string; durationSeconds?: number };
@@ -22,7 +26,7 @@ export async function POST(request: NextRequest) {
     plan.metadata.researchPackageHash = researchPackageHash; const persisted = await store.persistVisualPlan(plan);
     return NextResponse.json({ plan: persisted, researchPackageHash, visualPlanHash: hash(persisted), cached: false }, { status: 201 });
   } catch (error) {
-    console.error("[visual-plan]", error instanceof Error ? error.message : error);
+    logFailure("visual_provider.failure", error);
     return NextResponse.json({ error: "Perancangan visual gagal buat masa ini." }, { status: 502 });
   }
 }

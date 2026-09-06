@@ -1,6 +1,7 @@
 import { buildScenes } from "@/lib/video/sceneBuilder";
 import type { Scene, Topic, Visual, WatermarkConfig } from "@/lib/types";
 import { selectRecorderMime } from "@/lib/render/timeline";
+import { requireApprovedAssetUrl } from "@/lib/security/assetPolicy";
 
 export type RenderProgress = (message: string, percent: number) => void;
 
@@ -9,11 +10,12 @@ const HEIGHT = 1280;
 const FPS = 30;
 
 type LoadedMedia = { bitmap?: ImageBitmap; video?: HTMLVideoElement };
-export type ExportManifest = { storyCandidateId: string; researchPackageHash: string; visualPlanHash: string; narrationHash: string; ttsProvider: string; voicePreset: string; actualAudioDuration: number; videoDuration: number; resolution: string; mimeType: string; fileSize: number; createdAt: string; assets: string[]; sources: string[]; captionCoverage: number; assetFailures: number; fallbackSubstitutions: number; audioTrack: boolean; videoTrack: boolean; playbackValidation: { canPlay: boolean; reachedNearEnd: boolean; width: number; height: number; duration: number } };
+export type ExportManifest = { storyCandidateId: string; researchPackageHash: string; visualPlanHash: string; narrationHash: string; ttsProvider: string; voicePreset: string; actualAudioDuration: number; videoDuration: number; resolution: string; mimeType: string; fileSize: number; createdAt: string; assets: string[]; sources: string[]; captionCoverage: number; assetFailures: number; fallbackSubstitutions: number; audioTrack: boolean; videoTrack: boolean; timings: { researchLoadMs: number; visualPlanLoadMs: number; ttsMs: number; renderMs: number; totalGenerationMs: number; browserMemoryMb: number | null }; playbackValidation: { canPlay: boolean; reachedNearEnd: boolean; width: number; height: number; duration: number } };
 export type RenderedVideo = { blob: Blob; mimeType: string; extension: ".mp4" | ".webm"; manifest: ExportManifest; playback: { canPlay: boolean; duration: number; width: number; height: number; reachedNearEnd: boolean } };
-export type RenderOptions = { storyCandidateId?: string; researchPackageHash?: string; visualPlanHash?: string; narrationHash?: string; ttsProvider?: string; voicePreset?: string };
+export type RenderOptions = { storyCandidateId?: string; researchPackageHash?: string; visualPlanHash?: string; narrationHash?: string; ttsProvider?: string; voicePreset?: string; resolution?: "720x1280" | "1080x1920"; timings?: Partial<ExportManifest["timings"]> };
 
 async function loadBitmap(url: string) {
+  requireApprovedAssetUrl(url);
   const controller = new AbortController(); const timer = window.setTimeout(() => controller.abort(), 15000);
   const response = await fetch(url, { signal: controller.signal }).finally(() => window.clearTimeout(timer));
   if (!response.ok) throw new Error("Salah satu imej sumber tidak dapat dimuatkan.");
@@ -36,7 +38,7 @@ async function loadMedia(visual: Visual): Promise<LoadedMedia> {
       video.onloadeddata = () => { window.clearTimeout(timeout); resolve(); };
       video.onerror = () => { window.clearTimeout(timeout); reject(new Error("Format klip video tidak dapat dimainkan.")); };
     });
-    video.src = visual.url;
+    video.src = requireApprovedAssetUrl(visual.url);
     try { await ready; return { video }; }
     catch { if (visual.thumbUrl) { try { return { bitmap: await loadBitmap(visual.thumbUrl) }; } catch { return {}; } } }
   }
@@ -156,20 +158,23 @@ async function validatePlayback(blob: Blob) {
 }
 
 export async function renderVideo(topic: Topic, visuals: Visual[], narration: Blob, onProgress: RenderProgress, watermark?: WatermarkConfig, options: RenderOptions = {}): Promise<RenderedVideo> {
-  const canvas = document.createElement("canvas"); canvas.width = WIDTH; canvas.height = HEIGHT; const ctx = canvas.getContext("2d"); if (!ctx) throw new Error("Pelayar ini tidak dapat menyediakan kanvas video.");
+  const renderStartedAt = performance.now(); const outputScale = options.resolution === "1080x1920" ? 1.5 : 1;
+  const canvas = document.createElement("canvas"); canvas.width = WIDTH * outputScale; canvas.height = HEIGHT * outputScale; const ctx = canvas.getContext("2d"); if (!ctx) throw new Error("Pelayar ini tidak dapat menyediakan kanvas video.");
   onProgress("Menyediakan visual", 5); const loaded = await Promise.all(visuals.map(loadMedia)); if (!loaded.length) throw new Error("Visual yang sesuai tidak mencukupi.");
   const assetFailures = loaded.filter((media, index) => !media.bitmap && !media.video && visuals[index]?.mediaType !== "programmatic").length;
   const audioContext = new AudioContext(); const audioBuffer = await audioContext.decodeAudioData(await narration.arrayBuffer()); const effectiveDuration = audioBuffer.duration; const scenes = buildScenes(topic, visuals, effectiveDuration); const source = audioContext.createBufferSource(); source.buffer = audioBuffer; source.playbackRate.value = 1; const audioDestination = audioContext.createMediaStreamDestination(); const gain = audioContext.createGain(); gain.gain.value = 1; source.connect(gain).connect(audioDestination);
   const canvasStream = canvas.captureStream(FPS); audioDestination.stream.getAudioTracks().forEach((track) => canvasStream.addTrack(track)); const negotiated = selectRecorderMime((mime) => MediaRecorder.isTypeSupported(mime)); const recorder = new MediaRecorder(canvasStream, { mimeType: negotiated.mimeType, videoBitsPerSecond: 4_000_000 }); const chunks: BlobPart[] = []; recorder.ondataavailable = (event) => { if (event.data.size) chunks.push(event.data); }; const finished = new Promise<void>((resolve, reject) => { recorder.onstop = () => resolve(); recorder.onerror = () => reject(new Error("Perakam video pelayar gagal berfungsi.")); });
   let sceneIndex = 0; let sceneStart = 0; let activeVideo: HTMLVideoElement | undefined; const recordingDuration = effectiveDuration + .15; const startedAt = performance.now(); recorder.start(1000); source.start(); onProgress("Rendering", 18);
-  await new Promise<void>((resolve) => { const tick = () => { const elapsed = (performance.now() - startedAt) / 1000; while (sceneIndex < scenes.length - 1 && elapsed >= sceneStart + scenes[sceneIndex].duration) { sceneStart += scenes[sceneIndex].duration; sceneIndex++; } const scene = scenes[sceneIndex]; const visualIndex = Math.max(0, visuals.indexOf(scene.image)); const media = loaded[visualIndex] ?? loaded[0]; if (media.video !== activeVideo) { activeVideo?.pause(); activeVideo = media.video; if (activeVideo) { const usable = Math.max(0, activeVideo.duration - Math.min(6, scene.duration)); activeVideo.currentTime = usable ? (sceneIndex * 3.17) % usable : 0; void activeVideo.play().catch(() => undefined); } } drawFrame(ctx, media, topic, scene, sceneIndex, Math.min(1, (elapsed - sceneStart) / scene.duration), watermark); onProgress("Merender pada peranti ini", 18 + Math.min(1, elapsed / recordingDuration) * 72); if (elapsed < recordingDuration) requestAnimationFrame(tick); else resolve(); }; tick(); });
+  await new Promise<void>((resolve) => { const tick = () => { const elapsed = (performance.now() - startedAt) / 1000; while (sceneIndex < scenes.length - 1 && elapsed >= sceneStart + scenes[sceneIndex].duration) { sceneStart += scenes[sceneIndex].duration; sceneIndex++; } const scene = scenes[sceneIndex]; const visualIndex = Math.max(0, visuals.indexOf(scene.image)); const media = loaded[visualIndex] ?? loaded[0]; if (media.video !== activeVideo) { activeVideo?.pause(); activeVideo = media.video; if (activeVideo) { const usable = Math.max(0, activeVideo.duration - Math.min(6, scene.duration)); activeVideo.currentTime = usable ? (sceneIndex * 3.17) % usable : 0; void activeVideo.play().catch(() => undefined); } } ctx.setTransform(outputScale, 0, 0, outputScale, 0, 0); drawFrame(ctx, media, topic, scene, sceneIndex, Math.min(1, (elapsed - sceneStart) / scene.duration), watermark); onProgress("Susun video", 18 + Math.min(1, elapsed / recordingDuration) * 72); if (elapsed < recordingDuration) requestAnimationFrame(tick); else resolve(); }; tick(); });
   activeVideo?.pause(); recorder.stop(); source.stop(); await finished; canvasStream.getTracks().forEach((track) => track.stop()); await audioContext.close(); loaded.forEach((media) => { media.bitmap?.close(); if (media.video) { media.video.pause(); media.video.removeAttribute("src"); media.video.load(); } });
   const blob = new Blob(chunks, { type: negotiated.mimeType }); onProgress("Finalizing", 94); const playback = await validatePlayback(blob);
   const narrationWords = topic.narration.trim().split(/\s+/).length; const captionWords = scenes.reduce((sum, scene) => sum + scene.caption.trim().split(/\s+/).length, 0);
+  const renderMs = Math.round(performance.now() - renderStartedAt); const memory = (performance as Performance & { memory?: { usedJSHeapSize?: number } }).memory?.usedJSHeapSize;
   const manifest: ExportManifest = { storyCandidateId: options.storyCandidateId ?? topic.id, researchPackageHash: options.researchPackageHash ?? "UNVERSIONED", visualPlanHash: options.visualPlanHash ?? "UNVERSIONED",
     narrationHash: options.narrationHash ?? "UNVERSIONED", ttsProvider: options.ttsProvider ?? "UNKNOWN", voicePreset: options.voicePreset ?? "UNKNOWN", actualAudioDuration: audioBuffer.duration, videoDuration: playback.duration,
-    resolution: `${WIDTH}x${HEIGHT}`, mimeType: negotiated.mimeType, fileSize: blob.size, createdAt: new Date().toISOString(), assets: visuals.map((item) => item.id ?? item.sourceUrl),
+    resolution: `${canvas.width}x${canvas.height}`, mimeType: negotiated.mimeType, fileSize: blob.size, createdAt: new Date().toISOString(), assets: visuals.map((item) => item.id ?? item.sourceUrl),
     sources: topic.mystery?.sources.map((item) => item.id) ?? [], captionCoverage: Math.min(1, captionWords / Math.max(1, narrationWords)), assetFailures,
-    fallbackSubstitutions: assetFailures, audioTrack: canvasStream.getAudioTracks().length > 0, videoTrack: canvasStream.getVideoTracks().length > 0, playbackValidation: playback };
+    fallbackSubstitutions: assetFailures, audioTrack: canvasStream.getAudioTracks().length > 0, videoTrack: canvasStream.getVideoTracks().length > 0,
+    timings: { researchLoadMs: options.timings?.researchLoadMs ?? 0, visualPlanLoadMs: options.timings?.visualPlanLoadMs ?? 0, ttsMs: options.timings?.ttsMs ?? 0, renderMs, totalGenerationMs: (options.timings?.ttsMs ?? 0) + renderMs, browserMemoryMb: memory ? Number((memory / 1024 / 1024).toFixed(1)) : null }, playbackValidation: playback };
   onProgress("Video siap", 100); return { blob, mimeType: negotiated.mimeType, extension: negotiated.extension, manifest, playback };
 }

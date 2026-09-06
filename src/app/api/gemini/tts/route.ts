@@ -1,7 +1,12 @@
 import { getGeminiClient, GEMINI_TTS_MODEL } from "@/lib/gemini/client";
 import { getVoicePreset } from "@/lib/audio/voicePresets";
+import { createHash } from "node:crypto";
+import { enforceRateLimit, rejectOversizedRequest } from "@/lib/server/rateLimit";
+import { logFailure } from "@/lib/server/structuredLog";
+import { ttsUnavailableResponse } from "@/lib/server/ttsAvailability";
 
 const previewCache = new Map<string, { bytes: Buffer; type: string }>();
+const speechCache = new Map<string, { bytes: Buffer; type: string }>();
 const previewText = "Pada mulanya, ia nampak seperti kehilangan biasa. Tapi kemudian, satu petunjuk mengubah seluruh cerita.";
 
 function pcmToWav(pcm: Buffer, sampleRate: number, channels = 1) {
@@ -14,14 +19,18 @@ function pcmToWav(pcm: Buffer, sampleRate: number, channels = 1) {
 }
 
 export async function POST(request: Request) {
+  const limited = enforceRateLimit(request, { name: "tts", limit: 6, windowMs: 10 * 60_000 });
+  if (limited) return limited;
+  const oversized = rejectOversizedRequest(request, 16_000); if (oversized) return oversized;
   const client = getGeminiClient();
-  if (!client) return Response.json({ error: "Gemini belum dikonfigurasi." }, { status: 503 });
+  if (!client) return ttsUnavailableResponse();
   const body = await request.json() as { text?: string; tone?: "DOCUMENTARY" | "SUSPENSEFUL"; voicePresetId?: string; preview?: boolean };
   const text = body.preview ? previewText : body.text?.trim();
   if (!text || text.length > 6000) return Response.json({ error: "Teks narasi tidak sah." }, { status: 400 });
   const preset = getVoicePreset(body.voicePresetId);
-  const cacheKey = `${preset.id}:${body.tone ?? "DOCUMENTARY"}`;
-  const cached = body.preview ? previewCache.get(cacheKey) : undefined;
+  const cacheKey = body.preview ? `${preset.id}:${body.tone ?? "DOCUMENTARY"}` : createHash("sha256").update(`${text}|${preset.id}|${body.tone ?? "DOCUMENTARY"}`).digest("hex");
+  const cache = body.preview ? previewCache : speechCache;
+  const cached = cache.get(cacheKey);
   if (cached) return new Response(new Uint8Array(cached.bytes), { headers: { "Content-Type": cached.type, "X-Voice-Provider": "gemini", "X-Preview-Cache": "hit" } });
   const direction = body.tone === "SUSPENSEFUL"
     ? "Perform with restrained suspense, varied pacing and brief natural pauses. Build curiosity without sounding theatrical."
@@ -35,13 +44,13 @@ export async function POST(request: Request) {
     const bytes = Buffer.from(audio.data, "base64");
     if (audio.mime_type?.startsWith("audio/l16") || !audio.mime_type) {
       const wav = pcmToWav(bytes, audio.sample_rate ?? 24_000, audio.channels ?? 1);
-      if (body.preview) previewCache.set(cacheKey, { bytes: wav, type: "audio/wav" });
+      cache.set(cacheKey, { bytes: wav, type: "audio/wav" }); if (cache.size > 50) cache.delete(cache.keys().next().value!);
       return new Response(new Uint8Array(wav), { headers: { "Content-Type": "audio/wav", "X-Voice-Provider": "gemini", "X-Preview-Cache": "miss" } });
     }
-    if (body.preview) previewCache.set(cacheKey, { bytes, type: audio.mime_type });
+    cache.set(cacheKey, { bytes, type: audio.mime_type }); if (cache.size > 50) cache.delete(cache.keys().next().value!);
     return new Response(new Uint8Array(bytes), { headers: { "Content-Type": audio.mime_type, "X-Voice-Provider": "gemini", "X-Preview-Cache": "miss" } });
   } catch (error) {
-    console.error("[tts] Gemini request failed", error instanceof Error ? error.message : "unknown error");
-    return Response.json({ error: error instanceof Error ? error.message : "Gemini TTS gagal." }, { status: 502 });
+    logFailure("tts.failure", error);
+    return Response.json({ error: "Suara belum dapat disediakan. Sila cuba semula." }, { status: 502 });
   }
 }

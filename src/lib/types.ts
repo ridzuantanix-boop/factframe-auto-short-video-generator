@@ -3,6 +3,10 @@ export type SearchResult = {
   label: string;
   description: string;
   url: string;
+  status?: StoryIndexStatus;
+  category?: string;
+  supportedDurationSeconds?: number;
+  timeContext?: "SEJARAH" | "SEMASA";
 };
 
 export type StoryIndexStatus = "DISCOVERED" | "PARTIAL" | "READY" | "HIDDEN";

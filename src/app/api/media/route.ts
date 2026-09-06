@@ -5,6 +5,8 @@ import { getStoryStore, isStoryIndexConfigured } from "@/lib/discovery/store";
 import { loadResearchStory } from "@/lib/research/storyResearch";
 import { planStoryVisuals, planTopicVisuals } from "@/lib/video/visualPlanner";
 import type { MysteryScript, Topic } from "@/lib/types";
+import { enforceRateLimit, rejectOversizedRequest } from "@/lib/server/rateLimit";
+import { logFailure } from "@/lib/server/structuredLog";
 
 export async function GET(request: NextRequest) {
   const query = request.nextUrl.searchParams.get("q")?.trim();
@@ -18,6 +20,8 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
+  const limited = enforceRateLimit(request, { name: "media-plan", limit: 30, windowMs: 10 * 60_000 }); if (limited) return limited;
+  const oversized = rejectOversizedRequest(request, 80_000); if (oversized) return oversized;
   try {
     const body = await request.json() as { storyId?: string; script?: MysteryScript; topic?: Topic };
     const seedStory = body.storyId ? getMysteryStory(body.storyId) : undefined;
@@ -36,7 +40,7 @@ export async function POST(request: NextRequest) {
     if (!complete) return NextResponse.json({ error: "Calon ini belum melepasi readiness gate visual." }, { status: 422 });
     return NextResponse.json(result, { headers: { "Cache-Control": "no-store" } });
   } catch (error) {
-    console.error("[media] Visual planning failed", error instanceof Error ? error.message : "unknown error");
+    logFailure("visual_provider.failure", error);
     return NextResponse.json({ error: "Perancangan visual dokumentari gagal buat masa ini." }, { status: 502 });
   }
 }

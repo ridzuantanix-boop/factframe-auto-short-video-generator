@@ -36,7 +36,7 @@ npm run audit:archive-classification
 
 Archive flags are `--provider`, `--region`, `--query-group`, `--pages`, `--limit`, `--delay` and optional `--concurrency`. Provider results are normalized, deterministically inspected for dates/places/people/event verbs, then conservatively clustered by date proximity, normalized location/name and headline overlap. Query words are provenance only. No Gemini call occurs during mass discovery.
 
-`GET /api/catalog` supports `category`, `country`, `status`, `page` (1-based), `limit` (max 100), `search`, and `sort=newest|oldest|title|research`. It returns `items`, `total`, `page`, and `hasMore`. Hidden rows are excluded unless `status=HIDDEN` is explicit.
+`GET /api/catalog` supports `category`, `country`, `page` (1-based), `limit` (max 100), `search`, and `sort=newest|oldest|title|research`. Public requests default to `READY` and cannot retrieve other statuses. Audit/admin requests may use `status=DISCOVERED|PARTIAL|HIDDEN` only with the server-side `CRON_SECRET` bearer credential. It returns `items`, `total`, `page`, and `hasMore`.
 
 `/api/discover` reads this index first and falls back to live provider search when a category is empty or DB is unavailable. Valid `/api/search` results are saved after the response. `/api/topic` updates source/claim counts, research score, timestamps, and status after real hydration.
 
