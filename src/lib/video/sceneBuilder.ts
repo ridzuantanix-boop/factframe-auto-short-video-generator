@@ -8,7 +8,7 @@ export function buildScenes(topic: Topic, visuals: Visual[], totalDuration = 26)
     const sentences = segment.text.match(/[^.!?]+[.!?]+|[^.!?]+$/g)?.map((part) => part.trim()).filter(Boolean) ?? [segment.text];
     for (const sentence of sentences) {
       const words = sentence.split(/\s+/);
-      while (words.length > 11) chunks.push({ caption: words.splice(0, 11).join(" "), visualIntent: segment.visualIntent, sourceLabel: segment.sourceIds?.join(" · "), segmentIndex });
+      while (words.length > 8) chunks.push({ caption: words.splice(0, 6).join(" "), visualIntent: segment.visualIntent, sourceLabel: segment.sourceIds?.join(" · "), segmentIndex });
       if (words.length) chunks.push({ caption: words.join(" "), visualIntent: segment.visualIntent, sourceLabel: segment.sourceIds?.join(" · "), segmentIndex });
     }
   }
@@ -19,6 +19,5 @@ export function buildScenes(topic: Topic, visuals: Visual[], totalDuration = 26)
     ...chunk,
     duration: totalDuration * weights[index] / sum,
   }));
-  if (topic.mystery?.showSourceNote) scenes.push({ image: visuals.at(-1) ?? visuals[0], caption: "Sumber penuh tersedia dalam penerangan", duration: 1.5, visualIntent: "ENDING" as const, sourceLabel: "SUMBER & PENYELIDIKAN", segmentIndex: narrativeSegments.length });
   return scenes;
 }

@@ -27,3 +27,7 @@ OpenStreetMap/Nominatim results persist latitude, longitude, region label and bo
 `story_visual_assets` deduplicates provider IDs, canonical URLs and content hashes. `story_visual_plans` caches a plan per story and supported duration. Run `npm run audit:visuals` with `DATABASE_URL` to plan every current READY story plus the strongest PARTIAL packages, up to 20, and write `audit/visual-plans-20.json`.
 
 Visual READY is independent from factual READY. A fallback-covered story can remain visual READY while its `realAssetCoverage` transparently reveals that cards dominate the plan.
+
+## Render hand-off
+
+Phase 6B converts only selected reusable/generated-safe assets into renderer inputs. Restricted archive references remain credits and never become direct pixels. OSM coordinates are converted to a cached standard tile request at render time, then drawn with a visible marker, geographic label and `© OpenStreetMap contributors`. If a remote bitmap or video cannot decode, the renderer uses the programmatic canvas treatment and records the substitution in the export manifest.

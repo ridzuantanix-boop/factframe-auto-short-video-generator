@@ -3,7 +3,7 @@ import type { StoryDuration } from "@/lib/types";
 
 export type TTSProgress = (message: string, percent?: number) => void;
 export type TTSOptions = { tone?: "DOCUMENTARY" | "SUSPENSEFUL"; voicePresetId?: VoicePresetId; targetDurationSeconds?: StoryDuration; preview?: boolean };
-export type GeneratedSpeech = { audioBlob: Blob; mimeType: string; durationSeconds: number; voicePresetId: VoicePresetId; provider: "gemini" | "local" };
+export type GeneratedSpeech = { audioBlob: Blob; mimeType: string; durationSeconds: number; estimatedNarrationSeconds: number; voicePresetId: VoicePresetId; provider: "gemini" | "local"; generatedAt: string; narrationHash: string; timingMethod: "AUDIO_DURATION_PROPORTIONAL" };
 
 export interface TTSProvider {
   generateSpeech(text: string, language: string, onProgress?: TTSProgress, options?: TTSOptions): Promise<GeneratedSpeech>;
@@ -22,6 +22,9 @@ async function validateAudio(audioBlob: Blob) {
   } finally { await context.close(); }
 }
 
+async function sha256(value: string) { const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(value)); return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, "0")).join(""); }
+function speechMetadata(text: string, target?: number) { return { estimatedNarrationSeconds: target ?? Math.max(1, text.trim().split(/\s+/).length / 2.4), generatedAt: new Date().toISOString(), timingMethod: "AUDIO_DURATION_PROPORTIONAL" as const }; }
+
 class MalayNeuralBrowserTTS implements TTSProvider {
   async generateSpeech(text: string, language: string, onProgress?: TTSProgress, options: TTSOptions = {}) {
     if (!language.startsWith("ms")) throw new Error("Narasi tempatan V1 kini menyokong Bahasa Melayu.");
@@ -38,7 +41,7 @@ class MalayNeuralBrowserTTS implements TTSProvider {
     });
     const durationSeconds = await validateAudio(audioBlob);
     onProgress?.("Narasi siap", 100);
-    return { audioBlob, mimeType: audioBlob.type, durationSeconds, voicePresetId: options.voicePresetId ?? DEFAULT_VOICE_PRESET_ID, provider: "local" as const };
+    return { audioBlob, mimeType: audioBlob.type, durationSeconds, voicePresetId: options.voicePresetId ?? DEFAULT_VOICE_PRESET_ID, provider: "local" as const, narrationHash: await sha256(text), ...speechMetadata(text, options.targetDurationSeconds) };
   }
 }
 
@@ -69,7 +72,7 @@ class GeminiHumanTTS implements TTSProvider {
             if (durationSeconds < range[0] || durationSeconds > range[1]) throw new Error(`Tempoh suara ${Math.round(durationSeconds)} saat terlalu jauh daripada sasaran ${target} saat.`);
           }
           onProgress?.("Suara Gemini siap", 100);
-          return { audioBlob, mimeType: audioBlob.type, durationSeconds, voicePresetId, provider: "gemini" as const };
+          return { audioBlob, mimeType: audioBlob.type, durationSeconds, voicePresetId, provider: "gemini" as const, narrationHash: await sha256(text), ...speechMetadata(text, options.targetDurationSeconds) };
         } catch (error) { lastError = error instanceof Error ? error : new Error("Penjanaan suara gagal."); }
       }
       throw lastError ?? new Error("Penjanaan suara gagal selepas dua cubaan.");

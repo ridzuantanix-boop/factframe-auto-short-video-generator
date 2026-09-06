@@ -198,6 +198,7 @@ export type Visual = {
   segmentIndex?: number;
   searchQuery?: string;
   relevanceScore?: number;
+  metadata?: Record<string, unknown>;
 };
 
 export type VisualQualityReport = {

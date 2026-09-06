@@ -30,7 +30,10 @@
 - Exact-event imagery masih jarang dan klasifikasi relevan menggunakan padanan token/caption, bukan computer vision. Commons/Wikidata upstream, CORS dan link rot boleh menyebabkan fallback pada masa request.
 - Penalti ID/URL tidak mengesan near-duplicate crops; satu subject photo masih boleh berulang sebagai backdrop.
 - Render browser hampir real-time, menggunakan CPU/RAM tinggi; background tab dan mobile browser boleh menghentikan proses.
-- FFmpeg core bergantung pada jsDelivr ketika direct MP4 tidak tersedia. Offline penuh belum disokong.
+- Direct MP4 hanya tersedia pada pelayar yang mengiklankan codec AVC/AAC MediaRecorder. Pelayar lain dieksport secara jujur sebagai WebM; automatic FFmpeg/WASM conversion tidak lagi dipaksa.
+- Output yang diaudit ialah 720×1280 untuk kestabilan browser. Seni bina canvas kekal 9:16 tetapi preset 1080×1920 dan server-side render farm belum dilaksanakan.
+- Caption timing ialah anggaran deterministik berasaskan panjang frasa, tanda baca dan durasi audio sebenar; ia bukan word-level alignment daripada provider TTS.
+- Cache audio metadata disimpan dalam browser untuk sesi produk, bukan object storage bersama. Blob video besar tidak disimpan pada server dan object URL hanya hidup pada tab semasa.
 - Tiada automated end-to-end browser test dalam `npm test`; suite semasa menguji catalog, quality gate dan query diversity sahaja.
 - Seed `accessedAt` statik dan memerlukan commit untuk refresh. Link rot/source content drift tidak dipantau.
 - Deployment Vercel pernah mempunyai SSO protection; project semasa telah dibuka awam, tetapi setting deployment bukan dikawal oleh source code.

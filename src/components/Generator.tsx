@@ -11,6 +11,8 @@ import { buildMysteryScript, effectiveStoryDuration, mysteryScriptToTopic, passe
 import { autoMysteryScriptToTopic, buildAutoMysteryScript } from "@/lib/mystery/autoEngine";
 import { buildExplainerScript, explainerScriptToTopic, generateStoryAngles } from "@/lib/story/explainerEngine";
 import type { ContentMode, MysteryScript, SearchResult, StoryAngle, StoryDuration, StoryRecord, StoryTone, Topic, Visual, VisualQualityReport, WatermarkConfig, WatermarkPosition } from "@/lib/types";
+import type { VisualPlan } from "@/lib/visual/types";
+import type { ExportManifest } from "@/lib/video/renderer";
 
 type Stage = "idle" | "searching" | "choosing" | "angles" | "preview" | "generating" | "done";
 
@@ -48,6 +50,9 @@ export function Generator() {
   const [error, setError] = useState("");
   const [progress, setProgress] = useState({ message: "Menyediakan fakta", percent: 0 });
   const [videoUrl, setVideoUrl] = useState("");
+  const [exportManifest, setExportManifest] = useState<ExportManifest | null>(null);
+  const [exportExtension, setExportExtension] = useState<".mp4" | ".webm">(".webm");
+  const [renderHashes, setRenderHashes] = useState({ researchPackageHash: "UNVERSIONED", visualPlanHash: "UNVERSIONED" });
   const [selectedStory, setSelectedStory] = useState<StoryRecord | null>(null);
   const [duration, setDuration] = useState<StoryDuration>(30);
   const [durationNotice, setDurationNotice] = useState("");
@@ -104,6 +109,18 @@ export function Generator() {
   }
 
   async function fetchStoryVisuals(story: StoryRecord | null, script: MysteryScript, sourceTopic?: Topic) {
+    if (story && !mysteryCatalog.some((item) => item.id === story.id)) {
+      const data = await readJson<{ plan: VisualPlan; researchPackageHash: string; visualPlanHash: string }>(await fetch("/api/visual-plan", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ storyCandidateId: story.id, durationSeconds: script.durationTarget }) }));
+      const byId = new Map(data.plan.assets.map((asset) => [asset.id, asset]));
+      const visuals = data.plan.segments.flatMap((segment): Visual[] => { const asset = byId.get(segment.assetIds[0]); if (!asset || asset.usageStatus === "RESTRICTED_REFERENCE") return [];
+        return [{ id: asset.id, title: asset.title, url: asset.url, thumbUrl: asset.thumbnailUrl, width: Number(asset.metadata.width ?? 720), height: Number(asset.metadata.height ?? 1280),
+          creator: asset.creator, license: asset.license, licenseUrl: asset.licenseUrl, sourceUrl: asset.originalUrl, description: asset.description,
+          source: asset.provider === "FACTFRAME" ? "FactFrame" : "Wikimedia Commons", mediaType: asset.provider === "FACTFRAME" ? "programmatic" : asset.assetType === "ARCHIVAL_VIDEO" ? "video" : "image",
+          visualKind: asset.assetType === "MAP" ? "MAP" : asset.assetType === "TIMELINE" ? "TIMELINE" : asset.assetType === "DOCUMENT" ? "DOCUMENT" : asset.assetType === "FACT_CARD" ? "FACT_CARD" : asset.assetType === "NEWSPAPER_CLIP" ? "NEWSPAPER" : asset.assetType === "ARCHIVAL_VIDEO" ? "VIDEO" : "PHOTO",
+          visualIntent: segment.visualIntent, segmentIndex: segment.segmentIndex, relevanceScore: asset.relevanceScore, metadata: { ...asset.metadata, representationType: asset.representationType, usageStatus: asset.usageStatus } }]; });
+      const kinds = [...new Set(visuals.map((item) => item.visualKind ?? "PHOTO"))]; setRenderHashes({ researchPackageHash: data.researchPackageHash, visualPlanHash: data.visualPlanHash });
+      return { visuals, quality: { repetitionScore: new Set(visuals.map((item) => item.id)).size / Math.max(1, visuals.length), relevanceScore: visuals.reduce((sum, item) => sum + (item.relevanceScore ?? 0), 0) / Math.max(1, visuals.length), visualTypeDiversity: kinds.length, visualKinds: kinds } };
+    }
     const response = await fetch("/api/media", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(story ? { storyId: story.id, script } : { topic: sourceTopic, script }) });
     return readJson<{ visuals: Visual[]; quality: VisualQualityReport }>(response);
   }
@@ -273,9 +290,12 @@ export function Generator() {
     try {
       const narration = await adaptiveTtsProvider.generateSpeech(topic.narration, "ms-MY", (message, percent = 0) => setProgress({ message, percent: Math.min(28, percent * .28) }), { tone: topic.mystery?.tone, voicePresetId, targetDurationSeconds: topic.mystery?.durationTarget });
       setVoiceProvider(narration.provider);
-      const video = await renderVideo(topic, visuals, narration.audioBlob, (message, percent) => setProgress({ message, percent: 28 + percent * .72 }), watermark);
+      const video = await renderVideo(topic, visuals, narration.audioBlob, (message, percent) => setProgress({ message, percent: 28 + percent * .72 }), watermark,
+        { storyCandidateId: selectedStory?.id ?? topic.id, ...renderHashes, narrationHash: narration.narrationHash, ttsProvider: narration.provider, voicePreset: narration.voicePresetId });
       if (videoUrl) URL.revokeObjectURL(videoUrl);
-      setVideoUrl(URL.createObjectURL(video)); setStage("done");
+      setVideoUrl(URL.createObjectURL(video.blob)); setExportManifest(video.manifest); setExportExtension(video.extension);
+      localStorage.setItem(`factframe-audio:${narration.narrationHash}:${narration.voicePresetId}`, JSON.stringify({ duration: narration.durationSeconds, provider: narration.provider, voicePreset: narration.voicePresetId, generatedAt: narration.generatedAt, narrationHash: narration.narrationHash, mimeType: narration.mimeType, estimatedNarrationSeconds: narration.estimatedNarrationSeconds, actualNarrationSeconds: narration.durationSeconds }));
+      localStorage.setItem(`factframe-render:${video.manifest.storyCandidateId}`, JSON.stringify(video.manifest)); setStage("done");
     } catch (caught) { setTtsFailed(true); setError(caught instanceof Error ? caught.message : "Penjanaan suara gagal."); setStage("preview"); }
   }
 
@@ -396,9 +416,12 @@ export function Generator() {
           <div className="narration"><div className="cardLabel"><Volume2 size={16} /> Skrip narasi {aiEnhanced && <span className="aiBadge">Gemini</span>}</div><p>{topic.narration}</p><div>{topic.narration.split(/\s+/).length} patah perkataan · {voiceProvider === "local" ? "Suara neural tempatan" : voiceProvider === "gemini" ? "Suara ekspresif Gemini" : geminiConfigured ? "Gemini dengan fallback tempatan" : "Suara neural tempatan"}</div></div>
           {topic.mystery && <div className="qualityGate"><div><ShieldCheck size={16} /><strong>Lulus semakan kualiti</strong></div><span>Liputan sumber {Math.round(topic.mystery.sourceCoverage * 100)}%</span><span>Skor penceritaan {topic.mystery.storytellingScore}/14</span><span>{topic.mystery.unsupportedClaims} dakwaan tanpa sumber</span></div>}
           {topic.mystery && visualQuality && <div className="visualQuality"><strong>Semakan visual</strong><span>Relevan {Math.round(visualQuality.relevanceScore * 100)}%</span><span>Tanpa ulang {Math.round(visualQuality.repetitionScore * 100)}%</span><span>{visualQuality.visualTypeDiversity} jenis visual</span></div>}
-          {stage === "done" ? <a className="generateButton downloadButton" href={videoUrl} download={`${topic.name.replace(/[^a-z0-9]+/gi, "-").toLowerCase()}-factframe.mp4`}><Download size={19} /> Muat turun MP4</a> : <button className="generateButton" onClick={generate}><Sparkles size={19} /> {ttsFailed ? "Cuba semula suara" : "Hasilkan video"} <span>~{estimatedSeconds} saat</span></button>}
+          {stage === "done" ? <a className="generateButton downloadButton" href={videoUrl} download={`${topic.name.replace(/[^a-z0-9]+/gi, "-").toLowerCase()}-factframe${exportExtension}`}><Download size={19} /> Muat turun {exportExtension.slice(1).toUpperCase()}</a> : <button className="generateButton" onClick={generate}><Sparkles size={19} /> {ttsFailed ? "Cuba semula suara" : "Hasilkan video"} <span>~{estimatedSeconds} saat</span></button>}
+          {stage === "done" && <button className="rewriteButton" onClick={generate}><Film size={14} /> Hasilkan semula video yang sama</button>}
+          {stage === "done" && exportManifest && <div className="visualQuality"><strong>Eksport disahkan</strong><span>{exportManifest.resolution} · {exportManifest.mimeType.split(";")[0]}</span><span>{exportManifest.videoDuration.toFixed(1)} saat · sari kata {Math.round(exportManifest.captionCoverage * 100)}%</span></div>}
+          {stage === "done" && exportManifest && <details className="sources" data-testid="export-manifest"><summary>Metadata eksport <ChevronDown size={17} /></summary><div className="sourceBody"><span>{JSON.stringify(exportManifest)}</span></div></details>}
           {stage === "done" && <div className="publishPack"><strong>Pakej untuk diterbitkan</strong><div><span>Tajuk</span><p>{topic.name}</p></div><div><span>Deskripsi</span><p>{mode === "MYSTERY" ? `${topic.description} Cerita ini membezakan fakta direkodkan daripada dakwaan atau perkara yang tidak dapat disahkan.` : `${topic.description} Dihasilkan daripada sumber awam yang boleh diperiksa.`}</p></div></div>}
-          <p className="renderNote">{voiceProvider === "local" ? "Gemini tidak tersedia, jadi suara neural tempatan digunakan. Video siap tetap mempunyai audio, sari kata dan format MP4." : geminiConfigured ? "Gemini digunakan apabila tersedia dan bertukar automatik kepada suara tempatan jika kuota habis; video kekal dirender pada peranti anda." : "Kali pertama akan memuat turun model suara neural ~114 MB. Selepas itu model dicache; video kekal dirender pada peranti anda."}</p>
+          <p className="renderNote">{voiceProvider === "local" ? "Gemini tidak tersedia, jadi suara neural tempatan digunakan. Container fail mengikut codec sebenar pelayar." : geminiConfigured ? "Gemini digunakan apabila tersedia dan bertukar automatik kepada suara tempatan jika kuota habis; video kekal dirender pada peranti anda." : "Kali pertama akan memuat turun model suara neural ~114 MB. Selepas itu model dicache; video kekal dirender pada peranti anda."}</p>
           <details className="sources"><summary>Sumber &amp; penyelidikan <ChevronDown size={17} /></summary>
               <div className="sourceBody">
                 {topic.mystery?.sources.map((source, index) => <a href={source.url} target="_blank" rel="noreferrer" key={source.id}><strong>{index + 1}. {source.type}</strong><span>{source.title} · {source.publisher}</span></a>)}

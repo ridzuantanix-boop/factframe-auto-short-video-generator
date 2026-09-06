@@ -65,3 +65,7 @@ The authenticated `/api/index` endpoint provides bounded scheduled ingestion, bu
 Migration `006_visual_planning.sql` adds deduplicated `story_visual_assets` and duration-specific `story_visual_plans`. The new `/api/visual-plan` endpoint accepts only a factual READY candidate, returns a cached plan when present, and never changes factual status. Each scene retains claim/source IDs, timing, intent, selected asset, relevance class, representation mode, and an honest fallback reason. `visualCoverageScore`, `realAssetCoverage`, and `fallbackCoverage` are reported separately.
 
 The planner uses bounded cached searches against Wikidata image properties, Wikimedia Commons, and OpenStreetMap/Nominatim. Indexed newspaper metadata is retained as a restricted citation reference; it is not treated as permission to republish the page. See `docs/VISUAL_PIPELINE.md`.
+
+## Synchronized browser render
+
+The Phase 6B render path consumes the latest persisted research/visual hashes, approved Malay narration, and decoded TTS duration. It never time-stretches narration. Canvas scenes and 3–8 word caption chunks divide the actual audio duration without accidental gaps. MediaRecorder negotiates MP4 or WebM in capability order; the filename always follows the real container. Every completed blob is reloaded into a video element and must expose duration/dimensions and reach near the end before the UI reports success. See `docs/RENDER_PIPELINE.md`.
