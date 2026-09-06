@@ -51,7 +51,7 @@ export function deterministicFinalNormalize(plan:ContentPlan,product:ProductAnal
     .replace(/[^.!?]+? (?:hadir )?(?:untuk membantu|untuk|sebagai) (?:rutin )?penjagaan rambut yang menipis dan mudah gugur/gi,`${alias} ni memang untuk rambut yang makin nipis dan mudah gugur`);
   const dottedPrefix=alias.includes(".")?alias.slice(0,alias.indexOf(".")+1):"";if(dottedPrefix)script=script.replace(new RegExp(`${escaped(dottedPrefix)}${escaped(alias)}`,"gi"),alias);
   script=script.replace(new RegExp(`mujur ada\\s+${escaped(alias)}\\s+ni memang`,"gi"),`${alias} ni memang`);
-  script=script.replace(/\bni\s+ni\b/gi,"ni").replace(/\s+/g," ").replace(/\s+([,.!?])/g,"$1").trim();
+  script=script.replace(/\bni\s+ni\b/gi,"ni").replace(/([!?])(?=[A-Za-zÀ-ž])/g,"$1 ").replace(/(?<!\bDr)(?<!\bdr)\.(?=[A-ZÀ-Ž])/g,". ").replace(/\s+/g," ").replace(/\s+([,.!?])/g,"$1").trim();
   hook=hook.replace(/\s+/g," ").replace(/\s+([,.!?])/g,"$1").trim();
   return {...plan,hook,script,route_id:plan.route_id};
 }
