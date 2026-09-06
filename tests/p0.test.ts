@@ -72,7 +72,7 @@ test("planner and conditional Search use mocked transport only, including saved-
   };
   try {
     const clear=await researchProduct(product);assert.equal(clear.status,"observation_only");assert.equal(calls,0);
-    const result=await createPlan(input,product,clear);assert.equal(result.cta,SPOKEN_CTA);assert.equal(plans,1,"surface humanizer resolves the first safe draft without unnecessary regeneration");
+    const result=await createPlan(input,product,clear);assert.equal(result.cta,STRONG_SPOKEN_CTA);assert.equal(plans,1,"surface humanizer resolves the first safe draft without unnecessary regeneration");
     const changed={...input,settings:{...DEFAULT_SETTINGS,angle:"benefit" as const}};
     const searched=await prepareResearch(product,changed,clear);assert.equal(searches,1);assert.equal(searched.status,"unverified");
     await prepareResearch(product,changed,searched);assert.equal(searches,1,"No replay of unavailable research in same context");

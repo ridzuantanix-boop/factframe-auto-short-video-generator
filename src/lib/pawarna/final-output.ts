@@ -46,14 +46,19 @@ export function deterministicFinalNormalize(plan:ContentPlan,product:ProductAnal
   const alias=spokenProductName(product),name=product.name.trim();
   let script=plan.script,hook=plan.hook;
   if(name.length>alias.length+8){const title=new RegExp(escaped(name),"gi");script=script.replace(title,alias);hook=hook.replace(title,alias);}
-  script=script.replace(/\s+/g," ").replace(/\s+([,.!?])/g,"$1").trim();
+  if(alias&&name.toLowerCase().startsWith(alias.toLowerCase())){const tokens=[...new Set(name.slice(alias.length).trim().split(/\s+/).map(escaped).filter(Boolean))];if(tokens.length){const expanded=new RegExp(`${escaped(alias)}(?:\\s+(?:${tokens.join("|")})){2,}`,"gi");script=script.replace(expanded,alias);hook=hook.replace(expanded,alias);}}
+  script=script.replace(/anda boleh gunakan [^.!?]+? sebagai (?:rutin )?penjagaan rambut yang menipis dan mudah gugur/gi,`Kalau rambut makin nipis dan mudah gugur, cuba tengok ${alias} ni`)
+    .replace(/[^.!?]+? (?:hadir )?(?:untuk membantu|untuk|sebagai) (?:rutin )?penjagaan rambut yang menipis dan mudah gugur/gi,`${alias} ni memang untuk rambut yang makin nipis dan mudah gugur`);
+  const dottedPrefix=alias.includes(".")?alias.slice(0,alias.indexOf(".")+1):"";if(dottedPrefix)script=script.replace(new RegExp(`${escaped(dottedPrefix)}${escaped(alias)}`,"gi"),alias);
+  script=script.replace(new RegExp(`mujur ada\\s+${escaped(alias)}\\s+ni memang`,"gi"),`${alias} ni memang`);
+  script=script.replace(/\bni\s+ni\b/gi,"ni").replace(/\s+/g," ").replace(/\s+([,.!?])/g,"$1").trim();
   hook=hook.replace(/\s+/g," ").replace(/\s+([,.!?])/g,"$1").trim();
   return {...plan,hook,script,route_id:plan.route_id};
 }
 
 export function finalNeedsRewrite(plan:ContentPlan,product:ProductAnalysis,input:JobInput){
   const longTitle=product.name.length>spokenProductName(product).length+8&&new RegExp(escaped(product.name),"i").test(plan.script);
-  const catalogue=/produk penjagaan|penjagaan rambut yang menipis dan mudah gugur|produk untuk penjagaan|sesuai untuk kegunaan|merupakan pilihan|dirumus khas|membantu menjaga|membantu memelihara|menawarkan|direka untuk|produk ini|bagi mereka yang|sekiranya anda/i.test(plan.script);
+  const catalogue=/\banda\b|anda boleh gunakan|produk penjagaan|penjagaan rambut yang menipis dan mudah gugur|sebagai rutin penjagaan|produk untuk penjagaan|sesuai untuk kegunaan|merupakan pilihan|dirumus khas|diformulasikan (?:khas|khusus)|membantu menjaga|membantu memelihara|menawarkan|direka untuk|produk ini|bagi mereka yang|sekiranya anda/i.test(plan.script);
   return longTitle||catalogue||finalDuplicateReasons(plan.script,input.previous_scripts||[]).length>0;
 }
 
@@ -63,6 +68,7 @@ export function routeSafeFallback(plan:ContentPlan,product:ProductAnalysis,route
   const topic=hair?"rambut makin nipis":gummy?"gummy vitamin C":product.category.toLowerCase();
   const openings:Record<SalesRouteId,string>={RELATABLE_PAIN:hair?"Tiap kali sikat, makin banyak rambut tertinggal?":`Susah nak pilih ${topic} yang nak tengok?`,DAILY_FRUSTRATION:hair?"Geram tengok rambut penuh dekat lantai tiap hari.":`Pening nak tengok ${topic} satu-satu?`,CONSEQUENCE_TENSION:hair?"Bila rambut dah makin nipis, memang mula risau.":`Bila masih tak jumpa ${topic} yang dicari, memang leceh.`,FOMO_DISCOVERY:`Kalau tengah survey ${topic}, yang ni memang patut tengok.`,CURIOSITY:`Apa yang buat ${alias} ni menarik untuk tengok?`,DIRECT_WARNING:hair?"Kalau rambut dah makin jarang, jangan buat tak tahu.":`Kalau tengah cari ${topic}, jangan terus scroll.`,DIRECT_RECOMMENDATION:`Kalau tengah tengok ${topic}, cuba tengok ${alias} ni.`};
   const hook=openings[route],cta="Klik link kat bawah.";
-  const relevance=hook.toLowerCase().includes(alias.toLowerCase())?"":hair?` Cuba tengok ${alias} ni untuk rutin rambut yang makin nipis.`:` Cuba tengok ${alias} ni.`;
+  const hairLines:Record<SalesRouteId,string>={RELATABLE_PAIN:`Cuba tengok ${alias} ni untuk rutin rambut makin nipis.`,DAILY_FRUSTRATION:`Kalau isu ni selalu jadi, ${alias} ni memang patut masuk senarai nak tengok.`,CONSEQUENCE_TENSION:`Untuk rutin rambut makin nipis, cuba tengok ${alias} ni.`,FOMO_DISCOVERY:`${alias} ni antara yang patut tengok kalau tengah survey rutin rambut nipis.`,CURIOSITY:`Yang menarik, ${alias} ni memang untuk rutin rambut makin nipis.`,DIRECT_WARNING:`Sebelum makin ketara, cuba tengok ${alias} ni.`,DIRECT_RECOMMENDATION:`Sebabnya ${alias} ni memang untuk rutin rambut makin nipis.`};
+  const relevance=hook.toLowerCase().includes(alias.toLowerCase())?"":hair?` ${hairLines[route]}`:` Cuba tengok ${alias} ni.`;
   return {...plan,route_id:route,hook,script:`${hook}${relevance} ${cta}`.replace(/\s+/g," "),cta};
 }

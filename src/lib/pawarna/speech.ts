@@ -10,6 +10,16 @@ export function speechInstructions(style?: GenerationSettings["voiceStyle"]) {
   const policy = speechPolicy(style);
   return `Target ${policy.target} spoken words TOTAL including CTA; maximum ${policy.max}. Energetic/direct delivery may use 20–28 natural Malay words; natural/soft sell strongly prefer 18–22. Shorter natural scripts are welcome: never pad to reach a minimum. Prioritise natural human pacing, understandable hook, ONE key point, then a complete CTA. Preferred AI CTA is "${STRONG_SPOKEN_CTA}"; natural Malaysian variations such as "Tekan link kat bawah." or "Kalau nak tengok, klik link kat bawah." are valid. CTA field must exactly match the script ending. Complete script exactly once, no extra sentences.`;
 }
+export function normalizeSpeechBoundary(plan:ContentPlan){
+  let script=plan.script.trim();
+  const supplied=plan.cta?.trim();
+  if(supplied&&script.toLowerCase().endsWith(supplied.toLowerCase()))script=script.slice(0,-supplied.length).trim();
+  script=script.replace(/(?:klik|tekan)\s+(?:dekat\s+)?(?:link|pautan)\s+(?:kat|di)?\s*bawah(?:\s+sekarang)?[.!]?$/i,"").trim();
+  script=`${script.replace(/[.!?]?$/,match=>match||".")} ${STRONG_SPOKEN_CTA}`.replace(/\.\s*\./g,".").replace(/\s+/g," ").trim();
+  const first=script.match(/^.*?[.!?](?:\s|$)/)?.[0].trim()||script;
+  const hook=script.startsWith(plan.hook.trim())?plan.hook.trim():first;
+  return {...plan,script,hook,cta:STRONG_SPOKEN_CTA};
+}
 export function validSpeech(plan: ContentPlan, settings?: GenerationSettings) {
   if (settings?.voiceoverEnabled === false) return plan.script === "" && plan.cta === "";
   if (typeof plan.script !== "string" || !plan.hook?.trim()) return false;
