@@ -53,16 +53,17 @@ test("route history is persisted by both local and cloud script endpoints",()=>{
 });
 
 test("weak written ad-copy receives rewrite feedback and becomes spoken Malay",async()=>{
-  const original=globalThis.fetch,key=process.env.GEMINI_API_KEY,baseUrl=process.env.GEMINI_API_BASE_URL;let drafts=0,sawFeedback=false;
+  const original=globalThis.fetch,key=process.env.GEMINI_API_KEY,baseUrl=process.env.GEMINI_API_BASE_URL;let drafts=0,humanized=false;
   process.env.GEMINI_API_KEY="test-only";process.env.GEMINI_API_BASE_URL="http://127.0.0.1:1";
   globalThis.fetch=async(_url,init)=>{
     const body=JSON.parse(String(init?.body)),text=JSON.stringify(body);let value:unknown;
-    if(text.includes("Audit this Malay script"))value={safety_safe:true,quality_approved:drafts>1,reason:drafts>1?"Spoken":"Written advertising language"};
-    else {drafts++;sawFeedback ||= text.includes("written or formal catalogue language");value=drafts===1
+    if(text.includes("SURFACE HUMANIZER V1.5")){humanized=true;value={hook:"Rambut makin gugur bila sikat?",script:"Rambut makin gugur bila sikat? Jangan buat tak tahu. Cuba tengok Dr.Lan ni. Klik link kat bawah.",cta:"Klik link kat bawah."};}
+    else if(text.includes("Audit this Malay script"))value={safety_safe:true,quality_approved:drafts>1,reason:drafts>1?"Spoken":"Written advertising language"};
+    else {drafts++;value=drafts===1
       ? {...base,script:"Rambut makin gugur? Dr.Lan ni dirumus khas untuk masalah rambut gugur. Klik link kat bawah.",hook:"Rambut makin gugur?"}
       : {...base,script:"Rambut makin gugur bila sikat? Jangan buat tak tahu. Cuba tengok Dr.Lan ni, ramai tengah cari yang macam ni. Klik link kat bawah.",hook:"Rambut makin gugur bila sikat?"};}
     return Response.json({candidates:[{content:{role:"model",parts:[{text:JSON.stringify(value)}]}}]});
   };
-  try{const result=await createPlan(input,drLan,observationOnly());assert.equal(drafts,2);assert.equal(sawFeedback,true);assert.doesNotMatch(result.script,/anda|dirumus khas|beralih kepada/i);assert.equal(result.route_id,"RELATABLE_PAIN");}
+  try{const result=await createPlan(input,drLan,observationOnly());assert.equal(drafts,2);assert.equal(humanized,true);assert.doesNotMatch(result.script,/anda|dirumus khas|beralih kepada/i);assert.equal(result.route_id,"RELATABLE_PAIN");}
   finally{globalThis.fetch=original;if(key===undefined)delete process.env.GEMINI_API_KEY;else process.env.GEMINI_API_KEY=key;if(baseUrl===undefined)delete process.env.GEMINI_API_BASE_URL;else process.env.GEMINI_API_BASE_URL=baseUrl;}
 });

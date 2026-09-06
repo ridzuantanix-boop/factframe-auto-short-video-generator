@@ -24,6 +24,7 @@ export function selectSalesRoute(input:Pick<JobInput,"previous_routes"|"settings
 }
 
 export function routeDirection(route:SalesRouteId){return routeShape[route];}
+export function routeUsesFomo(route:SalesRouteId){return route==="FOMO_DISCOVERY";}
 
 export function productTruth(product:ProductAnalysis){
   const profile=product.product_profile,source=[profile?.primaryFunction,product.primary_function].find(value=>value&&!/belum disahkan|unknown/i.test(value))||"Only the visibly supported product category and identity";

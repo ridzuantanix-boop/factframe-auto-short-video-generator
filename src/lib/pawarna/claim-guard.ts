@@ -23,7 +23,7 @@ export function hardSafetyProblems(plan:ContentPlan,evidenceText=""){
 }
 
 const genericHook=/^(?:tengah cari produk|tengah cari .+ yang sesuai|nak cari produk|ini produk|produk ni|kalau korang tengah cari|jom tengok produk|nak tahu produk apa)/i;
-const formalCopy=/\b(?:anda|beralih kepada|dirumus khas|merupakan|produk ini|sesuai untuk masalah|membantu menjaga|membantu memelihara|bagi mereka yang|sekiranya|formula ini|diformulasikan|menawarkan|direka untuk|merupakan pilihan|mempunyai kandungan|berdasarkan maklumat)\b/i;
+const formalCopy=/\b(?:anda|beralih kepada|beralih ke|ramai dah mula guna|ramai tengah beralih|memang jadi pilihan|menjadi pilihan|pilihan ramai|dirumus khas|merupakan|produk ini|produk ni memang sesuai|sesuai untuk masalah|membantu menjaga|membantu memelihara|bagi mereka yang|sekiranya|formula ini|diformulasikan|menawarkan|direka untuk|merupakan pilihan|mempunyai kandungan|penjagaan optimum|penyelesaian terbaik|pilihan terbaik|berdasarkan maklumat)\b/i;
 const flatFillers=new Set(["memang membantu","memang sesuai","produk ni bagus","boleh cuba","sesuai untuk kegunaan harian","bagus untuk penjagaan","pilihan yang sesuai"]);
 const tensionLanguage=/(?:jangan tunggu|jangan buat tak tahu|ambil perhatian|makin (?:ketara|teruk|susah|mengganggu)|sampai (?:nampak|rasa|jadi)|kalau (?:dibiarkan|berterusan)|sebelum (?:jadi|makin)|dah mula|lama-lama|asyik|setiap kali|buat rasa|boleh jadi|risau|rimas|leceh)/i;
 const generalFomo=/(?:ramai (?:tengah |sekarang )?(?:cari|tengok|survey|perhatikan|berminat)|orang (?:tengah |sekarang )?(?:cari|tengok|survey)|tengah survey|patut tengok|makin ramai|produk macam ni (?:memang )?ramai|yang ni (?:memang )?ramai)/i;
@@ -34,6 +34,7 @@ export function scriptQualityProblems(plan:ContentPlan,input:JobInput){
   const problems:string[]=[];const hook=plan.hook.trim(),script=plan.script.trim();
   if(genericHook.test(hook))problems.push("generic non-hook");
   if(formalCopy.test(script))problems.push("written or formal catalogue language");
+  if(/\bramai tengah cari\s+(?!produk macam ni\b|produk seperti ni\b)/i.test(script))problems.push("generated direct product-popularity phrasing");
   const sentences=script.split(/[.!?]+/).map(normalize).filter(Boolean);
   if(sentences.some(sentence=>flatFillers.has(sentence)))problems.push("meaningless flat selling filler");
   if(/^ini\s+[^.?!]+[.?!]?\s*(?:klik link kat bawah\.)?$/i.test(script)||script.split(/[.!?]+/).filter(Boolean).length<2)problems.push("catalogue description without consumer relevance");
@@ -41,7 +42,7 @@ export function scriptQualityProblems(plan:ContentPlan,input:JobInput){
   if(problemSelected&&!/(?:susah|tak suka|tak mahu|penat|risau|masalah|makin|selalu|bila|sampai|rimas|leceh|gugur|nipis|kering|berminyak|kotor|panas)/i.test(hook))problems.push("Problem → Solution lacks recognizable friction");
   const body=script.slice(hook.length),hasTension=tensionLanguage.test(body),hasFomo=generalFomo.test(script);
   if(problemSelected&&!hasTension&&!hasFomo)problems.push("Problem → Solution jumps to product without tension or FOMO");
-  if(!hasFomo)problems.push("missing general FOMO or social-interest beat");
+  if(plan.route_id==="FOMO_DISCOVERY"&&!hasFomo)problems.push("FOMO_DISCOVERY lacks natural social-interest discovery");
   if(input.previous_hook&&hook.toLowerCase()===input.previous_hook.trim().toLowerCase())problems.push("regeneration repeated the previous hook");
   for(const previous of input.previous_scripts||[])if(normalize(script)===normalize(previous)||scriptSimilarity(script,previous)>=.72){problems.push("regeneration substantially duplicates a recent script");break;}
   return problems;

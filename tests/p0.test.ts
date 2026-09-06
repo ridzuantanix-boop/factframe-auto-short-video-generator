@@ -64,14 +64,15 @@ test("planner and conditional Search use mocked transport only, including saved-
       searches++;return Response.json({candidates:[{content:{role:"model",parts:[{text:"No exact evidence"}]}}]});
     }
     let value: unknown;
-    if(text.includes("Audit this Malay script"))value={safety_safe:true,quality_approved:true,reason:"Supported"};
+    if(text.includes("SURFACE HUMANIZER V1.5"))value=text.includes("Mommy Hana Vitamin C Gummies")?{hook:"Packaging Mommy Hana Vitamin C Gummies ni mudah dicam.",script:"Packaging Mommy Hana Vitamin C Gummies ni mudah dicam. Cuba tengok yang ni dekat link bawah.",cta:"Pergi tengok dekat link bawah."}:{hook:"Lihat buku biru ni?",script:"Lihat buku biru ni? Cuba tengok cover dan tajuk dekat depan. Klik link kat bawah.",cta:"Klik link kat bawah."};
+    else if(text.includes("Audit this Malay script"))value={safety_safe:true,quality_approved:true,reason:"Supported"};
     else if(text.includes("Mommy Hana Vitamin C Gummies")){plans++;value={...plan,hook:"Packaging compact Mommy Hana Vitamin C Gummies ini mudah dicam.",script:"Packaging compact Mommy Hana Vitamin C Gummies ini mudah dicam. Klik link kat bawah.",visual_direction:"Show only the observed compact packaging. Do not imply audience, function, suitability, efficacy or results."};}
     else {plans++;assert.ok(text.includes("18–22"));assert.ok(!text.includes("20–26"));value=plans===1?{...plan,script:["Lihat",...Array(21).fill("biru"),SPOKEN_CTA].join(" ")}:plan;}
     return Response.json({candidates:[{content:{role:"model",parts:[{text:JSON.stringify(value)}]}}]});
   };
   try {
     const clear=await researchProduct(product);assert.equal(clear.status,"observation_only");assert.equal(calls,0);
-    const result=await createPlan(input,product,clear);assert.equal(result.cta,SPOKEN_CTA);assert.equal(plans,3,"safe but imperfect copy remains available after quality retries");
+    const result=await createPlan(input,product,clear);assert.equal(result.cta,SPOKEN_CTA);assert.equal(plans,1,"surface humanizer resolves the first safe draft without unnecessary regeneration");
     const changed={...input,settings:{...DEFAULT_SETTINGS,angle:"benefit" as const}};
     const searched=await prepareResearch(product,changed,clear);assert.equal(searches,1);assert.equal(searched.status,"unverified");
     await prepareResearch(product,changed,searched);assert.equal(searches,1,"No replay of unavailable research in same context");
