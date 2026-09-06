@@ -1,5 +1,6 @@
 import type { ContentPlan, JobInput, ProductAnalysis } from "./types";
 import { scriptSimilarity } from "./claim-guard";
+import type { SalesRouteId } from "./script-director";
 
 const clean=(value:string)=>value.toLowerCase().replace(/[^a-z0-9\u00c0-\u024f]+/g," ").trim();
 const escaped=(value:string)=>value.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
@@ -54,4 +55,14 @@ export function finalNeedsRewrite(plan:ContentPlan,product:ProductAnalysis,input
   const longTitle=product.name.length>spokenProductName(product).length+8&&new RegExp(escaped(product.name),"i").test(plan.script);
   const catalogue=/produk penjagaan|penjagaan rambut yang menipis dan mudah gugur|produk untuk penjagaan|sesuai untuk kegunaan|merupakan pilihan|dirumus khas|membantu menjaga|membantu memelihara|menawarkan|direka untuk|produk ini|bagi mereka yang|sekiranya anda/i.test(plan.script);
   return longTitle||catalogue||finalDuplicateReasons(plan.script,input.previous_scripts||[]).length>0;
+}
+
+export function routeSafeFallback(plan:ContentPlan,product:ProductAnalysis,route:SalesRouteId,voice:boolean){
+  if(!voice)return {...plan,route_id:route,hook:"Show the product in a new scene",script:"",cta:""};
+  const alias=spokenProductName(product),hair=/rambut|hair/i.test([product.category,product.primary_function,product.visible_text].join(" ")),gummy=/gumm|vitamin/i.test([product.category,product.primary_function,product.visible_text].join(" "));
+  const topic=hair?"rambut makin nipis":gummy?"gummy vitamin C":product.category.toLowerCase();
+  const openings:Record<SalesRouteId,string>={RELATABLE_PAIN:hair?"Tiap kali sikat, makin banyak rambut tertinggal?":`Susah nak pilih ${topic} yang nak tengok?`,DAILY_FRUSTRATION:hair?"Geram tengok rambut penuh dekat lantai tiap hari.":`Pening nak tengok ${topic} satu-satu?`,CONSEQUENCE_TENSION:hair?"Bila rambut dah makin nipis, memang mula risau.":`Bila masih tak jumpa ${topic} yang dicari, memang leceh.`,FOMO_DISCOVERY:`Kalau tengah survey ${topic}, yang ni memang patut tengok.`,CURIOSITY:`Apa yang buat ${alias} ni menarik untuk tengok?`,DIRECT_WARNING:hair?"Kalau rambut dah makin jarang, jangan buat tak tahu.":`Kalau tengah cari ${topic}, jangan terus scroll.`,DIRECT_RECOMMENDATION:`Kalau tengah tengok ${topic}, cuba tengok ${alias} ni.`};
+  const hook=openings[route],cta="Klik link kat bawah.";
+  const relevance=hook.toLowerCase().includes(alias.toLowerCase())?"":hair?` Cuba tengok ${alias} ni untuk rutin rambut yang makin nipis.`:` Cuba tengok ${alias} ni.`;
+  return {...plan,route_id:route,hook,script:`${hook}${relevance} ${cta}`.replace(/\s+/g," "),cta};
 }

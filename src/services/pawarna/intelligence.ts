@@ -9,7 +9,7 @@ import { globalPromptLocks } from "../../lib/pawarna/locks";
 import { resolveProductIntelligence } from "../../lib/pawarna/product-resolver";
 import { hardSafetyProblems, scriptQualityProblems, semanticFallbackPlan } from "../../lib/pawarna/claim-guard";
 import { productTruth, routeDirection, routeUsesFomo, SALES_ROUTES, selectSalesRoute } from "../../lib/pawarna/script-director";
-import { deterministicFinalNormalize, finalDuplicateReasons, finalNeedsRewrite, spokenProductName } from "../../lib/pawarna/final-output";
+import { deterministicFinalNormalize, finalDuplicateReasons, finalNeedsRewrite, routeSafeFallback, spokenProductName } from "../../lib/pawarna/final-output";
 export { shouldResearchProduct } from "../../lib/pawarna/research";
 
 const model = () => process.env.PAWARNA_GEMINI_MODEL || process.env.GEMINI_TEXT_MODEL || "gemini-3.1-flash-lite";
@@ -147,6 +147,7 @@ export async function createPlan(input: JobInput, product: ProductAnalysis, rese
   let fallback=semanticFallbackPlan({route_id:route,angle:"Safe product relevance",hook:"",script:"",cta:"",mode:input.mode==="Auto"?(product.category.toLowerCase().includes("buku")?"Book Creator":"Product Demo"):input.mode,visual_direction:"",claim_evidence_ids:[],video_prompt:"",scene_plan:{"0-2":"Open on the exact product","2-6":"Show supported product identity","6-8":"Show one visible detail","8-10":"End on product after CTA"}},product,input,voice);
   const routeDraft=fallback.script;if(voice){try{fallback=await surfaceHumanize(fallback,route,truth);}catch{}}const humanizedDraft=fallback.script;
   try{fallback=await finalNormalize(fallback,product,input,truth);}catch{fallback=deterministicFinalNormalize(fallback,product);}
+  if(hardSafetyProblems(fallback).length||!validSpeech(fallback,input.settings)||finalDuplicateReasons(fallback.script,input.previous_scripts||[]).length)fallback=routeSafeFallback(fallback,product,route,voice);
   if(hardSafetyProblems(fallback).length||!validSpeech(fallback,input.settings)||finalDuplicateReasons(fallback.script,input.previous_scripts||[]).length)throw new Error("Skrip selamat dan berbeza belum dapat disediakan.");
   return displayedPlan(fallback,{route_id:route,route_draft:routeDraft,humanized_draft:humanizedDraft,post_claim_checked_candidate:humanizedDraft,final_normalized_candidate:fallback.script,displayed_final:""});
 }
