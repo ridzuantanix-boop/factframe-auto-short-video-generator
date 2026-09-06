@@ -135,7 +135,13 @@ export type StoryRecord = {
   supportedDurationSeconds?: number;
   supportedDurationBand?: "MICRO" | "SHORT" | "STANDARD" | "LONG";
   storyCompletenessScore?: number;
-  endingType?: "RESOLVED" | "UNRESOLVED" | "FOLLOW_UP" | "DOCUMENTED_FACT" | "REPORTED_CLAIM" | "FOLKLORE_OPEN_END";
+  endingType?: "RESOLVED" | "FOUND" | "IDENTIFIED" | "EXPLAINED_LATER" | "CASE_OUTCOME" | "UNRESOLVED" | "FOLLOW_UP" | "DOCUMENTED_FACT" | "REPORTED_CLAIM" | "FOLKLORE_OPEN_END";
+  caseStateAtSourceTime?: string;
+  latestKnownState?: string;
+  verificationStatus?: "NOT_REQUIRED" | "PENDING" | "VERIFIED" | "FAILED" | "STALE";
+  verificationType?: "HISTORICAL_FOLLOW_UP" | "CURRENT_VERIFICATION" | null;
+  verifiedAt?: string | null;
+  nextVerificationDue?: string | null;
 };
 
 export type MysterySegment = {

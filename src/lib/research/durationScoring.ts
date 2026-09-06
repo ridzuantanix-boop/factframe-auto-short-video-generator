@@ -1,23 +1,30 @@
 import type { ResearchClaim } from "./types.ts";
 
 export type SupportedDurationBand = "MICRO" | "SHORT" | "STANDARD" | "LONG";
-export type StoryEndingType = "RESOLVED" | "UNRESOLVED" | "FOLLOW_UP" | "DOCUMENTED_FACT" | "REPORTED_CLAIM" | "FOLKLORE_OPEN_END";
+export type StoryEndingType = "RESOLVED" | "FOUND" | "IDENTIFIED" | "EXPLAINED_LATER" | "CASE_OUTCOME" | "UNRESOLVED" | "FOLLOW_UP" | "DOCUMENTED_FACT" | "REPORTED_CLAIM" | "FOLKLORE_OPEN_END";
 
 const EVENT = /\b(?:hilang|kehilangan|mencari|pencarian|ditemui|dijumpai|maut|mati|dibunuh|membunuh|kemalangan|nahas|karam|terbalik|ditahan|didakwa|disabitkan|dihukum|dilaporkan|berlaku|menyerang|terbunuh|banjir|kebakaran|runtuh)\b/i;
-const OUTCOME = /\b(?:masih|belum|akhirnya|kemudian|berjaya|diselamatkan|ditemui|dijumpai|maut|mati|dibebaskan|disabitkan|dihukum|diteruskan|ditutup|selesai|kekal|tiada|tidak diketahui)\b/i;
+const OUTCOME = /\b(?:masih|belum|akhirnya|kemudian|berjaya|selamat|terselamat|diselamatkan|ditemui|dijumpai|maut|mati|dibebaskan|disabitkan|dihukum|diteruskan|ditutup|selesai|kekal|tiada|tidak diketahui)\b/i;
 const CONTEXT = /\b(?:pada|ketika|selepas|sebelum|semasa|di|dari|berhampiran|tahun|bulan|hari)\b/i;
 const GENERIC = new Set(["dilaporkan", "laporan", "menurut", "berlaku", "terdapat", "seorang", "sebuah", "dalam", "yang", "telah"]);
 
 function words(value: string) { return value.trim().split(/\s+/).filter(Boolean); }
 function usable(claim: ResearchClaim) { return claim.confidence !== "LOW" && claim.ocrQuality >= .65 && Boolean(claim.spokenText?.trim()); }
-function normalizedTokens(value: string) { return new Set((value.toLowerCase().match(/[\p{L}\p{N}]+/gu) ?? []).filter((token) => token.length > 2)); }
+function normalizedTokens(value: string) { const aliases: Record<string, string> = { penjenayah: "bandit", penyamun: "bandit", bandits: "bandit", terbunuh: "death", mati: "death", maut: "death", killed: "death", dead: "death" };
+  return new Set((value.toLowerCase().match(/[\p{L}\p{N}]+/gu) ?? []).filter((token) => token.length > 2).map((token) => aliases[token] ?? token)); }
 function overlap(left: Set<string>, right: Set<string>) { return [...left].filter((token) => right.has(token)).length / Math.max(1, Math.min(left.size, right.size)); }
+function action(value: string) {
+  const patterns = [/culik|kidnap|abduct/i, /hilang|missing|search|pencarian/i, /found|ditemui|dijumpai|recover/i, /maut|mati|terbunuh|killed|dead/i, /selamat|surviv|rescu/i, /siasatan|investigat/i, /didakwa|charged|trial/i, /disabit|convict/i, /kemalangan|nahas|crash/i];
+  return patterns.findIndex((pattern) => pattern.test(value));
+}
 
 export function distinctUsefulClaims(claims: ResearchClaim[]) {
   const result: ResearchClaim[] = [];
   for (const claim of claims.filter(usable)) {
     const current = normalizedTokens(claim.spokenText);
-    if (!result.some((item) => overlap(current, normalizedTokens(item.spokenText)) >= .48)) result.push(claim);
+    const currentAction = action(`${claim.claimText} ${claim.spokenText}`);
+    if (!result.some((item) => { const priorAction = action(`${item.claimText} ${item.spokenText}`); const sameAction = currentAction === priorAction;
+      return claim.claimType === item.claimType && sameAction && overlap(current, normalizedTokens(item.spokenText)) >= .42; })) result.push(claim);
   }
   return result;
 }

@@ -1,0 +1,19 @@
+{
+  "generatedAt": "2026-09-06T03:12:42.814Z",
+  "storiesChecked": 50,
+  "followUpSearches": 384,
+  "sourcesFound": 17,
+  "sourcesAccepted": 2,
+  "casesResolved": 2,
+  "casesGenuinelyStillUnresolved": 0,
+  "noFollowUpFound": 48,
+  "verificationFailures": 0,
+  "stateChanges": 2,
+  "readyBefore": 1,
+  "readyAfter": 1,
+  "providersUsed": [
+    "NLB_NEWSPAPERSG",
+    "EDITORIAL_VERIFIED_WEB"
+  ],
+  "failures": []
+}

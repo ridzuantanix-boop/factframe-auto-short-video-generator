@@ -5,7 +5,7 @@ import type { RawResearchClaim } from "./types.ts";
 
 const STOPWORDS = new Set(["the", "and", "that", "this", "with", "from", "into", "were", "was", "are", "for", "but", "after", "before", "have", "has", "had", "its", "their", "his", "her", "yang", "dan", "dengan", "pada", "dari"]);
 // Generic event language only. Keep this list entity-, year-, organisation-, and country-agnostic.
-const ACTION = /\b(?:accident|attack(?:ed|s|ing)?|abduct(?:ed|s|ing|ion)?|acquit(?:ted|s|ting|tal)?|arrest(?:ed|s|ing)?|believ(?:e|ed|es|ing)|burn(?:ed|t|s|ing)?|charg(?:e|ed|es|ing)|claim(?:ed|s|ing)?|collaps(?:e|ed|es|ing)|concern(?:ed|s|ing)?|confess(?:ed|es|ing|ion)?|contain(?:ed|s|ing)?|convict(?:ed|s|ing|ion)?|crash(?:ed|es|ing)?|death|dead|describ(?:e|ed|es|ing)|detain(?:ed|s|ing)?|die(?:d|s|ing)?|discover(?:ed|s|ing|y)?|disappear(?:ed|s|ing|ance)?|end(?:ed|s|ing)?|escap(?:e|ed|es|ing)|explod(?:e|ed|es|ing)|explosion|finds?|fire|flood(?:ed|s|ing)?|found|happen(?:ed|s|ing)?|haunt(?:ed|s|ing)?|hear(?:d|s|ing)?|held|identif(?:y|ied|ies|ying)|injur(?:e|ed|es|ing|y|ies)|investigat(?:e|ed|es|ing|ion)?|kidnap(?:ped|s|ping)?|kill(?:ed|s|ing)?|left|missing|murder(?:ed|s|ing)?|occur(?:red|s|ring)?|open(?:ed|s|ing)?|question(?:ed|s|ing)?|record(?:ed|s|ing)?|recover(?:ed|s|ing|y)?|remand(?:ed|s|ing)?|remain(?:ed|s|ing)?|report(?:ed|s|ing)?|rescu(?:e|ed|es|ing)|return(?:ed|s|ing)?|said|saw|search(?:ed|es|ing)?|sentenc(?:e|ed|es|ing)|shot|show(?:ed|n|s|ing)?|sustain(?:ed|s|ing)?|tried|trial|vanish(?:ed|es|ing)?)\b/i;
+const ACTION = /\b(?:accident|attack(?:ed|s|ing)?|abduct(?:ed|s|ing|ion)?|acquit(?:ted|s|ting|tal)?|arrest(?:ed|s|ing)?|believ(?:e|ed|es|ing)|burn(?:ed|t|s|ing)?|charg(?:e|ed|es|ing)|claim(?:ed|s|ing)?|collaps(?:e|ed|es|ing)|concern(?:ed|s|ing)?|confess(?:ed|es|ing|ion)?|contain(?:ed|s|ing)?|convict(?:ed|s|ing|ion)?|crash(?:ed|es|ing)?|death|dead|describ(?:e|ed|es|ing)|detain(?:ed|s|ing)?|die(?:d|s|ing)?|discover(?:ed|s|ing|y)?|disappear(?:ed|s|ing|ance)?|end(?:ed|s|ing)?|escap(?:e|ed|es|ing)|explod(?:e|ed|es|ing)|explosion|finds?|fire|flood(?:ed|s|ing)?|found|happen(?:ed|s|ing)?|haunt(?:ed|s|ing)?|hear(?:d|s|ing)?|held|identif(?:y|ied|ies|ying)|injur(?:e|ed|es|ing|y|ies)|investigat(?:e|ed|es|ing|ion)?|kidnap(?:ped|s|ping)?|kill(?:ed|s|ing)?|left|missing|murder(?:ed|s|ing)?|occur(?:red|s|ring)?|open(?:ed|s|ing)?|question(?:ed|s|ing)?|record(?:ed|s|ing)?|recover(?:ed|s|ing|y)?|remand(?:ed|s|ing)?|remain(?:ed|s|ing)?|report(?:ed|s|ing)?|rescu(?:e|ed|es|ing)|return(?:ed|s|ing)?|said|safe|saw|search(?:ed|es|ing)?|sentenc(?:e|ed|es|ing)|shot|show(?:ed|n|s|ing)?|surviv(?:e|ed|es|ing|or|ors)|sustain(?:ed|s|ing)?|tried|trial|vanish(?:ed|es|ing)?)\b/i;
 
 function decode(value: string) {
   return value.replace(/&gt;/gi, ">").replace(/&lt;/gi, "<").replace(/&amp;/gi, "&").replace(/&quot;/gi, '"').replace(/&#39;/gi, "'")
@@ -27,7 +27,8 @@ export function calculateOcrQuality(value: string) {
   return Number(Math.max(0, Math.min(1, readable - fragments * .65 - mojibake * .8 - anomalyPenalty)).toFixed(3));
 }
 
-function claimType(candidate: StoryCandidate) {
+function claimType(candidate: StoryCandidate, source: StoredStorySource) {
+  if (source.metadata.sourceRole === "FOLLOW_UP" || source.metadata.verificationType === "HISTORICAL_FOLLOW_UP") return "EXPLAINED_LATER" as const;
   if (candidate.storyType === "FOLKLORE" || candidate.storyType === "URBAN_LEGEND_SOURCE") return "FOLKLORE" as const;
   if (["DISAPPEARANCE", "UNEXPLAINED_EVENT"].includes(candidate.storyType)) return "UNRESOLVED" as const;
   return "REPORTED" as const;
@@ -42,6 +43,8 @@ function visualIntent(candidate: StoryCandidate, text: string) {
 }
 
 function candidateChunks(source: StoredStorySource) {
+  const verifiedClaims = Array.isArray(source.metadata.verifiedClaims) ? source.metadata.verifiedClaims.map(String).map(decode).filter(Boolean) : [];
+  if (verifiedClaims.length) return verifiedClaims.slice(0, 5);
   const title = decode(source.title).replace(/[.!?]+$/, ""); const expandedSnippet = typeof source.metadata.expandedSnippet === "string" ? source.metadata.expandedSnippet : "";
   let body = decode(expandedSnippet.length > source.snippet.length ? expandedSnippet : source.snippet);
   if (body.toLowerCase().startsWith(title.toLowerCase())) body = body.slice(title.length).replace(/^[\s:;,.—-]+/, "");
@@ -85,7 +88,7 @@ export function extractClaimsFromSource(candidate: StoryCandidate, source: Store
     const chunkQuality = calculateOcrQuality(text); if (chunkQuality < .58) continue;
     const id = createHash("sha256").update(`${candidate.id}:${source.id}:${normalized}`).digest("hex").slice(0, 32);
     result.push({ id, storyCandidateId: candidate.id, claimText: text, spokenText: "", rewriteMethod: "NONE", rewriteModel: null, validatedAt: null,
-      validationVersion: null, validationResult: null, normalizedClaim: normalized, claimType: claimType(candidate),
+      validationVersion: null, validationResult: null, normalizedClaim: normalized, claimType: claimType(candidate, source),
       confidence: quality >= .7 ? "MEDIUM" : "LOW", sourceIds: [source.id], eventDate: source.publishedAt,
       people, locations, priority: index === 0 ? "ESSENTIAL_CONTEXT" : "ESCALATION_DETAIL", visualIntent: visualIntent(candidate, text),
       ocrQuality: Math.min(quality, chunkQuality), sourcePublisher: source.publisher, sourceProvider: source.provider });

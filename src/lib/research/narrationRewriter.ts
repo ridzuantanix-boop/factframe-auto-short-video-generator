@@ -1,6 +1,6 @@
 import type { ResearchClaim, ResearchPackage } from "./types.ts";
 
-const MALAY_WORDS = new Set("yang dan di ke dari daripada untuk pada dalam selepas sebelum sebuah seorang orang masih telah berjaya diselamatkan hilang kapal karam perairan usaha mencari jurumudi diteruskan pasukan menemukan ditemui laporan menyatakan polis siasatan pembunuhan ditahan ditangkap direman kemalangan berlaku mangsa cedera maut penduduk mendakwa melihat kelibat cerita rakyat menurut tetapi namun hari itu pertama kedua membantu terlibat suspek berakhir diketahui dipercayai berhampiran".split(" "));
+const MALAY_WORDS = new Set("yang dan di ke dari daripada untuk pada dalam selepas sebelum sebuah seorang orang anggota masih telah berjaya selamat terselamat diselamatkan hilang helikopter pesawat hutan aras laut kapal karam perairan usaha mencari jurumudi diteruskan pasukan menemukan ditemui laporan menyatakan polis siasatan pembunuhan ditahan ditangkap direman kemalangan nahas berlaku mangsa cedera maut tentera udara diraja penduduk mendakwa melihat kelibat cerita rakyat menurut tetapi namun hari itu pertama kedua membantu terlibat suspek berakhir diketahui dipercayai berhampiran".split(" "));
 const ENGLISH_WORDS = new Set("the and was were is are after before from into with missing saved ship sinks search still found body murder investigation arrested accident reported sighting ghost disaster wife role confess questioned yesterday since capsized monday tuesday wednesday thursday friday saturday sunday".split(" "));
 const OCR_GARBAGE = /[�■<>]|\b\d+[a-z]{2,}\b|\b[a-z]+\d+[a-z]*\b|\w\.\-\w|-'|\b(?:7fwo|whioh|ctfc|lowrtt|iolunes|gintir)\b/i;
 const DATELINE = /^(?:KUALA LUMPUR|KUCHING|IPOH|PENANG|SINGAPORE|JOHOR(?:E)? BAHRU|MELAKA|MALACCA)[,.:;\s-]+/i;
@@ -38,6 +38,15 @@ export function rewriteArchiveClaimToMalay(raw: string, storyType: string) {
     const owner = place(match[1]).replace(/Sarawak Marine Department/gi, "Jabatan Laut Sarawak");
     return finish(`Laporan itu menyatakan bahawa pasukan pencari telah menemukan kapal ${match[2]} milik ${owner} sehari sebelumnya. Jurumudinya masih hilang selepas kapal itu terbalik pada hari ${day}`);
   }
+
+  match = text.match(/^the (.+?) helicopter was found in (?:a |an )?(.+)$/i);
+  if (match) return finish(`Helikopter ${place(match[1])} ditemukan di ${place(match[2]).replace(/^forested area/i, "kawasan hutan").replace(/about\s+([\d,]+)\s*(?:m|metres?) above sea level/gi, "kira-kira $1 meter dari aras laut").replace(/(\d+)\s*(?:km|kilometres?)/gi, "$1 kilometer").replace(/\bfrom\b/gi, "dari")}`);
+
+  match = text.match(/^(\w+) Royal Malaysian Air Force personnel were killed in the crash[.!?]?$/i);
+  if (match) return finish(`${count(({ one: "1", two: "2", three: "3", four: "4", five: "5", six: "6", seven: "7", eight: "8", nine: "9", ten: "10" } as Record<string, string>)[match[1].toLowerCase()] ?? match[1])} anggota Tentera Udara Diraja Malaysia maut dalam nahas itu`);
+
+  match = text.match(/^(\w+) people survived the crash[.!?]?$/i);
+  if (match) return finish(`${count(({ one: "1", two: "2", three: "3", four: "4", five: "5", six: "6", seven: "7", eight: "8", nine: "9", ten: "10" } as Record<string, string>)[match[1].toLowerCase()] ?? match[1])} orang terselamat dalam nahas itu`);
 
   match = text.match(/^two more (?:suspects have )?confess(?:ed)? to (?:having a )?role (?:m|in) the (kidnapping and )?murder of (.+)$/i);
   if (match) return finish(`Dua lagi suspek mengaku terlibat dalam ${match[1] ? "penculikan dan " : ""}pembunuhan ${place(match[2]).replace(/^Ms\.?\s+/i, "Cik ")}`);

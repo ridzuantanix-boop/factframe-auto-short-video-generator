@@ -4,7 +4,7 @@ import { calculateScriptQuality } from "../story/qualityScoring.ts";
 const roleByPriority: Record<StoryClaim["priority"], SegmentRole> = {
   HOOK_WORTHY: "HOOK", ESSENTIAL_CONTEXT: "CONTEXT", ESCALATION_DETAIL: "ESCALATION", TWIST: "TWIST", THEORY: "THEORY", COUNTERPOINT: "COUNTERPOINT", PAYOFF: "PAYOFF", LOW_PRIORITY: "ESCALATION"
 };
-const typeLead: Partial<Record<ClaimType, string>> = { REPORTED: "Menurut laporan ketika itu, ", THEORY: "Satu teori mencadangkan: ", DISPUTED: "Namun dakwaan ini masih dipertikaikan. ", FOLKLORE: "Menurut cerita rakyat, ", EXPLAINED_LATER: "Penyelidikan kemudian menunjukkan: " };
+const typeLead: Partial<Record<ClaimType, string>> = { REPORTED: "Menurut laporan ketika itu, ", THEORY: "Satu teori mencadangkan: ", DISPUTED: "Namun dakwaan ini masih dipertikaikan. ", FOLKLORE: "Menurut cerita rakyat, " };
 const aiRole: Record<NonNullable<StoryRecord["aiNarration"]>["segments"][number]["role"], SegmentRole> = {
   HOOK: "HOOK", CONTEXT: "CONTEXT", DEVELOPMENT: "ESCALATION", TURN_PAYOFF: "PAYOFF"
 };
@@ -32,6 +32,21 @@ function openLoop(story: StoryRecord): MysterySegment {
   return { role: "OPEN_LOOP", text, sourceIds: grounded?.sourceIds ?? [], claimType: "UNRESOLVED", visualIntent: "FACT_CARD" };
 }
 
+function compactClaims(claims: StoryClaim[]) {
+  const normalized = (value: string) => { const aliases: Record<string, string> = { penjenayah: "bandit", penyamun: "bandit", bandits: "bandit", terbunuh: "death", mati: "death", maut: "death", killed: "death", dead: "death" };
+    return new Set((value.toLowerCase().match(/[\p{L}\p{N}]+/gu) ?? []).map((token) => aliases[token] ?? token)); };
+  const action = (value: string) => [/culik|kidnap|abduct/i, /hilang|missing|search/i, /ditemui|found|recover/i, /maut|mati|terbunuh|killed|dead/i, /selamat|surviv|rescu/i, /siasatan|investigat/i, /kemalangan|nahas|crash/i]
+    .findIndex((pattern) => pattern.test(value));
+  const similarity = (left: string, right: string) => { const a = normalized(left); const b = normalized(right);
+    return [...a].filter((token) => b.has(token)).length / Math.max(1, Math.min(a.size, b.size)); };
+  const result: StoryClaim[] = [];
+  for (const claim of claims) { const currentAction = action(claim.narration); const duplicate = result.findIndex((item) => { const priorAction = action(item.narration);
+      return item.type === claim.type && currentAction === priorAction
+        && similarity(item.narration, claim.narration) >= .42; });
+    if (duplicate < 0) result.push(claim); else if (claim.narration.length > result[duplicate].narration.length) result[duplicate] = claim; }
+  return result;
+}
+
 export function effectiveStoryDuration(story: StoryRecord, requested: StoryDuration): StoryDuration {
   const supported = story.supportedDurationSeconds;
   return supported && requested > supported ? supported : requested;
@@ -51,9 +66,9 @@ export function buildMysteryScript(story: StoryRecord, duration: StoryDuration, 
     return { storyId: story.id, title: story.title, durationTarget: effectiveDuration, tone, hook: segments[0]?.text ?? "", openLoop: "",
       caseStatus: story.caseStatus, segments, payoff: segments.at(-1)?.text ?? "", ...quality, storyCompletenessScore: story.storyCompletenessScore, sources: story.sources, showSourceNote };
   }
-  const usableClaims = story.claims.filter((item) => item.priority !== "LOW_PRIORITY");
+  const usableClaims = compactClaims(story.claims.filter((item) => item.priority !== "LOW_PRIORITY"));
   const limit = story.supportedDurationSeconds
-    ? effectiveDuration <= 15 ? 2 : effectiveDuration <= 30 ? 4 : effectiveDuration <= 45 ? 7 : usableClaims.length
+    ? effectiveDuration <= 15 ? 2 : effectiveDuration <= 30 ? 6 : effectiveDuration <= 45 ? 7 : usableClaims.length
     : effectiveDuration === 30 ? 6 : usableClaims.length;
   const chosen = usableClaims.slice(0, limit);
   const loop = openLoop(story);

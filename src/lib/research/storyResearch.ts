@@ -8,8 +8,10 @@ import type { AiNarration, GroundedNarrativeElement, ResearchClaim, ResearchPack
 import { rewriteClaimsForSpeech, assessNarrationQuality } from "./narrationRewriter.ts";
 import { validateSourceCluster } from "../archive/clusterIntegrity.ts";
 import { validateClaimRewrite } from "./aiClaimValidator.ts";
+import { evaluateVerification } from "./followUpResearch.ts";
 
-function sourceRole(value: ArchiveReliability) {
+function sourceRole(value: ArchiveReliability, metadata: Record<string, unknown>) {
+  if (metadata.sourceRole === "FOLLOW_UP") return "FOLLOW_UP" as const;
   if (["PRIMARY", "OFFICIAL"].includes(value)) return "PRIMARY_OFFICIAL" as const;
   if (value === "ARCHIVAL_NEWSPAPER") return "ARCHIVAL_NEWSPAPER" as const;
   if (["INSTITUTIONAL", "ACADEMIC"].includes(value)) return "INSTITUTIONAL" as const;
@@ -27,7 +29,7 @@ function sourceType(value: ArchiveReliability): ResearchSource["type"] {
 function researchSources(sources: StoredStorySource[]): ResearchPackage["sources"] {
   return sources.map((source) => ({ id: source.id, title: source.title, publisher: source.publisher, type: sourceType(source.reliabilityLevel),
     url: source.url, date: source.publishedAt ?? undefined, accessedAt: source.accessedAt, reliabilityLevel: sourceType(source.reliabilityLevel),
-    sourceRole: sourceRole(source.reliabilityLevel) }));
+    sourceRole: sourceRole(source.reliabilityLevel, source.metadata) }));
 }
 
 function questionFor(storyType: string, claim: ResearchClaim) {
@@ -54,12 +56,6 @@ function assignNarrativePriorities(claims: ResearchClaim[]) {
       : index === 1 ? "ESSENTIAL_CONTEXT" as const : index === Math.max(2, total - 2) ? "TWIST" as const : "ESCALATION_DETAIL" as const }; });
 }
 
-function needsCurrentVerification(storyType: string, historicalContext: string, sources: StoredStorySource[]) {
-  if (historicalContext !== "MODERN_MALAYSIA" || !["DISAPPEARANCE", "CRIME_MYSTERY", "UNEXPLAINED_EVENT"].includes(storyType)) return false;
-  const latest = sources.map((source) => source.publishedAt ? Date.parse(source.publishedAt) : 0).reduce((max, value) => Math.max(max, value), 0);
-  return latest > Date.parse("2015-01-01T00:00:00.000Z");
-}
-
 function normalizeLocation(value: string) {
   return value.replace(/\bJohore\b/gi, "Johor").replace(/\bMalacca\b/gi, "Melaka").replace(/\s+/g, " ").trim();
 }
@@ -78,32 +74,39 @@ export async function researchStoryCandidate(candidateId: string, store: StorySt
   return { researchPackage: packageValue, rawClaimsExtracted: rawClaims.length, mergedClaimCount: merged.mergedClaimCount };
 }
 
-export async function persistResearchClaims(candidate: Awaited<ReturnType<StoryStore["findById"]>> & {}, sources: StoredStorySource[], inputClaims: ResearchClaim[], store: StoryStore, aiNarration?: AiNarration) {
+export async function persistResearchClaims(candidate: Awaited<ReturnType<StoryStore["findById"]>> & {}, sources: StoredStorySource[], inputClaims: ResearchClaim[], store: StoryStore, aiNarration?: AiNarration, providerFailed = false) {
   const claims = assignNarrativePriorities(inputClaims.map((claim) => ({ ...claim, spokenText: claim.spokenText ?? "", sourceIds: claim.sourceIds ?? [], people: claim.people ?? [],
     locations: claim.locations ?? [], rewriteMethod: claim.rewriteMethod ?? "NONE", rewriteModel: claim.rewriteModel ?? null, validatedAt: claim.validatedAt ?? null,
     validationVersion: claim.validationVersion ?? null, validationResult: claim.validationResult ?? null })));
   const historicalContext = String(candidate.metadata.historicalContext ?? "PRE_MALAYSIA");
-  const requiresCurrentVerification = needsCurrentVerification(candidate.storyType, historicalContext, sources);
+  const prior = await store.getResearchPackage(candidate.id);
   const speakableClaims = claims.filter((claim) => Boolean(claim.spokenText)); const hooks = speakableClaims.slice(0, Math.min(3, speakableClaims.length)).map(hookFor);
   const sinking = speakableClaims.find((claim) => /kapal karam/i.test(claim.spokenText));
   const missingHelmsman = speakableClaims.find((claim) => /jurumudi.*hilang|hilang.*jurumudi/i.test(claim.spokenText));
   if (sinking && missingHelmsman) hooks.unshift({ text: sinking.spokenText.replace(/Namun, seorang masih hilang\.$/i, "Tetapi jurumudinya masih hilang."),
     claimIds: [sinking.id, missingHelmsman.id], sourceIds: [...new Set([...sinking.sourceIds, ...missingHelmsman.sourceIds])] });
   const keyTurningPoints = speakableClaims.filter((claim) => ["TWIST", "PAYOFF"].includes(claim.priority)).map((claim) => ({ text: claim.spokenText, claimIds: [claim.id], sourceIds: claim.sourceIds }));
-  const unresolvedQuestions = (["DISAPPEARANCE", "MYSTERIOUS_DEATH", "PARANORMAL_REPORT", "FOLKLORE", "UNEXPLAINED_EVENT", "CRIME_MYSTERY"].includes(candidate.storyType) || /missing|hilang/i.test(candidate.title))
+  const verification = evaluateVerification(claims, sources, { prior, mutableCurrent: candidate.metadata.currentAware === true, providerFailed });
+  if (verification.verificationStatus === "VERIFIED" && ["RESOLVED", "FOUND"].includes(verification.latestKnownState)) {
+    const initial = speakableClaims.filter((claim) => claim.claimType === "UNRESOLVED").sort((a, b) => b.spokenText.length - a.spokenText.length)[0];
+    if (initial) hooks.unshift({ text: `Pada mulanya, ${initial.spokenText.charAt(0).toLowerCase()}${initial.spokenText.slice(1).replace(/\bdilaporkan masih hilang\b/i, "dilaporkan hilang").replace(/\bdan masih belum pasti\b/i, "")}`.replace(/\s+\./g, "."),
+      claimIds: [initial.id], sourceIds: initial.sourceIds });
+  }
+  const unresolvedQuestions = verification.latestKnownState !== "FOUND" && verification.latestKnownState !== "RESOLVED" && (["DISAPPEARANCE", "MYSTERIOUS_DEATH", "PARANORMAL_REPORT", "FOLKLORE", "UNEXPLAINED_EVENT", "CRIME_MYSTERY"].includes(candidate.storyType) || /missing|hilang/i.test(candidate.title))
     ? speakableClaims[0] ? [{ text: /helmsman|jurumudi/i.test(candidate.title) ? "Apakah yang ditemukan apabila operasi mencari jurumudi itu diteruskan?" : questionFor(candidate.storyType, speakableClaims[0]), claimIds: [], sourceIds: [] }] : [] : [];
   const endingClaim = speakableClaims.at(-1); const payoff = endingClaim ? { text: endingClaim.spokenText, claimIds: [endingClaim.id], sourceIds: endingClaim.sourceIds } : { text: "", claimIds: [], sourceIds: [] };
-  const metrics = calculateResearchMetrics(claims, sources, candidate.storyType, Boolean(payoff.text));
+  const calculated = calculateResearchMetrics(claims, sources, candidate.storyType, Boolean(payoff.text));
+  const metrics = { ...calculated, endingType: verification.latestKnownState === "FOUND" ? "FOUND" as const : verification.latestKnownState === "RESOLVED" ? "RESOLVED" as const : calculated.endingType };
   const cluster = validateSourceCluster(sources); const narrationQuality = assessNarrationQuality(claims);
-  const readyDecision = decideResearchReadiness(claims, sources, metrics, Boolean(hooks.length), Boolean(payoff.text), requiresCurrentVerification, cluster.confidence, narrationQuality);
+  const readyDecision = decideResearchReadiness(claims, sources, metrics, Boolean(hooks.length), Boolean(payoff.text), verification.verificationStatus, cluster.confidence, narrationQuality);
   const now = new Date().toISOString(); const packageValue: ResearchPackage = {
     storyCandidateId: candidate.id, title: candidate.title, summary: candidate.summary, storyType: candidate.storyType, historicalContext,
     sources: researchSources(sources), claims, timeline: speakableClaims.map((claim) => ({ id: `timeline-${claim.id}`, date: claim.eventDate,
       dateBasis: claim.eventDate ? "PUBLICATION_DATE" : "UNKNOWN", text: claim.spokenText, claimIds: [claim.id], sourceIds: claim.sourceIds, confidence: claim.confidence })),
     people: [...new Set(claims.flatMap((claim) => claim.people).map((item) => item.trim()).filter(Boolean))],
     locations: [...new Set([candidate.region, ...claims.flatMap((claim) => claim.locations)].filter(Boolean).map(normalizeLocation))],
-    hookCandidates: hooks, keyTurningPoints, unresolvedQuestions, payoff, clusterConfidence: cluster.confidence, narrationQuality, aiNarration, ...metrics, readyDecision, requiresCurrentVerification,
-    lastResearchedAt: now, lastVerifiedAt: now,
+    hookCandidates: hooks, keyTurningPoints, unresolvedQuestions, payoff, clusterConfidence: cluster.confidence, narrationQuality, aiNarration, ...metrics, ...verification, readyDecision,
+    lastResearchedAt: now, lastVerifiedAt: verification.verifiedAt,
   };
   await store.persistResearchPackage(candidate, claims, packageValue);
   return packageValue;
@@ -115,7 +118,8 @@ function storyCategory(storyType: string): StoryCategory {
   return mapping[storyType] ?? "HISTORICAL_MYSTERY";
 }
 
-function caseStatus(storyType: string, claims: ResearchClaim[]): CaseStatus {
+function caseStatus(storyType: string, claims: ResearchClaim[], latestKnownState?: string): CaseStatus {
+  if (["RESOLVED", "FOUND", "IDENTIFIED", "EXPLAINED_LATER", "CASE_OUTCOME"].includes(latestKnownState ?? "")) return "SOLVED";
   if (storyType === "FOLKLORE") return "LEGEND";
   if (claims.some((claim) => claim.claimType === "EXPLAINED_LATER")) return "PARTIALLY_EXPLAINED";
   if (["DISAPPEARANCE", "MYSTERIOUS_DEATH", "UNEXPLAINED_EVENT"].includes(storyType)) return "UNSOLVED";
@@ -126,7 +130,7 @@ function caseStatus(storyType: string, claims: ResearchClaim[]): CaseStatus {
 export function researchPackageToStoryRecord(value: ResearchPackage): StoryRecord {
   const year = Number(value.timeline.map((item) => item.date?.slice(0, 4)).find(Boolean) ?? new Date().getFullYear());
   return { id: value.storyCandidateId, title: value.title, country: "Malaysia", region: value.locations[0] ?? "Malaysia / Malaya", year,
-    decade: `${Math.floor(year / 10) * 10}-an`, category: storyCategory(value.storyType), caseStatus: caseStatus(value.storyType, value.claims),
+    decade: `${Math.floor(year / 10) * 10}-an`, category: storyCategory(value.storyType), caseStatus: caseStatus(value.storyType, value.claims, value.latestKnownState),
     summary: value.summary, entityIds: [], sourceHints: value.sources.map((source) => source.publisher),
     visualSearchTerms: [...new Set([value.title, ...value.locations, ...value.people])].slice(0, 8), researchScore: value.researchScore,
     visualScore: 0, sourceCoveragePotential: value.sourceCoverage === 1 ? "good" : "limited", sources: value.sources,
@@ -135,7 +139,9 @@ export function researchPackageToStoryRecord(value: ResearchPackage): StoryRecor
     historicalContext: value.historicalContext, timeline: value.timeline, hookCandidates: value.hookCandidates,
     unresolvedQuestions: value.unresolvedQuestions, payoff: value.payoff, aiNarration: value.aiNarration,
     supportedDurationSeconds: value.supportedDurationSeconds, supportedDurationBand: value.supportedDurationBand,
-    storyCompletenessScore: value.storyCompletenessScore, endingType: value.endingType };
+    storyCompletenessScore: value.storyCompletenessScore, endingType: value.endingType, caseStateAtSourceTime: value.caseStateAtSourceTime,
+    latestKnownState: value.latestKnownState, verificationStatus: value.verificationStatus, verificationType: value.verificationType,
+    verifiedAt: value.verifiedAt, nextVerificationDue: value.nextVerificationDue };
 }
 
 export async function loadResearchStory(candidateId: string, store: StoryStore = createStoryStore()) {

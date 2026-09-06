@@ -64,6 +64,7 @@ npm run enrich:ai -- --status=PARTIAL --limit=20 --min-sources=1 --min-claims=1
 npm run audit:ai-enrichment
 npm run audit:validator
 npm run audit:readiness
+npm run audit:follow-up
 npm run deepen:evidence -- --candidate-ids-file=audit/ai-enrichment-report.json --limit=100
 ```
 
@@ -74,6 +75,10 @@ The controlled Phase 5 cohort contained 100 PARTIAL candidates across disappeara
 Phase 5.1 revalidated those exact 50 rejected outputs before generating anything. Manual inspection classified 36 as safe false rejects and retained 14 real hard failures, producing 100% measured hard-fail precision and zero false rejects among the retained hard failures. The recovered cache raised valid spoken coverage on the same cohort from 47.2% to 79.1%; useful claims averaged 1.08 → 1.10 and READY stayed 0 → 0. Follow-up discovery ran 190 NLB searches and inspected 596 results. None passed the tightened event/entity continuity rule, so no source was linked; the two additional useful claims came from initializing previously missing deterministic packages, not from follow-up sources. The new-source-only Gemini pass therefore made zero requests and consumed zero tokens. Full results are preserved in `audit/validator-audit.json`, `audit/evidence-deepening-report.json`, and `audit/ai-enrichment-audit.json`.
 
 The Phase 5.2 recalculation used the same 100 IDs and made no Gemini calls. One complete 10-second MICRO story became READY; the other 99 remained PARTIAL. It has two distinct useful claims, one coherent archival source, 100% source coverage, zero unsupported claims, and passed the only available newly-READY manual review. No SHORT/STANDARD/LONG story passed the unchanged factual and language gates. Audit details are in `audit/readiness-report.json`, `audit/readiness-ready-stories.json`, and `audit/readiness-manual-review.json`.
+
+Phase 5.3 adds a mandatory follow-up state machine before readiness. The same cohort is scanned only where unresolved/ongoing signals require it. Searches use entity, incident, location and date identifiers across bounded forward windows; same-town or same-incident wording alone is rejected. Accepted follow-up sources are persisted in `story_sources` with `sourceRole=FOLLOW_UP`. Results and ten traceable cases are exported to `audit/follow-up-report.json` and `audit/follow-up-cases.json`. No Gemini output is treated as resolution evidence.
+
+The controlled Phase 5.3 audit identified 50 of the 100 cohort stories as requiring follow-up, ran 384 bounded provider searches, reviewed 17 returned sources and accepted two. Two cases have sourced state transitions, 48 remain PENDING because no acceptable follow-up was found, and no provider verification failed. READY remained 1 → 1. The Nuri report changed from MISSING/UNRESOLVED at source time to VERIFIED/RESOLVED, with a source-linked 18-second SHORT narration covering the discovery, three deaths and seven survivors.
 
 The Phase 4.1 recheck starts from the same 100 IDs. It found 16 suspicious candidates, split them into 35 additional event candidates, and reassigned 50 source links without deleting source records. The resulting 135 coherent candidates contain 175 claims; strict narration gates leave one READY and 134 PARTIAL. Details are in `audit/cluster-repair-report.json`, `audit/narration-audit.json`, and ten before/after samples in `audit/narration-examples.json`.
 

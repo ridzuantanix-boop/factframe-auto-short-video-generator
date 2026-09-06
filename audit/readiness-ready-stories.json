@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-05T06:58:21.565Z",
+  "generatedAt": "2026-09-06T03:13:02.824Z",
   "stories": [
     {
       "candidateId": "bcad5d60-472b-4789-844f-773f452f18e8",
@@ -12,6 +12,13 @@
           "publisher": "The Straits Times",
           "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes20040816-1.2.36.7.3",
           "reliabilityLevel": "ARCHIVAL"
+        },
+        {
+          "id": "f5396b77aa06f61357e5bad2161db47b",
+          "title": "Nuri crash: 3 dead, 7 safe",
+          "publisher": "The Star",
+          "url": "https://www.thestar.com.my/news/nation/2004/08/17/nuri-crash-3-dead-7-safe",
+          "reliabilityLevel": "SECONDARY"
         }
       ],
       "claims": [
@@ -32,6 +39,33 @@
           "sourceIds": [
             "48b202c9ffa71fe410b58aceba28d809"
           ]
+        },
+        {
+          "id": "18a7f1c9fd6b2992b5840244a3623c13",
+          "claimText": "The Nuri helicopter was found in a forested area about 1,500 metres above sea level, 15 kilometres from Ba'Kelalan.",
+          "claimType": "EXPLAINED_LATER",
+          "confidence": "MEDIUM",
+          "sourceIds": [
+            "f5396b77aa06f61357e5bad2161db47b"
+          ]
+        },
+        {
+          "id": "9d94b8ed9cc9b02c5526c84dd60f5056",
+          "claimText": "Three Royal Malaysian Air Force personnel were killed in the crash.",
+          "claimType": "EXPLAINED_LATER",
+          "confidence": "MEDIUM",
+          "sourceIds": [
+            "f5396b77aa06f61357e5bad2161db47b"
+          ]
+        },
+        {
+          "id": "6d45a732ec86b957d1a56b989924df0e",
+          "claimText": "Seven people survived the crash.",
+          "claimType": "EXPLAINED_LATER",
+          "confidence": "MEDIUM",
+          "sourceIds": [
+            "f5396b77aa06f61357e5bad2161db47b"
+          ]
         }
       ],
       "spokenClaims": [
@@ -48,29 +82,64 @@
           "sourceIds": [
             "48b202c9ffa71fe410b58aceba28d809"
           ]
+        },
+        {
+          "id": "18a7f1c9fd6b2992b5840244a3623c13",
+          "spokenText": "Helikopter Nuri ditemukan di kawasan hutan kira-kira 1,500 meter dari aras laut, 15 kilometer dari Ba'Kelalan.",
+          "sourceIds": [
+            "f5396b77aa06f61357e5bad2161db47b"
+          ]
+        },
+        {
+          "id": "9d94b8ed9cc9b02c5526c84dd60f5056",
+          "spokenText": "Tiga anggota Tentera Udara Diraja Malaysia maut dalam nahas itu.",
+          "sourceIds": [
+            "f5396b77aa06f61357e5bad2161db47b"
+          ]
+        },
+        {
+          "id": "6d45a732ec86b957d1a56b989924df0e",
+          "spokenText": "Tujuh orang terselamat dalam nahas itu.",
+          "sourceIds": [
+            "f5396b77aa06f61357e5bad2161db47b"
+          ]
         }
       ],
       "finalNarration": [
         {
           "role": "HOOK",
-          "text": "Helikopter hilang di Sarawak dan masih belum pasti.",
+          "text": "Pada mulanya, sebuah helikopter Nuri Tentera Udara Diraja Malaysia dengan 10 orang di dalamnya dilaporkan hilang.",
           "sourceIds": [
             "48b202c9ffa71fe410b58aceba28d809"
           ]
         },
         {
-          "role": "PAYOFF",
-          "text": "Sebuah helikopter Nuri Tentera Udara Diraja Malaysia dengan 10 orang di dalamnya dilaporkan masih hilang.",
+          "role": "ESCALATION",
+          "text": "Helikopter Nuri ditemukan di kawasan hutan kira-kira 1,500 meter dari aras laut, 15 kilometer dari Ba'Kelalan.",
           "sourceIds": [
-            "48b202c9ffa71fe410b58aceba28d809"
+            "f5396b77aa06f61357e5bad2161db47b"
+          ]
+        },
+        {
+          "role": "TWIST",
+          "text": "Tiga anggota Tentera Udara Diraja Malaysia maut dalam nahas itu.",
+          "sourceIds": [
+            "f5396b77aa06f61357e5bad2161db47b"
+          ]
+        },
+        {
+          "role": "PAYOFF",
+          "text": "Tujuh orang terselamat dalam nahas itu.",
+          "sourceIds": [
+            "f5396b77aa06f61357e5bad2161db47b"
           ]
         }
       ],
-      "supportedDurationSeconds": 10,
-      "supportedDurationBand": "MICRO",
-      "estimatedNarrationSeconds": 10.2,
+      "supportedDurationSeconds": 18,
+      "supportedDurationBand": "SHORT",
+      "estimatedNarrationSeconds": 17.8,
       "storyCompletenessScore": 1,
-      "endingType": "UNRESOLVED",
+      "endingType": "RESOLVED",
       "sourceCoverage": 1,
       "unsupportedClaims": 0,
       "scriptQualityPass": true,
@@ -86,7 +155,7 @@
         "noObviousPadding": true,
         "sensibleDuration": true,
         "nonArtificialEnding": true,
-        "notes": "The 10-second micro-story identifies the event and place, then adds the aircraft identity, passenger count and honestly unresolved ending. Both sentences remain linked to the same archival source."
+        "notes": "The corrected 22-second story explicitly frames the missing report as the initial state, then uses the persisted The Star follow-up to state that the Nuri was found, three RMAF personnel died, and seven survived. The ending is resolved, source-linked, natural, and contains no padding."
       }
     }
   ]

@@ -3,6 +3,7 @@ import type { ResearchClaim } from "./types.ts";
 import type { ClusterConfidence } from "../archive/clusterIntegrity.ts";
 import type { ResearchPackage } from "./types.ts";
 import { calculateEvidenceDuration } from "./durationScoring.ts";
+import type { VerificationStatus } from "./types.ts";
 
 function actionKinds(value: string) {
   return [
@@ -33,7 +34,7 @@ export function calculateResearchMetrics(claims: ResearchClaim[], sources: Store
 }
 
 export function decideResearchReadiness(claims: ResearchClaim[], sources: StoredStorySource[], metrics: ReturnType<typeof calculateResearchMetrics>, hasHook: boolean, hasPayoff: boolean,
-  requiresCurrentVerification: boolean, clusterConfidence: ClusterConfidence = "LOW", narrationQuality?: ResearchPackage["narrationQuality"]) {
+  verification: VerificationStatus | boolean, clusterConfidence: ClusterConfidence = "LOW", narrationQuality?: ResearchPackage["narrationQuality"]) {
   const reasons: string[] = [];
   const usefulClaims = claims.filter((claim) => claim.confidence !== "LOW" && claim.ocrQuality >= .65 && Boolean(claim.spokenText));
   if (!usefulClaims.length) reasons.push("No clear, useful spoken factual claim.");
@@ -49,6 +50,7 @@ export function decideResearchReadiness(claims: ResearchClaim[], sources: Stored
   if (metrics.supportedDurationSeconds < 8 || metrics.narrationWordCount < 20) reasons.push("Grounded narration is too thin even for an 8-second micro-story.");
   if (clusterConfidence === "LOW") reasons.push("Source cluster lacks validated date and entity continuity.");
   if (!narrationQuality?.passes) reasons.push("Malay spoken narration does not pass the language and naturalness gate.");
-  if (requiresCurrentVerification) reasons.push("Current-aware verification is required before READY promotion.");
+  const verificationStatus: VerificationStatus = typeof verification === "boolean" ? verification ? "PENDING" : "NOT_REQUIRED" : verification;
+  if (!["NOT_REQUIRED", "VERIFIED"].includes(verificationStatus)) reasons.push(`Follow-up/current verification must be NOT_REQUIRED or VERIFIED before READY promotion (currently ${verificationStatus}).`);
   return { status: reasons.length ? "PARTIAL" as const : "READY" as const, reasons: reasons.length ? reasons : ["All research and narration readiness gates passed."] };
 }

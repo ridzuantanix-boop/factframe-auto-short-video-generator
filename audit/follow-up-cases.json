@@ -1,0 +1,683 @@
+{
+  "generatedAt": "2026-09-06T03:12:42.814Z",
+  "cases": [
+    {
+      "candidateId": "cd396f4c-19e0-4055-9195-3b005964a0ba",
+      "title": "GIRL, 10 MISSING",
+      "initialSource": [
+        {
+          "id": "3c11c8f2930cb266a0cb44744892c2d8",
+          "title": "Girl missing",
+          "publisher": "The Straits Times",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes19520805-1.2.92",
+          "publishedAt": "1952-08-05T00:00:00.000Z"
+        }
+      ],
+      "initialClaims": [
+        {
+          "id": "f118ce66492809417729965f2c21996f",
+          "text": "An 11 -year-old Chinese girl was reported missing from her house at Kampong Dollah in the Pudu area of Kuala Lumpur on Saturday.",
+          "spokenText": "",
+          "state": "UNRESOLVED",
+          "sourceIds": [
+            "3c11c8f2930cb266a0cb44744892c2d8"
+          ]
+        }
+      ],
+      "initialState": "REPORTED_MISSING",
+      "followUpSearches": 8,
+      "followUpSources": [],
+      "newClaims": [],
+      "latestKnownState": "REPORTED_MISSING",
+      "verificationStatus": "PENDING",
+      "finalNarration": [],
+      "sourceIds": [
+        "3c11c8f2930cb266a0cb44744892c2d8"
+      ],
+      "supportedDurationSeconds": 0,
+      "readyResult": {
+        "status": "PARTIAL",
+        "reasons": [
+          "No clear, useful spoken factual claim.",
+          "No grounded hook candidate.",
+          "No grounded payoff or unresolved ending.",
+          "Story does not yet contain a complete subject, event, context and known ending.",
+          "Grounded narration is too thin even for an 8-second micro-story.",
+          "Malay spoken narration does not pass the language and naturalness gate.",
+          "Follow-up/current verification must be NOT_REQUIRED or VERIFIED before READY promotion (currently PENDING)."
+        ]
+      },
+      "errors": []
+    },
+    {
+      "candidateId": "4b372ba8-6fc0-492c-8723-0adfa4c05d70",
+      "title": "JOHORE MURDER.",
+      "initialSource": [
+        {
+          "id": "801e6dad1f04161bce8bdb956a925e29",
+          "title": "JOHORE MURDER.",
+          "publisher": "The Straits Budget",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitsbudget19361001-1.2.55",
+          "publishedAt": "1936-10-01T00:00:00.000Z"
+        },
+        {
+          "id": "023a8f28ad9e39dc122b771d5cfbf5e6",
+          "title": "Johore Murder",
+          "publisher": "Morning Tribune",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/morningtribune19361030-1.2.82",
+          "publishedAt": "1936-10-30T00:00:00.000Z"
+        },
+        {
+          "id": "4b53915fa39ea11d6ba4f690a96ff069",
+          "title": "Johore Murder",
+          "publisher": "Morning Tribune",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/morningtribune19361210-1.2.79",
+          "publishedAt": "1936-12-10T00:00:00.000Z"
+        }
+      ],
+      "initialClaims": [
+        {
+          "id": "69ecad934981083a31202c1ae9a21864",
+          "text": "rE Johore Court of Appeal today dismissed the appeal of Adaikan against sentence of death",
+          "spokenText": "Menurut laporan, Johore Court of Appeal telah menolak rayuan Adaikan terhadap hukuman mati.",
+          "state": "REPORTED",
+          "sourceIds": [
+            "801e6dad1f04161bce8bdb956a925e29"
+          ]
+        },
+        {
+          "id": "2b1acac7db473028fec2627289978165",
+          "text": "Three Hainanese Remanded From Our Own Correspondent) Johore Bahru.",
+          "spokenText": "Dilaporkan tiga orang Hainan telah direman di Johore Bahru.",
+          "state": "REPORTED",
+          "sourceIds": [
+            "023a8f28ad9e39dc122b771d5cfbf5e6"
+          ]
+        },
+        {
+          "id": "c73206f57a5e4573a0290238b05d39e3",
+          "text": "IN connection with the triple murder which was committed on the rubber estate of a Chinese small-holder in Senai",
+          "spokenText": "Dilaporkan terdapat kes pembunuhan berkembar tiga di estet getah di Senai.",
+          "state": "REPORTED",
+          "sourceIds": [
+            "023a8f28ad9e39dc122b771d5cfbf5e6",
+            "4b53915fa39ea11d6ba4f690a96ff069"
+          ]
+        }
+      ],
+      "initialState": "TRIAL_PENDING",
+      "followUpSearches": 8,
+      "followUpSources": [],
+      "newClaims": [],
+      "latestKnownState": "TRIAL_PENDING",
+      "verificationStatus": "PENDING",
+      "finalNarration": [
+        "Menurut laporan, Johore Court of Appeal telah menolak rayuan Adaikan terhadap hukuman mati.",
+        "Dilaporkan tiga orang Hainan telah direman di Johore Bahru.",
+        "Dilaporkan terdapat kes pembunuhan berkembar tiga di estet getah di Senai."
+      ],
+      "sourceIds": [
+        "801e6dad1f04161bce8bdb956a925e29",
+        "023a8f28ad9e39dc122b771d5cfbf5e6",
+        "4b53915fa39ea11d6ba4f690a96ff069"
+      ],
+      "supportedDurationSeconds": 15,
+      "readyResult": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Story does not yet contain a complete subject, event, context and known ending.",
+          "Follow-up/current verification must be NOT_REQUIRED or VERIFIED before READY promotion (currently PENDING)."
+        ]
+      },
+      "errors": []
+    },
+    {
+      "candidateId": "9633002d-fd92-4b19-964d-2d3b878921ce",
+      "title": "Two more confess to role in murder of Perak prince's wife",
+      "initialSource": [
+        {
+          "id": "f312cc0a1f8e9bca42649d75d5263787",
+          "title": "Perak murder: Prince's wife questioned",
+          "publisher": "The Straits Times",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes20021022-1.2.41.8.6",
+          "publishedAt": "2002-10-22T00:00:00.000Z"
+        },
+        {
+          "id": "6fdf0f5e39d56b315b28aaebd168794e",
+          "title": "Perak murder: Prince's first wife remanded",
+          "publisher": "The Straits Times",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes20021025-1.2.72.8.4",
+          "publishedAt": "2002-10-25T00:00:00.000Z"
+        },
+        {
+          "id": "895286daef0738072bce8f48492791b6",
+          "title": "Perak murder: Prince's first wife remanded",
+          "publisher": "NewspaperSG",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/stoverseas20021026-1.2.12.5",
+          "publishedAt": "2002-10-26T00:00:00.000Z"
+        }
+      ],
+      "initialClaims": [
+        {
+          "id": "4c6964ad076985d1d0adfac823c05b57",
+          "text": "Prince's first wife remanded",
+          "spokenText": "Isteri pertama seorang kerabat Perak direman bagi membantu siasatan.",
+          "state": "REPORTED",
+          "sourceIds": [
+            "6fdf0f5e39d56b315b28aaebd168794e",
+            "895286daef0738072bce8f48492791b6"
+          ]
+        },
+        {
+          "id": "395609b619aacfd759734f6b140b63ec",
+          "text": "IPOH The wife of a Perak prince was remanded yesterday to help the investigation into the murder of her husband's second wife, Hazliza Ishak",
+          "spokenText": "Isteri pertama seorang kerabat Perak direman bagi membantu siasatan pembunuhan Hazliza Ishak.",
+          "state": "REPORTED",
+          "sourceIds": [
+            "6fdf0f5e39d56b315b28aaebd168794e",
+            "895286daef0738072bce8f48492791b6"
+          ]
+        }
+      ],
+      "initialState": "TRIAL_PENDING",
+      "followUpSearches": 8,
+      "followUpSources": [],
+      "newClaims": [],
+      "latestKnownState": "TRIAL_PENDING",
+      "verificationStatus": "PENDING",
+      "finalNarration": [
+        "Isteri pertama seorang kerabat Perak direman bagi membantu siasatan.",
+        "Isteri pertama seorang kerabat Perak direman bagi membantu siasatan pembunuhan Hazliza Ishak."
+      ],
+      "sourceIds": [
+        "6fdf0f5e39d56b315b28aaebd168794e",
+        "895286daef0738072bce8f48492791b6"
+      ],
+      "supportedDurationSeconds": 4,
+      "readyResult": {
+        "status": "PARTIAL",
+        "reasons": [
+          "A single claim lacks enough subject, event, context and outcome for a complete micro-story.",
+          "Story does not yet contain a complete subject, event, context and known ending.",
+          "Grounded narration is too thin even for an 8-second micro-story.",
+          "Malay spoken narration does not pass the language and naturalness gate.",
+          "Follow-up/current verification must be NOT_REQUIRED or VERIFIED before READY promotion (currently PENDING)."
+        ]
+      },
+      "errors": []
+    },
+    {
+      "candidateId": "5d9f94c2-a559-4dc6-890b-a7bc45b7497d",
+      "title": "Girl, woman reported missing",
+      "initialSource": [
+        {
+          "id": "094e825f3f36754edef95e003a1e9716",
+          "title": "2 reported missing",
+          "publisher": "The Singapore Free Press and Mercantile Advertiser",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/freepress19520603-1.2.69",
+          "publishedAt": "1952-06-03T00:00:00.000Z"
+        },
+        {
+          "id": "ec80a5c332f709b0a33300fed125aa76",
+          "title": "Girl, woman reported missing",
+          "publisher": "The Straits Times",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes19520603-1.2.127",
+          "publishedAt": "1952-06-03T00:00:00.000Z"
+        }
+      ],
+      "initialClaims": [
+        {
+          "id": "6b34bc29c0a47bda4f92815d24311c84",
+          "text": "Girl, woman reported missing",
+          "spokenText": "",
+          "state": "UNRESOLVED",
+          "sourceIds": [
+            "ec80a5c332f709b0a33300fed125aa76"
+          ]
+        },
+        {
+          "id": "b776a6707f0e653f2c2a177b775e07b7",
+          "text": "7FWO persons were reported ■1 missing one In Klang and the other in Kuala Lumpur—over the weekend.",
+          "spokenText": "",
+          "state": "UNRESOLVED",
+          "sourceIds": [
+            "ec80a5c332f709b0a33300fed125aa76"
+          ]
+        }
+      ],
+      "initialState": "REPORTED_MISSING",
+      "followUpSearches": 8,
+      "followUpSources": [],
+      "newClaims": [],
+      "latestKnownState": "REPORTED_MISSING",
+      "verificationStatus": "PENDING",
+      "finalNarration": [],
+      "sourceIds": [
+        "ec80a5c332f709b0a33300fed125aa76"
+      ],
+      "supportedDurationSeconds": 0,
+      "readyResult": {
+        "status": "PARTIAL",
+        "reasons": [
+          "No clear, useful spoken factual claim.",
+          "No grounded hook candidate.",
+          "No grounded payoff or unresolved ending.",
+          "Story does not yet contain a complete subject, event, context and known ending.",
+          "Grounded narration is too thin even for an 8-second micro-story.",
+          "Malay spoken narration does not pass the language and naturalness gate.",
+          "Follow-up/current verification must be NOT_REQUIRED or VERIFIED before READY promotion (currently PENDING)."
+        ]
+      },
+      "errors": []
+    },
+    {
+      "candidateId": "99b3809a-9e80-4ac6-a693-adf47736670b",
+      "title": "Lorry Driver On Murder Charge",
+      "initialSource": [
+        {
+          "id": "bec5479e76c5b7ef3e086aad951f6c2c",
+          "title": "Lorry Driver On Murder Charge",
+          "publisher": "Malaya Tribune",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/maltribune19401112-1.2.61",
+          "publishedAt": "1940-11-12T00:00:00.000Z"
+        },
+        {
+          "id": "c0401ad9117ae38dfc27eb581eb61faa",
+          "title": "LORRY DRIVER ON MURDER CHARGE",
+          "publisher": "Morning Tribune",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/morningtribune19401112-1.2.54",
+          "publishedAt": "1940-11-12T00:00:00.000Z"
+        }
+      ],
+      "initialClaims": [
+        {
+          "id": "14ccb34dba94b59a06ee319a21e61c46",
+          "text": "Lorry Driver On Murder Charge",
+          "spokenText": "Dilaporkan pemandu lori menghadapi pertuduhan membunuh.",
+          "state": "REPORTED",
+          "sourceIds": [
+            "bec5479e76c5b7ef3e086aad951f6c2c",
+            "c0401ad9117ae38dfc27eb581eb61faa"
+          ]
+        },
+        {
+          "id": "ff388c823e6aa67b9fa03584ee39f709",
+          "text": "AS a result of police inquiries into the mystery surrounding the disappearance of Sinnah Govindan Mudaliar",
+          "spokenText": "Dilaporkan ini adalah hasil siasatan polis berhubung misteri kehilangan Sinnah Govindan Mudaliar.",
+          "state": "REPORTED",
+          "sourceIds": [
+            "bec5479e76c5b7ef3e086aad951f6c2c",
+            "c0401ad9117ae38dfc27eb581eb61faa"
+          ]
+        }
+      ],
+      "initialState": "INVESTIGATION_ONGOING",
+      "followUpSearches": 8,
+      "followUpSources": [],
+      "newClaims": [],
+      "latestKnownState": "INVESTIGATION_ONGOING",
+      "verificationStatus": "PENDING",
+      "finalNarration": [
+        "Dilaporkan pemandu lori menghadapi pertuduhan membunuh.",
+        "Dilaporkan ini adalah hasil siasatan polis berhubung misteri kehilangan Sinnah Govindan Mudaliar."
+      ],
+      "sourceIds": [
+        "bec5479e76c5b7ef3e086aad951f6c2c",
+        "c0401ad9117ae38dfc27eb581eb61faa"
+      ],
+      "supportedDurationSeconds": 8,
+      "readyResult": {
+        "status": "PARTIAL",
+        "reasons": [
+          "Grounded narration is too thin even for an 8-second micro-story.",
+          "Follow-up/current verification must be NOT_REQUIRED or VERIFIED before READY promotion (currently PENDING)."
+        ]
+      },
+      "errors": []
+    },
+    {
+      "candidateId": "a37cc5cc-08d4-42fc-a6e3-b6e53d6c040d",
+      "title": "SCHOOLBOY MISSING",
+      "initialSource": [
+        {
+          "id": "02e18ae25926fff59fd051138c2be3a1",
+          "title": "SCHOOLBOY MISSING",
+          "publisher": "Morning Tribune",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/morningtribune19390608-1.2.21",
+          "publishedAt": "1939-06-08T00:00:00.000Z"
+        },
+        {
+          "id": "1927f2b55f738d0b8ad3a6475e3df37c",
+          "title": "SCHOOLBOY MISSING",
+          "publisher": "Malaya Tribune",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/maltribune19390608-1.2.126",
+          "publishedAt": "1939-06-08T00:00:00.000Z"
+        }
+      ],
+      "initialClaims": [
+        {
+          "id": "5731d894c6147bf30b4e2eaa4f3609ee",
+          "text": "a 16-year- old Methodist Boys' School pupil, has been reported missing by his father Mr.",
+          "spokenText": "",
+          "state": "UNRESOLVED",
+          "sourceIds": [
+            "02e18ae25926fff59fd051138c2be3a1",
+            "1927f2b55f738d0b8ad3a6475e3df37c"
+          ]
+        }
+      ],
+      "initialState": "REPORTED_MISSING",
+      "followUpSearches": 8,
+      "followUpSources": [],
+      "newClaims": [],
+      "latestKnownState": "REPORTED_MISSING",
+      "verificationStatus": "PENDING",
+      "finalNarration": [],
+      "sourceIds": [
+        "02e18ae25926fff59fd051138c2be3a1",
+        "1927f2b55f738d0b8ad3a6475e3df37c"
+      ],
+      "supportedDurationSeconds": 0,
+      "readyResult": {
+        "status": "PARTIAL",
+        "reasons": [
+          "No clear, useful spoken factual claim.",
+          "No grounded hook candidate.",
+          "No grounded payoff or unresolved ending.",
+          "Story does not yet contain a complete subject, event, context and known ending.",
+          "Grounded narration is too thin even for an 8-second micro-story.",
+          "Malay spoken narration does not pass the language and naturalness gate.",
+          "Follow-up/current verification must be NOT_REQUIRED or VERIFIED before READY promotion (currently PENDING)."
+        ]
+      },
+      "errors": []
+    },
+    {
+      "candidateId": "7c0591f8-840e-4e98-80fe-e1e19f9cd3a5",
+      "title": "MYSTERY OF MISSING CHETTIAR.",
+      "initialSource": [
+        {
+          "id": "7a6e72bdfe923a487c7c044f5b913147",
+          "title": "MYSTERY OF MISSING CHETTIAR.",
+          "publisher": "The Straits Times",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes19310515-1.2.63",
+          "publishedAt": "1931-05-15T00:00:00.000Z"
+        },
+        {
+          "id": "46870d60f3516f2a814c60088bffccba",
+          "title": "MYSTERY OF MISSING CHETTIAR.",
+          "publisher": "The Straits Budget",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitsbudget19310521-1.2.22",
+          "publishedAt": "1931-05-21T00:00:00.000Z"
+        }
+      ],
+      "initialClaims": [
+        {
+          "id": "346701cf89dc067c9fb24685dfbd6e0d",
+          "text": "MYSTERY OF MISSING CHETTIAR",
+          "spokenText": "Misteri kehilangan Chettiar masih belum pasti.",
+          "state": "UNRESOLVED",
+          "sourceIds": [
+            "7a6e72bdfe923a487c7c044f5b913147",
+            "46870d60f3516f2a814c60088bffccba"
+          ]
+        },
+        {
+          "id": "470f65b3d0858bbc51a7d774ded7b707",
+          "text": "The Chettiar community of Singapore and Johore is greatly perturbed over the mysterious disappearance of one of its members since",
+          "spokenText": "Komuniti Chettiar bimbang mengenai kehilangan misteri salah seorang ahlinya yang masih belum pasti.",
+          "state": "UNRESOLVED",
+          "sourceIds": [
+            "7a6e72bdfe923a487c7c044f5b913147",
+            "46870d60f3516f2a814c60088bffccba"
+          ]
+        }
+      ],
+      "initialState": "MISSING",
+      "followUpSearches": 8,
+      "followUpSources": [],
+      "newClaims": [],
+      "latestKnownState": "MISSING",
+      "verificationStatus": "PENDING",
+      "finalNarration": [
+        "Misteri kehilangan Chettiar masih belum pasti.",
+        "Komuniti Chettiar bimbang mengenai kehilangan misteri salah seorang ahlinya yang masih belum pasti."
+      ],
+      "sourceIds": [
+        "7a6e72bdfe923a487c7c044f5b913147",
+        "46870d60f3516f2a814c60088bffccba"
+      ],
+      "supportedDurationSeconds": 3,
+      "readyResult": {
+        "status": "PARTIAL",
+        "reasons": [
+          "A single claim lacks enough subject, event, context and outcome for a complete micro-story.",
+          "Grounded narration is too thin even for an 8-second micro-story.",
+          "Malay spoken narration does not pass the language and naturalness gate.",
+          "Follow-up/current verification must be NOT_REQUIRED or VERIFIED before READY promotion (currently PENDING)."
+        ]
+      },
+      "errors": []
+    },
+    {
+      "candidateId": "7d629d67-5f68-49ff-ad4a-9f4b6ca2f716",
+      "title": "Missing Peace Corps volunteer is Beckner of Bellevue",
+      "initialSource": [
+        {
+          "id": "73605c3c580a366e36a1749b4bed3893",
+          "title": "Missing Peace Corps volunteer is Beckner of Bellevue",
+          "publisher": "NewspaperSG",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/easternsun19681124-1.2.2",
+          "publishedAt": "1968-11-24T00:00:00.000Z"
+        },
+        {
+          "id": "d986f3100ad06c501e05f43b67ef8540",
+          "title": "Peace Corps man missing",
+          "publisher": "The Straits Budget",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitsbudget19681127-1.2.131",
+          "publishedAt": "1968-11-27T00:00:00.000Z"
+        }
+      ],
+      "initialClaims": [
+        {
+          "id": "b0d4403beb1aad2d0690ae279ddfbff4",
+          "text": "Missing Peace Corps volunteer is Beckner of Bellevue",
+          "spokenText": "Seorang sukarelawan Peace Corps yang hilang adalah Beckner dari Bellevue.",
+          "state": "UNRESOLVED",
+          "sourceIds": [
+            "73605c3c580a366e36a1749b4bed3893",
+            "d986f3100ad06c501e05f43b67ef8540"
+          ]
+        },
+        {
+          "id": "819ff545ad56376921702ab4a7db7284",
+          "text": "The Peace Corps volunteer reported missing while swimming off Datu Burok.",
+          "spokenText": "Sukarelawan Peace Corps dilaporkan hilang semasa berenang di Datu Burok.",
+          "state": "UNRESOLVED",
+          "sourceIds": [
+            "73605c3c580a366e36a1749b4bed3893",
+            "d986f3100ad06c501e05f43b67ef8540"
+          ]
+        }
+      ],
+      "initialState": "MISSING",
+      "followUpSearches": 8,
+      "followUpSources": [],
+      "newClaims": [],
+      "latestKnownState": "MISSING",
+      "verificationStatus": "PENDING",
+      "finalNarration": [
+        "Seorang sukarelawan Peace Corps yang hilang adalah Beckner dari Bellevue.",
+        "Sukarelawan Peace Corps dilaporkan hilang semasa berenang di Datu Burok."
+      ],
+      "sourceIds": [
+        "73605c3c580a366e36a1749b4bed3893",
+        "d986f3100ad06c501e05f43b67ef8540"
+      ],
+      "supportedDurationSeconds": 4,
+      "readyResult": {
+        "status": "PARTIAL",
+        "reasons": [
+          "A single claim lacks enough subject, event, context and outcome for a complete micro-story.",
+          "Story does not yet contain a complete subject, event, context and known ending.",
+          "Grounded narration is too thin even for an 8-second micro-story.",
+          "Malay spoken narration does not pass the language and naturalness gate.",
+          "Follow-up/current verification must be NOT_REQUIRED or VERIFIED before READY promotion (currently PENDING)."
+        ]
+      },
+      "errors": []
+    },
+    {
+      "candidateId": "8722f525-e618-448b-a1da-b133a256765e",
+      "title": "Missing man is safe",
+      "initialSource": [
+        {
+          "id": "92aea0d6d4a71bebdbd76662aa694093",
+          "title": "Missing man is safe",
+          "publisher": "The Straits Times",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes19601223-1.2.65",
+          "publishedAt": "1960-12-23T00:00:00.000Z"
+        }
+      ],
+      "initialClaims": [
+        {
+          "id": "c7b4732006eedf65f453d1841d710265",
+          "text": "Missing man is safe",
+          "spokenText": "",
+          "state": "UNRESOLVED",
+          "sourceIds": [
+            "92aea0d6d4a71bebdbd76662aa694093"
+          ]
+        },
+        {
+          "id": "eff9197542cb3938414a505251ed133c",
+          "text": "a Sarawak wireless operator who was reported missing in Singapore last week, is anxious t<> let his employers and friends",
+          "spokenText": "",
+          "state": "UNRESOLVED",
+          "sourceIds": [
+            "92aea0d6d4a71bebdbd76662aa694093"
+          ]
+        }
+      ],
+      "initialState": "MISSING",
+      "followUpSearches": 8,
+      "followUpSources": [],
+      "newClaims": [],
+      "latestKnownState": "MISSING",
+      "verificationStatus": "PENDING",
+      "finalNarration": [],
+      "sourceIds": [
+        "92aea0d6d4a71bebdbd76662aa694093"
+      ],
+      "supportedDurationSeconds": 0,
+      "readyResult": {
+        "status": "PARTIAL",
+        "reasons": [
+          "No clear, useful spoken factual claim.",
+          "A one-source micro-story requires a clear archival, official, institutional or academic source.",
+          "No grounded hook candidate.",
+          "No grounded payoff or unresolved ending.",
+          "Story does not yet contain a complete subject, event, context and known ending.",
+          "Grounded narration is too thin even for an 8-second micro-story.",
+          "Malay spoken narration does not pass the language and naturalness gate.",
+          "Follow-up/current verification must be NOT_REQUIRED or VERIFIED before READY promotion (currently PENDING)."
+        ]
+      },
+      "errors": []
+    },
+    {
+      "candidateId": "bcad5d60-472b-4789-844f-773f452f18e8",
+      "title": "Copter goes missing in Sarawak",
+      "initialSource": [
+        {
+          "id": "48b202c9ffa71fe410b58aceba28d809",
+          "title": "Copter goes missing in Sarawak",
+          "publisher": "The Straits Times",
+          "url": "https://eresources.nlb.gov.sg/newspapers/digitised/article/straitstimes20040816-1.2.36.7.3",
+          "publishedAt": "2004-08-16T00:00:00.000Z"
+        }
+      ],
+      "initialClaims": [
+        {
+          "id": "0e0e474728ffc0b789026b46a8fe998c",
+          "text": "Copter goes missing in Sarawak",
+          "spokenText": "Helikopter hilang di Sarawak dan masih belum pasti.",
+          "state": "UNRESOLVED",
+          "sourceIds": [
+            "48b202c9ffa71fe410b58aceba28d809"
+          ]
+        },
+        {
+          "id": "02563ebadca3727e080633e761cfffb3",
+          "text": "KUCHING A Royal Malaysian Air Force (RMAF) Nuri helicopter with 10 people on board was reported missing yesterday near Ba'Kelalan in Sarawak's highlands region.",
+          "spokenText": "Sebuah helikopter Nuri Tentera Udara Diraja Malaysia dengan 10 orang di dalamnya dilaporkan masih hilang.",
+          "state": "UNRESOLVED",
+          "sourceIds": [
+            "48b202c9ffa71fe410b58aceba28d809"
+          ]
+        }
+      ],
+      "initialState": "MISSING",
+      "followUpSearches": 0,
+      "followUpSources": [
+        {
+          "id": "f5396b77aa06f61357e5bad2161db47b",
+          "provider": "THE_STAR",
+          "title": "Nuri crash: 3 dead, 7 safe",
+          "publisher": "The Star",
+          "url": "https://www.thestar.com.my/news/nation/2004/08/17/nuri-crash-3-dead-7-safe",
+          "publishedAt": "2004-08-17T00:00:00.000Z"
+        }
+      ],
+      "newClaims": [
+        {
+          "id": "18a7f1c9fd6b2992b5840244a3623c13",
+          "text": "The Nuri helicopter was found in a forested area about 1,500 metres above sea level, 15 kilometres from Ba'Kelalan.",
+          "spokenText": "Helikopter Nuri ditemukan di kawasan hutan kira-kira 1,500 meter dari aras laut, 15 kilometer dari Ba'Kelalan.",
+          "state": "EXPLAINED_LATER",
+          "sourceIds": [
+            "f5396b77aa06f61357e5bad2161db47b"
+          ]
+        },
+        {
+          "id": "9d94b8ed9cc9b02c5526c84dd60f5056",
+          "text": "Three Royal Malaysian Air Force personnel were killed in the crash.",
+          "spokenText": "Tiga anggota Tentera Udara Diraja Malaysia maut dalam nahas itu.",
+          "state": "EXPLAINED_LATER",
+          "sourceIds": [
+            "f5396b77aa06f61357e5bad2161db47b"
+          ]
+        },
+        {
+          "id": "6d45a732ec86b957d1a56b989924df0e",
+          "text": "Seven people survived the crash.",
+          "spokenText": "Tujuh orang terselamat dalam nahas itu.",
+          "state": "EXPLAINED_LATER",
+          "sourceIds": [
+            "f5396b77aa06f61357e5bad2161db47b"
+          ]
+        }
+      ],
+      "latestKnownState": "RESOLVED",
+      "verificationStatus": "VERIFIED",
+      "finalNarration": [
+        "Pada mulanya, sebuah helikopter Nuri Tentera Udara Diraja Malaysia dengan 10 orang di dalamnya dilaporkan hilang.",
+        "Helikopter Nuri ditemukan di kawasan hutan kira-kira 1,500 meter dari aras laut, 15 kilometer dari Ba'Kelalan.",
+        "Tiga anggota Tentera Udara Diraja Malaysia maut dalam nahas itu.",
+        "Tujuh orang terselamat dalam nahas itu."
+      ],
+      "sourceIds": [
+        "48b202c9ffa71fe410b58aceba28d809",
+        "f5396b77aa06f61357e5bad2161db47b"
+      ],
+      "supportedDurationSeconds": 18,
+      "readyResult": {
+        "status": "READY",
+        "reasons": [
+          "All research and narration readiness gates passed."
+        ]
+      },
+      "errors": []
+    }
+  ]
+}

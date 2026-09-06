@@ -298,7 +298,7 @@ export class StoryStore {
         .filter((category) => !["mysteries", "malaysia_mysteries"].includes(category));
       const metadata = { ...candidate.metadata, categories: [...new Set([...priorCategories, "archive",
         ...(researchPackage.readyDecision.status === "READY" ? ["mysteries", "malaysia_mysteries"] : [])])],
-        clusterConfidence: researchPackage.clusterConfidence, researchPackageVersion: "4.1-coherent-malay" };
+        clusterConfidence: researchPackage.clusterConfidence, researchPackageVersion: "5.3-follow-up-verified" };
       const rows = await tx<Row[]>`UPDATE story_candidates SET status=${researchPackage.readyDecision.status}, claim_count=${claims.length},
         research_score=${researchPackage.researchScore}, narrative_potential_score=${researchPackage.narrativePotentialScore},
         metadata=${tx.json(JSON.parse(JSON.stringify(metadata)))}, last_researched_at=${researchPackage.lastResearchedAt},
