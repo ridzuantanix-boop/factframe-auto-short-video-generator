@@ -10,9 +10,23 @@ const created=await fetch(origin+"/api/products",{method:"POST",headers:{...head
 let product;
 for(let i=0;i<120;i++){const state=await (await fetch(origin+"/api/factory",{headers:{cookie}})).json();product=state.products.find(item=>item.id===id);if(product?.stage==="ready")break;if(product?.stage==="failed")throw Error(product.error);await new Promise(resolve=>setTimeout(resolve,1000));}
 if(product?.stage!=="ready")throw Error("product analysis timeout");
-console.error(JSON.stringify({acceptance_product_id:id,analysed_product:product.product}));
+console.error(JSON.stringify({
+  acceptance_product_id: id,
+  name: product.product?.name,
+  brand: product.product?.brand,
+  category: product.product?.category,
+  primary_function: product.product?.primary_function,
+}));
 const corrected=await fetch(`${origin}/api/products/${id}/corrections`,{method:"POST",headers,body:JSON.stringify({name:title,category:"hair care",primary_function:"penjagaan rambut yang menipis dan mudah gugur"})});if(!corrected.ok)throw Error(`correction ${corrected.status}: ${await corrected.text()}`);
 const settings={productId:id,videoStyle:"problem_solution",angle:"auto",voiceoverEnabled:true,voiceGender:"female",voiceStyle:"energetic",subjectType:"female_hands",shariahCompliance:true,auratLevel:"full",durationSeconds:10};
 const outputs=[];
-for(let i=0;i<5;i++){const response=await fetch(`${origin}/api/products/${id}/script`,{method:"POST",headers,body:JSON.stringify({settings,instructions:""})});const body=await response.json();if(!response.ok)throw Error(`script ${i+1} ${response.status}: ${JSON.stringify(body)}`);outputs.push({index:i+1,attempt_id:body.attempt_id,route:body.plan.route_id,script:body.script,displayed_equals_plan:body.script===body.plan.script});}
+for(let i=0;i<5;i++){
+  const response=await fetch(`${origin}/api/products/${id}/script`,{method:"POST",headers,body:JSON.stringify({settings,instructions:""})});
+  const body=await response.json();
+  if(!response.ok)throw Error(`script ${i+1} ${response.status}: ${JSON.stringify(body)}`);
+  const output={index:i+1,attempt_id:body.attempt_id,route:body.plan.route_id,script:body.script,displayed_equals_plan:body.script===body.plan.script};
+  outputs.push(output);
+  console.error(JSON.stringify({acceptance_output:output}));
+  if(i<4)await new Promise(resolve=>setTimeout(resolve,70000));
+}
 console.log(JSON.stringify({product_id:id,product:product.product,outputs},null,2));
