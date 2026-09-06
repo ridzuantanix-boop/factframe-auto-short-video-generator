@@ -27,12 +27,12 @@ test("settings and legacy adapters share every global execution, camera, fidelit
 
 test("spoken ranges prefer natural pacing, allow shorter scripts and reject oversized or changed CTA",()=>{
   for(const style of ["natural","soft_sell","energetic","direct"] as const) {
-    for(const count of [8,18,22,23,24,25,26,27,28,29]) {
+    for(const count of [8,18,22,23,24,25,26,27,28,29,30,31]) {
       const sample={...plan,script:["Lihat",...Array(count-5).fill("biru"),SPOKEN_CTA].join(" ")};
-      assert.equal(validSpeech(sample,{...DEFAULT_SETTINGS,voiceStyle:style}), count<=(["energetic","direct"].includes(style)?28:23));
+      assert.equal(validSpeech(sample,{...DEFAULT_SETTINGS,voiceStyle:style}), count<=(["energetic","direct"].includes(style)?30:25));
     }
   }
-  assert.match(speechInstructions("natural"),/18–22/);assert.match(speechInstructions("direct"),/20–28/);assert.match(speechInstructions("direct"),/maximum 28/);
+  assert.match(speechInstructions("natural"),/18–22/);assert.match(speechInstructions("direct"),/20–28/);assert.match(speechInstructions("direct"),/maximum 30/);
   assert.ok(validSpeech(plan,DEFAULT_SETTINGS));
   assert.ok(validSpeech({...plan,script:`Lihat cover biru ini. ${STRONG_SPOKEN_CTA}`,cta:STRONG_SPOKEN_CTA},DEFAULT_SETTINGS));
   for(const cta of ["Tekan link kat bawah.","Kalau nak tengok, klik link kat bawah.","Pergi tengok dekat link bawah."])assert.ok(validSpeech({...plan,script:`Lihat cover biru ini. ${cta}`,cta},DEFAULT_SETTINGS),cta);

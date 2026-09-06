@@ -4,7 +4,7 @@ import type { GenerationSettings } from "./settings";
 
 export function speechPolicy(style: GenerationSettings["voiceStyle"] = "natural") {
   const fast = style === "energetic" || style === "direct";
-  return { target: fast ? "20–28" : "18–22", max: fast ? 28 : 23 };
+  return { target: fast ? "20–28" : "18–22", max: fast ? 30 : 25 };
 }
 export function speechInstructions(style?: GenerationSettings["voiceStyle"]) {
   const policy = speechPolicy(style);

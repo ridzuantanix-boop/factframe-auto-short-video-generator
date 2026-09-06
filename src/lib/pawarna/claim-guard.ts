@@ -17,12 +17,14 @@ export function hardSafetyProblems(plan:ContentPlan,evidenceText=""){
   const text=[plan.hook,plan.script,plan.visual_direction,...Object.values(plan.scene_plan||{})].join(" "),problems=planClaimGuard(plan);
   const number=text.match(/\d+[\d,.]*/)?.[0];
   if(/\b(?:\d+[\d,.]*\s*(?:k|ribu|juta)?\s*(?:terjual|sold|review|ulasan)|rating\s*\d|\d+%|nombor\s*1|top seller)\b/i.test(text)&&(!number||!evidenceText.toLowerCase().includes(number.toLowerCase())))problems.push("numeric social proof lacks cited evidence");
+  for(const outcome of ["rambut tumbuh semula","rambut lebih lebat","hentikan keguguran","rawat kebotakan","lebih kuat imun","tingkatkan imuniti","mencegah penyakit"])
+    if(text.toLowerCase().includes(outcome)&&!evidenceText.toLowerCase().includes(outcome))problems.push(`unsupported outcome drift: ${outcome}`);
   return [...new Set(problems)];
 }
 
 const genericHook=/^(?:tengah cari produk|tengah cari .+ yang sesuai|nak cari produk|ini produk|produk ni|kalau korang tengah cari|jom tengok produk|nak tahu produk apa)/i;
-const formalCopy=/\b(?:produk ini sesuai untuk|produk ini mengandungi|produk ini direka untuk|produk ini merupakan|berdasarkan maklumat|bagi mereka yang|sekiranya anda)\b/i;
-const flatFillers=new Set(["memang membantu","memang sesuai","produk ni bagus","boleh cuba","sesuai untuk kegunaan harian"]);
+const formalCopy=/\b(?:anda|beralih kepada|dirumus khas|merupakan|produk ini|sesuai untuk masalah|membantu menjaga|membantu memelihara|bagi mereka yang|sekiranya|formula ini|diformulasikan|menawarkan|direka untuk|merupakan pilihan|mempunyai kandungan|berdasarkan maklumat)\b/i;
+const flatFillers=new Set(["memang membantu","memang sesuai","produk ni bagus","boleh cuba","sesuai untuk kegunaan harian","bagus untuk penjagaan","pilihan yang sesuai"]);
 const tensionLanguage=/(?:jangan tunggu|jangan buat tak tahu|ambil perhatian|makin (?:ketara|teruk|susah|mengganggu)|sampai (?:nampak|rasa|jadi)|kalau (?:dibiarkan|berterusan)|sebelum (?:jadi|makin)|dah mula|lama-lama|asyik|setiap kali|buat rasa|boleh jadi|risau|rimas|leceh)/i;
 const generalFomo=/(?:ramai (?:tengah |sekarang )?(?:cari|tengok|survey|perhatikan|berminat)|orang (?:tengah |sekarang )?(?:cari|tengok|survey)|tengah survey|patut tengok|makin ramai|produk macam ni (?:memang )?ramai|yang ni (?:memang )?ramai)/i;
 const normalize=(value:string)=>value.toLowerCase().replace(/[^a-z0-9\u00c0-\u024f]+/g," ").trim();
