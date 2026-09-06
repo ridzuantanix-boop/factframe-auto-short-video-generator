@@ -64,7 +64,7 @@ test("planner and conditional Search use mocked transport only, including saved-
       searches++;return Response.json({candidates:[{content:{role:"model",parts:[{text:"No exact evidence"}]}}]});
     }
     let value: unknown;
-    if(text.includes("SURFACE HUMANIZER V1.5"))value=text.includes("Mommy Hana Vitamin C Gummies")?{hook:"Packaging Mommy Hana Vitamin C Gummies ni mudah dicam.",script:"Packaging Mommy Hana Vitamin C Gummies ni mudah dicam. Cuba tengok yang ni dekat link bawah.",cta:"Pergi tengok dekat link bawah."}:{hook:"Lihat buku biru ni?",script:"Lihat buku biru ni? Cuba tengok cover dan tajuk dekat depan. Klik link kat bawah.",cta:"Klik link kat bawah."};
+    if(text.includes("SURFACE HUMANIZER V1.5"))value=text.includes("Mommy Hana Vitamin C Gummies")?{hook:"Packaging Mommy Hana Vitamin C Gummies ni mudah dicam.",script:"Packaging Mommy Hana Vitamin C Gummies ni mudah dicam. Pergi tengok dekat link bawah.",cta:"Pergi tengok dekat link bawah."}:{hook:"Lihat buku biru ni?",script:"Lihat buku biru ni? Cuba tengok cover dan tajuk dekat depan. Klik link kat bawah.",cta:"Klik link kat bawah."};
     else if(text.includes("Audit this Malay script"))value={safety_safe:true,quality_approved:true,reason:"Supported"};
     else if(text.includes("Mommy Hana Vitamin C Gummies")){plans++;value={...plan,hook:"Packaging compact Mommy Hana Vitamin C Gummies ini mudah dicam.",script:"Packaging compact Mommy Hana Vitamin C Gummies ini mudah dicam. Klik link kat bawah.",visual_direction:"Show only the observed compact packaging. Do not imply audience, function, suitability, efficacy or results."};}
     else {plans++;assert.ok(text.includes("18–22"));assert.ok(!text.includes("20–26"));value=plans===1?{...plan,script:["Lihat",...Array(21).fill("biru"),SPOKEN_CTA].join(" ")}:plan;}
@@ -78,7 +78,7 @@ test("planner and conditional Search use mocked transport only, including saved-
     await prepareResearch(product,changed,searched);assert.equal(searches,1,"No replay of unavailable research in same context");
     await researchProduct({...product,confidence:"low"});assert.equal(searches,2);
     const vitamin={...product,name:"Mommy Hana Vitamin C Gummies",category:"Vitamin supplement",visible_text:"Vitamin C Gummies",observed_features:["Packaging compact"],primary_function:"Belum disahkan",target_audience:"Belum disahkan"};
-    const safe=await createPlan(input,vitamin,{...observationOnly(),status:"unverified",note:"Search quota unavailable"});assert.match(safe.script,/Mommy Hana Vitamin C Gummies|Packaging compact/);assert.doesNotMatch(safe.script,/anak|kanak|snek|sesuai|berkhasiat/i);assert.equal(safe.claim_evidence_ids.length,0);assert.match(safe.visual_direction,/Do not imply audience, function, suitability, efficacy/);
+    const safe=await createPlan(input,vitamin,{...observationOnly(),status:"unverified",note:"Search quota unavailable"});assert.match(safe.script,/Mommy Hana|Packaging compact/);assert.doesNotMatch(safe.script,/Vitamin C Gummies.*Vitamin C Gummies|anak|kanak|snek|sesuai|berkhasiat/i);assert.equal(safe.claim_evidence_ids.length,0);assert.match(safe.visual_direction,/Do not imply audience, function, suitability, efficacy/);
   }finally{globalThis.fetch=original;if(key===undefined)delete process.env.GEMINI_API_KEY;else process.env.GEMINI_API_KEY=key;if(base===undefined)delete process.env.GEMINI_API_BASE_URL;else process.env.GEMINI_API_BASE_URL=base;}
 });
 

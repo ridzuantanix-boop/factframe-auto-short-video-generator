@@ -4,7 +4,7 @@ import { readFileSync } from "node:fs";
 import { hardSafetyProblems, scriptQualityProblems } from "../src/lib/pawarna/claim-guard";
 import { productTruth, SALES_ROUTES, selectSalesRoute, type SalesRouteId } from "../src/lib/pawarna/script-director";
 import { DEFAULT_SETTINGS } from "../src/lib/pawarna/settings";
-import { createPlan } from "../src/services/pawarna/intelligence";
+import { createPlan, outputTrace } from "../src/services/pawarna/intelligence";
 import { observationOnly } from "../src/lib/pawarna/research";
 import type { ContentPlan, JobInput, ProductAnalysis } from "../src/lib/pawarna/types";
 
@@ -64,6 +64,6 @@ test("weak written ad-copy receives rewrite feedback and becomes spoken Malay",a
       : {...base,script:"Rambut makin gugur bila sikat? Jangan buat tak tahu. Cuba tengok Dr.Lan ni, ramai tengah cari yang macam ni. Klik link kat bawah.",hook:"Rambut makin gugur bila sikat?"};}
     return Response.json({candidates:[{content:{role:"model",parts:[{text:JSON.stringify(value)}]}}]});
   };
-  try{const result=await createPlan(input,drLan,observationOnly());assert.equal(drafts,2);assert.equal(humanized,true);assert.doesNotMatch(result.script,/anda|dirumus khas|beralih kepada/i);assert.equal(result.route_id,"RELATABLE_PAIN");}
+  try{const result=await createPlan(input,drLan,observationOnly());assert.equal(drafts,2);assert.equal(humanized,true);assert.doesNotMatch(result.script,/anda|dirumus khas|beralih kepada/i);assert.equal(result.route_id,"RELATABLE_PAIN");const trace=outputTrace(result)!;assert.equal(trace.displayed_final,result.script);assert.equal(trace.final_normalized_candidate,result.script);assert.notEqual(trace.route_draft,trace.displayed_final);}
   finally{globalThis.fetch=original;if(key===undefined)delete process.env.GEMINI_API_KEY;else process.env.GEMINI_API_KEY=key;if(baseUrl===undefined)delete process.env.GEMINI_API_BASE_URL;else process.env.GEMINI_API_BASE_URL=baseUrl;}
 });

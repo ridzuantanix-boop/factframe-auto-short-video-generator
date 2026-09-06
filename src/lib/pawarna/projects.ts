@@ -9,8 +9,10 @@ export interface ProductProject {
   script_draft?: {plan:import("./types").ContentPlan;settings_hash:string;generated_at:number};
   script_history?: string[];
   route_history?: import("./script-director").SalesRouteId[];
+  script_attempt_id?: string;
+  output_trace?: {route_id?:import("./script-director").SalesRouteId;route_draft:string;humanized_draft:string;post_claim_checked_candidate:string;final_normalized_candidate:string;displayed_final:string};
 }
-export type PublicProduct = Omit<ProductProject, "owner" | "input_key" | "reference_audit" | "script_draft" | "script_history" | "route_history"> & { image_urls: string[]; sanitized_reference_urls: string[] };
+export type PublicProduct = Omit<ProductProject, "owner" | "input_key" | "reference_audit" | "script_draft" | "script_history" | "route_history" | "output_trace"> & { image_urls: string[]; sanitized_reference_urls: string[] };
 export function publicProduct(p: ProductProject): PublicProduct {
   return { source_job:p.source_job, id: p.id, created_at: p.created_at, updated_at: p.updated_at, stage: p.stage, product: p.product, research: p.research, error: p.error, corrections: p.corrections, image_count: p.image_count,
     image_urls: Array.from({ length: p.image_count }, (_, i) => `/api/products/${p.id}/media?index=${i}`), sanitized_reference_urls:(p.reference_audit||[]).filter(a=>a.sanitization_applied).map(a=>`/api/products/${p.id}/media?index=${a.index}&sanitized=1`) };

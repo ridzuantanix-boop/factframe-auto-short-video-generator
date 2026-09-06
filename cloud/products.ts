@@ -2,7 +2,7 @@ import type { Env } from "./worker";
 import type { JobInput } from "../src/lib/pawarna/types";
 import { publicProduct, applyCorrections, type ProductProject } from "../src/lib/pawarna/projects";
 import { researchContext, shouldResearchProduct } from "../src/lib/pawarna/research";
-import { analyseProduct, createPlan, researchProduct, validateSanitizedReference } from "../src/services/pawarna/intelligence";
+import { analyseProduct, createPlan, outputTrace, researchProduct, validateSanitizedReference } from "../src/services/pawarna/intelligence";
 import { scriptRelevantSnapshot, scriptSettingsHash } from "../src/lib/pawarna/script-gate";
 import { validateSettings } from "../src/lib/pawarna/settings";
 import { projectInput } from "../src/lib/pawarna/projects";
@@ -40,8 +40,10 @@ export class Products {
         const saved=await this.input(p),history=[...(p.script_history||[]),...(p.script_draft?.plan.script?[p.script_draft.plan.script]:[])].slice(-5),routeHistory=[...(p.route_history||[]),...(p.script_draft?.plan.route_id?[p.script_draft.plan.route_id]:[])].slice(-7),input=projectInput({...saved,settings,instructions,angle_seed:crypto.randomUUID(),previous_hook:p.script_draft?.plan.hook,previous_scripts:history,previous_routes:routeHistory},p);
         const reused=body.source_job?source(String(body.source_job)):undefined;if(body.source_job&&(!reused||reused.owner!==owner||!reused.plan))return json({error:"Video tidak ditemui."},404);
         const plan=reused?.plan?{...reused.plan,video_prompt:""}:await createPlan(input,p.product,p.research),snapshot=scriptRelevantSnapshot(p,settings,instructions),settings_hash=await scriptSettingsHash(snapshot),generated_at=Date.now();
-        p.script_history=history;p.route_history=routeHistory;p.script_draft={plan:{...plan,script_source:"ai",script_settings_hash:settings_hash,script_generated_at:generated_at},settings_hash,generated_at};this.save(p);
-        return json({script:plan.script,plan:p.script_draft.plan,settings_hash,generated_at,source:"ai"});
+        const attempt_id=crypto.randomUUID(),trace=outputTrace(plan)||{route_id:plan.route_id,route_draft:plan.script,humanized_draft:plan.script,post_claim_checked_candidate:plan.script,final_normalized_candidate:plan.script,displayed_final:plan.script};
+        if(trace.displayed_final!==plan.script||trace.final_normalized_candidate!==plan.script)throw new Error("Final output trace mismatch");
+        p.script_history=history;p.route_history=routeHistory;p.script_attempt_id=attempt_id;p.output_trace=trace;p.script_draft={plan:{...plan,script_source:"ai",script_settings_hash:settings_hash,script_generated_at:generated_at},settings_hash,generated_at};this.save(p);
+        return json({script:trace.displayed_final,plan:p.script_draft.plan,settings_hash,generated_at,attempt_id,source:"ai"});
       }
       return json({},405);
     }
