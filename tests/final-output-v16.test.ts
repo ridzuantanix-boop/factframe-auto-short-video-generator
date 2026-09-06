@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { deterministicFinalNormalize, finalDuplicateReasons, openingPattern, sentenceShape, spokenProductName } from "../src/lib/pawarna/final-output";
 import { normalizeSpeechBoundary, validSpeech } from "../src/lib/pawarna/speech";
+import { spokenMalayCorruptionProblems } from "../src/lib/pawarna/spoken-malay";
 import type { ContentPlan, ProductAnalysis } from "../src/lib/pawarna/types";
 
 const product:ProductAnalysis={name:"Dr.Lan BLACK SESAME BLACK RICE & ROSEMARY WATER SPRAY FOR HAIR Natural",brand:"Dr.Lan",category:"hair care",confidence:"high",visible_text:"FOR THINNING HAIR AND HAIR LOSS",description:"spray",observed_features:[],search_query:"",uncertainty:"",reference_indices:[0],primary_function:"penjagaan rambut menipis dan rambut gugur"};
@@ -21,3 +22,4 @@ test("partial packaging-title stacks collapse to the spoken alias without duplic
 test("dotted brand rewrite cannot duplicate its prefix",()=>{const result=deterministicFinalNormalize({...base,script:"Risau rambut nipis? Dr.Dr.Lan ni memang untuk rambut yang makin nipis. Klik link kat bawah."},product);assert.doesNotMatch(result.script,/Dr\.Dr\./i);});
 test("route-safe fallbacks retain distinct final structures",()=>{const source=readFileSync("src/lib/pawarna/final-output.ts","utf8");assert.ok(source.includes("hairLines:Record<SalesRouteId,string>"));assert.ok(source.includes("patut masuk senarai"));assert.ok(source.includes("Sebelum makin ketara"));});
 test("final pipeline order includes normalizer, post-normalizer claim check and hard dedupe",()=>{const source=readFileSync("src/services/pawarna/intelligence.ts","utf8");for(const token of ["FINAL NORMALIZER V1.6","finalSafety=hardSafetyProblems","finalDuplicateReasons","final_normalized_candidate","displayedPlan"])assert.ok(source.includes(token),token);});
+test("V1.7 rejects corrupted spoken tokens and runs QA before display",()=>{assert.ok(spokenMalayCorruptionProblems("Cubareit tengok Dr.Lan ni.").length);assert.ok(spokenMalayCorruptionProblems("cuba cuba tengok").length);assert.deepEqual(spokenMalayCorruptionProblems("Cuba tengok Dr.Lan ni."),[]);const source=readFileSync("src/services/pawarna/intelligence.ts","utf8");for(const token of ["FINAL SPOKEN-MALAY QA V1.7","await spokenMalayQA","qaSafety=hardSafetyProblems","post_qa_claim_check"])assert.ok(source.includes(token),token);});

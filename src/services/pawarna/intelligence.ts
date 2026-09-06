@@ -10,6 +10,7 @@ import { resolveProductIntelligence } from "../../lib/pawarna/product-resolver";
 import { hardSafetyProblems, scriptQualityProblems, semanticFallbackPlan } from "../../lib/pawarna/claim-guard";
 import { productTruth, routeDirection, routeUsesFomo, SALES_ROUTES, selectSalesRoute } from "../../lib/pawarna/script-director";
 import { deterministicFinalNormalize, finalDuplicateReasons, finalNeedsRewrite, routeSafeFallback, spokenProductName } from "../../lib/pawarna/final-output";
+import { applySpokenMalayRewrite, spokenMalayCorruptionProblems } from "../../lib/pawarna/spoken-malay";
 export { shouldResearchProduct } from "../../lib/pawarna/research";
 
 const model = () => process.env.PAWARNA_GEMINI_MODEL || process.env.GEMINI_TEXT_MODEL || "gemini-3.1-flash-lite";
@@ -108,6 +109,12 @@ async function finalNormalize(plan:ContentPlan,product:ProductAnalysis,input:Job
   const result=await json<{hook:string;script:string;cta:string}>(`FINAL NORMALIZER V1.6. This is the final output boundary. Rewrite only wording that causes a long product-title dump, catalogue noun stack, formal Malay, repeated opening, or near-duplicate structure. Preserve route_id ${plan.route_id}, grounded problem ${JSON.stringify(truth.grounded_problem)}, grounded solution ${JSON.stringify(truth.grounded_solution)}, factual meaning and CTA intent. Spoken product alias: ${spokenProductName(product)}. Never output the full title ${JSON.stringify(product.name)}. Never introduce claims, efficacy, outcomes, personal experience, exact social proof, price, promo or scarcity. Make the sentence rhythm visibly different from these recent displayed finals: ${JSON.stringify((input.previous_scripts||[]).slice(-5))}. Return hook, script and cta only; hook starts script and cta exactly ends it. CANDIDATE: ${JSON.stringify({hook:normalized.hook,script:normalized.script,cta:normalized.cta})}`,object({hook:string,script:string,cta:string}));
   return normalizeSpeechBoundary(deterministicFinalNormalize({...normalized,...result,route_id:plan.route_id},product));
 }
+async function spokenMalayQA(plan:ContentPlan,truth:ReturnType<typeof productTruth>){
+  const deterministic=spokenMalayCorruptionProblems(plan.script);
+  const qa=await json<{natural:boolean;reason:string;hook:string;script:string;cta:string}>(`FINAL SPOKEN-MALAY QA V1.7. Read this aloud as spoken Malaysian Malay. Is every sentence grammatically coherent, natural and pronounceable? Reject malformed grammar, corrupted or merged tokens, nonsense words, awkward translated constructions, unnatural noun attachment, catalogue-like phrasing, and anything a Malaysian TikTok creator would not plausibly say. Deterministic warnings: ${JSON.stringify(deterministic)}. If natural=false, rewrite WORDING ONLY while preserving route ${plan.route_id}, grounded problem ${JSON.stringify(truth.grounded_problem)}, grounded product relevance ${JSON.stringify(truth.grounded_solution)}, factual meaning and CTA intent. Introduce no new claim, outcome, personal experience, exact social proof, price, promo or scarcity. Return the original fields unchanged when natural=true; otherwise return the corrected hook, script and cta. Hook must start script and cta must exactly end it. CANDIDATE: ${JSON.stringify({hook:plan.hook,script:plan.script,cta:plan.cta})}`,object({natural:{type:"boolean"},reason:string,hook:string,script:string,cta:string}));
+  if(qa.natural&&!deterministic.length)return plan;
+  return applySpokenMalayRewrite(plan,qa);
+}
 export async function createPlan(input: JobInput, product: ProductAnalysis, research: Research): Promise<ContentPlan> {
   const voice = input.settings?.voiceoverEnabled !== false;
   const route=selectSalesRoute(input),truth=productTruth(product);
@@ -135,6 +142,10 @@ export async function createPlan(input: JobInput, product: ProductAnalysis, rese
     if(finalNeedsRewrite(plan,product,input)){feedback="FINAL SURFACE REWRITE REQUIRED: remove long title, catalogue wording, formal written Malay and repeated final structure.";reject("final_surface",feedback);continue;}
     const finalSafety=hardSafetyProblems(plan,selectedEvidence);if(finalSafety.length){feedback=`HARD SAFETY REWRITE REQUIRED AFTER FINAL NORMALIZER: ${finalSafety.join(", ")}.`;reject("final_claim_check",finalSafety.join(", "));continue;}
     const duplicates=finalDuplicateReasons(plan.script,input.previous_scripts||[]);if(duplicates.length){feedback=`HARD FINAL DEDUPE REWRITE REQUIRED: ${duplicates.join(", ")}. Use route ${route} with a different opening pattern and sentence structure.`;reject("final_dedupe",duplicates.join(", "));continue;}
+    try{plan=normalizeSpeechBoundary(deterministicFinalNormalize(await spokenMalayQA(plan,truth),product));}catch{feedback="FINAL SPOKEN-MALAY QA unavailable or malformed; rewrite into coherent natural Malaysian speech.";reject("spoken_malay_qa",feedback);continue;}
+    const qaProblems=spokenMalayCorruptionProblems(plan.script);if(qaProblems.length||!validSpeech(plan,input.settings)||finalNeedsRewrite(plan,product,input)){feedback=`FINAL SPOKEN-MALAY QA REWRITE REQUIRED: ${qaProblems.join(", ")||"unnatural final structure"}.`;reject("spoken_malay_qa",feedback);continue;}
+    const qaSafety=hardSafetyProblems(plan,selectedEvidence);if(qaSafety.length){feedback=`HARD SAFETY REWRITE REQUIRED AFTER SPOKEN-MALAY QA: ${qaSafety.join(", ")}.`;reject("post_qa_claim_check",qaSafety.join(", "));continue;}
+    const qaDuplicates=finalDuplicateReasons(plan.script,input.previous_scripts||[]);if(qaDuplicates.length){feedback=`HARD DEDUPE REWRITE REQUIRED AFTER SPOKEN-MALAY QA: ${qaDuplicates.join(", ")}.`;reject("post_qa_dedupe",qaDuplicates.join(", "));continue;}
     const trace:OutputTrace={route_id:route,route_draft:routeDraft,humanized_draft:humanizedDraft,post_claim_checked_candidate:postClaimChecked,final_normalized_candidate:plan.script,displayed_final:""};
     const qualityProblems=scriptQualityProblems(plan,input);
     let review:{safety_safe:boolean;quality_approved:boolean;reason:string};
@@ -149,7 +160,7 @@ export async function createPlan(input: JobInput, product: ProductAnalysis, rese
   reject("fallback","no safe Gemini candidate survived all hard gates");
   let fallback=semanticFallbackPlan({route_id:route,angle:"Safe product relevance",hook:"",script:"",cta:"",mode:input.mode==="Auto"?(product.category.toLowerCase().includes("buku")?"Book Creator":"Product Demo"):input.mode,visual_direction:"",claim_evidence_ids:[],video_prompt:"",scene_plan:{"0-2":"Open on the exact product","2-6":"Show supported product identity","6-8":"Show one visible detail","8-10":"End on product after CTA"}},product,input,voice);
   const routeDraft=fallback.script;if(voice){try{fallback=await surfaceHumanize(fallback,route,truth);}catch{}}const humanizedDraft=fallback.script;
-  try{fallback=await finalNormalize(fallback,product,input,truth);}catch{fallback=deterministicFinalNormalize(fallback,product);}
+  try{fallback=await finalNormalize(fallback,product,input,truth);fallback=normalizeSpeechBoundary(deterministicFinalNormalize(await spokenMalayQA(fallback,truth),product));}catch{fallback=deterministicFinalNormalize(fallback,product);}
   if(hardSafetyProblems(fallback).length||!validSpeech(fallback,input.settings)||finalNeedsRewrite(fallback,product,input)||finalDuplicateReasons(fallback.script,input.previous_scripts||[]).length)fallback=routeSafeFallback(fallback,product,route,voice);
   if(hardSafetyProblems(fallback).length||!validSpeech(fallback,input.settings)||finalNeedsRewrite(fallback,product,input)||finalDuplicateReasons(fallback.script,input.previous_scripts||[]).length)throw new Error("Skrip selamat dan berbeza belum dapat disediakan.");
   return displayedPlan(fallback,{route_id:route,route_draft:routeDraft,humanized_draft:humanizedDraft,post_claim_checked_candidate:humanizedDraft,final_normalized_candidate:fallback.script,displayed_final:""});
