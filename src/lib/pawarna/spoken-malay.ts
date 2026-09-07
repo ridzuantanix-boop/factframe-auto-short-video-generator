@@ -7,6 +7,8 @@ export function spokenMalayCorruptionProblems(script:string){
   if(/[a-zA-ZÀ-ž][,!?][a-zA-ZÀ-ž]/.test(spacingSample)||/[a-zA-ZÀ-ž]\.[A-ZÀ-Ž]/.test(spacingSample))problems.push("missing spacing after punctuation");
   if(/\b([a-zÀ-ž]{2,})\s+\1\b/i.test(script))problems.push("accidental repeated word");
   if(/\b[a-zÀ-ž]{21,}\b/i.test(script))problems.push("implausibly long spoken token");
+  if(/\bpatut masuk senarai nak tengok\b/i.test(script))problems.push("awkward translated recommendation");
+  if(/\bboleh cuba\b.*\bni memang\b/i.test(script))problems.push("unnatural modal attachment");
   return problems;
 }
 
