@@ -10,6 +10,7 @@ export function spokenMalayCorruptionProblems(script:string){
   if(/\bpatut masuk senarai nak tengok\b/i.test(script))problems.push("awkward translated recommendation");
   if(/\bboleh cuba\b.*\bni memang\b/i.test(script))problems.push("unnatural modal attachment");
   if(/\brutin rambut (?:makin )?nipis\b/i.test(script))problems.push("unnatural noun attachment");
+  if((script.match(/\brambut (?:dah )?makin nipis\b/gi)||[]).length>1)problems.push("repeated phrase across sentences");
   return problems;
 }
 
