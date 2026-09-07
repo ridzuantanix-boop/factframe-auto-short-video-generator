@@ -4,6 +4,7 @@ import { readFileSync } from "node:fs";
 import { deterministicFinalNormalize, finalDuplicateReasons, openingPattern, sentenceShape, spokenProductName } from "../src/lib/pawarna/final-output";
 import { normalizeSpeechBoundary, validSpeech } from "../src/lib/pawarna/speech";
 import { spokenMalayCorruptionProblems } from "../src/lib/pawarna/spoken-malay";
+import { spokenMalayQAPasses } from "../src/services/pawarna/intelligence";
 import type { ContentPlan, ProductAnalysis } from "../src/lib/pawarna/types";
 
 const product:ProductAnalysis={name:"Dr.Lan BLACK SESAME BLACK RICE & ROSEMARY WATER SPRAY FOR HAIR Natural",brand:"Dr.Lan",category:"hair care",confidence:"high",visible_text:"FOR THINNING HAIR AND HAIR LOSS",description:"spray",observed_features:[],search_query:"",uncertainty:"",reference_indices:[0],primary_function:"penjagaan rambut menipis dan rambut gugur"};
@@ -22,7 +23,23 @@ test("partial packaging-title stacks collapse to the spoken alias without duplic
 test("dotted brand rewrite cannot duplicate its prefix",()=>{const result=deterministicFinalNormalize({...base,script:"Risau rambut nipis? Dr.Dr.Lan ni memang untuk rambut yang makin nipis. Klik link kat bawah."},product);assert.doesNotMatch(result.script,/Dr\.Dr\./i);});
 test("route-safe fallbacks retain distinct final structures",()=>{const source=readFileSync("src/lib/pawarna/final-output.ts","utf8");assert.ok(source.includes("hairLines:Record<SalesRouteId,string>"));assert.ok(source.includes("Jangan biar sampai makin ketara"));assert.ok(source.includes("Sebelum makin ketara"));});
 test("final pipeline order includes normalizer, post-normalizer claim check and hard dedupe",()=>{const source=readFileSync("src/services/pawarna/intelligence.ts","utf8");for(const token of ["FINAL NORMALIZER V1.6","finalSafety=hardSafetyProblems","finalDuplicateReasons","final_normalized_candidate","displayedPlan"])assert.ok(source.includes(token),token);});
-test("V1.7 rejects corrupted spoken tokens and runs QA before display",()=>{assert.ok(spokenMalayCorruptionProblems("Cubareit tengok Dr.Lan ni.").length);assert.ok(spokenMalayCorruptionProblems("cuba cuba tengok").length);assert.deepEqual(spokenMalayCorruptionProblems("Cuba tengok Dr.Lan ni."),[]);const source=readFileSync("src/services/pawarna/intelligence.ts","utf8");for(const token of ["FINAL SPOKEN-MALAY QA V1.7","await spokenMalayQA","qaSafety=hardSafetyProblems","post_qa_claim_check"])assert.ok(source.includes(token),token);});
+test("V1.7 uses a strict judge-only contract and keeps judge separate from repair",()=>{assert.equal(spokenMalayQAPasses({pass:true,issues:[]}),true);assert.equal(spokenMalayQAPasses({pass:true,issues:[{sentence:"Rosak.",type:"MALFORMED_GRAMMAR",reason:"broken"}]}),false);assert.equal(spokenMalayQAPasses({pass:false,issues:[]}),false);const source=readFileSync("src/services/pawarna/intelligence.ts","utf8");for(const token of ["judgeSpokenMalay","repairSpokenMalay","SEMANTIC JUDGE ONLY","WORDING-ONLY REPAIR","pass:{type:\"boolean\"}","issues:{type:\"array\""])assert.ok(source.includes(token),token);assert.doesNotMatch(source,/natural:\{type:\"boolean\"\}/);});
+test("V1.7 post-repair path reruns claim guard, final normalizer, dedupe, deterministic check and judge",()=>{const source=readFileSync("src/services/pawarna/intelligence.ts","utf8");for(const token of ["repairSafety=hardSafetyProblems(candidate,selectedEvidence)","candidate=await finalNormalize(candidate,product,input,truth)","normalizedRepairSafety=hardSafetyProblems(candidate,selectedEvidence)","repairDuplicates=finalDuplicateReasons", "spokenMalayCorruptionProblems(candidate.script)","qa=await judgeSpokenMalay(candidate)","repairAttempt<=2"])assert.ok(source.includes(token),token);});
+test("V1.7 fallback cannot bypass the semantic judge",()=>{const source=readFileSync("src/services/pawarna/intelligence.ts","utf8");assert.ok(source.includes("fallback=await enforceFinalSpokenMalay(fallback,product,input,truth"));assert.ok(source.includes("tidak akan dipaparkan"));});
+test("V1.7 mandatory malformed fixtures fail before repair and corrected Malay passes",()=>{
+  const fixtures=[
+    {bad:"Rambut makin nipis sampai nampak lantai penuh gugur setiap hari?",type:"SEMANTIC_ATTACHMENT" as const,good:"Rambut makin nipis sampai rambut gugur penuh dekat lantai setiap hari?"},
+    {bad:"Dr.Lan ni memang patut masuk senarai nak tengok.",type:"AWKWARD_CONSTRUCTION" as const,good:"Kalau tengah survey, cuba tengok Dr.Lan ni."},
+    {bad:"Untuk rutin rambut makin nipis, cubareit tengok Dr.Lan ni.",type:"CORRUPTED_TOKEN" as const,good:"Kalau rambut makin nipis, cuba tengok Dr.Lan ni."},
+  ];
+  for(const fixture of fixtures){
+    const deterministic=spokenMalayCorruptionProblems(fixture.bad);
+    const semantic={pass:false,issues:[{sentence:fixture.bad,type:fixture.type,reason:"Malformed spoken Malay"}]};
+    assert.ok(deterministic.length||!spokenMalayQAPasses(semantic),fixture.bad);
+    assert.deepEqual(spokenMalayCorruptionProblems(fixture.good),[],fixture.good);
+    assert.equal(spokenMalayQAPasses({pass:true,issues:[]}),true);
+  }
+});
 test("V1.7 repairs and detects missing space after a sentence stop",()=>{assert.ok(spokenMalayCorruptionProblems("Lantai penuh rambut.Dr.Lan ni untuk rutin rambut.").length);const result=deterministicFinalNormalize({...base,script:"Lantai penuh rambut.Dr.Lan ni untuk rutin rambut. Klik link kat bawah."},product);assert.match(result.script,/rambut\. Dr\.Lan/);});
 test("V1.7 rejects observed awkward recommendation and modal attachment",()=>{assert.ok(spokenMalayCorruptionProblems("Dr.Lan ni memang patut masuk senarai nak tengok.").length,"translated recommendation");assert.ok(spokenMalayCorruptionProblems("Boleh cuba Dr.Lan ni memang untuk rambut nipis.").length,"modal attachment");});
 test("V1.7 rejects unnatural hair-routine noun attachment",()=>{assert.ok(spokenMalayCorruptionProblems("Untuk rutin rambut makin nipis, cuba tengok Dr.Lan ni.").length);});

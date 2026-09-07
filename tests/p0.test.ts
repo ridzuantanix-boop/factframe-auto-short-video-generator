@@ -65,7 +65,7 @@ test("planner and conditional Search use mocked transport only, including saved-
     }
     let value: unknown;
     if(text.includes("SURFACE HUMANIZER V1.5"))value=text.includes("Mommy Hana Vitamin C Gummies")?{hook:"Packaging Mommy Hana Vitamin C Gummies ni mudah dicam.",script:"Packaging Mommy Hana Vitamin C Gummies ni mudah dicam. Pergi tengok dekat link bawah.",cta:"Pergi tengok dekat link bawah."}:{hook:"Lihat buku biru ni?",script:"Lihat buku biru ni? Cuba tengok cover dan tajuk dekat depan. Klik link kat bawah.",cta:"Klik link kat bawah."};
-    else if(text.includes("FINAL SPOKEN-MALAY QA V1.7"))value={natural:true,reason:"Natural",hook:"Lihat buku biru ni?",script:"Lihat buku biru ni? Cuba tengok cover dan tajuk dekat depan. Klik link kat bawah sekarang.",cta:"Klik link kat bawah sekarang."};
+    else if(text.includes("FINAL SPOKEN-MALAY QA V1.7"))value={pass:true,issues:[]};
     else if(text.includes("Audit this Malay script"))value={safety_safe:true,quality_approved:true,reason:"Supported"};
     else if(text.includes("Mommy Hana Vitamin C Gummies")){plans++;value={...plan,hook:"Packaging compact Mommy Hana Vitamin C Gummies ini mudah dicam.",script:"Packaging compact Mommy Hana Vitamin C Gummies ini mudah dicam. Klik link kat bawah.",visual_direction:"Show only the observed compact packaging. Do not imply audience, function, suitability, efficacy or results."};}
     else {plans++;assert.ok(text.includes("18–22"));assert.ok(!text.includes("20–26"));value=plans===1?{...plan,script:["Lihat",...Array(21).fill("biru"),SPOKEN_CTA].join(" ")}:plan;}

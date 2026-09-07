@@ -58,7 +58,7 @@ test("weak written ad-copy receives rewrite feedback and becomes spoken Malay",a
   globalThis.fetch=async(_url,init)=>{
     const body=JSON.parse(String(init?.body)),text=JSON.stringify(body);let value:unknown;
     if(text.includes("SURFACE HUMANIZER V1.5")){humanized=true;value={hook:"Rambut makin gugur bila sikat?",script:"Rambut makin gugur bila sikat? Jangan buat tak tahu. Cuba tengok Dr.Lan ni. Klik link kat bawah.",cta:"Klik link kat bawah."};}
-    else if(text.includes("FINAL SPOKEN-MALAY QA V1.7"))value={natural:true,reason:"Natural",hook:"Rambut makin gugur bila sikat?",script:"Rambut makin gugur bila sikat? Jangan buat tak tahu. Cuba tengok Dr.Lan ni. Klik link kat bawah sekarang.",cta:"Klik link kat bawah sekarang."};
+    else if(text.includes("FINAL SPOKEN-MALAY QA V1.7"))value={pass:true,issues:[]};
     else if(text.includes("Audit this Malay script"))value={safety_safe:true,quality_approved:drafts>1,reason:drafts>1?"Spoken":"Written advertising language"};
     else {drafts++;value=drafts===1
       ? {...base,script:"Rambut makin gugur? Dr.Lan ni dirumus khas untuk masalah rambut gugur. Klik link kat bawah.",hook:"Rambut makin gugur?"}
