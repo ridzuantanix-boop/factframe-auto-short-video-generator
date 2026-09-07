@@ -11,6 +11,7 @@ export function spokenMalayCorruptionProblems(script:string){
   if(/\bboleh cuba\b.*\bni memang\b/i.test(script))problems.push("unnatural modal attachment");
   if(/\brutin rambut (?:makin )?nipis\b/i.test(script))problems.push("unnatural noun attachment");
   if((script.match(/\brambut (?:dah )?makin nipis\b/gi)||[]).length>1)problems.push("repeated phrase across sentences");
+  if((script.match(/\b(?:tengah survey|patut tengok)\b/gi)||[]).length>1)problems.push("repeated sales phrase across sentences");
   return problems;
 }
 
