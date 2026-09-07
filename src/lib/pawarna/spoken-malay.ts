@@ -9,6 +9,7 @@ export function spokenMalayCorruptionProblems(script:string){
   if(/\b[a-zÀ-ž]{21,}\b/i.test(script))problems.push("implausibly long spoken token");
   if(/\bpatut masuk senarai nak tengok\b/i.test(script))problems.push("awkward translated recommendation");
   if(/\bboleh cuba\b.*\bni memang\b/i.test(script))problems.push("unnatural modal attachment");
+  if(/\brutin rambut (?:makin )?nipis\b/i.test(script))problems.push("unnatural noun attachment");
   return problems;
 }
 
